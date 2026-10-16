@@ -9,5 +9,7 @@ Newest first. One short entry per session.
 - Tested an issue end to end (#1: create, comment, close).
 - Added the layout, `CLAUDE.md`, this log, and a CI workflow that runs each
   experiment's `check.sh`. `experiments/_template/` doubles as the CI smoke test.
-- The default branch is `claude/github-connection-verify-e8ur6e` because it was the
-  first one pushed. No `main` yet; that's waiting on the owner.
+- Created `main`. The owner gave standing permission to merge freely (recorded in
+  `CLAUDE.md`). If `main` isn't the default branch yet, the owner has to switch it
+  under Settings → General → Default branch; the tools here can't do that.
+- First CI run passed.

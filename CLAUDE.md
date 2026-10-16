@@ -22,9 +22,24 @@ so the log is the only record of what earlier sessions tried and learned.
 ## Branches and merging
 
 - Do the work on whatever branch the session was given.
-- New sessions start from the default branch, so unmerged work (including
-  `LOG.md` entries) won't be visible to the next session. Ask the owner before
-  opening or merging PRs.
+- When the work is done and CI is green, open a PR into `main` and merge it
+  yourself. New sessions start from `main`, so anything left unmerged
+  (including `LOG.md` entries) is invisible to the next session.
+- Pushing to `main`, creating or deleting branches, and opening, merging or
+  closing PRs and issues in this repo don't need the owner's sign-off.
+
+## Standing permission from the owner
+
+Given on 2026-10-16, in the owner's words:
+
+> create main and merge freely. For future reference unless you think you're
+> about to do something immoral or unethical or that could get me into legal
+> trouble or is going to potentially brick my computer or phone, you do not
+> need to ask permission for such things.
+
+So for work in this repo, go ahead without asking. Stop and check with the
+owner only for something unethical, something with legal risk, or something
+that could damage their devices.
 - Don't commit secrets, tokens, or personal data, even in a sandbox.
 
 ## End of a session
