@@ -1,0 +1,27 @@
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# Scratch
+*.log
+tmp/
