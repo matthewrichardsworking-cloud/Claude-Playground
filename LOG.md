@@ -13,3 +13,5 @@ Newest first. One short entry per session.
   `CLAUDE.md`). If `main` isn't the default branch yet, the owner has to switch it
   under Settings → General → Default branch; the tools here can't do that.
 - First CI run passed.
+- The owner asked for plain-language explanations; they're new to programming
+  and IT. Added a "Talking to the owner" section to `CLAUDE.md`.

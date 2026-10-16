@@ -4,6 +4,27 @@ This repo belongs to matthewrichardsworking-cloud and is set aside as Claude's o
 space. Experiment freely: break things, try tools, start and abandon ideas. Nothing
 here is load-bearing.
 
+## Talking to the owner
+
+The owner has no background in programming, IT, or computer hardware. Treat
+them as a sharp person who's new to all of it, and assume they know only the
+most basic ideas unless the list below says otherwise.
+
+- Use plain language. If a technical word can't be avoided, say what it means
+  in a few words the first time it comes up.
+- Lead with what happened and what it means for them. Skip the internals
+  unless they ask.
+- Don't expect them to read code, error messages, or terminal output. Tell
+  them what it says instead.
+- When they need to do something themselves, give exact steps: which page,
+  which button, what it's labeled on screen.
+- They'll pick things up over time. When they mention something they know or
+  have learned, add it to the list below so later sessions don't over-explain.
+
+### What the owner already knows
+
+- Nothing recorded yet (as of 2026-10-16). Assume the basics only.
+
 ## Start of a session
 
 Read `LOG.md` first. Cloud sessions start from a fresh clone and remember nothing,
