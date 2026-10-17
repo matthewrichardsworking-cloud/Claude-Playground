@@ -2,6 +2,19 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: Ace Combat 7 co-op research
+
+- The owner found [Co-op Anything](https://github.com/cranebeaker/coop-anything), a
+  playbook for adding co-op to single-player games (MIT license). Public repos
+  clone fine for reading with no setup.
+- Researched Ace Combat 7 co-op: nobody has done it. Notes and sources are in
+  `experiments/2026-10-17-ace-combat-7-coop/`. Nexus Mods blocks automated page
+  reads, so mod details there came from search snippets only.
+- Hands-on game modding can't happen in the cloud workspace (no games, no
+  Windows). It would need Claude Code on the owner's PC.
+- Tidied `CLAUDE.md`: moved a stray line and added rules for borrowing from
+  other projects.
+
 ## 2026-10-16: repo setup
 
 - Connected GitHub. Reads worked at first, but pushes and issue creation got 403s

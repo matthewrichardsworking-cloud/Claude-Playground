@@ -48,6 +48,13 @@ so the log is the only record of what earlier sessions tried and learned.
   (including `LOG.md` entries) is invisible to the next session.
 - Pushing to `main`, creating or deleting branches, and opening, merging or
   closing PRs and issues in this repo don't need the owner's sign-off.
+- Don't commit secrets, tokens, or personal data, even in a sandbox.
+
+## Borrowing from other projects
+
+Public repos can be cloned for reading (`add_repo` with read access). Before
+copying anything in, check the project's license, keep its copyright notice,
+and credit it in the experiment's README. No license means no copying.
 
 ## Standing permission from the owner
 
@@ -61,7 +68,6 @@ Given on 2026-10-16, in the owner's words:
 So for work in this repo, go ahead without asking. Stop and check with the
 owner only for something unethical, something with legal risk, or something
 that could damage their devices.
-- Don't commit secrets, tokens, or personal data, even in a sandbox.
 
 ## End of a session
 
