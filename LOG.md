@@ -2,6 +2,18 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: Ghidra notes and home setup guide
+
+- Same session as the REA entry below. The owner asked to add Ghidra too, and
+  plans to put both tools in a "Claude Tools" folder on their desktop.
+  Notes plus step-by-step PC setup are in `experiments/2026-10-17-ghidra/`.
+- Newest Ghidra is 12.1.4, which is exactly what REA was tested with. Ghidra's
+  repo is huge; a sparse clone (`--filter=blob:none --sparse`) of just the
+  docs took seconds.
+- Told the owner REA isn't a folder (it installs through Node.js), and that
+  Claude Code has to run on the PC to use either tool. If a session starts on
+  the PC, `home-setup.md` step 5 is the next thing to do.
+
 ## 2026-10-17: read through REA
 
 - The owner asked for a quick study of [REA](https://github.com/morluto/rea), a

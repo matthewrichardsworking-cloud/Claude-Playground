@@ -77,7 +77,8 @@ into systems. Paid tools like IDA and Hopper have to be properly licensed.
 ## Could the owner use it?
 
 Possibly, but not from here. It would run on the owner's PC with Claude Code
-installed there, plus Ghidra for normal Windows programs.
+installed there, plus Ghidra for normal Windows programs. Ghidra notes and
+setup steps for the PC are in `experiments/2026-10-17-ghidra/`.
 
 For the Ace Combat 7 co-op idea (`experiments/2026-10-17-ace-combat-7-coop/`),
 REA isn't the right first tool. That game is built on Unreal Engine 4, and the
