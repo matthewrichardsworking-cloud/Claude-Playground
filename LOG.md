@@ -2,6 +2,16 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: read through REA
+
+- The owner asked for a quick study of [REA](https://github.com/morluto/rea), a
+  reverse-engineering toolkit for AI agents (MIT). Notes are in
+  `experiments/2026-10-17-rea-reverse-engineering-tool/`.
+- Cloning a public repo for reading still works with no setup.
+- The session's safety check blocked running it with `npx` (code downloaded
+  from the internet). Reading was fine. To try it, get the owner's go-ahead
+  first; the JavaScript analyzer is the easy test since it needs no decompiler.
+
 ## 2026-10-17: BIOS update, CPU fan error
 
 - The owner updated their PC's BIOS and got "CPU Fan Error" at startup. Walked
