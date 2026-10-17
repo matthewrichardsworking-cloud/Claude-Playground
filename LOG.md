@@ -2,6 +2,19 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: BIOS update, CPU fan error
+
+- The owner updated their PC's BIOS and got "CPU Fan Error" at startup. Walked
+  them through the fix using photos of the screen. Notes on the PC and the fix
+  are in `experiments/2026-10-17-bios-cpu-fan-error/`.
+- Cause: the cooler is on the AIO_PUMP header and CPU_FAN is empty, and the
+  update reset the setting that had been hiding the warning. The fix was to set
+  Q-Fan Control to Auto, then the CPU fan low limit to Ignore.
+- Sending photos of the screen worked well. The owner followed the BIOS steps
+  without trouble once each one named the exact on-screen label.
+- A research workflow pulled ASUS's own manuals as PDFs with curl. ASUS's site
+  works; the ROG forum, Corsair, and Reddit block automated reads.
+
 ## 2026-10-17: Ace Combat 7 co-op research
 
 - The owner found [Co-op Anything](https://github.com/cranebeaker/coop-anything), a

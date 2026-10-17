@@ -23,7 +23,10 @@ most basic ideas unless the list below says otherwise.
 
 ### What the owner already knows
 
-- Nothing recorded yet (as of 2026-10-16). Assume the basics only.
+- Updated their own PC's BIOS, and can find their way around the BIOS settings
+  screens when told the exact on-screen labels (2026-10-17). Hardware words like
+  "chassis" or "header" still need a few words of explanation. Photos of the
+  screen are an easy way for them to show what they're seeing.
 
 ## Start of a session
 
