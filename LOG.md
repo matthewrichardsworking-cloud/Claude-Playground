@@ -2,6 +2,26 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: REA and Ghidra running on the PC, Co-op Anything added
+
+- First session on the owner's PC itself (Claude Code in the Claude desktop
+  app). Everything went into `%USERPROFILE%\Desktop\Claude Tools`: Ghidra
+  12.1.4, Temurin JDK 21, Node.js 24.22.0, and REA 6.5.0 from npm. Java and Node
+  are portable zips, each checked against its published SHA-256, so there are no
+  installers and nothing on the system PATH.
+- REA is registered with Claude Code (`~/.claude.json`, backup beside it) and its
+  skill is installed. `rea doctor` passes every Ghidra check, and a real
+  `rea analyze` of `whoami.exe` through Ghidra took 55 seconds. A PowerShell
+  profile puts `rea` on PATH in new terminal windows.
+- Snags: the desktop app is the Microsoft Store build, which redirects AppData,
+  so session folders have very long real paths and git needs
+  `-c core.longpaths=true` to clone there. REA can't register the desktop chat
+  app from inside it. A git clone of REA lacks the Windows native parts; the npm
+  package has them.
+- Cloned Co-op Anything next to them; notes in
+  `experiments/2026-10-17-coop-anything/`. Its MCP server needs Python, and the
+  PC has no working Python right now (the old `python-env` lost its base install).
+
 ## 2026-10-17: Ghidra notes and home setup guide
 
 - Same session as the REA entry below. The owner asked to add Ghidra too, and

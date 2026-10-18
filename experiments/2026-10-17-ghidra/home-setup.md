@@ -1,5 +1,11 @@
 # Putting REA and Ghidra on the home PC
 
+> **Done on 2026-10-17** by a Claude Code session on the PC, though not exactly
+> as written below. Everything went into the Claude Tools folder on the desktop
+> (that desktop isn't synced to OneDrive, and REA accepted it), and Java and
+> Node.js are portable copies inside that folder rather than installers. See the
+> LOG entry for that date.
+
 Written for the owner, assuming the PC runs Windows 10 or 11. Takes about half
 an hour, most of it downloads. Nothing here changes BIOS or system settings,
 and every piece can be uninstalled.
