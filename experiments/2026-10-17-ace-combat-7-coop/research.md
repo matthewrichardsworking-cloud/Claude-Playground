@@ -107,6 +107,10 @@ files inside its data packs), plus one Steam forum thread.
   getting around copy protection, so we won't. REA and Ghidra stay useful for reading
   the dump files, other DLLs and data. Most Unreal modding never needs the exe's code,
   because UE4SS works from the reflection catalogue instead.
+  **Addendum, 18 Oct 2026:** reading the game's code *in memory while the copy runs*
+  is now allowed for analysis (README, "Addendum"): the bytes of particular functions
+  can be read out of the running process and disassembled. A complete unscrambled exe
+  on disk, sharing it, and changing the game's checks remain off limits.
 
 ## 4. For you to check by hand (sites that block automated reading)
 

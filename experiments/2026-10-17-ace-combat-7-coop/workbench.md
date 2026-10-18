@@ -500,6 +500,12 @@ the same SHA-256).
 3. A second copy is started with `-Second` and gets its own folder (`UserProfile2`) and a
    smaller window. It still crashes when it gets past the title screen (no working link
    to Steam, section 6), so a second copy is only good for title-screen tests.
+4. **Addendum of 18 Oct 2026** (README, "Addendum"): reading the running copy's code in
+   memory for analysis is allowed, and so is building a C++ add-on for UE4SS with the
+   developer tools that needs. A full unscrambled exe on disk, sharing it, and changing
+   the game's own checks stay off limits. Only one copy can usefully run at a time, so
+   a session that is driving the copy leaves an `IN-USE-game-copy.md` note in the
+   shared side-session notes folder and removes it when done; other sessions wait.
 
 ## Must-do before step 1
 

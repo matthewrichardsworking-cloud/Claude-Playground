@@ -211,9 +211,17 @@ they pass.
 
 ## Things I'll ask you before doing
 
-- Making the 65.7 GB copy (and where it goes).
-- Downloading PM-UE4SS (and later any other tool), with checksums checked.
-- Installing the C++ compiler, or linking any account.
+- Making the 65.7 GB copy (and where it goes). (Done 17 Oct.)
+- Downloading PM-UE4SS (and later any other tool), with checksums checked. (Done 17 Oct.)
+- Installing the C++ compiler, or linking any account. **Changed 18 Oct:** the free
+  developer tools for a C++ UE4SS add-on may be installed without asking, from official
+  pages, with sizes and checksums recorded (README, "Addendum"). Linking an account
+  (for example GitHub to Epic for Unreal's source) still needs your OK.
 - Anything that goes online, every time.
 - Posting anything, including Co-op Anything's "claim a game" issue (draft in
   `drafts/claim-issue.md`).
+
+**Addendum, 18 Oct 2026.** "Working without the exe's code" (unknown 3 above) is no
+longer a hard limit: sessions may read the running game's code in memory for
+analysis. A complete unscrambled exe on disk, sharing it, and changing the game's own
+checks stay off limits. Full text in the README.

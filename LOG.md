@@ -2,6 +2,19 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, the owner widens the rules
+
+- The owner decided the rules had kept the project from the route the other modder
+  took, and added an addendum (project README, mirrored in workbench, plan and
+  research): sessions may read the running game copy's code in memory for analysis
+  and may build a C++ add-on for UE4SS, installing the free developer tools that
+  needs from official pages with sizes and checksums recorded. A complete unscrambled
+  exe on disk, sharing it, changing the game's own checks, and anything online outside
+  private rooms stay off limits.
+- Two sessions started on it: a Python tool that reads named functions out of the
+  running copy and maps the online layer's entry points, and a C++ UE4SS add-on with a
+  UDP socket as the basis of the live position feed.
+
 ## 2026-10-18: Ace Combat 7 co-op, someone else is about to release one
 
 - The owner found a Reddit post by layer10_love (r/acecombat, 15 Oct) showing a working
