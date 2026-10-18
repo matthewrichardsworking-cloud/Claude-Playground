@@ -2,6 +2,23 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: Ace Combat 7 co-op, workbench (step 0)
+
+- Plain game copy at `C:\AC7-Coop-Game` (65.7 GB, no mods), exe SHA-256 matches
+  identity.md. PM-UE4SS-ZR1903 downloaded from GitHub (SHA-256 matches GitHub's
+  digest) and installed in the copy only. Earlier Mod Loader and Kismet tools copied
+  out of the app's private storage into `AC7-Coop\inherited` (built .paks left out).
+- Started plainly, the copy hands off to Steam (`steam://run/502500`), which starts the
+  real install. Setting `SteamAppId=502500` for the launch (what Steam does itself) makes
+  the copy run from its own folder. `-windowed` is ignored.
+- UE4SS loads, finds UE 4.18 once SteamStub has unpacked, opens its console and writes
+  the object dump (game module "Nimbus"; `SNL_*` dev commands are reflected functions).
+- Two copies at once: both reach the title screen, but the second crashes creating save
+  data (likely no Steam user for it, shared save folder). The copy shares the real save
+  folder: quitting through the menu rewrote the real save (restored from backup). Stay on
+  the title screen; give the copy its own save folder before step 1. Details in
+  `experiments/2026-10-17-ace-combat-7-coop/workbench.md`.
+
 ## 2026-10-17: Ace Combat 7 co-op, bearings and plan
 
 - On the PC, following Co-op Anything's `coop-triage`. Both MCP tools connected.
