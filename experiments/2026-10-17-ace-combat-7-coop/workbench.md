@@ -9,7 +9,7 @@ evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 bel
 |---|---|
 | Copy of the game made and checked | **Yes.** `C:\AC7-Coop-Game`, 133 files, 65.7 GB. `Ace7Game.exe`'s SHA-256 matches [identity.md](identity.md) exactly. |
 | 1. Does the copy start from its own folder? | **Yes, but only when started the way Steam starts games.** Started plainly, it hands itself to Steam and Steam starts your *real* install. With Steam's app label set for that one launch, the copy itself runs and reaches the main menu. |
-| 2. Can two copies run at once? | **Not yet.** Both start and reach the title screen, but the second one crashed when it tried to create save data. To be retried now that each copy has its own save folder. |
+| 2. Can two copies run at once? | **Not yet.** Both start and reach the title screen, but the second one crashes when it tries to create save data. Retried at 23:07 with each copy in its own save folder: same crash, same place in the game's code. The cause is that a second copy gets no Steam identity, not the shared folder. |
 | 3. Does UE4SS load, open its console and write the object dump? | **Yes, all three.** It found Unreal Engine 4.18 within a second; the console opened; the dump (the game's catalogue of classes and functions) is 30.9 MB. |
 | 4. Can the copy keep its saves and settings away from your real ones? | **Yes, proved.** Started with `tools\start-copy.ps1`, the copy reads and writes `C:\AC7-Coop-Game\UserProfile\...` only. Two title-screen runs and then a full run with you (a mission, then "save and end" through the menu) wrote the save and settings there and nothing in your real folder, checked by checksums every time. |
 
@@ -26,6 +26,7 @@ evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 bel
 | Object dump and UE4SS log from the test | `dumps\2026-10-17_ue4ss-title-screen\` |
 | The second copy's crash dump | `dumps\2026-10-17_second-copy-crash\` |
 | The crash dump from UE4SS crashing as the copy closed after the mission run | `dumps\2026-10-17_mission-run-exit-crash\` |
+| The second copy's crash dump from the retry (23:14) | `dumps\2026-10-17_second-copy-crash-retry\` |
 | Back up saves | `tools\backup-saves.ps1` |
 | Start the copy (backs up saves first, gives the copy its own save folder) | `tools\start-copy.ps1` |
 | Check your real save folder against the latest backup | `tools\compare-saves.ps1` |
@@ -79,11 +80,30 @@ powershell -NoProfile -File "C:\Users\Matth\Claude Apps\AC7-Coop\tools\compare-s
 - Likely reason: Steam gives your account to the first copy only, so the second one
   doesn't know who you are and thinks it has no save. Both copies also shared one save
   folder.
-- **What it means:** two copies on this PC aren't usable yet. Now that each copy gets its
-  own save folder (section 4; the second copy also gets a copy of your save in the place
-  where it looked), the test is ready to be retried. If it still crashes, the cause is the
-  missing Steam identity, not the shared folder, and the next idea is to stop the second
-  copy from loading a save at all.
+- **Retried at 23:07 to 23:15, with you at the keyboard, each copy in its own save
+  folder** (section 4). Both reached the title screen again. The second copy (the smaller
+  window) had a copy of your save in both places it might look. Pressing Enter gave "an
+  error occurred when trying to load data, try again?", and "no" just went back to the
+  title screen; the game never offered to make new save data while a file was there. With
+  the file in the no-identity place set aside (renamed), the next Enter went the old way:
+  it wrote a brand-new save there (`UserProfile2\...\SaveGames\ACE7Save.sav`, 234,893
+  bytes, 23:14:35) and crashed one second later **at exactly the same place in the game's
+  code as on the first try** (Windows logged the same fault address). The first copy sat
+  at its title screen the whole time and was ended afterwards. Your real folder: unchanged
+  (checksums equal to `backups\2026-10-17_2307`); Steam Cloud uploaded nothing.
+- **What it means:** the shared save folder was *not* the cause. A second copy of the
+  game on one PC doesn't get your Steam identity (Steam hands your account to the first
+  copy), so it can't read your save (the save is tied to your identity), writes its own in
+  the no-identity place, and then crashes in some step that needs the identity. Two copies
+  on this PC still aren't usable past the title screen.
+- **Ideas for later, in order:** (1) a UE4SS script in the second copy that skips loading
+  or creating save data altogether, since the crash comes right after the save step;
+  (2) look at what the two crash dumps have in common (same fault address both times);
+  (3) if neither works, network tests need your friend's PC, and solo tests can use the
+  game's leftover developer commands for a fake session (`SNL_EnableDebugFakeSession`,
+  the network emulator) inside one copy.
+- Small wrinkle for two-copy tests: both copies share the copy's `ue4ss\` folder, so
+  they write the same UE4SS log file and load the same UE4SS mods.
 
 ## Test 3: UE4SS
 
@@ -224,12 +244,14 @@ changes the real file, so Steam finds nothing to upload after a copy run.
 2. Going past the title screen in the copy is now safe: the copy saves only to its own
    folder. `tools\compare-saves.ps1` is there whenever you want to check ("No change").
 3. A second copy is started with `-Second` and gets its own folder (`UserProfile2`) and a
-   smaller window. Two copies remain a test until the second one gets past "creating
-   save data" without crashing.
+   smaller window. It still crashes when it gets past the title screen (no Steam
+   identity), so for now a second copy is only good for title-screen tests.
 
 ## Must-do before step 1
 
 - **Own save folder for the copy: done and proved** (section 4).
-- **Two copies at once:** retry with `-Second`.
+- **Two copies at once:** retried, still crashes; cause is the missing Steam identity in
+  the second copy (test 2). Next idea: a UE4SS script that skips the save step in the
+  second copy.
 - Not tried yet: plan.md's step 0 test 4 (try a few developer commands offline, such as
   `SNL_ArrangeWindows`). UE4SS can now reach them.

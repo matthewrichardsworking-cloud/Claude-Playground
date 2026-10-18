@@ -23,9 +23,13 @@ Newest first. One short entry per session.
 - UE4SS crashed (fault in `UE4SS.dll`) while the game was closing after that run, two
   seconds after the save was written. Harmless for saves; expect a "stopped working" box
   on quitting now and then. Dump kept in the project's `dumps\` folder.
-- Still needed: the two-copies retry with `-Second` (each copy now has its own folder;
-  the second one gets a smaller window). Details in
-  `experiments/2026-10-17-ace-combat-7-coop/workbench.md`, section 4.
+- Two copies retried with `-Second` (own folder, smaller window, seeded save): the
+  second copy can't read the seeded save ("error loading data" loop), and with the seed
+  removed it creates a new save in the no-identity place and crashes one second later at
+  the same fault address as on the first try. So the shared folder wasn't the cause: a
+  second instance gets no Steam identity. Next idea: a UE4SS script that skips the save
+  step in the second copy. Details in
+  `experiments/2026-10-17-ace-combat-7-coop/workbench.md`, test 2 and section 4.
 
 ## 2026-10-17: Ace Combat 7 co-op, workbench (step 0)
 
