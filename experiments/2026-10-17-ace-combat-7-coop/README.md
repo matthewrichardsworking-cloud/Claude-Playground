@@ -15,7 +15,12 @@ that and a first dry run in the copy are the next steps, with your OK.
 every enemy plane of Mission 01 (Casual) without taking a hit, and the game declared
 "mission accomplished". The test runner then did it alone from a cold start, menus
 included, at the first attempt (20 kills, score 12,400, the same as your own best;
-[playtest-bot.md](playtest-bot.md), workbench section 10, reports in `playtests\`). It flies with the keyboard, pressed from inside
+[playtest-bot.md](playtest-bot.md), workbench section 10, reports in `playtests\`).
+Its second phase the same afternoon (workbench section 11): it now tracks every enemy and
+missile, predicts their paths from the game's own data and live readings, times flares
+and break turns from that, uses the LAAM at range and flies proper attack runs on ground
+targets. Mission 01 on Ace and Mission 02 on Hard both completed; on Mission 02, 8 of 8
+enemy missiles fired at it lost their lock. It flies with the keyboard, pressed from inside
 the game only while the game window is in front (the game pauses itself otherwise). It can
 test Double Trigger's missions alone, too, once that mod is in the copy.
 

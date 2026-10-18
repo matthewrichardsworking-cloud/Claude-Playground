@@ -1,0 +1,199 @@
+{"clock": "14:07:05", "kind": "mark", "t": 225.3, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "14:07:08", "kind": "takeoff_start", "t": 227.9, "attempt": 1}
+{"after_s": 10.04, "clock": "14:07:18", "kind": "takeoff_end", "ok": true, "t": 238, "attempt": 1}
+{"clock": "14:07:19", "goal": "attack floor 300 range 3000", "kind": "autopilot_start", "t": 238.9, "attempt": 1}
+{"alt_m": 120.8, "clock": "14:07:19", "kind": "ground_recovery", "t": 239, "vz": 0, "attempt": 1}
+{"clock": "14:07:32", "kind": "phase_cleared", "phase": "MissionPhase_01", "t": 252.5, "attempt": 1}
+{"clock": "14:07:33", "kind": "phase_start", "phase": "MissionPhase_02", "restart": false, "t": 253.5, "attempt": 1}
+{"callsign": "", "clock": "14:07:33", "dist_m": 14050.0, "kind": "target", "t": 253.5, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "14:08:22", "dist_m": 9500, "kind": "weapon_switch", "t": 302.2, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:08:22", "dist_m": 9494, "kind": "missile", "off_deg": 0.3599, "special": true, "t": 302.2, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "14:08:23", "dist_m": 9315, "kind": "missile", "off_deg": 0.3785, "special": true, "t": 303.4, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "14:08:25", "dist_m": 9138, "kind": "missile", "off_deg": 0.3997, "special": true, "t": 304.6, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "14:08:26", "dist_m": 8962, "kind": "missile", "off_deg": 0.4044, "special": true, "t": 305.8, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "14:08:27", "dist_m": 8784, "kind": "missile", "off_deg": 0.3668, "special": true, "t": 307, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "14:08:28", "dist_m": 8608, "kind": "missile", "off_deg": 0.364, "special": true, "t": 308.3, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"callsign": "", "clock": "14:08:28", "kind": "death", "t": 308.4, "who": "00_en_bomber_1_1023", "attempt": 1}
+{"callsign": "", "clock": "14:08:28", "kind": "death", "t": 308.4, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_196", "attempt": 1}
+{"after_s": 54.88, "callsign": "", "clock": "14:08:28", "kind": "kill", "missiles": 6, "t": 308.4, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"callsign": "", "clock": "14:09:27", "dist_m": 15000.0, "kind": "target", "t": 366.8, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "14:09:27", "dist_m": 15000.0, "kind": "weapon_switch", "t": 366.8, "to": "standard missiles", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:09:43", "dist_m": 9498, "kind": "weapon_switch", "t": 383.1, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:09:43", "dist_m": 9487, "kind": "missile", "off_deg": 0.3985, "special": true, "t": 383.1, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "14:09:44", "dist_m": 9104, "kind": "missile", "off_deg": 0.1894, "special": true, "t": 384.3, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "14:09:46", "dist_m": 8725, "kind": "missile", "off_deg": 0.5322, "special": true, "t": 385.6, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "14:09:47", "dist_m": 8350, "kind": "missile", "off_deg": 0.45, "special": true, "t": 386.8, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "14:09:48", "dist_m": 7983, "kind": "missile", "off_deg": 0.4704, "special": true, "t": 388, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"callsign": "", "clock": "14:09:49", "kind": "death", "t": 389, "who": "00_en_bomber_2_3167", "attempt": 1}
+{"callsign": "", "clock": "14:09:49", "kind": "death", "t": 389, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_194", "attempt": 1}
+{"after_s": 22.25, "callsign": "", "clock": "14:09:49", "kind": "kill", "missiles": 5, "t": 389, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"callsign": "", "clock": "14:09:49", "dist_m": 7934, "kind": "target", "t": 389, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "14:09:49", "dist_m": 7837, "kind": "missile", "off_deg": 20.24, "special": true, "t": 389.3, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "14:09:50", "dist_m": 7432, "kind": "missile", "off_deg": 2.425, "special": true, "t": 390.5, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "14:09:52", "dist_m": 7014, "kind": "missile", "off_deg": 1.486, "special": true, "t": 391.7, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "14:09:53", "dist_m": 6541, "kind": "missile", "off_deg": 1.134, "special": true, "t": 392.9, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "14:09:54", "dist_m": 5995, "kind": "missile", "off_deg": 0.7087, "special": true, "t": 394.1, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "14:09:55", "dist_m": 5420, "kind": "missile", "off_deg": 0.7073, "special": true, "t": 395.3, "target": "00_en_fighter_1_1", "attempt": 1}
+{"callsign": "", "clock": "14:09:56", "kind": "death", "t": 396.4, "who": "00_en_fighter_1_1", "attempt": 1}
+{"after_s": 7.419, "callsign": "", "clock": "14:09:56", "kind": "kill", "missiles": 6, "t": 396.4, "target": "00_en_fighter_1_1", "attempt": 1}
+{"callsign": "", "clock": "14:09:56", "dist_m": 5137, "kind": "target", "t": 396.4, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "14:09:57", "dist_m": 5078, "kind": "missile", "off_deg": 4.209, "special": true, "t": 396.6, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "14:09:58", "dist_m": 4416, "kind": "missile", "off_deg": 0.6571, "special": true, "t": 397.8, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "14:09:59", "dist_m": 3740, "kind": "missile", "off_deg": 0.4948, "special": true, "t": 399, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "14:10:00", "dist_m": 3061, "kind": "missile", "off_deg": 1.405, "special": true, "t": 400.2, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "14:10:01", "dist_m": 2430, "kind": "missile", "off_deg": 2.84, "special": true, "t": 401.4, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "14:10:03", "dist_m": 1906, "kind": "missile", "off_deg": 4.063, "special": true, "t": 402.6, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "14:10:03", "dist_m": 1797, "kind": "weapon_switch", "t": 402.8, "to": "standard missiles", "why": "beyond standard missile range", "attempt": 1}
+{"callsign": "", "clock": "14:10:03", "kind": "death", "t": 402.9, "who": "00_en_fighter_1_2", "attempt": 1}
+{"after_s": 6.518, "callsign": "", "clock": "14:10:03", "kind": "kill", "missiles": 6, "t": 403, "target": "00_en_fighter_1_2", "attempt": 1}
+{"callsign": "", "clock": "14:10:03", "dist_m": 13690.0, "kind": "target", "t": 403, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "14:10:47", "dist_m": 9500, "kind": "weapon_switch", "t": 447, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:10:47", "dist_m": 9495, "kind": "missile", "off_deg": 0.7851, "special": true, "t": 447, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "14:10:48", "dist_m": 9347, "kind": "missile", "off_deg": 1.001, "special": true, "t": 448.2, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "14:10:49", "dist_m": 9199, "kind": "missile", "off_deg": 0.9886, "special": true, "t": 449.4, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "14:10:51", "dist_m": 9051, "kind": "missile", "off_deg": 1.097, "special": true, "t": 450.6, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "14:10:52", "dist_m": 8903, "kind": "missile", "off_deg": 1.038, "special": true, "t": 451.8, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "14:10:53", "dist_m": 8755, "kind": "missile", "off_deg": 1.149, "special": true, "t": 453, "target": "02_en_fighter_2_1", "attempt": 1}
+{"callsign": "", "clock": "14:10:53", "kind": "death", "t": 453.3, "who": "02_en_fighter_2_1", "attempt": 1}
+{"after_s": 50.32, "callsign": "", "clock": "14:10:53", "kind": "kill", "missiles": 6, "t": 453.3, "target": "02_en_fighter_2_1", "attempt": 1}
+{"callsign": "", "clock": "14:10:53", "dist_m": 8489, "kind": "target", "t": 453.3, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "14:10:54", "dist_m": 8373, "kind": "missile", "off_deg": 0.4959, "special": true, "t": 454.2, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "14:10:55", "dist_m": 8227, "kind": "missile", "off_deg": 0.4668, "special": true, "t": 455.4, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "14:10:57", "dist_m": 8081, "kind": "missile", "off_deg": 0.6664, "special": true, "t": 456.6, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "14:10:58", "dist_m": 7935, "kind": "missile", "off_deg": 0.8208, "special": true, "t": 457.8, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "14:10:59", "dist_m": 7789, "kind": "missile", "off_deg": 0.9749, "special": true, "t": 459.1, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "14:11:00", "dist_m": 7643, "kind": "missile", "off_deg": 1.086, "special": true, "t": 460.3, "target": "02_en_fighter_2_2", "attempt": 1}
+{"callsign": "", "clock": "14:11:01", "kind": "death", "t": 461.2, "who": "02_en_fighter_2_2", "attempt": 1}
+{"after_s": 7.952, "callsign": "", "clock": "14:11:01", "kind": "kill", "missiles": 6, "t": 461.2, "target": "02_en_fighter_2_2", "attempt": 1}
+{"callsign": "", "clock": "14:11:01", "dist_m": 8003, "kind": "target", "t": 461.2, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "14:11:01", "dist_m": 7974, "kind": "missile", "off_deg": 0.577, "special": true, "t": 461.5, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "14:11:03", "dist_m": 7828, "kind": "missile", "off_deg": 0.7405, "special": true, "t": 462.7, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "14:11:04", "dist_m": 7682, "kind": "missile", "off_deg": 0.9142, "special": true, "t": 463.9, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "14:11:05", "dist_m": 7537, "kind": "missile", "off_deg": 1.086, "special": true, "t": 465.1, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "14:11:06", "dist_m": 7392, "kind": "missile", "off_deg": 1.118, "special": true, "t": 466.3, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "14:11:07", "dist_m": 7248, "kind": "missile", "off_deg": 1.251, "special": true, "t": 467.5, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "14:11:09", "dist_m": 7100, "kind": "missile", "off_deg": 1.132, "special": true, "t": 468.7, "target": "02_en_bomber_3_983", "attempt": 1}
+{"callsign": "", "clock": "14:11:09", "kind": "death", "t": 469.4, "who": "02_en_bomber_3_983", "attempt": 1}
+{"callsign": "", "clock": "14:11:09", "kind": "death", "t": 469.4, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_309", "attempt": 1}
+{"after_s": 8.227, "callsign": "", "clock": "14:11:09", "kind": "kill", "missiles": 7, "t": 469.5, "target": "02_en_bomber_3_983", "attempt": 1}
+{"callsign": "", "clock": "14:11:09", "dist_m": 7362, "kind": "target", "t": 469.5, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "14:11:10", "dist_m": 7304, "kind": "missile", "off_deg": 2.735, "special": true, "t": 469.9, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "14:11:11", "dist_m": 7161, "kind": "missile", "off_deg": 1.218, "special": true, "t": 471.2, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "14:11:12", "dist_m": 7018, "kind": "missile", "off_deg": 1.086, "special": true, "t": 472.3, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "14:11:14", "dist_m": 6876, "kind": "missile", "off_deg": 0.9402, "special": true, "t": 473.5, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "14:11:15", "dist_m": 6732, "kind": "missile", "off_deg": 0.7953, "special": true, "t": 474.8, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "14:11:16", "dist_m": 6590, "kind": "missile", "off_deg": 0.6404, "special": true, "t": 476, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "14:11:17", "dist_m": 6447, "kind": "missile", "off_deg": 0.4788, "special": true, "t": 477.2, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"callsign": "", "clock": "14:11:18", "kind": "death", "t": 477.7, "who": "02_en_bomber_3_1847", "attempt": 1}
+{"callsign": "", "clock": "14:11:18", "kind": "death", "t": 477.7, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_311", "attempt": 1}
+{"after_s": 8.212, "callsign": "", "clock": "14:11:18", "kind": "kill", "missiles": 7, "t": 477.7, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"callsign": "", "clock": "14:11:47", "dist_m": 14990.0, "kind": "target", "t": 506.8, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "14:11:47", "dist_m": 14990.0, "kind": "weapon_switch", "t": 506.8, "to": "standard missiles", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:11:58", "dist_m": 9497, "kind": "weapon_switch", "t": 518.3, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:11:58", "dist_m": 9481, "kind": "missile", "off_deg": 0.3812, "special": true, "t": 518.4, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "14:12:00", "dist_m": 8901, "kind": "missile", "off_deg": 0.2432, "special": true, "t": 519.6, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "14:12:01", "dist_m": 8325, "kind": "missile", "off_deg": 0.2886, "special": true, "t": 520.8, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "14:12:02", "dist_m": 7750, "kind": "missile", "off_deg": 0.2316, "special": true, "t": 522, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "14:12:03", "dist_m": 7181, "kind": "missile", "off_deg": 0.3087, "special": true, "t": 523.2, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"callsign": "", "clock": "14:12:04", "kind": "death", "t": 523.9, "who": "02_en_bomber_4_2891", "attempt": 1}
+{"callsign": "", "clock": "14:12:04", "kind": "death", "t": 523.9, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_313", "attempt": 1}
+{"after_s": 17.08, "callsign": "", "clock": "14:12:04", "kind": "kill", "missiles": 5, "t": 523.9, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"callsign": "", "clock": "14:12:04", "dist_m": 6917, "kind": "target", "t": 523.9, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "14:12:04", "dist_m": 6677, "kind": "missile", "off_deg": 0.6429, "special": true, "t": 524.4, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "14:12:06", "dist_m": 6099, "kind": "missile", "off_deg": 0.5394, "special": true, "t": 525.6, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "14:12:07", "dist_m": 5505, "kind": "missile", "off_deg": 0.4528, "special": true, "t": 526.9, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "14:12:08", "dist_m": 4888, "kind": "missile", "off_deg": 0.3874, "special": true, "t": 528, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "14:12:09", "dist_m": 4255, "kind": "missile", "off_deg": 0.3032, "special": true, "t": 529.3, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "14:12:10", "dist_m": 3632, "kind": "missile", "off_deg": 0.2174, "special": true, "t": 530.5, "target": "02_en_fighter_3_1", "attempt": 1}
+{"callsign": "", "clock": "14:12:11", "kind": "death", "t": 530.8, "who": "02_en_fighter_3_1", "attempt": 1}
+{"after_s": 6.932, "callsign": "", "clock": "14:12:11", "kind": "kill", "missiles": 6, "t": 530.8, "target": "02_en_fighter_3_1", "attempt": 1}
+{"callsign": "", "clock": "14:12:22", "dist_m": 15000.0, "kind": "target", "t": 542.5, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "14:12:22", "dist_m": 15000.0, "kind": "weapon_switch", "t": 542.5, "to": "standard missiles", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:12:38", "dist_m": 9498, "kind": "weapon_switch", "t": 558.3, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:12:38", "dist_m": 9485, "kind": "missile", "off_deg": 0.8077, "special": true, "t": 558.3, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "14:12:39", "dist_m": 9098, "kind": "missile", "off_deg": 0.7156, "special": true, "t": 559.5, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "14:12:41", "dist_m": 8657, "kind": "missile", "off_deg": 0.5162, "special": true, "t": 560.7, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "14:12:42", "dist_m": 8175, "kind": "missile", "off_deg": 0.1353, "special": true, "t": 561.9, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "14:12:43", "dist_m": 7652, "kind": "missile", "off_deg": 0.3796, "special": true, "t": 563.1, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"callsign": "", "clock": "14:12:44", "kind": "death", "t": 564, "who": "02_en_fighter_4C_1", "attempt": 1}
+{"after_s": 21.48, "callsign": "", "clock": "14:12:44", "kind": "kill", "missiles": 5, "t": 564, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"callsign": "", "clock": "14:12:44", "dist_m": 9203, "kind": "target", "t": 564, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:44", "dist_m": 9094, "kind": "missile", "off_deg": 3.781, "special": true, "t": 564.4, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:46", "dist_m": 8732, "kind": "missile", "off_deg": 2.141, "special": true, "t": 565.6, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:47", "dist_m": 8374, "kind": "missile", "off_deg": 1.422, "special": true, "t": 566.8, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:48", "dist_m": 8021, "kind": "missile", "off_deg": 1.259, "special": true, "t": 568, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:49", "dist_m": 7672, "kind": "missile", "off_deg": 1.057, "special": true, "t": 569.2, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:50", "dist_m": 7327, "kind": "missile", "off_deg": 0.9697, "special": true, "t": 570.4, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:52", "dist_m": 6882, "kind": "missile", "off_deg": 0.843, "special": true, "t": 572, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "14:12:53", "dist_m": 6551, "kind": "missile", "off_deg": 0.5605, "special": true, "t": 573.2, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"callsign": "", "clock": "14:12:53", "kind": "death", "t": 573.3, "who": "02_en_bomber_5_1411", "attempt": 1}
+{"after_s": 9.345, "callsign": "", "clock": "14:12:53", "kind": "kill", "missiles": 8, "t": 573.4, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"callsign": "", "clock": "14:12:53", "dist_m": 5353, "kind": "target", "t": 573.4, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:12:54", "dist_m": 4904, "kind": "missile", "off_deg": 19.24, "special": true, "t": 574.4, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:12:56", "dist_m": 4382, "kind": "missile", "off_deg": 2.567, "special": true, "t": 575.6, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:12:57", "dist_m": 3840, "kind": "missile", "off_deg": 1.222, "special": true, "t": 576.8, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:12:58", "dist_m": 3303, "kind": "missile", "off_deg": 0.6973, "special": true, "t": 578, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:12:59", "dist_m": 2802, "kind": "missile", "off_deg": 1.544, "special": true, "t": 579.2, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:00", "dist_m": 2442, "kind": "missile", "off_deg": 3.006, "special": true, "t": 580.4, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:02", "dist_m": 2180, "kind": "missile", "off_deg": 2.453, "special": true, "t": 581.6, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:03", "dist_m": 1910, "kind": "missile", "off_deg": 3.591, "special": true, "t": 582.8, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:03", "dist_m": 1795, "kind": "weapon_switch", "t": 583.3, "to": "standard missiles", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:13:04", "dist_m": 1625, "kind": "missile", "off_deg": 3.939, "special": false, "t": 584, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:05", "dist_m": 1356, "kind": "missile", "off_deg": 6.811, "special": false, "t": 585.2, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:06", "dist_m": 1122, "kind": "missile", "off_deg": 6.743, "special": false, "t": 586.4, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:08", "dist_m": 981.9, "kind": "missile", "off_deg": 4.591, "special": false, "t": 587.6, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:09", "dist_m": 934.9, "kind": "missile", "off_deg": 2.917, "special": false, "t": 588.9, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:10", "dist_m": 956.4, "kind": "missile", "off_deg": 4.108, "special": false, "t": 590.1, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "14:13:11", "dist_m": 987.1, "kind": "missile", "off_deg": 2.461, "special": false, "t": 591.3, "target": "02_en_fighter_4_1", "attempt": 1}
+{"callsign": "", "clock": "14:13:12", "kind": "death", "t": 592.3, "who": "02_en_fighter_4_1", "attempt": 1}
+{"after_s": 18.93, "callsign": "", "clock": "14:13:12", "kind": "kill", "missiles": 15, "t": 592.3, "target": "02_en_fighter_4_1", "attempt": 1}
+{"callsign": "", "clock": "14:13:12", "dist_m": 1268, "kind": "target", "t": 592.3, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:16", "dist_m": 1024, "kind": "missile", "off_deg": 18.76, "special": false, "t": 596.4, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:18", "dist_m": 692.9, "kind": "missile", "off_deg": 2.33, "special": false, "t": 597.6, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:19", "dist_m": 395.6, "kind": "missile", "off_deg": 16.29, "special": false, "t": 598.8, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:23", "dist_m": 309, "kind": "missile", "off_deg": 17.01, "special": false, "t": 602.9, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:27", "dist_m": 612.7, "kind": "missile", "off_deg": 18.69, "special": false, "t": 607.2, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:28", "dist_m": 592.1, "kind": "missile", "off_deg": 4.382, "special": false, "t": 608.4, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:30", "dist_m": 553.8, "kind": "missile", "off_deg": 5.315, "special": false, "t": 609.6, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "14:13:31", "dist_m": 533.3, "kind": "missile", "off_deg": 4.842, "special": false, "t": 610.8, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"callsign": "", "clock": "14:13:32", "kind": "death", "t": 611.6, "who": "02_en_fighter_4B_1", "attempt": 1}
+{"after_s": 19.36, "callsign": "", "clock": "14:13:32", "kind": "kill", "missiles": 8, "t": 611.6, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"callsign": "", "clock": "14:13:52", "dist_m": 14960.0, "kind": "target", "t": 631.6, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "14:14:05", "dist_m": 9498, "kind": "weapon_switch", "t": 645.5, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:14:05", "dist_m": 9488, "kind": "missile", "off_deg": 0.3163, "special": true, "t": 645.5, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "14:14:07", "dist_m": 9035, "kind": "missile", "off_deg": 0.4518, "special": true, "t": 646.7, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "14:14:08", "dist_m": 8585, "kind": "missile", "off_deg": 0.5742, "special": true, "t": 647.9, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "14:14:09", "dist_m": 8134, "kind": "missile", "off_deg": 0.3554, "special": true, "t": 649.1, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "14:14:10", "dist_m": 7692, "kind": "missile", "off_deg": 0.3895, "special": true, "t": 650.3, "target": "02_en_bomber_6_2", "attempt": 1}
+{"callsign": "", "clock": "14:14:11", "kind": "death", "t": 651.2, "who": "02_en_bomber_6_2", "attempt": 1}
+{"callsign": "", "clock": "14:14:11", "kind": "death", "t": 651.2, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_129", "attempt": 1}
+{"after_s": 19.65, "callsign": "", "clock": "14:14:11", "kind": "kill", "missiles": 5, "t": 651.2, "target": "02_en_bomber_6_2", "attempt": 1}
+{"callsign": "", "clock": "14:14:11", "dist_m": 7689, "kind": "target", "t": 651.2, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "14:14:12", "dist_m": 7588, "kind": "missile", "off_deg": 5.747, "special": true, "t": 651.6, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "14:14:13", "dist_m": 7166, "kind": "missile", "off_deg": 1.515, "special": true, "t": 652.8, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "14:14:14", "dist_m": 6759, "kind": "missile", "off_deg": 1.512, "special": true, "t": 654, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "14:14:15", "dist_m": 6359, "kind": "missile", "off_deg": 0.7391, "special": true, "t": 655.2, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "14:14:15", "dist_m": 6353, "kind": "weapon_switch", "t": 655.2, "to": "standard missiles", "why": "special weapon empty", "attempt": 1}
+{"callsign": "", "clock": "14:14:19", "kind": "death", "t": 658.8, "who": "02_en_bomber_6_1", "attempt": 1}
+{"callsign": "", "clock": "14:14:19", "kind": "death", "t": 658.8, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_122", "attempt": 1}
+{"after_s": 7.571, "callsign": "", "clock": "14:14:19", "kind": "kill", "missiles": 4, "t": 658.8, "target": "02_en_bomber_6_1", "attempt": 1}
+{"callsign": "", "clock": "14:14:19", "dist_m": 5970, "kind": "target", "t": 658.8, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "14:14:36", "dist_m": 1995, "kind": "missile", "off_deg": 1.872, "special": false, "t": 676.5, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "14:14:38", "dist_m": 1868, "kind": "missile", "off_deg": 2.439, "special": false, "t": 677.7, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "14:14:39", "dist_m": 1749, "kind": "missile", "off_deg": 1.164, "special": false, "t": 678.9, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "14:14:40", "dist_m": 1637, "kind": "missile", "off_deg": 2.521, "special": false, "t": 680.1, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "14:14:41", "dist_m": 1533, "kind": "missile", "off_deg": 1.473, "special": false, "t": 681.3, "target": "02_en_bomber_6_3", "attempt": 1}
+{"callsign": "", "clock": "14:14:42", "kind": "death", "t": 681.6, "who": "02_en_bomber_6_3", "attempt": 1}
+{"callsign": "", "clock": "14:14:42", "kind": "death", "t": 681.6, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_136", "attempt": 1}
+{"after_s": 22.85, "callsign": "", "clock": "14:14:42", "kind": "kill", "missiles": 5, "t": 681.6, "target": "02_en_bomber_6_3", "attempt": 1}
+{"callsign": "", "clock": "14:14:42", "dist_m": 1784, "kind": "target", "t": 681.6, "target": "02_en_bomber_6_4", "attempt": 1}
+{"clock": "14:14:43", "dist_m": 1653, "kind": "missile", "off_deg": 17.74, "special": false, "t": 682.9, "target": "02_en_bomber_6_4", "attempt": 1}
+{"clock": "14:14:44", "dist_m": 1504, "kind": "missile", "off_deg": 2.427, "special": false, "t": 684.1, "target": "02_en_bomber_6_4", "attempt": 1}
+{"clock": "14:14:45", "dist_m": 1365, "kind": "missile", "off_deg": 6.242, "special": false, "t": 685.3, "target": "02_en_bomber_6_4", "attempt": 1}
+{"clock": "14:14:46", "dist_m": 1240, "kind": "missile", "off_deg": 3.603, "special": false, "t": 686.5, "target": "02_en_bomber_6_4", "attempt": 1}
+{"callsign": "", "clock": "14:14:47", "kind": "death", "t": 687.4, "who": "02_en_bomber_6_4", "attempt": 1}
+{"callsign": "", "clock": "14:14:47", "kind": "death", "t": 687.4, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_143", "attempt": 1}
+{"after_s": 5.798, "callsign": "", "clock": "14:14:47", "kind": "kill", "missiles": 4, "t": 687.4, "target": "02_en_bomber_6_4", "attempt": 1}
+{"callsign": "", "clock": "14:14:47", "dist_m": 1583, "kind": "target", "t": 687.4, "target": "02_en_fighter_5B_1", "attempt": 1}
+{"clock": "14:14:47", "kind": "phase_cleared", "phase": "MissionPhase_02", "t": 687.5, "attempt": 1}
+{"clock": "14:15:54", "kind": "mission_accomplished", "t": 754.1, "attempt": 1}

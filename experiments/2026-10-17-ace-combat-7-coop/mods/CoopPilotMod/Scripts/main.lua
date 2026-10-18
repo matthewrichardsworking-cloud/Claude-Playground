@@ -164,6 +164,12 @@ end
 
 local function wrap180(d) return (d + 180) % 360 - 180 end
 
+-- The pilot's picture of the fight: tracks, predictions, threats (awareness.lua)
+local okAware, Aware = pcall(function()
+    return require("awareness")({ log = log, event = event, now = now, call = call, objName = objName, callsign = callsign })
+end)
+if not okAware then log("awareness.lua did not load: " .. tostring(Aware)); Aware = nil end
+
 -- Snapshot -------------------------------------------------------------------------
 
 -- Which menu screens are showing: the class names of the game's UI widgets that are on
@@ -700,12 +706,17 @@ end
 
 -- The nearest living enemy the mission wants destroyed (slow: the whole object list, so
 -- at most every 2 s), used when Tab finds nothing on the radar yet.
-local function nearestEnemy(loc)
+local function nearestEnemy(loc, skip)
     local best, bestD = nil, math.huge
+    local t = now()
     for _, o in ipairs(FindAllOf("GameObject") or {}) do
         local ok, d = pcall(function()
             -- AIGameObject:GetFaction(): 0 = enemy, 1 = ally; IsTGT(): a target the mission counts
             if not o.bIsActivated or o:GetFaction() ~= 0 or not o:IsAlive() then return nil end
+            if skip then
+                local until_ = skip[objName(o)]
+                if until_ and t < until_ then return nil end
+            end
             local l = o:K2_GetActorLocation()
             local d2 = (l.X - loc.X) ^ 2 + (l.Y - loc.Y) ^ 2 + (l.Z - loc.Z) ^ 2
             if not o:IsTGT() then d2 = d2 * 2.25 end      -- mission targets first
@@ -713,17 +724,58 @@ local function nearestEnemy(loc)
         end)
         if ok and d and d < bestD then best, bestD = o, d end
     end
-    return best, math.sqrt(bestD) / 10
+    return best, math.sqrt(bestD) / 10, bestD
 end
 
 local function tap(c, key, seconds)
     c.taps[key] = now() + (seconds or 0.08)   -- hold a few frames so the game sees the press
 end
 
+-- An attack run on a ground object, the way a pilot flies one: run in from a few km out,
+-- no lower than 600 m above the ground until 3.5 km, then a dive no steeper than 25
+-- degrees straight at it; too close (700 m) or too low (250 m above the ground): extend,
+-- flying away and climbing until 3.5 km out, then turn back in. Returns the aim and the
+-- phase ("in" or "out").
+local function groundRun(c, key, st, loc, F, alt)
+    c.runs = c.runs or {}
+    local hd = math.sqrt((st.X - loc.X) ^ 2 + (st.Y - loc.Y) ^ 2)
+    local dm = math.sqrt(hd ^ 2 + (st.Z - loc.Z) ^ 2) / 10
+    local h = { (st.X - loc.X) / math.max(hd, 1), (st.Y - loc.Y) / math.max(hd, 1) }
+    local above = ap.agl or alt
+    local run = c.runs[key]
+    if not run then
+        local off = math.deg(math.acos(clamp((h[1] * F[1] + h[2] * F[2]) / math.max(math.sqrt(F[1] ^ 2 + F[2] ^ 2), 0.01), -1, 1)))
+        run = (dm < 2500 and off > 30) and "out" or "in"
+        c.runs[key] = run
+    end
+    if run == "in" and (dm < 700 or above < 250) then run = "out" end
+    if run == "out" and dm > 3500 then run = "in" end
+    if run ~= c.runs[key] then event("attack_run", { target = key, phase = run == "in" and "running in" or "extending", dist_m = dm }) end
+    c.runs[key] = run
+    if run == "out" then
+        return unit({ -h[1], -h[2], clamp((700 - above) / 1500, -0.1, 0.4) }), run, dm
+    end
+    if dm > 3500 then
+        return unit({ h[1], h[2], clamp((600 - above) / 1500, -0.3, 0.4) }), run, dm
+    end
+    return unit({ h[1], h[2], math.max((st.Z - loc.Z) / math.max(hd, 1), -0.47) }), run, dm
+end
+
 local function combatStep(p, loc, rot, F, R, alt, dt)
     local c = ap.combat
     local t = now()
     local keys = {}
+    if Aware then
+        local myP = { loc.X, loc.Y, loc.Z }
+        local myV = { 0, 0, 0 }
+        if c.prevMe and dt > 0 then myV = { (loc.X - c.prevMe[1]) / dt, (loc.Y - c.prevMe[2]) / dt, (loc.Z - c.prevMe[3]) / dt } end
+        c.prevMe = myP
+        c.myV = c.myV and { c.myV[1] * 0.6 + myV[1] * 0.4, c.myV[2] * 0.6 + myV[2] * 0.4, c.myV[3] * 0.6 + myV[3] * 0.4 } or myV
+        c.myName = c.myName or p:GetFullName()
+        if not c.weaponsRead then c.weaponsRead = true; pcall(Aware.readWeapons, weapons(p)) end
+        if t - (c.enemyAt or -1) > 0.1 then c.enemyAt = t; Aware.updateEnemies(p, c.myName) end
+        Aware.updateMissiles(p, c.myName, myP, c.myV)
+    end
     local ts = targetSelection(p)
     local tgt = ts and call(ts, "GetSelectedTarget")
     if tgt and not alive(tgt) then tgt = nil end
@@ -752,30 +804,122 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         if alert > 0 then event("missile_warning", { level = alert == 2 and "very near" or "near" }) end
         c.lastAlert = alert
     end
-    if alert >= 2 and t - c.lastFlare > 1.5 then
+    -- The missile homing on us that arrives first (awareness.lua): flare about two seconds
+    -- before it would arrive, and from four seconds out break across its line of approach,
+    -- the turn it has to match hardest, with the high-G turn for the last two and a half.
+    local threat = Aware and Aware.threats[1] or nil
+    c.threatText = nil
+    if threat then
+        local V = Aware.vec
+        local vn = threat.info.VeryNearWarningRadiusSquared and math.sqrt(threat.info.VeryNearWarningRadiusSquared) or 8000
+        c.threatText = string.format("missile from %s: %.0f m, impact in %.1f s, would miss by %.0f m", threat.ownerName or "?",
+            threat.dist / 10, math.min(threat.tgo, 99), threat.miss / 10)
+        if (threat.tgo < 2.0 or threat.dist < vn) and t - c.lastFlare > 1.2 then
+            tap(c, KEY.flare); c.lastFlare = t; c.flares = c.flares + 1; threat.flared = true
+            event("flare", { reason = "tracker", missile = threat.name, tgo_s = threat.tgo, dist_m = threat.dist / 10 })
+        end
+        if threat.tgo < 4.0 then
+            local los = V.unit(V.sub(threat.p, { loc.X, loc.Y, loc.Z }))
+            local side = V.unit(V.cross(los, { 0, 0, 1 }))
+            if V.dot(side, F) < 0 then side = V.mul(side, -1) end
+            c.breakAim = unit({ side[1], side[2], -0.15 })
+            if not c.breakUntil or t > c.breakUntil then
+                event("evade", { missile = threat.name, tgo_s = threat.tgo, dist_m = threat.dist / 10, miss_m = threat.miss / 10 })
+            end
+            c.breakUntil = t + 0.4
+            c.breakWhy = "missile, impact in " .. string.format("%.1f s", threat.tgo)
+            if threat.tgo < 2.5 then keys[#keys + 1] = KEY.high_g end
+        end
+    elseif alert >= 2 and t - c.lastFlare > 1.5 then
+        -- the game warns but the tracker has nothing (a missile it has not picked up yet)
         tap(c, KEY.flare); c.lastFlare = t; c.flares = c.flares + 1
-        event("flare", {})
-        c.breakUntil = t + 2.0
+        event("flare", { reason = "warning" })
         c.breakDir = (c.breakDir or 1) * -1
+        c.breakAim = unit({ R[1] * c.breakDir + F[1] * 0.2, R[2] * c.breakDir + F[2] * 0.2, 0.15 })
+        c.breakUntil = t + 2.0
+        c.breakWhy = "missile warning"
+    end
+
+    -- An enemy that is after us (its AI is tracking us) and sits behind within 2 km: turn
+    -- into it rather than let it settle on our tail, unless our own target is close.
+    c.pursuer = nil
+    if Aware and not threat then
+        local V = Aware.vec
+        local me = { loc.X, loc.Y, loc.Z }
+        for _, tr in pairs(Aware.tracks) do
+            if tr.kind == "plane" and tr.onMe and tr.p then
+                local d = V.sub(tr.p, me)
+                local dl = V.len(d)
+                if dl < 20000 and V.dot(V.unit(d), F) < -0.3 and (not c.pursuer or dl < c.pursuerDist) then
+                    c.pursuer, c.pursuerDist = tr, dl
+                end
+            end
+        end
+        if c.pursuer and c.pursuer ~= c.lastPursuer then
+            event("pursuer", { enemy = c.pursuer.name, dist_m = c.pursuerDist / 10, state = c.pursuer.state })
+        end
+        c.lastPursuer = c.pursuer
     end
 
     local aim, text
     if c.breakUntil and t < c.breakUntil then
-        -- break turn: put a wing toward the ground side and pull
-        aim = unit({ R[1] * c.breakDir + F[1] * 0.2, R[2] * c.breakDir + F[2] * 0.2, 0.15 })
-        text = "BREAK (missile warning)"
+        aim = c.breakAim
+        text = "BREAK (" .. (c.breakWhy or "?") .. ")"
+    elseif c.pursuer and (not c.lastDist or c.lastDist > 2500) then
+        local P = c.pursuer.p
+        aim = unit({ P[1] - loc.X, P[2] - loc.Y, P[3] - loc.Z })
+        text = string.format("turning into %s, which is after us %.0f m behind (%s)", c.pursuer.name, c.pursuerDist / 10, c.pursuer.state or "?")
+        if t - c.lastTab > 1.0 then tap(c, KEY.next_target); c.lastTab = t end
     elseif not tgt then
         if t - c.lastTab > 0.7 then tap(c, KEY.next_target); c.lastTab = t end
+        -- With nothing selected, go back to the standard missiles: an air-only special
+        -- weapon (the LAAM) armed hides every ground target from selection (Mission 02,
+        -- 18 Oct: the bot circled an airbase for minutes with the LAAM still armed).
+        if call(p, "IsSpecialWeaponArmed") == true and t - (c.lastSwitch or -100) > 1.5 then
+            tap(c, KEY.weapon); c.lastSwitch = t
+            event("weapon_switch", { to = "standard missiles", why = "nothing selected; the special weapon hides some targets", dist_m = -1 })
+        end
+        c.skip = c.skip or {}
         if t - c.scanAt > 2 then
             c.scanAt = t
-            c.scanTarget, c.scanDist = nearestEnemy(loc)
+            local cand, candDist, candScore = nearestEnemy(loc, c.skip)
+            -- stay with the target being worked on unless it is gone or another one is much
+            -- nearer (a run takes 20-30 s, and the nearest object changes as the plane moves)
+            local keep = c.scanTarget and alive(c.scanTarget)
+            if keep and c.scanScore and candScore and candScore < c.scanScore * 0.25 then keep = false end
+            if not keep then
+                if not sameObj(c.scanTarget, cand) then c.pointedFor = 0 end
+                c.scanTarget, c.scanDist, c.scanScore = cand, candDist, candScore
+            end
         end
         local st = c.scanTarget and alive(c.scanTarget) and locOf(c.scanTarget)
         if st then
+            local d3, du3 = unit({ st.X - loc.X, st.Y - loc.Y, st.Z - loc.Z })
+            local dm3 = du3 / 10
             local hd = math.sqrt((st.X - loc.X) ^ 2 + (st.Y - loc.Y) ^ 2)
-            aim = unit({ st.X - loc.X, st.Y - loc.Y, clamp(st.Z - loc.Z, -0.3 * hd, 0.3 * hd) })
-            text = string.format("no target selected; flying toward %s %s %.0f m away", objName(c.scanTarget), callsign(c.scanTarget), c.scanDist or -1)
-            c.speed = 1150
+            local h = { (st.X - loc.X) / math.max(hd, 1), (st.Y - loc.Y) / math.max(hd, 1) }
+            local isPlane = Aware and Aware.trackFor(c.scanTarget) ~= nil
+            if isPlane or not Aware then
+                aim = unit({ st.X - loc.X, st.Y - loc.Y, clamp(st.Z - loc.Z, -0.3 * hd, 0.3 * hd) })
+            else
+                -- a ground object: the game selects what the nose points at, so fly a proper
+                -- attack run at it
+                aim = groundRun(c, objName(c.scanTarget), st, loc, F, alt)
+            end
+            -- nose on it: ask the game to select it (Tab), and count how long we have
+            -- pointed at it without the game offering it as a target
+            local offS = math.deg(math.acos(clamp(dot(d3, F), -1, 1)))
+            if offS < 20 and t - c.lastTab > 0.4 then tap(c, KEY.next_target); c.lastTab = t end
+            if offS < 15 and dm3 < 3000 then c.pointedFor = (c.pointedFor or 0) + dt end
+            if (c.pointedFor or 0) > 4 then
+                local n = objName(c.scanTarget)
+                c.skip[n] = t + 60
+                event("unselectable", { target = n, dist_m = dm3 })
+                c.scanTarget, c.pointedFor, c.scanAt = nil, 0, -100
+            end
+            text = string.format("no target selected; flying toward %s %s %.0f m away (%.0f deg off the nose, pointed at it %.1f s)",
+                objName(c.scanTarget), callsign(c.scanTarget), dm3, offS, c.pointedFor or 0)
+            c.speed = (dm3 > 3500) and 1150 or 750
         else
             local h = unit({ F[1], F[2], 0 })
             aim = unit({ h[1] - R[1] * 0.15, h[2] - R[2] * 0.15, clamp((1500 - alt) / 1500, -0.3, 0.3) })
@@ -795,25 +939,110 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         local tv = c.tv or { 0, 0, 0 }
         local lead = clamp(dm / 900, 0, 1.2)            -- about the gun's flight time
         aim = unit({ tl.X + tv[1] * lead - loc.X, tl.Y + tv[2] * lead - loc.Y, tl.Z + tv[3] * lead - loc.Z })
+        -- With a track: aim where the target will be (its route, or its present turn), at
+        -- the meeting time for our own speed when far, the gun's when close.
+        local tr = Aware and Aware.trackFor(tgt)
+        c.predText = nil
+        if tr and tr.p and tr.v then
+            local V = Aware.vec
+            local mySpeed = c.myV and V.len(c.myV) or 1700
+            local speed = dm < 1500 and 10000 or math.max(mySpeed, 1000)
+            local ip, it = Aware.intercept(tr, { loc.X, loc.Y, loc.Z }, speed, 8)
+            if it and it < 8 then
+                aim = unit({ ip[1] - loc.X, ip[2] - loc.Y, ip[3] - loc.Z })
+                local _, how = Aware.predict(tr, it)
+                c.predText = string.format("aiming where it will be in %.1f s (%s), state %s%s", it, how, tr.state or "?", tr.onMe and ", tracking us" or "")
+            end
+        end
         local offT = math.deg(math.acos(clamp(dot(dir, F), -1, 1)))
+        -- Special weapon: arm it when it fits the moment, put it away when it doesn't.
+        --  * long-range kind (lock range well beyond the standard missile's): for a target
+        --    beyond the standard missile's lock range and inside the special's;
+        --  * multi-lock kind: when two or more enemies sit inside its range and cone;
+        --  * ground-only kind: for a ground target.
+        local W = Aware and Aware.weapons
+        local sp = W and W.special
+        local armed = call(p, "IsSpecialWeaponArmed") == true
+        local want = false
+        local why = nil
+        if sp and sp.LockonRange then
+            local mainRange = (W.main and W.main.LockonRange) or 20000
+            local isPlane = Aware.trackFor(tgt) ~= nil      -- the tracker follows planes only
+            if sp.targets == "ground only" then
+                want = not isPlane and du < sp.LockonRange; why = "ground target"
+            elseif sp.multi then
+                local n = 0
+                for _, tr2 in pairs(Aware.tracks) do
+                    if tr2.kind == "plane" and tr2.p then
+                        local d2, l2 = Aware.vec.unit(Aware.vec.sub(tr2.p, { loc.X, loc.Y, loc.Z }))
+                        if l2 < sp.LockonRange and math.deg(math.acos(clamp(dot(d2, F), -1, 1))) < (sp.LockonAngle or 30) then n = n + 1 end
+                    end
+                end
+                want = n >= 2; why = n .. " enemies in its cone"
+            elseif sp.LockonRange > mainRange * 1.3 then
+                -- an air-only special (the LAAM) for planes only: armed, it hides ground targets
+                local fits = sp.targets ~= "air only" or isPlane
+                want = fits and du > mainRange * 0.9 and du < sp.LockonRange * 0.95; why = "beyond standard missile range"
+            end
+            local left = call(weapons(p), "GetSpecialWeaponCount")
+            if left and left == 0 then want = false; why = "special weapon empty" end
+        end
+        if want ~= armed and t - (c.lastSwitch or -100) > 1.5 then
+            tap(c, KEY.weapon); c.lastSwitch = t
+            event("weapon_switch", { to = want and (sp and sp.class or "special") or "standard missiles",
+                                     why = want and (why or "-") or ("no longer: " .. (why or "-")), dist_m = dm })
+        end
+        c.specialText = armed and ("special weapon armed (" .. (why or "") .. ")") or nil
         local locked = sameObj(call(p, "GetLockedOnTarget"), tgt)
-        if locked and dm < c.missileRange and offT < 40 and t - c.lastMissile > c.missileGap then
+        local range = c.missileRange
+        if armed and sp and sp.LockonRange then range = math.max(range, sp.LockonRange / 10) end
+        if locked and dm < range and offT < 40 and t - c.lastMissile > c.missileGap then
             tap(c, KEY.missile); c.lastMissile = t; c.shots = c.shots + 1; c.shotsAtTarget = c.shotsAtTarget + 1
-            event("missile", { target = c.targetName, dist_m = dm, off_deg = offT })
+            if armed then c.specialShots = (c.specialShots or 0) + 1 end
+            event("missile", { target = c.targetName, dist_m = dm, off_deg = offT, special = armed })
+        end
+        -- A ground target (one the tracker does not follow as a plane): come in no lower
+        -- than 600 m above the ground, dive no steeper than 25 degrees, pull out by 900 m.
+        if Aware and not Aware.trackFor(tgt) then
+            local phase
+            aim, phase = groundRun(c, c.targetName, tl, loc, F, alt)
+            c.groundText = string.format("ground attack run, %s, %.0f m above ground", phase == "in" and "running in" or "extending", ap.agl or alt)
+        else
+            c.groundText = nil
         end
         if dm < 1000 and offT < 5 then keys[#keys + 1] = KEY.gun; c.gunFrames = c.gunFrames + 1 end
         if dm < 300 and offT < 30 then
             -- about to fly into it: pull up and away
             aim = unit({ F[1] + 0.0, F[2], F[3] + 0.8 })
         end
-        text = string.format("target %s %s %.0f m, %.0f deg off nose%s", c.targetName, c.targetCallsign, dm, offT, locked and ", LOCKED" or "")
+        text = string.format("target %s %s %.0f m, %.0f deg off nose%s%s%s", c.targetName, c.targetCallsign, dm, offT, locked and ", LOCKED" or "",
+            c.predText and ("; " .. c.predText) or "", c.specialText and ("; " .. c.specialText) or "")
+        if c.groundText then text = text .. "; " .. c.groundText end
         c.speed = dm > 3000 and 1150 or (dm > 1200 and 850 or 650)   -- close the distance fast, then slow for the turn fight
         c.lastDist = dm
     end
 
+    -- Real launches: the ammunition going down (Casual's unlimited counts read -1).
+    if t - (c.ammoAt or -100) > 0.25 then
+        c.ammoAt = t
+        local wa = weapons(p)
+        local m, sCount = call(wa, "GetMainWeaponCount"), call(wa, "GetSpecialWeaponCount")
+        if c.ammo then
+            if m and c.ammo.m and m >= 0 and m < c.ammo.m then
+                c.launches = (c.launches or 0) + (c.ammo.m - m)
+                event("launch", { weapon = "missile", n = c.ammo.m - m, left = m, target = c.targetName })
+            end
+            if sCount and c.ammo.s and sCount >= 0 and sCount < c.ammo.s then
+                c.specialLaunches = (c.specialLaunches or 0) + (c.ammo.s - sCount)
+                event("launch", { weapon = "special", n = c.ammo.s - sCount, left = sCount, target = c.targetName })
+            end
+        end
+        c.ammo = { m = m, s = sCount }
+    end
     for key, untilT in pairs(c.taps) do
         if t < untilT then keys[#keys + 1] = key else c.taps[key] = nil end
     end
+    if c.threatText then text = (text or "") .. " | THREAT: " .. c.threatText end
     c.text = text
     return aim, keys
 end
@@ -876,16 +1105,32 @@ local function apStep(p, dt)
     else
         ap.wasOutside = false
     end
-    -- Stay alive: below the floor, or heading for it within 4 s, climb away first.
+    -- Stay alive: below the floor, or heading for it within 4 s, climb away first. The floor
+    -- is height above the real ground where the terrain sensor sees ground (awareness.lua:
+    -- line traces below the plane and below its course 1-4 s ahead), above the sea elsewhere.
     local floor = ap.floor
-    local recovering = alt < floor or alt + ap.vz * 4 < floor * 0.7
+    local agl, ahead = nil, nil
+    if Aware then
+        local gv = ap.myV or { 0, 0, 0 }
+        if ap.prevLoc and dt > 0 then
+            local v = { (loc.X - ap.prevLoc[1]) / dt, (loc.Y - ap.prevLoc[2]) / dt, (loc.Z - ap.prevLoc[3]) / dt }
+            gv = { gv[1] * 0.6 + v[1] * 0.4, gv[2] * 0.6 + v[2] * 0.4, gv[3] * 0.6 + v[3] * 0.4 }
+        end
+        ap.prevLoc = { loc.X, loc.Y, loc.Z }
+        ap.myV = gv
+        local g = Aware.updateGround(p, { loc.X, loc.Y, loc.Z }, gv)
+        agl, ahead = g.below, g.ahead
+    end
+    local height = agl and math.min(agl, alt) or alt
+    local recovering = height < floor or alt + ap.vz * 4 < floor * 0.7 or (ahead ~= nil and ahead < 150)
+    ap.agl, ap.ahead = agl, ahead
     if recovering then
         local h = unit({ F[1], F[2], 0 })
         aim = unit({ h[1], h[2], 0.6 })
         ap.recoverFrames = ap.recoverFrames + 1
         if not ap.wasRecovering and now() - (ap.recoveryLoggedAt or -100) > 5 then
             ap.recoveryLoggedAt = now()
-            event("ground_recovery", { alt_m = alt, vz = ap.vz })
+            event("ground_recovery", { alt_m = alt, above_ground_m = agl or -1, lowest_ahead_m = ahead or -1, vz = ap.vz })
         end
     end
     ap.wasRecovering = recovering
@@ -933,13 +1178,17 @@ local function apStep(p, dt)
 
     if t - ap.lastLog >= 1.0 then
         ap.lastLog = t
-        log(string.format("  fly %.0f s: %s | alt %.0f m (vz %+.0f m/s), %.0f km/h, pitch %.0f, heading %.0f, roll %.0f | aim off %.0f deg (bank err %+.0f, elev %+.0f, side %+.0f) %s | roll %+.2f pitch %+.2f yaw %+.2f keys [%s]%s",
-            t, ap.goal.text, alt, ap.vz, kmh, rot.Pitch, rot.Yaw, rot.Roll, off, bankErr, elev, side,
+        log(string.format("  fly %.0f s: %s | alt %.0f m (above ground %s, lowest ahead %s; vz %+.0f m/s), %.0f km/h, pitch %.0f, heading %.0f, roll %.0f | aim off %.0f deg (bank err %+.0f, elev %+.0f, side %+.0f) %s | roll %+.2f pitch %+.2f yaw %+.2f keys [%s]%s",
+            t, ap.goal.text, alt, agl and string.format("%.0f", agl) or "sea", ahead and string.format("%.0f m", ahead) or "-", ap.vz, kmh, rot.Pitch, rot.Yaw, rot.Roll, off, bankErr, elev, side,
             ap.big and "TURN" or "fine", rollCmd, pitchCmd, yawCmd, list,
             recovering and " GROUND RECOVERY" or (inFront == false and " (game not in front: no keys)" or "")))
         if ap.combat and ap.combat.text then
             local c = ap.combat
             log(string.format("    combat: %s | kills %d, missiles %d, gun frames %d, flares %d", c.text, c.kills, c.shots, c.gunFrames, c.flares))
+            if Aware and t - (c.predLogAt or -100) > 30 then
+                c.predLogAt = t
+                log("    predictions (2 s ahead): " .. Aware.describePredictions())
+            end
         end
     end
     if flightFile and t - flightAt >= 0.1 then
@@ -979,6 +1228,7 @@ local function flyOrder(args)
     -- fly heading 90 alt 1500 [speed 650] [for 30] [floor 300]
     -- fly to <x> <y> <z>   (game units)         fly stop
     if args[1] == "stop" then
+        if ap and ap.combat and Aware then event("prediction_stats", { text = Aware.describePredictions() }) end
         ap = nil; perFrame.fly = nil
         if type(CoopKeys_Set) == "function" then CoopKeys_Set("") end
         log("fly: stopped"); return
@@ -1204,6 +1454,41 @@ local function callFunction(args)
     log(string.format("call %s:%s(%s): %s", who, fn, table.concat(args, " ", 3), ok and ("returned " .. fmt(r)) or ("error " .. tostring(r))))
 end
 
+local function probeAware()
+    if not Aware then log("probe aware: awareness.lua is not loaded") return end
+    local p = playerPlane()
+    if not p then log("probe aware: no player plane") return end
+    local myL = p:K2_GetActorLocation()
+    local myP = { myL.X, myL.Y, myL.Z }
+    local w = Aware.readWeapons(weapons(p))
+    for _, k in ipairs({ "main", "special", "gun" }) do
+        local x = w and w[k]
+        if x then
+            local parts = {}
+            for f, v in pairs(x) do parts[#parts + 1] = f .. "=" .. fmt(v) end
+            table.sort(parts)
+            log("  weapon " .. k .. ": " .. table.concat(parts, ", "))
+        else
+            log("  weapon " .. k .. ": not readable")
+        end
+    end
+    Aware.updateEnemies(p, p:GetFullName())
+    local lines = Aware.describeEnemies(myP, 12)
+    log(string.format("  %d enemy planes tracked; nearest:", #lines))
+    for _, l in ipairs(lines) do log("    " .. l) end
+    local n = 0
+    for _, tr in pairs(Aware.tracks) do
+        if tr.kind == "missile" then
+            n = n + 1
+            local parts = {}
+            for f, v in pairs(tr.info or {}) do parts[#parts + 1] = f .. "=" .. fmt(v) end
+            table.sort(parts)
+            log(string.format("    missile %s from %s, homing on %s: %s", tr.name, tr.ownerName or "?", objName(tr.obj.TargetToHome), table.concat(parts, ", ")))
+        end
+    end
+    log("  missiles in the air: " .. n)
+end
+
 local commands = {
     ping = function(args) log("pong " .. table.concat(args, " ")) end,
     mark = function(args) local text = table.concat(args, " "); log("== " .. text); event("mark", { text = text }) end,
@@ -1225,6 +1510,21 @@ local commands = {
         local parts = {}
         for _, n in ipairs(names) do parts[#parts + 1] = n .. (seen[n] > 1 and ("x" .. seen[n]) or "") end
         log("uilist (" .. #names .. "): " .. table.concat(parts, " "))
+    end,
+    -- "object GroundTarget1_8_Radar": the targeting flags of one game object, found by name
+    object = function(args)
+        local want = args[1] or ""
+        local found = nil
+        for _, o in ipairs(FindAllOf("GameObject") or {}) do
+            if objName(o) == want then found = o; break end
+        end
+        if not found then log("object: none named " .. want) return end
+        local function g(f) local ok, v = pcall(function() return found[f] end); return ok and tostring(v) or "?" end
+        local function c(f) local ok, v = pcall(function() return found[f](found) end); return ok and tostring(v) or "?" end
+        log(string.format("object %s (%s): activated %s, alive %s, faction %s, TGT %s, unidentified %s (%s), detected %s, show HUD box %s, permission to engage %s, attack-targets exception %s, needs detection %s, hidden %s, health %s/%s",
+            want, found:GetClass():GetFName():ToString(), g("bIsActivated"), c("IsAlive"), c("GetFaction"), c("IsTGT"),
+            g("bIsUnidentified"), c("GetIsUnidentified"), c("GetIsDetected"), g("bShowHUDBox"), g("bPermissionToEngage"),
+            g("bIsAttackTargetsException"), g("bNeedsDetection"), g("bHidden"), c("GetHealth"), c("GetMaxHealth")))
     end,
     -- "inspect FrontScreenWidget_C UIManagerActor": follow properties from that object first
     inspect = function(args)
@@ -1277,6 +1577,7 @@ local commands = {
         elseif what == "weapons" then probeWeapons()
         elseif what == "targets" then probeTargets()
         elseif what == "mission" then probeMission()
+        elseif what == "aware" then probeAware()
         else log("unknown probe '" .. what .. "'") end
     end,
 }

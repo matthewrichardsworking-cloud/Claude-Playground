@@ -1,0 +1,150 @@
+{"clock": "14:20:11", "kind": "mark", "t": 218.4, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "14:20:13", "goal": "attack floor 300 range 3000", "kind": "autopilot_start", "t": 220.9, "attempt": 1}
+{"callsign": "", "clock": "14:20:13", "dist_m": 13950.0, "kind": "target", "t": 220.9, "target": "GroundTarget1_1_Radar", "attempt": 1}
+{"clock": "14:20:28", "dist_m": 9500, "kind": "weapon_switch", "t": 235.8, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"callsign": "", "clock": "14:20:33", "dist_m": 14980.0, "kind": "target", "t": 240.1, "target": "Optional9_Heli1", "attempt": 1}
+{"clock": "14:20:33", "dist_m": 14980.0, "kind": "weapon_switch", "t": 240.1, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"alt_m": 299.9, "clock": "14:20:49", "kind": "ground_recovery", "t": 256.5, "vz": -7.681, "attempt": 1}
+{"clock": "14:20:50", "dist_m": 9499, "kind": "weapon_switch", "t": 257.6, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:20:51", "dist_m": 9228, "kind": "missile", "off_deg": 23.43, "special": true, "t": 258.6, "target": "Optional9_Heli1", "attempt": 1}
+{"clock": "14:20:51", "kind": "launch", "left": 29, "n": 1, "t": 258.7, "target": "Optional9_Heli1", "weapon": "special", "attempt": 1}
+{"clock": "14:20:52", "dist_m": 8861, "kind": "missile", "off_deg": 7.434, "special": true, "t": 259.8, "target": "Optional9_Heli1", "attempt": 1}
+{"clock": "14:20:53", "kind": "launch", "left": 28, "n": 1, "t": 260, "target": "Optional9_Heli1", "weapon": "special", "attempt": 1}
+{"clock": "14:20:54", "dist_m": 8488, "kind": "missile", "off_deg": 2.866, "special": true, "t": 261, "target": "Optional9_Heli1", "attempt": 1}
+{"clock": "14:20:55", "dist_m": 8110, "kind": "missile", "off_deg": 0.8845, "special": true, "t": 262.2, "target": "Optional9_Heli1", "attempt": 1}
+{"clock": "14:20:56", "dist_m": 7732, "kind": "missile", "off_deg": 0.8204, "special": true, "t": 263.4, "target": "Optional9_Heli1", "attempt": 1}
+{"callsign": "", "clock": "14:20:57", "kind": "death", "t": 264, "who": "Optional9_Heli1", "attempt": 1}
+{"after_s": 23.89, "callsign": "", "clock": "14:20:57", "kind": "kill", "missiles": 5, "t": 264, "target": "Optional9_Heli1", "attempt": 1}
+{"callsign": "", "clock": "14:20:57", "dist_m": 5319, "kind": "target", "t": 264, "target": "AAGun_Attack_Dummy2", "attempt": 1}
+{"alt_m": 300, "clock": "14:21:03", "kind": "ground_recovery", "t": 270.9, "vz": -15.3, "attempt": 1}
+{"clock": "14:21:09", "dist_m": 1795, "kind": "weapon_switch", "t": 276.7, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "14:21:10", "dist_m": 1716, "kind": "missile", "off_deg": 15.14, "special": false, "t": 277.1, "target": "AAGun_Attack_Dummy2", "attempt": 1}
+{"clock": "14:21:10", "kind": "launch", "left": 111, "n": 1, "t": 277.2, "target": "AAGun_Attack_Dummy2", "weapon": "missile", "attempt": 1}
+{"alt_m": 382.2, "clock": "14:21:11", "kind": "ground_recovery", "t": 278.1, "vz": -45.44, "attempt": 1}
+{"clock": "14:21:11", "dist_m": 1444, "kind": "missile", "off_deg": 5.533, "special": false, "t": 278.3, "target": "AAGun_Attack_Dummy2", "attempt": 1}
+{"clock": "14:21:11", "kind": "launch", "left": 110, "n": 1, "t": 278.5, "target": "AAGun_Attack_Dummy2", "weapon": "missile", "attempt": 1}
+{"clock": "14:21:12", "dist_m": 1165, "kind": "missile", "off_deg": 8.258, "special": false, "t": 279.5, "target": "AAGun_Attack_Dummy2", "attempt": 1}
+{"callsign": "", "clock": "14:21:13", "kind": "death", "t": 280.2, "who": "AAGun_Attack_Dummy2", "attempt": 1}
+{"after_s": 16.19, "callsign": "", "clock": "14:21:13", "kind": "kill", "missiles": 3, "t": 280.2, "target": "AAGun_Attack_Dummy2", "attempt": 1}
+{"callsign": "", "clock": "14:21:13", "dist_m": 11410.0, "kind": "target", "t": 280.2, "target": "Optional6_APC", "attempt": 1}
+{"clock": "14:21:20", "dist_m": 9498, "kind": "weapon_switch", "t": 287, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"callsign": "", "clock": "14:21:20", "dist_m": 14310.0, "kind": "target", "t": 287.1, "target": "Optional9_Heli4", "attempt": 1}
+{"callsign": "", "clock": "14:21:20", "dist_m": 14390.0, "kind": "target", "t": 287.1, "target": "Optional9_Heli3", "attempt": 1}
+{"clock": "14:21:21", "dist_m": 13960.0, "kind": "weapon_switch", "t": 288.5, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "14:21:35", "dist_m": 9498, "kind": "weapon_switch", "t": 302.8, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "14:21:35", "dist_m": 9487, "kind": "missile", "off_deg": 0.1033, "special": true, "t": 302.8, "target": "Optional9_Heli3", "attempt": 1}
+{"clock": "14:21:36", "kind": "launch", "left": 27, "n": 1, "t": 303.1, "target": "Optional9_Heli3", "weapon": "special", "attempt": 1}
+{"clock": "14:21:37", "dist_m": 9111, "kind": "missile", "off_deg": 0.06945, "special": true, "t": 304, "target": "Optional9_Heli3", "attempt": 1}
+{"clock": "14:21:37", "kind": "launch", "left": 26, "n": 1, "t": 304.1, "target": "Optional9_Heli3", "weapon": "special", "attempt": 1}
+{"clock": "14:21:38", "dist_m": 8733, "kind": "missile", "off_deg": 0.04462, "special": true, "t": 305.2, "target": "Optional9_Heli3", "attempt": 1}
+{"clock": "14:21:39", "dist_m": 8357, "kind": "missile", "off_deg": 0.0359, "special": true, "t": 306.5, "target": "Optional9_Heli3", "attempt": 1}
+{"clock": "14:21:40", "dist_m": 7980, "kind": "missile", "off_deg": 0.03112, "special": true, "t": 307.7, "target": "Optional9_Heli3", "attempt": 1}
+{"callsign": "", "clock": "14:21:41", "kind": "death", "t": 308.7, "who": "Optional9_Heli3", "attempt": 1}
+{"after_s": 21.55, "callsign": "", "clock": "14:21:41", "kind": "kill", "missiles": 5, "t": 308.7, "target": "Optional9_Heli3", "attempt": 1}
+{"callsign": "", "clock": "14:21:41", "dist_m": 7561, "kind": "target", "t": 308.7, "target": "Optional9_Heli4", "attempt": 1}
+{"clock": "14:21:41", "dist_m": 7505, "kind": "missile", "off_deg": 0.2206, "special": true, "t": 308.9, "target": "Optional9_Heli4", "attempt": 1}
+{"clock": "14:21:43", "dist_m": 7128, "kind": "missile", "off_deg": 0.2015, "special": true, "t": 310.1, "target": "Optional9_Heli4", "attempt": 1}
+{"clock": "14:21:44", "dist_m": 6744, "kind": "missile", "off_deg": 0.1805, "special": true, "t": 311.3, "target": "Optional9_Heli4", "attempt": 1}
+{"clock": "14:21:44", "kind": "launch", "left": 25, "n": 1, "t": 311.3, "target": "Optional9_Heli4", "weapon": "special", "attempt": 1}
+{"clock": "14:21:45", "dist_m": 6368, "kind": "missile", "off_deg": 0.1648, "special": true, "t": 312.5, "target": "Optional9_Heli4", "attempt": 1}
+{"clock": "14:21:45", "kind": "launch", "left": 24, "n": 1, "t": 312.6, "target": "Optional9_Heli4", "weapon": "special", "attempt": 1}
+{"clock": "14:21:46", "dist_m": 5990, "kind": "missile", "off_deg": 0.1525, "special": true, "t": 313.7, "target": "Optional9_Heli4", "attempt": 1}
+{"clock": "14:21:47", "dist_m": 5610, "kind": "missile", "off_deg": 0.1954, "special": true, "t": 314.9, "target": "Optional9_Heli4", "attempt": 1}
+{"clock": "14:21:49", "dist_m": 5218, "kind": "missile", "off_deg": 0.3695, "special": true, "t": 316.1, "target": "Optional9_Heli4", "attempt": 1}
+{"callsign": "", "clock": "14:21:49", "kind": "death", "t": 316.1, "who": "Optional9_Heli4", "attempt": 1}
+{"after_s": 7.467, "callsign": "", "clock": "14:21:49", "kind": "kill", "missiles": 7, "t": 316.2, "target": "Optional9_Heli4", "attempt": 1}
+{"callsign": "", "clock": "14:21:49", "dist_m": 5058, "kind": "target", "t": 316.2, "target": "Optional9_Heli6", "attempt": 1}
+{"clock": "14:21:50", "dist_m": 4668, "kind": "missile", "off_deg": 3.061, "special": true, "t": 317.3, "target": "Optional9_Heli6", "attempt": 1}
+{"clock": "14:21:51", "dist_m": 4243, "kind": "missile", "off_deg": 1.461, "special": true, "t": 318.5, "target": "Optional9_Heli6", "attempt": 1}
+{"callsign": "", "clock": "14:21:51", "dist_m": 4256, "from": "Optional9_Heli5", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_heli_C_0", "t": 318.6, "top_kmh": 7917, "turn": 13, "attempt": 1}
+{"callsign": "", "clock": "14:21:52", "dist_m": 3896, "from": "Optional9_Heli6", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_heli_C_1", "t": 319.5, "top_kmh": 7917, "turn": 13, "attempt": 1}
+{"clock": "14:21:52", "dist_m": 3783, "kind": "missile", "off_deg": 0.9818, "special": true, "t": 319.7, "target": "Optional9_Heli6", "attempt": 1}
+{"clock": "14:21:52", "kind": "launch", "left": 23, "n": 1, "t": 319.8, "target": "Optional9_Heli6", "weapon": "special", "attempt": 1}
+{"clock": "14:21:53", "dist_m": 3402, "kind": "evade", "miss_m": 93.91, "missile": "wp_msl_heli_C_0", "t": 320.2, "tgo_s": 3.456, "attempt": 1}
+{"clock": "14:21:53", "dist_m": 3027, "kind": "evade", "miss_m": 148, "missile": "wp_msl_heli_C_0", "t": 320.7, "tgo_s": 3.963, "attempt": 1}
+{"alt_m": 319.8, "clock": "14:21:55", "kind": "ground_recovery", "t": 322, "vz": -28.59, "attempt": 1}
+{"clock": "14:21:55", "kind": "missile_warning", "level": "near", "t": 322, "attempt": 1}
+{"clock": "14:21:55", "dist_m": 1675, "kind": "flare", "missile": "wp_msl_heli_C_0", "reason": "tracker", "t": 322.4, "tgo_s": 1.62, "attempt": 1}
+{"callsign": "", "clock": "14:21:56", "kind": "death", "t": 323.1, "who": "Optional9_Heli6", "attempt": 1}
+{"after_s": 6.98, "callsign": "", "clock": "14:21:56", "kind": "kill", "missiles": 3, "t": 323.1, "target": "Optional9_Heli6", "attempt": 1}
+{"callsign": "", "clock": "14:21:56", "dist_m": 2583, "kind": "target", "t": 323.1, "target": "Optional9_Heli5", "attempt": 1}
+{"clock": "14:21:56", "kind": "missile_warning", "level": "very near", "t": 323.6, "attempt": 1}
+{"clock": "14:21:56", "dist_m": 751.5, "kind": "flare", "missile": "wp_msl_heli_C_0", "reason": "tracker", "t": 323.6, "tgo_s": 0.9768, "attempt": 1}
+{"clock": "14:21:56", "dist_m": 734.7, "from": "Optional9_Heli5", "kind": "missile_lost_lock", "missile": "wp_msl_heli_C_0", "t": 323.7, "attempt": 1}
+{"clock": "14:21:56", "kind": "missile_warning", "level": "near", "t": 323.7, "attempt": 1}
+{"clock": "14:21:57", "kind": "missile_warning", "level": "very near", "t": 324.2, "attempt": 1}
+{"clock": "14:21:57", "dist_m": 339.1, "kind": "flare", "missile": "wp_msl_heli_C_1", "reason": "tracker", "t": 324.9, "tgo_s": 0.4604, "attempt": 1}
+{"clock": "14:21:58", "dist_m": 215.8, "from": "Optional9_Heli6", "kind": "missile_lost_lock", "missile": "wp_msl_heli_C_1", "t": 325.1, "attempt": 1}
+{"clock": "14:21:59", "dist_m": 1989, "kind": "missile", "off_deg": 16.71, "special": true, "t": 326.9, "target": "Optional9_Heli5", "attempt": 1}
+{"clock": "14:22:00", "kind": "launch", "left": 22, "n": 1, "t": 327.1, "target": "Optional9_Heli5", "weapon": "special", "attempt": 1}
+{"clock": "14:22:01", "dist_m": 1796, "kind": "weapon_switch", "t": 328, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "14:22:01", "dist_m": 1779, "kind": "missile", "off_deg": 3.613, "special": false, "t": 328.1, "target": "Optional9_Heli5", "attempt": 1}
+{"clock": "14:22:01", "kind": "launch", "left": 109, "n": 1, "t": 328.3, "target": "Optional9_Heli5", "weapon": "missile", "attempt": 1}
+{"clock": "14:22:01", "closest_m": 735.2, "flares_while_near": true, "flew_s": 9.888, "from": "Optional9_Heli5", "kind": "missile_gone", "missile": "wp_msl_heli_C_0", "t": 328.5, "attempt": 1}
+{"clock": "14:22:02", "dist_m": 1574, "kind": "missile", "off_deg": 1.027, "special": false, "t": 329.3, "target": "Optional9_Heli5", "attempt": 1}
+{"callsign": "", "clock": "14:22:02", "kind": "death", "t": 329.3, "who": "Optional9_Heli5", "attempt": 1}
+{"after_s": 6.194, "callsign": "", "clock": "14:22:02", "kind": "kill", "missiles": 3, "t": 329.3, "target": "Optional9_Heli5", "attempt": 1}
+{"callsign": "", "clock": "14:22:02", "dist_m": 1758, "kind": "target", "t": 329.3, "target": "GroundTarget1_7_Radar", "attempt": 1}
+{"clock": "14:22:02", "kind": "launch", "left": 108, "n": 1, "t": 329.4, "target": "GroundTarget1_7_Radar", "weapon": "missile", "attempt": 1}
+{"clock": "14:22:02", "closest_m": 214.2, "flares_while_near": true, "flew_s": 10.1, "from": "Optional9_Heli6", "kind": "missile_gone", "missile": "wp_msl_heli_C_1", "t": 329.6, "attempt": 1}
+{"alt_m": 493.2, "clock": "14:22:03", "kind": "ground_recovery", "t": 330.2, "vz": -75.37, "attempt": 1}
+{"clock": "14:22:03", "dist_m": 1486, "kind": "missile", "off_deg": 0.2748, "special": false, "t": 330.5, "target": "GroundTarget1_7_Radar", "attempt": 1}
+{"clock": "14:22:04", "dist_m": 1209, "kind": "missile", "off_deg": 0.5003, "special": false, "t": 331.7, "target": "GroundTarget1_7_Radar", "attempt": 1}
+{"clock": "14:22:05", "dist_m": 949.7, "kind": "missile", "off_deg": 0.5202, "special": false, "t": 332.9, "target": "GroundTarget1_7_Radar", "attempt": 1}
+{"callsign": "", "clock": "14:22:06", "kind": "death", "t": 333.6, "who": "GroundTarget1_7_Radar", "attempt": 1}
+{"after_s": 4.303, "callsign": "", "clock": "14:22:06", "kind": "kill", "missiles": 3, "t": 333.6, "target": "GroundTarget1_7_Radar", "attempt": 1}
+{"callsign": "", "clock": "14:22:06", "dist_m": 4089, "kind": "target", "t": 333.6, "target": "GroundTarget1_8_Radar", "attempt": 1}
+{"clock": "14:22:06", "dist_m": 4089, "kind": "weapon_switch", "t": 333.6, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"alt_m": 356.3, "clock": "14:22:09", "kind": "ground_recovery", "t": 336.1, "vz": -38.66, "attempt": 1}
+{"alt_m": 890, "clock": "14:22:16", "kind": "ground_recovery", "t": 343.5, "vz": -173.8, "attempt": 1}
+{"alt_m": 512.7, "clock": "14:22:21", "kind": "ground_recovery", "t": 348.9, "vz": -75.99, "attempt": 1}
+{"alt_m": 433.8, "clock": "14:22:29", "kind": "ground_recovery", "t": 356.3, "vz": -58.31, "attempt": 1}
+{"alt_m": 870, "clock": "14:22:39", "kind": "ground_recovery", "t": 366.2, "vz": -177.8, "attempt": 1}
+{"alt_m": 474.4, "clock": "14:22:47", "kind": "ground_recovery", "t": 374.4, "vz": -67.76, "attempt": 1}
+{"alt_m": 909.6, "clock": "14:22:56", "kind": "ground_recovery", "t": 383.5, "vz": -188, "attempt": 1}
+{"alt_m": 631.2, "clock": "14:23:06", "kind": "ground_recovery", "t": 393.2, "vz": -113.1, "attempt": 1}
+{"alt_m": 780, "clock": "14:23:17", "kind": "ground_recovery", "t": 404.6, "vz": -224.1, "attempt": 1}
+{"alt_m": 699.3, "clock": "14:23:30", "kind": "ground_recovery", "t": 417.1, "vz": -125.5, "attempt": 1}
+{"alt_m": 659.5, "clock": "14:23:37", "kind": "ground_recovery", "t": 424.5, "vz": -124.6, "attempt": 1}
+{"alt_m": 948.9, "clock": "14:23:50", "kind": "ground_recovery", "t": 437.4, "vz": -195.6, "attempt": 1}
+{"alt_m": 504.8, "clock": "14:23:56", "kind": "ground_recovery", "t": 443.1, "vz": -74.17, "attempt": 1}
+{"callsign": "", "clock": "14:24:03", "kind": "death", "t": 450.7, "who": "Optional7_AAgun", "attempt": 1}
+{"alt_m": 513.7, "clock": "14:24:05", "kind": "ground_recovery", "t": 452.7, "vz": -77.07, "attempt": 1}
+{"alt_m": 683.7, "clock": "14:24:15", "kind": "ground_recovery", "t": 462.9, "vz": -120.3, "attempt": 1}
+{"alt_m": 911.3, "clock": "14:24:26", "kind": "ground_recovery", "t": 473.5, "vz": -205.6, "attempt": 1}
+{"alt_m": 561.7, "clock": "14:24:32", "kind": "ground_recovery", "t": 479, "vz": -126.4, "attempt": 1}
+{"alt_m": 428.4, "clock": "14:24:39", "kind": "ground_recovery", "t": 486.5, "vz": -60.17, "attempt": 1}
+{"alt_m": 225.2, "amount": 24, "clock": "14:24:45", "health": 96, "kind": "damage", "t": 492.2, "attempt": 1}
+{"alt_m": 675.8, "clock": "14:24:54", "kind": "ground_recovery", "t": 501.3, "vz": -122.5, "attempt": 1}
+{"alt_m": 677.3, "clock": "14:25:06", "kind": "ground_recovery", "t": 513.4, "vz": -125.2, "attempt": 1}
+{"alt_m": 725.5, "clock": "14:25:17", "kind": "ground_recovery", "t": 524.5, "vz": -132.5, "attempt": 1}
+{"alt_m": 694.6, "clock": "14:25:34", "kind": "ground_recovery", "t": 541.1, "vz": -121.3, "attempt": 1}
+{"alt_m": 190.5, "amount": 24, "clock": "14:25:36", "health": 72, "kind": "damage", "t": 543.7, "attempt": 1}
+{"alt_m": 764.2, "clock": "14:25:45", "kind": "ground_recovery", "t": 552.8, "vz": -166.4, "attempt": 1}
+{"alt_m": 958.8, "clock": "14:25:57", "kind": "ground_recovery", "t": 564.1, "vz": -188.1, "attempt": 1}
+{"alt_m": 617, "clock": "14:26:08", "kind": "ground_recovery", "t": 575.9, "vz": -106.5, "attempt": 1}
+{"alt_m": 779.9, "clock": "14:26:17", "kind": "ground_recovery", "t": 584.4, "vz": -234.2, "attempt": 1}
+{"alt_m": 865.8, "clock": "14:26:27", "kind": "ground_recovery", "t": 594.4, "vz": -176.5, "attempt": 1}
+{"alt_m": 574.1, "clock": "14:26:33", "kind": "ground_recovery", "t": 600.6, "vz": -105.5, "attempt": 1}
+{"alt_m": 194, "amount": 24, "clock": "14:26:37", "health": 48, "kind": "damage", "t": 604.8, "attempt": 1}
+{"alt_m": 868.3, "clock": "14:26:45", "kind": "ground_recovery", "t": 612.7, "vz": -216.9, "attempt": 1}
+{"alt_m": 620, "clock": "14:26:58", "kind": "ground_recovery", "t": 625.6, "vz": -130.6, "attempt": 1}
+{"alt_m": 636.2, "clock": "14:27:10", "kind": "ground_recovery", "t": 637.3, "vz": -108.7, "attempt": 1}
+{"alt_m": 611.8, "clock": "14:27:21", "kind": "ground_recovery", "t": 648.9, "vz": -101.4, "attempt": 1}
+{"alt_m": 639, "clock": "14:27:33", "kind": "ground_recovery", "t": 660.5, "vz": -112.5, "attempt": 1}
+{"alt_m": 835.2, "clock": "14:27:43", "kind": "ground_recovery", "t": 670.1, "vz": -184.1, "attempt": 1}
+{"alt_m": 701.3, "clock": "14:27:56", "kind": "ground_recovery", "t": 683.4, "vz": -166.1, "attempt": 1}
+{"alt_m": 640.9, "clock": "14:28:08", "kind": "ground_recovery", "t": 695.6, "vz": -111.2, "attempt": 1}
+{"alt_m": 666.9, "clock": "14:28:20", "kind": "ground_recovery", "t": 707.2, "vz": -164.7, "attempt": 1}
+{"alt_m": 699.1, "clock": "14:28:31", "kind": "ground_recovery", "t": 718.8, "vz": -129.2, "attempt": 1}
+{"alt_m": 644.9, "clock": "14:28:44", "kind": "ground_recovery", "t": 731, "vz": -139.8, "attempt": 1}
+{"alt_m": 728.6, "clock": "14:28:55", "kind": "ground_recovery", "t": 742, "vz": -131.6, "attempt": 1}
+{"alt_m": 623.4, "clock": "14:29:07", "kind": "ground_recovery", "t": 754.2, "vz": -118.3, "attempt": 1}
+{"alt_m": 674.9, "clock": "14:29:18", "kind": "ground_recovery", "t": 765.3, "vz": -129, "attempt": 1}
+{"alt_m": 653.7, "clock": "14:29:30", "kind": "ground_recovery", "t": 777, "vz": -116.5, "attempt": 1}
+{"alt_m": 669.2, "clock": "14:29:41", "kind": "ground_recovery", "t": 788.7, "vz": -165, "attempt": 1}
+{"callsign": "", "clock": "14:29:44", "kind": "death", "t": 791.2, "who": "AcePlayerPawn_typn_s03_C_0", "attempt": 1}
+{"alt_m": 204.6, "amount": 48, "clock": "14:29:44", "health": 0, "kind": "damage", "t": 791.2, "attempt": 1}
+{"clock": "14:29:44", "kind": "player_dead", "t": 791.2, "attempt": 1}
+{"clock": "14:29:45", "kind": "frozen", "t": 792.7, "attempt": 1}
+{"clock": "14:29:46", "kind": "prediction_stats", "t": 793.5, "text": "route: 3234 checks, off by 0 m on average (a straight line: 0 m)", "attempt": 1}

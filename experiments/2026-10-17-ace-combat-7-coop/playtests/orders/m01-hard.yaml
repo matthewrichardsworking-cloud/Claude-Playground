@@ -1,0 +1,16 @@
+# A test order for tools\playtest.py (playtest-bot.md). Run it with:
+#   python tools\playtest.py run playtests\orders\m01-casual.yaml
+# Every line is optional except the mission.
+
+name: hard               # goes into the test folder's name
+mission: 1                 # campaign mission number (Free Mission list)
+difficulty: hard           # casual, easy, normal, hard, ace, free_flight
+mode: fair                 # only fair is built: real keyboard controls, no help
+attempts: 3                # keep trying until it completes, at most this often
+retry: checkpoint          # after a failure: checkpoint (fast) or mission (from the start)
+time_limit_min: 20         # per attempt
+from_title: true         # the runner starts the copy itself here
+close_game: false          # close the copy at the end (it is left in the menus otherwise)
+tactics:
+  floor_m: 300             # never lower than this above the sea
+  missile_range_m: 3000    # fire only inside this distance (and only with a lock)

@@ -321,10 +321,18 @@ def prep_and_sortie(fail):
 def retry(how):
     """On the retry menu after a failed attempt: from the checkpoint (fast) or the start."""
     say(f"retry ({how})")
-    time.sleep(3)
+    # After "Mission failed" the game first shows the crash for several seconds; the retry
+    # menu (Retry from checkpoint / Retry mission / Quit mission) comes after that.
+    time.sleep(8)
     if how == "mission":
         keys(["Down"], wait_ms=800)
-    keys(["Enter"], wait_ms=3000)
+    for _ in range(8):
+        keys(["Enter"], wait_ms=4000)
+        s = status()
+        if not s.get("failed") and not s.get("plane"):
+            break                      # the restart is loading
+        if plane_ready(s) and not s.get("failed"):
+            return
     wait_status(lambda s: plane_ready(s) and not s.get("failed"), 150, "the retried mission to start")
 
 
@@ -419,16 +427,23 @@ def write_report(folder, order_, attempts, notes):
     else:
         lines.append(f"**Not completed** in {len(attempts)} attempt(s).")
     lines.append("")
-    lines.append("| Attempt | Result | Why it ended | Time | Kills | Missiles fired | Damage taken | Missile warnings | Score |")
+    lines.append("| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |")
     lines.append("|---|---|---|---|---|---|---|---|---|")
     for a in attempts:
         ev = a["events"]
         kills = [e for e in ev if e.get("kind") == "kill"]
         shots = sum(1 for e in ev if e.get("kind") == "missile")
         dmg = sum(float(e.get("amount", 0)) for e in ev if e.get("kind") == "damage")
-        warns = sum(1 for e in ev if e.get("kind") == "missile_warning")
-        lines.append(f"| {a['n']} | {a['result']} | {a['cause']} | {a['duration_s'] / 60:.1f} min | {len(kills)} | {shots} | "
-                     f"{dmg:.0f} | {warns} | {a['final'].get('score', '?')} |")
+        launched = [e for e in ev if e.get("kind") == "launch"]
+        if launched:   # real launches counted from the ammunition (limited on Normal and up)
+            shots = sum(int(e.get("n", 1)) for e in launched if e.get("weapon") == "missile")
+            special = sum(int(e.get("n", 1)) for e in launched if e.get("weapon") == "special")
+        else:          # unlimited ammunition: trigger presses
+            special = sum(1 for e in ev if e.get("kind") == "missile" and e.get("special"))
+        at_us = sum(1 for e in ev if e.get("kind") == "missile_at_me")
+        broken = sum(1 for e in ev if e.get("kind") == "missile_lost_lock")
+        lines.append(f"| {a['n']} | {a['result']} | {a['cause']} | {a['duration_s'] / 60:.1f} min | {len(kills)} | {shots} ({special}) | "
+                     f"{dmg:.0f} | {at_us} ({broken}) | {a['final'].get('score', '?')} |")
     for a in attempts:
         lines.append("")
         lines.append(f"## Attempt {a['n']}")
@@ -449,6 +464,20 @@ def write_report(folder, order_, attempts, notes):
                 lines.append(f"- {stamp} {k.replace('_', ' ')}: {e.get('phase')}")
             elif k in FAIL_EVENTS or k == "mission_accomplished":
                 lines.append(f"- {stamp} **{k.replace('_', ' ')}**")
+            elif k == "missile_at_me":
+                lines.append(f"- {stamp} missile fired at us by {e.get('from')} from {float(e.get('dist_m', 0)):.0f} m ({e.get('homing')})")
+            elif k == "missile_lost_lock":
+                lines.append(f"- {stamp} that missile lost its lock at {float(e.get('dist_m', 0)):.0f} m")
+            elif k == "missile_gone":
+                lines.append(f"- {stamp} missile from {e.get('from')} gone after {float(e.get('flew_s', 0)):.0f} s, closest {float(e.get('closest_m', 0)):.0f} m")
+            elif k == "evade":
+                lines.append(f"- {stamp} break turn: missile {float(e.get('dist_m', 0)):.0f} m away, impact in {float(e.get('tgo_s', 0)):.1f} s")
+            elif k == "weapon_switch":
+                lines.append(f"- {stamp} weapon switch to {e.get('to')} ({e.get('why')}, target {float(e.get('dist_m', 0)):.0f} m)")
+            elif k == "prediction_stats":
+                lines.append(f"- {stamp} how well enemy positions 2 s ahead were predicted: {e.get('text')}")
+            elif k == "pursuer":
+                lines.append(f"- {stamp} {e.get('enemy')} is after us, {float(e.get('dist_m', 0)):.0f} m behind ({e.get('state')})")
             elif k in ("takeoff_end", "ground_recovery", "beyond_pullout", "frozen", "missile_warning", "flare"):
                 detail = ", ".join(f"{x}={y}" for x, y in e.items() if x not in ("t", "kind", "clock", "attempt"))
                 lines.append(f"- {stamp} {k.replace('_', ' ')}{(': ' + detail) if detail else ''}")
@@ -538,9 +567,44 @@ def run(order_path):
     return folder
 
 
+def rebuild_report(folder):
+    """Write report.md again from a test folder's events.jsonl and order.yaml (for example
+    after the report writer learned about new kinds of events)."""
+    order_ = read_order(os.path.join(folder, "order.yaml"))
+    by_attempt = {}
+    with open(os.path.join(folder, "events.jsonl"), "r", encoding="utf-8") as f:
+        for line in f:
+            try:
+                e = json.loads(line)
+            except ValueError:
+                continue
+            by_attempt.setdefault(int(e.get("attempt", 1)), []).append(e)
+    attempts = []
+    day = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.join(folder, "events.jsonl"))).date()
+    for n in sorted(by_attempt):
+        ev = by_attempt[n]
+        kinds = [e.get("kind") for e in ev]
+        if "mission_accomplished" in kinds:
+            result, cause = "completed", "mission accomplished"
+        else:
+            fails = [k for k in kinds if k in FAIL_EVENTS]
+            result, cause = ("failed", FAIL_EVENTS[fails[0]]) if fails else ("stopped", "time limit or stopped")
+        ts = [e["t"] for e in ev if "t" in e]
+        first_clock = next((e["clock"] for e in ev if "clock" in e), "00:00:00")
+        hh, mm, ss = (int(x) for x in first_clock.split(":"))
+        attempts.append({"n": n, "result": result, "cause": cause, "duration_s": (max(ts) - min(ts)) if ts else 0,
+                         "started": datetime.datetime.combine(day, datetime.time(hh, mm, ss)), "events": ev,
+                         "final": {"score": "?"}})
+    write_report(folder, order_, attempts, [])
+    return os.path.join(folder, "report.md")
+
+
 def main(argv):
     if len(argv) >= 3 and argv[1] == "run":
         run(argv[2])
+        return 0
+    if len(argv) >= 3 and argv[1] == "report":
+        print(rebuild_report(argv[2]))
         return 0
     if len(argv) >= 2 and argv[1] == "goto":
         mission, difficulty = 1, "casual"

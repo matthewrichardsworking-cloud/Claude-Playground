@@ -2,6 +2,25 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, playtest bot phase 2: tracking, prediction, threats
+
+- Owner's request: special weapons, incoming-missile paths, enemy paths and AI behaviour
+  from the game's data plus live readings, acted on in real time; test on Mission 02.
+  New `awareness.lua` in the pilot: tracks every enemy and missile; reads weapon and
+  missile limits from class defaults (no game files unpacked), each enemy's limits, AI
+  state (`EAIState`), tracking target and scripted route (spline); line-trace ground sensor
+  (reported altitude is above the sea, not the ground).
+- Behaviour: flares and break turns timed from each missile's time to impact; turn into an
+  enemy on our tail; LAAM for targets 2-10 km away; attack runs on ground targets; skip
+  objects the game won't select. Predictor scores several methods live and uses the best.
+- Mission 02 bugs found and fixed: the air-only LAAM left armed hid every ground target
+  from selection; circling buildings never got them onto the nose (attack runs fixed it);
+  sea-level floor over hills meant terrain scrapes and a crash.
+- Results: Mission 01 Ace completed first try, no damage. Mission 02 Hard validation run,
+  untouched: completed first try in 14.9 min, 43 kills, no damage, 6 of 6 missiles at it
+  lost lock. Predictions 2 s ahead: turning planes 52 m off with half the turn rate (straight
+  line 81 m, full turn 92 m). Open: route-following group mixes slow and fast objects.
+
 ## 2026-10-18: Ace Combat 7 co-op, the playtest bot built: it completes Mission 01 alone
 
 - Built the bot designed earlier the same day (owner: achievements don't matter). Pieces:

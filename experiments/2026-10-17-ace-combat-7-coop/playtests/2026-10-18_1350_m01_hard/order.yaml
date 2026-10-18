@@ -1,0 +1,4 @@
+# No order file: this run was driven by hand (tools\pilot.py takeoff; fly attack).
+mission: 1
+difficulty: casual
+mode: fair

@@ -1,0 +1,150 @@
+# Playtest: Mission 02 validation
+
+Run 18 Oct 2026, 15:22 by tools\playtest.py; difficulty hard, mode fair.
+
+**Completed on attempt 1 of 1.**
+
+| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | completed | mission accomplished | 14.9 min | 43 | 93 (25) | 0 | 6 (6) | 9110 |
+
+## Attempt 1
+
+- 00:42 ground recovery: above_ground_m=330.6, alt_m=487.3, lowest_ahead_m=98, vz=-36.18
+- 00:45 destroyed GroundTarget1_1_Radar  (2 missiles, 43 s after picking it)
+- 01:18 ground recovery: above_ground_m=395.1, alt_m=510.5, lowest_ahead_m=129.3, vz=-39.3
+- 01:22 destroyed Optional5_APC  (3 missiles, 37 s after picking it)
+- 01:35 ground recovery: above_ground_m=366.1, alt_m=536.2, lowest_ahead_m=139.9, vz=-52.04
+- 01:39 destroyed GroundTarget1_6_Radar  (3 missiles, 17 s after picking it)
+- 01:40 missile fired at us by Optional9_Heli5 from 4935 m (infrared)
+- 01:41 missile fired at us by Optional9_Heli3 from 4713 m (infrared)
+- 01:41 missile fired at us by Optional9_Heli6 from 4598 m (infrared)
+- 01:42 missile fired at us by Optional9_Heli4 from 4359 m (infrared)
+- 01:43 break turn: missile 3323 m away, impact in 3.9 s
+- 01:45 flare: dist_m=2087, missile=wp_msl_heli_C_0, reason=tracker, tgo_s=1.999
+- 01:45 missile warning: level=near
+- 01:46 flare: dist_m=961.2, missile=wp_msl_heli_C_0, reason=tracker, tgo_s=0.7595
+- 01:46 that missile lost its lock at 936 m
+- 01:47 missile warning: level=very near
+- 01:47 flare: dist_m=543, missile=wp_msl_heli_C_1, reason=tracker, tgo_s=0.7714
+- 01:48 that missile lost its lock at 239 m
+- 01:48 that missile lost its lock at 214 m
+- 01:48 flare: dist_m=366.2, missile=wp_msl_heli_C_3, reason=tracker, tgo_s=0.5816
+- 01:49 that missile lost its lock at 229 m
+- 01:49 ground recovery: above_ground_m=407.8, alt_m=454.6, lowest_ahead_m=239.8, vz=-89.1
+- 01:50 missile from Optional9_Heli5 gone after 10 s, closest 960 m
+- 01:51 missile from Optional9_Heli3 gone after 10 s, closest 256 m
+- 01:51 missile from Optional9_Heli6 gone after 10 s, closest 234 m
+- 01:52 missile from Optional9_Heli4 gone after 10 s, closest 226 m
+- 01:58 ground recovery: above_ground_m=384.2, alt_m=538.2, lowest_ahead_m=64.8, vz=-57.66
+- 02:05 ground recovery: above_ground_m=527.9, alt_m=704, lowest_ahead_m=141.4, vz=-91.47
+- 02:08 destroyed GroundTarget1_8_Radar  (3 missiles, 28 s after picking it)
+- 02:11 ground recovery: above_ground_m=299, alt_m=461.6, lowest_ahead_m=199.8, vz=-43.33
+- 02:17 ground recovery: above_ground_m=415.4, alt_m=487.7, lowest_ahead_m=226.7, vz=-76.53
+- 02:18 destroyed OptionalAirBase13_GasTank  (3 missiles, 11 s after picking it)
+- 02:19 destroyed OptionalAirBase15_GasTank  (0 missiles, 1 s after picking it)
+- 02:36 ground recovery: above_ground_m=666.8, alt_m=714.8, lowest_ahead_m=93.69, vz=-123.7
+- 02:56 ground recovery: above_ground_m=371.1, alt_m=438.8, lowest_ahead_m=172.7, vz=-108.3
+- 02:58 destroyed OptionalAirBase12_GasTank  (3 missiles, 39 s after picking it)
+- 03:09 destroyed Optional9_Heli3  (3 missiles, 11 s after picking it)
+- 03:29 ground recovery: above_ground_m=657, alt_m=717.5, lowest_ahead_m=242.1, vz=-129.3
+- 03:47 destroyed Optional9_Heli4  (4 missiles, 39 s after picking it)
+- 04:11 destroyed Optional9_Heli6  (3 missiles, 24 s after picking it)
+- 04:42 destroyed Optional9_Heli5  (3 missiles, 31 s after picking it)
+- 04:48 ground recovery: above_ground_m=449.5, alt_m=592.1, lowest_ahead_m=219.4, vz=-132.3
+- 04:51 destroyed OptionalAirBase2_Radar  (3 missiles, 9 s after picking it)
+- 04:56 ground recovery: above_ground_m=537, alt_m=607.5, lowest_ahead_m=174.5, vz=-99.5
+- 04:58 destroyed OptionalAirBase3_Radar  (4 missiles, 8 s after picking it)
+- 05:02 ground recovery: above_ground_m=531.6, alt_m=592.9, lowest_ahead_m=222.5, vz=-97.97
+- 05:37 ground recovery: above_ground_m=848.4, alt_m=959.5, lowest_ahead_m=633.5, vz=-200.3
+- 05:41 destroyed AirBaseNPC04_silo2  (9 missiles, 43 s after picking it)
+- 05:44 ground recovery: above_ground_m=325.8, alt_m=395.1, lowest_ahead_m=193.2, vz=-48.07
+- 05:49 destroyed AirBaseNPC04_silo1  (1 missiles, 8 s after picking it)
+- 05:52 destroyed OptionalAirBase16_WatchTower  (2 missiles, 3 s after picking it)
+- 06:17 ground recovery: above_ground_m=809.8, alt_m=884.9, lowest_ahead_m=-285.6, vz=-183.2
+- 06:20 destroyed OptionalGroundTarget_AirBase1  (3 missiles, 29 s after picking it)
+- 06:23 ground recovery: above_ground_m=398.9, alt_m=470.6, lowest_ahead_m=176, vz=-65.38
+- 06:25 destroyed OptionalAirBase17_WatchTower  (4 missiles, 5 s after picking it)
+- 06:48 ground recovery: above_ground_m=589.7, alt_m=657.9, lowest_ahead_m=172.4, vz=-116.4
+- 06:49 destroyed OptionalGroundTarget_AirBase2  (3 missiles, 24 s after picking it)
+- 07:00 ground recovery: above_ground_m=450.5, alt_m=607.5, lowest_ahead_m=80.58, vz=-58.01
+- 07:07 destroyed GroundTarget1_7_Radar  (1 missiles, 18 s after picking it)
+- 07:08 ground recovery: above_ground_m=455.9, alt_m=702.9, lowest_ahead_m=126.9, vz=-96.22
+- 07:28 ground recovery: above_ground_m=359.5, alt_m=475.5, lowest_ahead_m=87.39, vz=-48.12
+- 07:34 ground recovery: above_ground_m=489.3, alt_m=625.9, lowest_ahead_m=80.47, vz=-91.99
+- 07:36 destroyed Optional4_APC  (5 missiles, 28 s after picking it)
+- 07:55 ground recovery: above_ground_m=386.8, alt_m=467.8, lowest_ahead_m=94.25, vz=-64.63
+- 07:58 destroyed GroundTarget1_2_Radar  (3 missiles, 22 s after picking it)
+- 08:03 ground recovery: above_ground_m=522.7, alt_m=580.6, lowest_ahead_m=92.24, vz=-93.75
+- 08:05 destroyed AAGun_Attack_Dummy2  (4 missiles, 7 s after picking it)
+- 08:28 ground recovery: above_ground_m=604.5, alt_m=691.4, lowest_ahead_m=251, vz=-128.8
+- 08:30 destroyed GroundTarget1_3_Radar  (3 missiles, 25 s after picking it)
+- 08:34 ground recovery: above_ground_m=367.7, alt_m=412.5, lowest_ahead_m=97.11, vz=-42.15
+- 08:38 destroyed GroundTarget1_4_Radar  (2 missiles, 9 s after picking it)
+- 08:55 ground recovery: above_ground_m=571.8, alt_m=766.1, lowest_ahead_m=118.8, vz=-97.88
+- 09:08 ground recovery: above_ground_m=494.5, alt_m=621.1, lowest_ahead_m=136.7, vz=-82.16
+- 09:13 destroyed Optional3_APC  (3 missiles, 34 s after picking it)
+- 09:13 missile warning: level=near
+- 09:13 missile fired at us by AirTarget1_1 from 1567 m (infrared)
+- 09:14 break turn: missile 1499 m away, impact in 3.9 s
+- 09:14 ground recovery: above_ground_m=294.4, alt_m=436.1, lowest_ahead_m=293.8, vz=-20.17
+- 09:14 break turn: missile 1343 m away, impact in 3.8 s
+- 09:15 flare: dist_m=949.4, missile=wp_msl_C_0, reason=tracker, tgo_s=1.963
+- 09:15 that missile lost its lock at 935 m
+- 09:19 missile from AirTarget1_1 gone after 5 s, closest 947 m
+- 09:22 destroyed AirTarget1_1  (3 missiles, 10 s after picking it)
+- 09:33 destroyed AirTarget1_2  (7 missiles, 10 s after picking it)
+- 09:53 ground recovery: above_ground_m=393.1, alt_m=563.9, lowest_ahead_m=144.7, vz=-47.98
+- 09:56 destroyed GroundTarget1_5_Radar  (3 missiles, 24 s after picking it)
+- 10:16 ground recovery: above_ground_m=708.6, alt_m=791.3, lowest_ahead_m=217.2, vz=-146.4
+- 10:34 ground recovery: above_ground_m=473.4, alt_m=598.4, lowest_ahead_m=135.7, vz=-55.94
+- 10:39 destroyed AAGun_Attack_Dummy3  (3 missiles, 43 s after picking it)
+- 10:39 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2918 m)
+- 10:41 weapon switch to standard missiles (no longer: beyond standard missile range, target 1799 m)
+- 10:51 destroyed AirTarget2_1  (10 missiles, 12 s after picking it)
+- 10:57 destroyed AirTarget2_2  (3 missiles, 6 s after picking it)
+- 11:12 ground recovery: above_ground_m=346, alt_m=525.6, lowest_ahead_m=143, vz=-59.46
+- 11:15 destroyed Optional6_APC  (3 missiles, 18 s after picking it)
+- 11:19 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9495 m)
+- 11:25 destroyed AirTarget3_2  (5 missiles, 10 s after picking it)
+- 11:32 destroyed AirTarget3_1  (6 missiles, 7 s after picking it)
+- 11:41 destroyed GroundTGT_c17g_38  (7 missiles, 9 s after picking it)
+- 11:47 weapon switch to standard missiles (no longer: beyond standard missile range, target 1796 m)
+- 11:48 destroyed GroundTGT_c17g_3  (6 missiles, 7 s after picking it)
+- 11:48 phase cleared: MissionPhase_01
+- 11:49 ground recovery: above_ground_m=474.3, alt_m=547.2, lowest_ahead_m=258.5, vz=-95.82
+- 11:51 destroyed OptionalAirBase1_ControlTower  (1 missiles, 3 s after picking it)
+- 12:01 frozen
+- 12:11 phase start: MissionPhase_02
+- 12:13 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9500 m)
+- 12:26 missile fired at us by UAV1_3 from 2058 m (infrared)
+- 12:26 break turn: missile 2036 m away, impact in 2.2 s
+- 12:26 missile warning: level=near
+- 12:26 flare: dist_m=1727, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=1.542
+- 12:27 that missile lost its lock at 961 m
+- 12:28 weapon switch to standard missiles (no longer: beyond standard missile range, target 1395 m)
+- 12:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1801 m)
+- 12:33 weapon switch to standard missiles (no longer: beyond standard missile range, target 1799 m)
+- 12:37 missile from UAV1_3 gone after 11 s, closest 970 m
+- 12:38 destroyed UAV1_1  (15 missiles, 27 s after picking it)
+- 12:38 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 5687 m)
+- 12:45 destroyed UAV1_4  (4 missiles, 7 s after picking it)
+- 12:54 weapon switch to standard missiles (no longer: beyond standard missile range, target 1794 m)
+- 13:06 ground recovery: above_ground_m=1216, alt_m=1366, lowest_ahead_m=592.9, vz=-295.5
+- 13:26 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1800 m)
+- 13:27 destroyed UAV1_5  (19 missiles, 42 s after picking it)
+- 13:33 destroyed UAV1_2  (4 missiles, 5 s after picking it)
+- 13:37 weapon switch to standard missiles (no longer: beyond standard missile range, target 1791 m)
+- 13:45 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1800 m)
+- 13:50 weapon switch to standard missiles (no longer: beyond standard missile range, target 1786 m)
+- 13:55 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1801 m)
+- 13:57 weapon switch to standard missiles (no longer: beyond standard missile range, target 1798 m)
+- 14:13 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1801 m)
+- 14:15 destroyed UAV1_3  (26 missiles, 42 s after picking it)
+- 14:15 weapon switch to standard missiles (nothing selected; the special weapon hides some targets, target -1 m)
+- 14:15 phase cleared: MissionPhase_02
+- 14:34 ground recovery: above_ground_m=464.2, alt_m=533.2, lowest_ahead_m=190, vz=-99.71
+- 14:49 **mission accomplished**
+- 14:52 how well enemy positions 2 s ahead were predicted: route planes: 4611 checks, the guess used was off by 34 m on average (each way: route 7 m, straight 45 m; now using straight); steady planes: 552 checks, the guess used was off by 43 m on average (each way: full turn 43 m, half turn 43 m, straight 44 m; now using full turn); turning planes: 1261 checks, the guess used was off by 54 m on average (each way: full turn 92 m, half turn 52 m, straight 81 m; now using straight)
+
+Files: events.jsonl (every event), attempt*-flight-*.csv (the plane ten times a second), pilot.log (the pilot's commentary), pictures\, saves-check.txt.

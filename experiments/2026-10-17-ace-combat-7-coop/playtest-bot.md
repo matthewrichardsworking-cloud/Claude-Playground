@@ -16,11 +16,16 @@ section 10). It builds on what the workbench already proved (sections 5, 7 and 9
 - **To run a test:** `python tools\playtest.py run playtests\orders\m01-casual.yaml` (an
   example order, every option explained in it). Keep the game window in front while it
   runs.
-- **Next (your request, 18 Oct 13:30):** smarter combat. Choose and use special weapons;
-  track incoming missiles and work out their paths; predict enemy paths and behaviour
-  from the game's own data (each missile's speed and turn limit, each enemy's speed and
-  turn limits, its current AI state and the route it is scripted to fly) plus live
-  readings, and act on the predictions as they update.
+- **Phase 2 (your request, 18 Oct 13:30), built the same afternoon** (workbench section
+  11): a tracker (`awareness.lua`) that follows every enemy and every missile, reads their
+  limits, AI state and scripted routes from the game, measures the real ground with line
+  traces, predicts where enemies will be (picking its own method from how well each one
+  has been doing) and works out each incoming missile's time to impact and miss distance.
+  On it: flares and break turns timed from the tracker, turning into an enemy on our tail,
+  the LAAM for targets 2-10 km away, attack runs on ground targets. Results: Mission 01
+  on **Ace** completed at the first attempt with no damage; **Mission 02 on Hard
+  completed**, 44 kills, one hit taken, **8 of 8 enemy missiles aimed at the bot lost
+  their lock**.
 - **Changed from the design:** the pilot flies with the **keyboard**, pressed from inside the
   game by a small C++ add-on (`CoopPadMod`), not by writing the plane's control values (the
   game overwrites those every frame) and not with a virtual gamepad (Steam's overlay keeps

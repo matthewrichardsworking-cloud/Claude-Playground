@@ -780,6 +780,108 @@ by ending the process (to install an add-on, to restart the menu route, or by th
 the end of a test). Two of them flew Mission 01 to the end. `tools\compare-saves.ps1` after
 each: no change to your real save folder.
 
+## 11. The bot's second phase: seeing the fight (18 Oct, 13:30 onwards)
+
+Your request at 13:30: special weapons, the paths of incoming missiles, and enemy paths and
+behaviour from the game's own data plus live readings, acted on in real time. And at 14:20:
+test it on Mission 02 (aggressive enemies, ground targets, still short).
+
+**The new piece: `mods\CoopPilotMod\Scripts\awareness.lua`**, loaded by the pilot. It keeps
+a track of every enemy plane and every missile (recent positions, velocity, turn rate) and
+reads their limits from the game:
+
+- **Weapons, from their class defaults** (the values the game loads from its data files; no
+  game file is unpacked): the Typhoon's standard missile locks within 2 km and 32.5° of the
+  nose, turns at up to 40, carries two at a time and reloads in 5.5 s; its LAAM locks at up
+  to 10 km within 27.5°, air targets only, double damage, two at a time, 8 s reload. On
+  Casual the lock ranges are larger (the game has separate easy values).
+- **Enemy planes**: top and lowest speed, turn and acceleration limits
+  (`AIPlane:GetMaxSpeed`, `GetTurnSpeed`, ...), whether the mission counts them, **their AI
+  state** (the game's `EAIState`: return to area, avoid obstacle, return to formation,
+  special action, evade an attack, escape a pursuer, provoke, move away, pursue target,
+  follow formation, patrol, idle), **who they are tracking**, and **the route a scripted
+  plane is set to fly** (a curve in its `AIPathComp`; Mission 01's second bomber has a
+  107 km one).
+- **Enemy missiles**: speed, acceleration, turn limit, homing delay, fuse radius, the two
+  warning radii (Mission 01's MiG missile: 2 km "near", 800 m "very near"), homing type
+  (active radar, infrared, semi-active), and which plane it is homing on.
+- **The ground**: line traces down from the plane and from where it will be in 1 to 4
+  seconds, so ground safety uses real clearance. The altitude the game reports is height
+  above the sea.
+
+**Predictions.** Where an enemy will be: along its scripted route when it is following one,
+otherwise a steady turn at the turn rate it shows now, capped at its limit. The pilot aims
+at the meeting point (for its own speed when far, the gun's when close) and scores itself:
+every half second it predicts each enemy 2 s ahead and, 2 s later, measures how far off it
+was, per method, against a plain straight line. For each missile homing on us: distance,
+time to impact, the miss distance if nothing changes, and how fast the line of sight
+turns.
+
+**Behaviour built on it.**
+
+- **Missiles at us**: a flare about two seconds before impact (or inside the missile's own
+  "very near" radius), and from four seconds out a break turn across the missile's line
+  of approach (the turn it has to match hardest), with the high-G turn key for the last two
+  and a half seconds. The game's own warning remains the fallback.
+- **An enemy on our tail** (its AI tracking us, behind within 2 km): turn into it.
+- **Special weapon**: switch to the LAAM for a target beyond the standard missile's lock
+  range and inside the LAAM's; switch back when the target is close, out of range, or the
+  LAAM is empty. A multi-lock special would be armed with two or more enemies in its cone,
+  a ground-only special for a ground target.
+- **Ground targets**: come in no lower than 600 m above the ground, dive no steeper than
+  25°, pull out by 900 m.
+- **Targets the game never lets you select** (Mission 02's radar): skipped after 10
+  seconds close by.
+- Real launches are counted from the ammunition (limited from Normal up).
+
+**Tests so far.**
+
+| Run | Result |
+|---|---|
+| Mission 01, Hard, 13:50 (tracker watching only) | Completed, 18 kills, no damage. One MiG missile at us from 1.9 km; the flare at 790 m broke its lock at once. |
+| Mission 01, **Ace**, 14:03 (new tactics) | **Completed at the first attempt in 8.8 minutes** (Casual took 10.4: the LAAM takes targets at range), no damage. The LAAM was armed at 9.5 km each time and ran dry near the end; the bot noticed and went back to standard missiles. No enemy fired at us. |
+| Mission 02, Hard, 14:16 | **Failed.** Two helicopter missiles (infrared, from 4 km): break turns from 3.5 s out, flares at 1.6 s and 1.0 s, both lost their lock (one 216 m away), no damage. But then five minutes circling a radar the game never offered as a target, diving at it and pulling out among hills: four 24-point hits at 190-340 m above the sea (terrain scrapes; the hills are higher than the old sea-level floor), then it flew into the ground. The runner's retry also failed (it pressed Enter during the "Mission failed" sequence, before the retry menu). Led to the ground sensor, the unselectable-target rule, the ground-attack approach and a patient retry. |
+| Mission 02, Hard, 14:37 | Stopped by hand after 12 minutes: **no damage at all** (the ground sensor worked: it reads its real clearance, e.g. 430 m above ground at 505 m above the sea), but stuck at 7 kills over the enemy airbase, marking building after building "unselectable". |
+| Mission 02, Hard, 14:55 | **Completed** (22 minutes; the session loaded three fixes into the running attempt and let it run past its 20-minute limit). 44 kills, 76 missiles (30 of them LAAMs), one 24-point hit. **Eight enemy missiles were aimed at the bot and all eight lost their lock** (break turn from about 4 s out, flares at about 2 s). Report: `playtests\2026-10-18_1451_m02_hard\report.md`. |
+
+**What Mission 02 taught, and the fixes:**
+
+1. **The LAAM hides ground targets.** It is air-only, and while it is armed the game offers
+   only air targets for selection. The bot had switched to it for helicopters and never
+   switched back, so for minutes the airbase was invisible to its targeting. Now: with
+   nothing selected it returns to standard missiles, and it never arms the LAAM for a
+   ground target.
+2. **Ground objects need attack runs.** A building close below can't be brought onto the
+   nose by circling. The bot now flies them as a pilot does: run in from 3.5 km at 600 m
+   above the ground, a dive of at most 25°, pull out at 700 m, extend (fly away and climb)
+   to 3.5 km, come back. It also keeps its chosen target instead of switching to whatever
+   is nearest every two seconds.
+3. **The heights are above the sea.** Over hills that is not the clearance; the line-trace
+   ground sensor replaced it (no terrain hits after it went in).
+4. **The predictor's first scores were honest bad news.** 2 s ahead, over 6,000 checks:
+   planes on scripted routes 11 m off (a straight line: 9 m); turning planes 159 m off (a
+   straight line: 134 m). Mission 02's enemy pilots keep changing how hard they turn, so
+   carrying today's turn rate 2 s forward overshoots. The predictor now makes several
+   guesses for every check (straight on, half the turn rate, the full turn rate, the route)
+   and uses whichever has the smallest running error for that kind of flying, so it picks
+   its own method from what the enemies actually do.
+
+**The validation run, untouched by the session (15:19 to 15:38):** `python tools\playtest.py
+run playtests\orders\m02-hard-validation.yaml` from a cold start: **Mission 02 on Hard
+completed at the first attempt in 14.9 minutes, 43 kills, no damage at all**, then the
+copy closed and your saves checked (unchanged). Report:
+`playtests\2026-10-18_1519_m02_validation\report.md`.
+
+- **Six enemy missiles aimed at the bot, six lost their lock**: four helicopters fired
+  almost together from about 4.5 km, and three of those were broken off only 214-239 m
+  away; a fighter's from 1.6 km and a drone's from 2.1 km broke off at about 940 m.
+- **Predictions 2 s ahead** (7,400 checks): for turning planes **half the current turn
+  rate was off by 52 m on average, against 81 m for a straight line and 92 m for the full
+  turn rate**, and the guesses actually used averaged 54 m, close to the best. For planes
+  on scripted routes the route guess averaged 7 m, but the self-choosing used the straight
+  line too often (34 m): that group mixes slow ground vehicles with fast planes and should
+  be split by speed. Not changed yet (the code stays as validated).
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight
