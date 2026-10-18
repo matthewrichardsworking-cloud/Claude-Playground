@@ -19,8 +19,20 @@ Newest first. One short entry per session.
   app from inside it. A git clone of REA lacks the Windows native parts; the npm
   package has them.
 - Cloned Co-op Anything next to them; notes in
-  `experiments/2026-10-17-coop-anything/`. Its MCP server needs Python, and the
-  PC has no working Python right now (the old `python-env` lost its base install).
+  `experiments/2026-10-17-coop-anything/`. Its MCP server still needs PyYAML
+  and registering.
+- Python: the owner's PC Guardian session had swapped the end-of-life Python 3.10
+  for 3.13.15 (winget), leaving 3.10's packages behind. This session installed
+  Python 3.15.0 for all users from python.org (checksum and signature checked);
+  it's now the default `python`, with 3.13 kept because PyTorch has no 3.15 builds
+  yet. The 3.10 leftovers, pip's cache and the dead `Claude Tools\python-env`
+  went to the Recycle Bin (13.7 GB). Two venvs still point at the missing 3.10:
+  JapaneseTutor's (can be rebuilt) and stable-diffusion-webui's (needs 3.10).
+- Watch out: inside the Store build of the Claude app, new files under AppData
+  (except Temp) get redirected into the app's private storage, where other
+  programs can't see them. Install for all users, and keep virtual environments
+  in normal folders. The Recycle Bin was over its size limit; check it before
+  recycling anything big, or Windows quietly purges the oldest items.
 
 ## 2026-10-17: Ghidra notes and home setup guide
 

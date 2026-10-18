@@ -55,12 +55,13 @@ there. See the LOG entry for 2026-10-17.
 
 ## Not done yet
 
-- **The MCP server isn't hooked up.** It needs Python, and the PC has no working
-  Python right now. Typing `python` only offers the Microsoft Store. The private
-  Python in Claude Tools (`python-env`, made 12 Oct for the FEAR work) points at
-  a Python 3.10 install that's no longer on the PC, so it doesn't start either.
-  The fix: install Python 3.11 or newer, `pip install pyyaml`, delete the
-  `.pyc` files, then register the server with Claude Code.
+- **The MCP server isn't hooked up.** Python is sorted out now (see the LOG
+  entry): Python 3.15.0 is the default, with 3.13 alongside, and the two `.pyc`
+  files are deleted from the PC's copy. What's left is installing PyYAML and
+  registering the server with Claude Code. PyYAML 6.0.3 has no ready-made
+  Windows package for 3.15 yet, so either let pip build its plain-Python
+  version or run the server on 3.13. Put PyYAML in a virtual environment in a
+  normal folder, not `pip install --user` (see the LOG note on AppData).
 - **Opening Claude Code inside the coop-anything folder** would load its skills,
   and Claude Code would offer the MCP server from the folder's `.mcp.json`.
 - **No game picked yet.** Ace Combat 7 is the only one researched so far, and
