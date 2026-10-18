@@ -11,7 +11,7 @@ evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 bel
 | 1. Does the copy start from its own folder? | **Yes, but only when started the way Steam starts games.** Started plainly, it hands itself to Steam and Steam starts your *real* install. With Steam's app label set for that one launch, the copy itself runs and reaches the main menu. |
 | 2. Can two copies run at once? | **Not yet.** Both start and reach the title screen, but the second one crashed when it tried to create save data. To be retried now that each copy has its own save folder. |
 | 3. Does UE4SS load, open its console and write the object dump? | **Yes, all three.** It found Unreal Engine 4.18 within a second; the console opened; the dump (the game's catalogue of classes and functions) is 30.9 MB. |
-| 4. Can the copy keep its saves and settings away from your real ones? | **Yes.** Started with `tools\start-copy.ps1`, the copy now reads and writes `C:\AC7-Coop-Game\UserProfile\...` only. Two title-screen runs wrote 10 settings files there and nothing in your real folder (checked by checksums). The final proof, a run into a mission that quits through the menu, still needs you at the keyboard. |
+| 4. Can the copy keep its saves and settings away from your real ones? | **Yes, proved.** Started with `tools\start-copy.ps1`, the copy reads and writes `C:\AC7-Coop-Game\UserProfile\...` only. Two title-screen runs and then a full run with you (a mission, then "save and end" through the menu) wrote the save and settings there and nothing in your real folder, checked by checksums every time. |
 
 ## What's where
 
@@ -25,6 +25,7 @@ evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 bel
 | The earlier Mod Loader and mission-script tools | `inherited\` (see [inherited/LEFT-OUT.md](inherited/LEFT-OUT.md)) |
 | Object dump and UE4SS log from the test | `dumps\2026-10-17_ue4ss-title-screen\` |
 | The second copy's crash dump | `dumps\2026-10-17_second-copy-crash\` |
+| The crash dump from UE4SS crashing as the copy closed after the mission run | `dumps\2026-10-17_mission-run-exit-crash\` |
 | Back up saves | `tools\backup-saves.ps1` |
 | Start the copy (backs up saves first, gives the copy its own save folder) | `tools\start-copy.ps1` |
 | Check your real save folder against the latest backup | `tools\compare-saves.ps1` |
@@ -161,11 +162,21 @@ game never sees the copy's. Add `-NoSeed` to make an empty folder instead.
 - The copy's rewritten settings file is identical to yours, so it read its own copy and
   wrote it back as the game does on every start.
 
-**Still to prove, with you at the keyboard:** start the copy, press Enter at the title
-(it should say it is loading save data and show your campaign progress), start any
-mission, fly for half a minute, quit back to the menu and quit the game through the
-menu. Then `compare-saves.ps1` must say "No change", and the copy's own save file
-(`UserProfile\...\SaveGames\76561198126172633\ACE7Save.sav`) should have a new time.
+**Proved with you at the keyboard, 22:54 to 23:02.** You pressed Enter at the title,
+flew a mission and quit through the menu. The copy wrote its save at 23:02:46 into its
+own folder (`UserProfile\...\SaveGames\76561198126172633\ACE7Save.sav`, now 685,197
+bytes, the size the game always writes at "save and end") and rewrote its settings
+files there. Your real folder: all 13 files identical to the backup taken just before
+(`backups\2026-10-17_2254`), nothing written there during the run, and Steam Cloud
+reported "un-modified file", so it uploaded nothing. **The copy can no longer touch your
+real save.**
+
+One wrinkle from that run: two seconds after saving, while the game was closing, it
+crashed, and Windows logged the fault inside `UE4SS.dll`, the modding add-on, not in the
+game itself. Your saves were already on disk by then, and the earlier crash of the second
+copy was in the game's own code, so this is a different, harmless thing: UE4SS sometimes
+trips while a game shuts down. If a "stopped working" box appears when you quit the copy,
+that is what it is. The dump is in `dumps\2026-10-17_mission-run-exit-crash\`.
 
 **Steam Cloud, in plain words.** Steam itself, not the game, copies your save to Steam
 Cloud. Its log shows it checks one file, your real
@@ -210,16 +221,15 @@ changes the real file, so Steam finds nothing to upload after a copy run.
    first and gives the copy its own save folder). Never start `Ace7Game.exe` in the copy
    any other way, and never with `-SharedUserFolder` unless the test is about the real
    folder and stays on the title screen.
-2. Going past the title screen in the copy is now safe in principle. Until the mission
-   run above has been done once, run `tools\compare-saves.ps1` after every run anyway and
-   expect "No change".
+2. Going past the title screen in the copy is now safe: the copy saves only to its own
+   folder. `tools\compare-saves.ps1` is there whenever you want to check ("No change").
 3. A second copy is started with `-Second` and gets its own folder (`UserProfile2`) and a
    smaller window. Two copies remain a test until the second one gets past "creating
    save data" without crashing.
 
 ## Must-do before step 1
 
-- **Own save folder for the copy: done, final proof pending** (the mission run above).
+- **Own save folder for the copy: done and proved** (section 4).
 - **Two copies at once:** retry with `-Second`.
 - Not tried yet: plan.md's step 0 test 4 (try a few developer commands offline, such as
   `SNL_ArrangeWindows`). UE4SS can now reach them.

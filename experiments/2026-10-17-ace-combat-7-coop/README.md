@@ -3,8 +3,8 @@
 **Status:** research done, plan made and the workbench set up (four sessions, 17 Oct
 2026): a plain game copy with UE4SS that starts on its own, dumps the game's
 catalogue, and keeps its saves and settings in its own folder so it can't touch the
-owner's real save (proved at the title screen by checksums; a run into a mission is
-still to be done). Two copies at once don't work yet. Nothing co-op built yet.
+owner's real save (proved by checksums after a mission run that quit through the
+menu). Two copies at once don't work yet. Nothing co-op built yet.
 
 The question: can Ace Combat 7: Skies Unknown (PC, Steam, 2019) be played with a
 friend against computer-controlled enemies, ideally the story campaign? Researched with

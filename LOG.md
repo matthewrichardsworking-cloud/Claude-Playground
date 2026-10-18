@@ -12,15 +12,19 @@ Newest first. One short entry per session.
   Checked first with a small PowerShell test, then two title-screen runs: ten settings
   files written there, nothing in the real folder, SHA-256 of the real folder equal to
   the backup both times. First launch seeds the folder with the owner's settings and
-  save (read only).
+  save (read only). Then proved with the owner flying a mission and quitting through
+  the menu: the save landed in the copy's folder, the real folder's 13 files were
+  byte-for-byte unchanged, Steam Cloud uploaded nothing.
 - The game ignores Unreal's own `-UserDir=` switch (tested), like `-windowed` before, so
   command-line options are a dead end for this game.
 - Steam itself syncs the real save on every exit of anything labelled app 502500; at
   22:34 it uploaded the restored original save, so Steam Cloud is back to the 10 Oct
   file.
-- Still needed with the owner at the keyboard: a run into a mission that quits through
-  the menu (then `tools\compare-saves.ps1` must say "No change"), and the two-copies
-  retry with `-Second` (each copy now has its own folder). Details in
+- UE4SS crashed (fault in `UE4SS.dll`) while the game was closing after that run, two
+  seconds after the save was written. Harmless for saves; expect a "stopped working" box
+  on quitting now and then. Dump kept in the project's `dumps\` folder.
+- Still needed: the two-copies retry with `-Second` (each copy now has its own folder;
+  the second one gets a smaller window). Details in
   `experiments/2026-10-17-ace-combat-7-coop/workbench.md`, section 4.
 
 ## 2026-10-17: Ace Combat 7 co-op, workbench (step 0)
