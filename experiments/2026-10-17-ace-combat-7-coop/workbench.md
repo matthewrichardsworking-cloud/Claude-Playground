@@ -512,6 +512,146 @@ main menu (Quit Game, Yes) at 07:08:33, the copy's own save written in its own f
 `tools\compare-saves.ps1` afterwards: no change, all 13 files of your real folder have
 the same SHA-256 as the backup. Nothing was written into the game's memory or files.
 
+## 9. A C++ add-on gives the scripts a network socket, and the puppet flies from live packets (18 Oct, 06:45 to 07:45)
+
+The second thing your addendum allowed: a C++ add-on for UE4SS. UE4SS's scripts (Lua)
+cannot open a network connection, and the co-op plan needs exactly that: your friend's
+plane positions arriving live instead of being read from a file (section 7). So a small
+piece had to be written in C++, the language UE4SS itself is written in, and compiled
+into a DLL that UE4SS loads next to the scripts. Done, proved at the title screen, and
+the puppet from section 7 now flies from live packets too.
+
+**What was installed, and where.** Details with sizes and checksums in
+[downloads\installed-tools.md](downloads/installed-tools.md); the short version:
+
+- Microsoft's C++ compiler (MSVC 14.44, the one in Visual Studio 2022 17.14) and the
+  Windows 11 SDK, in `C:\AC7-Coop-Tools` (1.3 GB). The normal installer needs the
+  blue administrator prompt that only you can click and you were away, so a script
+  (`tools\fetch-msvc-portable.py`) downloaded the same packages the installer would,
+  from Microsoft's own download servers, checked every file against the checksum in
+  Microsoft's package list, and unpacked them into that folder. Nothing was registered
+  with Windows: deleting the folder removes it. Every compiler program and installer
+  carries a valid Microsoft digital signature (checked). The installer itself was
+  downloaded too but never run (`downloads\vs_BuildTools\`), in case you prefer the
+  standard way later.
+- The UE4SS source code, at the exact version in the copy, in `cpp\RE-UE4SS` (35 MB),
+  and a small text-formatting library it needs, in `cpp\third\fmt` (4 MB). Both are
+  plain git clones from GitHub, no account needed.
+- Nothing else: CMake, xmake and Rust, which UE4SS's own build uses, turned out not to
+  be needed (below). Python 3.15 and Git were already here.
+
+**Which UE4SS the copy runs** ([cpp\README.md](cpp/README.md) has the full story). The
+copy's UE4SS log says "v3.0.1 Beta, Git SHA 48e7edfe, LessEqual421 Shipping, MSVC".
+That commit is in the public UE4SS repository (1 February 2026, on its main branch),
+and the Playmore build in the copy was made from it on 24 February with MSVC 14.44, so
+the matching source and the matching compiler were both available. "LessEqual421" is
+UE4SS's flavour for games on old Unreal versions (AC7 is 4.18), and an add-on has to be
+built with the same flavour and the same C++ runtime, which these were.
+
+**How the add-on was built, and why not the documented way.** UE4SS's guide says: clone
+UE4SS, build the whole of it together with your add-on. Two things in the repository
+rule that out here: its Unreal headers live in a *private* repository that only opens to
+a GitHub account linked to an Epic Games account (the rules say to ask you before
+linking accounts, and it is not needed for this), and building UE4SS itself also needs
+the Rust toolchain. An add-on does not need UE4SS rebuilt, though. It needs UE4SS's
+headers (the public part is enough for a socket add-on), the right compiler settings
+(copied from UE4SS's own build files), and a list of the functions inside the copy's
+`UE4SS.dll` for the linker, which `cpp\make-implib.py` reads out of that very DLL
+(4,087 functions). One header that drags in the private ones was replaced by a copy of
+just the few lines needed (`cpp\shim`). `cpp\build.ps1` does all of it and, with
+`-Install`, puts the result into the copy. A check afterwards confirmed that every
+function the new DLLs call in `UE4SS.dll` exists there under exactly that name.
+
+**Proof the toolchain matches: HelloMod.** UE4SS's guide has a hello-world example;
+the two example add-ons that ship with UE4SS need the private headers, so the guide's
+example was built instead (`cpp\HelloMod`). Installed as `Mods\HelloMod\dlls\main.dll`
+with a line in `mods.txt`, the copy's log at 07:10:07 says:
+
+    Starting C++ mod 'HelloMod'
+    [HelloMod] HelloMod says hello (built Oct 18 2026 07:09:43)
+    [HelloMod] Unreal is initialised; the mod is alive inside the game
+
+**CoopNetMod: the socket.** `cpp\CoopNetMod` opens a UDP socket on this PC's local
+address (127.0.0.1, port 27777) when UE4SS starts it, listens on its own thread, keeps
+the newest 64 packets with their arrival times, and gives every Lua script four
+functions: `CoopNet_Count()` (packets so far), `CoopNet_Latest()` (newest packet's
+text, its number, and its age in milliseconds), `CoopNet_Since(n)` (the next packet
+after number n, so a script can fetch everything it has not seen yet), and
+`CoopNet_Status()`. A packet is one line of text, `time,x,y,z,pitch,yaw,roll`, the same
+fields the recorder writes. It never sends anything and nothing outside this PC can
+reach it. `tools\coop-net-sender.py` plays a recorded flight into that socket at 40
+packets a second, standing in for your friend's PC. UE4SS's Ctrl+P reload unloads and
+reloads the add-on cleanly (the socket closes and opens again).
+
+**Packet test at the title screen (07:11).** A one-screen script,
+`mods\CoopNetCheckMod`, prints the count once a second. With the sender running for 15
+seconds (601 packets sent, 40.1 a second), the log showed `+40 in the last second` every
+second, each newest packet 1 to 24 ms old when the script read it. That is the "done"
+condition of this task: an add-on built here loads in the copy, and a script in the game
+reads packets sent by a program on this PC.
+
+**The stretch goal: the puppet from live packets (07:23 to 07:40, SP Mission 01).**
+`CoopFlightLabMod` got a new key, **F11**, next to the existing ones: the same takeover
+as F4 (nearest active AI plane, its own AI off, invincible, speed matched, put in place
+every frame), but the positions come from the packets. The script plays 100 ms behind
+the newest packet so there is always a next sample to interpolate towards, keeps its
+playback clock from drifting against the feed, carries on along the last segment for up
+to a quarter second if packets stop, and starts afresh if the feed's clock jumps back.
+It logs the correction per frame and the delay, as F4 does. It took six runs to get
+right, and the detours are worth knowing:
+
+1. The first straight-line recording (`flight-…_003054.csv`, from the recorder's very
+   first try) has time stamps with whole-second resolution, so sent as a feed it moves
+   in one-second jumps (corrections of 1,500 units once a second). Only the later
+   recordings are usable as feeds; the turn recording (`…_010436.csv`) was used.
+2. `GetTimeSeconds`, the game clock the scripts use, costs about **20 ms per call**
+   from a script, and after a Ctrl+P reload inside a mission it stood still (two
+   readings 4 seconds apart gave the same value). The file replay (F4) survives that
+   because it reads the clock once per frame; the live script read it once per packet
+   and ground down to 10 frames a second with its playback clock frozen. The live
+   script now paces itself with the real-time clock (`os.clock`), which is what the
+   packets' times are in anyway. (The recorder still uses the game clock; worth
+   changing before the next recordings.)
+3. Re-using a plane that an earlier run had left with its AI off made it fly with a
+   dead engine, so the script had to move it the whole way each frame (18 units a
+   frame). A fresh plane fixed it.
+
+The clean run (07:38:51, an enemy F/A-18F as puppet, the 20-second turn recording fed
+at 40 packets a second, 804 packets):
+
+- **90 frames a second** handled, every one a new rendered frame, 0.2 ms of work each.
+- **Correction per frame 1 to 2.4 units** (10 to 24 cm) through the roll, the hard
+  pull and the roll-back, over the whole 20 seconds (the file replay in section 7
+  needed about 6 units a frame through the same manoeuvre at 40 frames a second).
+  Worst single correction 92 units, right after the first packet.
+- **Delay**: the puppet showed each position 99 ms after the packet arrived, by design
+  (the 100 ms buffer); the packets themselves were 1 to 22 ms old when read. So the
+  lag your friend would see is about 100 ms plus whatever the internet adds, and the
+  buffer can be made smaller once a real connection's jitter is known.
+- Speed matching followed the feed: the puppet's own engine ran at the feed's speed
+  (600 km/h straight, down to 430 in the pull, 670 after), estimated from the last
+  second of packets.
+- Pictures: `pictures\2026-10-18_live-puppet-turn-6s.png` shows the F/A-18F low on the
+  right, rolling, six seconds in; by 12 seconds the feed's pull had taken it out of the
+  chase camera's view (`…-12s.png`). The title-screen check and the first runs are in
+  `…_coopnet-title-screen.png` and `…_live-puppet-*.png`.
+
+**Still open:** the feed over a real network (two PCs: the sender runs on the other
+one, the add-on's listen address changes from 127.0.0.1 to the PC's own, a jitter
+buffer sized to the measured connection); sending the player's own positions out (the
+other direction of the same socket, a small addition to the add-on); and everything
+section 7 listed (missiles against the puppet, video).
+
+**Run and close.** The copy was started at 07:10:07 with `tools\start-copy.ps1` (backup
+`2026-10-18_0710`, all checksums matching), after the code-reading session (section 8)
+had finished with it. Title screen for the packet test, then SP Mission 01 as section 7
+describes (the SP briefing needed about 210 single Escape presses, three times the
+figure in section 7; the plane left the combat area once and was put back with "Retry
+from checkpoint"). Quit Mission, main menu, Quit Game at 07:44:01; the copy wrote its
+own save in its own folder (685,197 bytes). `tools\compare-saves.ps1` afterwards: no
+change, all 13 files of your real folder have the same SHA-256 as the backup. The
+in-use note was removed from the shared notes folder.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

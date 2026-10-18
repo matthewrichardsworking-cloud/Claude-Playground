@@ -7,6 +7,10 @@
 --   F8  print a status line to the UE4SS log: where the player plane is, how many AI
 --       planes exist, what the current map is
 --   F9  write the UE4SS object dump (the game's catalogue of classes and functions)
+--   F4  puppet: fly the nearest active AI plane along the newest recording (F3/F2: an
+--       unactivated plane), its own AI off, speed matched, teleported every frame
+--   F11 live puppet: the same, but from UDP packets arriving through the CoopNetMod C++
+--       add-on (tools\coop-net-sender.py sends a recording as packets), 18 Oct 2026
 --
 -- Never touches save files. Active in every copy that loads it.
 
@@ -109,6 +113,18 @@ local function status()
             line = line .. " | no player plane"
         end
         log(line)
+        -- clocks: which time sources work right now and how long each takes to read
+        local c0 = os.clock()
+        local ok1, t1 = pcall(function() return UEHelpers.GetGameplayStatics():GetTimeSeconds(UEHelpers.GetWorldContextObject()) end)
+        local c1 = os.clock()
+        local ok2, t2 = pcall(function() return UEHelpers.GetWorld().TimeSeconds end)
+        local c2 = os.clock()
+        local wname = "?"
+        pcall(function() wname = UEHelpers.GetWorld():GetFullName() end)
+        local ctxname = "?"
+        pcall(function() ctxname = UEHelpers.GetWorldContextObject():GetFullName() end)
+        log(string.format("clocks: GetTimeSeconds -> %s %s (%.1f ms); World.TimeSeconds -> %s %s (%.1f ms); os.clock %.3f; os.time %d; world %s; context %s",
+            tostring(ok1), tostring(t1), (c1 - c0) * 1000, tostring(ok2), tostring(t2), (c2 - c1) * 1000, os.clock(), os.time(), wname, ctxname))
         -- the twelve AI planes nearest the player, with how fast they move (0 = parked/unspawned)
         local rows = {}
         for _, a in ipairs(ai) do
@@ -376,6 +392,235 @@ local function toggleReplay()
     if not ok then log("replay start failed: " .. tostring(err)) end
 end
 
+-- Live puppet (F11): the same takeover as F4, but the positions come in over the network
+-- as UDP packets through the CoopNetMod C++ add-on (one text line per packet:
+-- time,x,y,z,pitch,yaw,roll; tools\coop-net-sender.py sends them). The script plays a
+-- little behind the newest packet (LIVE_DELAY) so there is always a next sample to
+-- interpolate towards, and logs the correction per frame and the delay, like F4 does.
+local live = nil
+local liveLoopTicks = 0        -- how often the 10 ms loop below fired (diagnostic)
+-- The live puppet is paced with os.clock() (real seconds, fine resolution), not with the
+-- game's own clock: GetTimeSeconds turned out to cost about 20 ms per call from a Lua
+-- script and to stand still after a script reload in a mission (18 Oct, run 4). The
+-- packets' own times come from the sender's clock, which is real time too.
+local function liveClock() return os.clock() end
+local LIVE_DELAY = 0.10        -- seconds behind the newest packet
+local LIVE_EXTRAP_MAX = 0.25   -- how far past the newest packet to extrapolate before holding still
+local UNITS_PER_S_PER_KMPH = 2.78
+
+local function parsePacket(line)
+    local t, x, y, z, pitch, yaw, roll = line:match("^([^,]+),([^,]+),([^,]+),([^,]+),([^,]+),([^,]+),([^,]+)")
+    if not t then return nil end
+    local row = { t = tonumber(t), x = tonumber(x), y = tonumber(y), z = tonumber(z),
+                  pitch = tonumber(pitch), yaw = tonumber(yaw), roll = tonumber(roll) }
+    if not (row.t and row.x and row.y and row.z and row.pitch and row.yaw and row.roll) then return nil end
+    return row
+end
+
+local function lerpAngle(a, b, f)
+    local d = (b - a + 180) % 360 - 180
+    return a + d * f
+end
+
+-- Pull every packet the script has not seen yet into the buffer; drop rows well behind the playback point.
+local function liveDrain(r)
+    local got = 0
+    while true do
+        local line, seq, age = CoopNet_Since(r.lastSeq)
+        if not line then break end
+        r.lastSeq = seq
+        local row = parsePacket(line)
+        if row then
+            row.seq = seq
+            row.arrivedAt = liveClock() - age / 1000
+            local last = r.rows[#r.rows]
+            if last and row.t < last.t - 0.5 then
+                -- the feed's clock jumped back (a recording started again): begin afresh
+                log(string.format("live: feed time jumped from %.1f back to %.1f, restarting the playback clock", last.t, row.t))
+                r.rows = {}
+                r.offset = nil
+                r.playT = nil
+                r.restarts = (r.restarts or 0) + 1
+            end
+            r.rows[#r.rows + 1] = row
+            got = got + 1
+        else
+            r.badPackets = r.badPackets + 1
+        end
+    end
+    if r.playT then
+        while #r.rows > 2 and r.rows[2].t < r.playT - 1.0 do table.remove(r.rows, 1) end
+    end
+    return got
+end
+
+local function liveSummary(r)
+    local n = math.max(1, r.lagFrames or 0)
+    return string.format("%d frames in %.1f s, %d packets used (%d unreadable), correction per frame %.1f units (worst %.1f); while the feed ran (%d frames): delay behind newest packet %.0f ms on average (%.0f min, %.0f max), packet age when used %.0f ms; %d frames past the end of the feed, %d feed restarts, speed set %s km/h",
+        r.steps, r.offset and (liveClock() - r.startedAt) or 0, r.packets, r.badPackets, r.jumpTotal / math.max(1, r.steps), r.jumpMax,
+        r.lagFrames or 0, 1000 * r.lagTotal / n, 1000 * (r.lagMin or 0), 1000 * r.lagMax, 1000 * r.ageTotal / n,
+        r.extrap, r.restarts or 0, r.kmph and string.format("%.0f", r.kmph) or "not yet")
+end
+
+local function liveStep()
+    if not live then return end
+    local ok, err = pcall(function()
+        local r = live
+        -- timing of the parts of a step (CPU clock), to find where the time goes
+        r.tm = r.tm or { drain = 0, clock = 0, loc = 0, tp = 0, all = 0, n = 0 }
+        local c0 = os.clock()
+        r.packets = r.packets + liveDrain(r)
+        local c1 = os.clock(); r.tm.drain = r.tm.drain + (c1 - c0)
+        if #r.rows < 2 then return end                       -- waiting for the feed
+        local now = liveClock()
+        local c2 = os.clock(); r.tm.clock = r.tm.clock + (c2 - c1)
+        if not r.offset then
+            -- first data: start the playback clock LIVE_DELAY behind the newest packet, and
+            -- shift the path so the puppet starts ahead-right of the player (as F4 does)
+            local first, newest = r.rows[1], r.rows[#r.rows]
+            r.offset = now - (newest.t - LIVE_DELAY)
+            pcall(function()
+                local p = playerPlane()
+                if p then r.playerLoc = p:K2_GetActorLocation(); r.playerRot = p:K2_GetActorRotation() end
+            end)
+            local AHEAD, RIGHT, UP = 2500, 800, 0
+            local yaw = math.rad(r.playerRot.Yaw)
+            local fwdX, fwdY = math.cos(yaw), math.sin(yaw)
+            local rightX, rightY = -math.sin(yaw), math.cos(yaw)
+            r.off = { X = r.playerLoc.X + fwdX * AHEAD + rightX * RIGHT - first.x,
+                      Y = r.playerLoc.Y + fwdY * AHEAD + rightY * RIGHT - first.y,
+                      Z = r.playerLoc.Z + UP - first.z }
+            log(string.format("live puppet: first packets in (%d buffered), playing %.0f ms behind the feed, path shifted by (%.0f, %.0f, %.0f)",
+                #r.rows, LIVE_DELAY * 1000, r.off.X, r.off.Y, r.off.Z))
+        end
+        r.playT = now - r.offset
+        local newest = r.rows[#r.rows]
+        local lag = newest.t - r.playT
+        -- keep the playback point LIVE_DELAY behind the feed even if the two clocks drift apart
+        r.offset = r.offset + (LIVE_DELAY - lag) * 0.02
+        -- find the two samples around the playback point (search from the newest end)
+        local a, b = r.rows[#r.rows - 1], r.rows[#r.rows]
+        for k = #r.rows - 1, 1, -1 do
+            if r.rows[k].t <= r.playT then a, b = r.rows[k], r.rows[k + 1]; break end
+        end
+        local f = (b.t > a.t) and ((r.playT - a.t) / (b.t - a.t)) or 0
+        if f < 0 then f = 0 end
+        if f > 1 then
+            -- past the newest packet: carry on along the last segment for a short while, then hold
+            local maxF = (b.t > a.t) and (1 + LIVE_EXTRAP_MAX / (b.t - a.t)) or 1
+            if f > maxF then f = maxF end
+            r.extrap = r.extrap + 1
+        end
+        local target = { X = a.x + (b.x - a.x) * f + r.off.X, Y = a.y + (b.y - a.y) * f + r.off.Y, Z = a.z + (b.z - a.z) * f + r.off.Z }
+        local rot = { Pitch = lerpAngle(a.pitch, b.pitch, f), Yaw = lerpAngle(a.yaw, b.yaw, f), Roll = lerpAngle(a.roll, b.roll, f) }
+        local c3 = os.clock()
+        local here = r.plane:K2_GetActorLocation()
+        local c4 = os.clock(); r.tm.loc = r.tm.loc + (c4 - c3)
+        -- One step per rendered frame: if the plane is exactly where the last step put it,
+        -- the game has not ticked since, so wait for the next loop pass.
+        if r.lastPut and here.X == r.lastPut.X and here.Y == r.lastPut.Y and here.Z == r.lastPut.Z then
+            r.sameFrame = (r.sameFrame or 0) + 1
+            return
+        end
+        local jump = math.sqrt((here.X - target.X) ^ 2 + (here.Y - target.Y) ^ 2 + (here.Z - target.Z) ^ 2)
+        r.plane:K2_TeleportTo(target, rot)
+        r.lastPut = target
+        local c5 = os.clock(); r.tm.tp = r.tm.tp + (c5 - c4); r.tm.all = r.tm.all + (c5 - c0); r.tm.n = r.tm.n + 1
+        r.steps = r.steps + 1
+        if r.steps <= 6 or jump > 500 then
+            log(string.format("live detail: frame %d, playT %.3f, segment %.3f..%.3f (f=%.2f), lag %.0f ms, target (%.0f, %.0f, %.0f), plane was at (%.0f, %.0f, %.0f), jump %.0f",
+                r.steps, r.playT, a.t, b.t, f, lag * 1000, target.X, target.Y, target.Z, here.X, here.Y, here.Z, jump))
+        end
+        if r.steps > 1 then
+            r.jumpTotal = r.jumpTotal + jump
+            r.jumpWindow = r.jumpWindow + jump
+            if jump > r.jumpMax then r.jumpMax = jump end
+        end
+        if f <= 1 then
+            -- delay statistics only for frames inside the feed (after it ends, lag just grows)
+            r.lagFrames = (r.lagFrames or 0) + 1
+            r.lagTotal = r.lagTotal + lag
+            if lag > r.lagMax then r.lagMax = lag end
+            if not r.lagMin or lag < r.lagMin then r.lagMin = lag end
+            r.ageTotal = r.ageTotal + (now - b.arrivedAt)
+        end
+        if not r.windowT0 then r.windowT0 = now end
+        -- speed matching from the last second of packets (length of the path flown, so a
+        -- turn does not read as slow), refreshed every 40 frames
+        if r.steps % 40 == 1 then
+            local k0 = 1
+            for k = #r.rows, 1, -1 do
+                if newest.t - r.rows[k].t >= 1.0 then k0 = k; break end
+            end
+            local old = r.rows[k0]
+            local dt = newest.t - old.t
+            if dt > 0.3 then
+                local d = 0
+                for k = k0 + 1, #r.rows do
+                    local p0, p1 = r.rows[k - 1], r.rows[k]
+                    d = d + math.sqrt((p1.x - p0.x) ^ 2 + (p1.y - p0.y) ^ 2 + (p1.z - p0.z) ^ 2)
+                end
+                local kmph = d / dt / UNITS_PER_S_PER_KMPH
+                if not r.kmph or math.abs(kmph - r.kmph) > r.kmph * 0.05 then
+                    pcall(function() r.plane.OverrideNormalSpeed = kmph end)
+                    pcall(function() r.plane.OverrideMaxSpeed = kmph end)
+                    r.kmph = kmph
+                end
+                pcall(function() r.plane:AutopilotAdjustSpeed(kmph, 1.0) end)
+            end
+        end
+        if r.steps % 200 == 0 then
+            local windowMean = r.jumpWindow / 200
+            r.jumpWindow = 0
+            local spd = "?"
+            pcall(function() spd = string.format("%.0f km/h", r.plane:GetSpeedKmph()) end)
+            local fps = 200 / math.max(0.001, now - r.windowT0)
+            r.windowT0 = now
+            local tm = r.tm
+            log(string.format("live timing per step (ms of CPU): drain %.2f, clock %.2f, get location %.2f, teleport %.2f, whole step %.2f; loop ticks since last report %d",
+                1000 * tm.drain / tm.n, 1000 * tm.clock / tm.n, 1000 * tm.loc / tm.n, 1000 * tm.tp / tm.n, 1000 * tm.all / tm.n, liveLoopTicks))
+            liveLoopTicks = 0
+            r.tm = { drain = 0, clock = 0, loc = 0, tp = 0, all = 0, n = 0 }
+            log(string.format("live: frame %d (%.1f frames/s, %d loop passes skipped as same frame), %d packets used, %d buffered, correction per frame over the last 200: %.1f units (worst since start %.1f), delay behind feed %.0f ms, newest packet %.0f ms old, %d frames extrapolated, puppet speed %s, feed speed %s km/h",
+                r.steps, fps, r.sameFrame or 0, r.packets, #r.rows, windowMean, r.jumpMax, lag * 1000, (now - newest.arrivedAt) * 1000, r.extrap, spd,
+                r.kmph and string.format("%.0f", r.kmph) or "?"))
+            r.sameFrame = 0
+        end
+    end)
+    if not ok then log("live step failed: " .. tostring(err)); live = nil end
+end
+
+LoopAsync(10, function()
+    if live then liveLoopTicks = liveLoopTicks + 1; ExecuteInGameThread(liveStep) end
+    return false
+end)
+
+local function toggleLive()
+    if live then
+        log("live puppet stopped by key: " .. liveSummary(live))
+        live = nil
+        return
+    end
+    local ok, err = pcall(function()
+        if type(CoopNet_Since) ~= "function" then log("CoopNetMod is not loaded: no CoopNet_Since function") return end
+        local p = playerPlane()
+        if not p then log("no player plane") return end
+        local loc = p:K2_GetActorLocation()
+        local rot = p:K2_GetActorRotation()
+        local plane = nearestAIPlane(loc, true) or nearestAIPlane(loc, false)
+        if not plane then log("no AI plane to use as puppet") return end
+        pcall(function() plane:SetBehaviorActive(false) end)
+        pcall(function() plane:SetIsInvincible(true) end)
+        -- start from the newest packet; whatever arrived before the key was pressed is ignored
+        local _, seq = CoopNet_Latest()
+        live = { plane = plane, rows = {}, lastSeq = (seq or 1) - 1, steps = 0, packets = 0, badPackets = 0,
+                 jumpTotal = 0, jumpWindow = 0, jumpMax = 0, lagTotal = 0, lagMax = 0, ageTotal = 0, extrap = 0,
+                 playerLoc = loc, playerRot = rot, kmph = nil, offset = nil, playT = nil, startedAt = liveClock() }
+        log(string.format("live puppet started: %s; %s", plane:GetFullName(), tostring(CoopNet_Status())))
+    end)
+    if not ok then log("live puppet start failed: " .. tostring(err)) end
+end
+
 -- Keys -----------------------------------------------------------------------------
 -- Speed matching proved itself (correction per frame 0.2 units instead of 50), so every
 -- replay key uses it now. F4 = nearest active plane, F3 = nearest unactivated plane.
@@ -387,5 +632,6 @@ RegisterKeyBind(Key.F5, function() stopBehaviourFirst = true; puppetTeleportTest
 RegisterKeyBind(Key.F7, toggleRecording)
 RegisterKeyBind(Key.F8, status)
 RegisterKeyBind(Key.F9, function() log("writing object dump"); DumpAllObjects(); log("object dump written") end)
+RegisterKeyBind(Key.F11, toggleLive)
 
-log("ready: F4 puppet replay, F5/F6 puppet teleport test, F7 record, F8 status, F9 object dump; files go to " .. profile)
+log("ready: F4 puppet replay, F11 live puppet from CoopNetMod packets, F5/F6 puppet teleport test, F7 record, F8 status, F9 object dump; files go to " .. profile)

@@ -3,7 +3,13 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (18 Oct 2026, 01:25):** plan made, the workbench (step 0) set up, and the
+**Status (18 Oct 2026, 07:45):** the network piece exists. A C++ add-on for UE4SS,
+built on this PC (`cpp\`, workbench section 9), gives the scripts a network socket:
+packets sent by a program on this PC reach a script in the game within 1 to 24 ms, and
+the puppet plane from section 7 now flies from those live packets instead of from a
+file, trimmed by 1 to 2 units (10 to 20 cm) per frame at 90 frames a second, 100 ms
+behind the feed. Compiler and Windows SDK are in `C:\AC7-Coop-Tools` (what, where and
+how to remove: `downloads\installed-tools.md`). Earlier status: plan made, the workbench (step 0) set up, and the
 first building block of step 1 working: a session flew a mission in the copy, recorded
 the player's plane and made an AI plane fly the recording, straight and in turns, with
 the game's own flight engine doing the flying and the script only trimming it by a few
@@ -29,13 +35,14 @@ earlier in the evening and has been put back from the backup, in Steam Cloud too
 | [workbench.md](workbench.md) | **Read this next.** What step 0 set up, what each test showed, what happened to your saves, and the rules for test runs. |
 | [identity.md](identity.md) | Your exact game build: Steam build 9855922, the exe's SHA-256, Unreal Engine 4.18.2. |
 | [research.md](research.md) | What already exists (no co-op mod anywhere), how AC7's online matches work (player-hosted over Steam), the tools we can build on, and what to check by hand on Nexus Mods. |
-| `tools\` | `start-copy.ps1` (starts the copy with its own save folder, backing up your saves first), `backup-saves.ps1`, `compare-saves.ps1` (checks your real save folder against the latest backup), `game-input.ps1` (presses keys in the copy and takes pictures of its window, so a session can drive the menus without you), and `read-crash-dump.py` / `read-crash-dump-details.py` (read a crash dump of the game and say where it died), and `read-game-code.py` (reads the running copy's code out of memory and names functions, calls and strings; workbench section 8). |
+| `tools\` | `start-copy.ps1` (starts the copy with its own save folder, backing up your saves first), `backup-saves.ps1`, `compare-saves.ps1` (checks your real save folder against the latest backup), `game-input.ps1` (presses keys in the copy and takes pictures of its window, so a session can drive the menus without you), and `read-crash-dump.py` / `read-crash-dump-details.py` (read a crash dump of the game and say where it died), `read-game-code.py` (reads the running copy's code out of memory and names functions, calls and strings; workbench section 8), `coop-net-sender.py` (plays a recorded flight into the game as network packets, standing in for the other player's PC) and `fetch-msvc-portable.py` (fetches Microsoft's compiler into a plain folder without an administrator prompt; section 9). |
 | `code\` | Bytes and listings of single functions read from the running copy (never shared), and [snl-map.md](code/snl-map.md), the first map of the game's online layer. |
-| `mods\` | Copies of the UE4SS scripts written for the copy. `CoopSecondCopyMod` watches the second copy's save and load calls and tries the game's developer save switches (workbench section 6). `CoopFlightLabMod` records your plane's flight to a file and drives an AI plane along a recording, the first co-op building block (workbench section 7). |
+| `cpp\` | The C++ add-ons for UE4SS and how they are built: [cpp/README.md](cpp/README.md) (which UE4SS the copy runs, how its add-ons work, why the documented build route is closed and what was done instead), `build.ps1`, `CoopNetMod` (the UDP socket for the scripts), `HelloMod` (UE4SS's own example, built first as proof), the UE4SS source at the copy's exact version (`RE-UE4SS`). Workbench section 9. |
+| `mods\` | Copies of the UE4SS scripts written for the copy. `CoopSecondCopyMod` watches the second copy's save and load calls and tries the game's developer save switches (workbench section 6). `CoopFlightLabMod` records your plane's flight to a file and drives an AI plane along a recording (F4) or along live network packets (F11), the first co-op building blocks (workbench sections 7 and 9). `CoopNetCheckMod` prints the packet count once a second (the title-screen test). |
 | `pictures\` | Screenshots from the copy, for example the puppet plane flying ahead-right of the player (18 Oct). |
 | `backups\` | A dated copy of your save and settings folder from before each test run. |
 | `inherited\` | The earlier AC7 Mod Loader source, mission-script tools and research, copied out of the Claude app's hidden storage. [What was left out](inherited/LEFT-OUT.md). |
-| `downloads\` | PM-UE4SS as downloaded from GitHub, checksum checked. |
+| `downloads\` | PM-UE4SS as downloaded from GitHub, checksum checked; the compiler packages from Microsoft (`msvc-portable\`, with the list of every file and its SHA-256); and [installed-tools.md](downloads/installed-tools.md), what was installed for the C++ add-on, where, how big, and how to remove it. |
 | `dumps\` | UE4SS's object dump (the game's list of classes and functions) and a crash dump from the two-copies test. |
 | [drafts/claim-issue.md](drafts/claim-issue.md) | Draft of Co-op Anything's "claim a game" issue. Not posted. |
 | [drafts/directory-entry.yaml](drafts/directory-entry.yaml) | Draft directory entry for Co-op Anything, checked against its rules. Not sent. |
@@ -49,9 +56,11 @@ online layer, and say it is about 95% working with a release due 18 Oct. If it i
 stable, this project turns into testing and helping that mod. Our own route stays as
 the fallback: the flight lab (workbench section 7) can fly a mission, record your plane
 and make another plane follow the recording to within centimetres, straight and in
-turns; the next pieces on that route would be missiles against the puppet and the
-network feed in place of the file. Two copies on one PC can't get past the title
-screen, so any two-player test needs a second PC (workbench section 6).
+turns, and since section 9 it can do the same from live network packets. The next
+pieces on that route would be the feed over a real connection between two PCs (the
+add-on currently listens only on this PC), sending your own plane's positions out the
+same way, and missiles against the puppet. Two copies on one PC can't get past the
+title screen, so any two-player test needs a second PC (workbench section 6).
 
 ## Ground rules for this project
 

@@ -2,6 +2,28 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, a C++ add-on gives the scripts a network socket
+
+- Built a C++ add-on for UE4SS on the owner's PC (experiment folder `cpp\`): CoopNetMod
+  opens a UDP socket on the local address and hands every Lua script four functions to
+  read the packets. UE4SS's own hello-world example was built first as proof. Both load
+  in the game copy; a Python sender on the same PC delivers 40 packets a second and a
+  script in the game reads each within 1 to 24 ms.
+- The copy's UE4SS turned out to be the public UE4SS repository's commit 48e7edfe (1 Feb
+  2026) built by Playmore; the add-ons are compiled against that commit's headers and
+  linked against the copy's own UE4SS.dll (its export list turned into an import
+  library), because the documented build needs a private Unreal-headers repository (an
+  Epic-linked GitHub account) and Rust.
+- The compiler (MSVC 14.44) and Windows SDK were fetched into a plain folder straight
+  from Microsoft's own package list with every checksum verified and signatures checked,
+  because the normal installer needs an administrator prompt the owner was not there to
+  click. What, where, sizes, checksums and how to remove: `downloads\installed-tools.md`.
+- Stretch goal reached: the flight lab's puppet plane now flies from the live packets
+  (key F11), trimmed by 1 to 2 units (10 to 20 cm) per frame at 90 frames a second,
+  100 ms behind the feed. Three detours recorded in workbench section 9: a recording
+  with whole-second time stamps, the game clock costing 20 ms per read from a script and
+  freezing after a reload, and a re-used plane with a dead engine.
+
 ## 2026-10-18: Ace Combat 7 co-op, a tool that reads the running copy's code
 
 - New `tools/read-game-code.py` (Python, read-only process access, capstone 5.0.9 for
@@ -9,7 +31,8 @@ Newest first. One short entry per session.
   functions from the UE4SS object dump (rebased automatically), from the game's own
   class data (2,335 functions by class and slot) and from strings, names Steam
   interface calls, finds every code reference to a string or address, and saves
-  single functions only. One line: `python toolsead-game-code.py read exe+0x1da3319`.
+  single functions only. One line: `python tools
+ead-game-code.py read exe+0x1da3319`.
 - Proved on the 17 Oct crash: the crash site is `SNL::PlatformUDPSocket` slot 5, the
   "is a Steam P2P packet waiting?" call, reading through a null `ISteamNetworking`
   pointer because `SteamAPI_Init` (called from Unreal's Steam start-up) fails in a
