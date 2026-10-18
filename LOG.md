@@ -2,6 +2,28 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: Ace Combat 7 co-op, bearings and plan
+
+- On the PC, following Co-op Anything's `coop-triage`. Both MCP tools connected.
+  Build: Steam 9855922, `Ace7Game.exe` SHA-256 `c7da97f5...e558f4f`, UE 4.18.2
+  (from the exe's version info). Read-only throughout: nothing changed in the
+  install, mods, mod loader or saves, nothing downloaded.
+- Still no co-op or AI-in-multiplayer mod anywhere, and no Ace Combat issue or PR in
+  Co-op Anything. Online play is player-hosted, peer to peer over Steam (lobbies,
+  SteamNetDriver with relay, Bandai's "SNL" layer with host migration). No
+  third-party anti-cheat and no VAC, but the game runs its own online cheat checks.
+- The exe's code section is scrambled by SteamStub on disk, so Ghidra can't read it;
+  unscrambling is off limits. UE4SS (AC7 build: GitHub `Playmore-ModdingConcepts/PM-UE4SS`)
+  is the way in.
+- Head start found: a 6 Oct session built the owner's AC7 Mod Loader, plus Python
+  tools that decrypt AC7's paks and rewrite mission Kismet bytecode ("Horde Mode",
+  "Double Enemy Aircraft"). Copies of the tools sit in `ModLoader\library\<mod>\rebuild\`;
+  the full source is only in the Claude app's private scratch storage, so copy it out.
+- Plan: two single-player games kept in step (puppet planes, host-run enemies) over
+  bending the game's online mode. Ladder, tests, unknowns and the proposed game copy
+  (`C:\AC7-Coop-Game`, 65.7 GB) in `experiments/2026-10-17-ace-combat-7-coop/plan.md`.
+  Ace Combat 8 is installed too and has official online co-op against AI.
+
 ## 2026-10-17: health check of the PC setup
 
 - Re-checked everything from the entries below; it all still works. `claude mcp
