@@ -2,6 +2,31 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: Ace Combat 7 co-op, a script can't get the second copy past the title
+
+- Question from the previous entry: can a UE4SS script in the second copy skip the save
+  step and get past the title screen? **No.** Read both crash dumps with a small Python
+  tool (`experiments/2026-10-17-ace-combat-7-coop/tools/read-crash-dump.py`): the game
+  dies on a helper thread reading address zero, right after asking Steam's library for
+  its table of Steam connections, and in the second copy that table is completely empty.
+  So the second copy never gets a working link to Steam and crashes on its first use of
+  Steam networking; the save step just comes before it. A script works above that level
+  and can't fill the table or stop the thread. Steam's own logs treat the second process
+  as an extra window of the game already running.
+- The game's leftover developer commands (the `SNL_` ones, the save switches) are empty
+  in this build: 215 of the 494 cheat-manager commands point at one and the same bit of
+  code, the rest grouped by the kind of value they take. Calling them does nothing, so
+  the plan's "fake session" solo-test idea is off too.
+- Built and tested the script anyway: `CoopSecondCopyMod` tells the copies apart by
+  their user folder, stays quiet in the first copy, and in the second logs every
+  save/load call and calls the three save switches. With the owner's go-ahead (now a
+  standing one for anything in the game windows), Enter was pressed in the second copy
+  with the script armed: same crash, third identical dump, none of the twelve watched
+  save/load functions was ever called, switches changed nothing. The real save folder
+  was unchanged after every run (five backups). Details in the experiment's
+  `workbench.md`, section 6; the dump-reading tool and the script are in its `tools/`
+  and `mods/` folders.
+
 ## 2026-10-17: Ace Combat 7 co-op, the copy gets its own save folder
 
 - The game asks Windows for the user's "Local AppData" folder and keeps saves and

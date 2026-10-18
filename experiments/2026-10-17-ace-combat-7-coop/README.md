@@ -99,7 +99,10 @@ Still open:
 - Taking over AI planes at run time on the client's game.
 - How far UE4SS's reflection catalogue gets us, given that the exe's code can't be
   read.
-- Whether the game copy starts on its own, and whether two copies run on one PC.
+- Whether the game copy starts on its own (yes, since 17 Oct), and whether two copies
+  run on one PC (no: the second copy never gets a working link to Steam and crashes on
+  its first use of Steam networking, right after the title screen; a UE4SS script can't
+  change that, see `workbench.md` section 6).
 - Route A only: whether the game's own online layer can carry AI planes, and whether
   its cheat checks kick a modded player.
 

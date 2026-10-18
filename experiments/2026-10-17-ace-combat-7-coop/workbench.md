@@ -2,6 +2,8 @@
 
 Done 17 Oct 2026, 20:50 to 22:15, with you watching the game windows. Updated the same
 evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 below).
+Updated again 23:30 to 23:55: whether a UE4SS script can get the second copy past the
+title screen (section 6: it can't, and the crash dumps say why).
 
 ## Short version
 
@@ -12,6 +14,7 @@ evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 bel
 | 2. Can two copies run at once? | **Not yet.** Both start and reach the title screen, but the second one crashes when it tries to create save data. Retried at 23:07 with each copy in its own save folder: same crash, same place in the game's code. The cause is that a second copy gets no Steam identity, not the shared folder. |
 | 3. Does UE4SS load, open its console and write the object dump? | **Yes, all three.** It found Unreal Engine 4.18 within a second; the console opened; the dump (the game's catalogue of classes and functions) is 30.9 MB. |
 | 4. Can the copy keep its saves and settings away from your real ones? | **Yes, proved.** Started with `tools\start-copy.ps1`, the copy reads and writes `C:\AC7-Coop-Game\UserProfile\...` only. Two title-screen runs and then a full run with you (a mission, then "save and end" through the menu) wrote the save and settings there and nothing in your real folder, checked by checksums every time. |
+| 6. Can a UE4SS script get the second copy past the title screen? | **No.** Both crash dumps show the second copy never gets a working link to Steam (its table of Steam connections is empty), and it dies the first time it tries to use Steam's networking, which happens right after the save step. The save step is not the cause, a script can't fill that table, and the game's developer save switches are empty leftovers in this build. Details in section 6. |
 
 ## What's where
 
@@ -31,6 +34,9 @@ evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 bel
 | Start the copy (backs up saves first, gives the copy its own save folder) | `tools\start-copy.ps1` |
 | Check your real save folder against the latest backup | `tools\compare-saves.ps1` |
 | Press keys in the copy and take pictures of its window (so a session can drive the menus) | `tools\game-input.ps1` |
+| Read a crash dump of the game: where it died, which game function that is near | `tools\read-crash-dump.py` and `tools\read-crash-dump-details.py` (section 6) |
+| The UE4SS script for the second copy (watches save/load calls, tries the developer save switches) | `C:\AC7-Coop-Game\ue4ss\Mods\CoopSecondCopyMod\`, copy in `mods\CoopSecondCopyMod\` |
+| That script's own log from the second copy | `C:\AC7-Coop-Game\UserProfile2\coop-second-copy.log` |
 
 To start the copy yourself: open Steam, then in PowerShell run
 
@@ -97,12 +103,14 @@ powershell -NoProfile -File "C:\Users\Matth\Claude Apps\AC7-Coop\tools\compare-s
   copy), so it can't read your save (the save is tied to your identity), writes its own in
   the no-identity place, and then crashes in some step that needs the identity. Two copies
   on this PC still aren't usable past the title screen.
-- **Ideas for later, in order:** (1) a UE4SS script in the second copy that skips loading
-  or creating save data altogether, since the crash comes right after the save step;
-  (2) look at what the two crash dumps have in common (same fault address both times);
-  (3) if neither works, network tests need your friend's PC, and solo tests can use the
-  game's leftover developer commands for a fake session (`SNL_EnableDebugFakeSession`,
-  the network emulator) inside one copy.
+- **Ideas for later, in order** (all three looked at the same night, section 6):
+  (1) a UE4SS script in the second copy that skips loading or creating save data
+  altogether, since the crash comes right after the save step (can't be done, and
+  wouldn't help: the crash isn't in the save step); (2) look at what the two crash dumps
+  have in common (done: same cause, an empty Steam connection table); (3) if neither
+  works, network tests need your friend's PC, and solo tests can use the game's leftover
+  developer commands for a fake session (`SNL_EnableDebugFakeSession`, the network
+  emulator) inside one copy (those commands turn out to be empty in this build).
 - Small wrinkle for two-copy tests: both copies share the copy's `ue4ss\` folder, so
   they write the same UE4SS log file and load the same UE4SS mods.
 
@@ -234,8 +242,101 @@ own folder and closed. Your real folder was unchanged (checksums equal to
 
 **Standing permission (your words, 17 Oct 2026):** sessions may start the copy, press
 Enter at the title, use the menus and quit from the main menu themselves, without asking
-you each time. Anything beyond that (for example going online, or touching the real
-install) still needs your OK.
+you each time. Later the same night you widened it: "You always have my go-ahead to pass
+the title screen or do anything else you want in the game windows." So anything inside
+the copies' game windows, including the second copy, is fine without asking. Going
+online, touching the real install, installing, downloading or posting still need your OK.
+
+## 6. Can a UE4SS script get the second copy past the title screen? (23:30 to 23:55)
+
+**Short answer: no.** The second copy's problem sits below anything a UE4SS script can
+reach, and the two crash dumps show exactly what it is.
+
+**What the crash dumps say.** I read both dumps (`dumps\2026-10-17_second-copy-crash`
+and `...-retry`) with a small Python tool written for it (`tools\read-crash-dump.py`).
+They tell the same story, byte for byte:
+
+- The game died reading from memory address zero (a "null pointer": it followed a link
+  that pointed nowhere). This happened on a small helper thread, not on the main game
+  thread.
+- The instruction before the fault had just asked Steam's library for the game's table
+  of Steam connections (the `SteamInternal_ContextInit` call in `steam_api64.dll`: one
+  slot each for Steam's user, friends, stats, networking and so on). In the second copy
+  **that table is completely empty**, every slot zero, in both dumps. The code took one
+  slot (the one for Steam's networking) and tried to use it, and that is the crash.
+- So the second copy never got a working link to Steam at all. The "save in the
+  no-identity place" is a symptom of the same thing (without the link, the game doesn't
+  know your Steam ID), and the save step merely comes right before the first use of
+  Steam's networking. The save step is not the cause.
+- Steam's own logs agree: the first copy was logged as "Game process added", the second
+  only as "updated" (Steam saw it as another window of the game already running), and
+  after Enter the Steam overlay tried to attach to the second copy every six seconds and
+  gave up each time.
+
+**Why a script can't fix it.**
+
+- UE4SS scripts work with the game's Unreal objects and functions. The empty Steam table
+  lives below that, in the game's own code and Steam's library. A script can't fill it,
+  and it can't stop a helper thread the game starts itself.
+- UE4SS can watch a built-in game function and even change what it reports back, but it
+  can't stop the function from running. So "skip the save or load step" isn't on offer,
+  and it wouldn't help anyway, because the crash isn't in that step.
+- The developer save switches (`ToggleSaveLoadSimulatedMode`, `ToggleSaveLoadUIIgnore`,
+  `SetSaveLoadSimulatedStatus`) exist only as names. In this build, 215 of the 494
+  cheat-manager commands point at one and the same piece of code, 69 at another, 35 at a
+  third and 32 at a fourth, grouped purely by what kind of value they take (nothing, a
+  whole number, a decimal, a yes/no). That only happens when the commands' insides were
+  removed for release and the empty leftovers were folded together. This covers the
+  `SNL_` commands the plan hoped to use for solo tests (`SNL_ArrangeWindows`,
+  `SNL_EnableDebugFakeSession`, `SNL_EnablePlaneSync`, `SNL_InitializeNetworkEmulator`):
+  calling them does nothing. (Step 0's last test in plan.md is answered by this.)
+
+**What was built and tested anyway, title screen only, 23:47 to 23:52, you not needed.**
+
+- `ue4ss\Mods\CoopSecondCopyMod` (copy kept in `mods\`). Both copies load the same
+  mods, so the script first looks at the user folder it was started with. In the first
+  copy (or your real profile) it writes one line and does nothing. In the second copy
+  (`UserProfile2`) it writes down every call to the game's twelve save and load functions
+  (name, time, values) in `UserProfile2\coop-second-copy.log`, and a few seconds after
+  the title screen is up it calls the three developer save switches. It never touches a
+  save file itself.
+- Run: first copy started 23:47:11 and sat at its title screen throughout; second copy
+  started 23:48:27, restarted 23:50:38 after a small fix, title screen both times. The
+  script stayed inactive in the first copy and armed itself in the second: all twelve
+  functions hooked, the game's cheat manager found at the title screen, the three
+  switches called without error (no visible effect, as expected from the above). Both
+  copies were ended at the title screen at 23:52. Your real folder: unchanged against
+  the three backups of the run (`2026-10-17_2347`, `_2348`, `_2350`).
+- **Enter pressed in the second copy, with your go-ahead, 23:58.** Both copies were
+  started again (23:55:59 and 23:56:55, title screens, script armed in the second, the
+  three switches called at 23:57:05). Enter in the second copy at about 23:58:25: the
+  title screen faded out normally (picture at four seconds: no "creating save data"
+  message, no error box), and about ten seconds after Enter the copy was gone. Windows
+  wrote a third crash dump (23:58:35, kept in `dumps\2026-10-17_second-copy-crash-with-
+  script\`), and it is the same crash to the byte: same place in the game's code, same
+  empty Steam table, same helper thread. Two things the script's log adds: **none of
+  the twelve save and load functions it watched was called at all** (the game loads and
+  saves through code that isn't reachable from a script), and no save file was written
+  this time (the second copy quietly accepted the no-identity save it had made at
+  23:14 and moved on, until the Steam step). The three developer switches changed
+  nothing, as expected. First copy sat at its title screen throughout and was ended
+  afterwards. Your real folder: unchanged (`backups\2026-10-17_2355` and `_2356`).
+
+**What it means.** Two copies on one PC stop at the title screen, and no UE4SS script
+changes that: the thing that's missing (a working Steam link in the second copy) is
+below the level a script can touch, the crash is not in the save step, and the save
+step itself doesn't even pass through anything a script can see. Network tests need
+your friend's PC (or one copy here and one there). Everything else in the plan (one
+copy with UE4SS, your own save folder, driving the menus from a session) still stands.
+
+**The crash-dump tools.** `tools\read-crash-dump.py <dump> [objectdump] [exe base]`
+prints where the game died, the registers, and the return addresses on the crashing
+thread's stack, naming the nearest game function known from the UE4SS object dump (the
+exe base address for that dump is in the UE4SS log, the `MainExe @ ...` line; it was
+`7ff68a450000` for the dump in `dumps\2026-10-17_ue4ss-title-screen`).
+`tools\read-crash-dump-details.py <dump>` adds the thread list, the Steam library
+function called just before the fault, and the contents of the table it returned. Both
+only read files; nothing is run.
 
 ## Your saves: what happened
 
@@ -277,14 +378,14 @@ install) still needs your OK.
    themselves with `tools\game-input.ps1` (section 5); they don't need to ask you for
    that.
 3. A second copy is started with `-Second` and gets its own folder (`UserProfile2`) and a
-   smaller window. It still crashes when it gets past the title screen (no Steam
-   identity), so for now a second copy is only good for title-screen tests.
+   smaller window. It still crashes when it gets past the title screen (no working link
+   to Steam, section 6), so a second copy is only good for title-screen tests.
 
 ## Must-do before step 1
 
 - **Own save folder for the copy: done and proved** (section 4).
-- **Two copies at once:** retried, still crashes; cause is the missing Steam identity in
-  the second copy (test 2). Next idea: a UE4SS script that skips the save step in the
-  second copy.
-- Not tried yet: plan.md's step 0 test 4 (try a few developer commands offline, such as
-  `SNL_ArrangeWindows`). UE4SS can now reach them.
+- **Two copies at once:** can't be made to work with a script (section 6): the second
+  copy never gets a working link to Steam and dies on its first use of Steam networking.
+  Network tests need a second PC.
+- plan.md's step 0 test 4 (developer commands offline, such as `SNL_ArrangeWindows`):
+  answered without a run. The commands are empty leftovers in this build (section 6).
