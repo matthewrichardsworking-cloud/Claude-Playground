@@ -1,7 +1,39 @@
 # Playtest bot: design
 
-Written 18 Oct 2026. A design only: nothing in it has been built yet. It builds on what
-the workbench already proved (workbench.md sections 5, 7 and 9).
+Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
+section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
+
+## Status (18 Oct 2026, 13:45)
+
+- **Working:** the bot took off, shot down all 19 enemy planes of Mission 01 on Casual
+  without taking a hit, and the game declared "mission accomplished"
+  (`playtests\2026-10-18_1237_m01_first-run\report.md`). Then the test runner did the whole
+  thing on its own from a cold start: started the copy, drove every menu page, completed
+  Mission 01 on Casual at the first attempt (20 kills, no damage, score 12,400, the same as
+  your own best), closed the copy and checked your saves
+  (`playtests\2026-10-18_1326_m01_runner-test\report.md`). Stages 1 to 5 of the build
+  order are done.
+- **To run a test:** `python tools\playtest.py run playtests\orders\m01-casual.yaml` (an
+  example order, every option explained in it). Keep the game window in front while it
+  runs.
+- **Next (your request, 18 Oct 13:30):** smarter combat. Choose and use special weapons;
+  track incoming missiles and work out their paths; predict enemy paths and behaviour
+  from the game's own data (each missile's speed and turn limit, each enemy's speed and
+  turn limits, its current AI state and the route it is scripted to fly) plus live
+  readings, and act on the predictions as they update.
+- **Changed from the design:** the pilot flies with the **keyboard**, pressed from inside the
+  game by a small C++ add-on (`CoopPadMod`), not by writing the plane's control values (the
+  game overwrites those every frame) and not with a virtual gamepad (Steam's overlay keeps
+  it from reaching the game). Consequence: **the game window must stay in front while a
+  test runs**; the game pauses itself otherwise, and the add-on never presses a key into
+  another window.
+- **Not built yet:** choosing the plane and special weapon from an order (the copy's
+  last-used setup flies), the assisted and skip-ahead modes (the developer switches they
+  hoped for are empty in this build), objective order (`targets_first`), ground targets on
+  purpose (the pilot attacks whatever the game lets it select, ground targets included, but
+  has no dive-attack yet), per-mission notes, and getting past the replay that follows
+  "mission accomplished" quickly.
+- **Achievements:** your call on 18 Oct: no concern (you have nearly all of them).
 
 ## What it is
 
@@ -158,21 +190,11 @@ them.
   with the report) in two or three sessions; fair mode and more missions after that, a
   little at a time.
 
-## One thing to decide first: Steam achievements
+## Steam achievements (decided)
 
-The copy runs under your Steam account, and the game awards Steam achievements when
-missions are completed (its settings list 49 achievement slots). A bot that completes missions in
-the copy could unlock achievements on your real Steam profile that you didn't earn
-yourself. Choices:
-
-- **Allow it.** Simplest. Anything unlocked is permanent unless reset with a separate
-  tool.
-- **Try to block them.** A script may be able to stop the game reaching Steam's
-  achievement calls. Unproven; until it's proven, no mission gets completed in the copy.
-- **Only test missions you've already completed** in your real game, where the
-  achievement is already yours. Doesn't help with ranks or difficulty-level achievements.
-
-No mission has been completed in the copy so far, so nothing has been unlocked yet.
+The copy runs under your Steam account, so a mission the bot completes can unlock Steam
+achievements on your profile. Your decision on 18 Oct 2026: not a concern, you already have
+nearly all of them. The bot completed Mission 01 on Casual in the copy that day.
 
 ## Build order
 
@@ -181,13 +203,18 @@ Each stage gets tested in the copy before the next one starts.
 1. **Control test** (one short session): in Mission 01 or SP Mission 01 on Casual, write
    `InputPitch`/`InputRoll` every frame and see whether the plane responds. Try weapon
    presses and `SelectTarget`. Try the promising developer switches once each.
+   *Done 18 Oct: writing the values does nothing; keyboard keys from inside the game do;
+   the developer switches are empty (workbench section 10).*
 2. **Sensors and logger**: the event log and flight log from a mission you fly (or the
-   bot flies straight). Report format settled.
+   bot flies straight). Report format settled. *Done 18 Oct.*
 3. **Pilot, basic flying**: fly to a point, hold altitude and speed, turn smoothly,
-   don't hit the ground.
+   don't hit the ground. *Done 18 Oct, tuned in Free Flight.*
 4. **Pilot, fighting**: one enemy plane on Casual, then a group, then ground targets.
+   *Air targets done 18 Oct (Mission 01 Casual completed, 19 kills, no damage); ground
+   targets not yet.*
 5. **Test runner**: reads an order, backs up saves, starts the copy, menu route, retry
-   loop, crash recovery, save check, report.
+   loop, crash recovery, save check, report. *Written 18 Oct (`tools\playtest.py`); see the
+   status above for how far it is tested.*
 6. **Assisted mode, one whole mission**, start to finish, report in hand.
 7. **Fair mode**, then more missions and their notes.
 

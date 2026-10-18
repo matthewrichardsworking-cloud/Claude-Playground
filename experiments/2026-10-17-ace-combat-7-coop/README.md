@@ -9,7 +9,17 @@ co-op for Free Missions on the game's own online layer, the route our plan set a
 hardest. A full reading of its code is in [double-trigger-review.md](double-trigger-review.md):
 carefully built, honest about its rough edges, and it should run in our copy (three of its
 own checks were verified here read-only). Nothing has been downloaded or installed yet;
-that and a first dry run in the copy are the next steps, with your OK. Earlier status (07:45): the network piece exists. A C++ add-on for UE4SS,
+that and a first dry run in the copy are the next steps, with your OK.
+
+**Also (18 Oct 2026, 13:45): the playtest bot works.** In the copy it took off, shot down
+every enemy plane of Mission 01 (Casual) without taking a hit, and the game declared
+"mission accomplished". The test runner then did it alone from a cold start, menus
+included, at the first attempt (20 kills, score 12,400, the same as your own best;
+[playtest-bot.md](playtest-bot.md), workbench section 10, reports in `playtests\`). It flies with the keyboard, pressed from inside
+the game only while the game window is in front (the game pauses itself otherwise). It can
+test Double Trigger's missions alone, too, once that mod is in the copy.
+
+Earlier status (07:45): the network piece exists. A C++ add-on for UE4SS,
 built on this PC (`cpp\`, workbench section 9), gives the scripts a network socket:
 packets sent by a program on this PC reach a script in the game within 1 to 24 ms, and
 the puppet plane from section 7 now flies from those live packets instead of from a
@@ -38,15 +48,16 @@ earlier in the evening and has been put back from the backup, in Steam Cloud too
 | File | What it is |
 |---|---|
 | [plan.md](plan.md) | The step-by-step plan (workbench, co-op skirmish, one mission, full campaign), how each step gets tested, whether two copies can run on this PC, the biggest unknowns, and an honest view of the odds. |
-| [playtest-bot.md](playtest-bot.md) | Design for a test-pilot bot: a Claude session writes a test order (mission, plane, weapons, objective order, mode), the bot flies it in the copy until it completes, and hands back a report and flight logs. Not built yet. |
+| [playtest-bot.md](playtest-bot.md) | The test-pilot bot: a Claude session writes a test order (mission, difficulty, attempts, tactics), the bot flies it in the copy until it completes, and hands back a report and flight logs. Built 18 Oct; what works and what doesn't yet is at the top. |
+| `playtests\` | The bot's test orders (`orders\`) and one folder per test run with its report, events, flight logs and pictures. |
 | [workbench.md](workbench.md) | **Read this next.** What step 0 set up, what each test showed, what happened to your saves, and the rules for test runs. |
 | [identity.md](identity.md) | Your exact game build: Steam build 9855922, the exe's SHA-256, Unreal Engine 4.18.2. |
 | [research.md](research.md) | What already exists (no co-op mod anywhere), how AC7's online matches work (player-hosted over Steam), the tools we can build on, and what to check by hand on Nexus Mods. |
 | [double-trigger-review.md](double-trigger-review.md) | **Read this for the current direction.** A full reading of layer10_love's released co-op mod, Double Trigger v0.1.0 (18 Oct 2026): what it is, how it works, how it compares with our work, whether it will run in the copy (checked), its safety, its code quality, and the next steps. |
-| `tools\` | `start-copy.ps1` (starts the copy with its own save folder, backing up your saves first), `backup-saves.ps1`, `compare-saves.ps1` (checks your real save folder against the latest backup), `game-input.ps1` (presses keys in the copy and takes pictures of its window, so a session can drive the menus without you), and `read-crash-dump.py` / `read-crash-dump-details.py` (read a crash dump of the game and say where it died), `read-game-code.py` (reads the running copy's code out of memory and names functions, calls and strings; workbench section 8), `coop-net-sender.py` (plays a recorded flight into the game as network packets, standing in for the other player's PC) and `fetch-msvc-portable.py` (fetches Microsoft's compiler into a plain folder without an administrator prompt; section 9). |
+| `tools\` | `start-copy.ps1` (starts the copy with its own save folder, backing up your saves first), `backup-saves.ps1`, `compare-saves.ps1` (checks your real save folder against the latest backup), `game-input.ps1` (presses keys in the copy and takes pictures of its window, so a session can drive the menus without you), and `read-crash-dump.py` / `read-crash-dump-details.py` (read a crash dump of the game and say where it died), `read-game-code.py` (reads the running copy's code out of memory and names functions, calls and strings; workbench section 8), `coop-net-sender.py` (plays a recorded flight into the game as network packets, standing in for the other player's PC), `fetch-msvc-portable.py` (fetches Microsoft's compiler into a plain folder without an administrator prompt; section 9), and the playtest bot's `pilot.py` (sends the pilot an order, reads its status and log) and `playtest.py` (the test runner; section 10). |
 | `code\` | Bytes and listings of single functions read from the running copy (never shared), and [snl-map.md](code/snl-map.md), the first map of the game's online layer. |
-| `cpp\` | The C++ add-ons for UE4SS and how they are built: [cpp/README.md](cpp/README.md) (which UE4SS the copy runs, how its add-ons work, why the documented build route is closed and what was done instead), `build.ps1`, `CoopNetMod` (the UDP socket for the scripts), `HelloMod` (UE4SS's own example, built first as proof), the UE4SS source at the copy's exact version (`RE-UE4SS`). Workbench section 9. |
-| `mods\` | Copies of the UE4SS scripts written for the copy. `CoopSecondCopyMod` watches the second copy's save and load calls and tries the game's developer save switches (workbench section 6). `CoopFlightLabMod` records your plane's flight to a file and drives an AI plane along a recording (F4) or along live network packets (F11), the first co-op building blocks (workbench sections 7 and 9). `CoopNetCheckMod` prints the packet count once a second (the title-screen test). |
+| `cpp\` | The C++ add-ons for UE4SS and how they are built: [cpp/README.md](cpp/README.md) (which UE4SS the copy runs, how its add-ons work, why the documented build route is closed and what was done instead), `build.ps1`, `CoopNetMod` (the UDP socket for the scripts), `CoopPadMod` (the playtest bot's hands: keyboard presses from inside the game, only while it is in front; section 10), `CoopPad` (a stand-in gamepad library, built and tried, not used: Steam's overlay keeps it from the game), `HelloMod` (UE4SS's own example, built first as proof), the UE4SS source at the copy's exact version (`RE-UE4SS`). Workbench section 9. |
+| `mods\` | Copies of the UE4SS scripts written for the copy. `CoopSecondCopyMod` watches the second copy's save and load calls and tries the game's developer save switches (workbench section 6). `CoopFlightLabMod` records your plane's flight to a file and drives an AI plane along a recording (F4) or along live network packets (F11), the first co-op building blocks (workbench sections 7 and 9). `CoopNetCheckMod` prints the packet count once a second (the title-screen test). `CoopPilotMod` is the playtest bot's pilot: it flies, fights and logs (section 10). |
 | `pictures\` | Screenshots from the copy, for example the puppet plane flying ahead-right of the player (18 Oct). |
 | `backups\` | A dated copy of your save and settings folder from before each test run. |
 | `inherited\` | The earlier AC7 Mod Loader source, mission-script tools and research, copied out of the Claude app's hidden storage. [What was left out](inherited/LEFT-OUT.md). |

@@ -652,6 +652,134 @@ own save in its own folder (685,197 bytes). `tools\compare-saves.ps1` afterwards
 change, all 13 files of your real folder have the same SHA-256 as the backup. The
 in-use note was removed from the shared notes folder.
 
+## 10. The playtest bot flies and fights: it completed Mission 01 by itself (18 Oct, 11:20 to 13:05)
+
+You asked for a bot that plays missions for a session and reports back
+([playtest-bot.md](playtest-bot.md)), and said Steam achievements don't matter (you have
+nearly all of them). Built and tested the same day, in the copy only. **Result: the bot took
+off, found and shot down all 19 enemy planes of Mission 01 (Casual) without taking a single
+hit, and the game declared "mission accomplished".** It took two tries: the first was
+stopped by a time limit in the session's own test order, not by the bot (details below).
+
+**The pieces.**
+
+| Piece | What it is |
+|---|---|
+| `CoopPilotMod` (UE4SS Lua script, copy in `mods\`) | The pilot. Reads the plane, the mission and every enemy many times a second, flies with the keyboard, fights, and writes `pilot.log`, `events.jsonl`, `status.json` and a flight log into `C:\AC7-Coop-Game\UserProfile\pilot\`. Takes orders as one-line packets through the CoopNetMod socket from section 9, so the game window never has to change for an order. |
+| `CoopPadMod` (C++ add-on, `cpp\CoopPadMod`) | The pilot's hands: presses keyboard keys from inside the game process (Windows' `SendInput`), but **only while the game window is in front**, and lets go of everything as soon as it isn't, or when the script stops asking for 0.3 s. Also carries a virtual gamepad, which turned out to be unusable (below). |
+| `tools\pilot.py` | Sends the pilot an order and reads its status and log, for a session. |
+| `tools\playtest.py` | The test runner: reads a test order (`playtests\orders\*.yaml`), drives the menus into the mission, has the pilot take off and fight, retries after a failure, and writes the report folder (`playtests\<date>_<mission>_<name>\`). |
+| `playtests\2026-10-18_1237_m01_first-run\` | The first run's report, events, flight logs and pictures. |
+
+**What the tests showed, in the order they happened.**
+
+1. **Writing the plane's control values does nothing** (way 1 of the design). The plane has
+   `InputPitch`, `InputRoll`, `InputThrottle` and so on, but the game rewrites them from the
+   keyboard and gamepad every frame, before the flight model reads them: a 19-second probe
+   in the air (16 ways of writing them) moved the plane not at all, and a value written one
+   frame was gone by the next in every case. The per-frame hook it tried
+   (`PlayerPlane:FrameUpdate`) is never called through the script system.
+2. **A crash, found and fixed.** The first version crashed the game three seconds into a
+   test. UE4SS's own source shows why: `LoopAsync` timers run a script on a second thread
+   while game hooks run the same script on the game's thread, with no lock between them.
+   Everything in the pilot now runs on the game's thread (`LoopInGameThreadWithDelay`), and
+   there was no crash after that in about 90 minutes of flying, including six script reloads.
+3. **The game pauses itself whenever its window loses the front.** So a bot can only play
+   while the game is in front, whatever it uses for controls.
+4. **A virtual gamepad can't reach the game.** The plan was a stand-in `xinput1_3.dll` (the
+   gamepad library) in the copy's folder, built and loaded fine, but the game never called
+   it: **Steam's overlay** (`gameoverlayrenderer64.dll`) sits in between and answers the
+   game's gamepad reads itself, as part of Steam Input. Getting past that would mean changing
+   your Steam settings, which I didn't. The stand-in was taken out of the copy again (kept in
+   `cpp\build\CoopPad\`, source in `cpp\CoopPad\`).
+5. **Keyboard keys work**, pressed from inside the game. Key messages sent to the window
+   (`PostMessage`) don't, even with the game in front: the game reads the keyboard at a lower
+   level. Your bindings (Options > Keyboard): **pitch 1 (down) / 3 (up), roll A/D, yaw Q/E,
+   throttle W/S**, missile Space, gun Left Ctrl, flare G, next target Tab, weapon C,
+   high-G turn 2, autopilot Z. (The note in section 7 that "S pulls up" was a misreading: S is
+   the brake; the plane was upside down at the time.)
+6. **How the Typhoon answers the keys** (measured in Free Flight): roll up to about 160°
+   a second and it keeps rolling (full aerobatic control, no bank limit); pitch up to about
+   36° a second; both build up over about half a second after a key goes down and fade the
+   same way after it comes up; yaw is gentle (about 4° a second). One game unit is 10 cm.
+7. **Free Flight** (the last line of the Free Mission difficulty list) loads a mission's map
+   with no enemies and **no briefing**, and puts the plane at 600 m, 600 km/h; a crash just
+   puts it back. It's where the autopilot was tuned.
+8. **The autopilot.** Every frame it works out where the goal lies in the plane's own frame
+   (ahead, to the side, above). For a big turn it rolls until the goal is above the canopy and
+   pulls; for small corrections it keeps the wings level and nudges the nose with pitch and
+   rudder. Gentle inputs are made by pressing a key in a share of the frames. A safety layer
+   climbs away when the plane is below 300 m or heading there within four seconds, and turns
+   back when the plane crosses the mission area's edge. In Free Flight it took the plane from
+   a tumbling dive (8,900 m, upside down, 1,700 km/h) to a steady heading within 4 seconds,
+   held headings to within a degree, and made a 90° turn in 4 seconds.
+9. **Fighting.** Targets are picked the way you would: Tab cycles them, and the pilot reads
+   back which one the game selected. When nothing is selectable yet (enemies beyond radar
+   range), it flies toward the nearest enemy from the game's own unit list, telling sides
+   apart with each unit's `GetFaction` (0 = enemy, 1 = ally) and mission targets with
+   `IsTGT`. It aims a little ahead of the target, chases at full speed beyond 3 km, fires a
+   missile (Space) about once a second while the game shows a lock inside 3 km, fires the gun
+   (Left Ctrl) inside 1 km when the target is within 5° of the nose, and on a missile warning
+   drops a flare (G) and breaks hard for two seconds.
+10. **Mission 01 on Casual** (Typhoon, LAAM): take-off by itself in 10 seconds; the first kill
+    5 missiles at 2.8 to 2.4 km; then 19 kills in phase 2 (the run from its checkpoint),
+    80 missiles, some gun, **no damage taken**, score 12,180 (the same as the second line of
+    your own Mission 01 record), mission accomplished at 12:58. Pictures in `pictures\`
+    (`2026-10-18_bot-m01-*`), report in `playtests\2026-10-18_1237_m01_first-run\report.md`.
+    The first try ended at 4,880 points because the session's test order had a 400-second
+    limit; the plane flew on unattended and left the area. The runner now gives the pilot
+    open-ended orders and stops it itself.
+11. **The mission's own events work as the log's backbone.** Hooks on the mission's handlers
+    report phase start, phase cleared, mission accomplished, player down, out of the area,
+    time out, objective failed and cutscenes; a hook on `GameObject:OnDeath` reports every
+    death. The status file has the mission's score, kill count, time left and the
+    accomplished/failed flags (after the mission ends both can read true; the events are the
+    reliable signal).
+12. **Developer cheats are empty.** Grouping the cheat manager's 494 commands by the code
+    they run shows that every test helper the design hoped to try (`SkipToPhase`,
+    `TogglePlayerInvincible`, `TogglePlayerWeaponUnlimited`, `ToggleForceSkipIGC`,
+    `ThreeTimesFaster`, `KillTarget`, `CompleteMission`, and so on) is one of the shared
+    empty stubs. One exception worth a later try: `DisableAIAttack` has its own code.
+13. **Menus.** The Campaign submenu opens on "Continue", which goes straight into **your story
+    save's current mission** ("Hush", on Ace); a Down pressed too soon after opening it is
+    swallowed, which is how one test landed there (no harm: it only reached the briefing, and
+    the copy has its own save). The runner now waits. Screens sometimes swallow an Enter at
+    a slow change, so the runner presses Enter until the mission loads. After a failure the
+    retry menu offers "Retry from checkpoint" (fast) and "Retry mission" (from the start, no
+    briefing). After "mission accomplished" the game plays a replay of the whole mission;
+    Enter only skips to the next camera shot.
+14. **Weapons through the game's functions** (instead of keys): `FlarePressed` dropped a
+    flare (4 to 3) and `ToggleSpecial` switched to the LAAM. Missiles and gun are unlimited on
+    Casual, so their counts can't show a shot; the pilot uses the keys for them, which are
+    proven.
+
+15. **The test runner on its own, from a cold start (13:26 to 13:41).** `python
+    tools\playtest.py run playtests\orders\m01-casual-runner-test.yaml` started the copy,
+    drove every menu page, took off, flew and fought, and **completed Mission 01 on Casual
+    at the first attempt: 10.4 minutes, 20 kills, 77 missiles, no damage, score 12,400**
+    (the same as the best line of your own Mission 01 record). Two missile warnings came
+    near the end; on "very near" it dropped a flare and broke, and the missile missed. Then
+    it closed the copy and checked your saves (unchanged). Report:
+    `playtests\2026-10-18_1326_m01_runner-test\report.md`. Its first try at 13:11 had
+    failed in the menus (it pressed by timing alone, and the mission never loaded), which is
+    what led to the page map below.
+16. **The menu pages, recognised.** The menus all sit inside one front-screen widget, but
+    each page is its own widget, so the pilot reports the visible one in `status.json`
+    (`page`) and the runner checks every step: `CampaignMenuMain_C` (the Campaign submenu),
+    `CampaignFreeMissionDifficulty_C`, `CampaignFreeMission_C` (the mission list),
+    `CampaignMissionTitle_C` / `CampaignMV_C` / `CampaignBriefingMV_C` (the briefing),
+    `CampaignBriefingMenu_C` (the operation map), `CampaignMenuActionSelect_C` (Mission
+    Prep), `CampaignHangarAircraft_C`, `CampaignHangarWeapon_C`, `CampaignHangarReview_C`
+    (Standby). If Enter on the Campaign submenu leads into the story mission instead, the
+    runner backs out through Mission Prep > Quit Mission and tries again.
+
+**Run and close.** The copy was started nine times, each through `tools\start-copy.ps1`
+with a save backup first (`backups\2026-10-18_1128`, `_1137`, `_1157`, `_1159`, `_1202`,
+`_1207`, `_1311`, `_1317`, `_1326`): once ending in the crash of point 2, the others closed
+by ending the process (to install an add-on, to restart the menu route, or by the runner at
+the end of a test). Two of them flew Mission 01 to the end. `tools\compare-saves.ps1` after
+each: no change to your real save folder.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

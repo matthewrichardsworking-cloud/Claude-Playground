@@ -1,0 +1,3 @@
+Real folder:  C:\Users\Matth\AppData\Local\BANDAI NAMCO Entertainment\ACE COMBAT 7
+Compared to:  backups\2026-10-18_1326  (13 files)
+No change: all 13 files have the same SHA-256 as the backup.

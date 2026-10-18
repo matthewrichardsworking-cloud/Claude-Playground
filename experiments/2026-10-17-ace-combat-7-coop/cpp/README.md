@@ -142,6 +142,8 @@ UE4SS.dll under exactly that name, and that the DLLs import the same runtime DLL
 | `make-implib.py` | writes the `.def` file for the import library from the copy's `UE4SS.dll` |
 | `HelloMod\dllmain.cpp` | the UE4SS guide's own hello-world example, built first to prove the toolchain (the one line that looks up an Unreal object is left out: private headers) |
 | `CoopNetMod\dllmain.cpp` | the socket add-on, see below |
+| `CoopPadMod\dllmain.cpp` | the playtest bot's keyboard (and unused gamepad) add-on, see below |
+| `CoopPad\` | the stand-in gamepad library (`xinput_proxy.cpp`, `xinput1_3.def`, `build.ps1`), tried and not used, see below |
 | `shim\GUI\GUITab.hpp` | the stand-in header explained above (a class declaration copied from RE-UE4SS, which is MIT-licensed; the notice is in the file) |
 | `RE-UE4SS\` | UE4SS source at commit 48e7edfe (git clone) |
 | `third\fmt\` | fmt 11.2.0 (git clone) |
@@ -177,6 +179,31 @@ mod that prints the count once a second, which is how the add-on was proved at t
 screen. `mods\CoopFlightLabMod` gained a key (F11) that drives the puppet plane from the
 live packets instead of from a file (workbench section 9).
 
+## CoopPadMod: the playtest bot's hands (18 Oct 2026)
+
+`cpp\CoopPadMod\dllmain.cpp`, built with `cpp\build.ps1 -Mods CoopPadMod -Install` the same
+way as CoopNetMod. It adds these functions to every Lua mod:
+
+| Lua function | What it does |
+|---|---|
+| `CoopKeys_Set("W,A")` | holds exactly these keys (any other key it pressed is let go); `""` lets go of all. Keys are pressed with Windows' `SendInput` **only while the game window is in front**; otherwise nothing is pressed and everything held is let go. A watchdog thread lets go of all keys when no call has come for 0.3 s (a script that stops or errors can't leave a key held down). |
+| `CoopKeys_Status()` | which keys are held, how many presses, how many refused because the game wasn't in front |
+| `CoopPad_Foreground()` | whether the game window is in front |
+| `CoopPad_Set(...)`, `CoopPad_Release()`, `CoopPad_Status()` | the virtual gamepad below (unused) |
+
+Lua's own C functions are inside `UE4SS.dll` but not exported, so the add-on reads its
+arguments with LuaMadeSimple's exported helpers (`get_number`, `get_string`,
+`discard_value`), which are.
+
+**`cpp\CoopPad\`: a stand-in gamepad library, tried and not used.** `xinput1_3.dll` built
+from `xinput_proxy.cpp` + `xinput1_3.def` (`cpp\CoopPad\build.ps1`): it offers the game's two
+gamepad functions under the same numbers as Windows' own (2 = read the pad, 3 = vibration),
+passes everything on to `C:\Windows\System32\xinput1_3.dll`, and shows a virtual pad in slot
+1. The copy loaded it from its own folder as planned, but the game never called it: Steam's
+overlay answers the game's gamepad reads itself (Steam Input), and only the overlay called
+the stand-in, twice. It was moved out of the copy again (`cpp\build\CoopPad\xinput1_3-was-in-copy.dll`).
+
 ## Status
 
-See workbench.md section 9 for what was tested and what it showed.
+See workbench.md section 9 for what was tested and what it showed, and section 10 for the
+playtest bot.

@@ -1,4 +1,4 @@
-# Builds the C++ UE4SS add-ons in this folder (HelloMod, CoopNetMod) and, with -Install,
+# Builds the C++ UE4SS add-ons in this folder (HelloMod, CoopNetMod, CoopPadMod) and, with -Install,
 # puts them into the game copy at C:\AC7-Coop-Game\ue4ss\Mods\<Name>\dlls\main.dll and
 # lists them in mods.txt. Never touches the real install.
 #
@@ -17,7 +17,7 @@
 #      copy's UE4SS.dll reports), against the headers of RE-UE4SS commit 48e7edfe.
 
 param(
-    [string[]]$Mods = @('HelloMod', 'CoopNetMod'),
+    [string[]]$Mods = @('HelloMod', 'CoopNetMod', 'CoopPadMod'),
     [string]$Tools = 'C:\AC7-Coop-Tools',
     [string]$Game = 'C:\AC7-Coop-Game',
     [switch]$Install

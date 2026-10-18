@@ -2,6 +2,32 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, the playtest bot built: it completes Mission 01 alone
+
+- Built the bot designed earlier the same day (owner: achievements don't matter). Pieces:
+  `CoopPilotMod` (UE4SS Lua pilot: flies, fights, logs events/status/flight data, takes
+  orders over the CoopNetMod socket), `CoopPadMod` (C++ add-on: keyboard presses from inside
+  the game, only while its window is in front, watchdog lets go), `tools/pilot.py`,
+  `tools/playtest.py` (runner: order file, menus, take-off, attack, retries, report, save
+  check). Workbench section 10 has the details.
+- What the tests showed: writing the plane's `Input*` values does nothing (rewritten every
+  frame); UE4SS `LoopAsync` plus game hooks in one script race and crashed the game (fixed by
+  running everything on the game thread); the game pauses whenever it loses the front; a
+  stand-in `xinput1_3.dll` virtual gamepad never reaches the game because Steam's overlay
+  answers gamepad reads itself; keyboard keys from inside the process work.
+- The autopilot (bank toward the goal and pull, pulse keys for gentle input, ground and
+  area-edge safety) was tuned in Free Flight. Combat: Tab target cycling, enemies told apart
+  with the game's own `GetFaction`/`IsTGT`, lead aim, missiles on lock, gun close in, flares
+  and a break on a "very near" warning.
+- Results: Mission 01 Casual completed by hand-given orders (19 kills, no damage), then by
+  the runner alone from a cold start, menus included, at the first attempt: 20 kills, 77
+  missiles, no damage, score 12,400 (the owner's own best). Menu pages are recognised by
+  their widgets (the Campaign submenu opens on the story save's "Continue", a trap the
+  runner now detects and backs out of). Owner's real saves unchanged after every run.
+- Not yet: plane choice, special weapons, ground attack, skipping the post-mission replay.
+  Next, the owner's request: special weapons, incoming-missile path prediction, enemy path
+  and AI-state prediction from the game's own data plus live readings.
+
 ## 2026-10-18: Ace Combat 7 co-op, reading layer10_love's released mod (Double Trigger)
 
 - The co-op mod the owner had been told about came out: [Double Trigger v0.1.0](https://github.com/layer10-love/double-trigger)
