@@ -19,8 +19,11 @@ Newest first. One short entry per session.
   app from inside it. A git clone of REA lacks the Windows native parts; the npm
   package has them.
 - Cloned Co-op Anything next to them; notes in
-  `experiments/2026-10-17-coop-anything/`. Its MCP server still needs PyYAML
-  and registering.
+  `experiments/2026-10-17-coop-anything/`. After the owner restarted the app,
+  its MCP server was connected too: a Python 3.13 venv in `Claude Tools` with
+  PyYAML, registered at user level. `claude mcp list` shows it and REA as
+  connected, and REA's tools now load in new sessions. The `claude` command
+  isn't on PATH; the app keeps it under `%APPDATA%\Claude\claude-code\<version>\`.
 - Python: the owner's PC Guardian session had swapped the end-of-life Python 3.10
   for 3.13.15 (winget), leaving 3.10's packages behind. This session installed
   Python 3.15.0 for all users from python.org (checksum and signature checked);

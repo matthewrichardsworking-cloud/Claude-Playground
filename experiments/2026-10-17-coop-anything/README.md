@@ -1,7 +1,7 @@
 # Co-op Anything: on the PC
 
-**Status:** downloaded to the owner's PC next to REA and Ghidra. Not used on a
-game yet.
+**Status:** on the owner's PC next to REA and Ghidra, with its MCP server
+connected to Claude Code. Not used on a game yet.
 
 [Co-op Anything](https://github.com/cranebeaker/coop-anything) by cranebeaker
 (MIT license, copyright 2026 cranebeaker and contributors) is a guidebook for AI
@@ -49,21 +49,35 @@ there. See the LOG entry for 2026-10-17.
 - **Compiled leftovers in the repo.** Two `.pyc` files (Python's machine-made
   cache of its scripts) are checked into git under `__pycache__`. Projects
   normally leave these out, so it's probably an accident. They can't be read the
-  way the source can, so delete them before running the server.
+  way the source can, so delete them before running the server. (Done on the
+  PC.)
 - **Contributions go out under the owner's GitHub account,** as draft pull
   requests the owner reviews first.
 
+## The MCP server is connected
+
+- **Its own Python:** a virtual environment (a private Python setup for one
+  tool) at `%USERPROFILE%\Desktop\Claude Tools\coop-anything-env`, on Python
+  3.13 with PyYAML 6.0.3. It's 3.13 rather than 3.15 because PyYAML has no
+  ready-made Windows package for 3.15 yet. The PyYAML install was pinned to the
+  official package's SHA-256.
+- **Registered for every Claude Code session** under the name `coop-anything`,
+  with `claude mcp add --scope user`, the same level as REA. Config backup made
+  first: `%USERPROFILE%\.claude.json.coop-anything.backup`.
+- **Checked:** `claude mcp list` shows both `rea` and `coop-anything` as
+  connected. A direct query loaded all 244 directory entries (that part needs
+  PyYAML) and found 5 Deus Ex co-op projects.
+- **Its eight tools:** `search_directory`, `detect_engine`, `game_identity`,
+  `list_docs`, `read_playbook`, `get_skill`, `get_game`, `validate_entry`. They
+  appear in sessions started after the registration.
+- **Remove it** with `claude mcp remove --scope user coop-anything`.
+
 ## Not done yet
 
-- **The MCP server isn't hooked up.** Python is sorted out now (see the LOG
-  entry): Python 3.15.0 is the default, with 3.13 alongside, and the two `.pyc`
-  files are deleted from the PC's copy. What's left is installing PyYAML and
-  registering the server with Claude Code. PyYAML 6.0.3 has no ready-made
-  Windows package for 3.15 yet, so either let pip build its plain-Python
-  version or run the server on 3.13. Put PyYAML in a virtual environment in a
-  normal folder, not `pip install --user` (see the LOG note on AppData).
 - **Opening Claude Code inside the coop-anything folder** would load its skills,
-  and Claude Code would offer the MCP server from the folder's `.mcp.json`.
+  and Claude Code would also offer the folder's own `.mcp.json` server. That
+  one runs plain `python` (3.15, no PyYAML), so its directory search would
+  fail. Decline it; the user-level server already covers it.
 - **No game picked yet.** Ace Combat 7 is the only one researched so far, and
   for an Unreal Engine 4 game like that, Co-op Anything's first stop is UE4SS,
   not REA.
