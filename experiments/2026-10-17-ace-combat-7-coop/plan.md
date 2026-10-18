@@ -10,6 +10,10 @@ Every step ends with something you can actually play.
    and try it in the copy before building further here. If it is stable, the better use
    of this project is testing and helping that mod rather than finishing a second,
    less thorough one. Everything below stays as the fallback plan.
+   *Same evening:* released as Double Trigger v0.1.0 and read in full
+   (double-trigger-review.md). It delivers step 2 below (one mission together, through
+   Free Mission) but not step 3 (shared campaign progress). The reading is positive; the
+   next move is to try it in the copy, with the owner's OK.
 2. **Step 0 is done and step 1's first item works** (workbench.md sections 4 to 7): the
    copy has its own save folder, a session can fly a mission in it, and a puppet plane
    follows a recorded flight to within centimetres, straight and in turns. Two copies on

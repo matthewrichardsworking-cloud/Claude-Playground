@@ -5,11 +5,14 @@ Done 17 Oct 2026. Builds on the earlier note in the Playground repo
 
 ## Short version
 
-- **Update, 18 Oct 2026: someone is about to release one.** A Reddit user,
-  layer10_love, posted a clip of a working co-op mod on 15 Oct and told you in chat
-  that a release was coming the same day you read it. Their mod reuses the game's own
-  online layer (SNL) rather than keeping two single-player games in step. Section 5
-  has what is known and what it means for this project.
+- **Update, 18 Oct 2026, evening: it is released.** layer10_love's mod is out as
+  **Double Trigger** v0.1.0 on GitHub (MIT licence, full source, one `dinput8.dll`). A
+  full reading of the code is in [double-trigger-review.md](double-trigger-review.md):
+  two-player co-op for Free Missions on the game's own online layer, carefully built,
+  with honest rough edges, and it should run in our copy. Earlier the same day:
+  layer10_love had posted a clip of a working co-op mod on 15 Oct and told you in chat
+  that a release was coming. Section 5 has what was known before the release and what it
+  means for this project.
 - As of 17 Oct, **nobody had published Ace Combat 7 co-op**, and nobody had published a
   mod that puts AI enemies into an online match. Co-op Anything has no entry, issue or
   pull request for any Ace Combat game.
@@ -177,9 +180,18 @@ game's own cheat checks apply in online play. Both players need the mod, and the
 author will say whether DLC missions are covered. Testing needs a second PC: a second
 copy on this PC never gets a Steam connection (workbench section 6).
 
+**Update, the same evening: released and read.** The release (Double Trigger v0.1.0,
+18 Oct 2026, 16:40 UTC) answers the cautions above: it installs as a loader file
+(`dinput8.dll`, like UE4SS's `dwmapi.dll`), not a patched exe; it does not touch Steam's
+wrapper or any check of the game's; it allows friends-only and private lobbies only and
+blocks the game's own online modes while installed; DLC missions work if both players own
+the DLC; and it still needs a second PC. The full reading, with the checks made against
+our copy and the next steps, is in [double-trigger-review.md](double-trigger-review.md).
+
 ## Sources
 
 - [Reddit: "I am working on a Co-op Mod for Ace Combat 7!" by layer10_love](https://www.reddit.com/r/acecombat/comments/1x6q2q5/i_am_working_on_a_coop_mod_for_ace_combat_7/) (15 Oct 2026; read from a saved copy of the page)
+- [GitHub: layer10-love/double-trigger](https://github.com/layer10-love/double-trigger) (MIT; release v0.1.0 of 18 Oct 2026; source read in full, see double-trigger-review.md)
 - [Twinfinite: AC7 co-op and multiplayer](https://twinfinite.net/guides/ace-combat-7-co-op-multiplayer-what-need-know/)
 - [Steam: "Does this game allow PvE co-op in any way?"](https://steamcommunity.com/app/502500/discussions/0/3387282447741691991/)
 - [Steam: room settings and host migration](https://steamcommunity.com/app/502500/discussions/0/3468352315395862922)

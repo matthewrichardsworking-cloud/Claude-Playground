@@ -2,6 +2,28 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, reading layer10_love's released mod (Double Trigger)
+
+- The co-op mod the owner had been told about came out: [Double Trigger v0.1.0](https://github.com/layer10-love/double-trigger)
+  (MIT, full C++ source, one `dinput8.dll`). Cloned read-only into a scratch folder and
+  read in full, nothing downloaded into the game copy, nothing run. The review is
+  `experiments/2026-10-17-ace-combat-7-coop/double-trigger-review.md`.
+- Verdict: two-player co-op for Free Missions on the game's own online layer (the route
+  our plan set aside as hardest), host-authoritative with a private Steam P2P channel
+  for the world state, 24k lines written in seven days, defensively built (byte checks on
+  222 game functions before it does anything, per-feature fuses, friends-only lobbies
+  only, the game's own online modes blocked while installed). Its own known-issues list
+  is long and candid. It confirms our SNL map (`code/snl-map.md`) point for point.
+- Checked read-only against the owner's game copy: the exe build stamp, the Steam
+  library file's checksum and the absence of pirated-copy markers all pass the mod's own
+  checks, and UE4SS in the copy uses a different loader file name, so no file clash.
+  Two copies on one PC still can't work (the mod needs a real Steam connection).
+- Reproduced the release's build ID (`6240b21f`) from the published source: the version
+  stamp matches the code that is public.
+- Next, needing the owner's OK: download the DLL (checksum published), dry-run it in the
+  copy alone, then a two-player test with a Steam friend on a second PC. If it holds up,
+  the project turns into testing and helping that mod.
+
 ## 2026-10-18: Ace Combat 7 co-op, design for a playtest bot
 
 - The owner asked for a bot that plays missions in the game copy on a session's
