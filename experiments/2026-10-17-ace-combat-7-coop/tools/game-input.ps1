@@ -14,6 +14,9 @@
 #       press keys one after another (held 80 ms, 400 ms apart), wait 3 s, then take a picture
 #   powershell -NoProfile -File tools\game-input.ps1 -ProcessId 1234 -Keys Escape
 #       when two copies run, pick one by process id (default: the one started first)
+#   powershell -NoProfile -File tools\game-input.ps1 -Keys Ctrl+P
+#       key combinations: the names before the last "+" are held while the last one is
+#       pressed (Ctrl+P reloads UE4SS scripts, Ctrl+J writes the UE4SS object dump)
 #
 # Key names: Enter, Escape, Space, Tab, Backspace, Up, Down, Left, Right, Home, End,
 # PageUp, PageDown, Insert, Delete, F1..F12, A..Z, 0..9, Shift, Ctrl, Alt.
@@ -117,9 +120,10 @@ if ($Keys.Count -gt 0 -or ($Screenshot -ne '' -and -not $FullScreen)) {
 }
 
 if ($Keys.Count -gt 0) {
-    # Split "Down,Down,Enter" style lists and check every name first.
+    # Split "Down,Down,Enter" style lists and check every name first. "Ctrl+P" holds
+    # Ctrl while P is pressed (any number of modifiers, the last name is the key).
     $names = @($Keys | ForEach-Object { $_ -split '[,\s]+' } | Where-Object { $_ -ne '' })
-    foreach ($n in $names) { if (-not $vk.ContainsKey($n)) { Write-Error "Unknown key '$n'. Known: $($vk.Keys -join ', ')"; exit 1 } }
+    foreach ($n in $names) { foreach ($part in ($n -split '\+')) { if (-not $vk.ContainsKey($part)) { Write-Error "Unknown key '$part'. Known: $($vk.Keys -join ', ')"; exit 1 } } }
 
     # Bring the game window to the front. A quick Alt tap makes Windows allow it.
     if ([Win.Native]::IsIconic($target.Handle)) { [void][Win.Native]::ShowWindow($target.Handle, 9) }
@@ -129,14 +133,23 @@ if ($Keys.Count -gt 0) {
     if ([Win.Native]::GetForegroundWindow() -ne $target.Handle) {
         Write-Error "Could not bring the game window to the front (process $($target.ProcessId)); no keys sent."; exit 3
     }
-    foreach ($n in $names) {
-        $code = $vk[$n]
+    $press = {
+        param([int]$code, [bool]$down)
         $scan = [byte]([Win.Native]::MapVirtualKey([uint32]$code, 0) -band 0xFF)
         $flags = [uint32]0x0008   # scan code
         if ($extended -contains $code) { $flags = $flags -bor 0x0001 }
+        if (-not $down) { $flags = $flags -bor 0x0002 }
         [Win.Native]::keybd_event([byte]$code, $scan, $flags, [UIntPtr]::Zero)
+    }
+    foreach ($n in $names) {
+        $parts = @($n -split '\+')
+        $mods = @(); if ($parts.Count -gt 1) { $mods = $parts[0..($parts.Count - 2)] }
+        $main = $parts[$parts.Count - 1]
+        foreach ($m in $mods) { & $press $vk[$m] $true; Start-Sleep -Milliseconds 40 }
+        & $press $vk[$main] $true
         Start-Sleep -Milliseconds $HoldMs
-        [Win.Native]::keybd_event([byte]$code, $scan, ($flags -bor 0x0002), [UIntPtr]::Zero)
+        & $press $vk[$main] $false
+        [array]::Reverse($mods); foreach ($m in $mods) { Start-Sleep -Milliseconds 40; & $press $vk[$m] $false }
         Start-Sleep -Milliseconds $GapMs
     }
     "Pressed $($names -join ', ') in the game window of process $($target.ProcessId)."

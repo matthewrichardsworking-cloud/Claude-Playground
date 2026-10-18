@@ -2,6 +2,25 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, a puppet plane flies a recorded flight
+
+- The owner asked for work to carry on while they were away and gave a standing
+  go-ahead for anything in the game windows. A session drove one copy from the title
+  screen into a mission (menus, cutscene and briefing skipped with key presses through
+  `game-input.ps1`, which now sends key chords such as Ctrl+P for UE4SS hot reload),
+  took an in-mission object dump, and built `CoopFlightLabMod`: F7 records the player's
+  plane about 40 times a second to a file, F4 takes the nearest AI plane, switches its
+  AI off and puts it where the recording says every frame.
+- Result: the puppet held its place next to the player to the unit for a 32-second
+  replay. Between frames its own flight engine carries it in the right direction, so
+  each update corrects only 3 to 4 game units (about 30 to 40 cm). That is the shape a
+  network feed will need. Positions and rotations can be passed as plain Lua tables.
+  The game's `SetFELocationAndRotation` does nothing visible; `K2_TeleportTo` and
+  `SetBehaviorActive(false)` are the levers.
+- Not tried: missiles against the puppet, turns, a plane the mission hasn't activated.
+  Details in the experiment's `workbench.md`, section 7; script in `mods/`; two
+  screenshots in `pictures/`.
+
 ## 2026-10-17: Ace Combat 7 co-op, a script can't get the second copy past the title
 
 - Question from the previous entry: can a UE4SS script in the second copy skip the save

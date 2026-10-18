@@ -338,6 +338,82 @@ exe base address for that dump is in the UE4SS log, the `MainExe @ ...` line; it
 function called just before the fault, and the contents of the table it returned. Both
 only read files; nothing is run.
 
+## 7. The flight lab: a session flies a mission, records the plane, and drives a puppet plane (18 Oct, 00:15 to 00:50)
+
+You asked for work that could go on while you were away. With your go-ahead for
+anything in the game windows, one copy was started and driven from the title screen into
+a mission (SP Mission 01, "Unexpected Visitor", Casual), and the first real co-op
+building block was tried: **another plane made to fly exactly where a recording says**.
+That is the heart of the plan, because in co-op your friend's plane would be shown in
+your game the same way, from positions arriving over the network instead of from a file.
+
+**What was built.** A second UE4SS script, `CoopFlightLabMod` (copy kept in `mods\`),
+which is active in whichever copy loads it and never touches save files. It is driven
+by keys, so a session can use it through `tools\game-input.ps1` without you:
+
+| Key | What it does |
+|---|---|
+| F7 | Start or stop recording your plane: position, pitch/heading/roll and speed, about 40 times a second, to `UserProfile\flight-<date>.csv` |
+| F4 | Start or stop the puppet: takes the nearest active AI plane, switches its own AI off, makes it invincible, and every frame puts it where the newest recording says, shifted so it starts ahead and to the right of your plane |
+| F5 / F6 | One-off test: move the nearest AI plane next to your plane (F5 also switches its AI off first) |
+| F8 | A status line in the UE4SS log: map, your plane, the twelve nearest AI planes (distance, active or not, callsign) |
+| F9 | Write the UE4SS object dump (the game's catalogue of classes and functions) |
+
+`tools\game-input.ps1` can now press key combinations such as `Ctrl+P` (UE4SS reloads
+all scripts) and `Ctrl+J` (UE4SS object dump). Scripts can be edited while the game runs
+and reloaded with Ctrl+P, which is how the lab was built in one sitting.
+
+**Getting into a mission from a session.** Enter at the title; Campaign; the submenu
+opens on Continue, so two Downs land on SP Mission; Casual; Enter on a mission; the
+intro movie and the briefing are skipped one section at a time with Escape, Escape (the
+first Escape shows SKIP, the second skips that section; it took about nine pairs); F1 on
+the operation map goes to Mission Prep; Enter on Start Mission, Enter on the aircraft,
+Enter on the special weapon, Enter on Sortie; about 45 seconds of loading. With no
+hands on the controls the plane flies straight and leaves the combat area after two to
+three minutes, which ends the mission; "Retry from checkpoint" puts it back in 25 s.
+
+**What the in-mission object dump adds** (`dumps\2026-10-18_ue4ss-in-mission-ex01`,
+175,745 lines against 159,661 at the title screen): the player's plane is a
+`PlayerPlane` (here `AcePlayerPawn_typn_s03_C`, the Typhoon), the other planes are
+`AIPlane` objects (150 in this mission, most of them parked until the mission activates
+them), every plane descends from the game's `GameObject`, which has `bIsActivated`,
+health, speed in km/h, callsign and `SetIsInvincible`, and planes belong to a `Unit`
+that carries the side (`Faction`). AI planes offer `SetBehaviorActive(false)` to switch
+their AI off, and the standard Unreal `K2_TeleportTo(position, rotation)` moves them.
+The `SetFELocationAndRotation` functions looked promising but do nothing visible (FE is
+most likely the plane's slot in a formation, not its flight engine).
+
+**What the recorder showed.** 898 samples in 47 s on the first try (about 19 per
+second), later about 40 per second. The Typhoon flew a dead-straight line at about
+1,640 game units per second while the HUD showed 600 km/h, so one game unit is about
+10 cm here if the HUD speed is true. Recordings are kept in
+`dumps\2026-10-18_flight-recordings\`.
+
+**What the puppet showed** (three runs, 00:38 to 00:45):
+
+- A Lua table like `{X=…, Y=…, Z=…}` is accepted wherever the game wants a position or
+  a rotation, so no special types are needed.
+- With its AI switched off, an AI plane goes where it is put and stays put. The
+  wingman "Count" (an F-15C) and, on one run, an enemy F-15E were used.
+- Updated every 50 ms, the plane drifted about 95 units between updates; updated every
+  frame (about 40 times a second), about 45 units. That drift is simply the plane's own
+  flight engine carrying it forward at its own speed (650 km/h) between updates, in the
+  right direction: after the first big move, each update only had to correct it by
+  about 3 to 4 units, roughly 30 to 40 cm. In other words the puppet flies the path on
+  its own and the script merely trims it, which is exactly what a network feed needs.
+- Over the whole 32-second replay the puppet held its place to the unit: 2,500 units
+  ahead, 800 to the right, 1 above your plane, at the end as at the start.
+- Pictures: `pictures\2026-10-18_puppet-plane-6s.png` and `...-15s.png` show "Strider 2
+  Count" sitting ahead-right of your plane, driven by the recording. (Both copies are
+  there in full size and as small JPEGs.)
+
+**Not tried yet:** whether missiles lock onto the puppet and whether it can be shot
+(it was made invincible for the test), what it looks like in motion (pictures can't
+show jitter; a short video next time), rotation smoothness in turns (the recording was
+a straight line), and taking over a plane the mission has not activated yet (all tests
+used already-active planes). The game's own save was written to the copy's folder when
+the mission was quit; your real folder was checked afterwards, see below.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight
