@@ -18,9 +18,12 @@ Newest first. One short entry per session.
   big" and `pg` worked. Use `git clone -c core.longpaths=true <url> pg` so the
   setting stays in the clone; with `git -c ... clone` later commits fail with
   "Filename too long". `%APPDATA%\Claude` itself is in the app's private storage.
-- Still open, left alone as the owner asked: the JapaneseTutor and
-  stable-diffusion-webui venvs point at the removed Python 3.10, and the
-  Recycle Bin holds 13.4 GB of 3.10 leftovers (C: limit about 46 GB).
+- With the owner's OK, rebuilt JapaneseTutor's venv on Python 3.13: old
+  `.venv` to the Recycle Bin, 17 wheels downloaded and checked against PyPI's
+  SHA-256, then its own `setup_env.py` installed from only those files. All 22
+  tests in `tests\test_core.py` pass.
+- Still open: stable-diffusion-webui's venv points at the removed Python 3.10,
+  and the Recycle Bin holds 13.4 GB of leftovers (C: limit about 46 GB).
 - Wrote `Desktop\Claude Tools\START-HERE.md`, a plain-language guide to each
   tool with checks and fixes. README.txt stays the detailed list.
 

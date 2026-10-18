@@ -53,15 +53,32 @@ Run from Claude Code in the desktop app. `T` is `%USERPROFILE%\Desktop\Claude To
   Claude Code). That's why `environment_healthy` is false while the Ghidra
   scope is healthy.
 
+## Japanese Tutor rebuilt
+
+Afterwards the owner OK'd rebuilding `Claude Apps\JapaneseTutor\.venv` on
+Python 3.13 (it needs only `anthropic` and `pillow`; 3.13 is the safe pick
+until their dependencies all ship 3.15 builds):
+
+1. Moved the old 55 MB `.venv` to the Recycle Bin first. Its site-packages held
+   3.10 builds that pip would otherwise count as already installed. The API
+   key and settings live in `%APPDATA%\JapaneseTutor`, not in the venv.
+2. `py -3.13 -I -m pip download --only-binary=:all: --no-cache-dir -r
+   requirements.txt` into an empty folder in Temp: 17 wheels. Checked each
+   file's SHA-256 against `https://pypi.org/pypi/<name>/<version>/json`; all
+   matched.
+3. Ran the app's own `py -3.13 setup_env.py` with `PIP_NO_INDEX=1`,
+   `PIP_FIND_LINKS=<that folder>` and `PIP_NO_CACHE_DIR=1`, so it could only
+   install the checked files and wrote no pip cache into the redirected
+   AppData. Installed anthropic 1.15.0 and pillow 13.0.0. anthropic now also
+   pulls in `opentelemetry-api`, which is only an interface and sends nothing
+   unless an exporter is set up.
+4. `tests\test_core.py`: 22 tests OK. `test_connection_error_message` prints a
+   ConnectionAbortedError traceback from the mock server on purpose.
+   `tests\test_app_flow.py` wasn't run because it opens a Tk window on the
+   owner's screen.
+
 ## Left as it was
 
-The owner asked for these to be confirmed, not fixed:
-
-- `Claude Apps\JapaneseTutor\.venv` (55 MB) needs only `anthropic` and
-  `pillow`. Rebuilding it means moving the old `.venv` out first (its
-  site-packages hold 3.10 builds that pip would count as installed), then
-  `py -3.13 setup_env.py`. 3.13 is the safe choice until those packages ship
-  3.15 builds.
 - `Desktop Icons\stable-diffusion-webui` is an AUTOMATIC1111 checkout from Oct
   2022 with a 4.5 GB venv, and needs Python 3.10 exactly. Options: restore
   `Python310` from the Recycle Bin, install 3.10 for all users, or move to a
