@@ -30,6 +30,7 @@ evening, 22:20 to 22:50: the copy now has **its own save folder** (section 4 bel
 | Back up saves | `tools\backup-saves.ps1` |
 | Start the copy (backs up saves first, gives the copy its own save folder) | `tools\start-copy.ps1` |
 | Check your real save folder against the latest backup | `tools\compare-saves.ps1` |
+| Press keys in the copy and take pictures of its window (so a session can drive the menus) | `tools\game-input.ps1` |
 
 To start the copy yourself: open Steam, then in PowerShell run
 
@@ -207,6 +208,35 @@ the copy closed at 22:34, Steam saw that the real save had changed since its las
 original 10 October save again** (Steam's change number 73). From now on the copy never
 changes the real file, so Steam finds nothing to upload after a copy run.
 
+## 5. Claude can drive the copy's menus (23:20 to 23:30)
+
+You asked for a way for sessions to "play" the copy without you pressing keys.
+`tools\game-input.ps1` does it: it finds the copy's game window, brings it to the front,
+presses keys in it (Enter, the arrows, Escape, letters and so on, each held briefly like
+a real press) and takes a picture of the game window so the session can read the menu
+before the next press. Tested end to end with you away from the keyboard: it pressed
+Enter at the title, read the main menu from a picture (Campaign, Multiplayer, Data
+Viewer, Steam Store, Options, Credits, Copyright, Quit Game), moved down to Quit Game,
+answered "Yes" to "Are you sure you want to end the game?", and the copy saved into its
+own folder and closed. Your real folder was unchanged (checksums equal to
+`backups\2026-10-17_2323`).
+
+- Keys only go to the copy's window (a window titled "ACE COMBAT" belonging to an
+  `Ace7Game` process). With two copies running it uses the one started first unless
+  told which (`-ProcessId`).
+- Pictures are of the game window only, saved where the session asks; they are not
+  sent anywhere unless a session chooses to show you one.
+- The main menu's Quit Game asks "Are you sure?" with No selected, so quitting is
+  Down ×7, Enter, Left, Enter. Loading the save after Enter at the title takes a few
+  seconds; `-WaitMs` waits before the picture.
+- UE4SS still tends to crash as the game closes after it has saved (section 4). The
+  save is already on disk by then.
+
+**Standing permission (your words, 17 Oct 2026):** sessions may start the copy, press
+Enter at the title, use the menus and quit from the main menu themselves, without asking
+you each time. Anything beyond that (for example going online, or touching the real
+install) still needs your OK.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight
@@ -243,6 +273,9 @@ changes the real file, so Steam finds nothing to upload after a copy run.
    folder and stays on the title screen.
 2. Going past the title screen in the copy is now safe: the copy saves only to its own
    folder. `tools\compare-saves.ps1` is there whenever you want to check ("No change").
+   Sessions may press Enter at the title, use the menus and quit from the main menu
+   themselves with `tools\game-input.ps1` (section 5); they don't need to ask you for
+   that.
 3. A second copy is started with `-Second` and gets its own folder (`UserProfile2`) and a
    smaller window. It still crashes when it gets past the title screen (no Steam
    identity), so for now a second copy is only good for title-screen tests.

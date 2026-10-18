@@ -15,8 +15,25 @@ license, by cranebeaker) as the guide.
 The second session ran on the owner's PC with the game installed. Its notes are copied
 here: [plan.md](plan.md), [research.md](research.md), [identity.md](identity.md). The
 third set up the workbench and tested it, and the fourth gave the copy its own save
-folder: [workbench.md](workbench.md). The working
+folder and a way for sessions to drive its menus: [workbench.md](workbench.md). The working
 copies live in the project folder `Claude Apps\AC7-Coop` on that PC.
+
+## Working with the copy on the owner's PC
+
+Copies of the scripts are in [tools/](tools/); the live ones are in
+`C:\Users\Matth\Claude Apps\AC7-Coop\tools\` on the PC.
+
+- `start-copy.ps1` starts the copy at `C:\AC7-Coop-Game` with its own save folder
+  (`C:\AC7-Coop-Game\UserProfile`), after backing up the real save folder. `-Second`
+  starts a second copy with its own folder and a smaller window.
+- `game-input.ps1` presses keys in the copy's window and takes pictures of it, so a
+  session can read the menus and drive them itself (Enter at the title, arrows, Quit
+  Game, and so on).
+- `compare-saves.ps1` checks the real save folder against the latest backup by SHA-256.
+- **Standing permission from the owner (17 Oct 2026):** sessions may start the copy,
+  press Enter at its title screen, use its menus and quit from the main menu by
+  themselves, without asking. Going online, or touching the real install, mods, Mod
+  Loader or real saves, still needs the owner's OK.
 
 ## Short answer
 

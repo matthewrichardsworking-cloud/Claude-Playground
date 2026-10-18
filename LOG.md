@@ -23,6 +23,12 @@ Newest first. One short entry per session.
 - UE4SS crashed (fault in `UE4SS.dll`) while the game was closing after that run, two
   seconds after the save was written. Harmless for saves; expect a "stopped working" box
   on quitting now and then. Dump kept in the project's `dumps\` folder.
+- New `tools\game-input.ps1`: finds the copy's game window, presses keys in it and takes
+  pictures of it, so a session can drive the menus itself. Tested without the owner:
+  Enter at the title, down to Quit Game, Yes; the copy saved into its own folder and
+  closed; real folder unchanged. **Standing permission from the owner:** sessions may
+  start the copy, press Enter, use the menus and quit from the main menu without
+  asking. Copies of all four scripts are in the experiment's `tools/` folder.
 - Two copies retried with `-Second` (own folder, smaller window, seeded save): the
   second copy can't read the seeded save ("error loading data" loop), and with the seed
   removed it creates a new save in the no-identity place and crashes one second later at
