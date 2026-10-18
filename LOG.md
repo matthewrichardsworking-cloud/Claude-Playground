@@ -2,6 +2,28 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-17: health check of the PC setup
+
+- Re-checked everything from the entries below; it all still works. `claude mcp
+  list` (2.1.299) shows `rea` and `coop-anything` connected, `rea doctor
+  --provider ghidra` is healthy, and `rea analyze whoami.exe` through Ghidra
+  took 57 seconds (341 functions). Python, Java 21 and Node are the expected
+  versions. Commands and results in `experiments/2026-10-17-pc-health-check/`.
+- Claude Code's PowerShell tool starts with `-NoProfile`, so `rea doctor` run
+  there says `GHIDRA_INSTALL_DIR` isn't set. Wrap it in `powershell.exe
+  -Command "..."` to load the profile. The MCP server has its own env and is fine.
+- Correction: `core.longpaths` alone isn't enough to clone into a session
+  folder. Its real path is 203 characters and git's https helper allows about
+  220 for the `.git` path, so `Claude-Playground` failed with "'$GIT_DIR' too
+  big" and `pg` worked. Use `git clone -c core.longpaths=true <url> pg` so the
+  setting stays in the clone; with `git -c ... clone` later commits fail with
+  "Filename too long". `%APPDATA%\Claude` itself is in the app's private storage.
+- Still open, left alone as the owner asked: the JapaneseTutor and
+  stable-diffusion-webui venvs point at the removed Python 3.10, and the
+  Recycle Bin holds 13.4 GB of 3.10 leftovers (C: limit about 46 GB).
+- Wrote `Desktop\Claude Tools\START-HERE.md`, a plain-language guide to each
+  tool with checks and fixes. README.txt stays the detailed list.
+
 ## 2026-10-17: REA and Ghidra running on the PC, Co-op Anything added
 
 - First session on the owner's PC itself (Claude Code in the Claude desktop
