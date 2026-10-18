@@ -2,6 +2,23 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, design for a playtest bot
+
+- The owner asked for a bot that plays missions in the game copy on a session's
+  instructions (mission, plane, loadout, objective order), retries until it completes,
+  and reports back. Design only, nothing built:
+  `experiments/2026-10-17-ace-combat-7-coop/playtest-bot.md`.
+- Split: a pilot inside the game (UE4SS Lua), a Python test runner outside (order, saves,
+  menus, retries, report), a Claude session as test director, since Claude can't fly
+  live. Modes: fair, assisted (invincible, steering by nudging) and skip-ahead.
+- From the in-mission object dump: `PlayerPlane` has `InputPitch`/`InputRoll`/
+  `InputThrottle` values (whether writing them steers the plane is the first test),
+  `PlayerWeaponActivator` has missile/gun/flare press functions,
+  `TargetSelectionComponent:SelectTarget`, `Mission` reports completed/failed/score and
+  can skip mini-games, `NimbusGameInstance` has `SetMissionID` and `SetPlaneAndSWP`.
+- Open question for the owner before any mission gets completed in the copy: Steam
+  achievements would unlock on their real account.
+
 ## 2026-10-18: Ace Combat 7 co-op, a C++ add-on gives the scripts a network socket
 
 - Built a C++ add-on for UE4SS on the owner's PC (experiment folder `cpp\`): CoopNetMod

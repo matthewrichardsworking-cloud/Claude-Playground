@@ -32,6 +32,7 @@ earlier in the evening and has been put back from the backup, in Steam Cloud too
 | File | What it is |
 |---|---|
 | [plan.md](plan.md) | The step-by-step plan (workbench, co-op skirmish, one mission, full campaign), how each step gets tested, whether two copies can run on this PC, the biggest unknowns, and an honest view of the odds. |
+| [playtest-bot.md](playtest-bot.md) | Design for a test-pilot bot that plays missions in the copy on a session's test order and reports back. Not built yet. |
 | [workbench.md](workbench.md) | **Read this next.** What step 0 set up, what each test showed, what happened to your saves, and the rules for test runs. |
 | [identity.md](identity.md) | Your exact game build: Steam build 9855922, the exe's SHA-256, Unreal Engine 4.18.2. |
 | [research.md](research.md) | What already exists (no co-op mod anywhere), how AC7's online matches work (player-hosted over Steam), the tools we can build on, and what to check by hand on Nexus Mods. |
