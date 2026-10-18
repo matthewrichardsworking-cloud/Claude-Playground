@@ -1,8 +1,10 @@
 # Ace Combat 7: can it go co-op?
 
-**Status:** research done, plan made and the workbench set up (three sessions, 17 Oct
-2026): a plain game copy with UE4SS that starts on its own and dumps the game's
-catalogue. Two copies at once don't work yet. Nothing co-op built yet.
+**Status:** research done, plan made and the workbench set up (four sessions, 17 Oct
+2026): a plain game copy with UE4SS that starts on its own, dumps the game's
+catalogue, and keeps its saves and settings in its own folder so it can't touch the
+owner's real save (proved at the title screen by checksums; a run into a mission is
+still to be done). Two copies at once don't work yet. Nothing co-op built yet.
 
 The question: can Ace Combat 7: Skies Unknown (PC, Steam, 2019) be played with a
 friend against computer-controlled enemies, ideally the story campaign? Researched with
@@ -11,7 +13,8 @@ license, by cranebeaker) as the guide.
 
 The second session ran on the owner's PC with the game installed. Its notes are copied
 here: [plan.md](plan.md), [research.md](research.md), [identity.md](identity.md). The
-third set up the workbench and tested it: [workbench.md](workbench.md). The working
+third set up the workbench and tested it, and the fourth gave the copy its own save
+folder: [workbench.md](workbench.md). The working
 copies live in the project folder `Claude Apps\AC7-Coop` on that PC.
 
 ## Short answer
