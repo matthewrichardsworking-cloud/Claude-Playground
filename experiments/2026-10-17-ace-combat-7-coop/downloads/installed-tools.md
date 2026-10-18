@@ -31,7 +31,7 @@ when `C:\AC7-Coop-Tools\env.ps1` is missing).
 | Visual Studio Build Tools bootstrapper (downloaded, never run) | `AC7-Coop\downloads\vs_BuildTools\vs_BuildTools.exe` | 4.5 MB | delete the folder |
 | UE4SS source code, the exact version in the game copy (git clone, history without file contents) | `AC7-Coop\cpp\RE-UE4SS\` | 35 MB | delete the folder |
 | fmt text-formatting library 11.2.0 (git clone; UE4SS's log functions need its headers) | `AC7-Coop\cpp\third\fmt\` | 4 MB | delete the folder |
-| Build output (import library, object files, the two add-on DLLs) | `AC7-Coop\cpp\build\` | 2 MB | delete the folder; `cpp\build.ps1` recreates it |
+| Build output (import library, object files, the two add-on DLLs with their debugging symbols) | `AC7-Coop\cpp\build\` | 12 MB | delete the folder; `cpp\build.ps1` recreates it |
 | The add-ons inside the game copy | `C:\AC7-Coop-Game\ue4ss\Mods\HelloMod\` and `...\Mods\CoopNetMod\`, two lines in `Mods\mods.txt` | 0.3 MB | delete the two folders and the two lines |
 
 Already on the PC before this work, not installed by it: Git 2.x (`C:\Program Files\Git`),
