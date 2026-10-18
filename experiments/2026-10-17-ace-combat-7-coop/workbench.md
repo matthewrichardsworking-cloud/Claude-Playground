@@ -458,6 +458,60 @@ Round 2 was closed the same way at 01:20 (Quit Mission, Quit Game; the copy's ow
 written 01:20:11). Your real folder: unchanged (`backups\2026-10-18_0051`, all 13 files
 the same SHA-256).
 
+## 8. Reading the running copy's code: a tool, the crash site named, and a first map of the online layer (18 Oct, 06:40 to 07:15)
+
+With your addendum (README, "Addendum") in force, a session built
+`tools\read-game-code.py`: a Python tool that opens the **running** copy with read
+rights only, finds where Windows loaded the exe this time (the "base address", different
+each boot), and reads the game's code out of memory, where Steam's wrapper has already
+unscrambled it. It never writes into the game (there is no write call in the file) and
+it refuses any `Ace7Game.exe` that is not the copy's. It only saves the bytes of single
+functions (`code\<name>.bin`, with a readable listing next to it in `code\<name>.txt`),
+never whole sections, as the addendum requires. The listing is made with the `capstone`
+disassembler (installed from PyPI with pip, version 5.0.9; without it the tool still
+prints hex). Names come from three places: the UE4SS object dump (the tool works out the
+dump's base address by itself and shifts every address to the live one), the game's own
+class data (712 class names, which name 2,335 functions by class and position in the
+class's function table), and the strings a function uses. Steam calls are named too.
+
+One command line, with the copy at its title screen:
+
+    python tools\read-game-code.py read exe+0x1da3319
+
+prints the function around the crash site of 17 Oct with every call named. Other forms:
+`refs SNL_P2P_HOST` (which functions use a string or address), `strings Lobby` (search
+the game's text), `class P2PSession` (a class's function table), `name exe+0x...`,
+`info`. The copy is started with `tools\start-copy.ps1` as always; Steam was not running
+this morning, so the session started it (silently) first.
+
+**What it found** (details and tables in [code\snl-map.md](code/snl-map.md)):
+
+- The crash site is `SNL::PlatformUDPSocket` function 5, "is a Steam P2P packet
+  waiting?": it asks Steam for the interface table, takes the networking slot, and
+  dies reading the function table of a null pointer, exactly as section 6 said. The
+  caller is the socket's receive step on an SNL worker thread. The pointer is null
+  because `SteamAPI_Init`, called by Unreal's Steam start-up code (`exe+0x211cbb0`),
+  fails in a second process.
+- `SNL_P2P_HOST` is a Steam lobby **member-data** key: the session update writes `1`
+  into the host's entry, and the members are read to find the host (fallback: Steam's
+  lobby owner). `SNL_STEAMLOBBY_OWNER_NAME` is a lobby-data key carrying the host's
+  name, set when the session publishes its properties and read by the session search.
+  Create, join, leave, list members, invite and the session search are all named now.
+- The save path: the Steam ID comes from `ISteamUser::GetSteamID`, is checked for
+  validity, and only then becomes the `SaveGames\<ID>\` folder; otherwise the file goes
+  to `SaveGames\<name>.sav`, the no-identity save the second copy wrote.
+- SNL's messages are Steam P2P packets on a channel number; the 33 session protocol
+  message types (join, add/remove session client or object, object update, host
+  migration, keep-alive, time sync, events) are listed by class name in the map.
+- Two leads for later: the game reads an online version number
+  (`[SNLMultiplayer] VersionIntNumber`) that decides who can see whose sessions, and the
+  developers' debug menu has a switch "Apply multiplayer parameters to campaign".
+
+Run: copy started 06:53:12 (backup `2026-10-18_0653`), title screen only, quit from the
+main menu (Quit Game, Yes) at 07:08:33, the copy's own save written in its own folder.
+`tools\compare-saves.ps1` afterwards: no change, all 13 files of your real folder have
+the same SHA-256 as the backup. Nothing was written into the game's memory or files.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

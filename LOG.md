@@ -2,6 +2,26 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, a tool that reads the running copy's code
+
+- New `tools/read-game-code.py` (Python, read-only process access, capstone 5.0.9 for
+  the disassembly): opens the running game copy, finds the exe's live base, names
+  functions from the UE4SS object dump (rebased automatically), from the game's own
+  class data (2,335 functions by class and slot) and from strings, names Steam
+  interface calls, finds every code reference to a string or address, and saves
+  single functions only. One line: `python toolsead-game-code.py read exe+0x1da3319`.
+- Proved on the 17 Oct crash: the crash site is `SNL::PlatformUDPSocket` slot 5, the
+  "is a Steam P2P packet waiting?" call, reading through a null `ISteamNetworking`
+  pointer because `SteamAPI_Init` (called from Unreal's Steam start-up) fails in a
+  second process.
+- First map of the online layer in `code/snl-map.md`: `SNL_P2P_HOST` is the lobby
+  member-data key that marks the host, `SNL_STEAMLOBBY_OWNER_NAME` the lobby-data key
+  with the host's name; session create/join/leave/search/invite functions named; the
+  save path builds `SaveGames/<SteamID>` only after a valid `GetSteamID`; SNL's
+  messages are Steam P2P packets on a channel; 33 session message types listed. Two
+  leads: `[SNLMultiplayer] VersionIntNumber` and a developer switch "Apply multiplayer
+  parameters to campaign". Workbench section 8. The copy's bytes stay local.
+
 ## 2026-10-18: Ace Combat 7 co-op, the owner widens the rules
 
 - The owner decided the rules had kept the project from the route the other modder
