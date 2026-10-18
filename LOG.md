@@ -2,6 +2,19 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, someone else is about to release one
+
+- The owner found a Reddit post by layer10_love (r/acecombat, 15 Oct) showing a working
+  co-op mod, and chatted with the author: it reuses the game's own SNL peer-to-peer
+  layer over Steam with a custom channel for the rest, "about 95% working", release
+  promised for 18 Oct. That is the route our plan set aside as hardest (it needs the
+  game's compiled code, which we don't read). Reddit blocks automated reads; the owner
+  saved the page as HTML and it was read from that.
+- Decision: wait for the release, read it, try it in the copy; if stable, switch to
+  testing and helping it rather than finishing our own less thorough version. Our
+  puppet work stays as the fallback. Written into the experiment's `research.md`
+  (section 5), `plan.md` (update at the top) and the project README.
+
 ## 2026-10-18: Ace Combat 7 co-op, a puppet plane flies a recorded flight
 
 - The owner asked for work to carry on while they were away and gave a standing

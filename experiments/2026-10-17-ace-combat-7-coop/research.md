@@ -5,9 +5,14 @@ Done 17 Oct 2026. Builds on the earlier note in the Playground repo
 
 ## Short version
 
-- **Nobody has made Ace Combat 7 co-op**, and nobody has published a mod that puts AI
-  enemies into an online match. Co-op Anything has no entry, issue or pull request for
-  any Ace Combat game.
+- **Update, 18 Oct 2026: someone is about to release one.** A Reddit user,
+  layer10_love, posted a clip of a working co-op mod on 15 Oct and told you in chat
+  that a release was coming the same day you read it. Their mod reuses the game's own
+  online layer (SNL) rather than keeping two single-player games in step. Section 5
+  has what is known and what it means for this project.
+- As of 17 Oct, **nobody had published Ace Combat 7 co-op**, and nobody had published a
+  mod that puts AI enemies into an online match. Co-op Anything has no entry, issue or
+  pull request for any Ace Combat game.
 - **Online matches are hosted by a player's PC, not by Bandai Namco's servers.** One
   player's game is the "host" (it runs the match), the others connect to it through
   Steam. If the host leaves, the game moves the match to another player ("host
@@ -117,8 +122,60 @@ and [Selatapura Hellscape MP (Nexus 1625)](https://www.nexusmods.com/acecombat7s
 On the [Playmore page on ModDB](https://www.moddb.com/mods/playmore): is there anything
 about multiplayer, or a Discord server link?
 
+## 5. layer10_love's co-op mod (learned 18 Oct 2026)
+
+**What is known.** The Reddit post
+["I am working on a Co-op Mod for Ace Combat 7!"](https://www.reddit.com/r/acecombat/comments/1x6q2q5/i_am_working_on_a_coop_mod_for_ace_combat_7/)
+(r/acecombat, 15 Oct 2026, 141 upvotes, 22 comments, a 38-second clip) says only that
+"the important pieces work" and "a lot of polish is missing". In the comments the
+author declines a request to add bombers ("polish the main purpose until it's bug free
+first") and says they are a software developer by trade who knows reverse engineering
+and leaned heavily on AI tools. Reddit blocks automated reading; a saved copy of the
+page was read instead. The technical detail comes from your private chat with the
+author on 18 Oct:
+
+- It is "a proper networking implementation": the mod **piggybacks on SNL**, Project
+  Aces' own peer-to-peer layer that sits on Steam's P2P networking (the same layer
+  section 2 describes), and adds a **custom channel** for whatever SNL does not carry.
+- They put it at "about 95% working", with "some gameplay flow stuff" and "mission
+  specific fixes" missing, and said the repository would be made public and a first
+  version released "later today" (18 Oct).
+
+**How that compares with this project.** In plan.md's words it is **Route A**, the
+route we set aside: use the game's own online machinery and teach it to carry a
+campaign. We judged it hardest because the online code is invisible to UE4SS scripts,
+because the exe's code is kept scrambled on disk (and unscrambling it is off limits
+here), and because of the game's own cheat checks. A developer working at the level of
+the game's compiled code can do what the reflection catalogue alone cannot, and that
+is evidently what they did. The checks are less of a wall than they look: there is no
+third-party anti-cheat (see identity.md), Steam's wrapper is copy protection that only
+matters at launch, and the game's own checks are ordinary game code that a mod at that
+level can read, stay inside, or satisfy by having every player run the same mod in a
+private room. The hard part of Route A was never protection; it was the sheer amount
+of game logic to carry over a network built for deathmatch, which their custom channel
+is for.
+
+**What it means.** If the release works as described, playing the campaign with a
+friend becomes a matter of installing their mod on two PCs, which is better than our
+Route B ever could be: a puppet plane is an approximation, their route is the real
+thing. The sensible course is to wait for the release, read it, and try it in the copy
+(see the task card). Our Route B work is not wasted: the clean copy with its own save
+folder, the tools that start and drive it, the crash-dump reader and the puppet
+findings make this PC a good test bench, and careful testing with exact bug reports is
+a concrete way to help. The puppet route stays as a fallback if their project stalls or
+stays closed.
+
+**Cautions before trying it.** Only in the copy, never the real install. Only once the
+code is public, or there is a clearly published release, and after reading how it
+installs (a loader like UE4SS is one thing, a patched exe is another; a patched exe
+would be off limits here). Private rooms only, with people who run the same mod; the
+game's own cheat checks apply in online play. Both players need the mod, and the mod's
+author will say whether DLC missions are covered. Testing needs a second PC: a second
+copy on this PC never gets a Steam connection (workbench section 6).
+
 ## Sources
 
+- [Reddit: "I am working on a Co-op Mod for Ace Combat 7!" by layer10_love](https://www.reddit.com/r/acecombat/comments/1x6q2q5/i_am_working_on_a_coop_mod_for_ace_combat_7/) (15 Oct 2026; read from a saved copy of the page)
 - [Twinfinite: AC7 co-op and multiplayer](https://twinfinite.net/guides/ace-combat-7-co-op-multiplayer-what-need-know/)
 - [Steam: "Does this game allow PvE co-op in any way?"](https://steamcommunity.com/app/502500/discussions/0/3387282447741691991/)
 - [Steam: room settings and host migration](https://steamcommunity.com/app/502500/discussions/0/3468352315395862922)

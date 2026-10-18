@@ -1,7 +1,21 @@
 # Plan: Ace Combat 7 co-op, easiest step first
 
-Written 17 Oct 2026. Nothing has been built yet. Each step has to work and be tested
-before the next one starts. Every step ends with something you can actually play.
+Written 17 Oct 2026. Each step has to work and be tested before the next one starts.
+Every step ends with something you can actually play.
+
+**Update, 18 Oct 2026.** Two things changed the picture since this was written:
+
+1. **Someone else is about to release a co-op mod that takes Route A** (the game's own
+   online layer, see research.md section 5). Decision: wait for that release, read it,
+   and try it in the copy before building further here. If it is stable, the better use
+   of this project is testing and helping that mod rather than finishing a second,
+   less thorough one. Everything below stays as the fallback plan.
+2. **Step 0 is done and step 1's first item works** (workbench.md sections 4 to 7): the
+   copy has its own save folder, a session can fly a mission in it, and a puppet plane
+   follows a recorded flight to within centimetres, straight and in turns. Two copies on
+   one PC cannot get past the title screen (the second never gets a Steam connection),
+   so the network tests in step 1 need a second PC, and the game's leftover developer
+   commands turned out to be empty in this build (step 0 test 4).
 
 ## A few words used below
 
@@ -147,10 +161,11 @@ they pass.
 
 ## Can two copies run on this one PC?
 
-- **For our own co-op mod (Route B): probably yes, for development.** Two copies of the
-  game on this PC, with our mod connecting them through the PC's own internal network.
-  Not proven yet: that's test 2 in step 0. It'll be heavy on the PC, so expect low
-  settings in small windows.
+- **For our own co-op mod (Route B): no, as it turned out** (step 0 test 2, 17 Oct). Both
+  copies reach the title screen, but Steam gives only the first running copy its
+  connection; the second has no Steam identity, can't use its save and crashes at the
+  first use of Steam networking. A UE4SS script can't change that (workbench.md
+  section 6). Development happens in one copy; two-game tests need a second PC.
 - **For the game's own online mode (Route A): no.** Its online play runs through your
   Steam account, one Steam account can't be in a match with itself, and Steam runs only
   one account per PC. The tools that get around this (Nucleus Co-op, Goldberg) swap the
