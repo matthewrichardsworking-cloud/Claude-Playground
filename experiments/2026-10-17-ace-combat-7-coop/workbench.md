@@ -941,6 +941,51 @@ object dump. Before playing co-op in the copy, switch `CoopFlightLabMod` off in
 `ue4ss\Mods\mods.txt` or set Double Trigger's `toggle_key` in `ac7mp.ini` to a free F key.
 Not changed here: the mods are other sessions' work, and the game was running.
 
+## 13. Double Trigger in your real install too (18 Oct, 16:50 to 16:55)
+
+You lifted the "never touch the real install" rule for this one install, and asked for a
+backup first and proof that Vanilla mode can remove it. The rule otherwise stands.
+
+**Backups first** (`backups\2026-10-18_real-install-before-double-trigger\`): a full copy of
+your real `ModLoader` folder (759 files, 1.6 GB, checked byte for byte against the original:
+library, profile, settings, deploy record and the old loader exe), the SHA-256 of all 91
+files in `Game\Content\Paks\~mods`, and a listing of the game folder. Your saves were backed
+up as well (`backups\2026-10-18_1651`).
+
+**Checks before changing anything.** Your real loader exe was byte-identical to the build the
+change was made on, so the new one is exactly your loader plus the one rule from section 12.
+None of your 30 library mods contains a DLL, so the new rule changes nothing for them. Asked
+read-only, the loader reported your setup fully in sync (19 enabled mods, 91 files, nothing
+pending, no stray files) and Vanilla mode off.
+
+**Install.** The updated loader was copied over your real `ModLoader\AC7ModLoader.exe` (it has
+to be the new one: the old build would quietly remove `dinput8.dll` the next time it applies,
+because it does not know the file), then:
+"Installed Double Trigger v0.1.0 at load-order position 31 of 31; applied +1 -0 =91". So
+`ACE COMBAT 7\dinput8.dll` was added and your 91 mod files were left exactly as they were.
+
+**Vanilla mode tested.** On: 92 files removed (all mods and Double Trigger), the game folder
+plain. Off: all 92 back, `dinput8.dll` with its release checksum, and every one of the 91 mod
+files under the same name with the same SHA-256 as before the install. Vanilla mode is off
+again, the loader reports everything in sync (20 enabled mods, 92 files), and the shared
+`gamepath.txt` still names your real install.
+
+**Will it start there?** Not launched (you didn't ask). The mod's own checks were checked
+read-only: your real exe is the build it expects, its Steam library file has the expected
+checksum, and none of the pirated-copy marker files exist. The same DLL passed every check in
+the copy (section 12). Your real install has no UE4SS, so the F5/F9 overlap from section 12
+does not exist there.
+
+**What changes for you when you play the real game:** Multiplayer in the main menu is greyed
+out while the mod is installed; turn Vanilla mode on in the Mod Loader before playing the
+game's own online modes, and off again for co-op. F5 opens the co-op panel. A co-op partner
+needs the same `dinput8.dll` and, for a fair game, the same gameplay mods (see the
+compatibility answer of 18 Oct: Skies Restored is the one of your 19 that edits mission maps).
+
+**To undo it all:** in the Mod Loader, untick or remove Double Trigger (or turn on Vanilla
+mode). To go back to the old loader exactly, copy the backup's `ModLoader\AC7ModLoader.exe`
+over the real one after removing Double Trigger.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

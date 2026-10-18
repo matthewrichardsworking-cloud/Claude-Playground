@@ -3,7 +3,14 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (18 Oct 2026, 16:50): Double Trigger is installed in the copy and running.**
+**Status (18 Oct 2026, 16:55): Double Trigger is in your real game too.** You lifted the
+real-install rule for this one install. After a full backup, the updated Mod Loader
+replaced your old one and installed Double Trigger as mod 31 of 31; your other mods were
+left byte for byte as they were, and Vanilla mode was tested: it removes everything,
+Double Trigger included, and puts every file back identical (workbench section 13). Use
+Vanilla mode before the game's own online play. Not launched in the real install yet.
+
+**Earlier (16:50): Double Trigger is installed in the copy and running.**
 On your request it was downloaded (checksums match the release, Windows Defender found
 nothing), packaged as a Mod Loader mod and installed into the copy with AC7 Mod Loader,
 which needed a small addition to place a DLL next to the game's exe (workbench section
@@ -121,6 +128,10 @@ Where an older rule in any of these notes says otherwise, this addendum wins:
   tools that needs (Microsoft's Build Tools, CMake, Git, Python packages, the UE4SS
   source) from their official pages, with sizes and checksums written down in the
   notes. Tell you what was installed and where, so it can be removed.
+- **One exception, 18 Oct 2026 16:50 (your words: "I'm lifting the 'never touch the real
+  install' rule for this one install"):** Double Trigger was installed into the real game
+  with the updated Mod Loader, after a backup (workbench section 13). That was a one-off;
+  the rule below still holds for everything else.
 - Unchanged: the real install, mods, Mod Loader and saves are never touched; nothing
   goes online except private rooms with people running the same mod, and only with
   your OK; nothing is posted without your OK; test runs still go through

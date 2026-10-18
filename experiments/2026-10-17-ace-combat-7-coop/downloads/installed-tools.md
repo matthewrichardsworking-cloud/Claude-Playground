@@ -78,6 +78,12 @@ to the loader's library copy) and the loader's data folder `C:\AC7-Coop-Game\Mod
 To remove it: run the loader with Vanilla mode on, or delete both. The mod itself writes
 `ac7mp.ini`, `ac7mp.log` (and older `ac7mp-N.log`) next to the copy's exe.
 
+**Also in your real install since 18 Oct 2026, 16:53** (your one-time OK): `ACE COMBAT 7\dinput8.dll`
+(Mod Loader mod 31, "Double Trigger v0.1.0", in `ACE COMBAT 7\ModLoader\library\`), and the
+updated `ACE COMBAT 7\ModLoader\AC7ModLoader.exe` (SHA-256 `cd22a606…e69e962`; the old one,
+`94bd369e…789e523ac`, is in `backups\2026-10-18_real-install-before-double-trigger\ModLoader\`).
+To remove: untick Double Trigger in the Mod Loader or turn on Vanilla mode; workbench section 13.
+
 ### GitHub (git clones, no account needed)
 
 | Repository | Commit | Why | Size |

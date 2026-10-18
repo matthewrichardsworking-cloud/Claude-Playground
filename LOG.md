@@ -2,6 +2,19 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, Double Trigger in the owner's real install (one-time exception)
+
+- The owner lifted the "never touch the real install" rule for this one install, asking for
+  a backup first and proof that Vanilla mode can remove it. The rule stands otherwise.
+- Backed up the real `ModLoader` folder in full (byte-checked), fingerprinted the 91 files
+  in `~mods`, backed up the saves. The real loader exe was identical to the build the
+  loader-DLL rule was added to; no library mod has a DLL; the loader reported everything
+  in sync before the change.
+- Replaced the real loader exe with the updated build (the old one would remove the DLL on
+  its next apply), installed Double Trigger as mod 31: +1, 91 kept. Vanilla mode on removed
+  all 92 files; off restored them, every `~mods` file identical by SHA-256. Not launched
+  in the real install. Write-up: workbench section 13 of the experiment.
+
 ## 2026-10-18: Ace Combat 7 co-op, Double Trigger installed with AC7 Mod Loader and launched
 
 - The owner asked to prepare, install (with AC7 Mod Loader) and launch Double Trigger. Done
