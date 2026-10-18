@@ -2,6 +2,25 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: Ace Combat 7 co-op, Double Trigger installed with AC7 Mod Loader and launched
+
+- The owner asked to prepare, install (with AC7 Mod Loader) and launch Double Trigger. Done
+  in the game copy, since the real install, its mods and its Mod Loader stay untouched.
+  Write-up: workbench section 12 of the experiment.
+- v0.1.0 downloaded from the GitHub release: checksums match, Windows Defender clean,
+  unsigned as the author says. Kept outside the repo (no binaries pushed).
+- The Mod Loader could only place `.pak` files and `Game\Content` files. A small rule
+  (`LooseTargetFor`) now sends known loader DLLs (`dinput8.dll` etc.) at a mod's top level
+  to the game folder; its existing backup and removal machinery does the rest. Unit tests
+  pass. Installed with `--game C:\AC7-Coop-Game --install`. Vanilla mode removes and
+  restores the DLL. `--game` keeps the loader's shared `gamepath.txt` untouched.
+- Launched with `tools\start-copy.ps1` (the loader's own Launch goes through Steam, which
+  starts the real install). The mod's log shows every start-up check passing; Multiplayer
+  greyed out; F5 panel works. No lobby hosted. Real save unchanged. Left running for the
+  owner.
+- Known overlap: UE4SS reads keys straight from Windows, so F5 and F9 also reach
+  `CoopFlightLabMod`; switch it off or move Double Trigger's `toggle_key` before co-op.
+
 ## 2026-10-18: Ace Combat 7 co-op, playtest bot phase 2: tracking, prediction, threats
 
 - Owner's request: special weapons, incoming-missile paths, enemy paths and AI behaviour

@@ -3,13 +3,20 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (18 Oct 2026, evening): layer10_love's co-op mod is out, and it is good.**
+**Status (18 Oct 2026, 16:50): Double Trigger is installed in the copy and running.**
+On your request it was downloaded (checksums match the release, Windows Defender found
+nothing), packaged as a Mod Loader mod and installed into the copy with AC7 Mod Loader,
+which needed a small addition to place a DLL next to the game's exe (workbench section
+12). The copy started with it: every one of the mod's own start-up checks passed, the
+main menu's Multiplayer entry is greyed out as intended, and F5 opens its co-op panel.
+No lobby has been hosted. Your real install, its mods and its Mod Loader were not
+touched, and your real save is unchanged.
+
+**Earlier (18 Oct 2026, evening): layer10_love's co-op mod is out, and it is good.**
 "Double Trigger" v0.1.0 (GitHub, MIT, full source, one `dinput8.dll`) does two-player
 co-op for Free Missions on the game's own online layer, the route our plan set aside as
 hardest. A full reading of its code is in [double-trigger-review.md](double-trigger-review.md):
-carefully built, honest about its rough edges, and it should run in our copy (three of its
-own checks were verified here read-only). Nothing has been downloaded or installed yet;
-that and a first dry run in the copy are the next steps, with your OK.
+carefully built, honest about its rough edges, and it should run in our copy.
 
 **Also (18 Oct 2026, 13:45): the playtest bot works.** In the copy it took off, shot down
 every enemy plane of Mission 01 (Casual) without taking a hit, and the game declared
@@ -62,7 +69,7 @@ earlier in the evening and has been put back from the backup, in Steam Cloud too
 | `tools\` | `start-copy.ps1` (starts the copy with its own save folder, backing up your saves first), `backup-saves.ps1`, `compare-saves.ps1` (checks your real save folder against the latest backup), `game-input.ps1` (presses keys in the copy and takes pictures of its window, so a session can drive the menus without you), and `read-crash-dump.py` / `read-crash-dump-details.py` (read a crash dump of the game and say where it died), `read-game-code.py` (reads the running copy's code out of memory and names functions, calls and strings; workbench section 8), `coop-net-sender.py` (plays a recorded flight into the game as network packets, standing in for the other player's PC), `fetch-msvc-portable.py` (fetches Microsoft's compiler into a plain folder without an administrator prompt; section 9), and the playtest bot's `pilot.py` (sends the pilot an order, reads its status and log) and `playtest.py` (the test runner; section 10). |
 | `code\` | Bytes and listings of single functions read from the running copy (never shared), and [snl-map.md](code/snl-map.md), the first map of the game's online layer. |
 | `cpp\` | The C++ add-ons for UE4SS and how they are built: [cpp/README.md](cpp/README.md) (which UE4SS the copy runs, how its add-ons work, why the documented build route is closed and what was done instead), `build.ps1`, `CoopNetMod` (the UDP socket for the scripts), `CoopPadMod` (the playtest bot's hands: keyboard presses from inside the game, only while it is in front; section 10), `CoopPad` (a stand-in gamepad library, built and tried, not used: Steam's overlay keeps it from the game), `HelloMod` (UE4SS's own example, built first as proof), the UE4SS source at the copy's exact version (`RE-UE4SS`). Workbench section 9. |
-| `mods\` | Copies of the UE4SS scripts written for the copy. `CoopSecondCopyMod` watches the second copy's save and load calls and tries the game's developer save switches (workbench section 6). `CoopFlightLabMod` records your plane's flight to a file and drives an AI plane along a recording (F4) or along live network packets (F11), the first co-op building blocks (workbench sections 7 and 9). `CoopNetCheckMod` prints the packet count once a second (the title-screen test). `CoopPilotMod` is the playtest bot's pilot: it flies, fights and logs (section 10). |
+| `mods\` | Copies of the UE4SS scripts written for the copy. `CoopSecondCopyMod` watches the second copy's save and load calls and tries the game's developer save switches (workbench section 6). `CoopFlightLabMod` records your plane's flight to a file and drives an AI plane along a recording (F4) or along live network packets (F11), the first co-op building blocks (workbench sections 7 and 9). `CoopNetCheckMod` prints the packet count once a second (the title-screen test). `CoopPilotMod` is the playtest bot's pilot: it flies, fights and logs (section 10). `double-trigger-modloader\` holds Double Trigger v0.1.0 packaged for AC7 Mod Loader (section 12). |
 | `pictures\` | Screenshots from the copy, for example the puppet plane flying ahead-right of the player (18 Oct). |
 | `backups\` | A dated copy of your save and settings folder from before each test run. |
 | `inherited\` | The earlier AC7 Mod Loader source, mission-script tools and research, copied out of the Claude app's hidden storage. [What was left out](inherited/LEFT-OUT.md). |
@@ -74,12 +81,12 @@ earlier in the evening and has been put back from the backup, in Steam Cloud too
 
 ## Next step
 
-**Try Double Trigger in the copy** (double-trigger-review.md section 9). The mod is
-released and read; the next steps are, with your OK: download v0.1.0 and check its
-checksum; put it in the copy and do a dry run alone (read its log, open its F5 panel,
-host a friends-only lobby, leave, quit, check the real save is unchanged); then a
-two-player test, which needs a second PC and a Steam friend with the game. If it holds
-up, this project turns into testing and helping that mod with exact bug reports. Our own
+**A two-player test of Double Trigger** (double-trigger-review.md section 9). It is
+installed in the copy and starts cleanly (workbench section 12). What is left needs you:
+a Steam friend with the game and the same `dinput8.dll` on their own PC, then Host and
+Invite friends in the F5 panel, both pick the same Free Mission and difficulty, both
+Sortie. Hosting a lobby is going online, so a session does it only with your OK. If it
+holds up, this project turns into testing and helping that mod with exact bug reports. Our own
 route stays as the fallback: the flight lab (workbench section 7) can fly a mission, record your plane
 and make another plane follow the recording to within centimetres, straight and in
 turns, and since section 9 it can do the same from live network packets. The next

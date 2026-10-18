@@ -882,6 +882,65 @@ copy closed and your saves checked (unchanged). Report:
   line too often (34 m): that group mixes slow ground vehicles with fast planes and should
   be split by speed. Not changed yet (the code stays as validated).
 
+## 12. Double Trigger installed in the copy with AC7 Mod Loader (18 Oct, 16:40 to 16:50)
+
+You asked for layer10_love's co-op mod to be prepared, installed with AC7 Mod Loader and
+launched. It was done in the copy: your rules keep the real install, its mods and its Mod
+Loader untouched, and asking to lift that would have held everything up.
+
+**Download.** v0.1.0 from the release page into `downloads\double-trigger-v0.1.0\`; every
+file matches the release's checksum list; Windows Defender found nothing. Details and
+checksums in `downloads\installed-tools.md`.
+
+**The Mod Loader needed one addition.** It could only place `.pak` files and loose files
+under `Game\Content`, but Double Trigger is a code loader that has to sit next to
+`Ace7Game.exe`. One rule was added to the loader's source (`inherited\AC7ModLoader\src\Core\ModManager.cs`,
+`LooseTargetFor`): a file at the top of a mod named `dinput8.dll`, `dwmapi.dll`,
+`version.dll`, `winmm.dll` or `xinput1_3.dll` goes into the game folder. Everything else
+(backup of a file already there, removal on disable or Vanilla mode, the manifest) is the
+loader's existing loose-file machinery. Five new unit tests pass along with the old ones
+(`ac7ml-tests order`, `replace`). The new build is `inherited\AC7ModLoader\bin\AC7ModLoader.exe`;
+the previous build is kept in `bin\previous-2026-10-06\`. The loader in your real install is
+the old build and is unchanged.
+
+**Package and install.** `mods\double-trigger-modloader\Double Trigger v0.1.0\` holds the
+unchanged DLL, its two licence files and a short readme. Installed with the loader's own
+command line, pointed only at the copy:
+
+```
+AC7ModLoader.exe --game "C:\AC7-Coop-Game" --install "...\mods\double-trigger-modloader\Double Trigger v0.1.0"
+```
+
+Result: "Installed Double Trigger v0.1.0 at load-order position 1 of 1; applied +1", and
+`C:\AC7-Coop-Game\dinput8.dll` appeared (a hard link to the library copy, checksum
+unchanged). The loader's data lives in `C:\AC7-Coop-Game\ModLoader\`. With `--game` the loader
+does not write the one setting it shares between installs (`%APPDATA%\AC7ModLoader\gamepath.txt`,
+which still names your real install, checked before and after). Vanilla mode on removed the
+DLL and Vanilla mode off put it back, so the loader can switch the mod off for you.
+
+**Launch.** Not through the loader's Launch button: that goes through Steam, and Steam would
+start your real install. The copy was started with `tools\start-copy.ps1` as always (own save
+folder, real save backed up first). Double Trigger's log (`C:\AC7-Coop-Game\ac7mp.log`) in
+order: version `0.1.0+6240b21f`, game code decrypted after 1 s, "all game addresses check
+out", Steam initialized, "online block in place", "copy check: Steam copy, owned", engine
+hook running, "online gate: single player; starting", fixes installed, "overlay ready: F5".
+No warnings or errors. At the main menu, Multiplayer is greyed out (the mod's online
+block), and F5 opens the co-op panel with the version, your Steam name and a masked ID,
+"Not in a co-op session", "Friends hosting co-op: none right now" and the Host, Invite
+friends, Leave and status buttons. Pictures: `pictures\2026-10-18_double-trigger-*.png`.
+No lobby was hosted (that is going online, which needs your OK). `tools\compare-saves.ps1`:
+your real save unchanged. The copy was left running at the main menu for you.
+
+**Living next to UE4SS.** UE4SS and all our add-ons loaded as before in the same run. Two
+UE4SS lines say a hook "failed"; the same two appear in the 17 Oct log from before Double
+Trigger existed, so they are not caused by it. One real overlap: UE4SS reads keys directly
+from Windows, so F5 also reached `CoopFlightLabMod` ("no player plane", harmless at the
+menus). In a mission, F5 (Double Trigger's panel) would also start the flight lab's puppet
+teleport test, and F9 (Double Trigger's debug "publish plane") would also write a UE4SS
+object dump. Before playing co-op in the copy, switch `CoopFlightLabMod` off in
+`ue4ss\Mods\mods.txt` or set Double Trigger's `toggle_key` in `ac7mp.ini` to a free F key.
+Not changed here: the mods are other sessions' work, and the game was running.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight
