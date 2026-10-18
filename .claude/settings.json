@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "claude-playground": {
+      "source": {
+        "source": "github",
+        "repo": "matthewrichardsworking-cloud/Claude-Playground"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "universal-modder@claude-playground": true
+  }
+}

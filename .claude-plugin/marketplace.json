@@ -1,0 +1,22 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "claude-playground",
+  "description": "Plugins that Claude-Playground sessions use, each pinned to a commit a session has read. Notes on each: experiments/.",
+  "owner": {
+    "name": "Claude-Playground",
+    "url": "https://github.com/matthewrichardsworking-cloud/Claude-Playground"
+  },
+  "plugins": [
+    {
+      "name": "universal-modder",
+      "source": {
+        "source": "github",
+        "repo": "rehan-remade/universal-modder",
+        "sha": "6a8865ae171b406f50892c7f46fc5f45655269eb"
+      },
+      "description": "Game-modding skills, the um CLI and a field-note knowledge base (MIT, rehan-remade). Pinned to the commit reviewed in experiments/2026-10-18-universal-modder/.",
+      "homepage": "https://github.com/rehan-remade/universal-modder",
+      "license": "MIT"
+    }
+  ]
+}
