@@ -354,7 +354,8 @@ by keys, so a session can use it through `tools\game-input.ps1` without you:
 | Key | What it does |
 |---|---|
 | F7 | Start or stop recording your plane: position, pitch/heading/roll and speed, about 40 times a second, to `UserProfile\flight-<date>.csv` |
-| F4 | Start or stop the puppet: takes the nearest active AI plane, switches its own AI off, makes it invincible, and every frame puts it where the newest recording says, shifted so it starts ahead and to the right of your plane |
+| F4 | Start or stop the puppet: takes the nearest active AI plane, switches its own AI off, makes it invincible, sets its speed to the recording's, and every frame puts it where the newest recording says, shifted so it starts ahead and to the right of your plane |
+| F3 | Same, but with the nearest plane the mission has *not* activated yet (switched on first) |
 | F5 / F6 | One-off test: move the nearest AI plane next to your plane (F5 also switches its AI off first) |
 | F8 | A status line in the UE4SS log: map, your plane, the twelve nearest AI planes (distance, active or not, callsign) |
 | F9 | Write the UE4SS object dump (the game's catalogue of classes and functions) |
@@ -418,6 +419,44 @@ menu, Quit Game. The copy wrote its own save at 00:48:47 (685,197 bytes, in
 `UserProfile\...\SaveGames\<your Steam ID>\`), then the usual UE4SS crash while closing
 (same place in `UE4SS.dll` as on 17 Oct, harmless). Your real folder: unchanged
 (`backups\2026-10-18_0019`, all 13 files the same SHA-256).
+
+**Round 2 (00:51 to 01:20): three of the open questions answered.**
+
+- **A plane the mission hasn't activated can be used.** Pressing F3 takes the nearest
+  *unactivated* AI plane (one parked and waiting for its cue in the mission script),
+  switches it on with the game's own `SetActive(true, false)`, and drives it. It worked
+  first time on an enemy Rafale and then on an enemy F/A-18F: both appeared ahead-right
+  of your plane and flew the recording (picture
+  `pictures\2026-10-18_puppet-unactivated-plane.png`). So your friend's plane does not
+  have to be one of the mission's own cast.
+- **Matching the puppet's speed makes the trimming almost vanish.** The Rafale's own
+  engine ran at 1,300 km/h, so each frame it overshot by about 50 units and had to be
+  pulled back. Telling the plane the recording's speed (its `OverrideNormalSpeed` and
+  `OverrideMaxSpeed` values plus the game's `AutopilotAdjustSpeed`) brought the
+  correction down to **0.2 units per frame**, about 2 cm: the game's own flight engine
+  then flies the path by itself and the script only nudges it. All replay keys do this
+  now.
+- **Turns work too.** A 20-second recording with real stick input (roll, a hard pull,
+  roll back: heading swung 33 degrees, pitch from -34 to +24, the plane went inverted)
+  was replayed through an enemy F-4E. Correction per frame rose to about 6 units (60
+  cm), with one worst trim of 79 units during the roll-over; the puppet followed the
+  manoeuvre and ended up where the recording said. Picture:
+  `pictures\2026-10-18_puppet-turn-10s.png`.
+- Flying the plane from a session works with held keys: A/D roll, S pulls up, through
+  `game-input.ps1 -HoldMs`. The pull put the plane into enemy fire and it was shot down
+  (51% damage, then "mission failed"), which also showed that the game's "mission
+  failed" screen leads back to the mission list on Enter, not to a retry.
+- Menu lesson: the briefing's SKIP advances one spoken line at a time. About 70 single
+  Escape presses 1.3 s apart get through it; paired presses miss half the time.
+
+**Still open:** missiles against a puppet (the HUD does treat an enemy puppet as a
+target), what the puppet looks like in motion (needs a short video), and the step that
+turns all this into co-op: sending the recording live over the network instead of
+reading it from a file.
+
+Round 2 was closed the same way at 01:20 (Quit Mission, Quit Game; the copy's own save
+written 01:20:11). Your real folder: unchanged (`backups\2026-10-18_0051`, all 13 files
+the same SHA-256).
 
 ## Your saves: what happened
 

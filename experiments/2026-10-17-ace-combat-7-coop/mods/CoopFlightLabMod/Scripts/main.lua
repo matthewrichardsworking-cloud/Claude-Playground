@@ -262,13 +262,19 @@ local function replayStep()
         local here = r.plane:K2_GetActorLocation()
         local jump = math.sqrt((here.X - target.X) ^ 2 + (here.Y - target.Y) ^ 2 + (here.Z - target.Z) ^ 2)
         r.jumpTotal = (r.jumpTotal or 0) + jump
-        if jump > (r.jumpMax or 0) then r.jumpMax = jump end
+        r.jumpWindow = (r.jumpWindow or 0) + jump
+        if r.steps > 0 and jump > (r.jumpMax or 0) then r.jumpMax = jump end   -- the very first move is the big one
         r.plane:K2_TeleportTo(target, rot)
         r.lastPut = target
         r.steps = r.steps + 1
+        if r.matchSpeed and r.steps % 40 == 0 then
+            pcall(function() r.plane:AutopilotAdjustSpeed(r.pathKmph, 1.0) end)
+        end
         if r.steps % 200 == 0 then
             local spd = "?"
             pcall(function() spd = string.format("%.0f km/h", r.plane:GetSpeedKmph()) end)
+            local windowMean = r.jumpWindow / 200
+            r.jumpWindow = 0
             -- where the puppet sits as seen from the player's plane: ahead / to the right / above
             local rel = "?"
             pcall(function()
@@ -281,8 +287,8 @@ local function replayStep()
                 local right = -dx * math.sin(yaw) + dy * math.cos(yaw)
                 rel = string.format("ahead %.0f, right %.0f, above %.0f", ahead, right, dz)
             end)
-            log(string.format("replay: step %d, t=%.1f s, own motion per frame %.1f units (worst %.1f), jump per update %.1f units (worst %.1f), puppet speed %s, relative to player: %s",
-                r.steps, t - r.rows[1].t, r.strayTotal / r.steps, r.strayMax, r.jumpTotal / r.steps, r.jumpMax, spd, rel))
+            log(string.format("replay: step %d, t=%.1f s, own motion per frame %.1f units, correction per update over the last 200: %.1f units (worst since start %.1f), puppet speed %s, path speed %.0f km/h, relative to player: %s",
+                r.steps, t - r.rows[1].t, r.strayTotal / r.steps, windowMean, r.jumpMax or 0, spd, r.pathKmph or 0, rel))
         end
     end)
     if not ok then log("replay step failed: " .. tostring(err)); replay = nil end
@@ -293,6 +299,25 @@ LoopAsync(10, function()
     if replay then ExecuteInGameThread(replayStep) end
     return false
 end)
+
+-- F3: same as F4, but the puppet is a plane the mission has NOT activated yet (parked
+-- somewhere, waiting for its cue). It is switched on with SetActive(true, false) first.
+-- Co-op will need a plane that is not part of the mission's own cast, so this matters.
+local useInactivePlane = false
+local matchSpeed = false
+
+local function nearestInactiveAIPlane(loc)
+    local best, bestD = nil, math.huge
+    for _, a in ipairs(FindAllOf("AIPlane") or {}) do
+        local ok, d = pcall(function()
+            if a.bIsActivated then return nil end
+            local l = a:K2_GetActorLocation()
+            return (l.X - loc.X) ^ 2 + (l.Y - loc.Y) ^ 2 + (l.Z - loc.Z) ^ 2
+        end)
+        if ok and d and d < bestD then best, bestD = a, d end
+    end
+    return best, math.sqrt(bestD)
+end
 
 local function toggleReplay()
     if replay then
@@ -307,10 +332,33 @@ local function toggleReplay()
         if not p then log("no player plane") return end
         local loc = p:K2_GetActorLocation()
         local rot = p:K2_GetActorRotation()
-        local plane = nearestAIPlane(loc, true) or nearestAIPlane(loc, false)
+        local plane
+        if useInactivePlane then
+            plane = nearestInactiveAIPlane(loc)
+            if not plane then log("no inactive AI plane found") return end
+            local wasHidden = plane.bHidden
+            local okA, errA = pcall(function() plane:SetActive(true, false) end)
+            log(string.format("inactive puppet %s: hidden=%s, SetActive(true,false): %s, now active=%s hidden=%s",
+                plane:GetFullName(), tostring(wasHidden), okA and "no error" or tostring(errA),
+                tostring(plane.bIsActivated), tostring(plane.bHidden)))
+            pcall(function() plane:SetActorHiddenInGame(false) end)
+        else
+            plane = nearestAIPlane(loc, true) or nearestAIPlane(loc, false)
+        end
         if not plane then log("no AI plane to use as puppet") return end
         pcall(function() plane:SetBehaviorActive(false) end)
         pcall(function() plane:SetIsInvincible(true) end)
+        -- Average speed of the recording, in the game's km/h (about 2.78 units/s per km/h,
+        -- from the HUD's 600 km/h against the measured 1,640 units/s).
+        local first, last = rows[1], rows[#rows]
+        local dist = math.sqrt((last.x - first.x) ^ 2 + (last.y - first.y) ^ 2 + (last.z - first.z) ^ 2)
+        local pathKmph = (last.t > first.t) and (dist / (last.t - first.t) / 2.78) or 600
+        if matchSpeed then
+            pcall(function() plane.OverrideNormalSpeed = pathKmph end)
+            pcall(function() plane.OverrideMaxSpeed = pathKmph end)
+            local okS, errS = pcall(function() plane:AutopilotAdjustSpeed(pathKmph, 1.0) end)
+            log(string.format("speed matching on: path %.0f km/h; AutopilotAdjustSpeed: %s", pathKmph, okS and "no error" or tostring(errS)))
+        end
         -- Start the puppet ahead and to the right of the player, where the chase camera can
         -- see it (straight abeam would be outside the view).
         local AHEAD, RIGHT, UP = 2500, 800, 0
@@ -320,7 +368,8 @@ local function toggleReplay()
         local off = { X = loc.X + fwdX * AHEAD + rightX * RIGHT - rows[1].x,
                       Y = loc.Y + fwdY * AHEAD + rightY * RIGHT - rows[1].y,
                       Z = loc.Z + UP - rows[1].z }
-        replay = { rows = rows, i = 1, t0 = gameTime(), plane = plane, off = off, steps = 0, strayTotal = 0, strayMax = 0, lastPut = nil }
+        replay = { rows = rows, i = 1, t0 = gameTime(), plane = plane, off = off, steps = 0, strayTotal = 0, strayMax = 0, lastPut = nil,
+                   matchSpeed = matchSpeed, pathKmph = pathKmph }
         log(string.format("replay started: %d samples (%.1f s) from %s, puppet %s, shifted by (%.0f, %.0f, %.0f)",
             #rows, rows[#rows].t - rows[1].t, path, plane:GetFullName(), off.X, off.Y, off.Z))
     end)
@@ -328,7 +377,11 @@ local function toggleReplay()
 end
 
 -- Keys -----------------------------------------------------------------------------
-RegisterKeyBind(Key.F4, toggleReplay)
+-- Speed matching proved itself (correction per frame 0.2 units instead of 50), so every
+-- replay key uses it now. F4 = nearest active plane, F3 = nearest unactivated plane.
+RegisterKeyBind(Key.F4, function() useInactivePlane = false; matchSpeed = true; toggleReplay() end)
+RegisterKeyBind(Key.F3, function() useInactivePlane = true; matchSpeed = true; toggleReplay() end)
+RegisterKeyBind(Key.F2, function() useInactivePlane = true; matchSpeed = true; toggleReplay() end)
 RegisterKeyBind(Key.F6, function() stopBehaviourFirst = false; puppetTeleportTest() end)
 RegisterKeyBind(Key.F5, function() stopBehaviourFirst = true; puppetTeleportTest() end)
 RegisterKeyBind(Key.F7, toggleRecording)

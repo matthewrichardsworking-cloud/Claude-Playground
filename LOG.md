@@ -17,8 +17,13 @@ Newest first. One short entry per session.
   network feed will need. Positions and rotations can be passed as plain Lua tables.
   The game's `SetFELocationAndRotation` does nothing visible; `K2_TeleportTo` and
   `SetBehaviorActive(false)` are the levers.
-- Not tried: missiles against the puppet, turns, a plane the mission hasn't activated.
-  Details in the experiment's `workbench.md`, section 7; script in `mods/`; two
+- Round 2 (same night, 00:51 to 01:20): a plane the mission has not activated can be
+  switched on with the game's `SetActive` and used as the puppet; matching the puppet's
+  speed to the recording cut the per-frame correction from about 50 units to 0.2; a
+  recording with real rolls and a hard pull replayed with about 6 units of correction
+  per frame. Flying from a session works with held keys (A/D roll, S pull). Still open:
+  missiles against a puppet, a video of it in motion, and the network feed.
+  Details in the experiment's `workbench.md`, section 7; script in `mods/`; four
   screenshots in `pictures/`.
 
 ## 2026-10-17: Ace Combat 7 co-op, a script can't get the second copy past the title
