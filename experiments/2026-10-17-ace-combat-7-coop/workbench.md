@@ -411,8 +411,13 @@ second), later about 40 per second. The Typhoon flew a dead-straight line at abo
 (it was made invincible for the test), what it looks like in motion (pictures can't
 show jitter; a short video next time), rotation smoothness in turns (the recording was
 a straight line), and taking over a plane the mission has not activated yet (all tests
-used already-active planes). The game's own save was written to the copy's folder when
-the mission was quit; your real folder was checked afterwards, see below.
+used already-active planes).
+
+**Closing the run (00:47 to 00:49).** Quit Mission from the pause menu, back to the main
+menu, Quit Game. The copy wrote its own save at 00:48:47 (685,197 bytes, in
+`UserProfile\...\SaveGames\<your Steam ID>\`), then the usual UE4SS crash while closing
+(same place in `UE4SS.dll` as on 17 Oct, harmless). Your real folder: unchanged
+(`backups\2026-10-18_0019`, all 13 files the same SHA-256).
 
 ## Your saves: what happened
 
