@@ -58,6 +58,32 @@ Microsoft package versions: `Microsoft.VC.14.44.17.14.Tools.HostX64.TargetX64.ba
 MSVC 14.44 build 35207/35213, the same toolset family, which is what matters for the two
 to share one C++ runtime.
 
+### Double Trigger v0.1.0 (18 Oct 2026, 16:44)
+
+Downloaded on your request from the mod's official GitHub release page,
+`https://github.com/layer10-love/double-trigger/releases/download/v0.1.0/<file>`, into
+`downloads\double-trigger-v0.1.0\`. All three files match the release's own `SHA256SUMS`.
+The DLL is a 64-bit DLL carrying the version stamp `0.1.0+6240b21f`, has no digital
+signature (the author says so), and Windows Defender's scan found no threats.
+
+| File | Bytes | SHA-256 |
+|---|---:|---|
+| `dinput8.dll` | 1,242,112 | `97fdb3b80ca2a310fd7df67e5259d6c04dea280f531a595ab3c062bbd03221d7` |
+| `LICENSE` | 1,070 | `8f812ebd69083dee893958aacbe1c3f38830236e251aca7eb2ff5c95f5efb426` |
+| `THIRD_PARTY_NOTICES.md` | 6,348 | `98f3a994b8efa8ac779e5a860864285dbe6f1bed0d44ebcc19510c2457feb408` |
+| `SHA256SUMS` | 244 | (the release's checksum list) |
+
+Installed only in the copy, by AC7 Mod Loader: `C:\AC7-Coop-Game\dinput8.dll` (a hard link
+to the loader's library copy) and the loader's data folder `C:\AC7-Coop-Game\ModLoader\`.
+To remove it: run the loader with Vanilla mode on, or delete both. The mod itself writes
+`ac7mp.ini`, `ac7mp.log` (and older `ac7mp-N.log`) next to the copy's exe.
+
+**Also in your real install since 18 Oct 2026, 16:53** (your one-time OK): `ACE COMBAT 7\dinput8.dll`
+(Mod Loader mod 31, "Double Trigger v0.1.0", in `ACE COMBAT 7\ModLoader\library\`), and the
+updated `ACE COMBAT 7\ModLoader\AC7ModLoader.exe` (SHA-256 `cd22a606…e69e962`; the old one,
+`94bd369e…789e523ac`, is in `backups\2026-10-18_real-install-before-double-trigger\ModLoader\`).
+To remove: untick Double Trigger in the Mod Loader or turn on Vanilla mode; workbench section 13.
+
 ### GitHub (git clones, no account needed)
 
 | Repository | Commit | Why | Size |

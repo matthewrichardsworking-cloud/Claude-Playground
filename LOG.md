@@ -21,6 +21,37 @@ Newest first. One short entry per session.
 - Snags: `claude plugin marketplace remove` run inside the repo also emptied the repo's settings file (CI's
   `check.sh` now catches that); `claude -p` test runs share the parent session's environment file (start them
   with `env -u CLAUDE_CODE_SESSION_ID`); a 4-core container runs two workflow agents at a time.
+## 2026-10-18: Ace Combat 7 co-op, Double Trigger in the owner's real install (one-time exception)
+
+- The owner lifted the "never touch the real install" rule for this one install, asking for
+  a backup first and proof that Vanilla mode can remove it. The rule stands otherwise.
+- Backed up the real `ModLoader` folder in full (byte-checked), fingerprinted the 91 files
+  in `~mods`, backed up the saves. The real loader exe was identical to the build the
+  loader-DLL rule was added to; no library mod has a DLL; the loader reported everything
+  in sync before the change.
+- Replaced the real loader exe with the updated build (the old one would remove the DLL on
+  its next apply), installed Double Trigger as mod 31: +1, 91 kept. Vanilla mode on removed
+  all 92 files; off restored them, every `~mods` file identical by SHA-256. Not launched
+  in the real install. Write-up: workbench section 13 of the experiment.
+
+## 2026-10-18: Ace Combat 7 co-op, Double Trigger installed with AC7 Mod Loader and launched
+
+- The owner asked to prepare, install (with AC7 Mod Loader) and launch Double Trigger. Done
+  in the game copy, since the real install, its mods and its Mod Loader stay untouched.
+  Write-up: workbench section 12 of the experiment.
+- v0.1.0 downloaded from the GitHub release: checksums match, Windows Defender clean,
+  unsigned as the author says. Kept outside the repo (no binaries pushed).
+- The Mod Loader could only place `.pak` files and `Game\Content` files. A small rule
+  (`LooseTargetFor`) now sends known loader DLLs (`dinput8.dll` etc.) at a mod's top level
+  to the game folder; its existing backup and removal machinery does the rest. Unit tests
+  pass. Installed with `--game C:\AC7-Coop-Game --install`. Vanilla mode removes and
+  restores the DLL. `--game` keeps the loader's shared `gamepath.txt` untouched.
+- Launched with `tools\start-copy.ps1` (the loader's own Launch goes through Steam, which
+  starts the real install). The mod's log shows every start-up check passing; Multiplayer
+  greyed out; F5 panel works. No lobby hosted. Real save unchanged. Left running for the
+  owner.
+- Known overlap: UE4SS reads keys straight from Windows, so F5 and F9 also reach
+  `CoopFlightLabMod`; switch it off or move Double Trigger's `toggle_key` before co-op.
 
 ## 2026-10-18: Ace Combat 7 co-op, playtest bot phase 2: tracking, prediction, threats
 
