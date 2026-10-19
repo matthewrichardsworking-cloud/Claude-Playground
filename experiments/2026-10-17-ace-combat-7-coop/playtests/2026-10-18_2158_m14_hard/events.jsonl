@@ -1,0 +1,33 @@
+{"clock": "22:02:19", "kind": "radio", "speaker": "AWACS Long Caster", "t": 234.9, "text": "Strider 1, you have passed through waypoint 1.", "attempt": 1}
+{"clock": "22:02:19", "kind": "mark", "t": 234.9, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "22:02:23", "kind": "radio", "speaker": "AWACS Long Caster", "t": 238.9, "text": "No weapons until you reach the enemy base.", "attempt": 1}
+{"clock": "22:02:26", "kind": "radio", "speaker": "AWACS Long Caster", "t": 241.8, "text": "All aircraft, reduce altitude. We have altitude restrictions from here on out.", "attempt": 1}
+{"clock": "22:02:32", "kind": "radio", "speaker": "AWACS Long Caster", "t": 248.2, "text": "Keep altitude below 600 meters.", "attempt": 1}
+{"alt_m": 600, "clock": "22:02:32", "kind": "ceiling_heard", "t": 248.2, "text": "Keep altitude below 600 meters.", "attempt": 1}
+{"clock": "22:02:41", "kind": "radio", "speaker": "AWACS Long Caster", "t": 257.3, "text": "Good. Maintain your current course.", "attempt": 1}
+{"alt_m": 531.7, "clock": "22:02:42", "kind": "area", "now": true, "t": 257.9, "what": "in_cloud", "attempt": 1}
+{"alt_m": 513.6, "clock": "22:02:42", "kind": "area", "now": false, "t": 258.2, "what": "in_cloud", "attempt": 1}
+{"alt_m": 476.2, "clock": "22:02:43", "kind": "area", "now": true, "t": 258.9, "what": "in_cloud", "attempt": 1}
+{"alt_m": 400.8, "clock": "22:02:44", "kind": "area", "now": false, "t": 260.2, "what": "in_cloud", "attempt": 1}
+{"alt_m": 550, "clock": "22:02:45", "kind": "ceiling_set", "t": 261.4, "attempt": 1}
+{"clock": "22:02:49", "goal": "route C:\\AC7-Coop-Game\\UserProfile\\pilot\\missions\\m14-route.csv ceiling 550 floor 40 maxspeed 650 navfloor 25 then attack", "kind": "autopilot_start", "t": 265.4, "attempt": 1}
+{"alt_m": 550.2, "ceiling_m": 550, "clock": "22:02:55", "kind": "over_ceiling", "t": 271.1, "attempt": 1}
+{"alt_m": 556.3, "clock": "22:02:55", "kind": "area", "now": true, "t": 271.3, "what": "over_ceiling", "attempt": 1}
+{"clock": "22:02:56", "kind": "radio", "speaker": "AWACS Long Caster", "t": 272, "text": "Strider 1, you're flying too high. You're going to get picked up by enemy radar.", "attempt": 1}
+{"alt_m": 536.6, "clock": "22:02:57", "kind": "area", "now": false, "t": 273.3, "what": "over_ceiling", "attempt": 1}
+{"alt_m": 550, "clock": "22:02:59", "kind": "ceiling_set", "t": 275.1, "attempt": 1}
+{"clock": "22:03:00", "kind": "radio", "speaker": "Strider 4 Lanza", "t": 276.6, "text": "Searchlight up ahead. Watch for it.", "attempt": 1}
+{"clock": "22:03:03", "in_s": 6.855, "kind": "beam_unavoidable", "light": "01_SystemObject_SearchLight_01", "t": 279.5, "attempt": 1}
+{"clock": "22:03:05", "kind": "radio", "speaker": "AWACS Long Caster", "t": 280.9, "text": "Stay out of their sight.", "attempt": 1}
+{"clock": "22:03:08", "kind": "radio", "speaker": "Basilisk Team", "t": 283.7, "text": "Strider, Basilisk 1. Our current ETA matches yours.", "attempt": 1}
+{"clock": "22:03:10", "kind": "phase_failed", "phase": "MissionPhase_01", "reason": 1, "t": 285.8, "attempt": 1}
+{"clock": "22:03:10", "dist_m": 3623, "edge_deg": 999, "inside": false, "kind": "failure_light", "light": "01_SystemObject_SearchLight_06", "t": 285.9, "tracking": false, "attempt": 1}
+{"clock": "22:03:10", "dist_m": 2681, "edge_deg": 54.37, "inside": false, "kind": "failure_light", "light": "01_SystemObject_SearchLight_04", "t": 285.9, "tracking": false, "attempt": 1}
+{"clock": "22:03:10", "dist_m": 437.9, "edge_deg": -1.279, "inside": true, "kind": "failure_light", "light": "01_SystemObject_SearchLight_01", "t": 285.9, "tracking": true, "attempt": 1}
+{"clock": "22:03:10", "dist_m": 3898, "edge_deg": 999, "inside": false, "kind": "failure_light", "light": "01_SystemObject_SearchLight_07", "t": 285.9, "tracking": false, "attempt": 1}
+{"clock": "22:03:10", "dist_m": 2837, "edge_deg": 85.02, "inside": false, "kind": "failure_light", "light": "01_SystemObject_SearchLight_05", "t": 285.9, "tracking": false, "attempt": 1}
+{"alt_m": 711, "class": "ms14_Airbase_SearchlightTower_C", "clock": "22:03:10", "dist_m": 2832, "enemy": "01_SearchlightTower_05", "kind": "failure_enemy", "t": 285.9, "attempt": 1}
+{"alt_m": 739.4, "class": "ms14_Airbase_SearchlightTower_C", "clock": "22:03:10", "dist_m": 2679, "enemy": "01_SearchlightTower_04", "kind": "failure_enemy", "t": 285.9, "attempt": 1}
+{"alt_m": 488.9, "class": "ms14_Airbase_SearchlightTower_C", "clock": "22:03:10", "dist_m": 437.4, "enemy": "01_SearchlightTower_01", "kind": "failure_enemy", "t": 285.9, "attempt": 1}
+{"clock": "22:03:10", "kind": "objective_failed", "t": 285.9, "attempt": 1}
+{"clock": "22:03:12", "kind": "radio", "speaker": "Erusean Chopper", "t": 287.9, "text": "Spotted enemy aircraft in the valley headed for the base!", "attempt": 1}

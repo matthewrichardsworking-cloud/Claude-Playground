@@ -1,0 +1,32 @@
+# Mission 14, Cape Rainy Assault: the playtest bot's plan (tools\playtest.py, "plan:" in an order)
+#
+# Phase 1: a 48 km night canyon run under a 550 m ceiling (the radio says 600; the game's own
+# limit, set with SetRestrictedAltitude, is 550), past about 70 sweeping searchlights; being
+# lit fails the mission. The route (m14-route.csv) is the middle of the canyon at 510 m, from
+# the pilot's terrain survey (m14-survey.csv, tools\route-plan.py); the searchlights' sweeps
+# (m14-fans.csv, tools\beam-fans.py from a recording on Hard) let the pilot time, lower and
+# shift itself past each beam as it flies. The refuelling at the start is skipped by the
+# pilot on the tanker's first radio line.
+# Phase 2: attack the air base. The landing team (Basilisk) cannot land while the six Apaches
+# at the landing zone (02_en_AH64_00_*) are alive: "hostiles are still near the LZ", and about
+# 3.5 minutes after the phase starts the mission fails ("taking too long... surrounded").
+# Once they land, reinforcements ("zouen1/3": APCs, tanks, AA guns) arrive and must be
+# destroyed in about 100 s. Patchy clouds at about 350-1050 m. "cloudbase 350" keeps ground
+# attack runs under the clouds (the first theory for the targets that never lock). It got
+# one SAM kill from 200 m, but SAM_2 and the reinforcement vehicles still did not lock from
+# under the clouds, and low flying meets the AA guns. (A 330 m ceiling for the whole fight
+# was tried and removed: it pushed a rolling plane into the ground.) Still open (workbench
+# section 14, finding 11). Best so far (19 Oct 00:10): the Apaches fall to single LAAM shots,
+# the team lands 1.5-2 min in, then the reinforcements cannot be locked and the plane is
+# shot down.
+file m14-survey.csv
+file m14-route.csv
+file m14-fans.csv
+start:
+    pilot nav load {missions}\m14-survey.csv 500
+    pilot fans {missions}\m14-fans.csv
+    pilot fly route {missions}\m14-route.csv ceiling 550 floor 40 maxspeed 650 navfloor 25 then attack
+phase MissionPhase_02:
+    pilot fly attack floor 120 ceiling 99999 cloudbase 350 focus ah64_00,zouen
+retry MissionPhase_01 mission
+retry MissionPhase_02 checkpoint

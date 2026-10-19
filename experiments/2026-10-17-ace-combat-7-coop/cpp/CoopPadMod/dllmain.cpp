@@ -40,6 +40,8 @@
 #include <DynamicOutput/DynamicOutput.hpp>
 #include <LuaMadeSimple/LuaMadeSimple.hpp>
 
+#include "trace.hpp"
+
 #pragma comment(lib, "psapi.lib")
 
 using namespace RC;
@@ -266,6 +268,85 @@ namespace
         lua.set_bool(game_in_front());
         return 1;
     }
+
+    // ---- fast line traces (trace.cpp) ----------------------------------------------------
+    auto read_numbers(const LuaMadeSimple::Lua& lua, double* v, int n) -> int
+    {
+        int got = 0;
+        for (int i = 0; i < n && lua.get_stack_size() > 0; ++i)
+        {
+            if (lua.is_number()) { v[i] = lua.get_number(); ++got; }
+            else lua.discard_value();
+        }
+        clear(lua);
+        return got;
+    }
+
+    auto read_address(const LuaMadeSimple::Lua& lua) -> uintptr_t
+    {
+        if (lua.get_stack_size() == 0) return 0;
+        if (lua.is_integer()) return static_cast<uintptr_t>(lua.get_integer());
+        if (lua.is_number()) return static_cast<uintptr_t>(lua.get_number());
+        lua.discard_value();
+        return 0;
+    }
+
+    // CoopTrace_Setup(cdoAddress, functionAddress, contextAddress) -> true when all three are set
+    auto lua_trace_setup(const LuaMadeSimple::Lua& lua) -> int
+    {
+        uintptr_t cdo = read_address(lua);
+        uintptr_t fn = read_address(lua);
+        uintptr_t ctx = read_address(lua);
+        clear(lua);
+        lua.set_bool(coop_trace::set_targets(cdo, fn, ctx));
+        return 1;
+    }
+
+    // CoopTrace_Context(contextAddress): a new world-context object (a new plane)
+    auto lua_trace_context(const LuaMadeSimple::Lua& lua) -> int
+    {
+        uintptr_t ctx = read_address(lua);
+        clear(lua);
+        coop_trace::set_context(ctx);
+        return 0;
+    }
+
+    // CoopTrace_Line(x1, y1, z1, x2, y2, z2) -> hit, x, y, z, distance, normalZ, actorIndex, microseconds
+    // (nil when not set up)
+    auto lua_trace_line(const LuaMadeSimple::Lua& lua) -> int
+    {
+        double v[6] = {0, 0, 0, 0, 0, 0};
+        if (read_numbers(lua, v, 6) < 6 || !coop_trace::ready()) { lua.set_nil(); return 1; }
+        float a[3] = {float(v[0]), float(v[1]), float(v[2])};
+        float b[3] = {float(v[3]), float(v[4]), float(v[5])};
+        coop_trace::Hit h;
+        double us = 0;
+        coop_trace::line(a, b, h, us);
+        lua.set_bool(h.hit);
+        lua.set_number(h.point[0]);
+        lua.set_number(h.point[1]);
+        lua.set_number(h.point[2]);
+        lua.set_number(h.distance);
+        lua.set_number(h.normal[2]);
+        lua.set_integer(h.actor_index);
+        lua.set_number(us);
+        return 8;
+    }
+
+    // CoopTrace_Ground(x, y, zTop, zBottom) -> z of the highest solid thing there (nil: nothing), microseconds
+    auto lua_trace_ground(const LuaMadeSimple::Lua& lua) -> int
+    {
+        double v[4] = {0, 0, 120000, -20000};
+        if (read_numbers(lua, v, 4) < 2 || !coop_trace::ready()) { lua.set_nil(); lua.set_number(0); return 2; }
+        float a[3] = {float(v[0]), float(v[1]), float(v[2])};
+        float b[3] = {float(v[0]), float(v[1]), float(v[3])};
+        coop_trace::Hit h;
+        double us = 0;
+        coop_trace::line(a, b, h, us);
+        if (h.hit) lua.set_number(h.point[2]); else lua.set_nil();
+        lua.set_number(us);
+        return 2;
+    }
 } // namespace
 
 class CoopPadMod : public CppUserModBase
@@ -305,6 +386,10 @@ class CoopPadMod : public CppUserModBase
         lua.register_function("CoopPad_Foreground", lua_foreground);
         lua.register_function("CoopKeys_Set", lua_keys_set);
         lua.register_function("CoopKeys_Status", lua_keys_status);
+        lua.register_function("CoopTrace_Setup", lua_trace_setup);
+        lua.register_function("CoopTrace_Context", lua_trace_context);
+        lua.register_function("CoopTrace_Line", lua_trace_line);
+        lua.register_function("CoopTrace_Ground", lua_trace_ground);
     }
 };
 

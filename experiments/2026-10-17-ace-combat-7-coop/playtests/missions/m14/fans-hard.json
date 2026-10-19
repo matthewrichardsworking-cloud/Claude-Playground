@@ -1,0 +1,2090 @@
+[
+ {
+  "name": "01_SystemObject_SearchLight_96",
+  "on": false,
+  "origin": [
+   -30060.0,
+   29390.0,
+   3782
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_09",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   8877.0,
+   225794.0,
+   2931.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -12.93,
+    -27.62
+   ],
+   [
+    12.92,
+    -12.39
+   ]
+  ],
+  "pitch_range": [
+   -12.93,
+   12.92
+  ],
+  "yaw_rel": [
+   -2.319999999999993,
+   12.909999999999997
+  ],
+  "yaw_ref": -25.3,
+  "speed": 5.037099863086617,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_65",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -60731.0,
+   66211.0,
+   4194.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -44.97,
+    30.0
+   ],
+   [
+    -15.03,
+    30.0
+   ]
+  ],
+  "pitch_range": [
+   -44.97,
+   -15.03
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 30.0,
+  "speed": 5.000000000001406,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "02_SystemObject_SearchLight_1_1",
+  "on": false,
+  "origin": [
+   2215,
+   -29730.0,
+   550
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_100",
+  "on": true,
+  "mode": "stopped",
+  "origin": [
+   -25549.0,
+   27052.0,
+   6940.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -45.93,
+    -147.54
+   ],
+   [
+    -45.93,
+    -147.54
+   ]
+  ],
+  "pitch_range": [
+   -45.93,
+   -45.93
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -147.54,
+  "speed": 0.0,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_112",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -13753.0,
+   11686.0,
+   4086.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -44.57,
+    173.71
+   ],
+   [
+    40.35,
+    177.97
+   ]
+  ],
+  "pitch_range": [
+   -44.57,
+   40.35
+  ],
+  "yaw_rel": [
+   -1.289999999999992,
+   2.969999999999999
+  ],
+  "yaw_ref": 175.0,
+  "speed": 10.015378701082456,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_10",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   4757.0,
+   223993.0,
+   4917.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -12.92,
+    -27.61
+   ],
+   [
+    12.93,
+    -12.38
+   ]
+  ],
+  "pitch_range": [
+   -12.92,
+   12.93
+  ],
+  "yaw_rel": [
+   -12.909999999999997,
+   2.319999999999993
+  ],
+  "yaw_ref": -14.7,
+  "speed": 5.037099863086617,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_24",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -11219.0,
+   161762.0,
+   4447.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -50.22,
+    -105.12
+   ],
+   [
+    -49.82,
+    -57.72
+   ]
+  ],
+  "pitch_range": [
+   -52.49,
+   -49.82
+  ],
+  "yaw_rel": [
+   -40.69999999999999,
+   6.699999999999989
+  ],
+  "yaw_ref": -64.42,
+  "speed": 5.021617175954154,
+  "half": 1.5,
+  "reach": 15000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_41",
+  "on": false,
+  "origin": [
+   -71750.0,
+   86150.0,
+   6388
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_92",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -27581.0,
+   35314.0,
+   7652.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -19.29,
+    174.12
+   ],
+   [
+    -19.29,
+    -154.11
+   ]
+  ],
+  "pitch_range": [
+   -20.0,
+   -19.29
+  ],
+  "yaw_rel": [
+   -27.059999999999945,
+   4.7099999999999795
+  ],
+  "yaw_ref": -158.82,
+  "speed": 5.01136912007711,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_70",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -58238.0,
+   58897.0,
+   6169.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -51.73,
+    -32.96
+   ],
+   [
+    -51.77,
+    52.87
+   ]
+  ],
+  "pitch_range": [
+   -60.0,
+   -51.73
+  ],
+  "yaw_rel": [
+   -63.33,
+   22.5
+  ],
+  "yaw_ref": 30.37,
+  "speed": 5.031320772472783,
+  "half": 2.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_68",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -56009.0,
+   64079.0,
+   6599.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -55.0,
+    -150.0
+   ],
+   [
+    -35.0,
+    -150.0
+   ]
+  ],
+  "pitch_range": [
+   -55.0,
+   -35.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -150.0,
+  "speed": 4.999999999998553,
+  "half": 1.5,
+  "reach": 50000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_23",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -11701.0,
+   162779.0,
+   5314.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    2.53,
+    -81.95
+   ],
+   [
+    42.46,
+    -81.77
+   ]
+  ],
+  "pitch_range": [
+   2.53,
+   42.46
+  ],
+  "yaw_rel": [
+   -0.040000000000020464,
+   0.13999999999998636
+  ],
+  "yaw_ref": -81.91,
+  "speed": 5.000000000007107,
+  "half": 1.5,
+  "reach": 80000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_91",
+  "on": true,
+  "mode": "stopped",
+  "origin": [
+   -34627.0,
+   36485.0,
+   4762.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -30.0,
+    -0.0
+   ],
+   [
+    -30.0,
+    -0.0
+   ]
+  ],
+  "pitch_range": [
+   -30.0,
+   -30.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -0.0,
+  "speed": 0.0,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_32",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -35781.0,
+   118462.0,
+   3394.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -30.0,
+    -10.0
+   ],
+   [
+    30.0,
+    -10.0
+   ]
+  ],
+  "pitch_range": [
+   -30.0,
+   30.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -10.0,
+  "speed": 5.000000000005843,
+  "half": 1.5,
+  "reach": 15000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_39",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -52111.0,
+   103580.0,
+   1721.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    35.0,
+    -80.0
+   ],
+   [
+    65.0,
+    -80.0
+   ]
+  ],
+  "pitch_range": [
+   35.0,
+   65.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -80.0,
+  "speed": 4.999999999999302,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_103",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -22253.0,
+   21630.0,
+   5214.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -60.54,
+    -153.32
+   ],
+   [
+    -31.16,
+    -144.22
+   ]
+  ],
+  "pitch_range": [
+   -60.54,
+   -31.16
+  ],
+  "yaw_rel": [
+   -3.819999999999993,
+   5.280000000000001
+  ],
+  "yaw_ref": -149.5,
+  "speed": 2.999461971323387,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_12",
+  "on": false,
+  "origin": [
+   -1256,
+   216300.0,
+   2898
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_72",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -55481.0,
+   58447.0,
+   1978.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -48.66,
+    161.02
+   ],
+   [
+    -48.68,
+    -101.04
+   ]
+  ],
+  "pitch_range": [
+   -60.0,
+   -48.66
+  ],
+  "yaw_rel": [
+   -69.35000000000002,
+   28.589999999999975
+  ],
+  "yaw_ref": -129.63,
+  "speed": 5.030226659993347,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_99",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -32030.0,
+   27067.0,
+   2081.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -41.02,
+    3.73
+   ],
+   [
+    -11.36,
+    8.89
+   ]
+  ],
+  "pitch_range": [
+   -41.02,
+   -11.36
+  ],
+  "yaw_rel": [
+   -4.530000000000001,
+   0.6299999999999955
+  ],
+  "yaw_ref": 8.26,
+  "speed": 4.974206973072716,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_110",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -22431.0,
+   14025.0,
+   5164.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -44.85,
+    -0.43
+   ],
+   [
+    -15.23,
+    -6.03
+   ]
+  ],
+  "pitch_range": [
+   -44.85,
+   -15.23
+  ],
+  "yaw_rel": [
+   -4.490000000000009,
+   1.1100000000000136
+  ],
+  "yaw_ref": -1.54,
+  "speed": 4.985199731108563,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_98",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -28252.0,
+   29197.0,
+   6324.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -60.54,
+    -153.32
+   ],
+   [
+    -31.16,
+    -144.22
+   ]
+  ],
+  "pitch_range": [
+   -60.54,
+   -31.16
+  ],
+  "yaw_rel": [
+   -8.23999999999998,
+   0.8600000000000136
+  ],
+  "yaw_ref": -145.08,
+  "speed": 4.990328137408402,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_18",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -334.0,
+   174690.0,
+   5397.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -44.97,
+    -20.0
+   ],
+   [
+    -15.03,
+    -20.0
+   ]
+  ],
+  "pitch_range": [
+   -44.97,
+   -15.03
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -20.0,
+  "speed": 5.00000000000076,
+  "half": 1.5,
+  "reach": 15000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_22",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -11011.0,
+   162983.0,
+   4884.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    20.36,
+    -108.63
+   ],
+   [
+    20.19,
+    -55.22
+   ]
+  ],
+  "pitch_range": [
+   20.19,
+   22.46
+  ],
+  "yaw_rel": [
+   -38.120000000000005,
+   15.29000000000002
+  ],
+  "yaw_ref": -70.51,
+  "speed": 5.01954609039849,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_106",
+  "on": false,
+  "origin": [
+   -22150.0,
+   19450.0,
+   516.4
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_06",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   26602.0,
+   246609.0,
+   3986.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -25.97,
+    -51.74
+   ],
+   [
+    -26.26,
+    -18.31
+   ]
+  ],
+  "pitch_range": [
+   -27.11,
+   -25.97
+  ],
+  "yaw_rel": [
+   -28.47999999999999,
+   4.949999999999989
+  ],
+  "yaw_ref": -23.26,
+  "speed": 5.017558000267622,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_101",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -26883.0,
+   25074.0,
+   2820.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -58.01,
+    -146.04
+   ],
+   [
+    -28.15,
+    -141.94
+   ]
+  ],
+  "pitch_range": [
+   -58.01,
+   -28.15
+  ],
+  "yaw_rel": [
+   -0.9499999999999886,
+   3.1500000000000057
+  ],
+  "yaw_ref": -145.09,
+  "speed": 5.017201242555061,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_01",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   41226.0,
+   277506.0,
+   5080.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    0.0,
+    125.0
+   ],
+   [
+    0.0,
+    155.0
+   ]
+  ],
+  "pitch_range": [
+   0.0,
+   0.0
+  ],
+  "yaw_rel": [
+   -24.189999999999998,
+   5.810000000000002
+  ],
+  "yaw_ref": 149.19,
+  "speed": 10.000000000006795,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_38",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -51981.0,
+   103632.0,
+   1727.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -35.0,
+    -80.0
+   ],
+   [
+    15.0,
+    -80.0
+   ]
+  ],
+  "pitch_range": [
+   -35.0,
+   15.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -80.0,
+  "speed": 5.000000000001406,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_17",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   2453.0,
+   174816.0,
+   383.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    33.17,
+    170.88
+   ],
+   [
+    37.16,
+    -158.95
+   ]
+  ],
+  "pitch_range": [
+   33.17,
+   37.16
+  ],
+  "yaw_rel": [
+   -2.230000000000018,
+   27.939999999999998
+  ],
+  "yaw_ref": 173.11,
+  "speed": 5.024277844337785,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "02_SystemObject_SearchLight_1_3",
+  "on": false,
+  "origin": [
+   -9443,
+   -40730.0,
+   551
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_108",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -24001.0,
+   16084.0,
+   5287.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    48.11,
+    -4.15
+   ],
+   [
+    84.12,
+    78.86
+   ]
+  ],
+  "pitch_range": [
+   48.11,
+   84.12
+  ],
+  "yaw_rel": [
+   -120.86,
+   17.94999999999999
+  ],
+  "yaw_ref": 116.71,
+  "speed": 10.050411141030658,
+  "half": 1.5,
+  "reach": 80000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_95",
+  "on": true,
+  "mode": "stopped",
+  "origin": [
+   -32798.0,
+   30678.0,
+   4302.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    0.0,
+    10.0
+   ],
+   [
+    0.0,
+    10.0
+   ]
+  ],
+  "pitch_range": [
+   0.0,
+   0.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 10.0,
+  "speed": 7.761578602287256e-06,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_66",
+  "on": true,
+  "mode": "stopped",
+  "origin": [
+   -60624.0,
+   65735.0,
+   4750.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -20.0,
+    30.0
+   ],
+   [
+    -20.0,
+    30.0
+   ]
+  ],
+  "pitch_range": [
+   -20.0,
+   -20.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 30.0,
+  "speed": 0.0,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_62",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -59381.0,
+   73564.0,
+   3900.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -16.25,
+    -151.83
+   ],
+   [
+    13.63,
+    -149.17
+   ]
+  ],
+  "pitch_range": [
+   -16.25,
+   13.63
+  ],
+  "yaw_rel": [
+   -2.2600000000000193,
+   0.4000000000000057
+  ],
+  "yaw_ref": -149.57,
+  "speed": 5.01566159913477,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_19",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -719.0,
+   165627.0,
+   5572.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -32.41,
+    140.0
+   ],
+   [
+    -7.53,
+    140.0
+   ]
+  ],
+  "pitch_range": [
+   -32.41,
+   -7.53
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 140.0,
+  "speed": 5.000000000001406,
+  "half": 1.5,
+  "reach": 15000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_07",
+  "on": false,
+  "origin": [
+   25420.0,
+   244100.0,
+   3978
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_33",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -32841.0,
+   110381.0,
+   1794.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -45.0,
+    160.0
+   ],
+   [
+    45.0,
+    160.0
+   ]
+  ],
+  "pitch_range": [
+   -45.0,
+   45.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 160.0,
+  "speed": 5.000000000001789,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_16",
+  "on": false,
+  "origin": [
+   4358,
+   176800.0,
+   5300
+  ]
+ },
+ {
+  "name": "02_SystemObject_SearchLight_1_2",
+  "on": false,
+  "origin": [
+   -1525,
+   -33080.0,
+   550
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_21",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -5249.0,
+   164592.0,
+   2355.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    41.81,
+    146.73
+   ],
+   [
+    39.86,
+    -145.58
+   ]
+  ],
+  "pitch_range": [
+   39.86,
+   46.19
+  ],
+  "yaw_rel": [
+   -49.32000000000005,
+   18.369999999999976
+  ],
+  "yaw_ref": -163.95,
+  "speed": 5.019612353063008,
+  "half": 1.5,
+  "reach": 15000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "02_SystemObject_SearchLight_1_4",
+  "on": false,
+  "origin": [
+   6335,
+   -28710.0,
+   550
+  ]
+ },
+ {
+  "name": "02_SystemObject_SearchLight_1_5",
+  "on": false,
+  "origin": [
+   1935,
+   -27420.0,
+   550
+  ]
+ },
+ {
+  "name": "02_SystemObject_SearchLight_2_2",
+  "on": false,
+  "origin": [
+   1225,
+   -36020.0,
+   670.4
+  ]
+ },
+ {
+  "name": "02_SystemObject_SearchLight_1_6",
+  "on": false,
+  "origin": [
+   -4940,
+   -33630.0,
+   550
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_105",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -22453.0,
+   20283.0,
+   2533.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -43.1,
+    -143.48
+   ],
+   [
+    -23.16,
+    -141.53
+   ]
+  ],
+  "pitch_range": [
+   -43.1,
+   -23.16
+  ],
+  "yaw_rel": [
+   0.0,
+   1.9499999999999886
+  ],
+  "yaw_ref": -143.48,
+  "speed": 5.012864470614556,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "02_SystemObject_SearchLight_1_7",
+  "on": false,
+  "origin": [
+   -518,
+   -38280.0,
+   548
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_20",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -5065.0,
+   165654.0,
+   2210.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -11.95,
+    175.15
+   ],
+   [
+    14.59,
+    -170.86
+   ]
+  ],
+  "pitch_range": [
+   -11.95,
+   14.59
+  ],
+  "yaw_rel": [
+   -11.840000000000032,
+   2.1499999999999773
+  ],
+  "yaw_ref": -173.01,
+  "speed": 5.025673820690159,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_35",
+  "on": false,
+  "origin": [
+   -41600.0,
+   113600.0,
+   2659
+  ]
+ },
+ {
+  "name": "02_SystemObject_SearchLight_2_1",
+  "on": false,
+  "origin": [
+   675,
+   -36560.0,
+   645
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_67",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -59780.0,
+   61650.0,
+   5473.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -45.0,
+    10.0
+   ],
+   [
+    5.0,
+    10.0
+   ]
+  ],
+  "pitch_range": [
+   -45.0,
+   5.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 10.0,
+  "speed": 5.000000000006199,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_04",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   37066.0,
+   254193.0,
+   7550.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -21.46,
+    129.58
+   ],
+   [
+    3.15,
+    147.0
+   ]
+  ],
+  "pitch_range": [
+   -21.46,
+   3.15
+  ],
+  "yaw_rel": [
+   -14.939999999999998,
+   2.4799999999999898
+  ],
+  "yaw_ref": 144.52,
+  "speed": 5.035495872431681,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_107",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -20321.0,
+   16585.0,
+   326.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    66.31,
+    -31.12
+   ],
+   [
+    64.75,
+    18.32
+   ]
+  ],
+  "pitch_range": [
+   64.75,
+   67.63
+  ],
+  "yaw_rel": [
+   -41.25999999999999,
+   8.180000000000007
+  ],
+  "yaw_ref": 10.14,
+  "speed": 2.995784840995702,
+  "half": 1.5,
+  "reach": 80000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_40",
+  "on": false,
+  "origin": [
+   -59600.0,
+   97510.0,
+   6562
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_104",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -25942.0,
+   19402.0,
+   4096.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -11.68,
+    -12.4
+   ],
+   [
+    18.25,
+    -10.28
+   ]
+  ],
+  "pitch_range": [
+   -11.68,
+   18.25
+  ],
+  "yaw_rel": [
+   -0.3199999999999932,
+   1.8000000000000114
+  ],
+  "yaw_ref": -12.08,
+  "speed": 5.012072303091502,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_heli_SystemObject_SearchLight_06",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   9900.0,
+   205551.0,
+   7592.0
+  ],
+  "kind": "ring",
+  "spread": 0.0,
+  "ends": [
+   [
+    -59.29,
+    98.87
+   ],
+   [
+    -55.74,
+    -82.06
+   ]
+  ],
+  "pitch_range": [
+   -65.31,
+   -47.82
+  ],
+  "yaw_rel": [
+   0.0,
+   179.07
+  ],
+  "yaw_ref": 98.87,
+  "speed": 6.360278289029072,
+  "half": 2.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_34",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   -37054.0,
+   109840.0,
+   342.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    46.04,
+    122.18
+   ],
+   [
+    46.04,
+    -102.18
+   ]
+  ],
+  "pitch_range": [
+   46.04,
+   70.0
+  ],
+  "yaw_rel": [
+   -96.32,
+   39.31999999999999
+  ],
+  "yaw_ref": -141.5,
+  "speed": 5.01934365499944,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_69",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -56328.0,
+   61396.0,
+   2612.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    30.02,
+    -150.0
+   ],
+   [
+    49.97,
+    -150.0
+   ]
+  ],
+  "pitch_range": [
+   30.02,
+   49.97
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -150.0,
+  "speed": 5.000000000001406,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_36",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -34966.0,
+   106262.0,
+   5487.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    10.0,
+    160.0
+   ],
+   [
+    30.0,
+    160.0
+   ]
+  ],
+  "pitch_range": [
+   10.0,
+   30.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 160.0,
+  "speed": 4.999999999995352,
+  "half": 1.5,
+  "reach": 80000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_heli_SystemObject_SearchLight_01",
+  "on": true,
+  "mode": "stopped",
+  "origin": [
+   26891.318616629876,
+   239156.4650478293,
+   5900.053715967623
+  ],
+  "kind": "ring",
+  "spread": 3381.6254118243023,
+  "ends": [
+   [
+    -82.81,
+    140.01
+   ],
+   [
+    -82.28,
+    137.87
+   ]
+  ],
+  "pitch_range": [
+   -89.75,
+   -80.22
+  ],
+  "yaw_rel": [
+   -178.61,
+   179.25
+  ],
+  "yaw_ref": -41.38,
+  "speed": 4.051289865621201,
+  "half": 2.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_64",
+  "on": true,
+  "mode": "stopped",
+  "origin": [
+   -61757.0,
+   68447.0,
+   4735.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -45.0,
+    10.0
+   ],
+   [
+    -45.0,
+    10.0
+   ]
+  ],
+  "pitch_range": [
+   -45.0,
+   -45.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 10.0,
+  "speed": 0.0,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_102",
+  "on": true,
+  "mode": "stopped",
+  "origin": [
+   -22165.0,
+   22300.0,
+   5982.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -36.09,
+    -145.18
+   ],
+   [
+    -36.09,
+    -145.18
+   ]
+  ],
+  "pitch_range": [
+   -36.09,
+   -36.09
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -145.18,
+  "speed": 0.0,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_111",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -18589.0,
+   17687.0,
+   5370.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -16.67,
+    -142.76
+   ],
+   [
+    13.26,
+    -140.65
+   ]
+  ],
+  "pitch_range": [
+   -16.67,
+   13.26
+  ],
+  "yaw_rel": [
+   -0.3199999999999932,
+   1.789999999999992
+  ],
+  "yaw_ref": -142.44,
+  "speed": 5.012412456645009,
+  "half": 1.5,
+  "reach": 30000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_61",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -59421.0,
+   73827.0,
+   3900.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -26.21,
+    -152.84
+   ],
+   [
+    3.67,
+    -150.06
+   ]
+  ],
+  "pitch_range": [
+   -26.21,
+   3.67
+  ],
+  "yaw_rel": [
+   -0.46999999999999886,
+   2.3100000000000023
+  ],
+  "yaw_ref": -152.37,
+  "speed": 5.014418240398513,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_15",
+  "on": false,
+  "origin": [
+   6844,
+   185100.0,
+   5787
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_21130",
+  "on": false,
+  "origin": [
+   -23440.0,
+   15360.0,
+   5269
+  ]
+ },
+ {
+  "name": "01_SystemObject_SearchLight_31",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -34101.0,
+   122133.0,
+   4770.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -10.0,
+    -40.0
+   ],
+   [
+    10.0,
+    -40.0
+   ]
+  ],
+  "pitch_range": [
+   -10.0,
+   10.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -40.0,
+  "speed": 5.00000000000076,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_93",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -28880.0,
+   32292.0,
+   5444.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -20.0,
+    -170.0
+   ],
+   [
+    0.0,
+    -170.0
+   ]
+  ],
+  "pitch_range": [
+   -20.0,
+   0.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -170.0,
+  "speed": 5.000000000001406,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_94",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -32880.0,
+   31110.0,
+   4224.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -35.0,
+    10.0
+   ],
+   [
+    -5.0,
+    10.0
+   ]
+  ],
+  "pitch_range": [
+   -35.0,
+   -5.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": 10.0,
+  "speed": 5.000000000005488,
+  "half": 1.5,
+  "reach": 20000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_73",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -55361.0,
+   58424.0,
+   2038.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    25.0,
+    -150.0
+   ],
+   [
+    75.0,
+    -150.0
+   ]
+  ],
+  "pitch_range": [
+   25.0,
+   75.0
+  ],
+  "yaw_rel": [
+   0.0,
+   0.0
+  ],
+  "yaw_ref": -150.0,
+  "speed": 5.000000000001406,
+  "half": 1.5,
+  "reach": 80000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_11",
+  "on": true,
+  "mode": "yaw sweep",
+  "origin": [
+   2841.0,
+   219230.0,
+   701.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    72.06,
+    13.01
+   ],
+   [
+    72.06,
+    127.0
+   ]
+  ],
+  "pitch_range": [
+   72.06,
+   80.0
+  ],
+  "yaw_rel": [
+   -103.91,
+   10.079999999999984
+  ],
+  "yaw_ref": 116.92,
+  "speed": 5.0260141583339655,
+  "half": 1.5,
+  "reach": 15000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_37",
+  "on": true,
+  "mode": "pitch sweep",
+  "origin": [
+   -33465.0,
+   101058.0,
+   12127.0
+  ],
+  "kind": "fan",
+  "spread": 0.0,
+  "ends": [
+   [
+    -33.98,
+    153.87
+   ],
+   [
+    -5.84,
+    165.11
+   ]
+  ],
+  "pitch_range": [
+   -33.98,
+   -5.84
+  ],
+  "yaw_rel": [
+   -9.769999999999982,
+   1.4700000000000273
+  ],
+  "yaw_ref": 163.64,
+  "speed": 4.98756453453525,
+  "half": 1.5,
+  "reach": 80000.0,
+  "samples": 1359,
+  "tracked_samples": 0
+ },
+ {
+  "name": "01_SystemObject_SearchLight_05",
+  "on": false,
+  "origin": [
+   36400.0,
+   252600.0,
+   7275
+  ]
+ }
+]

@@ -1,0 +1,11 @@
+# Mission 14 (Cape Rainy Assault) on Hard, flown from a plan (playtests\missions\m14\plan.txt)
+name: hard
+mission: 14
+difficulty: hard
+mode: fair
+attempts: 10
+retry: checkpoint
+time_limit_min: 25
+plan: playtests\missions\m14\plan.txt
+from_title: true
+close_game: true

@@ -44,7 +44,8 @@ return function(env)
         return ok and v
     end
     local function prop(o, name)
-        local ok, v = pcall(function() return o[name] end)
+        -- IsValid first (safe on a freed object; reading a freed object crashes the game)
+        local ok, v = pcall(function() if not o:IsValid() then return nil end; return o[name] end)
         if ok then return v end
         return nil
     end
@@ -96,6 +97,13 @@ return function(env)
     -- A track keeps a short history of positions and works out velocity and turn rate.
     local tracks = {}          -- full name -> track
     A.tracks = tracks
+    -- Forget every game object (a restart from a checkpoint replaces them all; the old ones
+    -- are freed about a minute later, and touching one then crashes the game).
+    function A.reset()
+        for k in pairs(tracks) do tracks[k] = nil end
+        A.threats = {}
+        for _, tr in ipairs(A.missileLog or {}) do tr.obj = nil end
+    end
     local HISTORY = 12
 
     local function newTrack(o, kind)
@@ -274,8 +282,13 @@ return function(env)
                 if tr.kind == "plane" and not seen[n] then tracks[n] = nil end
             end
         end
-        for _, tr in pairs(tracks) do
-            if tr.kind == "plane" then
+        for n, tr in pairs(tracks) do
+            -- IsValid first, every time: it only looks the object up in UE4SS's list, while
+            -- reading anything from an object the engine has freed crashes the game (the
+            -- tracker kept destroyed planes from before a checkpoint restart; 18 Oct 2026)
+            if tr.kind == "plane" and not valid(tr.obj) then
+                tracks[n] = nil
+            elseif tr.kind == "plane" then
                 local ok, l = pcall(function() return tr.obj:K2_GetActorLocation() end)
                 if ok and l then addSample(tr, t, v3(l)) end
                 if not tr.stateAt or t - tr.stateAt > 0.5 then
@@ -386,8 +399,10 @@ return function(env)
             end
         end
         local threats = {}
-        for _, tr in pairs(tracks) do
-            if tr.kind == "missile" then
+        for n, tr in pairs(tracks) do
+            if tr.kind == "missile" and not valid(tr.obj) then
+                tracks[n] = nil
+            elseif tr.kind == "missile" then
                 local ok, l = pcall(function() return tr.obj:K2_GetActorLocation() end)
                 if ok and l then addSample(tr, t, v3(l)) end
                 -- re-read its target: a missile can lose its lock (flares) and the target goes nil
@@ -436,7 +451,12 @@ return function(env)
     local UEHelpers = require("UEHelpers")
     local KSL = nil
     local NOCOLOR = { R = 0, G = 0, B = 0, A = 0 }
+    A.fastReady = false        -- set by main.lua once CoopPadMod's fast traces are set up
     local function groundZ(ctx, x, y, zTop, zBottom)
+        if A.fastReady and type(CoopTrace_Ground) == "function" then
+            local z = CoopTrace_Ground(x, y, zTop, zBottom)
+            return z
+        end
         if not KSL or not valid(KSL) then KSL = UEHelpers.GetKismetSystemLibrary() end
         local hit = {}
         local ok, wasHit = pcall(function()

@@ -1,0 +1,2070 @@
+# Playtest: Mission 14 hard
+
+Run 18 Oct 2026, 23:05 by tools\playtest.py; difficulty hard, mode fair.
+
+**Not completed** in 8 attempt(s).
+
+| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | failed | an objective failed | 7.8 min | 0 | 6 (2) | 69 | 15 (14) | 1420 |
+| 2 | failed | shot down or crashed | 2.8 min | 0 | 3 (4) | 120 | 27 (26) | 800 |
+| 3 | failed | an objective failed | 3.5 min | 4 | 3 (2) | 1 | 38 (36) | 950 |
+| 4 | failed | an objective failed | 5.1 min | 7 | 2 (3) | 35 | 51 (51) | 1460 |
+| 5 | failed | an objective failed | 3.6 min | 5 | 2 (3) | 51 | 51 (48) | 700 |
+| 6 | failed | an objective failed | 3.5 min | 1 | 1 (1) | 16 | 41 (40) | 600 |
+| 7 | failed | an objective failed | 3.4 min | 0 | 0 (0) | 48 | 48 (48) | 0 |
+| 8 | failed | an objective failed | 3.0 min | 1 | 1 (0) | 113 | 48 (46) | 150 |
+
+## Attempt 1
+
+- 00:15 ground recovery: above_ground_m=139.9, alt_m=588.4, lowest_ahead_m=19.41, vz=-84.1
+- 05:01 phase cleared: MissionPhase_01
+- 05:04 phase start: MissionPhase_02
+- 05:08 ground recovery: above_ground_m=102.3, alt_m=791.2, lowest_ahead_m=238, vz=72.18
+- 05:18 ground recovery: above_ground_m=379.5, alt_m=479, lowest_ahead_m=2.566, vz=-92.1
+- 05:26 ground recovery: above_ground_m=520.8, alt_m=573.9, lowest_ahead_m=-246.4, vz=-142.2
+- 05:47 ground recovery: above_ground_m=535.3, alt_m=588.4, lowest_ahead_m=-222.4, vz=-140.3
+- 06:05 ground recovery: above_ground_m=643.1, alt_m=646.9, lowest_ahead_m=254.5, vz=-149.2
+- 06:14 ground recovery: above_ground_m=763.8, alt_m=768.1, lowest_ahead_m=377.6, vz=-175.4
+- 06:16 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2626 m)
+- 06:17 weapon switch to standard missiles (no longer: beyond standard missile range, target 1727 m)
+- 06:19 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1943 m)
+- 06:20 ground recovery: above_ground_m=484.8, alt_m=494.8, lowest_ahead_m=186.6, vz=-121
+- 06:20 weapon switch to standard missiles (no longer: beyond standard missile range, target 1684 m)
+- 06:27 missile warning: level=very near
+- 06:27 flare: reason=warning
+- 06:27 missile fired at us by SAM_4 from 1985 m (infrared)
+- 06:27 missile warning: level=near
+- 06:27 missile fired at us by 02_en_av8b_03 from 954 m (infrared)
+- 06:27 missile fired at us by 02_en_av8b_05 from 1021 m (infrared)
+- 06:30 break turn: missile 900 m away, impact in 4.0 s
+- 06:30 missile warning: level=very near
+- 06:30 flare: dist_m=798.3, missile=wp_msl_C_1, reason=tracker, tgo_s=2.606
+- 06:31 that missile lost its lock at 791 m
+- 06:31 that missile lost its lock at 882 m
+- 06:31 missile warning: level=near
+- 06:32 flare: dist_m=992.9, missile=wp_msl_SAM_C_2, reason=tracker, tgo_s=1.932
+- 06:32 that missile lost its lock at 985 m
+- 06:37 ground recovery: above_ground_m=260.6, alt_m=310.7, lowest_ahead_m=91.14, vz=-68.6
+- 06:37 missile from SAM_4 gone after 10 s, closest 993 m
+- 06:37 missile warning: level=very near
+- 06:37 flare: reason=warning
+- 06:37 missile warning: level=near
+- 06:37 missile fired at us by SAM_4 from 1542 m (infrared)
+- 06:38 missile from 02_en_av8b_03 gone after 11 s, closest 798 m
+- 06:38 missile from 02_en_av8b_05 gone after 11 s, closest 889 m
+- 06:39 flare: dist_m=923.2, missile=wp_msl_SAM_C_5, reason=tracker, tgo_s=1.494
+- 06:39 missile warning: level=very near
+- 06:40 flare: dist_m=365.8, missile=wp_msl_SAM_C_5, reason=tracker, tgo_s=0.9876
+- 06:40 missile fired at us by SAM_4 from 958 m (infrared)
+- 06:41 that missile lost its lock at 280 m
+- 06:41 missile warning: level=near
+- 06:41 took 1 damage, health 119
+- 06:41 took 1 damage, health 118
+- 06:41 missile warning: level=very near
+- 06:41 flare: dist_m=658.2, missile=wp_msl_SAM_C_6, reason=tracker, tgo_s=2.52
+- 06:42 took 1 damage, health 117
+- 06:42 took 1 damage, health 116
+- 06:43 flare: dist_m=417.6, missile=wp_msl_SAM_C_6, reason=tracker, tgo_s=2.098
+- 06:43 missile fired at us by SAM_4 from 948 m (infrared)
+- 06:43 ground recovery: above_ground_m=216.1, alt_m=268.9, lowest_ahead_m=62.42, vz=-46.8
+- 06:43 that missile lost its lock at 280 m
+- 06:43 missile warning: level=near
+- 06:44 missile fired at us by SAM_2 from 1458 m (infrared)
+- 06:44 missile fired at us by SAM_3 from 1170 m (infrared)
+- 06:44 missile fired at us by SAM_4 from 928 m (infrared)
+- 06:44 that missile lost its lock at 1176 m
+- 06:44 took 1 damage, health 115
+- 06:44 missile warning: level=very near
+- 06:44 flare: dist_m=795.4, missile=wp_msl_SAM_C_7, reason=tracker, tgo_s=3.089
+- 06:44 missile from SAM_3 gone after 0 s, closest 0 m
+- 06:45 flare: dist_m=454.2, missile=wp_msl_SAM_C_7, reason=tracker, tgo_s=1.713
+- 06:46 that missile lost its lock at 265 m
+- 06:46 flare: dist_m=307.6, missile=wp_msl_SAM_C_10, reason=tracker, tgo_s=1.817
+- 06:47 that missile lost its lock at 258 m
+- 06:47 missile warning: level=near
+- 06:47 missile from SAM_4 gone after 10 s, closest 283 m
+- 06:48 missile warning: level=very near
+- 06:48 flare: dist_m=799.3, missile=wp_msl_SAM_C_8, reason=tracker, tgo_s=2.361
+- 06:48 that missile lost its lock at 660 m
+- 06:50 missile from SAM_4 gone after 10 s, closest 281 m
+- 06:52 missile from SAM_2 gone after 8 s, closest 668 m
+- 06:53 missile from SAM_4 gone after 10 s, closest 263 m
+- 06:54 missile from SAM_4 gone after 10 s, closest 256 m
+- 06:54 missile fired at us by 02_en_av8b_03 from 1553 m (infrared)
+- 06:54 missile warning: level=near
+- 06:55 missile fired at us by SAM_3 from 3011 m (infrared)
+- 06:55 missile fired at us by SAM_2 from 3078 m (infrared)
+- 06:55 missile fired at us by SAM_4 from 1552 m (infrared)
+- 06:57 ground recovery: above_ground_m=326.7, alt_m=381.6, lowest_ahead_m=-448.3, vz=-59.54
+- 06:57 break turn: missile 1203 m away, impact in 3.9 s
+- 06:58 flare: dist_m=869.6, missile=wp_msl_C_2, reason=tracker, tgo_s=1.984
+- 06:58 missile warning: level=very near
+- 06:59 flare: dist_m=332.6, missile=wp_msl_C_2, reason=tracker, tgo_s=0.8471
+- 07:00 took 40 damage, health 75
+- 07:00 missile from 02_en_av8b_03 gone after 6 s, closest 5 m
+- 07:00 flare: dist_m=543.5, missile=wp_msl_SAM_C_13, reason=tracker, tgo_s=1.33
+- 07:01 that missile lost its lock at 10 m
+- 07:01 missile warning: level=near
+- 07:02 missile from SAM_4 gone after 6 s, closest 8 m
+- 07:02 flare: dist_m=1160, missile=wp_msl_SAM_C_12, reason=tracker, tgo_s=1.902
+- 07:02 missile warning: level=very near
+- 07:03 flare: dist_m=430.2, missile=wp_msl_SAM_C_12, reason=tracker, tgo_s=0.5469
+- 07:04 that missile lost its lock at 12 m
+- 07:04 that missile lost its lock at 6 m
+- 07:04 missile from SAM_2 gone after 9 s, closest 23 m
+- 07:04 missile from SAM_3 gone after 9 s, closest 10 m
+- 07:04 took 24 damage, health 51
+- 07:05 missile warning: level=near
+- 07:05 missile fired at us by 02_en_av8b_03 from 914 m (infrared)
+- 07:06 break turn: missile 818 m away, impact in 3.6 s
+- 07:06 missile warning: level=very near
+- 07:06 flare: dist_m=792.3, missile=wp_msl_C_0, reason=tracker, tgo_s=4.826
+- 07:07 flare: dist_m=540.3, missile=wp_msl_C_0, reason=tracker, tgo_s=2
+- 07:08 ground recovery: above_ground_m=270.5, alt_m=910.6, lowest_ahead_m=57.78, vz=47.88
+- 07:08 that missile lost its lock at 211 m
+- 07:09 missile from 02_en_av8b_03 gone after 5 s, closest 210 m
+- 07:11 missile fired at us by 02_en_av8b_05 from 2078 m (infrared)
+- 07:11 missile warning: level=near
+- 07:11 break turn: missile 1831 m away, impact in 3.0 s
+- 07:13 flare: dist_m=1058, missile=wp_msl_C_1, reason=tracker, tgo_s=1.955
+- 07:14 missile warning: level=very near
+- 07:14 flare: dist_m=461.3, missile=wp_msl_C_1, reason=tracker, tgo_s=0.8306
+- 07:15 that missile lost its lock at 224 m
+- 07:16 missile from 02_en_av8b_05 gone after 5 s, closest 223 m
+- 07:17 ground recovery: above_ground_m=401.1, alt_m=603.2, lowest_ahead_m=53.99, vz=-98.88
+- 07:36 ground recovery: above_ground_m=730.4, alt_m=733.8, lowest_ahead_m=290.8, vz=-230
+- 07:46 phase failed: MissionPhase_02
+- 07:46 **objective failed**
+- 07:49 how well enemy positions 2 s ahead were predicted: route planes: 1230 checks, the guess used was off by 7 m on average (each way: route 6 m, straight 14 m; now using route); steady planes: 768 checks, the guess used was off by 1 m on average (each way: full turn 1 m, half turn 1 m, straight 1 m; now using straight); turning planes: 254 checks, the guess used was off by 79 m on average (each way: full turn 108 m, half turn 78 m, straight 78 m; now using half turn)
+
+## Attempt 2
+
+- 00:02 frozen
+- 00:09 ground recovery: above_ground_m=345.2, alt_m=398.3, lowest_ahead_m=-24.16, vz=-76.77
+- 00:29 ground recovery: above_ground_m=491.4, alt_m=713, lowest_ahead_m=-647.7, vz=-3.526
+- 00:42 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 3635 m)
+- 00:44 weapon switch to standard missiles (no longer: beyond standard missile range, target 3167 m)
+- 00:46 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2473 m)
+- 00:48 weapon switch to standard missiles (no longer: beyond standard missile range, target 2078 m)
+- 00:49 missile warning: level=near
+- 00:49 missile fired at us by SAM_2 from 1315 m (infrared)
+- 00:49 missile fired at us by SAM_4 from 818 m (infrared)
+- 00:49 missile fired at us by SAM_3 from 1408 m (infrared)
+- 00:49 break turn: missile 1302 m away, impact in 2.8 s
+- 00:49 missile warning: level=very near
+- 00:50 flare: dist_m=1111, missile=wp_msl_SAM_C_14, reason=tracker, tgo_s=1.904
+- 00:50 ground recovery: above_ground_m=553.5, alt_m=596.9, lowest_ahead_m=164.8, vz=-130.1
+- 00:50 that missile lost its lock at 764 m
+- 00:50 missile warning: level=near
+- 00:50 missile warning: level=very near
+- 00:51 flare: dist_m=509.4, missile=wp_msl_SAM_C_14, reason=tracker, tgo_s=0.8925
+- 00:51 that missile lost its lock at 497 m
+- 00:51 that missile lost its lock at 729 m
+- 00:54 missile warning: level=very near
+- 00:54 flare: reason=warning
+- 00:54 took 1 damage, health 119
+- 00:54 missile fired at us by SAM_2 from 476 m (infrared)
+- 00:54 missile fired at us by SAM_3 from 524 m (infrared)
+- 00:55 took 1 damage, health 118
+- 00:55 missile fired at us by SAM_4 from 1415 m (infrared)
+- 00:55 missile fired at us by SAM_2 from 561 m (infrared)
+- 00:55 missile fired at us by SAM_3 from 573 m (infrared)
+- 00:55 took 1 damage, health 117
+- 00:55 flare: dist_m=437.2, missile=wp_msl_SAM_C_18, reason=tracker, tgo_s=4.842
+- 00:55 that missile lost its lock at 561 m
+- 00:55 that missile lost its lock at 433 m
+- 00:55 that missile lost its lock at 539 m
+- 00:55 that missile lost its lock at 452 m
+- 00:55 missile warning: level=near
+- 00:56 break turn: missile 1097 m away, impact in 2.9 s
+- 00:57 missile warning: level=very near
+- 00:57 flare: dist_m=795.8, missile=wp_msl_SAM_C_21, reason=tracker, tgo_s=2.26
+- 00:57 that missile lost its lock at 788 m
+- 00:59 missile from SAM_4 gone after 10 s, closest 764 m
+- 00:59 missile from SAM_2 gone after 10 s, closest 507 m
+- 00:59 missile from SAM_3 gone after 10 s, closest 736 m
+- 01:08 ground recovery: above_ground_m=713.2, alt_m=710.3, lowest_ahead_m=327.5, vz=-157.3
+- 01:11 missile warning: level=near
+- 01:11 missile fired at us by SAM_2 from 2934 m (infrared)
+- 01:11 missile fired at us by SAM_4 from 1906 m (infrared)
+- 01:11 missile fired at us by SAM_3 from 2629 m (infrared)
+- 01:11 that missile lost its lock at 1912 m
+- 01:11 that missile lost its lock at 2647 m
+- 01:11 missile from SAM_3 gone after 0 s, closest 2633 m
+- 01:14 missile fired at us by SAM_4 from 2867 m (infrared)
+- 01:15 break turn: missile 2571 m away, impact in 3.4 s
+- 01:16 missile warning: level=near
+- 01:16 flare: dist_m=1879, missile=wp_msl_SAM_C_22, reason=tracker, tgo_s=1.978
+- 01:17 missile from SAM_4 gone after 6 s, closest 0 m
+- 01:17 that missile lost its lock at 1161 m
+- 01:17 missile warning: level=near
+- 01:18 break turn: missile 1757 m away, impact in 3.9 s
+- 01:19 that missile lost its lock at 1524 m
+- 01:21 missile from SAM_2 gone after 10 s, closest 1160 m
+- 01:21 missile fired at us by SAM_3 from 2745 m (infrared)
+- 01:21 that missile lost its lock at 2730 m
+- 01:21 missile from SAM_3 gone after 0 s, closest 2732 m
+- 01:24 missile from SAM_4 gone after 10 s, closest 1524 m
+- 01:40 ground recovery: above_ground_m=626.2, alt_m=634.3, lowest_ahead_m=145.3, vz=-140.7
+- 01:41 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2545 m)
+- 01:44 weapon switch to standard missiles (no longer: beyond standard missile range, target 1797 m)
+- 01:45 missile warning: level=very near
+- 01:45 flare: reason=warning
+- 01:46 missile fired at us by SAM_4 from 583 m (infrared)
+- 01:46 missile fired at us by SAM_2 from 1988 m (infrared)
+- 01:46 missile fired at us by SAM_3 from 1861 m (infrared)
+- 01:46 that missile lost its lock at 1871 m
+- 01:46 missile from SAM_3 gone after 0 s, closest 1865 m
+- 01:46 ground recovery: above_ground_m=250.2, alt_m=300.2, lowest_ahead_m=108.4, vz=-70.03
+- 01:47 flare: dist_m=513.5, missile=wp_msl_SAM_C_16, reason=tracker, tgo_s=4.931
+- 01:48 flare: dist_m=366.2, missile=wp_msl_SAM_C_16, reason=tracker, tgo_s=2.754
+- 01:49 that missile lost its lock at 198 m
+- 01:49 missile warning: level=near
+- 01:50 flare: dist_m=1169, missile=wp_msl_SAM_C_14, reason=tracker, tgo_s=1.649
+- 01:51 missile warning: level=very near
+- 01:51 flare: dist_m=534.8, missile=wp_msl_SAM_C_14, reason=tracker, tgo_s=0.9256
+- 01:52 that missile lost its lock at 95 m
+- 01:53 missile warning: level=near
+- 01:53 missile from SAM_4 gone after 7 s, closest 196 m
+- 01:53 missile fired at us by SAM_4 from 1137 m (infrared)
+- 01:53 missile fired at us by SAM_2 from 2482 m (infrared)
+- 01:53 missile fired at us by SAM_3 from 2531 m (infrared)
+- 01:53 break turn: missile 1039 m away, impact in 3.9 s
+- 01:53 ground recovery: above_ground_m=279.9, alt_m=383.9, lowest_ahead_m=58.41, vz=-50.43
+- 01:54 missile warning: level=very near
+- 01:54 flare: dist_m=798.5, missile=wp_msl_SAM_C_19, reason=tracker, tgo_s=2.41
+- 01:55 missile from SAM_2 gone after 10 s, closest 102 m
+- 01:55 flare: dist_m=371.1, missile=wp_msl_SAM_C_19, reason=tracker, tgo_s=1.019
+- 01:56 that missile lost its lock at 116 m
+- 01:56 missile warning: level=near
+- 01:56 flare: dist_m=942.6, missile=wp_msl_SAM_C_17, reason=tracker, tgo_s=1.955
+- 01:57 missile warning: level=very near
+- 01:58 missile from SAM_4 gone after 5 s, closest 115 m
+- 01:58 flare: dist_m=264.8, missile=wp_msl_SAM_C_17, reason=tracker, tgo_s=0.3443
+- 01:58 that missile lost its lock at 13 m
+- 01:58 that missile lost its lock at 12 m
+- 01:59 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1802 m)
+- 01:59 ground recovery: above_ground_m=191.8, alt_m=293.4, lowest_ahead_m=14.21, vz=-17.92
+- 02:00 missile from SAM_3 gone after 7 s, closest 18 m
+- 02:02 missile from SAM_2 gone after 9 s, closest 17 m
+- 02:12 weapon switch to standard missiles (no longer: beyond standard missile range, target 1797 m)
+- 02:14 missile warning: level=near
+- 02:14 missile fired at us by 02_en_av8b_03 from 1398 m (infrared)
+- 02:16 break turn: missile 1084 m away, impact in 2.3 s
+- 02:17 flare: dist_m=960.3, missile=wp_msl_C_5, reason=tracker, tgo_s=1.837
+- 02:17 missile warning: level=very near
+- 02:18 flare: dist_m=491.1, missile=wp_msl_C_5, reason=tracker, tgo_s=0.6309
+- 02:19 that missile lost its lock at 44 m
+- 02:20 ground recovery: above_ground_m=289.1, alt_m=301.1, lowest_ahead_m=114.7, vz=-55.29
+- 02:20 missile from 02_en_av8b_03 gone after 6 s, closest 41 m
+- 02:24 missile warning: level=near
+- 02:24 missile fired at us by SAM_2 from 2665 m (infrared)
+- 02:24 missile fired at us by SAM_4 from 1285 m (infrared)
+- 02:25 that missile lost its lock at 1261 m
+- 02:28 missile warning: level=near
+- 02:28 missile fired at us by SAM_4 from 1687 m (infrared)
+- 02:28 break turn: missile 1890 m away, impact in 3.9 s
+- 02:30 flare: dist_m=1153, missile=wp_msl_SAM_C_14, reason=tracker, tgo_s=1.916
+- 02:30 missile fired at us by SAM_4 from 1869 m (infrared)
+- 02:30 missile fired at us by SAM_3 from 3179 m (infrared)
+- 02:30 missile fired at us by SAM_2 from 3341 m (infrared)
+- 02:30 ground recovery: above_ground_m=353.7, alt_m=369.7, lowest_ahead_m=1.107, vz=-57.06
+- 02:31 missile warning: level=very near
+- 02:31 missile from SAM_4 gone after 7 s, closest 1260 m
+- 02:31 that missile lost its lock at 433 m
+- 02:31 missile warning: level=near
+- 02:31 flare: dist_m=883.8, missile=wp_msl_SAM_C_17, reason=tracker, tgo_s=1.934
+- 02:31 missile warning: level=very near
+- 02:32 that missile lost its lock at 711 m
+- 02:32 missile warning: level=near
+- 02:33 missile from SAM_2 gone after 8 s, closest 452 m
+- 02:33 flare: dist_m=1054, missile=wp_msl_SAM_C_20, reason=tracker, tgo_s=1.919
+- 02:34 missile warning: level=very near
+- 02:34 flare: dist_m=574.7, missile=wp_msl_SAM_C_20, reason=tracker, tgo_s=1.377
+- 02:35 missile from SAM_4 gone after 7 s, closest 712 m
+- 02:35 missile fired at us by 02_en_av8b_01 from 2341 m (infrared)
+- 02:35 that missile lost its lock at 46 m
+- 02:35 missile warning: level=near
+- 02:36 flare: dist_m=1203, missile=wp_msl_SAM_C_19, reason=tracker, tgo_s=1.914
+- 02:36 missile warning: level=very near
+- 02:37 missile from SAM_4 gone after 7 s, closest 45 m
+- 02:37 flare: dist_m=439.9, missile=wp_msl_SAM_C_19, reason=tracker, tgo_s=0.549
+- 02:37 ground recovery: above_ground_m=295.2, alt_m=364.3, lowest_ahead_m=55.6, vz=-20.27
+- 02:38 that missile lost its lock at 39 m
+- 02:38 that missile lost its lock at 38 m
+- 02:38 missile warning: level=near
+- 02:38 flare: dist_m=1147, missile=wp_msl_C_4, reason=tracker, tgo_s=1.964
+- 02:39 missile from SAM_3 gone after 9 s, closest 52 m
+- 02:39 missile from SAM_2 gone after 9 s, closest 48 m
+- 02:39 missile warning: level=very near
+- 02:40 flare: dist_m=426, missile=wp_msl_C_4, reason=tracker, tgo_s=0.6571
+- 02:40 took 40 damage, health 77
+- 02:40 missile from 02_en_av8b_01 gone after 5 s, closest 4 m
+- 02:42 **player dead**
+- 02:42 took 77 damage, health 0
+- 02:44 frozen
+- 02:44 how well enemy positions 2 s ahead were predicted: route planes: 592 checks, the guess used was off by 10 m on average (each way: route 9 m, straight 25 m; now using straight); steady planes: 577 checks, the guess used was off by 2 m on average (each way: full turn 2 m, half turn 2 m, straight 2 m; now using straight); turning planes: 247 checks, the guess used was off by 73 m on average (each way: full turn 101 m, half turn 72 m, straight 78 m; now using half turn)
+
+## Attempt 3
+
+- 00:02 frozen
+- 00:03 ground recovery: above_ground_m=244.7, alt_m=297.8, lowest_ahead_m=59.04, vz=-46.56
+- 00:12 ground recovery: above_ground_m=560.7, alt_m=738.7, lowest_ahead_m=51.51, vz=13.63
+- 00:30 ground recovery: above_ground_m=508.8, alt_m=552.9, lowest_ahead_m=152, vz=-129.5
+- 00:42 ground recovery: above_ground_m=292.7, alt_m=341.1, lowest_ahead_m=131.5, vz=-70.5
+- 01:03 ground recovery: above_ground_m=421.1, alt_m=474.2, lowest_ahead_m=-47.92, vz=-89.63
+- 01:03 missile warning: level=near
+- 01:03 missile fired at us by SAM_2 from 908 m (infrared)
+- 01:04 break turn: missile 897 m away, impact in 2.2 s
+- 01:04 missile warning: level=very near
+- 01:04 flare: dist_m=794.4, missile=wp_msl_SAM_C_26, reason=tracker, tgo_s=2.161
+- 01:04 that missile lost its lock at 784 m
+- 01:06 missile fired at us by SAM_4 from 1522 m (infrared)
+- 01:06 missile fired at us by SAM_2 from 482 m (infrared)
+- 01:06 missile warning: level=very near
+- 01:06 flare: reason=warning
+- 01:06 that missile lost its lock at 474 m
+- 01:06 missile warning: level=near
+- 01:08 break turn: missile 1273 m away, impact in 3.8 s
+- 01:09 flare: dist_m=881.3, missile=wp_msl_SAM_C_28, reason=tracker, tgo_s=1.799
+- 01:09 that missile lost its lock at 876 m
+- 01:10 ground recovery: above_ground_m=273.2, alt_m=326.3, lowest_ahead_m=59.02, vz=-40.17
+- 01:13 missile from SAM_2 gone after 10 s, closest 786 m
+- 01:14 missile fired at us by SAM_2 from 735 m (infrared)
+- 01:14 missile fired at us by SAM_4 from 1927 m (infrared)
+- 01:14 missile warning: level=very near
+- 01:14 flare: reason=warning
+- 01:14 that missile lost its lock at 735 m
+- 01:14 missile warning: level=near
+- 01:14 missile warning: level=very near
+- 01:14 missile fired at us by SAM_4 from 1925 m (infrared)
+- 01:14 missile fired at us by SAM_2 from 776 m (infrared)
+- 01:15 flare: dist_m=761.9, missile=wp_msl_SAM_C_32, reason=tracker, tgo_s=9.509
+- 01:16 break turn: missile 681 m away, impact in 3.4 s
+- 01:16 missile from SAM_4 gone after 10 s, closest 881 m
+- 01:16 missile from SAM_2 gone after 10 s, closest 0 m
+- 01:16 flare: dist_m=634.1, missile=wp_msl_SAM_C_32, reason=tracker, tgo_s=4.105
+- 01:17 flare: dist_m=391.1, missile=wp_msl_SAM_C_32, reason=tracker, tgo_s=1.505
+- 01:18 that missile lost its lock at 36 m
+- 01:18 missile warning: level=near
+- 01:19 flare: dist_m=877.1, missile=wp_msl_SAM_C_30, reason=tracker, tgo_s=1.572
+- 01:19 missile warning: level=very near
+- 01:19 ground recovery: above_ground_m=186.8, alt_m=360.5, lowest_ahead_m=31.61, vz=-43.25
+- 01:20 flare: dist_m=276.6, missile=wp_msl_SAM_C_30, reason=tracker, tgo_s=0.4609
+- 01:20 that missile lost its lock at 52 m
+- 01:20 that missile lost its lock at 52 m
+- 01:24 missile from SAM_2 gone after 10 s, closest 0 m
+- 01:24 missile from SAM_4 gone after 10 s, closest 57 m
+- 01:24 missile from SAM_4 gone after 10 s, closest 51 m
+- 01:24 missile from SAM_2 gone after 10 s, closest 40 m
+- 01:44 ground recovery: above_ground_m=437.7, alt_m=541.7, lowest_ahead_m=248, vz=-146.1
+- 01:45 missile warning: level=near
+- 01:45 missile fired at us by SAM_4 from 1250 m (infrared)
+- 01:45 missile fired at us by SAM_2 from 1030 m (infrared)
+- 01:45 missile fired at us by SAM_2 from 1025 m (infrared)
+- 01:45 break turn: missile 1237 m away, impact in 2.9 s
+- 01:46 flare: dist_m=888.5, missile=wp_msl_SAM_C_28, reason=tracker, tgo_s=1.778
+- 01:46 missile warning: level=very near
+- 01:47 flare: dist_m=308.6, missile=wp_msl_SAM_C_28, reason=tracker, tgo_s=0.6048
+- 01:48 that missile lost its lock at 61 m
+- 01:48 flare: dist_m=287.8, missile=wp_msl_SAM_C_27, reason=tracker, tgo_s=2.445
+- 01:49 that missile lost its lock at 275 m
+- 01:49 that missile lost its lock at 270 m
+- 01:49 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2230 m)
+- 01:52 missile warning: level=near
+- 01:52 took 1 damage, health 119
+- 01:53 weapon switch to standard missiles (no longer: beyond standard missile range, target 1800 m)
+- 01:53 missile fired at us by 02_en_av8b_01 from 1071 m (infrared)
+- 01:54 missile warning: level=very near
+- 01:54 missile fired at us by SAM_4 from 507 m (infrared)
+- 01:54 missile fired at us by SAM_2 from 1732 m (infrared)
+- 01:54 flare: dist_m=501, missile=wp_msl_SAM_C_29, reason=tracker, tgo_s=2.53
+- 01:54 break turn: missile 501 m away, impact in 2.5 s
+- 01:54 missile fired at us by SAM_2 from 1777 m (infrared)
+- 01:54 missile fired at us by SAM_4 from 511 m (infrared)
+- 01:54 ground recovery: above_ground_m=283.3, alt_m=336.4, lowest_ahead_m=59.95, vz=-50.39
+- 01:54 destroyed 02_en_AH64_00_2_3  (None missiles, 0 s after picking it)
+- 01:55 missile from SAM_2 gone after 9 s, closest 267 m
+- 01:55 missile from SAM_2 gone after 9 s, closest 276 m
+- 01:55 flare: dist_m=397.8, missile=wp_msl_SAM_C_32, reason=tracker, tgo_s=4.683
+- 01:55 missile from SAM_4 gone after 10 s, closest 64 m
+- 01:56 that missile lost its lock at 352 m
+- 01:56 destroyed 02_en_AH64_00_1_1  (None missiles, 0 s after picking it)
+- 01:56 flare: dist_m=688.7, missile=wp_msl_C_8, reason=tracker, tgo_s=2.214
+- 01:56 that missile lost its lock at 354 m
+- 01:57 flare: dist_m=193, missile=wp_msl_C_8, reason=tracker, tgo_s=0.3948
+- 01:58 that missile lost its lock at 24 m
+- 01:58 missile warning: level=near
+- 01:58 missile warning: level=very near
+- 01:59 flare: dist_m=653, missile=wp_msl_SAM_C_30, reason=tracker, tgo_s=1.52
+- 01:59 missile fired at us by SAM_2 from 2472 m (infrared)
+- 01:59 missile fired at us by SAM_4 from 985 m (infrared)
+- 01:59 missile from 02_en_av8b_01 gone after 7 s, closest 18 m
+- 02:00 that missile lost its lock at 61 m
+- 02:00 flare: dist_m=124.4, missile=wp_msl_SAM_C_31, reason=tracker, tgo_s=0.2229
+- 02:00 that missile lost its lock at 59 m
+- 02:01 flare: dist_m=495.1, missile=wp_msl_SAM_C_34, reason=tracker, tgo_s=1.441
+- 02:02 that missile lost its lock at 89 m
+- 02:02 missile warning: level=near
+- 02:03 flare: dist_m=1052, missile=wp_msl_SAM_C_33, reason=tracker, tgo_s=1.756
+- 02:03 ground recovery: above_ground_m=277.2, alt_m=357, lowest_ahead_m=79.57, vz=-72.21
+- 02:03 missile warning: level=very near
+- 02:04 missile from SAM_2 gone after 10 s, closest 70 m
+- 02:04 missile from SAM_4 gone after 10 s, closest 339 m
+- 02:04 missile from SAM_4 gone after 10 s, closest 348 m
+- 02:04 missile from SAM_2 gone after 10 s, closest 94 m
+- 02:04 flare: dist_m=362.3, missile=wp_msl_SAM_C_33, reason=tracker, tgo_s=0.5841
+- 02:05 that missile lost its lock at 54 m
+- 02:05 missile warning: level=near
+- 02:05 missile fired at us by SAM_4 from 940 m (infrared)
+- 02:05 missile fired at us by SAM_2 from 2113 m (infrared)
+- 02:06 missile warning: level=very near
+- 02:06 missile from SAM_2 gone after 7 s, closest 52 m
+- 02:06 flare: dist_m=790.8, missile=wp_msl_SAM_C_36, reason=tracker, tgo_s=5.245
+- 02:07 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1811 m)
+- 02:07 break turn: missile 711 m away, impact in 3.0 s
+- 02:08 flare: dist_m=653.7, missile=wp_msl_SAM_C_36, reason=tracker, tgo_s=5.441
+- 02:08 break turn: missile 648 m away, impact in 3.5 s
+- 02:09 flare: dist_m=421.7, missile=wp_msl_SAM_C_36, reason=tracker, tgo_s=1.273
+- 02:09 missile from SAM_4 gone after 10 s, closest 88 m
+- 02:10 that missile lost its lock at 60 m
+- 02:10 missile warning: level=near
+- 02:10 missile warning: level=very near
+- 02:10 flare: dist_m=799.4, missile=wp_msl_SAM_C_35, reason=tracker, tgo_s=1.962
+- 02:11 missile from SAM_4 gone after 6 s, closest 69 m
+- 02:11 flare: dist_m=256.7, missile=wp_msl_SAM_C_35, reason=tracker, tgo_s=0.4862
+- 02:12 that missile lost its lock at 28 m
+- 02:13 weapon switch to standard missiles (no longer: beyond standard missile range, target 1794 m)
+- 02:15 missile from SAM_2 gone after 10 s, closest 26 m
+- 02:15 missile fired at us by 02_en_av8b_01 from 2342 m (infrared)
+- 02:15 destroyed 02_en_AH64_00_1_3  (None missiles, 0 s after picking it)
+- 02:16 missile fired at us by 02_en_av8b_05 from 2127 m (infrared)
+- 02:17 missile warning: level=near
+- 02:18 break turn: missile 1832 m away, impact in 3.2 s
+- 02:18 break turn: missile 1622 m away, impact in 3.5 s
+- 02:19 flare: dist_m=1095, missile=wp_msl_C_7, reason=tracker, tgo_s=1.817
+- 02:20 missile warning: level=very near
+- 02:21 flare: dist_m=301, missile=wp_msl_C_7, reason=tracker, tgo_s=0.431
+- 02:21 that missile lost its lock at 32 m
+- 02:21 that missile lost its lock at 23 m
+- 02:22 ground recovery: above_ground_m=252.5, alt_m=301.7, lowest_ahead_m=80.6, vz=-61.78
+- 02:23 missile from 02_en_av8b_05 gone after 6 s, closest 38 m
+- 02:23 missile from 02_en_av8b_01 gone after 8 s, closest 28 m
+- 02:30 ground recovery: above_ground_m=379.7, alt_m=395.7, lowest_ahead_m=40.77, vz=-68.54
+- 02:31 missile warning: level=near
+- 02:31 missile fired at us by 02_en_av8b_01 from 1880 m (infrared)
+- 02:32 destroyed 02_en_AH64_00_1_2  (0 missiles, 4 s after picking it)
+- 02:33 break turn: missile 1641 m away, impact in 4.0 s
+- 02:34 flare: dist_m=1174, missile=wp_msl_C_9, reason=tracker, tgo_s=1.656
+- 02:35 missile warning: level=very near
+- 02:35 ground recovery: above_ground_m=432.7, alt_m=506.1, lowest_ahead_m=27.93, vz=-53.03
+- 02:35 flare: dist_m=500.3, missile=wp_msl_C_9, reason=tracker, tgo_s=0.5351
+- 02:36 that missile lost its lock at 24 m
+- 02:37 missile from 02_en_av8b_01 gone after 6 s, closest 33 m
+- 02:42 ground recovery: above_ground_m=781.7, alt_m=851.8, lowest_ahead_m=7.174, vz=-60
+- 02:54 missile fired at us by 02_en_m29a_01 from 2149 m (infrared)
+- 02:55 missile warning: level=near
+- 02:56 break turn: missile 1670 m away, impact in 3.7 s
+- 02:57 ground recovery: above_ground_m=474.8, alt_m=527.9, lowest_ahead_m=-15.34, vz=-96.95
+- 02:57 flare: dist_m=1128, missile=wp_msl_C_7, reason=tracker, tgo_s=1.703
+- 02:58 missile warning: level=very near
+- 02:58 missile fired at us by SAM_2 from 1925 m (infrared)
+- 02:58 missile fired at us by SAM_4 from 541 m (infrared)
+- 02:58 flare: dist_m=559, missile=wp_msl_C_7, reason=tracker, tgo_s=1.025
+- 02:59 that missile lost its lock at 251 m
+- 02:59 that missile lost its lock at 40 m
+- 02:59 missile warning: level=near
+- 03:00 flare: dist_m=1072, missile=wp_msl_SAM_C_26, reason=tracker, tgo_s=1.452
+- 03:00 missile warning: level=very near
+- 03:01 missile from 02_en_m29a_01 gone after 6 s, closest 49 m
+- 03:01 flare: dist_m=513.6, missile=wp_msl_SAM_C_26, reason=tracker, tgo_s=1.177
+- 03:02 that missile lost its lock at 108 m
+- 03:02 ground recovery: above_ground_m=283.3, alt_m=337, lowest_ahead_m=53.85, vz=-42.88
+- 03:03 missile warning: level=very near
+- 03:03 flare: reason=warning
+- 03:03 missile fired at us by SAM_2 from 1581 m (infrared)
+- 03:03 missile fired at us by SAM_4 from 495 m (infrared)
+- 03:05 flare: dist_m=465.3, missile=wp_msl_SAM_C_29, reason=tracker, tgo_s=9.69
+- 03:06 flare: dist_m=321.2, missile=wp_msl_SAM_C_29, reason=tracker, tgo_s=1.807
+- 03:07 that missile lost its lock at 66 m
+- 03:07 missile warning: level=near
+- 03:07 missile from SAM_2 gone after 9 s, closest 107 m
+- 03:07 flare: dist_m=863.5, missile=wp_msl_SAM_C_28, reason=tracker, tgo_s=1.948
+- 03:07 missile warning: level=very near
+- 03:08 missile from SAM_4 gone after 10 s, closest 251 m
+- 03:08 flare: dist_m=350.6, missile=wp_msl_SAM_C_28, reason=tracker, tgo_s=0.5491
+- 03:09 missile fired at us by SAM_4 from 908 m (infrared)
+- 03:09 missile fired at us by SAM_2 from 2084 m (infrared)
+- 03:09 that missile lost its lock at 59 m
+- 03:09 missile warning: level=near
+- 03:09 missile warning: level=very near
+- 03:09 ground recovery: above_ground_m=175.1, alt_m=258.7, lowest_ahead_m=38.95, vz=-41.54
+- 03:10 flare: dist_m=662.5, missile=wp_msl_SAM_C_31, reason=tracker, tgo_s=1.623
+- 03:10 missile fired at us by 02_en_av8b_01 from 1138 m (infrared)
+- 03:11 flare: dist_m=185.1, missile=wp_msl_SAM_C_31, reason=tracker, tgo_s=0.4307
+- 03:11 missile from SAM_2 gone after 7 s, closest 58 m
+- 03:11 that missile lost its lock at 23 m
+- 03:11 missile warning: level=near
+- 03:12 missile warning: level=very near
+- 03:12 flare: dist_m=931.5, missile=wp_msl_SAM_C_30, reason=tracker, tgo_s=1.905
+- 03:13 flare: dist_m=390.3, missile=wp_msl_SAM_C_30, reason=tracker, tgo_s=0.8293
+- 03:13 missile from SAM_4 gone after 10 s, closest 63 m
+- 03:14 that missile lost its lock at 70 m
+- 03:14 that missile lost its lock at 11 m
+- 03:15 missile warning: level=very near
+- 03:15 flare: reason=warning
+- 03:15 missile fired at us by SAM_2 from 1941 m (infrared)
+- 03:15 missile fired at us by SAM_4 from 430 m (infrared)
+- 03:15 missile from 02_en_av8b_01 gone after 5 s, closest 17 m
+- 03:16 flare: dist_m=344.6, missile=wp_msl_SAM_C_33, reason=tracker, tgo_s=3.56
+- 03:17 missile from SAM_4 gone after 8 s, closest 28 m
+- 03:17 missile from SAM_2 gone after 8 s, closest 68 m
+- 03:17 flare: dist_m=190.6, missile=wp_msl_SAM_C_33, reason=tracker, tgo_s=2.868
+- 03:17 that missile lost its lock at 188 m
+- 03:17 missile warning: level=near
+- 03:18 flare: dist_m=926.2, missile=wp_msl_SAM_C_32, reason=tracker, tgo_s=1.731
+- 03:19 missile warning: level=very near
+- 03:19 ground recovery: above_ground_m=273.8, alt_m=327.4, lowest_ahead_m=130.6, vz=-70.2
+- 03:20 flare: dist_m=274.6, missile=wp_msl_SAM_C_32, reason=tracker, tgo_s=0.5634
+- 03:20 missile fired at us by SAM_4 from 712 m (infrared)
+- 03:20 that missile lost its lock at 72 m
+- 03:20 missile fired at us by SAM_2 from 1854 m (infrared)
+- 03:20 missile fired at us by SAM_4 from 756 m (infrared)
+- 03:21 flare: dist_m=640.3, missile=wp_msl_SAM_C_34, reason=tracker, tgo_s=7.71
+- 03:21 break turn: missile 623 m away, impact in 3.7 s
+- 03:22 missile fired at us by 02_en_av8b_01 from 1220 m (infrared)
+- 03:22 flare: dist_m=504.9, missile=wp_msl_SAM_C_34, reason=tracker, tgo_s=5.127
+- 03:23 flare: dist_m=296.4, missile=wp_msl_SAM_C_34, reason=tracker, tgo_s=1.02
+- 03:24 that missile lost its lock at 970 m
+- 03:24 that missile lost its lock at 31 m
+- 03:25 flare: dist_m=163.6, missile=wp_msl_SAM_C_36, reason=tracker, tgo_s=0.4378
+- 03:25 missile from SAM_4 gone after 10 s, closest 186 m
+- 03:25 missile from SAM_2 gone after 10 s, closest 71 m
+- 03:25 that missile lost its lock at 38 m
+- 03:26 flare: dist_m=436.7, missile=wp_msl_C_7, reason=tracker, tgo_s=0.8173
+- 03:26 that missile lost its lock at 30 m
+- 03:26 missile warning: level=near
+- 03:27 missile fired at us by SAM_2 from 1698 m (infrared)
+- 03:27 missile fired at us by SAM_4 from 1464 m (infrared)
+- 03:27 ground recovery: above_ground_m=239.8, alt_m=250.8, lowest_ahead_m=78.72, vz=-46.42
+- 03:27 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2986 m)
+- 03:27 break turn: missile 1471 m away, impact in 3.7 s
+- 03:28 phase failed: MissionPhase_02
+- 03:28 **objective failed**
+- 03:28 flare: dist_m=1072, missile=wp_msl_SAM_C_38, reason=tracker, tgo_s=1.437
+- 03:29 missile warning: level=very near
+- 03:29 flare: dist_m=542, missile=wp_msl_SAM_C_38, reason=tracker, tgo_s=1.122
+- 03:30 how well enemy positions 2 s ahead were predicted: route planes: 933 checks, the guess used was off by 12 m on average (each way: route 9 m, straight 53 m; now using route); steady planes: 900 checks, the guess used was off by 2 m on average (each way: full turn 2 m, half turn 2 m, straight 2 m; now using straight); turning planes: 463 checks, the guess used was off by 81 m on average (each way: full turn 122 m, half turn 84 m, straight 89 m; now using half turn)
+
+## Attempt 4
+
+- 00:03 frozen
+- 00:09 ground recovery: above_ground_m=655.5, alt_m=708.6, lowest_ahead_m=-292, vz=-56.98
+- 00:30 ground recovery: above_ground_m=411.8, alt_m=459.4, lowest_ahead_m=126.7, vz=-108.4
+- 00:48 ground recovery: above_ground_m=513.9, alt_m=560.2, lowest_ahead_m=109.3, vz=-174.1
+- 00:48 missile warning: level=near
+- 00:48 missile fired at us by SAM_2 from 2267 m (infrared)
+- 00:48 missile fired at us by SAM_4 from 824 m (infrared)
+- 00:48 missile warning: level=very near
+- 00:48 flare: dist_m=798.1, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=6.666
+- 00:48 that missile lost its lock at 797 m
+- 00:50 missile warning: level=near
+- 00:51 break turn: missile 1832 m away, impact in 4.0 s
+- 00:52 break turn: missile 1543 m away, impact in 3.2 s
+- 00:53 ground recovery: above_ground_m=477.9, alt_m=493.9, lowest_ahead_m=-179.9, vz=-28.25
+- 00:53 flare: dist_m=1170, missile=wp_msl_SAM_C_39, reason=tracker, tgo_s=1.803
+- 00:54 missile warning: level=very near
+- 00:54 flare: dist_m=574.9, missile=wp_msl_SAM_C_39, reason=tracker, tgo_s=0.8916
+- 00:54 that missile lost its lock at 555 m
+- 00:56 missile from SAM_2 gone after 9 s, closest 575 m
+- 00:58 missile fired at us by SAM_2 from 3342 m (infrared)
+- 00:58 missile fired at us by SAM_4 from 2061 m (infrared)
+- 00:58 missile fired at us by SAM_3 from 3095 m (infrared)
+- 00:58 that missile lost its lock at 2069 m
+- 00:58 that missile lost its lock at 3099 m
+- 00:58 missile from SAM_4 gone after 10 s, closest 798 m
+- 00:58 missile from SAM_3 gone after 0 s, closest 3096 m
+- 01:00 missile fired at us by SAM_4 from 2668 m (infrared)
+- 01:02 break turn: missile 2765 m away, impact in 3.9 s
+- 01:03 break turn: missile 2499 m away, impact in 3.9 s
+- 01:04 missile warning: level=near
+- 01:04 flare: dist_m=1426, missile=wp_msl_SAM_C_42, reason=tracker, tgo_s=1.335
+- 01:05 missile from SAM_4 gone after 7 s, closest 0 m
+- 01:05 that missile lost its lock at 1123 m
+- 01:06 that missile lost its lock at 1053 m
+- 01:08 missile from SAM_2 gone after 10 s, closest 1155 m
+- 01:10 missile from SAM_4 gone after 10 s, closest 1053 m
+- 01:15 ground recovery: above_ground_m=484, alt_m=502.8, lowest_ahead_m=92.15, vz=-106.3
+- 01:17 missile warning: level=very near
+- 01:17 flare: reason=warning
+- 01:17 missile fired at us by SAM_4 from 628 m (infrared)
+- 01:17 missile fired at us by SAM_2 from 2086 m (infrared)
+- 01:17 missile fired at us by SAM_3 from 1982 m (infrared)
+- 01:17 that missile lost its lock at 1973 m
+- 01:17 missile from SAM_3 gone after 0 s, closest 1974 m
+- 01:18 flare: dist_m=279.7, missile=wp_msl_SAM_C_46, reason=tracker, tgo_s=1.639
+- 01:19 that missile lost its lock at 250 m
+- 01:19 missile warning: level=near
+- 01:20 flare: dist_m=885.5, missile=wp_msl_SAM_C_39, reason=tracker, tgo_s=1.951
+- 01:20 missile warning: level=very near
+- 01:21 ground recovery: above_ground_m=211.6, alt_m=274.1, lowest_ahead_m=103.2, vz=-48.35
+- 01:21 flare: dist_m=395.9, missile=wp_msl_SAM_C_39, reason=tracker, tgo_s=1.401
+- 01:22 that missile lost its lock at 175 m
+- 01:24 missile warning: level=near
+- 01:25 missile fired at us by SAM_4 from 1463 m (infrared)
+- 01:25 missile fired at us by SAM_2 from 1853 m (infrared)
+- 01:25 missile warning: level=very near
+- 01:25 missile fired at us by 02_en_av8b_01 from 768 m (infrared)
+- 01:25 missile warning: level=near
+- 01:27 break turn: missile 804 m away, impact in 4.0 s
+- 01:27 missile warning: level=very near
+- 01:27 flare: dist_m=792.9, missile=wp_msl_C_12, reason=tracker, tgo_s=5.262
+- 01:27 missile from SAM_4 gone after 10 s, closest 246 m
+- 01:27 missile from SAM_2 gone after 10 s, closest 172 m
+- 01:27 break turn: missile 746 m away, impact in 3.5 s
+- 01:28 flare: dist_m=595.7, missile=wp_msl_C_12, reason=tracker, tgo_s=1.548
+- 01:29 flare: dist_m=195.7, missile=wp_msl_C_12, reason=tracker, tgo_s=0.449
+- 01:29 that missile lost its lock at 136 m
+- 01:30 that missile lost its lock at 214 m
+- 01:31 flare: dist_m=620, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=1.069
+- 01:31 that missile lost its lock at 540 m
+- 01:34 missile from SAM_4 gone after 10 s, closest 241 m
+- 01:34 missile from SAM_2 gone after 10 s, closest 554 m
+- 01:36 missile warning: level=near
+- 01:36 missile fired at us by 02_en_av8b_01 from 1065 m (infrared)
+- 01:36 missile from 02_en_av8b_01 gone after 11 s, closest 144 m
+- 01:37 break turn: missile 968 m away, impact in 3.9 s
+- 01:37 flare: dist_m=834.6, missile=wp_msl_C_13, reason=tracker, tgo_s=1.877
+- 01:37 missile warning: level=very near
+- 01:38 flare: dist_m=417.5, missile=wp_msl_C_13, reason=tracker, tgo_s=0.937
+- 01:39 that missile lost its lock at 104 m
+- 01:47 missile from 02_en_av8b_01 gone after 11 s, closest 109 m
+- 01:48 ground recovery: above_ground_m=372.8, alt_m=379.1, lowest_ahead_m=61.52, vz=-86.87
+- 01:50 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 3195 m)
+- 01:56 destroyed 02_en_AH64_00_1_1  (None missiles, 0 s after picking it)
+- 01:56 missile fired at us by SAM_4 from 565 m (infrared)
+- 01:56 missile fired at us by SAM_2 from 1034 m (infrared)
+- 01:56 missile fired at us by SAM_3 from 985 m (infrared)
+- 01:56 missile fired at us by SAM_2 from 1034 m (infrared)
+- 01:56 missile warning: level=very near
+- 01:56 flare: reason=warning
+- 01:57 that missile lost its lock at 325 m
+- 01:57 missile warning: level=near
+- 01:59 break turn: missile 955 m away, impact in 3.8 s
+- 01:59 ground recovery: above_ground_m=153.1, alt_m=206.2, lowest_ahead_m=56.9, vz=-22.73
+- 01:59 break turn: missile 860 m away, impact in 3.8 s
+- 01:59 missile warning: level=very near
+- 02:00 flare: dist_m=787.6, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=4.022
+- 02:01 flare: dist_m=499.7, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=1.726
+- 02:02 flare: dist_m=71.58, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=0.3573
+- 02:02 that missile lost its lock at 61 m
+- 02:02 that missile lost its lock at 56 m
+- 02:02 that missile lost its lock at 56 m
+- 02:03 weapon switch to standard missiles (no longer: beyond standard missile range, target 756 m)
+- 02:04 missile warning: level=near
+- 02:04 missile fired at us by SAM_3 from 2289 m (infrared)
+- 02:04 missile fired at us by SAM_4 from 1067 m (infrared)
+- 02:04 missile fired at us by SAM_2 from 2469 m (infrared)
+- 02:04 missile from SAM_2 gone after 8 s, closest 53 m
+- 02:04 missile from SAM_3 gone after 8 s, closest 57 m
+- 02:04 missile from SAM_2 gone after 8 s, closest 53 m
+- 02:05 missile fired at us by 02_en_av8b_05 from 1632 m (infrared)
+- 02:05 break turn: missile 995 m away, impact in 4.0 s
+- 02:06 break turn: missile 867 m away, impact in 3.8 s
+- 02:06 missile from SAM_4 gone after 10 s, closest 327 m
+- 02:06 missile warning: level=very near
+- 02:06 flare: dist_m=797.8, missile=wp_msl_SAM_C_45, reason=tracker, tgo_s=2.371
+- 02:08 flare: dist_m=356.9, missile=wp_msl_SAM_C_45, reason=tracker, tgo_s=0.6659
+- 02:08 that missile lost its lock at 110 m
+- 02:09 flare: dist_m=466.5, missile=wp_msl_C_12, reason=tracker, tgo_s=0.7419
+- 02:09 missile fired at us by SAM_3 from 2765 m (infrared)
+- 02:09 missile fired at us by SAM_2 from 2894 m (infrared)
+- 02:09 missile fired at us by SAM_4 from 1393 m (infrared)
+- 02:10 that missile lost its lock at 34 m
+- 02:10 flare: dist_m=345.3, missile=wp_msl_SAM_C_44, reason=tracker, tgo_s=0.4876
+- 02:11 that missile lost its lock at 57 m
+- 02:11 that missile lost its lock at 60 m
+- 02:11 missile warning: level=near
+- 02:11 missile from SAM_4 gone after 7 s, closest 107 m
+- 02:11 missile from 02_en_av8b_05 gone after 6 s, closest 36 m
+- 02:11 flare: dist_m=806.1, missile=wp_msl_SAM_C_48, reason=tracker, tgo_s=1.956
+- 02:11 missile warning: level=very near
+- 02:12 ground recovery: above_ground_m=220, alt_m=275.2, lowest_ahead_m=34.33, vz=-45.56
+- 02:13 missile from SAM_3 gone after 9 s, closest 67 m
+- 02:13 flare: dist_m=238.6, missile=wp_msl_SAM_C_48, reason=tracker, tgo_s=0.5038
+- 02:13 missile from SAM_2 gone after 9 s, closest 59 m
+- 02:13 that missile lost its lock at 72 m
+- 02:13 missile warning: level=near
+- 02:14 flare: dist_m=1021, missile=wp_msl_SAM_C_47, reason=tracker, tgo_s=1.718
+- 02:14 missile warning: level=very near
+- 02:15 flare: dist_m=282, missile=wp_msl_SAM_C_47, reason=tracker, tgo_s=0.709
+- 02:16 that missile lost its lock at 47 m
+- 02:16 that missile lost its lock at 41 m
+- 02:16 missile from SAM_4 gone after 6 s, closest 75 m
+- 02:16 missile warning: level=near
+- 02:16 missile fired at us by SAM_2 from 2402 m (infrared)
+- 02:16 missile fired at us by SAM_4 from 904 m (infrared)
+- 02:16 missile fired at us by SAM_3 from 2381 m (infrared)
+- 02:16 break turn: missile 871 m away, impact in 3.9 s
+- 02:16 missile warning: level=very near
+- 02:16 flare: dist_m=799.8, missile=wp_msl_SAM_C_51, reason=tracker, tgo_s=3.807
+- 02:18 ground recovery: above_ground_m=231.6, alt_m=296.7, lowest_ahead_m=-4.715, vz=-40.33
+- 02:18 flare: dist_m=504.9, missile=wp_msl_SAM_C_51, reason=tracker, tgo_s=1.818
+- 02:18 missile from SAM_3 gone after 9 s, closest 56 m
+- 02:18 missile from SAM_2 gone after 9 s, closest 51 m
+- 02:19 flare: dist_m=159.9, missile=wp_msl_SAM_C_51, reason=tracker, tgo_s=0.8377
+- 02:19 that missile lost its lock at 132 m
+- 02:19 missile warning: level=near
+- 02:20 flare: dist_m=844.6, missile=wp_msl_SAM_C_49, reason=tracker, tgo_s=1.681
+- 02:20 missile warning: level=very near
+- 02:21 missile from SAM_4 gone after 5 s, closest 135 m
+- 02:21 flare: dist_m=207.3, missile=wp_msl_SAM_C_49, reason=tracker, tgo_s=0.4126
+- 02:22 that missile lost its lock at 54 m
+- 02:22 that missile lost its lock at 51 m
+- 02:22 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1903 m)
+- 02:23 missile warning: level=very near
+- 02:23 flare: reason=warning
+- 02:23 missile from SAM_2 gone after 7 s, closest 62 m
+- 02:23 missile from SAM_3 gone after 7 s, closest 60 m
+- 02:23 missile fired at us by 02_en_av8b_05 from 479 m (infrared)
+- 02:24 flare: dist_m=341.1, missile=wp_msl_C_14, reason=tracker, tgo_s=2.448
+- 02:26 flare: dist_m=97.71, missile=wp_msl_C_14, reason=tracker, tgo_s=0.5321
+- 02:26 that missile lost its lock at 72 m
+- 02:26 ground recovery: above_ground_m=324.7, alt_m=523.8, lowest_ahead_m=49.04, vz=-14.1
+- 02:30 missile warning: level=near
+- 02:30 missile fired at us by 02_en_av8b_01 from 1790 m (infrared)
+- 02:31 weapon switch to standard missiles (no longer: beyond standard missile range, target 2120 m)
+- 02:32 break turn: missile 1485 m away, impact in 3.9 s
+- 02:32 flare: dist_m=1325, missile=wp_msl_C_16, reason=tracker, tgo_s=1.961
+- 02:33 missile from 02_en_av8b_05 gone after 10 s, closest 73 m
+- 02:33 missile warning: level=very near
+- 02:33 destroyed 02_en_AH64_00_1_3  (None missiles, 0 s after picking it)
+- 02:33 flare: dist_m=661.4, missile=wp_msl_C_16, reason=tracker, tgo_s=0.7804
+- 02:35 that missile lost its lock at 53 m
+- 02:36 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2079 m)
+- 02:36 ground recovery: above_ground_m=404.9, alt_m=501.9, lowest_ahead_m=94.28, vz=-106.5
+- 02:37 missile from 02_en_av8b_01 gone after 7 s, closest 60 m
+- 02:38 destroyed SAM_4  (None missiles, 0 s after picking it)
+- 02:40 missile warning: level=near
+- 02:40 missile fired at us by 02_en_av8b_05 from 1569 m (infrared)
+- 02:40 missile fired at us by SAM_2 from 1568 m (infrared)
+- 02:40 missile fired at us by SAM_3 from 1587 m (infrared)
+- 02:40 that missile lost its lock at 1554 m
+- 02:41 missile from SAM_3 gone after 0 s, closest 1556 m
+- 02:41 break turn: missile 1400 m away, impact in 3.8 s
+- 02:42 flare: dist_m=975.9, missile=wp_msl_C_12, reason=tracker, tgo_s=1.879
+- 02:42 missile warning: level=very near
+- 02:43 flare: dist_m=363.5, missile=wp_msl_C_12, reason=tracker, tgo_s=0.5457
+- 02:44 that missile lost its lock at 61 m
+- 02:44 missile fired at us by SAM_2 from 1696 m (infrared)
+- 02:44 flare: dist_m=502.2, missile=wp_msl_SAM_C_39, reason=tracker, tgo_s=1.648
+- 02:46 flare: dist_m=74.72, missile=wp_msl_SAM_C_39, reason=tracker, tgo_s=0.1863
+- 02:46 that missile lost its lock at 8 m
+- 02:46 missile warning: level=near
+- 02:46 weapon switch to standard missiles (no longer: beyond standard missile range, target 1741 m)
+- 02:47 missile from 02_en_av8b_05 gone after 7 s, closest 59 m
+- 02:47 break turn: missile 1400 m away, impact in 3.9 s
+- 02:47 ground recovery: above_ground_m=362.5, alt_m=413.4, lowest_ahead_m=52.8, vz=-83.18
+- 02:48 missile fired at us by SAM_2 from 2156 m (infrared)
+- 02:48 missile fired at us by SAM_3 from 1949 m (infrared)
+- 02:48 flare: dist_m=903.4, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=1.987
+- 02:49 missile warning: level=very near
+- 02:49 missile from SAM_2 gone after 9 s, closest 11 m
+- 02:50 flare: dist_m=452, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=1.804
+- 02:50 that missile lost its lock at 54 m
+- 02:50 missile warning: level=near
+- 02:52 flare: dist_m=982.1, missile=wp_msl_SAM_C_43, reason=tracker, tgo_s=1.426
+- 02:52 missile warning: level=very near
+- 02:52 that missile lost its lock at 785 m
+- 02:52 missile warning: level=near
+- 02:53 that missile lost its lock at 828 m
+- 02:53 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2099 m)
+- 02:53 missile fired at us by SAM_2 from 2513 m (infrared)
+- 02:53 ground recovery: above_ground_m=209.1, alt_m=224.2, lowest_ahead_m=66.98, vz=-35.47
+- 02:54 missile from SAM_2 gone after 10 s, closest 59 m
+- 02:54 destroyed 02_en_AH64_00_2_1  (0 missiles, 18 s after picking it)
+- 02:55 weapon switch to standard missiles (no longer: beyond standard missile range, target 2088 m)
+- 02:55 missile warning: level=near
+- 02:55 break turn: missile 1936 m away, impact in 4.0 s
+- 02:56 missile fired at us by SAM_2 from 2373 m (infrared)
+- 02:56 break turn: missile 1584 m away, impact in 3.9 s
+- 02:58 missile from SAM_2 gone after 10 s, closest 839 m
+- 02:58 missile from SAM_3 gone after 10 s, closest 785 m
+- 02:58 flare: dist_m=915.4, missile=wp_msl_SAM_C_44, reason=tracker, tgo_s=1.978
+- 02:58 missile fired at us by 02_en_av8b_01 from 976 m (infrared)
+- 02:58 missile warning: level=very near
+- 02:59 flare: dist_m=258.3, missile=wp_msl_SAM_C_44, reason=tracker, tgo_s=0.4454
+- 02:59 that missile lost its lock at 121 m
+- 03:00 flare: dist_m=458.9, missile=wp_msl_C_13, reason=tracker, tgo_s=1.525
+- 03:01 that missile lost its lock at 704 m
+- 03:01 missile fired at us by 02_en_av8b_03 from 1018 m (infrared)
+- 03:01 that missile lost its lock at 13 m
+- 03:01 missile warning: level=near
+- 03:02 flare: dist_m=799.3, missile=wp_msl_C_14, reason=tracker, tgo_s=2.5
+- 03:02 missile warning: level=very near
+- 03:03 ground recovery: above_ground_m=278.1, alt_m=289.3, lowest_ahead_m=82.17, vz=-52.05
+- 03:03 missile from SAM_2 gone after 10 s, closest 128 m
+- 03:03 flare: dist_m=388.2, missile=wp_msl_C_14, reason=tracker, tgo_s=1.318
+- 03:04 that missile lost its lock at 37 m
+- 03:05 missile from 02_en_av8b_03 gone after 4 s, closest 42 m
+- 03:05 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2243 m)
+- 03:06 missile from SAM_2 gone after 10 s, closest 704 m
+- 03:07 weapon switch to standard missiles (no longer: beyond standard missile range, target 1525 m)
+- 03:08 destroyed SAM_3  (None missiles, 0 s after picking it)
+- 03:09 missile fired at us by 02_en_m29a_02 from 2207 m (infrared)
+- 03:09 missile fired at us by 02_en_m29a_01 from 2233 m (infrared)
+- 03:09 missile from 02_en_av8b_01 gone after 11 s, closest 11 m
+- 03:09 destroyed 02_en_av8b_05  (None missiles, 0 s after picking it)
+- 03:11 missile warning: level=near
+- 03:12 break turn: missile 1737 m away, impact in 3.2 s
+- 03:13 flare: dist_m=1326, missile=wp_msl_C_15, reason=tracker, tgo_s=1.867
+- 03:14 missile warning: level=very near
+- 03:14 flare: dist_m=671.1, missile=wp_msl_C_15, reason=tracker, tgo_s=0.8153
+- 03:15 that missile lost its lock at 52 m
+- 03:15 that missile lost its lock at 50 m
+- 03:16 ground recovery: above_ground_m=494.7, alt_m=510.7, lowest_ahead_m=-28.85, vz=-74.32
+- 03:19 took 1 damage, health 119
+- 03:19 took 1 damage, health 118
+- 03:19 took 1 damage, health 117
+- 03:19 destroyed 02_en_m29a_02  (0 missiles, 4 s after picking it)
+- 03:19 took 1 damage, health 116
+- 03:20 took 1 damage, health 115
+- 03:20 took 1 damage, health 114
+- 03:20 missile from 02_en_m29a_02 gone after 11 s, closest 63 m
+- 03:20 missile from 02_en_m29a_01 gone after 11 s, closest 66 m
+- 03:21 missile warning: level=near
+- 03:21 ground recovery: above_ground_m=422.9, alt_m=438.9, lowest_ahead_m=-199.6, vz=-100.8
+- 03:21 missile fired at us by 02_en_av8b_01 from 1614 m (infrared)
+- 03:23 missile fired at us by 02_en_av8b_03 from 1564 m (infrared)
+- 03:23 break turn: missile 1247 m away, impact in 3.7 s
+- 03:24 flare: dist_m=951.2, missile=wp_msl_C_16, reason=tracker, tgo_s=1.967
+- 03:24 missile warning: level=very near
+- 03:25 flare: dist_m=388.6, missile=wp_msl_C_16, reason=tracker, tgo_s=0.7753
+- 03:26 that missile lost its lock at 36 m
+- 03:26 missile warning: level=near
+- 03:26 missile fired at us by SAM_2 from 1535 m (infrared)
+- 03:26 missile fired at us by SAM_2 from 1531 m (infrared)
+- 03:26 flare: dist_m=829.6, missile=wp_msl_C_17, reason=tracker, tgo_s=1.718
+- 03:26 missile warning: level=very near
+- 03:27 missile from 02_en_av8b_01 gone after 6 s, closest 50 m
+- 03:27 flare: dist_m=232.5, missile=wp_msl_C_17, reason=tracker, tgo_s=0.4097
+- 03:28 that missile lost its lock at 60 m
+- 03:28 missile warning: level=near
+- 03:28 ground recovery: above_ground_m=226.8, alt_m=273.8, lowest_ahead_m=76.01, vz=-48.8
+- 03:28 missile warning: level=very near
+- 03:28 flare: dist_m=485.9, missile=wp_msl_SAM_C_40, reason=tracker, tgo_s=1.082
+- 03:29 missile from 02_en_av8b_03 gone after 6 s, closest 76 m
+- 03:29 that missile lost its lock at 70 m
+- 03:30 flare: dist_m=109.3, missile=wp_msl_SAM_C_41, reason=tracker, tgo_s=0.3368
+- 03:30 that missile lost its lock at 78 m
+- 03:31 took 1 damage, health 113
+- 03:31 took 1 damage, health 112
+- 03:32 missile warning: level=near
+- 03:32 missile fired at us by SAM_2 from 1120 m (infrared)
+- 03:32 took 2 damage, health 110
+- 03:32 missile fired at us by SAM_2 from 1120 m (infrared)
+- 03:33 break turn: missile 931 m away, impact in 3.7 s
+- 03:33 took 1 damage, health 109
+- 03:33 took 1 damage, health 108
+- 03:33 missile warning: level=very near
+- 03:33 flare: dist_m=797.7, missile=wp_msl_SAM_C_42, reason=tracker, tgo_s=2.417
+- 03:34 took 1 damage, health 107
+- 03:34 took 2 damage, health 105
+- 03:35 flare: dist_m=459.2, missile=wp_msl_SAM_C_42, reason=tracker, tgo_s=1.519
+- 03:35 took 1 damage, health 104
+- 03:35 took 1 damage, health 103
+- 03:36 that missile lost its lock at 117 m
+- 03:36 missile from SAM_2 gone after 10 s, closest 75 m
+- 03:36 flare: dist_m=233.7, missile=wp_msl_SAM_C_43, reason=tracker, tgo_s=0.5589
+- 03:36 missile from SAM_2 gone after 10 s, closest 77 m
+- 03:36 that missile lost its lock at 81 m
+- 03:37 took 1 damage, health 102
+- 03:37 took 1 damage, health 101
+- 03:37 ground recovery: above_ground_m=247.3, alt_m=300.4, lowest_ahead_m=54.34, vz=-46.59
+- 03:38 took 1 damage, health 100
+- 03:40 took 1 damage, health 99
+- 03:42 missile from SAM_2 gone after 10 s, closest 120 m
+- 03:43 missile from SAM_2 gone after 10 s, closest 86 m
+- 03:49 missile fired at us by 02_en_m29a_01 from 2254 m (infrared)
+- 03:50 missile warning: level=near
+- 03:51 missile fired at us by SAM_2 from 898 m (infrared)
+- 03:51 that missile lost its lock at 877 m
+- 03:51 break turn: missile 1654 m away, impact in 3.9 s
+- 03:53 flare: dist_m=1012, missile=wp_msl_C_12, reason=tracker, tgo_s=1.936
+- 03:53 missile warning: level=very near
+- 03:54 flare: dist_m=379.7, missile=wp_msl_C_12, reason=tracker, tgo_s=0.6677
+- 03:54 that missile lost its lock at 67 m
+- 03:55 took 1 damage, health 98
+- 03:56 took 1 damage, health 97
+- 03:56 took 1 damage, health 96
+- 03:56 took 1 damage, health 95
+- 03:56 took 1 damage, health 94
+- 03:57 took 1 damage, health 93
+- 03:57 took 1 damage, health 92
+- 03:57 ground recovery: above_ground_m=425.8, alt_m=478.9, lowest_ahead_m=55.12, vz=-87.89
+- 03:58 took 1 damage, health 91
+- 03:58 missile from 02_en_m29a_01 gone after 9 s, closest 64 m
+- 04:00 took 1 damage, health 90
+- 04:01 missile from SAM_2 gone after 10 s, closest 0 m
+- 04:03 took 1 damage, health 89
+- 04:15 ground recovery: above_ground_m=625.3, alt_m=633.5, lowest_ahead_m=189.5, vz=-214.3
+- 04:24 missile warning: level=near
+- 04:25 missile fired at us by 02_en_av8b_03 from 1884 m (infrared)
+- 04:25 break turn: missile 1708 m away, impact in 2.9 s
+- 04:26 flare: dist_m=1222, missile=wp_msl_C_15, reason=tracker, tgo_s=1.994
+- 04:27 missile warning: level=very near
+- 04:28 flare: dist_m=721.1, missile=wp_msl_C_15, reason=tracker, tgo_s=1.444
+- 04:29 flare: dist_m=145.3, missile=wp_msl_C_15, reason=tracker, tgo_s=0.2656
+- 04:29 that missile lost its lock at 54 m
+- 04:31 missile from 02_en_av8b_03 gone after 6 s, closest 68 m
+- 04:31 took 1 damage, health 88
+- 04:31 ground recovery: above_ground_m=341.8, alt_m=356.2, lowest_ahead_m=97.23, vz=-89.83
+- 04:32 took 1 damage, health 87
+- 04:33 took 1 damage, health 86
+- 04:36 missile warning: level=near
+- 04:37 missile fired at us by 02_en_av8b_03 from 1008 m (infrared)
+- 04:38 took 1 damage, health 85
+- 04:38 break turn: missile 861 m away, impact in 3.0 s
+- 04:38 missile warning: level=very near
+- 04:38 flare: dist_m=799.7, missile=wp_msl_C_16, reason=tracker, tgo_s=3.821
+- 04:39 flare: dist_m=472.7, missile=wp_msl_C_16, reason=tracker, tgo_s=1.51
+- 04:40 that missile lost its lock at 49 m
+- 04:42 missile from 02_en_av8b_03 gone after 6 s, closest 46 m
+- 04:48 missile warning: level=near
+- 04:52 missile warning: level=near
+- 04:57 ground recovery: above_ground_m=767.7, alt_m=783.7, lowest_ahead_m=55.55, vz=-129.4
+- 04:59 phase failed: MissionPhase_02
+- 05:00 **objective failed**
+- 05:01 how well enemy positions 2 s ahead were predicted: route planes: 1115 checks, the guess used was off by 11 m on average (each way: route 8 m, straight 54 m; now using route); steady planes: 1457 checks, the guess used was off by 1 m on average (each way: full turn 1 m, half turn 1 m, straight 1 m; now using straight); turning planes: 805 checks, the guess used was off by 104 m on average (each way: full turn 152 m, half turn 101 m, straight 117 m; now using half turn)
+
+## Attempt 5
+
+- 00:03 frozen
+- 00:03 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2867 m)
+- 00:03 ground recovery: above_ground_m=256.3, alt_m=304.1, lowest_ahead_m=73.52, vz=-55.79
+- 00:04 weapon switch to standard missiles (no longer: beyond standard missile range, target 1083 m)
+- 00:05 destroyed AAgunAAGun_4  (None missiles, 0 s after picking it)
+- 00:09 ground recovery: above_ground_m=639.9, alt_m=693.1, lowest_ahead_m=-208, vz=13.79
+- 00:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 4361 m)
+- 00:27 destroyed 02_en_AH64_00_2_3  (None missiles, 0 s after picking it)
+- 00:31 weapon switch to standard missiles (no longer: beyond standard missile range, target 1283 m)
+- 00:33 ground recovery: above_ground_m=790.5, alt_m=843.1, lowest_ahead_m=436.6, vz=-198.2
+- 00:34 destroyed AAgunAAGun_2  (None missiles, 0 s after picking it)
+- 00:38 ground recovery: above_ground_m=382.1, alt_m=435.2, lowest_ahead_m=51.94, vz=-78.52
+- 00:47 ground recovery: above_ground_m=519.3, alt_m=572.4, lowest_ahead_m=45.05, vz=-115.1
+- 00:52 ground recovery: above_ground_m=216.3, alt_m=269.4, lowest_ahead_m=56.38, vz=-35.75
+- 00:59 missile fired at us by SAM_3 from 1799 m (infrared)
+- 00:59 missile fired at us by SAM_4 from 911 m (infrared)
+- 00:59 missile fired at us by SAM_2 from 1998 m (infrared)
+- 00:59 missile warning: level=near
+- 00:59 that missile lost its lock at 912 m
+- 00:59 that missile lost its lock at 1766 m
+- 00:59 missile from SAM_3 gone after 0 s, closest 1768 m
+- 01:00 break turn: missile 1644 m away, impact in 2.8 s
+- 01:03 flare: dist_m=857.3, missile=wp_msl_SAM_C_52, reason=tracker, tgo_s=1.488
+- 01:03 that missile lost its lock at 858 m
+- 01:04 missile warning: level=near
+- 01:04 missile fired at us by 02_en_av8b_01 from 1203 m (infrared)
+- 01:08 break turn: missile 922 m away, impact in 3.4 s
+- 01:08 missile warning: level=very near
+- 01:08 flare: dist_m=794.4, missile=wp_msl_C_19, reason=tracker, tgo_s=3.343
+- 01:08 that missile lost its lock at 786 m
+- 01:09 missile from SAM_4 gone after 10 s, closest 0 m
+- 01:09 missile from SAM_2 gone after 10 s, closest 857 m
+- 01:15 missile from 02_en_av8b_01 gone after 11 s, closest 794 m
+- 01:23 ground recovery: above_ground_m=540.2, alt_m=546.3, lowest_ahead_m=136.8, vz=-122.1
+- 01:23 missile warning: level=near
+- 01:24 missile warning: level=near
+- 01:29 missile warning: level=very near
+- 01:29 flare: reason=warning
+- 01:29 missile warning: level=near
+- 01:29 missile fired at us by SAM_4 from 1528 m (infrared)
+- 01:29 missile warning: level=very near
+- 01:29 missile fired at us by SAM_3 from 366 m (infrared)
+- 01:29 missile fired at us by SAM_2 from 505 m (infrared)
+- 01:29 missile fired at us by SAM_4 from 1557 m (infrared)
+- 01:30 flare: dist_m=467.2, missile=wp_msl_SAM_C_60, reason=tracker, tgo_s=6.19
+- 01:30 took 1 damage, health 119
+- 01:30 that missile lost its lock at 369 m
+- 01:30 that missile lost its lock at 466 m
+- 01:30 missile warning: level=near
+- 01:30 took 1 damage, health 118
+- 01:31 took 1 damage, health 117
+- 01:31 break turn: missile 1165 m away, impact in 3.2 s
+- 01:32 took 1 damage, health 116
+- 01:33 missile warning: level=very near
+- 01:33 flare: dist_m=792.8, missile=wp_msl_SAM_C_58, reason=tracker, tgo_s=2.304
+- 01:34 flare: dist_m=243.6, missile=wp_msl_SAM_C_58, reason=tracker, tgo_s=0.4773
+- 01:34 that missile lost its lock at 94 m
+- 01:35 that missile lost its lock at 82 m
+- 01:37 missile warning: level=near
+- 01:37 missile fired at us by SAM_3 from 953 m (infrared)
+- 01:37 missile fired at us by SAM_4 from 1528 m (infrared)
+- 01:38 missile warning: level=very near
+- 01:38 missile fired at us by SAM_4 from 1507 m (infrared)
+- 01:38 missile fired at us by SAM_2 from 760 m (infrared)
+- 01:38 missile fired at us by SAM_3 from 1000 m (infrared)
+- 01:38 flare: dist_m=747.2, missile=wp_msl_SAM_C_63, reason=tracker, tgo_s=6.394
+- 01:38 ground recovery: above_ground_m=604.6, alt_m=657.7, lowest_ahead_m=32.91, vz=-109.9
+- 01:38 break turn: missile 692 m away, impact in 3.3 s
+- 01:39 missile from SAM_4 gone after 10 s, closest 113 m
+- 01:39 break turn: missile 608 m away, impact in 3.4 s
+- 01:39 flare: dist_m=580.2, missile=wp_msl_SAM_C_63, reason=tracker, tgo_s=4.469
+- 01:39 break turn: missile 537 m away, impact in 2.8 s
+- 01:39 missile from SAM_3 gone after 10 s, closest 367 m
+- 01:39 missile from SAM_2 gone after 10 s, closest 467 m
+- 01:39 missile from SAM_4 gone after 10 s, closest 81 m
+- 01:40 flare: dist_m=574.8, missile=wp_msl_SAM_C_54, reason=tracker, tgo_s=2.779
+- 01:41 that missile lost its lock at 307 m
+- 01:41 flare: dist_m=208.2, missile=wp_msl_SAM_C_54, reason=tracker, tgo_s=0.7399
+- 01:42 that missile lost its lock at 157 m
+- 01:42 that missile lost its lock at 168 m
+- 01:43 flare: dist_m=194.1, missile=wp_msl_SAM_C_52, reason=tracker, tgo_s=0.4049
+- 01:43 that missile lost its lock at 116 m
+- 01:43 missile fired at us by SAM_3 from 1271 m (infrared)
+- 01:43 missile fired at us by SAM_4 from 2125 m (infrared)
+- 01:43 missile fired at us by SAM_2 from 896 m (infrared)
+- 01:43 that missile lost its lock at 117 m
+- 01:43 missile warning: level=near
+- 01:44 missile warning: level=very near
+- 01:44 flare: dist_m=728.8, missile=wp_msl_SAM_C_66, reason=tracker, tgo_s=2.179
+- 01:45 flare: dist_m=270.8, missile=wp_msl_SAM_C_66, reason=tracker, tgo_s=0.7351
+- 01:46 that missile lost its lock at 62 m
+- 01:46 flare: dist_m=99.64, missile=wp_msl_SAM_C_67, reason=tracker, tgo_s=0.2578
+- 01:46 that missile lost its lock at 51 m
+- 01:46 missile warning: level=near
+- 01:47 missile from SAM_3 gone after 10 s, closest 161 m
+- 01:47 missile from SAM_4 gone after 10 s, closest 121 m
+- 01:47 missile warning: level=very near
+- 01:47 flare: dist_m=736.1, missile=wp_msl_SAM_C_68, reason=tracker, tgo_s=1.946
+- 01:48 missile from SAM_4 gone after 10 s, closest 125 m
+- 01:48 missile from SAM_3 gone after 10 s, closest 172 m
+- 01:48 missile from SAM_2 gone after 10 s, closest 303 m
+- 01:49 flare: dist_m=163.8, missile=wp_msl_SAM_C_68, reason=tracker, tgo_s=0.3841
+- 01:49 that missile lost its lock at 76 m
+- 01:49 ground recovery: above_ground_m=241.5, alt_m=293.7, lowest_ahead_m=116.5, vz=-53.51
+- 01:53 missile from SAM_3 gone after 10 s, closest 54 m
+- 01:53 missile from SAM_4 gone after 10 s, closest 82 m
+- 01:53 missile from SAM_2 gone after 10 s, closest 67 m
+- 01:54 missile warning: level=very near
+- 01:54 flare: reason=warning
+- 01:54 missile fired at us by SAM_3 from 740 m (infrared)
+- 01:54 missile fired at us by SAM_4 from 2075 m (infrared)
+- 01:55 missile fired at us by SAM_2 from 1107 m (infrared)
+- 01:55 missile fired at us by SAM_4 from 2202 m (infrared)
+- 01:55 missile fired at us by SAM_3 from 849 m (infrared)
+- 01:56 flare: dist_m=759.5, missile=wp_msl_SAM_C_55, reason=tracker, tgo_s=38.89
+- 01:57 flare: dist_m=673, missile=wp_msl_SAM_C_55, reason=tracker, tgo_s=7.379
+- 01:57 break turn: missile 663 m away, impact in 1.8 s
+- 01:58 flare: dist_m=394.3, missile=wp_msl_SAM_C_55, reason=tracker, tgo_s=0.6303
+- 01:59 that missile lost its lock at 112 m
+- 01:59 flare: dist_m=99.76, missile=wp_msl_SAM_C_57, reason=tracker, tgo_s=0.3313
+- 01:59 that missile lost its lock at 85 m
+- 02:00 that missile lost its lock at 55 m
+- 02:00 flare: dist_m=113.4, missile=wp_msl_SAM_C_53, reason=tracker, tgo_s=0.1458
+- 02:01 that missile lost its lock at 22 m
+- 02:01 that missile lost its lock at 186 m
+- 02:04 missile from SAM_3 gone after 10 s, closest 117 m
+- 02:04 missile from SAM_4 gone after 10 s, closest 22 m
+- 02:05 missile from SAM_3 gone after 10 s, closest 90 m
+- 02:05 missile from SAM_4 gone after 10 s, closest 188 m
+- 02:05 missile from SAM_2 gone after 10 s, closest 73 m
+- 02:07 missile warning: level=near
+- 02:07 missile fired at us by 02_en_av8b_03 from 997 m (infrared)
+- 02:08 break turn: missile 848 m away, impact in 3.8 s
+- 02:08 missile warning: level=very near
+- 02:08 flare: dist_m=796.4, missile=wp_msl_C_19, reason=tracker, tgo_s=3.576
+- 02:09 flare: dist_m=422.3, missile=wp_msl_C_19, reason=tracker, tgo_s=1.336
+- 02:10 that missile lost its lock at 50 m
+- 02:15 ground recovery: above_ground_m=659.7, alt_m=667.2, lowest_ahead_m=321.7, vz=-161.7
+- 02:18 missile from 02_en_av8b_03 gone after 11 s, closest 54 m
+- 02:19 missile warning: level=near
+- 02:19 missile fired at us by SAM_2 from 1275 m (infrared)
+- 02:20 break turn: missile 1059 m away, impact in 3.1 s
+- 02:21 missile warning: level=very near
+- 02:21 flare: dist_m=800, missile=wp_msl_SAM_C_52, reason=tracker, tgo_s=2.817
+- 02:22 missile fired at us by SAM_4 from 492 m (infrared)
+- 02:22 flare: dist_m=250.6, missile=wp_msl_SAM_C_59, reason=tracker, tgo_s=0.8097
+- 02:23 that missile lost its lock at 87 m
+- 02:23 that missile lost its lock at 71 m
+- 02:24 ground recovery: above_ground_m=199.8, alt_m=252.9, lowest_ahead_m=46.22, vz=-35.36
+- 02:24 missile warning: level=very near
+- 02:24 flare: reason=warning
+- 02:24 missile fired at us by SAM_3 from 1122 m (infrared)
+- 02:24 missile fired at us by SAM_2 from 1159 m (infrared)
+- 02:24 missile fired at us by SAM_4 from 373 m (infrared)
+- 02:25 flare: dist_m=792.2, missile=wp_msl_SAM_C_60, reason=tracker, tgo_s=1.887
+- 02:25 took 1 damage, health 115
+- 02:27 flare: dist_m=119.5, missile=wp_msl_SAM_C_62, reason=tracker, tgo_s=0.5431
+- 02:27 that missile lost its lock at 51 m
+- 02:27 took 1 damage, health 114
+- 02:27 took 1 damage, health 113
+- 02:27 that missile lost its lock at 77 m
+- 02:27 took 1 damage, health 112
+- 02:28 took 1 damage, health 111
+- 02:28 that missile lost its lock at 91 m
+- 02:28 missile from SAM_2 gone after 9 s, closest 91 m
+- 02:28 missile fired at us by 02_en_av8b_05 from 2338 m (infrared)
+- 02:28 took 1 damage, health 110
+- 02:28 took 1 damage, health 109
+- 02:29 missile warning: level=near
+- 02:29 break turn: missile 1987 m away, impact in 3.5 s
+- 02:30 break turn: missile 1816 m away, impact in 3.7 s
+- 02:31 missile fired at us by SAM_3 from 960 m (infrared)
+- 02:31 missile fired at us by SAM_4 from 1257 m (infrared)
+- 02:31 missile warning: level=very near
+- 02:31 flare: dist_m=1153, missile=wp_msl_C_20, reason=tracker, tgo_s=1.867
+- 02:31 missile fired at us by SAM_3 from 957 m (infrared)
+- 02:31 missile fired at us by SAM_4 from 1339 m (infrared)
+- 02:31 missile fired at us by SAM_2 from 677 m (infrared)
+- 02:32 missile from SAM_4 gone after 10 s, closest 72 m
+- 02:32 flare: dist_m=536.4, missile=wp_msl_C_20, reason=tracker, tgo_s=0.9343
+- 02:33 ground recovery: above_ground_m=338.8, alt_m=416.2, lowest_ahead_m=53.72, vz=-43.3
+- 02:33 that missile lost its lock at 22 m
+- 02:34 flare: dist_m=280.7, missile=wp_msl_SAM_C_56, reason=tracker, tgo_s=1.109
+- 02:34 missile from SAM_3 gone after 10 s, closest 87 m
+- 02:34 missile from SAM_2 gone after 10 s, closest 76 m
+- 02:34 missile from SAM_4 gone after 10 s, closest 53 m
+- 02:34 that missile lost its lock at 50 m
+- 02:35 flare: dist_m=71.11, missile=wp_msl_SAM_C_55, reason=tracker, tgo_s=0.2028
+- 02:35 that missile lost its lock at 14 m
+- 02:35 missile from 02_en_av8b_05 gone after 7 s, closest 35 m
+- 02:36 took 40 damage, health 69
+- 02:36 missile from SAM_3 gone after 4 s, closest 5 m
+- 02:36 that missile lost its lock at 23 m
+- 02:36 flare: dist_m=119, missile=wp_msl_SAM_C_63, reason=tracker, tgo_s=0.2551
+- 02:36 that missile lost its lock at 17 m
+- 02:36 missile from SAM_3 gone after 6 s, closest 12 m
+- 02:38 missile from SAM_2 gone after 7 s, closest 48 m
+- 02:39 missile from SAM_4 gone after 8 s, closest 21 m
+- 02:39 missile warning: level=near
+- 02:39 missile fired at us by 02_en_m29a_02 from 1652 m (infrared)
+- 02:41 missile from SAM_4 gone after 10 s, closest 21 m
+- 02:41 missile fired at us by 02_en_av8b_05 from 1484 m (infrared)
+- 02:42 break turn: missile 1428 m away, impact in 3.8 s
+- 02:43 flare: dist_m=1021, missile=wp_msl_C_19, reason=tracker, tgo_s=1.97
+- 02:43 missile warning: level=very near
+- 02:44 flare: dist_m=405.3, missile=wp_msl_C_19, reason=tracker, tgo_s=1.03
+- 02:45 that missile lost its lock at 53 m
+- 02:45 flare: dist_m=232.4, missile=wp_msl_C_22, reason=tracker, tgo_s=0.3893
+- 02:46 that missile lost its lock at 58 m
+- 02:50 missile from 02_en_m29a_02 gone after 11 s, closest 50 m
+- 02:52 missile from 02_en_av8b_05 gone after 11 s, closest 56 m
+- 02:55 ground recovery: above_ground_m=383.3, alt_m=436.4, lowest_ahead_m=33.75, vz=-84.72
+- 02:56 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2510 m)
+- 02:57 missile warning: level=very near
+- 02:57 flare: reason=warning
+- 02:57 missile fired at us by SAM_2 from 1034 m (infrared)
+- 02:57 missile fired at us by SAM_4 from 693 m (infrared)
+- 02:58 flare: dist_m=323.5, missile=wp_msl_SAM_C_55, reason=tracker, tgo_s=1.038
+- 02:59 that missile lost its lock at 65 m
+- 02:59 missile warning: level=near
+- 03:00 missile warning: level=very near
+- 03:00 destroyed 02_en_AH64_00_1_3  (None missiles, 0 s after picking it)
+- 03:00 flare: dist_m=792.3, missile=wp_msl_SAM_C_52, reason=tracker, tgo_s=3.158
+- 03:01 flare: dist_m=425.8, missile=wp_msl_SAM_C_52, reason=tracker, tgo_s=1.649
+- 03:02 that missile lost its lock at 65 m
+- 03:04 missile warning: level=near
+- 03:04 missile from SAM_2 gone after 7 s, closest 68 m
+- 03:04 missile fired at us by SAM_4 from 1154 m (infrared)
+- 03:04 missile fired at us by SAM_2 from 1808 m (infrared)
+- 03:04 missile fired at us by SAM_3 from 1998 m (infrared)
+- 03:05 break turn: missile 999 m away, impact in 2.7 s
+- 03:06 missile warning: level=very near
+- 03:06 flare: dist_m=799.4, missile=wp_msl_SAM_C_57, reason=tracker, tgo_s=2.185
+- 03:07 ground recovery: above_ground_m=383.3, alt_m=509.8, lowest_ahead_m=2.298, vz=-86.23
+- 03:07 flare: dist_m=346.5, missile=wp_msl_SAM_C_57, reason=tracker, tgo_s=1.062
+- 03:07 missile from SAM_4 gone after 10 s, closest 64 m
+- 03:08 missile fired at us by 02_en_m29a_01 from 1727 m (infrared)
+- 03:08 that missile lost its lock at 213 m
+- 03:08 missile warning: level=near
+- 03:09 flare: dist_m=899.7, missile=wp_msl_SAM_C_53, reason=tracker, tgo_s=1.605
+- 03:09 missile warning: level=very near
+- 03:10 flare: dist_m=269.9, missile=wp_msl_SAM_C_53, reason=tracker, tgo_s=0.4267
+- 03:10 that missile lost its lock at 61 m
+- 03:10 that missile lost its lock at 62 m
+- 03:10 missile warning: level=near
+- 03:11 flare: dist_m=1017, missile=wp_msl_C_20, reason=tracker, tgo_s=1.696
+- 03:12 missile warning: level=very near
+- 03:12 missile from SAM_4 gone after 8 s, closest 210 m
+- 03:12 flare: dist_m=350.1, missile=wp_msl_C_20, reason=tracker, tgo_s=0.4838
+- 03:13 missile from SAM_3 gone after 9 s, closest 60 m
+- 03:13 that missile lost its lock at 27 m
+- 03:13 missile from SAM_2 gone after 9 s, closest 65 m
+- 03:13 weapon switch to standard missiles (no longer: beyond standard missile range, target 1421 m)
+- 03:15 ground recovery: above_ground_m=294, alt_m=343.5, lowest_ahead_m=119.5, vz=-68.22
+- 03:15 missile from 02_en_m29a_01 gone after 7 s, closest 39 m
+- 03:16 destroyed 02_en_AH64_00_1_1  (0 missiles, 19 s after picking it)
+- 03:16 missile warning: level=very near
+- 03:16 flare: reason=warning
+- 03:16 missile fired at us by SAM_2 from 1662 m (infrared)
+- 03:16 missile fired at us by SAM_4 from 222 m (infrared)
+- 03:16 that missile lost its lock at 135 m
+- 03:16 missile warning: level=near
+- 03:18 flare: dist_m=939, missile=wp_msl_SAM_C_58, reason=tracker, tgo_s=1.614
+- 03:18 missile warning: level=very near
+- 03:19 flare: dist_m=499.9, missile=wp_msl_SAM_C_58, reason=tracker, tgo_s=1.301
+- 03:21 that missile lost its lock at 141 m
+- 03:21 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2401 m)
+- 03:23 missile warning: level=near
+- 03:23 missile fired at us by SAM_2 from 1699 m (infrared)
+- 03:23 missile fired at us by SAM_3 from 1388 m (infrared)
+- 03:23 missile fired at us by SAM_4 from 1116 m (infrared)
+- 03:23 that missile lost its lock at 1394 m
+- 03:23 missile from SAM_3 gone after 0 s, closest 1390 m
+- 03:24 missile fired at us by 02_en_av8b_05 from 1422 m (infrared)
+- 03:24 break turn: missile 987 m away, impact in 3.9 s
+- 03:25 missile warning: level=very near
+- 03:25 flare: dist_m=799.6, missile=wp_msl_SAM_C_62, reason=tracker, tgo_s=2.539
+- 03:25 ground recovery: above_ground_m=281.9, alt_m=292.8, lowest_ahead_m=82.55, vz=-52.48
+- 03:26 missile from SAM_2 gone after 10 s, closest 144 m
+- 03:26 missile from SAM_4 gone after 10 s, closest 137 m
+- 03:26 flare: dist_m=364.6, missile=wp_msl_SAM_C_62, reason=tracker, tgo_s=1.173
+- 03:27 missile fired at us by 02_en_m29a_01 from 1182 m (infrared)
+- 03:27 that missile lost its lock at 215 m
+- 03:27 missile warning: level=near
+- 03:27 missile warning: level=very near
+- 03:27 flare: dist_m=788.5, missile=wp_msl_C_21, reason=tracker, tgo_s=2.141
+- 03:28 that missile lost its lock at 789 m
+- 03:28 missile fired at us by SAM_2 from 2520 m (infrared)
+- 03:28 missile fired at us by SAM_3 from 2296 m (infrared)
+- 03:28 missile fired at us by SAM_4 from 1242 m (infrared)
+- 03:28 flare: dist_m=235, missile=wp_msl_C_21, reason=tracker, tgo_s=0.6983
+- 03:29 that missile lost its lock at 49 m
+- 03:29 phase failed: MissionPhase_02
+- 03:29 **objective failed**
+- 03:29 that missile lost its lock at 42 m
+- 03:29 missile warning: level=near
+- 03:30 missile warning: level=very near
+- 03:30 flare: dist_m=793.3, missile=wp_msl_SAM_C_63, reason=tracker, tgo_s=2.045
+- 03:30 that missile lost its lock at 558 m
+- 03:30 missile warning: level=near
+- 03:30 missile from 02_en_av8b_05 gone after 7 s, closest 64 m
+- 03:30 missile from 02_en_m29a_01 gone after 4 s, closest 169 m
+- 03:31 weapon switch to standard missiles (nothing selected; the special weapon hides some targets, target -1 m)
+- 03:31 break turn: missile 1605 m away, impact in 3.3 s
+- 03:31 ground recovery: above_ground_m=196.8, alt_m=230.5, lowest_ahead_m=11.41, vz=-37.58
+- 03:32 how well enemy positions 2 s ahead were predicted: route planes: 1220 checks, the guess used was off by 6 m on average (each way: route 6 m, straight 44 m; now using route); steady planes: 1078 checks, the guess used was off by 1 m on average (each way: full turn 1 m, half turn 1 m, straight 1 m; now using full turn); turning planes: 470 checks, the guess used was off by 89 m on average (each way: full turn 133 m, half turn 87 m, straight 99 m; now using straight)
+
+## Attempt 6
+
+- 00:03 frozen
+- 00:04 ground recovery: above_ground_m=236.6, alt_m=289.7, lowest_ahead_m=59.14, vz=-43.84
+- 00:12 ground recovery: above_ground_m=589.4, alt_m=720.7, lowest_ahead_m=-14, vz=13.49
+- 00:30 ground recovery: above_ground_m=536.3, alt_m=585.6, lowest_ahead_m=305.5, vz=-126.6
+- 00:53 ground recovery: above_ground_m=787.6, alt_m=840.7, lowest_ahead_m=-16.91, vz=-146.1
+- 00:56 missile warning: level=very near
+- 00:56 flare: reason=warning
+- 00:59 took 1 damage, health 119
+- 00:59 took 1 damage, health 118
+- 01:00 took 1 damage, health 117
+- 01:02 missile warning: level=near
+- 01:02 missile fired at us by SAM_2 from 1466 m (infrared)
+- 01:02 missile fired at us by SAM_3 from 1180 m (infrared)
+- 01:02 that missile lost its lock at 1172 m
+- 01:02 missile from SAM_3 gone after 0 s, closest 1174 m
+- 01:02 took 1 damage, health 116
+- 01:02 missile fired at us by SAM_2 from 1500 m (infrared)
+- 01:02 missile fired at us by SAM_3 from 1201 m (infrared)
+- 01:02 missile fired at us by SAM_4 from 1130 m (infrared)
+- 01:02 that missile lost its lock at 1185 m
+- 01:02 missile from SAM_3 gone after 0 s, closest 1184 m
+- 01:04 break turn: missile 1042 m away, impact in 3.6 s
+- 01:05 missile warning: level=very near
+- 01:05 flare: dist_m=799.6, missile=wp_msl_SAM_C_74, reason=tracker, tgo_s=2.917
+- 01:05 that missile lost its lock at 993 m
+- 01:05 that missile lost its lock at 793 m
+- 01:05 that missile lost its lock at 943 m
+- 01:12 missile from SAM_2 gone after 10 s, closest 800 m
+- 01:12 missile from SAM_2 gone after 10 s, closest 999 m
+- 01:12 missile from SAM_4 gone after 10 s, closest 947 m
+- 01:22 ground recovery: above_ground_m=445.1, alt_m=491.7, lowest_ahead_m=15.66, vz=-86.23
+- 01:39 ground recovery: above_ground_m=567.1, alt_m=612.6, lowest_ahead_m=162.7, vz=-148.5
+- 01:42 missile warning: level=very near
+- 01:42 flare: reason=warning
+- 01:42 missile warning: level=near
+- 01:42 missile fired at us by SAM_4 from 1179 m (infrared)
+- 01:45 break turn: missile 943 m away, impact in 3.0 s
+- 01:45 missile warning: level=very near
+- 01:45 flare: dist_m=798.2, missile=wp_msl_SAM_C_72, reason=tracker, tgo_s=3.229
+- 01:45 that missile lost its lock at 801 m
+- 01:52 missile from SAM_4 gone after 10 s, closest 798 m
+- 02:02 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 3537 m)
+- 02:10 weapon switch to standard missiles (no longer: beyond standard missile range, target 1799 m)
+- 02:13 missile warning: level=near
+- 02:14 destroyed 02_en_AH64_00_1_2  (None missiles, 0 s after picking it)
+- 02:14 missile fired at us by SAM_4 from 1195 m (infrared)
+- 02:14 missile fired at us by SAM_2 from 2583 m (infrared)
+- 02:15 missile fired at us by 02_en_av8b_03 from 1649 m (infrared)
+- 02:15 break turn: missile 936 m away, impact in 3.8 s
+- 02:16 ground recovery: above_ground_m=373.7, alt_m=383.3, lowest_ahead_m=104.4, vz=-82.22
+- 02:16 missile warning: level=very near
+- 02:16 flare: dist_m=795.8, missile=wp_msl_SAM_C_72, reason=tracker, tgo_s=3.761
+- 02:17 missile fired at us by 02_en_av8b_05 from 1920 m (infrared)
+- 02:17 flare: dist_m=486.1, missile=wp_msl_SAM_C_72, reason=tracker, tgo_s=1.473
+- 02:18 flare: dist_m=139.9, missile=wp_msl_SAM_C_72, reason=tracker, tgo_s=0.3894
+- 02:19 that missile lost its lock at 44 m
+- 02:19 missile warning: level=near
+- 02:19 missile warning: level=very near
+- 02:20 missile from SAM_4 gone after 6 s, closest 48 m
+- 02:20 flare: dist_m=433.5, missile=wp_msl_C_25, reason=tracker, tgo_s=0.8269
+- 02:20 that missile lost its lock at 47 m
+- 02:20 missile fired at us by SAM_2 from 3675 m (infrared)
+- 02:20 missile fired at us by SAM_3 from 3571 m (infrared)
+- 02:20 missile fired at us by SAM_4 from 2144 m (infrared)
+- 02:21 flare: dist_m=441.9, missile=wp_msl_SAM_C_70, reason=tracker, tgo_s=0.6855
+- 02:21 missile from 02_en_av8b_03 gone after 6 s, closest 40 m
+- 02:21 that missile lost its lock at 42 m
+- 02:22 that missile lost its lock at 33 m
+- 02:22 missile warning: level=near
+- 02:22 missile from SAM_2 gone after 9 s, closest 36 m
+- 02:22 ground recovery: above_ground_m=304.3, alt_m=360.3, lowest_ahead_m=44.62, vz=36.44
+- 02:23 missile from 02_en_av8b_05 gone after 6 s, closest 29 m
+- 02:24 break turn: missile 1536 m away, impact in 3.9 s
+- 02:25 flare: dist_m=966.2, missile=wp_msl_SAM_C_75, reason=tracker, tgo_s=1.852
+- 02:26 missile warning: level=very near
+- 02:26 flare: dist_m=381.4, missile=wp_msl_SAM_C_75, reason=tracker, tgo_s=0.6911
+- 02:27 that missile lost its lock at 69 m
+- 02:27 missile warning: level=near
+- 02:28 missile from SAM_4 gone after 7 s, closest 76 m
+- 02:28 missile warning: level=very near
+- 02:28 flare: dist_m=748.7, missile=wp_msl_SAM_C_74, reason=tracker, tgo_s=1.05
+- 02:29 that missile lost its lock at 63 m
+- 02:29 that missile lost its lock at 63 m
+- 02:29 missile from SAM_3 gone after 9 s, closest 61 m
+- 02:29 missile from SAM_2 gone after 9 s, closest 61 m
+- 02:30 ground recovery: above_ground_m=311.6, alt_m=439.2, lowest_ahead_m=87.44, vz=-91.2
+- 02:33 missile fired at us by SAM_2 from 3540 m (infrared)
+- 02:33 missile fired at us by SAM_3 from 3284 m (infrared)
+- 02:33 that missile lost its lock at 3248 m
+- 02:33 missile from SAM_3 gone after 0 s, closest 3253 m
+- 02:35 break turn: missile 2379 m away, impact in 3.8 s
+- 02:36 missile fired at us by SAM_3 from 2753 m (infrared)
+- 02:36 that missile lost its lock at 2713 m
+- 02:36 missile from SAM_3 gone after 0 s, closest 2715 m
+- 02:36 break turn: missile 2098 m away, impact in 3.7 s
+- 02:36 missile warning: level=near
+- 02:37 break turn: missile 1825 m away, impact in 2.8 s
+- 02:38 flare: dist_m=1297, missile=wp_msl_SAM_C_76, reason=tracker, tgo_s=1.962
+- 02:38 missile fired at us by SAM_2 from 2990 m (infrared)
+- 02:38 missile fired at us by SAM_4 from 1584 m (infrared)
+- 02:38 missile fired at us by SAM_3 from 2798 m (infrared)
+- 02:39 missile warning: level=very near
+- 02:39 that missile lost its lock at 700 m
+- 02:39 missile warning: level=near
+- 02:39 break turn: missile 1286 m away, impact in 3.0 s
+- 02:40 ground recovery: above_ground_m=225.8, alt_m=241.8, lowest_ahead_m=48.42, vz=-32
+- 02:41 flare: dist_m=826.1, missile=wp_msl_SAM_C_81, reason=tracker, tgo_s=1.904
+- 02:41 missile warning: level=very near
+- 02:41 missile from SAM_2 gone after 9 s, closest 720 m
+- 02:42 flare: dist_m=415, missile=wp_msl_SAM_C_81, reason=tracker, tgo_s=1.136
+- 02:43 that missile lost its lock at 77 m
+- 02:43 missile warning: level=near
+- 02:43 flare: dist_m=1174, missile=wp_msl_SAM_C_80, reason=tracker, tgo_s=1.807
+- 02:44 missile warning: level=very near
+- 02:45 flare: dist_m=429.3, missile=wp_msl_SAM_C_80, reason=tracker, tgo_s=0.5895
+- 02:45 missile fired at us by SAM_2 from 2987 m (infrared)
+- 02:45 missile fired at us by SAM_4 from 1452 m (infrared)
+- 02:45 missile fired at us by SAM_3 from 2926 m (infrared)
+- 02:45 that missile lost its lock at 55 m
+- 02:45 that missile lost its lock at 47 m
+- 02:45 missile warning: level=near
+- 02:45 missile from SAM_4 gone after 7 s, closest 81 m
+- 02:46 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1801 m)
+- 02:47 missile from SAM_3 gone after 8 s, closest 53 m
+- 02:47 break turn: missile 1116 m away, impact in 3.9 s
+- 02:47 missile from SAM_2 gone after 9 s, closest 58 m
+- 02:48 flare: dist_m=799.3, missile=wp_msl_SAM_C_82, reason=tracker, tgo_s=2.944
+- 02:48 missile warning: level=very near
+- 02:49 flare: dist_m=431.9, missile=wp_msl_SAM_C_82, reason=tracker, tgo_s=1.318
+- 02:50 that missile lost its lock at 179 m
+- 02:50 missile warning: level=near
+- 02:50 flare: dist_m=1074, missile=wp_msl_SAM_C_70, reason=tracker, tgo_s=1.5
+- 02:51 missile warning: level=very near
+- 02:51 that missile lost its lock at 755 m
+- 02:51 flare: dist_m=201.4, missile=wp_msl_SAM_C_70, reason=tracker, tgo_s=0.2718
+- 02:52 that missile lost its lock at 63 m
+- 02:52 weapon switch to standard missiles (no longer: beyond standard missile range, target 1365 m)
+- 02:54 ground recovery: above_ground_m=403.1, alt_m=541.6, lowest_ahead_m=42.69, vz=-64.05
+- 02:55 missile from SAM_2 gone after 10 s, closest 74 m
+- 02:55 missile from SAM_3 gone after 10 s, closest 775 m
+- 02:55 missile from SAM_4 gone after 10 s, closest 184 m
+- 02:56 missile fired at us by 02_en_m29a_01 from 2137 m (infrared)
+- 02:57 missile warning: level=near
+- 02:57 missile fired at us by 02_en_m29a_02 from 1268 m (infrared)
+- 02:58 break turn: missile 1138 m away, impact in 3.9 s
+- 02:59 flare: dist_m=815.6, missile=wp_msl_C_25, reason=tracker, tgo_s=1.828
+- 02:59 missile warning: level=very near
+- 02:59 missile fired at us by SAM_2 from 1497 m (infrared)
+- 02:59 missile fired at us by SAM_2 from 1480 m (infrared)
+- 02:59 missile fired at us by SAM_4 from 832 m (infrared)
+- 03:00 flare: dist_m=263.5, missile=wp_msl_C_25, reason=tracker, tgo_s=0.5288
+- 03:00 that missile lost its lock at 41 m
+- 03:01 flare: dist_m=189.9, missile=wp_msl_SAM_C_75, reason=tracker, tgo_s=0.525
+- 03:01 missile from 02_en_m29a_02 gone after 4 s, closest 53 m
+- 03:02 that missile lost its lock at 47 m
+- 03:02 that missile lost its lock at 24 m
+- 03:02 flare: dist_m=453.9, missile=wp_msl_SAM_C_71, reason=tracker, tgo_s=1.002
+- 03:03 that missile lost its lock at 63 m
+- 03:03 that missile lost its lock at 62 m
+- 03:06 missile warning: level=very near
+- 03:06 flare: reason=warning
+- 03:06 missile fired at us by SAM_2 from 1071 m (infrared)
+- 03:06 missile fired at us by SAM_4 from 500 m (infrared)
+- 03:06 missile fired at us by SAM_3 from 992 m (infrared)
+- 03:07 flare: dist_m=619.6, missile=wp_msl_SAM_C_77, reason=tracker, tgo_s=1.666
+- 03:07 missile from 02_en_m29a_01 gone after 11 s, closest 18 m
+- 03:08 flare: dist_m=130.7, missile=wp_msl_SAM_C_77, reason=tracker, tgo_s=0.3412
+- 03:08 that missile lost its lock at 47 m
+- 03:08 took 1 damage, health 115
+- 03:08 took 1 damage, health 114
+- 03:09 missile from SAM_2 gone after 9 s, closest 66 m
+- 03:09 missile from SAM_2 gone after 10 s, closest 62 m
+- 03:09 that missile lost its lock at 85 m
+- 03:09 that missile lost its lock at 53 m
+- 03:09 ground recovery: above_ground_m=219.8, alt_m=272.9, lowest_ahead_m=37.2, vz=-45.02
+- 03:09 missile from SAM_4 gone after 10 s, closest 48 m
+- 03:10 missile warning: level=near
+- 03:10 missile fired at us by 02_en_m29a_01 from 1037 m (infrared)
+- 03:10 took 1 damage, health 113
+- 03:11 missile warning: level=very near
+- 03:11 break turn: missile 934 m away, impact in 4.0 s
+- 03:11 missile warning: level=near
+- 03:11 missile fired at us by SAM_2 from 947 m (infrared)
+- 03:11 missile fired at us by SAM_4 from 1100 m (infrared)
+- 03:11 took 1 damage, health 112
+- 03:11 took 1 damage, health 111
+- 03:11 missile warning: level=very near
+- 03:11 flare: dist_m=799.6, missile=wp_msl_C_30, reason=tracker, tgo_s=3.535
+- 03:11 took 1 damage, health 110
+- 03:11 took 2 damage, health 108
+- 03:12 took 1 damage, health 107
+- 03:13 flare: dist_m=399.8, missile=wp_msl_C_30, reason=tracker, tgo_s=0.9342
+- 03:13 took 2 damage, health 105
+- 03:14 that missile lost its lock at 6 m
+- 03:14 flare: dist_m=497.6, missile=wp_msl_SAM_C_79, reason=tracker, tgo_s=1.569
+- 03:14 took 1 damage, health 104
+- 03:15 flare: dist_m=120.1, missile=wp_msl_SAM_C_79, reason=tracker, tgo_s=0.5426
+- 03:15 that missile lost its lock at 80 m
+- 03:16 missile from SAM_2 gone after 10 s, closest 89 m
+- 03:16 missile from SAM_4 gone after 10 s, closest 55 m
+- 03:16 missile from SAM_3 gone after 10 s, closest 49 m
+- 03:16 that missile lost its lock at 43 m
+- 03:17 ground recovery: above_ground_m=249.5, alt_m=262.9, lowest_ahead_m=97.08, vz=-52.54
+- 03:18 missile warning: level=very near
+- 03:18 flare: reason=warning
+- 03:18 missile fired at us by SAM_3 from 653 m (infrared)
+- 03:18 missile fired at us by SAM_2 from 1031 m (infrared)
+- 03:19 missile fired at us by SAM_4 from 1906 m (infrared)
+- 03:19 missile fired at us by SAM_3 from 640 m (infrared)
+- 03:19 missile fired at us by SAM_2 from 1000 m (infrared)
+- 03:19 flare: dist_m=455.5, missile=wp_msl_SAM_C_70, reason=tracker, tgo_s=2.875
+- 03:20 flare: dist_m=481.5, missile=wp_msl_SAM_C_72, reason=tracker, tgo_s=1.557
+- 03:21 missile from 02_en_m29a_01 gone after 11 s, closest 13 m
+- 03:21 that missile lost its lock at 342 m
+- 03:21 missile fired at us by 02_en_av8b_03 from 1596 m (infrared)
+- 03:21 missile from SAM_2 gone after 10 s, closest 83 m
+- 03:21 missile from SAM_4 gone after 10 s, closest 49 m
+- 03:21 missile fired at us by 02_en_m29a_01 from 1106 m (infrared)
+- 03:21 that missile lost its lock at 325 m
+- 03:22 that missile lost its lock at 234 m
+- 03:22 flare: dist_m=275.2, missile=wp_msl_SAM_C_82, reason=tracker, tgo_s=1.111
+- 03:22 that missile lost its lock at 201 m
+- 03:22 missile warning: level=near
+- 03:23 missile warning: level=very near
+- 03:23 flare: dist_m=889.6, missile=wp_msl_C_32, reason=tracker, tgo_s=1.904
+- 03:24 ground recovery: above_ground_m=279.1, alt_m=332.2, lowest_ahead_m=50.93, vz=-51.35
+- 03:24 flare: dist_m=240.9, missile=wp_msl_C_32, reason=tracker, tgo_s=0.4156
+- 03:25 that missile lost its lock at 34 m
+- 03:25 that missile lost its lock at 59 m
+- 03:25 that missile lost its lock at 13 m
+- 03:26 missile from 02_en_m29a_01 gone after 5 s, closest 11 m
+- 03:27 missile from 02_en_av8b_03 gone after 6 s, closest 32 m
+- 03:27 missile fired at us by 02_en_av8b_01 from 2227 m (infrared)
+- 03:28 missile from SAM_3 gone after 10 s, closest 340 m
+- 03:28 missile from SAM_2 gone after 10 s, closest 237 m
+- 03:28 phase failed: MissionPhase_02
+- 03:29 **objective failed**
+- 03:29 missile from SAM_4 gone after 10 s, closest 62 m
+- 03:29 missile from SAM_3 gone after 10 s, closest 323 m
+- 03:29 missile from SAM_2 gone after 10 s, closest 202 m
+- 03:29 missile warning: level=near
+- 03:30 break turn: missile 1687 m away, impact in 3.6 s
+- 03:31 how well enemy positions 2 s ahead were predicted: route planes: 2541 checks, the guess used was off by 5 m on average (each way: route 5 m, straight 37 m; now using route); steady planes: 2261 checks, the guess used was off by 2 m on average (each way: full turn 2 m, half turn 2 m, straight 2 m; now using full turn); turning planes: 982 checks, the guess used was off by 91 m on average (each way: full turn 133 m, half turn 89 m, straight 100 m; now using half turn)
+
+## Attempt 7
+
+- 00:03 frozen
+- 00:03 ground recovery: above_ground_m=241.8, alt_m=294.9, lowest_ahead_m=54.77, vz=-47.23
+- 00:12 ground recovery: above_ground_m=581.4, alt_m=738.6, lowest_ahead_m=-265.1, vz=19.57
+- 00:31 ground recovery: above_ground_m=519.5, alt_m=572.6, lowest_ahead_m=-256.1, vz=-139.4
+- 00:37 ground recovery: above_ground_m=351.7, alt_m=401.8, lowest_ahead_m=198.4, vz=-96.34
+- 00:51 ground recovery: above_ground_m=519.8, alt_m=524.6, lowest_ahead_m=61.06, vz=-113.7
+- 00:57 took 24 damage, health 96
+- 01:00 missile warning: level=very near
+- 01:00 flare: reason=warning
+- 01:00 missile warning: level=near
+- 01:00 missile fired at us by SAM_4 from 1406 m (infrared)
+- 01:02 break turn: missile 1085 m away, impact in 2.7 s
+- 01:03 missile warning: level=very near
+- 01:03 flare: dist_m=794, missile=wp_msl_SAM_C_87, reason=tracker, tgo_s=2.156
+- 01:03 that missile lost its lock at 782 m
+- 01:08 missile warning: level=near
+- 01:08 missile fired at us by SAM_2 from 1282 m (infrared)
+- 01:08 missile fired at us by SAM_4 from 1723 m (infrared)
+- 01:09 missile fired at us by SAM_4 from 1835 m (infrared)
+- 01:09 missile fired at us by SAM_3 from 990 m (infrared)
+- 01:09 missile fired at us by SAM_2 from 1317 m (infrared)
+- 01:10 missile from SAM_4 gone after 10 s, closest 794 m
+- 01:11 break turn: missile 1006 m away, impact in 3.2 s
+- 01:11 missile warning: level=very near
+- 01:11 flare: dist_m=751.8, missile=wp_msl_SAM_C_91, reason=tracker, tgo_s=2.073
+- 01:11 that missile lost its lock at 906 m
+- 01:11 that missile lost its lock at 751 m
+- 01:11 missile warning: level=near
+- 01:12 missile warning: level=very near
+- 01:12 flare: dist_m=795.7, missile=wp_msl_SAM_C_90, reason=tracker, tgo_s=2.331
+- 01:12 that missile lost its lock at 788 m
+- 01:12 missile warning: level=near
+- 01:14 flare: dist_m=901.7, missile=wp_msl_SAM_C_88, reason=tracker, tgo_s=1.868
+- 01:14 missile warning: level=very near
+- 01:15 flare: dist_m=189.6, missile=wp_msl_SAM_C_88, reason=tracker, tgo_s=0.303
+- 01:15 that missile lost its lock at 106 m
+- 01:15 that missile lost its lock at 98 m
+- 01:18 missile from SAM_2 gone after 10 s, closest 904 m
+- 01:18 missile from SAM_4 gone after 10 s, closest 104 m
+- 01:19 missile from SAM_4 gone after 10 s, closest 109 m
+- 01:19 missile from SAM_3 gone after 10 s, closest 749 m
+- 01:19 missile from SAM_2 gone after 10 s, closest 796 m
+- 01:20 ground recovery: above_ground_m=341.8, alt_m=393, lowest_ahead_m=213.7, vz=-84.12
+- 01:22 missile warning: level=very near
+- 01:22 flare: reason=warning
+- 01:22 missile fired at us by SAM_3 from 353 m (infrared)
+- 01:22 missile fired at us by SAM_4 from 1336 m (infrared)
+- 01:22 missile fired at us by SAM_2 from 648 m (infrared)
+- 01:23 flare: dist_m=861.8, missile=wp_msl_SAM_C_94, reason=tracker, tgo_s=1.497
+- 01:24 that missile lost its lock at 498 m
+- 01:24 flare: dist_m=332.5, missile=wp_msl_SAM_C_86, reason=tracker, tgo_s=2.28
+- 01:25 that missile lost its lock at 269 m
+- 01:25 took 1 damage, health 95
+- 01:25 took 1 damage, health 94
+- 01:26 flare: dist_m=119.2, missile=wp_msl_SAM_C_86, reason=tracker, tgo_s=0.5126
+- 01:26 that missile lost its lock at 71 m
+- 01:27 missile warning: level=very near
+- 01:27 flare: reason=warning
+- 01:27 missile fired at us by SAM_4 from 776 m (infrared)
+- 01:27 missile fired at us by SAM_2 from 1506 m (infrared)
+- 01:27 missile fired at us by SAM_3 from 1259 m (infrared)
+- 01:28 missile from SAM_2 gone after 6 s, closest 70 m
+- 01:28 flare: dist_m=700.1, missile=wp_msl_SAM_C_97, reason=tracker, tgo_s=16.98
+- 01:29 break turn: missile 657 m away, impact in 3.7 s
+- 01:29 flare: dist_m=556, missile=wp_msl_SAM_C_97, reason=tracker, tgo_s=3.555
+- 01:31 flare: dist_m=282.4, missile=wp_msl_SAM_C_97, reason=tracker, tgo_s=0.9555
+- 01:31 that missile lost its lock at 26 m
+- 01:32 missile from SAM_3 gone after 10 s, closest 271 m
+- 01:32 missile from SAM_4 gone after 10 s, closest 499 m
+- 01:32 that missile lost its lock at 59 m
+- 01:32 flare: dist_m=339.4, missile=wp_msl_SAM_C_95, reason=tracker, tgo_s=0.6128
+- 01:32 that missile lost its lock at 51 m
+- 01:33 missile warning: level=near
+- 01:33 ground recovery: above_ground_m=270, alt_m=282.4, lowest_ahead_m=98.03, vz=-52.57
+- 01:33 missile fired at us by SAM_2 from 1809 m (infrared)
+- 01:33 missile fired at us by SAM_4 from 1422 m (infrared)
+- 01:34 break turn: missile 1518 m away, impact in 3.9 s
+- 01:35 flare: dist_m=976.6, missile=wp_msl_SAM_C_85, reason=tracker, tgo_s=1.715
+- 01:36 missile warning: level=very near
+- 01:36 that missile lost its lock at 663 m
+- 01:36 missile warning: level=near
+- 01:36 missile warning: level=very near
+- 01:36 flare: dist_m=735.2, missile=wp_msl_SAM_C_98, reason=tracker, tgo_s=2.529
+- 01:37 missile from SAM_4 gone after 10 s, closest 29 m
+- 01:37 missile from SAM_2 gone after 10 s, closest 60 m
+- 01:37 missile from SAM_3 gone after 10 s, closest 65 m
+- 01:38 flare: dist_m=360.4, missile=wp_msl_SAM_C_98, reason=tracker, tgo_s=0.9674
+- 01:38 that missile lost its lock at 126 m
+- 01:43 missile from SAM_2 gone after 10 s, closest 675 m
+- 01:43 missile from SAM_4 gone after 10 s, closest 131 m
+- 01:44 missile warning: level=near
+- 01:44 missile fired at us by 02_en_av8b_05 from 1596 m (infrared)
+- 01:47 break turn: missile 1459 m away, impact in 3.4 s
+- 01:47 flare: dist_m=1131, missile=wp_msl_C_34, reason=tracker, tgo_s=1.595
+- 01:48 missile warning: level=very near
+- 01:49 flare: dist_m=480.6, missile=wp_msl_C_34, reason=tracker, tgo_s=0.9978
+- 01:49 that missile lost its lock at 85 m
+- 01:55 missile from 02_en_av8b_05 gone after 11 s, closest 87 m
+- 01:57 missile warning: level=very near
+- 01:57 flare: reason=warning
+- 01:57 missile fired at us by SAM_2 from 673 m (infrared)
+- 01:57 missile fired at us by SAM_4 from 1072 m (infrared)
+- 01:57 ground recovery: above_ground_m=383.5, alt_m=425, lowest_ahead_m=73.51, vz=-90.47
+- 01:58 flare: dist_m=681.1, missile=wp_msl_SAM_C_88, reason=tracker, tgo_s=1.719
+- 01:59 took 1 damage, health 93
+- 01:59 flare: dist_m=209.6, missile=wp_msl_SAM_C_88, reason=tracker, tgo_s=0.9804
+- 01:59 that missile lost its lock at 206 m
+- 01:59 took 1 damage, health 92
+- 01:59 took 1 damage, health 91
+- 02:00 flare: dist_m=143.7, missile=wp_msl_SAM_C_86, reason=tracker, tgo_s=0.4329
+- 02:00 that missile lost its lock at 61 m
+- 02:01 took 1 damage, health 90
+- 02:02 took 3 damage, health 87
+- 02:03 took 1 damage, health 86
+- 02:03 missile warning: level=near
+- 02:03 missile fired at us by SAM_4 from 968 m (infrared)
+- 02:03 missile fired at us by SAM_2 from 1091 m (infrared)
+- 02:03 took 3 damage, health 83
+- 02:04 missile warning: level=very near
+- 02:04 missile fired at us by SAM_3 from 791 m (infrared)
+- 02:04 missile fired at us by SAM_2 from 1069 m (infrared)
+- 02:04 missile fired at us by SAM_4 from 984 m (infrared)
+- 02:04 flare: dist_m=781.6, missile=wp_msl_SAM_C_91, reason=tracker, tgo_s=2.431
+- 02:04 break turn: missile 782 m away, impact in 2.4 s
+- 02:04 took 1 damage, health 82
+- 02:04 took 1 damage, health 81
+- 02:05 flare: dist_m=502.4, missile=wp_msl_SAM_C_91, reason=tracker, tgo_s=1.342
+- 02:05 missile from SAM_2 gone after 8 s, closest 66 m
+- 02:06 took 1 damage, health 80
+- 02:06 flare: dist_m=192.5, missile=wp_msl_SAM_C_91, reason=tracker, tgo_s=0.8894
+- 02:06 that missile lost its lock at 162 m
+- 02:07 missile from SAM_4 gone after 10 s, closest 207 m
+- 02:07 took 2 damage, health 78
+- 02:07 that missile lost its lock at 112 m
+- 02:07 that missile lost its lock at 110 m
+- 02:07 flare: dist_m=406.6, missile=wp_msl_SAM_C_85, reason=tracker, tgo_s=1.184
+- 02:08 took 1 damage, health 77
+- 02:08 that missile lost its lock at 28 m
+- 02:08 that missile lost its lock at 37 m
+- 02:09 took 1 damage, health 76
+- 02:10 took 1 damage, health 75
+- 02:10 ground recovery: above_ground_m=236.2, alt_m=289.3, lowest_ahead_m=44.72, vz=-41.43
+- 02:10 took 1 damage, health 74
+- 02:10 took 1 damage, health 73
+- 02:10 missile warning: level=very near
+- 02:10 flare: reason=warning
+- 02:11 missile fired at us by SAM_2 from 617 m (infrared)
+- 02:11 missile fired at us by SAM_4 from 1649 m (infrared)
+- 02:11 missile fired at us by SAM_3 from 264 m (infrared)
+- 02:11 missile fired at us by SAM_4 from 1680 m (infrared)
+- 02:11 missile fired at us by SAM_2 from 507 m (infrared)
+- 02:12 took 1 damage, health 72
+- 02:12 flare: dist_m=300.6, missile=wp_msl_SAM_C_94, reason=tracker, tgo_s=1.604
+- 02:13 that missile lost its lock at 180 m
+- 02:13 that missile lost its lock at 172 m
+- 02:13 flare: dist_m=219.4, missile=wp_msl_SAM_C_95, reason=tracker, tgo_s=2.318
+- 02:13 that missile lost its lock at 190 m
+- 02:13 missile warning: level=near
+- 02:13 missile from SAM_4 gone after 10 s, closest 48 m
+- 02:13 missile from SAM_2 gone after 10 s, closest 117 m
+- 02:14 missile from SAM_2 gone after 10 s, closest 114 m
+- 02:14 missile from SAM_4 gone after 10 s, closest 35 m
+- 02:14 missile from SAM_3 gone after 10 s, closest 161 m
+- 02:14 break turn: missile 1102 m away, impact in 3.4 s
+- 02:15 flare: dist_m=821.9, missile=wp_msl_SAM_C_93, reason=tracker, tgo_s=1.927
+- 02:15 missile warning: level=very near
+- 02:16 flare: dist_m=379.3, missile=wp_msl_SAM_C_93, reason=tracker, tgo_s=0.6757
+- 02:17 that missile lost its lock at 33 m
+- 02:18 flare: dist_m=100.3, missile=wp_msl_SAM_C_97, reason=tracker, tgo_s=0.196
+- 02:18 that missile lost its lock at 49 m
+- 02:21 missile from SAM_4 gone after 10 s, closest 44 m
+- 02:21 missile from SAM_2 gone after 10 s, closest 172 m
+- 02:21 missile from SAM_4 gone after 10 s, closest 66 m
+- 02:21 missile from SAM_2 gone after 10 s, closest 190 m
+- 02:21 missile from SAM_3 gone after 10 s, closest 179 m
+- 02:22 ground recovery: above_ground_m=240.7, alt_m=291.6, lowest_ahead_m=127.1, vz=-57.12
+- 02:23 missile warning: level=very near
+- 02:23 flare: reason=warning
+- 02:23 missile fired at us by SAM_4 from 1750 m (infrared)
+- 02:23 missile fired at us by SAM_3 from 554 m (infrared)
+- 02:23 missile fired at us by SAM_2 from 372 m (infrared)
+- 02:23 that missile lost its lock at 552 m
+- 02:23 that missile lost its lock at 373 m
+- 02:23 missile warning: level=near
+- 02:26 missile fired at us by SAM_4 from 1653 m (infrared)
+- 02:27 flare: dist_m=863.4, missile=wp_msl_SAM_C_99, reason=tracker, tgo_s=1.186
+- 02:27 missile warning: level=very near
+- 02:28 flare: dist_m=335.9, missile=wp_msl_SAM_C_99, reason=tracker, tgo_s=0.6721
+- 02:28 that missile lost its lock at 175 m
+- 02:28 missile warning: level=near
+- 02:29 flare: dist_m=886.8, missile=wp_msl_SAM_C_86, reason=tracker, tgo_s=1.731
+- 02:29 missile warning: level=very near
+- 02:30 flare: dist_m=296.6, missile=wp_msl_SAM_C_86, reason=tracker, tgo_s=0.6679
+- 02:31 that missile lost its lock at 95 m
+- 02:32 ground recovery: above_ground_m=521.4, alt_m=646.7, lowest_ahead_m=252.5, vz=-158.3
+- 02:33 missile warning: level=near
+- 02:34 missile from SAM_4 gone after 10 s, closest 173 m
+- 02:34 missile from SAM_3 gone after 10 s, closest 0 m
+- 02:34 missile from SAM_2 gone after 10 s, closest 0 m
+- 02:34 missile fired at us by SAM_4 from 1456 m (infrared)
+- 02:34 missile fired at us by SAM_2 from 1506 m (infrared)
+- 02:34 missile fired at us by SAM_4 from 1509 m (infrared)
+- 02:34 missile fired at us by SAM_3 from 1847 m (infrared)
+- 02:34 missile fired at us by SAM_2 from 1563 m (infrared)
+- 02:36 break turn: missile 1303 m away, impact in 3.5 s
+- 02:36 missile from SAM_4 gone after 10 s, closest 93 m
+- 02:37 break turn: missile 1077 m away, impact in 3.0 s
+- 02:38 missile warning: level=very near
+- 02:38 flare: dist_m=798.9, missile=wp_msl_SAM_C_88, reason=tracker, tgo_s=2.804
+- 02:39 missile fired at us by 02_en_m29a_02 from 2247 m (infrared)
+- 02:39 flare: dist_m=302.4, missile=wp_msl_SAM_C_88, reason=tracker, tgo_s=0.5944
+- 02:40 that missile lost its lock at 106 m
+- 02:40 that missile lost its lock at 128 m
+- 02:40 that missile lost its lock at 85 m
+- 02:40 flare: dist_m=117.9, missile=wp_msl_SAM_C_91, reason=tracker, tgo_s=0.3257
+- 02:40 that missile lost its lock at 113 m
+- 02:40 that missile lost its lock at 98 m
+- 02:40 missile warning: level=near
+- 02:42 flare: dist_m=1244, missile=wp_msl_C_35, reason=tracker, tgo_s=1.329
+- 02:42 missile warning: level=very near
+- 02:43 flare: dist_m=493.1, missile=wp_msl_C_35, reason=tracker, tgo_s=0.7798
+- 02:44 missile from SAM_4 gone after 10 s, closest 95 m
+- 02:44 missile from SAM_2 gone after 10 s, closest 111 m
+- 02:44 that missile lost its lock at 45 m
+- 02:44 missile from SAM_4 gone after 10 s, closest 105 m
+- 02:44 missile from SAM_3 gone after 10 s, closest 124 m
+- 02:44 missile from SAM_2 gone after 10 s, closest 123 m
+- 02:46 missile warning: level=near
+- 02:46 missile fired at us by 02_en_av8b_03 from 1159 m (infrared)
+- 02:46 missile fired at us by SAM_2 from 1555 m (infrared)
+- 02:46 missile fired at us by SAM_3 from 1950 m (infrared)
+- 02:46 missile fired at us by SAM_4 from 2591 m (infrared)
+- 02:46 break turn: missile 1544 m away, impact in 3.9 s
+- 02:47 flare: dist_m=1225, missile=wp_msl_SAM_C_92, reason=tracker, tgo_s=1.645
+- 02:48 missile warning: level=very near
+- 02:48 flare: dist_m=569.7, missile=wp_msl_C_36, reason=tracker, tgo_s=1.213
+- 02:49 that missile lost its lock at 68 m
+- 02:49 flare: dist_m=441.1, missile=wp_msl_SAM_C_92, reason=tracker, tgo_s=1.73
+- 02:50 missile from 02_en_m29a_02 gone after 11 s, closest 43 m
+- 02:50 that missile lost its lock at 1243 m
+- 02:51 flare: dist_m=533.3, missile=wp_msl_SAM_C_94, reason=tracker, tgo_s=1.049
+- 02:51 that missile lost its lock at 125 m
+- 02:51 missile from 02_en_av8b_03 gone after 5 s, closest 71 m
+- 02:51 missile fired at us by SAM_3 from 1875 m (infrared)
+- 02:51 missile fired at us by SAM_4 from 1921 m (infrared)
+- 02:51 missile fired at us by SAM_2 from 1509 m (infrared)
+- 02:51 that missile lost its lock at 110 m
+- 02:51 missile warning: level=near
+- 02:52 ground recovery: above_ground_m=202.1, alt_m=412.4, lowest_ahead_m=37.4, vz=-34.11
+- 02:52 break turn: missile 1605 m away, impact in 3.9 s
+- 02:54 flare: dist_m=994.1, missile=wp_msl_SAM_C_97, reason=tracker, tgo_s=1.69
+- 02:54 missile from SAM_2 gone after 8 s, closest 127 m
+- 02:54 missile warning: level=very near
+- 02:55 flare: dist_m=480.3, missile=wp_msl_SAM_C_97, reason=tracker, tgo_s=1.548
+- 02:56 that missile lost its lock at 112 m
+- 02:56 missile from SAM_4 gone after 10 s, closest 119 m
+- 02:56 missile from SAM_3 gone after 10 s, closest 1232 m
+- 02:56 flare: dist_m=308.9, missile=wp_msl_SAM_C_95, reason=tracker, tgo_s=1
+- 02:57 missile fired at us by SAM_4 from 1541 m (infrared)
+- 02:57 missile fired at us by SAM_2 from 1939 m (infrared)
+- 02:57 missile fired at us by SAM_3 from 2202 m (infrared)
+- 02:57 that missile lost its lock at 10 m
+- 02:57 that missile lost its lock at 23 m
+- 02:57 missile warning: level=near
+- 02:58 missile from SAM_4 gone after 6 s, closest 116 m
+- 02:59 break turn: missile 1057 m away, impact in 3.1 s
+- 03:00 missile warning: level=very near
+- 03:00 flare: dist_m=795.4, missile=wp_msl_SAM_C_98, reason=tracker, tgo_s=4.036
+- 03:01 missile from SAM_3 gone after 10 s, closest 20 m
+- 03:01 missile from SAM_2 gone after 10 s, closest 17 m
+- 03:02 flare: dist_m=354.7, missile=wp_msl_SAM_C_98, reason=tracker, tgo_s=0.5198
+- 03:02 ground recovery: above_ground_m=292, alt_m=736.4, lowest_ahead_m=49.94, vz=-24.42
+- 03:02 that missile lost its lock at 132 m
+- 03:03 flare: dist_m=408.6, missile=wp_msl_SAM_C_86, reason=tracker, tgo_s=0.59
+- 03:03 that missile lost its lock at 70 m
+- 03:04 that missile lost its lock at 51 m
+- 03:06 missile from SAM_2 gone after 9 s, closest 78 m
+- 03:06 missile from SAM_3 gone after 9 s, closest 72 m
+- 03:06 missile from SAM_4 gone after 10 s, closest 129 m
+- 03:11 missile fired at us by 02_en_av8b_01 from 2048 m (infrared)
+- 03:12 missile warning: level=near
+- 03:12 ground recovery: above_ground_m=768.9, alt_m=876.8, lowest_ahead_m=-71.16, vz=17.68
+- 03:14 break turn: missile 1629 m away, impact in 3.9 s
+- 03:15 flare: dist_m=1028, missile=wp_msl_C_34, reason=tracker, tgo_s=1.918
+- 03:16 missile warning: level=very near
+- 03:16 flare: dist_m=306.8, missile=wp_msl_C_34, reason=tracker, tgo_s=0.4272
+- 03:17 phase failed: MissionPhase_02
+- 03:17 **objective failed**
+- 03:17 that missile lost its lock at 172 m
+- 03:19 how well enemy positions 2 s ahead were predicted: route planes: 3817 checks, the guess used was off by 5 m on average (each way: route 5 m, straight 34 m; now using route); steady planes: 3371 checks, the guess used was off by 1 m on average (each way: full turn 1 m, half turn 1 m, straight 1 m; now using straight); turning planes: 1444 checks, the guess used was off by 91 m on average (each way: full turn 131 m, half turn 89 m, straight 99 m; now using straight)
+
+## Attempt 8
+
+- 00:03 frozen
+- 00:12 ground recovery: above_ground_m=574.5, alt_m=730.5, lowest_ahead_m=-113.7, vz=17.88
+- 00:29 ground recovery: above_ground_m=735.5, alt_m=788.6, lowest_ahead_m=40.21, vz=-168.4
+- 00:32 took 24 damage, health 96
+- 00:50 ground recovery: above_ground_m=650, alt_m=660.4, lowest_ahead_m=73.72, vz=-148.9
+- 00:52 destroyed AAgunAAGun_4  (None missiles, 0 s after picking it)
+- 00:55 missile warning: level=very near
+- 00:55 flare: reason=warning
+- 00:57 missile warning: level=very near
+- 00:57 flare: reason=warning
+- 00:58 took 1 damage, health 95
+- 00:59 ground recovery: above_ground_m=49.52, alt_m=268.4, lowest_ahead_m=313.5, vz=97.61
+- 01:00 missile warning: level=very near
+- 01:00 flare: reason=warning
+- 01:00 missile fired at us by SAM_3 from 399 m (infrared)
+- 01:00 missile fired at us by SAM_2 from 265 m (infrared)
+- 01:00 missile fired at us by SAM_4 from 1457 m (infrared)
+- 01:00 missile fired at us by SAM_3 from 418 m (infrared)
+- 01:00 missile fired at us by SAM_2 from 274 m (infrared)
+- 01:00 took 1 damage, health 94
+- 01:01 took 1 damage, health 93
+- 01:01 took 1 damage, health 92
+- 01:01 flare: dist_m=284.4, missile=wp_msl_SAM_C_105, reason=tracker, tgo_s=1.362
+- 01:01 that missile lost its lock at 187 m
+- 01:01 that missile lost its lock at 325 m
+- 01:01 that missile lost its lock at 211 m
+- 01:01 that missile lost its lock at 280 m
+- 01:01 missile warning: level=near
+- 01:01 took 1 damage, health 91
+- 01:03 break turn: missile 1129 m away, impact in 4.0 s
+- 01:04 break turn: missile 1042 m away, impact in 3.4 s
+- 01:04 missile fired at us by 02_en_av8b_05 from 1167 m (infrared)
+- 01:04 flare: dist_m=856.3, missile=wp_msl_SAM_C_109, reason=tracker, tgo_s=1.926
+- 01:04 that missile lost its lock at 849 m
+- 01:06 missile fired at us by SAM_3 from 1147 m (infrared)
+- 01:06 missile fired at us by SAM_2 from 958 m (infrared)
+- 01:06 missile fired at us by SAM_4 from 2410 m (infrared)
+- 01:08 break turn: missile 997 m away, impact in 2.7 s
+- 01:08 missile warning: level=very near
+- 01:09 flare: dist_m=797.8, missile=wp_msl_C_38, reason=tracker, tgo_s=2.967
+- 01:10 flare: dist_m=336.1, missile=wp_msl_C_38, reason=tracker, tgo_s=0.7187
+- 01:10 missile from SAM_2 gone after 10 s, closest 187 m
+- 01:10 missile from SAM_3 gone after 10 s, closest 284 m
+- 01:10 missile from SAM_4 gone after 10 s, closest 856 m
+- 01:10 missile from SAM_3 gone after 10 s, closest 329 m
+- 01:10 missile from SAM_2 gone after 10 s, closest 212 m
+- 01:10 that missile lost its lock at 36 m
+- 01:11 that missile lost its lock at 102 m
+- 01:11 flare: dist_m=223.3, missile=wp_msl_SAM_C_111, reason=tracker, tgo_s=0.4603
+- 01:11 that missile lost its lock at 135 m
+- 01:11 missile warning: level=near
+- 01:12 missile warning: level=very near
+- 01:12 flare: dist_m=684.2, missile=wp_msl_SAM_C_112, reason=tracker, tgo_s=0.6948
+- 01:13 that missile lost its lock at 90 m
+- 01:15 missile from 02_en_av8b_05 gone after 11 s, closest 42 m
+- 01:16 missile from SAM_3 gone after 10 s, closest 128 m
+- 01:16 missile from SAM_2 gone after 10 s, closest 105 m
+- 01:16 missile from SAM_4 gone after 10 s, closest 97 m
+- 01:19 missile warning: level=near
+- 01:20 missile fired at us by 02_en_av8b_03 from 833 m (infrared)
+- 01:20 missile warning: level=very near
+- 01:20 flare: dist_m=799.1, missile=wp_msl_C_39, reason=tracker, tgo_s=4.545
+- 01:20 missile fired at us by 02_en_av8b_05 from 866 m (infrared)
+- 01:20 break turn: missile 855 m away, impact in 3.3 s
+- 01:21 flare: dist_m=594.8, missile=wp_msl_C_40, reason=tracker, tgo_s=2.321
+- 01:22 missile fired at us by SAM_4 from 1499 m (infrared)
+- 01:22 flare: dist_m=334.2, missile=wp_msl_C_39, reason=tracker, tgo_s=2.309
+- 01:23 ground recovery: above_ground_m=234.2, alt_m=287.3, lowest_ahead_m=52.85, vz=-42.16
+- 01:23 flare: dist_m=106.7, missile=wp_msl_C_39, reason=tracker, tgo_s=0.5228
+- 01:24 took 40 damage, health 51
+- 01:24 that missile lost its lock at 216 m
+- 01:24 missile from 02_en_av8b_03 gone after 4 s, closest 10 m
+- 01:24 took 1 damage, health 50
+- 01:25 flare: dist_m=96.59, missile=wp_msl_SAM_C_115, reason=tracker, tgo_s=0.2009
+- 01:25 took 1 damage, health 49
+- 01:25 missile fired at us by SAM_3 from 836 m (infrared)
+- 01:25 that missile lost its lock at 45 m
+- 01:25 missile warning: level=near
+- 01:26 missile warning: level=very near
+- 01:26 flare: dist_m=798.7, missile=wp_msl_SAM_C_116, reason=tracker, tgo_s=8.839
+- 01:27 break turn: missile 702 m away, impact in 3.6 s
+- 01:27 missile fired at us by SAM_4 from 893 m (infrared)
+- 01:27 missile fired at us by SAM_2 from 1029 m (infrared)
+- 01:27 missile fired at us by SAM_3 from 1218 m (infrared)
+- 01:27 flare: dist_m=639.2, missile=wp_msl_SAM_C_116, reason=tracker, tgo_s=2.374
+- 01:28 missile from 02_en_av8b_05 gone after 8 s, closest 206 m
+- 01:28 ground recovery: above_ground_m=202.3, alt_m=318.7, lowest_ahead_m=23.42, vz=-12.8
+- 01:28 flare: dist_m=319.6, missile=wp_msl_SAM_C_116, reason=tracker, tgo_s=0.8301
+- 01:29 that missile lost its lock at 90 m
+- 01:30 flare: dist_m=510.9, missile=wp_msl_SAM_C_100, reason=tracker, tgo_s=1.461
+- 01:31 flare: dist_m=92.85, missile=wp_msl_SAM_C_100, reason=tracker, tgo_s=0.4779
+- 01:31 that missile lost its lock at 85 m
+- 01:31 missile from SAM_4 gone after 10 s, closest 47 m
+- 01:31 that missile lost its lock at 5 m
+- 01:32 that missile lost its lock at 53 m
+- 01:32 missile from SAM_3 gone after 7 s, closest 93 m
+- 01:32 missile fired at us by SAM_3 from 1530 m (infrared)
+- 01:32 missile fired at us by SAM_2 from 1195 m (infrared)
+- 01:32 missile fired at us by SAM_4 from 1542 m (infrared)
+- 01:32 missile warning: level=near
+- 01:33 break turn: missile 1090 m away, impact in 3.6 s
+- 01:33 missile warning: level=very near
+- 01:33 flare: dist_m=799.9, missile=wp_msl_SAM_C_103, reason=tracker, tgo_s=2.291
+- 01:34 ground recovery: above_ground_m=204.4, alt_m=316.8, lowest_ahead_m=29.04, vz=-34.04
+- 01:35 flare: dist_m=396.8, missile=wp_msl_SAM_C_103, reason=tracker, tgo_s=1.206
+- 01:35 missile from SAM_2 gone after 8 s, closest 83 m
+- 01:36 that missile lost its lock at 159 m
+- 01:36 flare: dist_m=401.8, missile=wp_msl_SAM_C_104, reason=tracker, tgo_s=1.65
+- 01:37 that missile lost its lock at 85 m
+- 01:37 flare: dist_m=521.1, missile=wp_msl_SAM_C_105, reason=tracker, tgo_s=1.222
+- 01:37 missile from SAM_4 gone after 10 s, closest 16 m
+- 01:37 missile from SAM_3 gone after 10 s, closest 58 m
+- 01:38 that missile lost its lock at 11 m
+- 01:38 missile warning: level=near
+- 01:38 missile fired at us by SAM_2 from 1241 m (infrared)
+- 01:38 missile fired at us by SAM_4 from 2400 m (infrared)
+- 01:38 missile fired at us by SAM_3 from 1637 m (infrared)
+- 01:39 ground recovery: above_ground_m=131.6, alt_m=272.7, lowest_ahead_m=33.59, vz=-37.38
+- 01:40 break turn: missile 962 m away, impact in 3.9 s
+- 01:40 missile from SAM_3 gone after 8 s, closest 92 m
+- 01:41 missile warning: level=very near
+- 01:41 flare: dist_m=797.9, missile=wp_msl_SAM_C_106, reason=tracker, tgo_s=2.822
+- 01:42 flare: dist_m=486.1, missile=wp_msl_SAM_C_106, reason=tracker, tgo_s=1.658
+- 01:42 missile from SAM_2 gone after 10 s, closest 160 m
+- 01:42 missile from SAM_4 gone after 10 s, closest 9 m
+- 01:43 that missile lost its lock at 188 m
+- 01:43 flare: dist_m=328.9, missile=wp_msl_SAM_C_107, reason=tracker, tgo_s=0.8363
+- 01:43 that missile lost its lock at 160 m
+- 01:43 missile warning: level=near
+- 01:44 missile warning: level=very near
+- 01:44 flare: dist_m=781.3, missile=wp_msl_SAM_C_108, reason=tracker, tgo_s=1.287
+- 01:45 that missile lost its lock at 97 m
+- 01:46 ground recovery: above_ground_m=345.9, alt_m=389.7, lowest_ahead_m=123.4, vz=-80.45
+- 01:48 missile from SAM_2 gone after 10 s, closest 189 m
+- 01:48 missile from SAM_3 gone after 10 s, closest 163 m
+- 01:48 missile from SAM_4 gone after 10 s, closest 102 m
+- 01:49 missile warning: level=near
+- 01:49 missile fired at us by SAM_3 from 1068 m (infrared)
+- 01:49 missile fired at us by SAM_2 from 1143 m (infrared)
+- 01:49 break turn: missile 1057 m away, impact in 3.4 s
+- 01:50 missile fired at us by SAM_2 from 1114 m (infrared)
+- 01:50 missile fired at us by SAM_4 from 2476 m (infrared)
+- 01:50 missile fired at us by SAM_3 from 1009 m (infrared)
+- 01:50 missile warning: level=very near
+- 01:50 flare: dist_m=797, missile=wp_msl_SAM_C_109, reason=tracker, tgo_s=2.039
+- 01:51 flare: dist_m=306.2, missile=wp_msl_SAM_C_109, reason=tracker, tgo_s=1.151
+- 01:52 that missile lost its lock at 130 m
+- 01:53 flare: dist_m=194.8, missile=wp_msl_SAM_C_110, reason=tracker, tgo_s=1.376
+- 01:53 that missile lost its lock at 142 m
+- 01:53 that missile lost its lock at 125 m
+- 01:54 that missile lost its lock at 75 m
+- 01:54 missile warning: level=near
+- 01:54 ground recovery: above_ground_m=181.8, alt_m=229.3, lowest_ahead_m=149.6, vz=-48.51
+- 01:54 flare: dist_m=876.3, missile=wp_msl_SAM_C_117, reason=tracker, tgo_s=1.417
+- 01:54 missile warning: level=very near
+- 01:55 flare: dist_m=143.7, missile=wp_msl_SAM_C_117, reason=tracker, tgo_s=0.1862
+- 01:55 that missile lost its lock at 42 m
+- 01:59 missile from SAM_3 gone after 10 s, closest 131 m
+- 01:59 missile from SAM_2 gone after 10 s, closest 130 m
+- 02:00 missile from SAM_4 gone after 10 s, closest 50 m
+- 02:00 missile from SAM_2 gone after 10 s, closest 78 m
+- 02:00 missile from SAM_3 gone after 10 s, closest 145 m
+- 02:04 missile warning: level=near
+- 02:04 missile fired at us by 02_en_av8b_05 from 1264 m (infrared)
+- 02:06 missile fired at us by 02_en_av8b_05 from 1402 m (infrared)
+- 02:06 break turn: missile 1066 m away, impact in 3.7 s
+- 02:07 flare: dist_m=835.1, missile=wp_msl_C_39, reason=tracker, tgo_s=1.976
+- 02:07 missile warning: level=very near
+- 02:08 flare: dist_m=333.8, missile=wp_msl_C_39, reason=tracker, tgo_s=0.7662
+- 02:09 that missile lost its lock at 60 m
+- 02:09 missile warning: level=near
+- 02:09 missile warning: level=very near
+- 02:10 flare: dist_m=597, missile=wp_msl_C_40, reason=tracker, tgo_s=1.349
+- 02:11 that missile lost its lock at 70 m
+- 02:15 missile from 02_en_av8b_05 gone after 11 s, closest 64 m
+- 02:17 missile from 02_en_av8b_05 gone after 11 s, closest 74 m
+- 02:17 ground recovery: above_ground_m=863.7, alt_m=871.7, lowest_ahead_m=385.8, vz=-211.3
+- 02:21 missile warning: level=near
+- 02:21 missile fired at us by SAM_2 from 1155 m (infrared)
+- 02:21 missile fired at us by SAM_3 from 920 m (infrared)
+- 02:21 that missile lost its lock at 917 m
+- 02:21 missile from SAM_3 gone after 0 s, closest 916 m
+- 02:22 break turn: missile 991 m away, impact in 3.9 s
+- 02:22 ground recovery: above_ground_m=330.1, alt_m=376.3, lowest_ahead_m=84.04, vz=-83.04
+- 02:23 break turn: missile 868 m away, impact in 3.9 s
+- 02:23 missile warning: level=very near
+- 02:23 flare: dist_m=799.4, missile=wp_msl_SAM_C_100, reason=tracker, tgo_s=3.581
+- 02:23 missile fired at us by SAM_3 from 1159 m (infrared)
+- 02:24 took 1 damage, health 48
+- 02:24 took 1 damage, health 47
+- 02:24 flare: dist_m=467.7, missile=wp_msl_SAM_C_100, reason=tracker, tgo_s=1.542
+- 02:25 that missile lost its lock at 116 m
+- 02:25 missile warning: level=near
+- 02:26 missile warning: level=very near
+- 02:26 flare: dist_m=793.9, missile=wp_msl_SAM_C_103, reason=tracker, tgo_s=2.332
+- 02:27 flare: dist_m=339.8, missile=wp_msl_SAM_C_103, reason=tracker, tgo_s=0.8691
+- 02:27 missile fired at us by SAM_2 from 1227 m (infrared)
+- 02:27 missile fired at us by SAM_4 from 464 m (infrared)
+- 02:27 missile fired at us by SAM_3 from 1268 m (infrared)
+- 02:27 ground recovery: above_ground_m=256.3, alt_m=309.4, lowest_ahead_m=-45.91, vz=-36.61
+- 02:27 that missile lost its lock at 124 m
+- 02:28 flare: dist_m=916.1, missile=wp_msl_SAM_C_104, reason=tracker, tgo_s=1.975
+- 02:29 flare: dist_m=421, missile=wp_msl_SAM_C_104, reason=tracker, tgo_s=1.068
+- 02:30 that missile lost its lock at 102 m
+- 02:30 took 40 damage, health 7
+- 02:30 missile from SAM_4 gone after 3 s, closest 8 m
+- 02:30 flare: dist_m=132.3, missile=wp_msl_SAM_C_105, reason=tracker, tgo_s=0.5107
+- 02:31 that missile lost its lock at 119 m
+- 02:31 missile from SAM_2 gone after 10 s, closest 114 m
+- 02:32 missile warning: level=near
+- 02:32 missile fired at us by SAM_3 from 1163 m (infrared)
+- 02:32 missile fired at us by SAM_2 from 868 m (infrared)
+- 02:32 missile fired at us by SAM_4 from 1278 m (infrared)
+- 02:33 missile warning: level=very near
+- 02:33 flare: dist_m=796.2, missile=wp_msl_SAM_C_107, reason=tracker, tgo_s=5.945
+- 02:33 missile from SAM_3 gone after 10 s, closest 122 m
+- 02:33 break turn: missile 714 m away, impact in 3.9 s
+- 02:34 missile from SAM_2 gone after 7 s, closest 103 m
+- 02:34 missile from SAM_3 gone after 7 s, closest 118 m
+- 02:34 flare: dist_m=615.6, missile=wp_msl_SAM_C_107, reason=tracker, tgo_s=4.244
+- 02:35 flare: dist_m=366.5, missile=wp_msl_SAM_C_107, reason=tracker, tgo_s=1.404
+- 02:36 that missile lost its lock at 250 m
+- 02:36 flare: dist_m=213.9, missile=wp_msl_SAM_C_108, reason=tracker, tgo_s=0.6071
+- 02:37 that missile lost its lock at 151 m
+- 02:37 missile fired at us by SAM_3 from 1329 m (infrared)
+- 02:37 missile fired at us by SAM_4 from 2113 m (infrared)
+- 02:37 missile fired at us by SAM_2 from 943 m (infrared)
+- 02:38 flare: dist_m=249.4, missile=wp_msl_SAM_C_109, reason=tracker, tgo_s=0.5074
+- 02:38 that missile lost its lock at 69 m
+- 02:39 flare: dist_m=490, missile=wp_msl_SAM_C_110, reason=tracker, tgo_s=1.285
+- 02:40 that missile lost its lock at 21 m
+- 02:40 ground recovery: above_ground_m=258.1, alt_m=311.2, lowest_ahead_m=57.86, vz=-50.65
+- 02:40 flare: dist_m=324.9, missile=wp_msl_SAM_C_111, reason=tracker, tgo_s=0.5987
+- 02:41 that missile lost its lock at 33 m
+- 02:41 missile warning: level=near
+- 02:41 flare: dist_m=803.8, missile=wp_msl_SAM_C_112, reason=tracker, tgo_s=1.854
+- 02:41 missile warning: level=very near
+- 02:42 missile from SAM_4 gone after 10 s, closest 67 m
+- 02:42 missile from SAM_3 gone after 10 s, closest 154 m
+- 02:42 missile from SAM_2 gone after 10 s, closest 252 m
+- 02:42 flare: dist_m=259.6, missile=wp_msl_SAM_C_112, reason=tracker, tgo_s=0.5466
+- 02:43 missile fired at us by SAM_3 from 853 m (infrared)
+- 02:43 missile fired at us by SAM_2 from 576 m (infrared)
+- 02:43 missile fired at us by SAM_4 from 2073 m (infrared)
+- 02:43 that missile lost its lock at 48 m
+- 02:44 flare: dist_m=347.5, missile=wp_msl_SAM_C_101, reason=tracker, tgo_s=1.44
+- 02:45 that missile lost its lock at 117 m
+- 02:45 flare: dist_m=109.4, missile=wp_msl_SAM_C_113, reason=tracker, tgo_s=0.3524
+- 02:45 that missile lost its lock at 68 m
+- 02:45 missile warning: level=near
+- 02:46 flare: dist_m=987, missile=wp_msl_SAM_C_114, reason=tracker, tgo_s=1.573
+- 02:47 missile warning: level=very near
+- 02:47 flare: dist_m=444.4, missile=wp_msl_SAM_C_114, reason=tracker, tgo_s=0.8854
+- 02:47 missile from SAM_3 gone after 10 s, closest 32 m
+- 02:47 missile from SAM_2 gone after 10 s, closest 21 m
+- 02:47 missile from SAM_4 gone after 10 s, closest 55 m
+- 02:48 that missile lost its lock at 118 m
+- 02:52 missile warning: level=near
+- 02:52 missile fired at us by SAM_3 from 867 m (infrared)
+- 02:52 missile fired at us by SAM_4 from 1931 m (infrared)
+- 02:52 missile fired at us by SAM_3 from 934 m (infrared)
+- 02:52 missile fired at us by SAM_2 from 1318 m (infrared)
+- 02:52 that missile lost its lock at 1937 m
+- 02:52 that missile lost its lock at 1326 m
+- 02:53 missile from SAM_4 gone after 10 s, closest 123 m
+- 02:53 missile from SAM_3 gone after 10 s, closest 75 m
+- 02:53 missile from SAM_2 gone after 10 s, closest 117 m
+- 02:53 missile warning: level=very near
+- 02:53 flare: dist_m=798.5, missile=wp_msl_SAM_C_100, reason=tracker, tgo_s=7.302
+- 02:54 break turn: missile 752 m away, impact in 3.9 s
+- 02:55 flare: dist_m=624.5, missile=wp_msl_SAM_C_100, reason=tracker, tgo_s=3.014
+- 02:56 flare: dist_m=310.3, missile=wp_msl_SAM_C_100, reason=tracker, tgo_s=0.891
+- 02:56 that missile lost its lock at 94 m
+- 02:57 that missile lost its lock at 95 m
+- 02:58 phase failed: MissionPhase_02
+- 02:58 **objective failed**
+- 02:58 ground recovery: above_ground_m=442, alt_m=438, lowest_ahead_m=367.7, vz=-114.8
+- 03:00 how well enemy positions 2 s ahead were predicted: route planes: 1022 checks, the guess used was off by 8 m on average (each way: route 7 m, straight 28 m; now using route); steady planes: 887 checks, the guess used was off by 1 m on average (each way: full turn 1 m, half turn 1 m, straight 1 m; now using straight); turning planes: 347 checks, the guess used was off by 81 m on average (each way: full turn 117 m, half turn 78 m, straight 91 m; now using half turn)
+
+Files: events.jsonl (every event), attempt*-flight-*.csv (the plane ten times a second), pilot.log (the pilot's commentary), pictures\, saves-check.txt.

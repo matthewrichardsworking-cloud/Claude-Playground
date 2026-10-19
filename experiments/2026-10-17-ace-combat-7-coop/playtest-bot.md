@@ -3,6 +3,37 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (19 Oct 2026, 00:20): phase 3, terrain and mission gimmicks
+
+- **Your request (18 Oct, 19:00): see terrain and physical objects and adapt to missions'
+  special rules; prove it on Mission 14 (Cape Rainy).** Built (workbench section 14): a
+  terrain survey and height map from line traces, 600 times faster through the C++ add-on
+  (1.4 microseconds a ray); route planners for a canyon under a ceiling; a route-following
+  pilot for canyons; the mission's own objects read live (searchlights and their sweeps,
+  the altitude ceiling the game sets, the radio, the marks a mission puts on targets); and
+  **live beam dodging**: four times a second the pilot predicts where every nearby
+  searchlight will point when it gets there and changes speed, height or line to stay dark.
+- **Result: the bot flies Cape Rainy's 47 km night canyon on Hard** (unseen by about 70
+  sweeping searchlights, under the 550 m limit, no damage) at the first try in 4 of 6 cold
+  starts; both misses were the same searchlight, fixed at the end of the night.
+- **The base attack (your two ideas built in):** targets valued by the threat to our landing
+  party, chosen targets selected directly, one missile per target when one is enough and the
+  next target chosen at once (34 such shots in one run, 21 kills), Apaches opened out from
+  and come back at nose-on, breaks and flares only for missiles that would come close. The
+  landing team now lands 1.5 to 2 minutes into the attack in half the attempts. **Not
+  completed yet:** the reinforcement wave after the landing cannot be locked by the bot, nor
+  some SAM sites, although the game lists them as normal targets (workbench 14, finding 11:
+  everything ruled out so far, and the next step).
+- Also new: mini-games (aerial refuelling) skipped with the game's own skip; every radio line
+  logged; a failure report naming which searchlight or enemy caught the plane; menu choices
+  checked by reading which mission is selected; four game crashes traced to holding on to
+  game objects across a checkpoint restart, and none since the guard; plans per mission
+  (`playtests\missions\m14\plan.txt`) with `focus` and `cloudbase` options.
+- **Not built yet:** the story-mode flow for the campaign (cutscenes, results, debriefing,
+  hangar), plane and weapon choice, 3D "vision" with ray fans for tunnels and structures
+  (your Mission 04 and 06 tests). Next: a separate session runs the Ace campaign start to
+  finish (your OK of 18 Oct, 22:5x), and takes the lock problem first.
+
 ## Status (18 Oct 2026, 13:45)
 
 - **Working:** the bot took off, shot down all 19 enemy planes of Mission 01 on Casual

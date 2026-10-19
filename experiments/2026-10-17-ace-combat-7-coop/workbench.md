@@ -986,6 +986,169 @@ compatibility answer of 18 Oct: Skies Restored is the one of your 19 that edits 
 mode). To go back to the old loader exactly, copy the backup's `ModLoader\AC7ModLoader.exe`
 over the real one after removing Double Trigger.
 
+## 14. The bot sees terrain and mission gimmicks: Cape Rainy's canyon (18 Oct, 19:00 onwards)
+
+Your request: the bot should see and react in real time to terrain and other physical
+things, and adapt to missions' special rules; prove it on Mission 03 and on Mission 14
+(Cape Rainy Assault: a narrow valley, an altitude limit, nets of moving searchlights);
+then fly the campaign on Ace. Everything here was done in the copy. Double Trigger was
+switched off in the copy (your OK, 20:20; Vanilla mode in the copy's own Mod Loader, so
+`--vanilla off` puts it back); your real install was not touched.
+
+**What Mission 14 turned out to be (read from the game, not guessed).**
+
+- It opens with a night **aerial refuelling** mini-game. The mission's own
+  `Mission:SkipMiniGame` skips it; the pilot now does that by itself on the tanker's first
+  radio line (and for any other refuelling or landing mini-game).
+- The pilot now **hears the radio**: a hook on the subtitle widget's
+  `RadioMessageReceived` gives speaker and text of every line ("Keep altitude below 600
+  meters", "Searchlight up ahead", "Strider 1, I need you take out those enemies at the
+  LZ"). Every line goes into the event log.
+- **The altitude ceiling** is 550 m, not the 600 m the radio and the pause screen announce:
+  the mission hands it to the plane with `PlayerPlane:SetRestrictedAltitude(550)` (now
+  hooked), the plane's `IsOverRestrictedAltitude` switches on at 550 m, and staying above
+  it for a while fails the mission ("you've exceeded the altitude restriction... we've
+  lost the element of surprise"). The pilot takes the game's figure over the radio's and
+  also learns it from the flag.
+- **The map** (pictures in `playtests\missions\m14\`): everything is 600 to 2,300 m high
+  except one winding river canyon, 47 km from the start to the enemy base, 150 to 300 m
+  wide in its middle stretch at the heights a plane may use.
+- **73 searchlights** (`SystemObjectSearchLight`), about 60 along the canyon and the rest
+  at the base, plus two on helicopters. Each has its own sweep: side to side (yaw) or up and
+  down (pitch), between two ends, at 5 degrees a second (10 for a few), sometimes with a
+  pause at each end. Its detection volume is a thin cone, 1.5 degrees either side of the
+  beam (the collision mesh: 157 m wide at the end of a 3 km beam). The moment a beam touches
+  the plane the light locks on and tracks it, and about two seconds later "Spotted enemy
+  aircraft in the valley" fails the mission. The plane's own `IsInSearchLight` never
+  reported it. They light up as the plane approaches; Hard and Casual sweeps are the same
+  shape (Casual measured 4.7 degrees a second, Hard 5.0).
+- **Phase 2** is the attack on the air base: six enemy Apaches hover over the landing zone
+  where our transports (CH-47s) land, with AA guns and SAMs around; if the landing team is
+  overrun ("This is taking too long... Our boys had to surrender") the mission fails, on
+  Hard about three minutes into the phase.
+
+**What was built.**
+
+| Piece | What it does |
+|---|---|
+| Fast line traces (`cpp\CoopPadMod\trace.cpp`) | The engine's own line trace called directly from the C++ add-on (`CoopTrace_Line`, `CoopTrace_Ground`), through UE4SS's exported `UObject::ProcessEvent` with the parameter layout read from this build's object dump. **1.4 microseconds per trace** in flight, against 1.2 ms the same trace cost from a script: some 600 times faster, so the bot can afford thousands of rays a second. |
+| Terrain survey (`survey` order) | While the game is paused (a menu), a grid of traces over the whole map into a CSV: 247,561 points at 50 m in 25 s. `tools\terrain-map.py` draws it (ceiling, searchlights, flights, routes). |
+| Height map and look-ahead (`nav.lua`) | The survey (or live traces) as a height map; every 0.1 s the next 3.5 to 5 s of the path the plane would really fly is checked against the ground, the ceiling, other planes and the beams, and the nearest clear direction chosen if needed. |
+| Route planners (`tools\route-plan.py`, `tools\route3d.py`, `tools\route-heights.py`) | The middle of the open corridor under the ceiling (A* on a distance-to-wall map), with speeds from bend radius and width; a 3D version that chooses where AND at what height to fly, avoiding squares no height keeps dark; a height smoother. |
+| Beam sweeps (`gimmicks.lua`, `lights` order, `tools\beam-fans.py`) | Every searchlight's position, sweep, cone and reach read from the game; a recording of where each beam pointed ten times a second; from it each beam's two ends and speed, and for a helicopter's light a ring. |
+| Route following (`route.lua`) | The pilot follows a planned route like a driver looking down the road; for canyons a gentler controller (bank follows the sideways error up to 72 degrees, never upside down), height followed 150 m ahead separately from steering. |
+| **Live beam dodging** | Four times a second, for the next 2 km of route: where every nearby beam will point at the moment the plane reaches each point (its recorded sweep, its live place in it), for 63 combinations of speed (up to 200 km/h slower, 100 faster), height (40 m lower, 20 m higher) and a sideways shift (80 m either way, only where the walls leave room), starting from where the plane really is. The smallest change that keeps every point dark is flown. This is your "beams as moving terrain". |
+| Failure report | When a phase fails: which searchlight was tracking the plane and how far inside its cone the plane was, which enemies were near. |
+| Targets that matter | Enemies weighted by how close they are to our own ground units and transports (six times at 0 m), shooters before searchlights and fuel tanks, helicopters chased like planes. |
+| Runner plans (`playtests\missions\m14\plan.txt`) | A mission's plan: files for the pilot, orders per phase, retry from the start or the checkpoint per phase. The runner also now selects missions by reading which one the list's cursor is on, checks the loaded level (`ms14`), and knows the game sometimes restarts a phase by itself. |
+
+**What the tests showed, in order** (all in the copy, Mission 14).
+
+1. Flying straight north at 1,400 m from the start: "exceeded the altitude restriction", and
+   the ground there is 1,200 m: the canyon is the only way.
+2. First canyon flights (Casual): the old ground-safety check looks straight ahead and sees
+   the canyon wall in every bend, pulls up and flies into the wall; the old big-turn mode
+   rolled the plane on its back in a climbing bend. Both replaced for route flying. Then
+   **the whole 47.7 km canyon flown with no damage, phase 1 cleared**, all lights passed
+   (19:58, Casual).
+3. Phase 2 (Casual, twice): the base attack lost because the bot attacked searchlights and
+   flew slow ground-attack runs at hovering helicopters while the landing team was overrun.
+4. Hard: caught by searchlights at 8.8, 17, 18.3, 23, 28.2 and 40.3 km in successive tries,
+   each one teaching something (a beam level with the route, a dip cut short by looking
+   too far ahead, a helicopter's ring, a lamp passed at 74 m, a beam curtain crossed close
+   to its lamp), plus a stall (a long full pull at 480 km/h in a 55 degree bank) and a
+   too-eager stall guard that boosted the plane to 990 km/h (removed).
+5. **Hard, 21:38: the whole canyon flown unseen and undamaged with live dodging** (speed
+   changes, 40 m dips, 80 m sideways shifts past searchlights 21 and 22 and the dense nets
+   at the base), phase 1 cleared. Phase 2 lost again; then the target weighting above.
+6. Two game crashes during the base attack, both right after a target was destroyed, both
+   inside UE4SS while a pilot script ran; since then an object's kind is worked out once
+   and remembered, and the pilot touches nothing on the frame a kill is seen.
+7. **Unattended runs from the title screen** (the runner with the plan file, 22:04 onwards):
+   the canyon was cleared on Hard at the first try in 3 of the first 4 runs (22:04, 22:39,
+   23:01; at 21:58 a searchlight caught the plane); the runner then retries phase 2 from its
+   checkpoint. Phase 1 needs "Retry mission", not the checkpoint (after a
+   checkpoint retry the refuelling starts again mid-canyon).
+8. **Four game crashes** (20:10, 21:48, 22:17, 22:58), all in phase 2 after a checkpoint
+   retry or a kill. The cause: a retry replaces the planes, enemies and lights with new
+   ones, and the engine frees the old ones about a minute later; the pilot still held some
+   and read them, which crashes the game past any error guard. Now every object is checked
+   with UE4SS's `IsValid` (safe even on a freed object) before anything is read from it,
+   and the pilot forgets everything it held whenever the plane changes or a phase restarts.
+   **No crash since** (the 23:01 run: 8 phase 2 attempts and 23 minutes of fighting).
+9. **Your two ideas for phase 2.** (a) Neutralise what threatens the landing party first:
+   each enemy's value now counts how close it is to our ground units and transports (up to
+   7 times), what it is (tanks, APCs, attack helicopters 1.6 times), whether it fired at us,
+   and reinforcements ("zouen", the game's own word) 4 times; the bot then **selects the
+   chosen enemy directly** (it writes the game's `SelectedTarget`, as a player would after
+   pressing Tab until it comes up), keeps it at least 6 s, and drops it for a minute if it
+   will not lock. (b) **One missile per target when one is enough**: the target's health
+   is read before firing (Hard: helicopters, SAM sites, AA guns and APCs 40, tanks 60,
+   fighters 80; a standard missile does 40, the LAAM 80); if one missile kills it, the
+   target is set aside until the missile should arrive and the next one is selected at once
+   for the second missile. In the 23:01 run: 34 one-missile shots, 21 of those targets
+   destroyed (an Apache, a SAM site, a Harrier and an AA gun each went down to a single
+   missile within 3 s of each other in attempt 4).
+10. **How phase 2 really works** (attempt 4, 23:20 to 23:25, the best so far): the landing team
+    cannot land while the Apaches at the landing zone are alive ("hostiles are still near the
+    LZ! We can't make our approach!"); about 3.5 minutes after the phase starts the mission
+    fails ("This is taking too long... surrounded"). In attempt 4 the bot destroyed three
+    Apaches, two SAM sites and two jets in 3 minutes, and "Basilisk 1. Landing now! ... This
+    base is ours for the taking!" followed. Then the **reinforcements** arrive ("We've engaged
+    the enemy reinforcements"), and there are about 100 seconds to destroy them.
+11. **Why so many targets "would not lock": still open.** In attempts 5 to 8 the bot spent
+    minutes flying perfect attack runs at SAM sites (nose within 1 to 6 degrees, 2.4 km down to
+    1 km) without ever getting a lock, while the SAMs shot it down to 7 health. Ruled out one by
+    one by reading the game: the target's stealth (level 0 everywhere), visual identification
+    (switched on in this mission: 1.8 s at 500 m up to 15 s at 3.5 km, 3.5 times faster within
+    7 degrees of the nose, but every target was already identified), "needs detection" (off;
+    every target reads as detected), invincibility, the game not counting them as targets (they
+    are in its list of target candidates, none in its "untargetable" list), something in the
+    way (a ray from the plane to each SAM was clear), the game changing the selection back
+    (never), running out of missiles (over 100 left) and a lock height limit on the missile
+    (none). The first suspect was **clouds**: the SAM locks that worked came with the plane 200
+    to 430 m above the ground, the failed runs started 900 to 1,300 m up and dived through the
+    patchy cloud layer at 350 to 1,050 m, and the game has lock states for "locking in cloud".
+    So attack runs now stay under the lowest cloud the plane has met (learned from the game's
+    own `IsInCloud`, or given in a plan: `cloudbase 350`), and that did bring a SAM down from
+    200 m. But SAM_2 still did not lock from under the clouds (1.9 to 1.25 km, 1 to 2 degrees
+    off the nose, 140 to 230 m up), nor did a reinforcement APC nose-on at 1.4 km. What was
+    seen at that moment: the target selected, but **both of the game's lock "seekers" empty**
+    (one per loaded missile; with a lock they hold the target). Calling the game's own
+    `SelectTarget` did not fill them. A ray straight down onto each reinforcement vehicle hits
+    something about 6 m above it (nothing above the SAMs), so those may be parked under
+    shelters until they move. The next step is reading the game's own lock code (the
+    `read-game-code.py` tool, workbench section 8) for what fills a seeker.
+12. Also from attempts 5 to 8: the bot broke off its attack for every missile within 4 s, even
+    those predicted to miss by 500 to 1,400 m (100 breaks, 374 flares in one run). Now it breaks
+    only for a missile predicted to pass within 350 m (200 m on the last 2.5 km of an attack
+    run; 250 m and 120 m were tried and cost 117 health in under three minutes), and fires
+    flares only for a missile predicted within 200 m (on Hard they ran out 90 s into the base
+    attack). It chased Apaches at 200 to 700 m, far off the nose, for minutes; now a
+    helicopter that close and that far off the nose makes it open out to 1.6 km and come back
+    nose-on. When the game's lock sits on a different enemy worth at least half the chosen
+    one, it fires at that one instead of holding its missiles. A plan can name what matters
+    most in a mission (`focus ah64_00,zouen`: 6 times the value; adding the SAM sites made the
+    bot fly low runs into their fire and was dropped). The searchlight planner now picks the
+    option with the most real clearance when none stays fully dark (at 23:49 it chose "no
+    dip" 280 m from a lamp and climbed into the beam it was passing under).
+13. **The last run (23:44 to 00:2x, 10 attempts) with all of the above.** The canyon: caught
+    once more by searchlight 01 (fixed afterwards, see 12), then cleared at the next try in
+    5 minutes. The base attack: the Apaches at the landing zone now go down to single LAAM shots
+    from 2 to 3 km, and **the landing team landed in 3 of the first 6 attempts, 1.5 to 2
+    minutes in** ("Strider 1! Target destroyed!", "Basilisk 1. Landing now! ... This base is
+    ours for the taking!"), against once in the 8 attempts before. Each time the reinforcement
+    wave then could not be stopped: its vehicles never locked, and the plane was shot down
+    while trying (SAM sites and AA guns at low level; on Hard the flares ran out early until
+    they were rationed). A 330 m ceiling for the whole fight (to stay under the clouds) was
+    tried and removed: the ceiling keeper, made for level canyon flight, pushed a plane rolling
+    in a dogfight into the ground (attempt 10). A hook on the mission's `SetHudBoxAttribute` (a mission can mark a
+    target "cannot be locked", a fake box, or highlighted) caught the mission highlighting our
+    own transports and landing team, but no "cannot be locked" mark on the SAMs or the
+    reinforcements at the start of the phase. **Mission 14 on Hard is therefore not completed
+    yet**; what stops it is the lock problem in 11, which the campaign session takes on first
+    because any mission with targets like these would stop the bot the same way.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

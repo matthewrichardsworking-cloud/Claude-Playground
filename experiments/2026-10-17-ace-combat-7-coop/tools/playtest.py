@@ -108,9 +108,14 @@ def picture(path):
                     "-Keys", "Shift", "-Screenshot", path], capture_output=True, text=True)
 
 
-def status():
+def status(max_age=5.0):
+    """The pilot's newest snapshot; {} if there is none or it is older than max_age seconds
+    (a file left over from an earlier run says nothing about now)."""
+    path = os.path.join(PILOT_DIR, "status.json")
     try:
-        with open(os.path.join(PILOT_DIR, "status.json"), "r", encoding="utf-8") as f:
+        if max_age is not None and time.time() - os.path.getmtime(path) > max_age:
+            return {}
+        with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     except (OSError, ValueError):
         return {}
@@ -220,12 +225,17 @@ def goto_mission(mission=1, difficulty="casual", from_title=True, folder=None):
     if p in PREP:
         say("already in Mission Prep or the hangar: carrying on from there")
         return prep_and_sortie(fail)
+    if p == "CampaignFreeMission_C":
+        # back from a mission (or a quit): the mission list; Escape goes back one page
+        say("on the mission list: Escape back to the difficulty list")
+        press_until("Escape", ("CampaignFreeMissionDifficulty_C",), tries=3, wait_s=4)
+        p = page()
     if p not in ("CampaignMenuMain_C",) + STORY and p not in ("CampaignFreeMissionDifficulty_C", "CampaignFreeMission_C"):
-        if from_title or p in (None, "MainTitle_C"):
+        if p in (None, "MainTitle_C"):
             say("title screen: Enter")
             keys(["Enter"], wait_ms=7000)
         say("main menu: Campaign")
-        if press_until("Enter", ("CampaignMenuMain_C",), tries=3, wait_s=5) != "CampaignMenuMain_C":
+        if press_until("Enter", ("CampaignMenuMain_C",), tries=6, wait_s=4) != "CampaignMenuMain_C":
             fail("Campaign did not open")
     for round_ in range(3):
         p = page()
@@ -257,6 +267,9 @@ def goto_mission(mission=1, difficulty="casual", from_title=True, folder=None):
     d = DIFFICULTIES.index(difficulty.lower())
     say(f"difficulty: {difficulty}")
     time.sleep(1.0)
+    # the cursor may remember the last choice: to the top first (the list does not wrap)
+    keys(["Up"] * 7, gap_ms=180)
+    time.sleep(0.4)
     for _ in range(d):
         keys(["Down"], wait_ms=500)
     keys(["Enter"])
@@ -264,18 +277,39 @@ def goto_mission(mission=1, difficulty="casual", from_title=True, folder=None):
         fail("the mission list did not open")
     say(f"mission {mission:02d}")
     time.sleep(1.5)
-    for _ in range(mission - 1):
-        keys(["Down"], wait_ms=400)
+    # the pilot reports which mission the cursor is on (the list's picture, missionThum_cpNN);
+    # move until it is the wanted one (the cursor remembers the last mission played)
+    for _ in range(45):
+        cur = status().get("menu_mission")
+        if cur == mission:
+            break
+        if not isinstance(cur, int):
+            time.sleep(0.5)
+            continue
+        keys(["Down" if cur < mission else "Up"], wait_ms=700)
+    else:
+        fail(f"could not put the cursor on mission {mission} (it says {status().get('menu_mission')})")
     keys(["Enter"])
     if not free_flight:
         if wait_page(("CampaignMissionTitle_C", "CampaignMV_C", "CampaignBriefingMV_C"), 12) is None:
             fail("the briefing did not start")
         say("briefing: Escape until the operation map shows")
-        for n in range(200):
-            if page() == "CampaignBriefingMenu_C":
-                say(f"operation map after {n} Escape presses")
+        briefing = ("CampaignMissionTitle_C", "CampaignMV_C", "CampaignBriefingMV_C")
+        presses = 0
+        for n in range(260):
+            # a fresh reading every time (the status is written twice a second): Escape only
+            # while a briefing page shows, so the operation map is never escaped past
+            time.sleep(0.6)
+            p = page()
+            if p == "CampaignBriefingMenu_C":
+                say(f"operation map after {presses} Escape presses")
                 break
-            keys(["Escape"], wait_ms=900)
+            if p in briefing:
+                keys(["Escape"], wait_ms=300)
+                presses += 1
+            elif p == "CampaignFreeMission_C":
+                say("escaped back to the mission list: in again")
+                keys(["Enter"], wait_ms=1500)
         else:
             fail("the briefing did not end")
         time.sleep(2.0)
@@ -312,18 +346,31 @@ def prep_and_sortie(fail):
         if page() != "CampaignHangarReview_C":
             break
     s = wait_status(lambda s: s.get("plane"), 150, "the mission to load")
-    say(f"mission loaded, plane {s.get('plane')}")
+    say(f"mission loaded ({s.get('mission_level')}), plane {s.get('plane')}")
     s = wait_status(plane_ready, 150, "the controls to switch on")
     say(f"controls on: {s.get('kmh')} km/h at {s.get('alt_m')} m")
     return s
 
 
 def retry(how):
-    """On the retry menu after a failed attempt: from the checkpoint (fast) or the start."""
+    """On the retry menu after a failed attempt: from the checkpoint (fast) or the start.
+    Returns False when the game restarted the phase by itself (no menu to press)."""
     say(f"retry ({how})")
     # After "Mission failed" the game first shows the crash for several seconds; the retry
-    # menu (Retry from checkpoint / Retry mission / Quit mission) comes after that.
+    # menu (Retry from checkpoint / Retry mission / Quit mission) comes after that. Some
+    # failures (Mission 14: "you've alerted the enemy") restart the phase by themselves
+    # instead: then the plane flies on and no key must be pressed.
     time.sleep(8)
+    deadline = time.time() + 12
+    while time.time() < deadline:
+        s = status()
+        if s.get("failed"):
+            break
+        if plane_ready(s) and not s.get("failed"):
+            say("the game restarted the phase by itself")
+            return False
+        time.sleep(1)
+    keys(["Up", "Up", "Up"], gap_ms=250, wait_ms=400)   # the cursor may remember the last choice
     if how == "mission":
         keys(["Down"], wait_ms=800)
     for _ in range(8):
@@ -332,14 +379,120 @@ def retry(how):
         if not s.get("failed") and not s.get("plane"):
             break                      # the restart is loading
         if plane_ready(s) and not s.get("failed"):
-            return
+            return True
     wait_status(lambda s: plane_ready(s) and not s.get("failed"), 150, "the retried mission to start")
+    return True
+
+
+# ---- mission plans -------------------------------------------------------------------
+# A plan (playtests\missions\mNN\plan.txt) says what the pilot is told during a mission
+# with special rules, phase by phase, and how to retry each phase. Its lines:
+#
+#   file <name>                     copy playtests\missions\mNN\<name> to the pilot's missions folder
+#   start:                          commands for a fresh start (or "Retry mission")
+#   phase <PhaseName>:              commands when the mission starts that phase (or the
+#                                   attempt begins at its checkpoint)
+#   retry <PhaseName> mission|checkpoint
+#   commands (indented, under start: or phase ...:):
+#     pilot <order words>           an order to the pilot ({missions} = its missions folder)
+#     wait event <kind> [seconds]   until the pilot logs that event in this attempt
+#     wait radio <text> [seconds]   until a radio line contains the text
+#     sleep <seconds>
+MISSIONS_DIR = os.path.join(PILOT_DIR, "missions")
+
+
+def read_plan(path):
+    plan = {"blocks": {}, "retry": {}, "files": [], "folder": os.path.dirname(os.path.abspath(path))}
+    block = None
+    with open(path, "r", encoding="utf-8") as f:
+        for raw in f:
+            line = raw.split("#", 1)[0].rstrip()
+            if not line.strip():
+                continue
+            words = line.split()
+            if not raw.startswith((" ", "\t")):
+                if words[0] == "file":
+                    plan["files"].append(words[1]); block = None
+                elif words[0] == "start:":
+                    block = "start"; plan["blocks"][block] = []
+                elif words[0] == "phase" and line.endswith(":"):
+                    block = words[1].rstrip(":"); plan["blocks"][block] = []
+                elif words[0] == "retry":
+                    plan["retry"][words[1]] = words[2]; block = None
+                else:
+                    raise ValueError(f"plan {path}: did not understand '{line.strip()}'")
+            elif block is not None:
+                plan["blocks"][block].append(line.strip().replace("{missions}", MISSIONS_DIR))
+    return plan
+
+
+def install_plan_files(plan):
+    os.makedirs(MISSIONS_DIR, exist_ok=True)
+    for name in plan["files"]:
+        shutil.copy2(os.path.join(plan["folder"], name), os.path.join(MISSIONS_DIR, name))
+
+
+class PlanRunner:
+    """Runs a plan's commands one by one inside the attempt's watch loop (never blocks it)."""
+
+    def __init__(self, plan, ev_start):
+        self.plan, self.ev_start = plan, ev_start
+        self.queue, self.waiting, self.phases_seen = [], None, 0
+        self.log = []
+
+    def add_block(self, name):
+        cmds = self.plan["blocks"].get(name)
+        if cmds:
+            say(f"  plan: {name} ({len(cmds)} commands)")
+            self.queue.extend(cmds)
+
+    def tick(self, evs):
+        # new phases started: queue their blocks
+        starts = [e for e in evs if e.get("kind") == "phase_start"]
+        for e in starts[self.phases_seen:]:
+            self.add_block(e.get("phase"))
+        self.phases_seen = len(starts)
+        while self.queue:
+            cmd = self.queue[0]
+            w = cmd.split()
+            if w[0] == "pilot":
+                order(*w[1:]); self.log.append(cmd); self.queue.pop(0); continue
+            if w[0] == "sleep":
+                if self.waiting is None:
+                    self.waiting = time.time() + float(w[1])
+                if time.time() < self.waiting:
+                    return
+                self.waiting = None; self.queue.pop(0); continue
+            if w[0] == "wait":
+                if self.waiting is None:
+                    self.waiting = (time.time(), len(evs))
+                t_from, n_from = self.waiting
+                limit = float(w[-1]) if w[-1].replace(".", "", 1).isdigit() else 60.0
+                text = " ".join(w[2:-1] if w[-1].replace(".", "", 1).isdigit() else w[2:]).lower()
+                found = False
+                for e in evs[n_from:]:
+                    if w[1] == "event" and e.get("kind") == text:
+                        found = True
+                    elif w[1] == "radio" and e.get("kind") == "radio" and text in (e.get("text") or "").lower():
+                        found = True
+                if found or time.time() - t_from > limit:
+                    say(f"  plan: {cmd} -> {'seen' if found else 'gave up waiting'}")
+                    self.waiting = None; self.queue.pop(0); continue
+                return
+            say(f"  plan: unknown command '{cmd}', skipped")
+            self.queue.pop(0)
+
+
+def current_phase(evs):
+    starts = [e.get("phase") for e in evs if e.get("kind") == "phase_start"]
+    return starts[-1] if starts else None
 
 
 # ---- one attempt ---------------------------------------------------------------------
 
-def fly_attempt(n, order_, folder, limit_s):
-    """Fly until the mission is accomplished, fails, or the time limit passes."""
+def fly_attempt(n, order_, folder, limit_s, plan=None, entry="start"):
+    """Fly until the mission is accomplished, fails, or the time limit passes. With a plan,
+    the pilot's orders come from it, starting with block 'entry'."""
     ev_start = file_size(os.path.join(PILOT_DIR, "events.jsonl"))
     log_start = file_size(os.path.join(PILOT_DIR, "pilot.log"))
     t0 = time.time()
@@ -356,17 +509,24 @@ def fly_attempt(n, order_, folder, limit_s):
                 break
             time.sleep(1)
     tactics = order_.get("tactics") or {}
-    words = ["fly", "attack"]
-    if "floor_m" in tactics:
-        words += ["floor", tactics["floor_m"]]
-    if "missile_range_m" in tactics:
-        words += ["range", tactics["missile_range_m"]]
-    order(*words)
+    runner = None
+    if plan:
+        runner = PlanRunner(plan, ev_start)
+        runner.add_block(entry)
+    else:
+        words = ["fly", "attack"]
+        if "floor_m" in tactics:
+            words += ["floor", tactics["floor_m"]]
+        if "missile_range_m" in tactics:
+            words += ["range", tactics["missile_range_m"]]
+        order(*words)
     result, cause = None, None
     last_report = 0
     while True:
-        time.sleep(2)
+        time.sleep(1 if runner else 2)
         evs = events_from(ev_start)
+        if runner:
+            runner.tick(evs)
         kinds = [e.get("kind") for e in evs]
         if "mission_accomplished" in kinds:
             result, cause = "completed", "mission accomplished"
@@ -406,10 +566,18 @@ def fly_attempt(n, order_, folder, limit_s):
             if os.path.getmtime(p) >= t0 - 1:
                 shutil.copy2(p, os.path.join(folder, f"attempt{n}-{name}"))
     return {"n": n, "result": result, "cause": cause, "duration_s": duration, "started": started,
-            "events": evs, "final": status()}
+            "events": evs, "final": status(), "phase": current_phase(evs)}
 
 
 # ---- the report ----------------------------------------------------------------------
+
+def fnum(v, default=0.0):
+    """A number from an event field (an event can carry null, e.g. a missile never near)."""
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return default
+
 
 def write_report(folder, order_, attempts, notes):
     lines = []
@@ -433,7 +601,7 @@ def write_report(folder, order_, attempts, notes):
         ev = a["events"]
         kills = [e for e in ev if e.get("kind") == "kill"]
         shots = sum(1 for e in ev if e.get("kind") == "missile")
-        dmg = sum(float(e.get("amount", 0)) for e in ev if e.get("kind") == "damage")
+        dmg = sum(fnum(e.get("amount")) for e in ev if e.get("kind") == "damage")
         launched = [e for e in ev if e.get("kind") == "launch"]
         if launched:   # real launches counted from the ammunition (limited on Normal and up)
             shots = sum(int(e.get("n", 1)) for e in launched if e.get("weapon") == "missile")
@@ -457,27 +625,27 @@ def write_report(folder, order_, attempts, notes):
             stamp = f"{int(rel // 60):02d}:{int(rel % 60):02d}"
             if k == "kill":
                 lines.append(f"- {stamp} destroyed {e.get('target')} {e.get('callsign', '')} "
-                             f"({e.get('missiles')} missiles, {float(e.get('after_s', 0)):.0f} s after picking it)")
+                             f"({e.get('missiles')} missiles, {fnum(e.get('after_s')):.0f} s after picking it)")
             elif k == "damage":
-                lines.append(f"- {stamp} took {float(e.get('amount', 0)):.0f} damage, health {e.get('health')}")
+                lines.append(f"- {stamp} took {fnum(e.get('amount')):.0f} damage, health {e.get('health')}")
             elif k in ("phase_start", "phase_cleared", "phase_failed"):
                 lines.append(f"- {stamp} {k.replace('_', ' ')}: {e.get('phase')}")
             elif k in FAIL_EVENTS or k == "mission_accomplished":
                 lines.append(f"- {stamp} **{k.replace('_', ' ')}**")
             elif k == "missile_at_me":
-                lines.append(f"- {stamp} missile fired at us by {e.get('from')} from {float(e.get('dist_m', 0)):.0f} m ({e.get('homing')})")
+                lines.append(f"- {stamp} missile fired at us by {e.get('from')} from {fnum(e.get('dist_m')):.0f} m ({e.get('homing')})")
             elif k == "missile_lost_lock":
-                lines.append(f"- {stamp} that missile lost its lock at {float(e.get('dist_m', 0)):.0f} m")
+                lines.append(f"- {stamp} that missile lost its lock at {fnum(e.get('dist_m')):.0f} m")
             elif k == "missile_gone":
-                lines.append(f"- {stamp} missile from {e.get('from')} gone after {float(e.get('flew_s', 0)):.0f} s, closest {float(e.get('closest_m', 0)):.0f} m")
+                lines.append(f"- {stamp} missile from {e.get('from')} gone after {fnum(e.get('flew_s')):.0f} s, closest {fnum(e.get('closest_m')):.0f} m")
             elif k == "evade":
-                lines.append(f"- {stamp} break turn: missile {float(e.get('dist_m', 0)):.0f} m away, impact in {float(e.get('tgo_s', 0)):.1f} s")
+                lines.append(f"- {stamp} break turn: missile {fnum(e.get('dist_m')):.0f} m away, impact in {fnum(e.get('tgo_s')):.1f} s")
             elif k == "weapon_switch":
-                lines.append(f"- {stamp} weapon switch to {e.get('to')} ({e.get('why')}, target {float(e.get('dist_m', 0)):.0f} m)")
+                lines.append(f"- {stamp} weapon switch to {e.get('to')} ({e.get('why')}, target {fnum(e.get('dist_m')):.0f} m)")
             elif k == "prediction_stats":
                 lines.append(f"- {stamp} how well enemy positions 2 s ahead were predicted: {e.get('text')}")
             elif k == "pursuer":
-                lines.append(f"- {stamp} {e.get('enemy')} is after us, {float(e.get('dist_m', 0)):.0f} m behind ({e.get('state')})")
+                lines.append(f"- {stamp} {e.get('enemy')} is after us, {fnum(e.get('dist_m')):.0f} m behind ({e.get('state')})")
             elif k in ("takeoff_end", "ground_recovery", "beyond_pullout", "frozen", "missile_warning", "flare"):
                 detail = ", ".join(f"{x}={y}" for x, y in e.items() if x not in ("t", "kind", "clock", "attempt"))
                 lines.append(f"- {stamp} {k.replace('_', ' ')}{(': ' + detail) if detail else ''}")
@@ -502,6 +670,10 @@ def run(order_path):
     attempts_max = int(order_.get("attempts", 3))
     limit_s = float(order_.get("time_limit_min", 25)) * 60
     how = str(order_.get("retry", "checkpoint"))
+    plan = None
+    if order_.get("plan"):
+        plan = read_plan(os.path.join(ROOT, str(order_["plan"])))
+        install_plan_files(plan)
     notes = []
     if order_.get("plane"):
         notes.append(f"Plane '{order_['plane']}' asked for, but choosing planes is not built yet: the copy's last-used plane flew.")
@@ -535,19 +707,31 @@ def run(order_path):
             notes.append("The copy was already in a mission when the test began; the test flew from there.")
         else:
             goto_mission(mission, difficulty, from_title=bool(order_.get("from_title", False)), folder=folder)
+        entry = "start"
+        # the phase the mission is in: phases start before an attempt does (at loading), so
+        # it is carried from attempt to attempt; at first, the plan's first phase
+        phase_now = next(iter(plan["retry"]), None) if plan else None
         for n in range(1, attempts_max + 1):
-            a = fly_attempt(n, order_, folder, limit_s)
+            a = fly_attempt(n, order_, folder, limit_s, plan, entry)
             attempts.append(a)
             if a["result"] == "completed":
                 break
+            phase_now = a.get("phase") or phase_now
             if n < attempts_max:
+                this_how = how
+                if plan and phase_now in plan["retry"]:
+                    this_how = plan["retry"][phase_now]
+                # where the next attempt begins: the failed phase's checkpoint, or the start
+                entry = (phase_now or "start") if this_how == "checkpoint" else "start"
+                if entry == "start":
+                    phase_now = next(iter(plan["retry"]), None) if plan else None
                 if a["result"] == "stopped":
                     keys(["Escape"], wait_ms=1500)      # pause menu: Restart from checkpoint is second
                     keys(["Down"], wait_ms=800)
                     keys(["Enter"], wait_ms=3000)
                     wait_status(lambda s: plane_ready(s), 150, "the restarted mission")
-                else:
-                    retry(how)
+                elif not retry(this_how):
+                    entry = phase_now or "start"           # restarted by the game: that phase's block
     finally:
         if attempts:
             write_report(folder, order_, attempts, notes)

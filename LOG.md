@@ -2,6 +2,30 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18/19: Ace Combat 7 co-op, playtest bot phase 3: terrain and mission gimmicks
+
+- Owner's request: the bot should see terrain and physical objects and adapt to missions'
+  special rules; prove it on Mission 14 (Cape Rainy Assault: night canyon, 550 m ceiling,
+  ~70 sweeping searchlights). All in the game copy; Double Trigger switched off there with
+  the owner's OK; the real install untouched; saves checked after every run.
+- Built: the engine's own line trace called from the C++ add-on (1.4 us per ray, ~600x the
+  script route); terrain survey and height map; canyon route planners (2D and 3D); a canyon
+  route-following controller; searchlight sweeps read from the game and recorded; live beam
+  dodging (speed/height/sideways, four times a second); radio hook, mini-game skip, the
+  game's real ceiling via a hook; runner plans per mission; menu selection checked by reading
+  the game.
+- Owner's tactical ideas built in: protect the landing party first (threat-to-allies
+  weighting, direct target selection); one missile per target when one suffices, then
+  switch at once (34 such shots in one run, 21 kills).
+- Results: the canyon on Hard cleared at the first try in 4 of 6 cold starts (both misses
+  the same searchlight, fixed). Base attack: the landing team now lands in about half the
+  attempts; the mission is not completed because the reinforcement wave and some SAM sites
+  never lock, although the game lists them as normal targets (stealth, identification,
+  detection, line of sight, ammo, selection, mission lock marks all ruled out). Four game
+  crashes traced to reading freed objects after checkpoint restarts; none after the fix.
+- Next: a separate session flies the Ace campaign from the start (owner's OK), taking the
+  lock problem first. Write-up: workbench section 14 of the experiment.
+
 ## 2026-10-19: F.E.A.R. / LithTech playbook + GOG setup
 
 - Owner confirmed F.E.A.R. is **GOG** (DRM-free), and that the official **F.E.A.R. Public Tools v1.08 SDK**

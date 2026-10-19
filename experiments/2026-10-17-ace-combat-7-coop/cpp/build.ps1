@@ -93,9 +93,15 @@ foreach ($mod in $Mods) {
     $dir = Join-Path $out $mod
     New-Item -ItemType Directory -Force -Path $dir | Out-Null
     "`n=== $mod"
-    & cl @cflags @defines @includes "/Fo$dir\dllmain.obj" "/Fd$dir\main.pdb" /c $src
-    if ($LASTEXITCODE) { throw "compiling $mod failed" }
-    & link @ldflags "/OUT:$dir\main.dll" "/PDB:$dir\main.pdb" "$dir\dllmain.obj" $lib kernel32.lib user32.lib ws2_32.lib
+    # every .cpp in the mod's folder (CoopPadMod has trace.cpp next to dllmain.cpp)
+    $objs = @()
+    foreach ($s in (Get-ChildItem (Join-Path $cpp $mod) -Filter *.cpp)) {
+        $obj = Join-Path $dir ($s.BaseName + '.obj')
+        & cl @cflags @defines @includes "/Fo$obj" "/Fd$dir\main.pdb" /c $s.FullName
+        if ($LASTEXITCODE) { throw "compiling $mod ($($s.Name)) failed" }
+        $objs += $obj
+    }
+    & link @ldflags "/OUT:$dir\main.dll" "/PDB:$dir\main.pdb" @objs $lib kernel32.lib user32.lib ws2_32.lib
     if ($LASTEXITCODE) { throw "linking $mod failed" }
     $f = Get-Item "$dir\main.dll"
     "built $($f.FullName) ($($f.Length) bytes, $(Get-FileHash -Algorithm SHA256 $f | Select-Object -ExpandProperty Hash))"
