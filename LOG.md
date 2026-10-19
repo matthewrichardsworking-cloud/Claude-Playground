@@ -21,6 +21,7 @@ Newest first. One short entry per session.
 - Snags: `claude plugin marketplace remove` run inside the repo also emptied the repo's settings file (CI's
   `check.sh` now catches that); `claude -p` test runs share the parent session's environment file (start them
   with `env -u CLAUDE_CODE_SESSION_ID`); a 4-core container runs two workflow agents at a time.
+
 ## 2026-10-18: Ace Combat 7 co-op, Double Trigger in the owner's real install (one-time exception)
 
 - The owner lifted the "never touch the real install" rule for this one install, asking for
