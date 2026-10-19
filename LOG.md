@@ -2,6 +2,24 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19: F.E.A.R. / LithTech playbook + GOG setup
+
+- Owner confirmed F.E.A.R. is **GOG** (DRM-free), and that the official **F.E.A.R. Public Tools v1.08 SDK**
+  is in their PC `Claude Tools` folder (not logged here before; cloud can't see it — a PC session should
+  confirm the path). Studied the public references read-only; wrote the first LithTech playbook anywhere:
+  `experiments/2026-10-19-fear-lithtech/` (README, playbook.md, setup.md). Nothing installed.
+- GOG matters: DRM-free, exe already Large Address Aware, so the Steam 4GB/LAA-strip prompt never appears
+  and there's nothing to strip (verified in EchoPatch's LAAPatcher). GOG-only gotcha: `dxwrapper.ini`
+  `LimitPerFrameFPS` caps at 60 — set to 0 or the fix pack's smoothness fixes stay off.
+- Routes: (1) EchoPatch fix pack (GPL-3, 4.3.0, officially supports GOG Platinum — two files by FEAR.exe);
+  (2) data/archive edits via the SDK's GDBEdit/ArchiveEdit (+ loose-file/`-archcfg` override, no open
+  repacker); (3) the SDK game source (ObjectDLL GOAP AI, ClientShellDLL) — **blocked by a VC7.1/VS2003 ABI
+  requirement** for the DLLs; (4) custom MinHook proxy-DLL hooks, but no GOG address map is published.
+- Honest: F.E.A.R. retail had **no co-op** (CServerMissionMgr only; NOLF2's CoopMissionMgr is the template) —
+  co-op is an unbuilt source-level job. `.world00p` level objects are readable via io_scene_jupex (MIT,
+  Amphos); AI nav mesh is not. Archives read by Game Extractor; SDK EULA keeps SDK-derived code off the repo.
+- Credits/licences in the folder. Hands-on work is for a PC session (game + SDK live there).
+
 ## 2026-10-19: game-file toolbox (UAssetGUI, Game Extractor, apitrace)
 
 - Next shortlist cluster: three read-only file tools for the PC. Studied in the sandbox;
