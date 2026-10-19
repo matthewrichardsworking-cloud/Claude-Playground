@@ -2,6 +2,22 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19: game-file toolbox (UAssetGUI, Game Extractor, apitrace)
+
+- Next shortlist cluster: three read-only file tools for the PC. Studied in the sandbox;
+  `experiments/2026-10-19-game-file-tools/` has setup + usage. No plugins to pin (plain downloads).
+- UAssetGUI (atenfyr, MIT, v1.1.0, needs .NET Desktop Runtime 8.0): reads/edits Unreal `.uasset`, converts
+  to/from JSON, and has built-in **AC7 asset decryption**. Trap recorded: opening an AC7 asset in the GUI
+  decrypts it **in-situ** (overwrites the file) — always work on copies, never the live install. CLI `tojson`
+  does not auto-decrypt AC7.
+- Game Extractor (wattostudios, GPL-2, v3.16.0008, bundles its own Java): opens game archives; reads
+  F.E.A.R.'s `.Arch00` by name; AC7 `.pak` generically. Headless `-list -format JSON` / `-extract`; neither
+  modifies the source. Avoid the GUI "replace" path. Pin >= .0008 (path-traversal fix in .0007).
+- apitrace (MIT, v14.0): records a game's graphics calls (F.E.A.R. = 32-bit D3D9, win32 `d3d9.dll` wrapper)
+  and `apitrace dump` reads the trace to text (runs even in the cloud). Record offline single-player only —
+  a wrapper DLL beside a game reads like tampering to anti-cheat.
+- None publishes a checksum; download from official pages only. All read/convert/trace only.
+
 ## 2026-10-19: assimilated WinDbg and Detect It Easy (the two "do next" tools)
 
 - From the shortlist. Both run on the PC, not the cloud. Studied read-only in the sandbox;
