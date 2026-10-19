@@ -3,6 +3,29 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (19 Oct 2026, 01:15): phase 4, the Ace campaign
+
+- **The lock problem is solved** (workbench section 15). The bot used to write its chosen
+  target straight into the game's "selected target" field; the game's own lock "seekers" are
+  only handed a target by the game's own select call (what Tab does), so targets the game's
+  cycle never offered never locked. Now the bot selects through that call. In Mission 14 on
+  Hard the SAM sites and the reinforcement vehicles that never locked last night all locked and
+  fell (27 kills in the best attempt); what is left there is speed against the waves.
+- New readings: each target's lock-on mark (read from memory by a new read-only call in the
+  C++ add-on), its "mission special object" flag, each lock seeker's target and state; menu
+  titles and the selected item's description, yes/no dialogs and their selected option, the
+  hangar's plane and special weapon under the cursor. A `locks` order lists every enemy with
+  what decides whether it can be locked.
+- **The story campaign runs**: `python tools\campaign.py run playtests\orders\campaign-ace.yaml`
+  drives Restart Story / Continue, the difficulty list, movie skips (F1), briefings, the
+  operation map, the hangar (plane and special weapon by name, per mission in
+  `playtests\missions\mNN\mission.txt`), the take-off and the mission with its retries, and
+  writes one report per mission plus a line in `playtests\campaign-ace.md`. The story was
+  restarted on Ace at 01:06 (the copy's own save only).
+- **3D vision** (`vision.lua`, for your Mission 04 and 06 tests): a fan of 165 rays twenty
+  times a second, free directions with room for the wings, and corridor centring between
+  walls; switched on with `vision on` in a fly order. Not flown yet.
+
 ## Status (19 Oct 2026, 00:20): phase 3, terrain and mission gimmicks
 
 - **Your request (18 Oct, 19:00): see terrain and physical objects and adapt to missions'

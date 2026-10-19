@@ -1,0 +1,4 @@
+# Mission 03 Two-pronged Strategy (story, Ace; level ms03): first flight of it by the bot.
+# 8AGM for ground targets, standard missiles for the rest (the 8AGM worked in Mission 02).
+plane: Typhoon
+weapon: 8AGM

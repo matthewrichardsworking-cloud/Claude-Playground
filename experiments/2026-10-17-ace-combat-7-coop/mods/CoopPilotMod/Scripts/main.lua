@@ -190,6 +190,12 @@ local okRoute, Route = pcall(function()
 end)
 if not okRoute then log("route.lua did not load: " .. tostring(Route)); Route = nil end
 
+-- Seeing in 3D with fans of rays, for structures and tunnels (vision.lua, 19 Oct 2026)
+local okVis, Vision = pcall(function()
+    return require("vision")({ log = log, event = event, now = now })
+end)
+if not okVis then log("vision.lua did not load: " .. tostring(Vision)); Vision = nil end
+
 -- The mission's special objects: searchlights, radar areas, the altitude ceiling (gimmicks.lua)
 local okGim, Gim = pcall(function()
     return require("gimmicks")({ log = log, event = event, now = now, call = call, objName = objName })
@@ -227,9 +233,13 @@ end
 -- Which menu page is showing. The menus live inside one front-screen widget, so a page
 -- is recognised by its own widget being visible (mapped 18 Oct 2026, workbench section 10).
 local PAGES = {   -- most specific first
+    -- in a mission: the retry menu after a failure, the pause menu, the replay after success
+    "CampaignRetry_C", "CampaignHudPause_C", "ReplayWidget_C",
+    -- after a story mission: the results (with the debriefing replay) and the "mission complete" menu
+    "CampaignDebriefing_C", "CampaignMenuNext_C",
     "CampaignHangarReview_C", "CampaignHangarWeapon_C", "CampaignHangarAircraft_C", "CampaignMenuActionSelect_C",
     "CampaignBriefingMenu_C", "CampaignMissionTitle_C", "CampaignBriefingMV_C", "CampaignMV_C",
-    "CampaignFreeMission_C", "CampaignFreeMissionDifficulty_C", "CampaignMenuMain_C", "MainMenu_C", "MainTitle_C",
+    "CampaignFreeMission_C", "CampaignFreeMissionDifficulty_C", "CampaignMenuDifficulty_C", "CampaignMenuMain_C", "MainMenu_C", "MainTitle_C",
 }
 local pageCache, pageAt = nil, -100
 local function currentPage()
@@ -244,6 +254,14 @@ local function currentPage()
     pageCache = nil
     for _, name in ipairs(PAGES) do
         if visible[name] then pageCache = name; break end
+    end
+    -- a page not in the list yet (the story has many: CampaignMvNews_C, ...): any visible
+    -- Campaign... widget, so the runner at least knows its name
+    if not pageCache then
+        local names = {}
+        for n in pairs(visible) do if n:find("^Campaign") then names[#names + 1] = n end end
+        table.sort(names)
+        pageCache = names[1]
     end
     return pageCache
 end
@@ -279,11 +297,92 @@ local function missionLevel()
     return levelCache
 end
 
+-- The menu page's title and the description of the item the cursor is on (most menu pages
+-- are MenuBaseWidgets with UmgTitleText / UmgDescriptionText): tells the runner which item
+-- is selected without pictures (19 Oct 2026).
+local function textOf(w)
+    local ok, s = pcall(function() return w:GetText():ToString() end)
+    return ok and s or nil
+end
+local function menuTexts(pageName)
+    if not pageName then return nil end
+    local out = nil
+    pcall(function()
+        for _, w in ipairs(FindAllOf(pageName) or {}) do
+            if w:IsVisible() then
+                out = {}
+                pcall(function() out.title = textOf(w.UmgTitleText) end)
+                pcall(function() out.desc = textOf(w.UmgDescriptionText) end)
+                pcall(function() out.button = textOf(w.UmgButtonText) end)
+                -- the story's mission title page: "MISSION 01" / "Charge Assault"
+                pcall(function() out.missionNo = textOf(w.MissionNumberText) end)
+                pcall(function() out.missionTitle = textOf(w.MissionTitleText) end)
+                break
+            end
+        end
+    end)
+    return out
+end
+
+-- A yes/no dialog on screen (DialogWidget_C: "Do you want to reset your campaign mode
+-- progress...?"): its text, its options, and which one the cursor is on (the selected option
+-- is drawn at full opacity, the others at 0.4).
+local function dialogInfo()
+    local d = nil
+    pcall(function()
+        for _, w in ipairs(FindAllOf("DialogWidget_C") or {}) do
+            if w:IsVisible() then
+                d = { text = textOf(w.DescriptionText) or "", options = {}, selected = false }
+                for i, key in ipairs({ "ItemText0", "ItemText1", "ItemText2" }) do
+                    pcall(function()
+                        local t = w[key]
+                        if t:IsVisible() then
+                            d.options[#d.options + 1] = textOf(t) or "?"
+                            if t.ColorAndOpacity.SpecifiedColor.A > 0.7 then d.selected = #d.options end
+                        end
+                    end)
+                end
+                break
+            end
+        end
+    end)
+    return d
+end
+
 local function snapshot()
     local s = { time = now() }
     local p = playerPlane()
     s.screens = screens()
     s.page = currentPage() or false
+    local mt = menuTexts(s.page or nil)
+    if mt then
+        s.menu_title, s.menu_desc = mt.title or false, mt.desc or false
+        if mt.missionNo then s.story_mission, s.story_title = mt.missionNo, mt.missionTitle or false end
+    end
+    local dg = dialogInfo()
+    if dg then s.dialog = dg end
+    -- In the hangar: the plane and special weapon under the cursor (the game instance's
+    -- selection follows the cursor: Typhoon 123, Rafale M 117, Mirage 2000-5 115; weapon 0, 1, 2
+    -- in the list's order), the plane's name and the weapon list (19 Oct 2026)
+    if s.page == "CampaignHangarAircraft_C" or s.page == "CampaignHangarWeapon_C" or s.page == "CampaignHangarReview_C" then
+        pcall(function()
+            local gi = FindFirstOf("NimbusGameInstance")
+            s.hangar_plane_id = gi:GetSelectedPlaneID()
+            s.hangar_swp = gi:GetSelectedPlaneSWP()
+        end)
+        pcall(function()
+            local weaponsList = {}
+            for _, t in ipairs(FindAllOf("TextBlock") or {}) do
+                local n = t:GetFullName()
+                if n:find(s.page, 1, true) and t:IsVisible() then
+                    if n:find("HangarAircraftSkinNo", 1, true) and n:sub(-5) == ".Name" then s.hangar_plane = textOf(t) end
+                    local k = n:match("LightMenuBaseWidget%.WidgetTree_%d+%.ItemText(%d+)$")
+                    if k and s.page == "CampaignHangarWeapon_C" then weaponsList[tonumber(k) + 1] = textOf(t) end
+                end
+            end
+            if next(weaponsList) then s.hangar_weapons = weaponsList end
+        end)
+    end
     if s.page == "CampaignFreeMission_C" then s.menu_mission = menuMission() or false end
     if not p then s.plane = false; return s end
     pcall(function()
@@ -930,6 +1029,76 @@ local function hasAny(name, list)
     for _, w in ipairs(list) do if name:find(w, 1, true) then return true end end
     return false
 end
+
+-- Can the game lock onto it at all? Read from the game's own code (19 Oct 2026, workbench
+-- section 15): a lock "seeker" is only given to a selected target whose lock-on mark (the
+-- EHudBoxAttribute byte a mission sets with SetHudBoxAttribute; no script property, so read
+-- from memory at +0x6C0 through CoopPadMod) is not 1 LockonImpossible, 3 Fake or
+-- 4 LockonImpossibleAndHighlight, that is not a "mission special object"
+-- (bIsMissionSpecialObject), and whose kind (bIsAir) the armed weapon can lock. The game's own
+-- SelectTarget also refuses marks 1 and 4 and targets in stealth. Kept for a second.
+local HUD_MARK_OFFSET = 0x6C0
+local lockCache = {}
+local function lockInfo(o)
+    local key = objName(o)
+    local li = lockCache[key]
+    local t = now()
+    if li and t - li.at < 1.0 then return li end
+    li = { at = t }
+    local okA, addr = pcall(function() return o:IsValid() and o:GetAddress() or nil end)
+    if okA and addr and type(CoopMem_Read) == "function" then li.mark = CoopMem_Read(addr + HUD_MARK_OFFSET, 1) end
+    pcall(function()
+        if not o:IsValid() then return end
+        li.special = o.bIsMissionSpecialObject == true
+        li.air = o.bIsAir == true
+        li.needsDetection = o.bNeedsDetection == true
+    end)
+    li.lockable = not (li.mark == 1 or li.mark == 3 or li.mark == 4) and not li.special
+    -- Where the game aims its lock cone: unless a flag (+0x4F4) says "the actor itself", a
+    -- lock-point component (+0x878) whose world position is at +0x190 (the game's target-point
+    -- function, exe+0x7f6ce0 in this build). How far that is from the actor (m) is logged,
+    -- in case a target's lock point sits somewhere else than the vehicle.
+    if okA and addr and type(CoopMem_Read) == "function" and CoopMem_Read(addr + 0x4F4, 1) == 0 then
+        local comp = CoopMem_Read(addr + 0x878, 8)
+        if comp and comp ~= 0 and (CoopMem_Read(comp + 0x84, 1) or 1) & 1 == 0 then
+            local x, y, z = CoopMem_ReadFloat(comp + 0x190), CoopMem_ReadFloat(comp + 0x194), CoopMem_ReadFloat(comp + 0x198)
+            local okL, l = pcall(function() return o:K2_GetActorLocation() end)
+            if x and okL and l then
+                li.lockPointOff = math.sqrt((x - l.X) ^ 2 + (y - l.Y) ^ 2 + (z - l.Z) ^ 2) / 10
+                li.lockPoint = { x, y, z }
+            end
+        end
+    end
+    lockCache[key] = li
+    return li
+end
+-- The lock seekers (one per loaded missile): whom each one is on and its state
+-- (ELockonState at +0x40: 0 no target, 1 detecting, 2 started, 3 locked, 4 locked but in a
+-- cloud, 5 locking in a cloud, 6 jammed).
+local SEEKER_STATE = { [0] = "none", "detecting", "started", "LOCKED", "locked-in-cloud", "locking-in-cloud", "jammed" }
+local function seekersText(ts)
+    local parts = {}
+    pcall(function()
+        local arr = ts.LockonSeekers
+        for i = 1, #arr do
+            local s = arr[i]
+            if s and s:IsValid() then
+                local tgtName = "-"
+                pcall(function() local lt = s.LockonTarget; if lt and lt:IsValid() then tgtName = objName(lt) end end)
+                local st = type(CoopMem_Read) == "function" and CoopMem_Read(s:GetAddress() + 0x40, 1) or nil
+                parts[#parts + 1] = tgtName .. ":" .. (st and (SEEKER_STATE[st] or tostring(st)) or "?")
+            end
+        end
+    end)
+    return #parts > 0 and table.concat(parts, ",") or "none"
+end
+local function lockText(li)
+    if not li then return "?" end
+    return string.format("mark %s%s%s%s", li.mark and (HUD_ATTR and HUD_ATTR[li.mark] or tostring(li.mark)) or "unread",
+        li.special and ", mission special object" or "",
+        li.lockPointOff and li.lockPointOff > 3 and string.format(", lock point %.0f m from it", li.lockPointOff) or "",
+        li.lockable and "" or " -> NO LOCK POSSIBLE")
+end
 -- Who fired at us in the last minute (awareness.lua's log of missiles homing on the plane):
 -- a pilot deals with what is shooting at him (Mission 14 Hard: three SAM sites firing up to
 -- five missiles at once shot the bot down while it went for the helicopters).
@@ -1032,9 +1201,12 @@ local function nearestEnemy(loc, skip, F, current, kmh)
             -- marked as an exception are scenery for now (Mission 14's reinforcement tanks:
             -- no lock however long the bot pointed at them)
             if o.bShowHUDBox == false or o.bIsAttackTargetsException == true then return nil end
-            -- marked by the mission as impossible to lock, or a fake box (see markHud)
+            -- marked by the mission as impossible to lock, or a fake box, or a mission special
+            -- object: the game never gives those a lock (lockInfo; read from its code)
             local mark = hudAttr[objName(o)]
             if mark == 1 or mark == 3 or mark == 4 then return nil end
+            local li = lockInfo(o)
+            if not li.lockable and not (ap and ap.gunUnlockable) then return nil end
             local n = objName(o)
             if skip then
                 local until_ = skip[n]
@@ -1048,7 +1220,9 @@ local function nearestEnemy(loc, skip, F, current, kmh)
             local ang = 0
             if F and du > 1 then ang = math.deg(math.acos(math.max(-1, math.min(1, (dx * F[1] + dy * F[2] + dz * F[3]) / du)))) end
             local tt = d / mps + ang / 30 + ((d < 1200 and ang > 60) and 8 or 0)
-            if curName and n == curName then tt = d / mps + 2 end     -- already turning for it
+            -- already turning for it (but not while flying away from it to turn round: then
+            -- another target ahead is quicker, 19 Oct 2026, Mission 14's reinforcement waves)
+            if curName and n == curName and ang < 60 then tt = d / mps + 2 end
             return w / (tt + 4), d, w, n
         end)
         if ok and sc then
@@ -1141,7 +1315,9 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
     -- a chosen target is kept at least 6 s (an attack run needs time; switching every
     -- second, as on 18 Oct 23:10, kills nothing), then re-judged once a second
     local curOk = c.pref and alive(c.pref) and not (c.skip[objName(c.pref)] and t < c.skip[objName(c.pref)])
-    if t - (c.prefAt or -100) > 1 and not (curOk and t - (c.prefSince or -100) < 6) then
+    -- while extending away from a ground target the choice is open again (see nearestEnemy)
+    local extending = curOk and c.runs and c.runs[objName(c.pref)] == "out"
+    if t - (c.prefAt or -100) > 1 and not (curOk and not extending and t - (c.prefSince or -100) < 6) then
         c.prefAt = t
         local kmhNow = call(p, "GetSpeedKmph")
         local pref, prefDist, prefScore, prefW = nearestEnemy(loc, c.skip, F, curOk and c.pref or nil, kmhNow)
@@ -1162,8 +1338,31 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         -- (counted: if the game keeps putting its own choice back, the lock never builds)
         c.selWrites = (c.selWrites or 0) + 1
         c.gameSel = tgt and objName(tgt) or "nothing"
-        local okS = pcall(function() ts.SelectedTarget = c.pref end)
-        if okS then tgt = c.pref end
+        -- Through the game's own SelectTarget (19 Oct 2026): it is what Tab calls. Given the
+        -- next target and "forced", it checks the target can be selected (lock-on mark, stealth,
+        -- health), marks it as the player's target, and hands it to the first lock seeker.
+        -- Writing SelectedTarget directly (as until 19 Oct) skipped all of that, so targets the
+        -- game's own cycle never offered got no seeker and never locked.
+        local okS = pcall(function()
+            ts.NextTarget = c.pref
+            ts:SelectTarget(true)
+        end)
+        local now_ = call(ts, "GetSelectedTarget")
+        if okS and sameObj(now_, c.pref) then
+            tgt = c.pref
+        else
+            -- the game refused it: write it directly so the pilot can still aim at it, and say why
+            c.refused = c.refused or {}
+            local n = objName(c.pref)
+            if not c.refused[n] then
+                c.refused[n] = true
+                local li = lockInfo(c.pref)
+                event("select_refused", { target = n, mark = li.mark or -1, special = li.special or false })
+                log("  the game would not select " .. n .. " (" .. lockText(li) .. "); aiming at it anyway")
+            end
+            local okW = pcall(function() ts.SelectedTarget = c.pref end)
+            if okW then tgt = c.pref end
+        end
     end
     if t - (c.selWinAt or -100) >= 1 then
         c.selWinAt, c.selWritesLast, c.selWrites = t, c.selWrites or 0, 0
@@ -1431,8 +1630,8 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         local locked = sameObj(lockObj, tgt)
         c.lockDiag = nil
         if not locked then
-            c.lockDiag = string.format("not locked: the game's lock is on %s; selection put back %d times in the last second (the game had %s)",
-                lockObj and objName(lockObj) or "nothing", c.selWritesLast or 0, c.gameSel or "-")
+            c.lockDiag = string.format("not locked: the game's lock is on %s; selection put back %d times in the last second (the game had %s); target %s; seekers %s",
+                lockObj and objName(lockObj) or "nothing", c.selWritesLast or 0, c.gameSel or "-", lockText(lockInfo(tgt)), seekersText(ts))
         end
         local range = c.missileRange
         if armed and sp and sp.LockonRange then range = math.max(range, sp.LockonRange / 10) end
@@ -1622,10 +1821,28 @@ local function apStep(p, dt)
         aim = aimFor(p, loc, rot, alt)
     end
     if not aim then aim = F end
-    if ap.goal.kind == "route" and ap.goal.route.done then
+    -- "fly to X Y Z through": a point to fly THROUGH (a gap under a bridge, between towers;
+    -- the owner's vision test, 19 Oct 2026). Passed when it is behind the plane along the line
+    -- of approach; then the order's "then" goal (attack) or the heading it had.
+    if ap.goal.kind == "point" and ap.goal.through then
+        local g = ap.goal
+        local d = { g.x - loc.X, g.y - loc.Y, g.z - loc.Z }
+        if not g.dir then g.dir = unit(d); g.closest = math.huge; g.health0 = call(p, "GetHealth") end
+        local dl = math.sqrt(d[1] ^ 2 + d[2] ^ 2 + d[3] ^ 2)
+        if dl < g.closest then g.closest = dl end
+        if dot(d, g.dir) < 0 then
+            local hp = call(p, "GetHealth")
+            event("stunt_done", { closest_m = g.closest / 10, damage = (g.health0 or 0) - (hp or 0), x = g.x, y = g.y, z = g.z })
+            log(string.format("  fly: through the point (closest %.0f m, damage %s)", g.closest / 10, tostring((g.health0 or 0) - (hp or 0))))
+            g.done = true
+        end
+    end
+    if (ap.goal.kind == "route" and ap.goal.route.done) or (ap.goal.kind == "point" and ap.goal.done) then
         local nextGoal = ap.goal["then"]
-        event("route_done", { route = ap.goal.route.name, next = nextGoal or "hold heading" })
-        log("  fly: end of route " .. ap.goal.route.name .. (nextGoal and (", now: " .. nextGoal) or ", holding the heading"))
+        local what = ap.goal.route and ap.goal.route.name or "the point"
+        event("route_done", { route = what, next = nextGoal or "hold heading" })
+        log("  fly: end of " .. what .. (nextGoal and (", now: " .. nextGoal) or ", holding the heading"))
+        ap.vision = ap.visionAfter or false
         if nextGoal == "attack" then
             -- the route was the low-level approach; the fight after it has no ceiling and no
             -- searchlights to hide from (Mission 14: "Radio silence has been lifted!")
@@ -1676,7 +1893,7 @@ local function apStep(p, dt)
             pcall(Gim.updateLights, { loc.X, loc.Y, loc.Z }, 15000)
         end
     end
-    if Nav and Nav.cells > 0 and ap.myV then
+    if Nav and Nav.cells > 0 and ap.myV and not ap.vision then
         local myP = { loc.X, loc.Y, loc.Z }
         if t - (ap.navAt or -100) > 0.1 then
             ap.navAt = t
@@ -1694,11 +1911,29 @@ local function apStep(p, dt)
         end
         if ap.navWhy then aim = ap.navAim; ap.navText = ap.navWhy end
     end
+    -- Vision (fans of rays, no survey): twenty times a second the free direction closest to
+    -- the wanted one, and the walls around the plane (vision.lua)
+    if ap.vision and Vision and ap.myV and Nav and Nav.fast then
+        if t - (ap.visAt or -100) > 0.05 then
+            ap.visAt = t
+            local d, why = Vision.choose({ loc.X, loc.Y, loc.Z }, ap.myV, aim, { horizon = 4.5, need = 3.0 })
+            ap.visAim, ap.visWhy = d, why
+            if why and why ~= ap.visLogged and t - (ap.visLogAt or -100) > 0.5 then
+                ap.visLogged, ap.visLogAt = why, t
+                local W = Vision.last and Vision.last.walls
+                event("vision", { text = why, free_m = Vision.last and Vision.last.free or -1,
+                                  left = W and W.left or -1, right = W and W.right or -1, up = W and W.up or -1, down = W and W.down or -1 })
+            end
+        end
+        if ap.visAim then aim = ap.visAim; ap.navText = ap.visWhy end
+    end
     local height = agl and math.min(agl, alt) or alt
     local recovering
-    if ap.goal.kind == "route" then
+    if ap.goal.kind == "route" or ap.vision then
         -- on a planned route the straight-ahead ground check is wrong in every bend (it sees
-        -- the canyon wall the route turns away from); only real low clearance counts
+        -- the canyon wall the route turns away from); only real low clearance counts. With
+        -- vision on the same: the checks ahead look down from 3 km up and would take a bridge
+        -- deck the plane is about to pass under for the ground.
         recovering = (agl ~= nil and agl < floor * 0.6) or (agl ~= nil and agl + ap.vz * 1.5 < floor * 0.4)
     else
         recovering = height < floor or alt + ap.vz * 4 < floor * 0.7 or (ahead ~= nil and ahead < (ap.ceiling and 60 or 150))
@@ -1747,7 +1982,7 @@ local function apStep(p, dt)
     -- is above the canopy can put the plane on its back near the walls (18 Oct 2026, 17 km
     -- into Mission 14: roll 170 degrees on a climbing bend, then into the wall). Instead the
     -- bank follows the sideways error, up to 72 degrees, and pitch follows the height.
-    local precise = ap.goal.kind == "route"
+    local precise = ap.goal.kind == "route" or ap.vision
     if precise then
         ap.big = false
     elseif ap.big then
@@ -2024,6 +2259,7 @@ local function flyOrder(args)
         elseif k == "range" then opts.range = tonumber(args[i + 1]); i = i + 2
         elseif k == "to" then
             goal.kind = "point"; goal.x, goal.y, goal.z = tonumber(args[i + 1]), tonumber(args[i + 2]), tonumber(args[i + 3]); i = i + 4
+        elseif k == "through" then goal.through = true; i = i + 1
         elseif k == "route" then
             if not Route then log("fly: route.lua is not loaded") return end
             local rt, err = Route.load(args[i + 1] or "")
@@ -2036,6 +2272,7 @@ local function flyOrder(args)
         elseif k == "beams" then opts.avoidBeams = args[i + 1] ~= "off"; i = i + 2
         elseif k == "navfloor" then opts.navFloor = tonumber(args[i + 1]); i = i + 2
         elseif k == "cloudbase" then opts.cloudBase = tonumber(args[i + 1]); i = i + 2
+        elseif k == "vision" then opts.vision = args[i + 1] ~= "off"; i = i + 2
         elseif k == "focus" then
             -- "focus a,b": enemies whose name (or class) contains one of these come first (x6)
             opts.focus = {}
@@ -2051,7 +2288,7 @@ local function flyOrder(args)
     ap = { goal = goal, t0 = now(), frames = 0, recoverFrames = 0, lastLog = -1, prevErr = {}, rate = {},
            floor = opts.floor, duration = opts.duration, big = false, home = { X = home.X, Y = home.Y, Z = home.Z },
            ceiling = opts.ceiling or (Gim and Gim.ceiling) or nil, navFloor = opts.navFloor,
-           cloudBase = opts.cloudBase, focus = opts.focus,
+           cloudBase = opts.cloudBase, focus = opts.focus, vision = opts.vision,
            -- beams are watched on a route (low-level infiltration), or when asked
            avoidBeams = (opts.avoidBeams == true) or (opts.avoidBeams == nil and goal.kind == "route") }
     -- (a cloud base does NOT become a ceiling for a fight: tried 19 Oct 00:00-00:17, and the
@@ -2339,6 +2576,7 @@ end
 forgetWorld = function(why, p)
     cachedTS, cachedTSPlane = nil, nil
     for k in pairs(infoCache) do infoCache[k] = nil end
+    for k in pairs(lockCache) do lockCache[k] = nil end
     if Aware then Aware.reset(); Aware.fastReady = false end
     if Gim then Gim.reset() end
     if Nav then Nav.fast = false end
@@ -2584,6 +2822,60 @@ local commands = {
     survey = survey,
     dumpgimmicks = dumpGimmicks,
     mark = function(args) local text = table.concat(args, " "); log("== " .. text); event("mark", { text = text }) end,
+    -- "actors <text> [max]": every actor whose class or name contains the text (case
+    -- ignored), with its position and the size of its bounding box: for finding structures
+    -- to fly through (the Space Elevator, bridges, tunnels; the owner's vision tests)
+    actors = function(args)
+        local want = (args[1] or ""):lower()
+        local maxN = tonumber(args[2]) or 40
+        local p = playerPlane()
+        local me = p and p:K2_GetActorLocation()
+        local rows = {}
+        for _, a in ipairs(FindAllOf("Actor") or {}) do
+            pcall(function()
+                local n = a:GetFullName():lower()
+                if not n:find(want, 1, true) then return end
+                local l = a:K2_GetActorLocation()
+                local ext = nil
+                pcall(function()
+                    local o, e = {}, {}
+                    a:GetActorBounds(false, o, e)
+                    if e.X then ext = string.format("box %.0f x %.0f x %.0f m centred (%.0f, %.0f, %.0f)", e.X / 5, e.Y / 5, e.Z / 5, o.X, o.Y, o.Z) end
+                end)
+                local d = me and math.sqrt((l.X - me.X) ^ 2 + (l.Y - me.Y) ^ 2 + (l.Z - me.Z) ^ 2) / 10 or -1
+                rows[#rows + 1] = { d = d, text = string.format("%7.0f m  %s at (%.0f, %.0f, %.0f) %s", d, objName(a) .. " [" .. classOf(a) .. "]", l.X, l.Y, l.Z, ext or "") }
+            end)
+        end
+        table.sort(rows, function(x, y) return x.d < y.d end)
+        log(string.format("actors '%s': %d found", want, #rows))
+        for i = 1, math.min(maxN, #rows) do log("  " .. rows[i].text) end
+    end,
+    -- "locks [all]": every enemy game object (only the active ones unless "all") with what
+    -- decides whether the game can lock it (lockInfo): its lock-on mark, mission-special flag,
+    -- air or ground, mission target, and its distance
+    locks = function(args)
+        local p = playerPlane()
+        local me = p and p:K2_GetActorLocation()
+        local rows, nNo = {}, 0
+        for _, o in ipairs(FindAllOf("GameObject") or {}) do
+            pcall(function()
+                if o:GetFaction() ~= 0 or not o:IsAlive() then return end
+                local act = o.bIsActivated == true
+                if not act and args[1] ~= "all" then return end
+                local li = lockInfo(o)
+                if not li.lockable then nNo = nNo + 1 end
+                local l = o:K2_GetActorLocation()
+                local d = me and math.sqrt((l.X - me.X) ^ 2 + (l.Y - me.Y) ^ 2 + (l.Z - me.Z) ^ 2) / 10 or -1
+                local tg = false
+                pcall(function() tg = o:IsTGT() end)
+                rows[#rows + 1] = { d = d, text = string.format("%6.0f m  %-34s %-26s %s%s%s%s", d, objName(o), classOf(o), lockText(li),
+                    li.air and ", air" or ", ground", tg and ", TGT" or "", act and "" or ", not active yet") }
+            end)
+        end
+        table.sort(rows, function(a, b) return a.d < b.d end)
+        log(string.format("locks: %d enemies, %d of them cannot be locked", #rows, nNo))
+        for _, r in ipairs(rows) do log("  " .. r.text) end
+    end,
     -- "inspect ReplaySkipButton_C": the functions and properties of the first live object of that class
     -- "uilist": every kind of UI widget that is visible right now (menu pages live inside
     -- the front screen, so they are not "in the viewport" themselves)

@@ -3,7 +3,19 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (19 Oct 2026, 00:20): the playtest bot sees terrain and mission gimmicks.** On
+**Status (19 Oct 2026, 01:35): the Ace campaign is under way, and the lock problem is
+solved.** On your OK the bot is flying the story campaign on Ace in the copy (the copy's own
+story save was restarted; your real game is untouched). First the problem that stopped
+Mission 14: the bot picked its targets by writing straight into the game's "selected target"
+field, which skipped the step where the game hands the target to a missile's lock. It now
+selects the way the Tab key does, and in Mission 14 on Hard every target that never locked
+last night locked and fell (workbench section 15). A new campaign driver
+(`tools\campaign.py`) takes the story from the menu through movies, briefings, the hangar
+(plane and special weapon by name), the mission, the replay and the results to the next
+mission. **Mission 01 on Ace: completed at the first attempt, rank A, no damage.** Mission 02
+is being flown. Progress per mission: `playtests\campaign-ace.md`.
+
+**Earlier (19 Oct 2026, 00:20): the playtest bot sees terrain and mission gimmicks.** On
 your request it learned to fly Mission 14's 47 km night canyon on Hard by itself: under the
 550 m limit the game really sets (the radio says 600), past about 70 sweeping searchlights
 whose beams it predicts and dodges four times a second, using the game's own line traces

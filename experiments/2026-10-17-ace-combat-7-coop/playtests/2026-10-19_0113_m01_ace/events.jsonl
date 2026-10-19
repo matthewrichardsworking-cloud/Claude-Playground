@@ -1,0 +1,339 @@
+{"clock": "01:13:40", "kind": "mark", "t": 2142, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "01:13:42", "kind": "radio", "speaker": "Control Tower", "t": 2143, "text": "It's a hell of a welcoming party, but we have faith in you. Good luck.", "attempt": 1}
+{"clock": "01:13:42", "kind": "takeoff_start", "t": 2143, "attempt": 1}
+{"clock": "01:13:46", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2147, "text": "Control, do me a favor and get that bird in the air ASAP.", "attempt": 1}
+{"clock": "01:13:50", "kind": "radio", "speaker": "Control Tower", "t": 2151, "text": "Hear that?", "attempt": 1}
+{"clock": "01:13:51", "kind": "radio", "speaker": "Control Tower", "t": 2152, "text": "Golem Squadron and your wingman are airborne. Take off and form up with Mage 1.", "attempt": 1}
+{"after_s": 9.952, "clock": "01:13:52", "kind": "takeoff_end", "ok": true, "t": 2153, "attempt": 1}
+{"clock": "01:13:52", "goal": "attack", "kind": "autopilot_start", "t": 2154, "attempt": 1}
+{"above_ground_m": 90.42, "alt_m": 90.44, "clock": "01:13:52", "kind": "ground_recovery", "lowest_ahead_m": 90.42, "t": 2154, "vz": 0, "attempt": 1}
+{"clock": "01:13:56", "kind": "radio", "speaker": "Control Tower", "t": 2157, "text": "Mage 2, altitude restriction is lifted. Good luck!", "attempt": 1}
+{"clock": "01:13:59", "kind": "radio", "speaker": "Golem 2 Brownie", "t": 2161, "text": "The carrier... Whoa! Looks like the harbor's taken a lot of damage.", "attempt": 1}
+{"clock": "01:14:04", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2166, "text": "Can't have anymore casualties. Time to stop the bullshit.", "attempt": 1}
+{"clock": "01:14:07", "kind": "phase_cleared", "phase": "MissionPhase_01", "t": 2169, "attempt": 1}
+{"clock": "01:14:08", "kind": "phase_start", "phase": "MissionPhase_02", "restart": false, "t": 2170, "attempt": 1}
+{"callsign": "", "clock": "01:14:08", "dist_m": 14060.0, "kind": "target", "t": 2170, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:14:08", "dist_m": 14070.0, "kind": "priority", "score": 0.024, "t": 2170, "target": "00_en_bomber_1_1023", "weight": 2.1, "attempt": 1}
+{"clock": "01:14:09", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2171, "text": "Mage 2, form up with Mage 1.", "attempt": 1}
+{"clock": "01:14:11", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2173, "text": "All aircraft, let's do this. Golem Squadron, it's go time.", "attempt": 1}
+{"clock": "01:14:15", "kind": "radio", "speaker": "Golem 2 Brownie", "t": 2176, "text": "Roger that.", "attempt": 1}
+{"clock": "01:14:16", "kind": "radio", "speaker": "Golem 4 Footpad", "t": 2177, "text": "Golem 4, understood.", "attempt": 1}
+{"clock": "01:14:19", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2181, "text": "This is the AWACS \"Sky Keeper.\"", "attempt": 1}
+{"clock": "01:14:23", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2185, "text": "Take down all unidentified bombers. They don't have many escorts.", "attempt": 1}
+{"clock": "01:14:27", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2188, "text": "They hit our radars hard in the last attack. Expect the worst, and stay sharp.", "attempt": 1}
+{"clock": "01:14:32", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2193, "text": "Wilco.", "attempt": 1}
+{"clock": "01:14:34", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2195, "text": "Trigger. I'm your wingman.", "attempt": 1}
+{"clock": "01:14:36", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2197, "text": "You're flying with me now. That's what it means to be in an element.", "attempt": 1}
+{"clock": "01:14:41", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2202, "text": "You gotta keep an eye out for enemy bombers.", "attempt": 1}
+{"clock": "01:14:58", "dist_m": 9499, "kind": "weapon_switch", "t": 2219, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:14:58", "dist_m": 9496, "kind": "missile", "off_deg": 0.3363, "special": true, "t": 2219, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:14:58", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.698, "t": 2219, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:14:58", "kind": "launch", "left": 29, "n": 1, "t": 2219, "target": "00_en_bomber_1_1023", "weapon": "special", "attempt": 1}
+{"clock": "01:14:58", "dist_m": 9427, "kind": "missile", "off_deg": 0.3053, "special": true, "t": 2220, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:14:58", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.656, "t": 2220, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:14:58", "kind": "launch", "left": 28, "n": 1, "t": 2220, "target": "00_en_bomber_1_1023", "weapon": "special", "attempt": 1}
+{"clock": "01:14:59", "dist_m": 9343, "kind": "missile", "off_deg": 0.2775, "special": true, "t": 2220, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:15:00", "dist_m": 9165, "kind": "missile", "off_deg": 0.2366, "special": true, "t": 2221, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:15:01", "dist_m": 8987, "kind": "missile", "off_deg": 0.1927, "special": true, "t": 2223, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:15:02", "dist_m": 8805, "kind": "missile", "off_deg": 0.06874, "special": true, "t": 2224, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"clock": "01:15:04", "dist_m": 8624, "kind": "missile", "off_deg": 0.05637, "special": true, "t": 2225, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"callsign": "", "clock": "01:15:04", "kind": "death", "t": 2225, "who": "00_en_bomber_1_1023", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:15:04", "kind": "kill", "t": 2225, "target": "00_en_bomber_1_1023", "attempt": 1}
+{"callsign": "", "clock": "01:15:04", "kind": "death", "t": 2225, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_196", "attempt": 1}
+{"clock": "01:15:04", "dist_m": -1, "kind": "weapon_switch", "t": 2225, "to": "standard missiles", "why": "nothing selected; the special weapon hides some targets", "attempt": 1}
+{"clock": "01:15:05", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2227, "text": "Enemy bomber confirmed down. Good job, Mage 2.", "attempt": 1}
+{"clock": "01:15:09", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2231, "text": "Not bad, Mage 2.", "attempt": 1}
+{"clock": "01:15:12", "dist_m": 27530.0, "kind": "priority", "score": 0.01294, "t": 2234, "target": "00_en_bomber_2_3167", "weight": 2.1, "attempt": 1}
+{"clock": "01:15:12", "kind": "select_refused", "mark": 0, "special": false, "t": 2234, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"callsign": "", "clock": "01:15:12", "dist_m": 27530.0, "kind": "target", "t": 2234, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "01:15:12", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2234, "text": "Trigger, switch your radar. See if you can locate the enemy.", "attempt": 1}
+{"clock": "01:16:08", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2290, "text": "They're way overhead.", "attempt": 1}
+{"clock": "01:16:13", "kind": "radio", "speaker": "Erusean Fighter", "t": 2294, "text": "Harbor fuel storage is intact. It's asking for another round.", "attempt": 1}
+{"clock": "01:16:17", "kind": "radio", "speaker": "Erusean Fighter", "t": 2298, "text": "All escorts, form up for another attack Point is 835.", "attempt": 1}
+{"clock": "01:16:21", "dist_m": 9500, "kind": "weapon_switch", "t": 2303, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:16:21", "dist_m": 9491, "kind": "missile", "off_deg": 0.4772, "special": true, "t": 2303, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "01:16:22", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.695, "t": 2303, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"clock": "01:16:22", "kind": "launch", "left": 27, "n": 1, "t": 2303, "target": "00_en_bomber_2_3167", "weapon": "special", "attempt": 1}
+{"clock": "01:16:22", "dist_m": 9847, "kind": "priority", "score": 0.03894, "t": 2303, "target": "00_en_fighter_1_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:16:22", "dist_m": 9847, "kind": "target", "t": 2303, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "01:16:22", "dist_m": 9730, "kind": "missile", "off_deg": 15.26, "special": true, "t": 2303, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "01:16:22", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 6.838, "t": 2304, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "01:16:22", "kind": "launch", "left": 26, "n": 1, "t": 2304, "target": "00_en_fighter_1_1", "weapon": "special", "attempt": 1}
+{"clock": "01:16:22", "dist_m": 10000.0, "kind": "priority", "score": 0.03835, "t": 2304, "target": "00_en_fighter_1_2", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:16:22", "dist_m": 10000.0, "kind": "target", "t": 2304, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:22", "dist_m": 9887, "kind": "missile", "off_deg": 14.44, "special": true, "t": 2304, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:23", "dist_m": 9761, "kind": "weapon_switch", "t": 2304, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "01:16:24", "dist_m": 9225, "kind": "weapon_switch", "t": 2306, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:16:24", "dist_m": 9205, "kind": "missile", "off_deg": 1.892, "special": true, "t": 2306, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:26", "dist_m": 8781, "kind": "missile", "off_deg": 1.035, "special": true, "t": 2307, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:27", "dist_m": 8360, "kind": "missile", "off_deg": 0.4052, "special": true, "t": 2308, "target": "00_en_fighter_1_2", "attempt": 1}
+{"callsign": "", "clock": "01:16:27", "kind": "death", "t": 2309, "who": "00_en_bomber_2_3167", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:16:27", "kind": "kill", "t": 2309, "target": "00_en_bomber_2_3167", "attempt": 1}
+{"callsign": "", "clock": "01:16:27", "kind": "death", "t": 2309, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_194", "attempt": 1}
+{"callsign": "", "clock": "01:16:28", "kind": "death", "t": 2309, "who": "00_en_fighter_1_1", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:16:28", "kind": "kill", "t": 2309, "target": "00_en_fighter_1_1", "attempt": 1}
+{"clock": "01:16:28", "dist_m": 7938, "kind": "missile", "off_deg": 0.339, "special": true, "t": 2310, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:29", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2310, "text": "Target confirmed down. Looking good, Mage 2.", "attempt": 1}
+{"clock": "01:16:29", "dist_m": 7529, "kind": "missile", "off_deg": 0.39, "special": true, "t": 2311, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:30", "dist_m": 7102, "kind": "missile", "off_deg": 0.7792, "special": true, "t": 2312, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:31", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 5.261, "t": 2312, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:31", "kind": "launch", "left": 25, "n": 1, "t": 2312, "target": "00_en_fighter_1_2", "weapon": "special", "attempt": 1}
+{"clock": "01:16:31", "dist_m": 6817, "kind": "missile", "off_deg": 0.4367, "special": true, "t": 2313, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:31", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 5.09, "t": 2313, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:31", "kind": "launch", "left": 24, "n": 1, "t": 2313, "target": "00_en_fighter_1_2", "weapon": "special", "attempt": 1}
+{"clock": "01:16:32", "dist_m": 6567, "kind": "missile", "off_deg": 0.3967, "special": true, "t": 2313, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:33", "dist_m": 5928, "kind": "missile", "off_deg": 0.4591, "special": true, "t": 2314, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:33", "dist_m": 12100.0, "kind": "priority", "score": 0.0456, "t": 2315, "target": "02_en_bomber_3_983", "weight": 2.1, "attempt": 1}
+{"callsign": "", "clock": "01:16:33", "dist_m": 12100.0, "kind": "target", "t": 2315, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "01:16:33", "dist_m": 12100.0, "kind": "weapon_switch", "t": 2315, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "01:16:34", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2316, "text": "Watch out for the support aircraft.", "attempt": 1}
+{"callsign": "", "clock": "01:16:35", "kind": "death", "t": 2317, "who": "00_en_fighter_1_2", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:16:35", "kind": "kill", "t": 2317, "target": "00_en_fighter_1_2", "attempt": 1}
+{"clock": "01:16:37", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2318, "text": "Mage 2, target's in range. Pair of bombers.", "attempt": 1}
+{"clock": "01:16:40", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2322, "text": "Trigger, stay calm. You've got this.", "attempt": 1}
+{"clock": "01:16:42", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2324, "text": "I know the kid's shown some promise, but let's remember, he's still barely gotten his feet wet.", "attempt": 1}
+{"clock": "01:16:54", "dist_m": 9499, "kind": "weapon_switch", "t": 2335, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:16:54", "dist_m": 9496, "kind": "missile", "off_deg": 0.657, "special": true, "t": 2335, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "01:16:54", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.698, "t": 2336, "target": "02_en_bomber_3_983", "attempt": 1}
+{"clock": "01:16:54", "kind": "launch", "left": 23, "n": 1, "t": 2336, "target": "02_en_bomber_3_983", "weapon": "special", "attempt": 1}
+{"clock": "01:16:54", "dist_m": 9502, "kind": "priority", "score": 0.06107, "t": 2336, "target": "02_en_bomber_3_1847", "weight": 2.1, "attempt": 1}
+{"callsign": "", "clock": "01:16:54", "dist_m": 9502, "kind": "target", "t": 2336, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "01:16:54", "dist_m": 9464, "kind": "missile", "off_deg": 2.347, "special": true, "t": 2336, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "01:16:55", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.678, "t": 2336, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"clock": "01:16:55", "kind": "launch", "left": 22, "n": 1, "t": 2336, "target": "02_en_bomber_3_1847", "weapon": "special", "attempt": 1}
+{"clock": "01:16:55", "dist_m": 9088, "kind": "priority", "score": 0.04235, "t": 2336, "target": "02_en_fighter_2_2", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:16:55", "dist_m": 9088, "kind": "target", "t": 2336, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:16:55", "dist_m": 9040, "kind": "missile", "off_deg": 2.258, "special": true, "t": 2336, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:16:55", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2337, "text": "Fox 3! Fox 3!", "attempt": 1}
+{"clock": "01:16:56", "dist_m": 8869, "kind": "missile", "off_deg": 1.631, "special": true, "t": 2338, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:16:57", "dist_m": 8699, "kind": "missile", "off_deg": 0.8926, "special": true, "t": 2339, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:16:58", "dist_m": 8529, "kind": "missile", "off_deg": 0.2033, "special": true, "t": 2340, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:17:00", "dist_m": 8361, "kind": "missile", "off_deg": 0.4079, "special": true, "t": 2341, "target": "02_en_fighter_2_2", "attempt": 1}
+{"callsign": "", "clock": "01:17:00", "kind": "death", "t": 2342, "who": "02_en_bomber_3_983", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:17:00", "kind": "kill", "t": 2342, "target": "02_en_bomber_3_983", "attempt": 1}
+{"callsign": "", "clock": "01:17:00", "kind": "death", "t": 2342, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_309", "attempt": 1}
+{"callsign": "", "clock": "01:17:01", "kind": "death", "t": 2342, "who": "02_en_bomber_3_1847", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:17:01", "kind": "kill", "t": 2342, "target": "02_en_bomber_3_1847", "attempt": 1}
+{"callsign": "", "clock": "01:17:01", "kind": "death", "t": 2342, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_311", "attempt": 1}
+{"clock": "01:17:01", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2342, "text": "Mage 2, target down!", "attempt": 1}
+{"clock": "01:17:01", "dist_m": 8196, "kind": "missile", "off_deg": 0.8273, "special": true, "t": 2342, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:17:02", "dist_m": 8030, "kind": "missile", "off_deg": 0.4096, "special": true, "t": 2344, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:17:02", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 5.818, "t": 2344, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:17:02", "kind": "launch", "left": 21, "n": 1, "t": 2344, "target": "02_en_fighter_2_2", "weapon": "special", "attempt": 1}
+{"clock": "01:17:02", "dist_m": 8263, "kind": "priority", "score": 0.046, "t": 2344, "target": "02_en_fighter_2_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:17:02", "dist_m": 8263, "kind": "target", "t": 2344, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "01:17:03", "dist_m": 8206, "kind": "missile", "off_deg": 0.1993, "special": true, "t": 2344, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "01:17:03", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 5.924, "t": 2344, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "01:17:03", "kind": "launch", "left": 20, "n": 1, "t": 2344, "target": "02_en_fighter_2_1", "weapon": "special", "attempt": 1}
+{"clock": "01:17:03", "dist_m": 8120, "kind": "missile", "off_deg": 0.04525, "special": true, "t": 2345, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "01:17:04", "dist_m": 7882, "kind": "missile", "off_deg": 0.5455, "special": true, "t": 2346, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "01:17:05", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2346, "text": "Enemy bomber down. Nice going, Mage 2.", "attempt": 1}
+{"clock": "01:17:06", "dist_m": 7535, "kind": "missile", "off_deg": 0.6819, "special": true, "t": 2347, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "01:17:07", "dist_m": 7074, "kind": "missile", "off_deg": 0.2369, "special": true, "t": 2348, "target": "02_en_fighter_2_1", "attempt": 1}
+{"callsign": "", "clock": "01:17:08", "kind": "death", "t": 2349, "who": "02_en_fighter_2_2", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:17:08", "kind": "kill", "t": 2349, "target": "02_en_fighter_2_2", "attempt": 1}
+{"clock": "01:17:08", "dist_m": 6510, "kind": "missile", "off_deg": 0.1494, "special": true, "t": 2349, "target": "02_en_fighter_2_1", "attempt": 1}
+{"callsign": "", "clock": "01:17:08", "kind": "death", "t": 2349, "who": "02_en_fighter_2_1", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:17:08", "kind": "kill", "t": 2349, "target": "02_en_fighter_2_1", "attempt": 1}
+{"clock": "01:17:08", "dist_m": -1, "kind": "weapon_switch", "t": 2350, "to": "standard missiles", "why": "nothing selected; the special weapon hides some targets", "attempt": 1}
+{"clock": "01:17:08", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2350, "text": "Not too shabby, Mage 2. But you've still got a long way to go, kid.", "attempt": 1}
+{"clock": "01:17:12", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2353, "text": "I'll give you some pointers back at base, if you can make it in one piece.", "attempt": 1}
+{"callsign": "", "clock": "01:17:15", "dist_m": 12390.0, "kind": "target", "t": 2356, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "01:17:15", "dist_m": 12410.0, "kind": "priority", "score": 0.04328, "t": 2357, "target": "02_en_bomber_4_2891", "weight": 2.1, "attempt": 1}
+{"clock": "01:17:16", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2358, "text": "Sky Keeper, this is Mage 1, over. Tally two bandits.", "attempt": 1}
+{"clock": "01:17:20", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2362, "text": "Copy that. It's a bomber and an escort.", "attempt": 1}
+{"clock": "01:17:22", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2364, "text": "Whoa there, Trigger. Settle down.", "attempt": 1}
+{"clock": "01:17:23", "dist_m": 9498, "kind": "weapon_switch", "t": 2365, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:17:23", "dist_m": 9480, "kind": "missile", "off_deg": 0.9287, "special": true, "t": 2365, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "01:17:23", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.688, "t": 2365, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"clock": "01:17:23", "kind": "launch", "left": 19, "n": 1, "t": 2365, "target": "02_en_bomber_4_2891", "weapon": "special", "attempt": 1}
+{"clock": "01:17:23", "dist_m": 10000.0, "kind": "priority", "score": 0.03881, "t": 2365, "target": "02_en_fighter_3_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:17:23", "dist_m": 10000.0, "kind": "target", "t": 2365, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:24", "dist_m": 9838, "kind": "missile", "off_deg": 1.479, "special": true, "t": 2365, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:24", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 6.903, "t": 2365, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:24", "kind": "launch", "left": 18, "n": 1, "t": 2365, "target": "02_en_fighter_3_1", "weapon": "special", "attempt": 1}
+{"clock": "01:17:24", "dist_m": 9575, "kind": "missile", "off_deg": 1.047, "special": true, "t": 2366, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:25", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2366, "text": "Mage 2! Maintain your element with Mage 1! Do not break off!", "attempt": 1}
+{"clock": "01:17:26", "dist_m": 8918, "kind": "missile", "off_deg": 0.5138, "special": true, "t": 2367, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:27", "dist_m": 8251, "kind": "missile", "off_deg": 0.5295, "special": true, "t": 2368, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:29", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2370, "text": "Mage 1, make sure he doesn't do anything stupid.", "attempt": 1}
+{"callsign": "", "clock": "01:17:29", "kind": "death", "t": 2370, "who": "02_en_bomber_4_2891", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:17:29", "kind": "kill", "t": 2370, "target": "02_en_bomber_4_2891", "attempt": 1}
+{"callsign": "", "clock": "01:17:29", "kind": "death", "t": 2370, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_nohit_C_CAT_313", "attempt": 1}
+{"clock": "01:17:29", "dist_m": 6994, "kind": "missile", "off_deg": 0.4199, "special": true, "t": 2371, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:30", "dist_m": 6355, "kind": "missile", "off_deg": 0.07127, "special": true, "t": 2372, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:31", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2373, "text": "Wilco.", "attempt": 1}
+{"clock": "01:17:31", "dist_m": 5724, "kind": "missile", "off_deg": 0.03736, "special": true, "t": 2373, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:32", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 4.434, "t": 2373, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:32", "kind": "launch", "left": 17, "n": 1, "t": 2373, "target": "02_en_fighter_3_1", "weapon": "special", "attempt": 1}
+{"clock": "01:17:32", "dist_m": 5449, "kind": "missile", "off_deg": 0.1998, "special": true, "t": 2374, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:32", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 4.269, "t": 2374, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:32", "kind": "launch", "left": 16, "n": 1, "t": 2374, "target": "02_en_fighter_3_1", "weapon": "special", "attempt": 1}
+{"clock": "01:17:32", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2374, "text": "Golem 2, Let's maintain element.", "attempt": 1}
+{"clock": "01:17:33", "dist_m": 5170, "kind": "missile", "off_deg": 0.3471, "special": true, "t": 2374, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:34", "dist_m": 4534, "kind": "missile", "off_deg": 0.7542, "special": true, "t": 2375, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:34", "kind": "radio", "speaker": "Golem 2 Brownie", "t": 2376, "text": "Copy that, Commander. I've got your six covered, sir.", "attempt": 1}
+{"clock": "01:17:35", "dist_m": 3920, "kind": "missile", "off_deg": 0.8681, "special": true, "t": 2377, "target": "02_en_fighter_3_1", "attempt": 1}
+{"callsign": "", "clock": "01:17:36", "kind": "death", "t": 2377, "who": "02_en_fighter_3_1", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:17:36", "kind": "kill", "t": 2377, "target": "02_en_fighter_3_1", "attempt": 1}
+{"clock": "01:17:36", "dist_m": -1, "kind": "weapon_switch", "t": 2377, "to": "standard missiles", "why": "nothing selected; the special weapon hides some targets", "attempt": 1}
+{"clock": "01:17:38", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2379, "text": "Righty-o!", "attempt": 1}
+{"clock": "01:17:42", "dist_m": 23990.0, "kind": "priority", "score": 0.01562, "t": 2383, "target": "02_en_bomber_5_1411", "weight": 2.1, "attempt": 1}
+{"clock": "01:17:42", "kind": "select_refused", "mark": 0, "special": false, "t": 2383, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"callsign": "", "clock": "01:17:42", "dist_m": 23990.0, "kind": "target", "t": 2383, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:17:42", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2384, "text": "Golem, Mage. Two new enemy groups.", "attempt": 1}
+{"clock": "01:17:48", "kind": "radio", "speaker": "IUN-PKF HQ", "t": 2389, "text": "This is HQ. Attention, all combat groups.", "attempt": 1}
+{"clock": "01:17:50", "kind": "radio", "speaker": "IUN-PKF HQ", "t": 2392, "text": "Are there any drones? Verify.", "attempt": 1}
+{"clock": "01:17:54", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2395, "text": "Drones? Are you kidding me right now? Jesus! This is the kinda shit that really chaps my ass!", "attempt": 1}
+{"clock": "01:17:59", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2401, "text": "UAV's? I can't tell them apart.", "attempt": 1}
+{"clock": "01:18:29", "kind": "radio", "speaker": "Erusean Fighter", "t": 2431, "text": "Warning! Bandit on your six!", "attempt": 1}
+{"clock": "01:18:29", "dist_m": 9498, "kind": "weapon_switch", "t": 2431, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:18:29", "dist_m": 9492, "kind": "missile", "off_deg": 0.4344, "special": true, "t": 2431, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:18:29", "kind": "launch", "left": 15, "n": 1, "t": 2431, "target": "02_en_bomber_5_1411", "weapon": "special", "attempt": 1}
+{"clock": "01:18:31", "dist_m": 9086, "kind": "missile", "off_deg": 0.1122, "special": true, "t": 2432, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:18:31", "kind": "launch", "left": 14, "n": 1, "t": 2433, "target": "02_en_bomber_5_1411", "weapon": "special", "attempt": 1}
+{"clock": "01:18:32", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2433, "text": "Mage 2, Fox 3.", "attempt": 1}
+{"clock": "01:18:32", "dist_m": 8769, "kind": "missile", "off_deg": 0.6463, "special": true, "t": 2434, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:18:33", "dist_m": 8455, "kind": "missile", "off_deg": 0.2423, "special": true, "t": 2435, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:18:34", "dist_m": 8137, "kind": "missile", "off_deg": 0.4209, "special": true, "t": 2436, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:18:36", "dist_m": 7831, "kind": "missile", "off_deg": 0.5201, "special": true, "t": 2437, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:18:36", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2438, "text": "Missile hit.", "attempt": 1}
+{"callsign": "", "clock": "01:18:37", "kind": "death", "t": 2438, "who": "02_en_bomber_5_1411", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:18:37", "kind": "kill", "t": 2438, "target": "02_en_bomber_5_1411", "attempt": 1}
+{"clock": "01:18:37", "dist_m": 4404, "kind": "priority", "score": 0.07547, "t": 2438, "target": "02_en_fighter_4C_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:18:37", "dist_m": 4404, "kind": "target", "t": 2438, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:37", "dist_m": 4315, "kind": "missile", "off_deg": 14.73, "special": true, "t": 2438, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:38", "kind": "radio", "speaker": "Golem 2 Brownie", "t": 2439, "text": "Mage 2's bandit confirmed down.", "attempt": 1}
+{"clock": "01:18:38", "dist_m": 3831, "kind": "missile", "off_deg": 2.175, "special": true, "t": 2440, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:38", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 3.298, "t": 2440, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:38", "kind": "launch", "left": 13, "n": 1, "t": 2440, "target": "02_en_fighter_4C_1", "weapon": "special", "attempt": 1}
+{"clock": "01:18:38", "dist_m": 5284, "kind": "priority", "score": 0.06501, "t": 2440, "target": "02_en_fighter_4_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:18:38", "dist_m": 5284, "kind": "target", "t": 2440, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:39", "dist_m": 5203, "kind": "missile", "off_deg": 19.25, "special": true, "t": 2440, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:40", "dist_m": 4891, "kind": "missile", "off_deg": 2.741, "special": true, "t": 2441, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:40", "kind": "radio", "speaker": "Golem 4 Footpad", "t": 2442, "text": "They can burn with their whole payload!", "attempt": 1}
+{"clock": "01:18:40", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 3.934, "t": 2442, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:40", "kind": "launch", "left": 12, "n": 1, "t": 2442, "target": "02_en_fighter_4_1", "weapon": "special", "attempt": 1}
+{"clock": "01:18:40", "dist_m": 4955, "kind": "priority", "score": 0.06912, "t": 2442, "target": "02_en_fighter_4B_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:18:40", "dist_m": 4955, "kind": "target", "t": 2442, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:40", "dist_m": 4795, "kind": "missile", "off_deg": 10.21, "special": true, "t": 2442, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:42", "dist_m": 4180, "kind": "missile", "off_deg": 0.8186, "special": true, "t": 2443, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:43", "dist_m": 3555, "kind": "missile", "off_deg": 0.9226, "special": true, "t": 2444, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:44", "dist_m": 2969, "kind": "missile", "off_deg": 0.2693, "special": true, "t": 2446, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:45", "dist_m": 2452, "kind": "missile", "off_deg": 1.832, "special": true, "t": 2447, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:46", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2447, "text": "Hesitating for a split second could be the difference between life and death. Stay sharp, think fast.", "attempt": 1}
+{"clock": "01:18:46", "dist_m": 1971, "kind": "missile", "off_deg": 4.617, "special": true, "t": 2448, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:47", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 2.183, "t": 2448, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:47", "kind": "launch", "left": 11, "n": 1, "t": 2448, "target": "02_en_fighter_4B_1", "weapon": "special", "attempt": 1}
+{"clock": "01:18:47", "dist_m": 1814, "kind": "priority", "score": 0.115, "t": 2448, "target": "02_en_fighter_4_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:18:47", "dist_m": 1814, "kind": "target", "t": 2448, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:47", "dist_m": 1798, "kind": "weapon_switch", "t": 2448, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "01:18:47", "dist_m": 1687, "kind": "missile", "off_deg": 10.11, "special": false, "t": 2448, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:47", "kind": "launch", "left": 111, "n": 1, "t": 2449, "target": "02_en_fighter_4_1", "weapon": "missile", "attempt": 1}
+{"clock": "01:18:48", "dist_m": 1218, "kind": "missile", "off_deg": 0.9948, "special": false, "t": 2450, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:48", "kind": "launch", "left": 110, "n": 1, "t": 2450, "target": "02_en_fighter_4_1", "weapon": "missile", "attempt": 1}
+{"callsign": "", "clock": "01:18:49", "kind": "death", "t": 2450, "who": "02_en_fighter_4B_1", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:18:49", "kind": "kill", "t": 2450, "target": "02_en_fighter_4B_1", "attempt": 1}
+{"clock": "01:18:49", "dist_m": 762.5, "kind": "missile", "off_deg": 2.491, "special": false, "t": 2451, "target": "02_en_fighter_4_1", "attempt": 1}
+{"callsign": "", "clock": "01:18:50", "kind": "death", "t": 2452, "who": "02_en_fighter_4_1", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:18:50", "kind": "kill", "t": 2452, "target": "02_en_fighter_4_1", "attempt": 1}
+{"clock": "01:18:50", "dist_m": 1374, "kind": "priority", "score": 0.0919, "t": 2452, "target": "02_en_fighter_4C_1", "weight": 1.4, "attempt": 1}
+{"clock": "01:18:50", "dist_m": 1381, "kind": "priority", "score": 0.09153, "t": 2452, "target": "02_en_fighter_4C_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:18:50", "dist_m": 1381, "kind": "target", "t": 2452, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:51", "kind": "radio", "speaker": "Golem 2 Brownie", "t": 2453, "text": "Roger that.", "attempt": 1}
+{"clock": "01:18:54", "dist_m": 1579, "kind": "missile", "off_deg": 18.13, "special": false, "t": 2455, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:54", "kind": "launch", "left": 109, "n": 1, "t": 2456, "target": "02_en_fighter_4C_1", "weapon": "missile", "attempt": 1}
+{"clock": "01:18:55", "dist_m": 1275, "kind": "missile", "off_deg": 1.591, "special": false, "t": 2457, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:55", "kind": "launch", "left": 108, "n": 1, "t": 2457, "target": "02_en_fighter_4C_1", "weapon": "missile", "attempt": 1}
+{"clock": "01:18:56", "dist_m": 998.9, "kind": "missile", "off_deg": 6.972, "special": false, "t": 2458, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:57", "dist_m": 806.5, "kind": "missile", "off_deg": 6.007, "special": false, "t": 2459, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:18:58", "kind": "radio", "speaker": "ENN", "t": 2459, "text": "Breaking news from ENN.", "attempt": 1}
+{"clock": "01:18:59", "dist_m": 648.9, "kind": "missile", "off_deg": 4.821, "special": false, "t": 2460, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:00", "dist_m": 514.4, "kind": "missile", "off_deg": 4.619, "special": false, "t": 2461, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:00", "kind": "launch", "left": 107, "n": 1, "t": 2462, "target": "02_en_fighter_4C_1", "weapon": "missile", "attempt": 1}
+{"clock": "01:19:00", "kind": "radio", "speaker": "ENN", "t": 2462, "text": "...the Osean Federation has...\n...space elevator...", "attempt": 1}
+{"clock": "01:19:01", "dist_m": 367.4, "kind": "missile", "off_deg": 9.726, "special": false, "t": 2463, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:01", "kind": "launch", "left": 106, "n": 1, "t": 2463, "target": "02_en_fighter_4C_1", "weapon": "missile", "attempt": 1}
+{"clock": "01:19:04", "dist_m": 246.1, "kind": "missile", "off_deg": 19.63, "special": false, "t": 2466, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:06", "dist_m": 174.2, "kind": "missile", "off_deg": 10.56, "special": false, "t": 2467, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:06", "kind": "launch", "left": 105, "n": 1, "t": 2467, "target": "02_en_fighter_4C_1", "weapon": "missile", "attempt": 1}
+{"clock": "01:19:06", "damage": 40, "hp": 28, "kind": "one_shot", "set_aside_s": 1.268, "t": 2467, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:06", "dist_m": 24710.0, "kind": "priority", "score": 0.01417, "t": 2467, "target": "02_en_bomber_6_2", "weight": 2.1, "attempt": 1}
+{"clock": "01:19:06", "kind": "select_refused", "mark": 0, "special": false, "t": 2467, "target": "02_en_bomber_6_2", "attempt": 1}
+{"callsign": "", "clock": "01:19:06", "dist_m": 24710.0, "kind": "target", "t": 2467, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "01:19:12", "dist_m": 1766, "kind": "priority", "score": 0.09563, "t": 2473, "target": "02_en_fighter_4C_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:19:12", "dist_m": 1766, "kind": "target", "t": 2473, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:12", "dist_m": 1802, "kind": "weapon_switch", "t": 2473, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:19:16", "dist_m": 2678, "kind": "missile", "off_deg": 16.2, "special": true, "t": 2477, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:16", "damage": 80, "hp": 28, "kind": "one_shot", "set_aside_s": 2.607, "t": 2477, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:16", "kind": "launch", "left": 10, "n": 1, "t": 2477, "target": "02_en_fighter_4C_1", "weapon": "special", "attempt": 1}
+{"clock": "01:19:16", "dist_m": 23040.0, "kind": "priority", "score": 0.01911, "t": 2478, "target": "02_en_bomber_6_2", "weight": 2.1, "attempt": 1}
+{"callsign": "", "clock": "01:19:16", "dist_m": 23040.0, "kind": "target", "t": 2478, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "01:19:16", "dist_m": 23040.0, "kind": "weapon_switch", "t": 2478, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "01:19:16", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2478, "text": "Fox 3.", "attempt": 1}
+{"callsign": "", "clock": "01:19:19", "kind": "death", "t": 2480, "who": "02_en_fighter_4C_1", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:19:19", "kind": "kill", "t": 2480, "target": "02_en_fighter_4C_1", "attempt": 1}
+{"clock": "01:19:19", "kind": "radio", "speaker": "Erusean Fighter", "t": 2480, "text": "I've lost control!", "attempt": 1}
+{"clock": "01:19:55", "dist_m": 9497, "kind": "weapon_switch", "t": 2516, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:19:55", "dist_m": 9489, "kind": "missile", "off_deg": 0.3159, "special": true, "t": 2516, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "01:19:55", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.693, "t": 2516, "target": "02_en_bomber_6_2", "attempt": 1}
+{"clock": "01:19:55", "kind": "launch", "left": 9, "n": 1, "t": 2516, "target": "02_en_bomber_6_2", "weapon": "special", "attempt": 1}
+{"clock": "01:19:55", "dist_m": 9840, "kind": "priority", "score": 0.05906, "t": 2516, "target": "02_en_bomber_6_1", "weight": 2.1, "attempt": 1}
+{"callsign": "", "clock": "01:19:55", "dist_m": 9840, "kind": "target", "t": 2516, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "01:19:55", "dist_m": 9723, "kind": "missile", "off_deg": 4.055, "special": true, "t": 2517, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "01:19:55", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.834, "t": 2517, "target": "02_en_bomber_6_1", "attempt": 1}
+{"clock": "01:19:55", "kind": "launch", "left": 8, "n": 1, "t": 2517, "target": "02_en_bomber_6_1", "weapon": "special", "attempt": 1}
+{"clock": "01:19:55", "dist_m": 10410.0, "kind": "priority", "score": 0.05607, "t": 2517, "target": "02_en_bomber_6_3", "weight": 2.1, "attempt": 1}
+{"callsign": "", "clock": "01:19:55", "dist_m": 10410.0, "kind": "target", "t": 2517, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "01:19:56", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2517, "text": "Locked.", "attempt": 1}
+{"clock": "01:19:56", "dist_m": 10120.0, "kind": "weapon_switch", "t": 2518, "to": "standard missiles", "why": "no longer: beyond standard missile range", "attempt": 1}
+{"clock": "01:19:58", "dist_m": 9497, "kind": "weapon_switch", "t": 2520, "to": "plwp_laam_e0_C", "why": "beyond standard missile range", "attempt": 1}
+{"clock": "01:19:58", "dist_m": 9485, "kind": "missile", "off_deg": 0.6622, "special": true, "t": 2520, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "01:19:59", "dist_m": 9102, "kind": "missile", "off_deg": 0.3996, "special": true, "t": 2521, "target": "02_en_bomber_6_3", "attempt": 1}
+{"callsign": "", "clock": "01:20:01", "kind": "death", "t": 2522, "who": "02_en_bomber_6_2", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:20:01", "kind": "kill", "t": 2522, "target": "02_en_bomber_6_2", "attempt": 1}
+{"callsign": "", "clock": "01:20:01", "kind": "death", "t": 2522, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_129", "attempt": 1}
+{"clock": "01:20:01", "dist_m": 8717, "kind": "missile", "off_deg": 0.4189, "special": true, "t": 2522, "target": "02_en_bomber_6_3", "attempt": 1}
+{"callsign": "", "clock": "01:20:01", "kind": "death", "t": 2523, "who": "02_en_bomber_6_1", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:20:01", "kind": "kill", "t": 2523, "target": "02_en_bomber_6_1", "attempt": 1}
+{"callsign": "", "clock": "01:20:01", "kind": "death", "t": 2523, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_122", "attempt": 1}
+{"clock": "01:20:02", "dist_m": 8344, "kind": "missile", "off_deg": 0.3431, "special": true, "t": 2523, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "01:20:03", "dist_m": 7973, "kind": "missile", "off_deg": 0.3802, "special": true, "t": 2525, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "01:20:03", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 5.784, "t": 2525, "target": "02_en_bomber_6_3", "attempt": 1}
+{"clock": "01:20:03", "kind": "launch", "left": 7, "n": 1, "t": 2525, "target": "02_en_bomber_6_3", "weapon": "special", "attempt": 1}
+{"clock": "01:20:03", "dist_m": 8700, "kind": "priority", "score": 0.06589, "t": 2525, "target": "02_en_bomber_6_4", "weight": 2.1, "attempt": 1}
+{"callsign": "", "clock": "01:20:03", "dist_m": 8700, "kind": "target", "t": 2525, "target": "02_en_bomber_6_4", "attempt": 1}
+{"clock": "01:20:04", "dist_m": 8606, "kind": "missile", "off_deg": 1.659, "special": true, "t": 2525, "target": "02_en_bomber_6_4", "attempt": 1}
+{"clock": "01:20:04", "damage": 80, "hp": 80, "kind": "one_shot", "set_aside_s": 6.164, "t": 2525, "target": "02_en_bomber_6_4", "attempt": 1}
+{"clock": "01:20:04", "kind": "launch", "left": 6, "n": 1, "t": 2525, "target": "02_en_bomber_6_4", "weapon": "special", "attempt": 1}
+{"clock": "01:20:04", "dist_m": 7947, "kind": "priority", "score": 0.04634, "t": 2525, "target": "02_en_fighter_5_1", "weight": 1.4, "attempt": 1}
+{"callsign": "", "clock": "01:20:04", "dist_m": 7947, "kind": "target", "t": 2525, "target": "02_en_fighter_5_1", "attempt": 1}
+{"clock": "01:20:04", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2525, "text": "Mage 2, Fox 3.", "attempt": 1}
+{"clock": "01:20:04", "dist_m": 7780, "kind": "missile", "off_deg": 22.17, "special": true, "t": 2526, "target": "02_en_fighter_5_1", "attempt": 1}
+{"clock": "01:20:05", "dist_m": 7188, "kind": "missile", "off_deg": 2.297, "special": true, "t": 2527, "target": "02_en_fighter_5_1", "attempt": 1}
+{"clock": "01:20:06", "dist_m": 6594, "kind": "missile", "off_deg": 1.958, "special": true, "t": 2528, "target": "02_en_fighter_5_1", "attempt": 1}
+{"clock": "01:20:08", "dist_m": 5998, "kind": "missile", "off_deg": 0.6633, "special": true, "t": 2529, "target": "02_en_fighter_5_1", "attempt": 1}
+{"callsign": "", "clock": "01:20:08", "kind": "death", "t": 2530, "who": "02_en_bomber_6_3", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:20:08", "kind": "kill", "t": 2530, "target": "02_en_bomber_6_3", "attempt": 1}
+{"callsign": "", "clock": "01:20:08", "kind": "death", "t": 2530, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_136", "attempt": 1}
+{"clock": "01:20:09", "dist_m": 5321, "kind": "missile", "off_deg": 0.4193, "special": true, "t": 2530, "target": "02_en_fighter_5_1", "attempt": 1}
+{"callsign": "", "clock": "01:20:09", "kind": "death", "t": 2531, "who": "02_en_bomber_6_4", "attempt": 1}
+{"by": "missile on its way", "callsign": "", "clock": "01:20:09", "kind": "kill", "t": 2531, "target": "02_en_bomber_6_4", "attempt": 1}
+{"callsign": "", "clock": "01:20:09", "kind": "death", "t": 2531, "who": "t095_gsh23_GEN_VARIABLE_t095_gsh23_C_CAT_143", "attempt": 1}
+{"clock": "01:20:09", "kind": "phase_cleared", "phase": "MissionPhase_02", "t": 2531, "attempt": 1}
+{"clock": "01:20:09", "kind": "select_refused", "mark": 0, "special": false, "t": 2531, "target": "02_en_fighter_5_1", "attempt": 1}
+{"clock": "01:20:10", "dist_m": -1, "kind": "weapon_switch", "t": 2531, "to": "standard missiles", "why": "nothing selected; the special weapon hides some targets", "attempt": 1}
+{"clock": "01:20:15", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2537, "text": "To Golem and Mage. Job well done. All bombers are down.", "attempt": 1}
+{"clock": "01:20:19", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 2540, "text": "Our radar shows no sign of bandits. You're in the clear.", "attempt": 1}
+{"clock": "01:20:25", "kind": "radio", "speaker": "Mage 1 Clown", "t": 2546, "text": "Good going, Mage 2. Flight commander, looks like he's got what it takes.", "attempt": 1}
+{"clock": "01:20:29", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2551, "text": "Let's slow down. It's just one sortie.", "attempt": 1}
+{"clock": "01:20:32", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2554, "text": "Don't try to be a hero. I want you to make it back in one piece, you hear?", "attempt": 1}
+{"clock": "01:20:37", "kind": "radio", "speaker": "Golem 2 Brownie", "t": 2558, "text": "Yeah, I gotta side with the bossman on this.", "attempt": 1}
+{"clock": "01:20:41", "kind": "radio", "speaker": "IUN-PKF HQ", "t": 2562, "text": "Golem Squadron, this is HQ. Did you confirm any drones?", "attempt": 1}
+{"clock": "01:20:45", "kind": "radio", "speaker": "Golem 1 Knocker", "t": 2566, "text": "What's the deal with all the drones?", "attempt": 1}
+{"clock": "01:20:49", "kind": "radio", "speaker": "IUN-PKF HQ", "t": 2571, "text": "Golem 1, return to base and report for debriefing.", "attempt": 1}
+{"clock": "01:20:58", "kind": "radio", "speaker": "ENN", "t": 2580, "text": "...beautiful emerald south sea water at Gunther Bay...", "attempt": 1}
+{"clock": "01:21:05", "kind": "radio", "speaker": "ENN", "t": 2587, "text": "...I am Princess Rosa Cossette D'Elise of the Kingdom of Erusea...", "attempt": 1}
+{"clock": "01:21:12", "kind": "radio", "speaker": "ENN", "t": 2593, "text": "...Citizens of Erusea...", "attempt": 1}
+{"clock": "01:21:14", "kind": "mission_accomplished", "t": 2596, "attempt": 1}
+{"clock": "01:21:17", "kind": "prediction_stats", "t": 2598, "text": "route planes: 253 checks, the guess used was off by 16 m on average (each way: route 16 m, straight 19 m; now using route); steady planes: 2153 checks, the guess used was off by 28 m on average (each way: full turn 28 m, half turn 28 m, straight 28 m; now using full turn); turning planes: 2255 checks, the guess used was off by 72 m on average (each way: full turn 116 m, half turn 70 m, straight 95 m; now using half turn)", "attempt": 1}

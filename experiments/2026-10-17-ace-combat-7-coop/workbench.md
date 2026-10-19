@@ -1149,6 +1149,64 @@ switched off in the copy (your OK, 20:20; Vanilla mode in the copy's own Mod Loa
     yet**; what stops it is the lock problem in 11, which the campaign session takes on first
     because any mission with targets like these would stop the bot the same way.
 
+## 15. The Ace campaign session, part 1: the lock problem solved (19 Oct, 00:30 onwards)
+
+Your OK of 18 Oct (22:5x): fly the story campaign on Ace from start to finish, improving the
+bot as it goes, no further input from you. First the lock problem from section 14 (finding
+11), because any mission with such targets would stop the bot. All of it in the copy.
+
+**What the game's own code says** (read from the running copy with
+`tools\read-game-code.py`, section 8; two small read-only commands were added to it: `peek`
+shows the bytes of one live object, `vtslot` names the function behind an object's virtual
+call). A missile can only lock a target that has a lock "seeker" on it, and the seeker gets
+its target in exactly three places: when a weapon is switched, when the selection changes
+through the game's own `SelectTarget` (what the Tab key calls), and in a per-frame loop over
+the target candidates. Each place checks the same list: the target is alive, in range and
+inside the lock cone, its lock-on mark (a hidden byte at +0x6C0 in every game object, the
+value a mission sets with `SetHudBoxAttribute`) is not "lock-on impossible" or "fake", it is
+not a "mission special object" (`bIsMissionSpecialObject`, a readable flag the last session
+did not check), and the armed weapon can lock its kind (air or ground). `SelectTarget` also
+does things the bot skipped: it checks the target may be selected (mark, stealth, health),
+marks it as the player's target, files it in the target history, and hands it to the first
+seeker at once. Its "forced" form skips a short wait between selections; the last session's
+try used the unforced form, which returns at once inside that wait, so it did nothing.
+
+**The cause.** Since 18 Oct the bot chose its target and wrote it straight into the game's
+`SelectedTarget` field. The game then shows that target as selected, but none of the work
+above happens, so a seeker only came onto it if the game's own selection or its per-frame
+loop happened to pick the same target. Targets close to where the game's own Tab cycle would
+go (an Apache on the nose) locked; targets it never offered (SAM_2 among the others, the
+reinforcements arriving behind other targets) never got a seeker, which is exactly the "both
+seekers empty" seen on 18 Oct. Clouds were not the cause.
+
+**The fix** (`main.lua`): the chosen enemy is now selected the way Tab selects: the game's
+`NextTarget` is set and `SelectTarget(true)` called. If the game refuses (a target it would
+never let you select), the bot logs why and only then falls back to the old direct write so it
+can still aim. New readings: a target's lock-on mark is read from memory (a new read-only
+call in the C++ add-on, `CoopMem_Read`, through `ReadProcessMemory` on the game's own process,
+so a bad address gives nothing instead of a crash; nothing is ever written), its mission
+special flag, and where its lock point sits; the "not locked" line in the log now lists each
+seeker's target and state (none, detecting, started, LOCKED, in cloud, jammed). Targets the
+game can never lock are left out of the choice. A new `locks` order lists every enemy with
+these facts.
+
+**The test: Mission 14 on Hard, the same plan as last night** (00:43 to 00:57; report in
+`playtests\2026-10-19_0044_m14_hard-locks\`). The canyon was cleared at the first try. Then:
+the six Apaches at the landing zone were all down 47 s into the base attack (last night 1.5 to
+2 minutes), SAM_2, SAM_3 and SAM_4 and three AA guns by 1 min 50 s, and **the reinforcements
+locked and fell**: all seven of the first wave in 76 s, five of the six of the second wave.
+At 6.5 minutes the landing team was "surrounded" with zouen2_Tank_1 and the third wave (two
+APCs, two AA guns) left, so the attempt failed on time, not on locks. 27 kills, 24 of them
+single-missile shots, 39 damage taken. None of the 155 enemies carries a "cannot be locked"
+mark or the special flag. The one APC that stayed unlocked for a while was 1.8 to 2.3 km away
+with the plane inside the cloud layer, which shortens the lock range by design
+(`LockonRangeReductionInCloud`).
+
+**What it means for the campaign:** the bot can now lock whatever the game lets a player
+lock. What Mission 14 still asks for is speed against ground waves: each attack run costs
+about 25 s (extend to 2.6 km, turn, run in), so the next work there is shorter turnarounds and
+a plane or special weapon suited to ground targets.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

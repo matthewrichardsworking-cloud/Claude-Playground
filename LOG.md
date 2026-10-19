@@ -2,6 +2,25 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19: Ace Combat 7 co-op, playtest bot phase 4: lock problem solved, Ace campaign under way
+
+- Owner's OK (18 Oct): fly the AC7 story campaign on Ace with the bot, start to finish, no
+  further input. All in the game copy; real install and saves untouched (checked).
+- The lock problem from phase 3: read the game's own lock code from the running copy (two
+  read-only commands added to read-game-code.py: `peek`, `vtslot`). A target only gets a lock
+  "seeker" through the game's own SelectTarget (what Tab calls) or its per-frame loop; the bot
+  wrote SelectedTarget directly, which skipped that. Now it calls NextTarget + SelectTarget(true).
+  Mission 14 Hard: SAMs and reinforcements that never locked all locked and fell (27 kills);
+  still lost on time against the waves. Also new: a read-only memory read in the C++ add-on
+  (lock-on mark at +0x6C0, seeker state), `locks` / `actors` orders.
+- New campaign driver (tools/campaign.py): Restart Story, difficulty, movie skips (F1),
+  briefings, hangar plane/weapon by name (the save has the Typhoon with LAAM/8AGM/HCAA), the
+  mission with retries, replay skip (Enter twice), results, NEXT MISSION; a report per mission
+  and playtests/campaign-ace.md.
+- Results so far (Ace): Mission 01 completed first try (rank A, no damage); Mission 02
+  completed first try (37 kills, no damage, 8AGM). Vision layer (ray fans, vision.lua) written
+  for the owner's Mission 04/06 tests, not flown yet. Write-up: workbench section 15.
+
 ## 2026-10-18/19: Ace Combat 7 co-op, playtest bot phase 3: terrain and mission gimmicks
 
 - Owner's request: the bot should see terrain and physical objects and adapt to missions'

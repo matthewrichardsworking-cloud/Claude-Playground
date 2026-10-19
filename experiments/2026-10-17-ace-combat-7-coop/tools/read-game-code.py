@@ -1120,6 +1120,35 @@ def cmd_name(exe, args):
         print(exe.describe_code(addr) if exe.in_text(addr) else exe.describe_data(addr))
 
 
+def cmd_peek(exe, args):
+    """peek ADDR [N]: N bytes (default 64, at most 4096) of the game's memory at ADDR, as hex,
+    with each 8-byte word also read as a pointer and named when it points into the exe.
+    For looking at one live object (an address from the pilot's eval, UObject:GetAddress())."""
+    addr = parse_target(exe, args.targets[0])[0]
+    n = min(int(args.targets[1], 0) if len(args.targets) > 1 else 64, 4096)
+    data = exe.proc.read(addr, n)
+    for off in range(0, len(data), 16):
+        row = data[off:off + 16]
+        words = [struct.unpack_from('<Q', row, i)[0] for i in range(0, len(row) - 7, 8)]
+        named = []
+        for w in words:
+            if exe.base <= w < exe.base + exe.size:
+                named.append('exe+0x%x' % (w - exe.base))
+        print('  +0x%03x  %-48s %s' % (off, ' '.join('%02x' % b for b in row), '  '.join(named)))
+
+
+def cmd_vtslot(exe, args):
+    """vtslot OBJADDR OFFSET...: the function in the object's virtual function table at each
+    byte offset (as a 'call qword ptr [rax + OFFSET]' names it), with its name if known."""
+    obj = parse_target(exe, args.targets[0])[0]
+    vt = struct.unpack('<Q', exe.proc.read(obj, 8))[0]
+    print('object 0x%x: vtable at %s' % (obj, ('exe+0x%x' % (vt - exe.base)) if exe.base <= vt < exe.base + exe.size else hex(vt)))
+    for t in args.targets[1:]:
+        off = int(t, 0)
+        fn = struct.unpack('<Q', exe.proc.read(vt + off, 8))[0]
+        print('  [+0x%x] -> %s' % (off, exe.describe_code(fn) if exe.in_text(fn) else hex(fn)))
+
+
 def cmd_read(exe, args):
     for t in args.targets:
         addr, label = parse_target(exe, t)
@@ -1265,7 +1294,7 @@ def print_refs(exe, refs, indent):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('command', choices=['info', 'read', 'refs', 'strings', 'name', 'class'])
+    ap.add_argument('command', choices=['info', 'read', 'refs', 'strings', 'name', 'class', 'peek', 'vtslot'])
     ap.add_argument('targets', nargs='*')
     ap.add_argument('--dump', help='UE4SS object dump (default: newest under dumps\\)')
     ap.add_argument('--dump-base', help='exe base when the dump was written (hex)')
@@ -1276,7 +1305,7 @@ def main():
     ap.add_argument('--no-rtti', action='store_true')
     ap.add_argument('--quiet', action='store_true')
     args = ap.parse_args()
-    if args.command in ('read', 'refs', 'strings', 'name', 'class') and not args.targets:
+    if args.command in ('read', 'refs', 'strings', 'name', 'class', 'peek', 'vtslot') and not args.targets:
         ap.error('give at least one target')
 
     ok, refused = find_copy_processes()
@@ -1311,7 +1340,7 @@ def main():
     try:
         exe = LiveExe(proc, dump=dump, dump_base=dump_base, rtti=not args.no_rtti, quiet=args.quiet)
         {'info': cmd_info, 'read': cmd_read, 'refs': cmd_refs, 'strings': cmd_strings, 'name': cmd_name,
-         'class': cmd_class}[args.command](exe, args)
+         'class': cmd_class, 'peek': cmd_peek, 'vtslot': cmd_vtslot}[args.command](exe, args)
     finally:
         proc.close()
 

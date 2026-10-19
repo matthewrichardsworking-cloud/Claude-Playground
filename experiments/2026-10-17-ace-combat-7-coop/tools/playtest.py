@@ -360,10 +360,13 @@ def retry(how):
     # menu (Retry from checkpoint / Retry mission / Quit mission) comes after that. Some
     # failures (Mission 14: "you've alerted the enemy") restart the phase by themselves
     # instead: then the plane flies on and no key must be pressed.
-    time.sleep(8)
+    if page() != "CampaignRetry_C":
+        time.sleep(8)
     deadline = time.time() + 12
     while time.time() < deadline:
         s = status()
+        if s.get("page") == "CampaignRetry_C":
+            break
         if s.get("failed"):
             break
         if plane_ready(s) and not s.get("failed"):
@@ -538,6 +541,10 @@ def fly_attempt(n, order_, folder, limit_s, plan=None, entry="start"):
         s = status()
         if s.get("failed") and not s.get("completed"):
             result, cause = "failed", "the mission reported failure"
+            break
+        if s.get("page") == "CampaignRetry_C":
+            # the retry menu (after a failure both flags can read true)
+            result, cause = "failed", "the retry menu came up"
             break
         if time.time() - t0 > limit_s:
             result, cause = "stopped", f"time limit of {limit_s / 60:.0f} min"

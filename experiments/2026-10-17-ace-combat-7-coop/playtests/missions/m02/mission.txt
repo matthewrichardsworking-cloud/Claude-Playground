@@ -1,0 +1,5 @@
+# Mission 02 Charge the Enemy (story, Ace; level ms02): an airbase full of ground targets, helicopters and fighters.
+# Completed on Hard on 18 Oct with the LAAM; on Ace the 8AGM (eight ground missiles at once)
+# is tried for the ground targets.
+plane: Typhoon
+weapon: 8AGM

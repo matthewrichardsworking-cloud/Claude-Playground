@@ -16,6 +16,9 @@
 //   CoopKeys_Set("W,A") holds exactly these keyboard keys (every other key this add-on
 //                     pressed is let go); CoopKeys_Set("") lets go of all of them
 //   CoopKeys_Status() -> string: which keys are held, how many presses were sent
+//   CoopTrace_Setup / _Context / _Line / _Ground: the engine's own line traces (trace.cpp)
+//   CoopMem_Read(address, size) / CoopMem_ReadFloat(address): read (never write) a value in
+//                     the game's memory that has no script property, nil if unreadable
 //
 // Why keys too (18 Oct 2026): Steam's overlay sits between the game and any gamepad
 // library and answers the game's gamepad reads itself, so the virtual gamepad never reaches
@@ -333,6 +336,54 @@ namespace
         return 8;
     }
 
+    // ---- reading the game's own memory (19 Oct 2026) ----------------------------------------
+    // Some of the game's state has no script property: a game object's lock-on mark (the
+    // EHudBoxAttribute byte a mission sets with SetHudBoxAttribute, at +0x6C0 in this build,
+    // read from the game's own SelectTarget code, workbench section 15) and a lock seeker's
+    // state (ELockonState, +0x40 in a TargetLockonSeeker). This reads them. Read-only, and
+    // through ReadProcessMemory on this very process, so an address that is no longer mapped
+    // gives nil instead of a crash. Nothing is ever written.
+    //
+    // CoopMem_Read(address, size) -> the unsigned integer of 1, 2, 4 or 8 bytes there, or nil
+    // CoopMem_ReadFloat(address)  -> the 4-byte float there, or nil
+    auto read_bytes(uintptr_t addr, void* out, SIZE_T n) -> bool
+    {
+        if (!addr) return false;
+        SIZE_T got = 0;
+        return ReadProcessMemory(GetCurrentProcess(), reinterpret_cast<LPCVOID>(addr), out, n, &got) && got == n;
+    }
+
+    auto lua_mem_read(const LuaMadeSimple::Lua& lua) -> int
+    {
+        uintptr_t addr = read_address(lua);
+        int64_t size = 1;
+        if (lua.get_stack_size() > 0)
+        {
+            if (lua.is_integer()) size = lua.get_integer();
+            else if (lua.is_number()) size = static_cast<int64_t>(lua.get_number());
+            else lua.discard_value();
+        }
+        clear(lua);
+        uint64_t v = 0;
+        if (!(size == 1 || size == 2 || size == 4 || size == 8) || !read_bytes(addr, &v, static_cast<SIZE_T>(size)))
+        {
+            lua.set_nil();
+            return 1;
+        }
+        lua.set_integer(static_cast<int64_t>(v));
+        return 1;
+    }
+
+    auto lua_mem_read_float(const LuaMadeSimple::Lua& lua) -> int
+    {
+        uintptr_t addr = read_address(lua);
+        clear(lua);
+        float f = 0;
+        if (!read_bytes(addr, &f, 4)) { lua.set_nil(); return 1; }
+        lua.set_number(f);
+        return 1;
+    }
+
     // CoopTrace_Ground(x, y, zTop, zBottom) -> z of the highest solid thing there (nil: nothing), microseconds
     auto lua_trace_ground(const LuaMadeSimple::Lua& lua) -> int
     {
@@ -390,6 +441,8 @@ class CoopPadMod : public CppUserModBase
         lua.register_function("CoopTrace_Context", lua_trace_context);
         lua.register_function("CoopTrace_Line", lua_trace_line);
         lua.register_function("CoopTrace_Ground", lua_trace_ground);
+        lua.register_function("CoopMem_Read", lua_mem_read);
+        lua.register_function("CoopMem_ReadFloat", lua_mem_read_float);
     }
 };
 

@@ -1,0 +1,3 @@
+# Mission 01 Charge Assault (story, Ace): all air targets (Tu-95 bombers, MiG-21s, a Tu-160)
+plane: Typhoon
+weapon: LAAM

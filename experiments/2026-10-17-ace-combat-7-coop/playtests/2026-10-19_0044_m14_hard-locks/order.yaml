@@ -1,0 +1,12 @@
+# Mission 14 on Hard, to watch the lock problem with the new diagnostics (19 Oct 2026):
+# targets now selected through the game's own SelectTarget, lock marks read from memory
+name: hard-locks
+mission: 14
+difficulty: hard
+mode: fair
+attempts: 4
+retry: checkpoint
+time_limit_min: 20
+plan: playtests\missions\m14\plan.txt
+from_title: false
+close_game: false
