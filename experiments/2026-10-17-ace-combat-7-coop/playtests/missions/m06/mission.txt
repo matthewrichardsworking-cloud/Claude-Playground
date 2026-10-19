@@ -1,7 +1,9 @@
 # Mission 06 Long Day (story, Ace; level ms06, the Space Elevator map again): a long defence
-# with several waves. LAAM for the first try (long range against bombers); since 19 Oct 05:15 the
-# 8AGM: phase 1 is timed on damage to the enemy base (see notes.md and plan.txt).
+# with several waves. Phase 1 is won on points (24,000 in 15 minutes). Active at the start:
+# about 19,000 points on the ground (ships, SAM/AA sites, buildings) and 9,500 in the air. LAAM
+# with the score mode made 7,960 in 9 minutes (19 Oct 05:49). The 8AGM (06:01) left the three
+# Tu-160s (3,600 points) to standard missiles: 2 minutes of chasing for nothing. So the LAAM.
 plane: Typhoon
-weapon: 8AGM
+weapon: LAAM
 attempts: 10
 time_limit_min: 45

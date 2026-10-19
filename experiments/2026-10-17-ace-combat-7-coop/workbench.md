@@ -1367,10 +1367,30 @@ north of it, and south of it a hill that rises 200 m in the first 750 m.
 
 What went wrong in the mission itself, so far: a drone shot the plane down from 200 m behind
 while the bot was "opening out" (flying straight away to get missile room); with a drone on its
-tail it now turns hard into it instead. Phase 1 turned out to be timed on damage to the enemy
-base ("You haven't done enough damage to the base!"), and the bot had spent its time on drones
-and fighters: the next sortie flies the 8AGM with a plan that puts the base's buildings,
-vehicles and the anti-air around them first.
+tail it now turns hard into it instead. Phase 1 fails on time with "You haven't done enough
+damage to the base!", and my first reading of that (attack the base: the 8AGM and a plan that
+puts its buildings first) was wrong: 3,480 points in 9.5 minutes. The HUD shows the real goal,
+`SCORE 003480/024000`: 24,000 points in 15 minutes. The points per kill sit in every game
+object (`KillBountyScore`): drones 350 (23 of them), Tu-160 bombers 1,200, a named F-14D 1,300,
+fighters 220 to 550, ground targets 120 to 200. So the points are in the air. New: a "score"
+mode (`fly attack score`) that weighs every enemy by its points against the time to get it,
+the LAAM again, and the HUD's score line and goal in the pilot's status.
+
+Score mode, what each try showed (all on Ace, phase 1 of Mission 06; details in the mission's
+notes): with the LAAM the three Tu-160s (3,600 points) fall in the first 3 minutes, but then
+the rate drops to 600-700 points a minute, against the 1,600 needed. The numbers say why: the
+Typhoon reloads its two standard missiles fast enough for about 20 shots a minute, and the bot
+fired 4-6, because after each ground target it flew 2.6 km out before turning back, circled
+targets too close to point at, chased one F-16C for 1.5 minutes, and broke away from missiles
+predicted to miss by 300 m. The 8AGM try (salvos now held until its four locks are made) left
+the bombers to standard missiles and chased one out of the combat zone, which fails the mission
+("Stay within the operation area!"); the plane's own "beyond the pull-out line" flag never came
+on. New rules for score phases: give up on a target after 35 s and 6 missiles if its health has
+stopped falling; weigh each target by the points within 1.5 km of it; loops of 1.5 km instead
+of 2.6; a close target far off the nose counts as needing a loop; breaks only for missiles
+within 200 m while health is above 60. In every mode now: the game's `CombatZone` box is read
+at the start (Mission 06: 60 by 60 km), targets within 2 km of its edge are left alone, and
+within 4 km of the edge the plane turns back in.
 
 Two mistakes of mine cost two restarts of the copy, and changed how I work: (1) UE4SS's
 "restart all mods" (Ctrl+P), used to load new script code, crashed the game in mid-mission at

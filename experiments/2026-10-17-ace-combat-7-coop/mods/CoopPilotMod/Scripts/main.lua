@@ -349,6 +349,61 @@ local function dialogInfo()
     return d
 end
 
+-- The mission's combat zone: a CombatZone actor, a box (Mission 06's: 60 x 60 km around
+-- (10, 0) km). Leaving it fails the mission a few seconds after "Spare 15! Stay within the
+-- operation area!" (19 Oct 2026: the bot chased a Tu-160 out of it at 1,100 km/h), and the
+-- plane's own IsBeyondPulloutLine never came on. Found once per mission: of several zones,
+-- the one the plane is in.
+local zoneCache = { at = -100 }
+local function combatZone(px, py)
+    local okV, good = pcall(function() return zoneCache.actor and zoneCache.actor:IsValid() end)
+    if okV and good then return zoneCache.box end
+    if now() - zoneCache.at < 5 then return nil end
+    zoneCache.at, zoneCache.actor, zoneCache.box = now(), nil, nil
+    for _, a in ipairs(FindAllOf("CombatZone") or {}) do
+        pcall(function()
+            if not a:IsValid() then return end
+            local o, e = {}, {}
+            a:GetActorBounds(false, o, e)
+            if not (e.X and e.X > 0) then return end
+            local box = { x0 = o.X - e.X, x1 = o.X + e.X, y0 = o.Y - e.Y, y1 = o.Y + e.Y, cx = o.X, cy = o.Y }
+            local inside = px and px > box.x0 and px < box.x1 and py > box.y0 and py < box.y1
+            if not zoneCache.box or inside then zoneCache.actor, zoneCache.box = a, box end
+        end)
+    end
+    if zoneCache.box then
+        local z = zoneCache.box
+        log(string.format("combat zone: %.0f x %.0f km around (%.0f, %.0f) km", (z.x1 - z.x0) / 10000, (z.y1 - z.y0) / 10000, z.cx / 10000, z.cy / 10000))
+    end
+    return zoneCache.box
+end
+-- how far inside the combat zone a point is (game units, horizontally; negative: outside)
+local function zoneMargin(x, y)
+    local z = combatZone(x, y)
+    if not z then return math.huge end
+    return math.min(x - z.x0, z.x1 - x, y - z.y0, z.y1 - y)
+end
+
+-- The HUD's score line ("SCORE 003480/024000"): a phase won on points shows its goal after
+-- the slash (Mission 06 Long Day, 19 Oct 2026: 24,000 in 15 minutes; the radio never says the
+-- number). The text block is looked for at most every 10 s while there is none, then read.
+local scoreInfoTB, scoreInfoLookedAt = nil, -100
+local function hudScoreText()
+    local ok, good = pcall(function() return scoreInfoTB and scoreInfoTB:IsValid() end)
+    if not (ok and good) then
+        scoreInfoTB = nil
+        if now() - scoreInfoLookedAt < 10 then return nil end
+        scoreInfoLookedAt = now()
+        for _, t in ipairs(FindAllOf("TextBlock") or {}) do
+            local okN, n = pcall(function() return t:GetFName():ToString() end)
+            if okN and n == "ScoreInfo" then scoreInfoTB = t; break end
+        end
+        if not scoreInfoTB then return nil end
+    end
+    local okT, tx = pcall(function() return scoreInfoTB:GetText():ToString() end)
+    return okT and tx or nil
+end
+
 local function snapshot()
     local s = { time = now() }
     local p = playerPlane()
@@ -450,6 +505,9 @@ local function snapshot()
         s.elapsed_s = call(m, "GetMissionElapsedTimeInSeconds_S")
         s.phase_left_s = call(m, "GetMissionPhaseTimeLeftInSeconds_S")
         s.kills = call(m, "GetKillStatCount")
+        local hs = hudScoreText()
+        s.hud_score = hs or false
+        s.score_goal = hs and tonumber(hs:match("/%s*(%d+)")) or false
     end
     return s
 end
@@ -1113,6 +1171,23 @@ local function seekersText(ts)
     end)
     return #parts > 0 and table.concat(parts, ",") or "none"
 end
+-- How many lock seekers are locked, and how many still locking (multi-lock specials: the
+-- 8AGM takes four ground targets at once; 19 Oct 2026, Mission 06: it was fired the moment
+-- the first lock came, so most salvos went at one or two targets)
+local function seekerCounts(ts)
+    local locked, locking = 0, 0
+    pcall(function()
+        local arr = ts.LockonSeekers
+        for i = 1, #arr do
+            local sk = arr[i]
+            if sk and sk:IsValid() then
+                local st = type(CoopMem_Read) == "function" and CoopMem_Read(sk:GetAddress() + 0x40, 1) or nil
+                if st == 3 or st == 4 then locked = locked + 1 elseif st == 1 or st == 2 or st == 5 then locking = locking + 1 end
+            end
+        end
+    end)
+    return locked, locking
+end
 local function lockText(li)
     if not li then return "?" end
     return string.format("mark %s%s%s%s", li.mark and (HUD_ATTR and HUD_ATTR[li.mark] or tostring(li.mark)) or "unread",
@@ -1160,6 +1235,21 @@ local function enemyWeight(o, l)
     if tr and tr.tracking and allyNames[tr.tracking] then w = w * (chasesProtected and 7 or 2) end
     -- what the order says matters most in this mission ("focus AH64_00,zouen")
     if ap and ap.focus and hasAny(name, ap.focus) then w = w * 6 end
+    -- Score phases ("fly attack score"): a phase won on points, not on particular targets
+    -- (Mission 06 Long Day: 24,000 points in 15 minutes, the HUD's "SCORE 003480/024000"; the
+    -- radio only says "You haven't done enough damage to the base!"). Each enemy counts by the
+    -- points the game gives for it (GameObject.KillBountyScore: there drones 350, Tu-160 1,200,
+    -- the named F-14D 1,300, fighters 220-550, ground targets 120-200), and what is not a
+    -- plane a little less, since an attack run on it takes longer than a missile at a plane.
+    if ap and ap.scoreMode then
+        local info = objInfo(o)
+        if info.bounty == nil then
+            local okB, b = pcall(function() return o.KillBountyScore end)
+            info.bounty = okB and tonumber(b) or 0
+        end
+        w = w * math.max(info.bounty, 50) / 250
+        if not (Aware and Aware.trackFor(o)) then w = w * 0.6 end
+    end
     local okT, tgtFlag = pcall(function() return o:IsTGT() end)
     local isTgt = okT and tgtFlag
     -- Mission targets (the game's TGT flag) are what a phase is won with (19 Oct 2026, Mission
@@ -1222,6 +1312,25 @@ end
 -- nose onto it, and a detour when it is too close and too far off the nose to shoot. The
 -- one being worked on is kept unless another one is clearly better (a target switch
 -- costs a turn). Returns the enemy, its distance (m), its score (higher = better), its weight.
+-- score phases: active enemy ground targets with their points, { x, y, z, bounty }, from the
+-- last target choice (for the sweep through a cluster)
+local scorePts = nil
+-- Score phases: how long a kill of each kind takes once it is the target (seconds), to weigh
+-- targets by points per second rather than points (19 Oct 2026, Mission 06: drones worth 350
+-- took 30-40 s and 8 missiles each, ground targets worth 100-200 about 10 s). Starting guesses,
+-- then the average of this session's own kills of that kind.
+local killTimes = { agile = 35, bomber = 30, plane = 20, heli = 12, ground = 10 }
+local function killKind(o)
+    local info = objInfo(o)
+    local n = info.name
+    if info.agile == nil then info.agile = n:find("uav", 1, true) ~= nil or n:find("drone", 1, true) ~= nil end
+    if info.agile then return "agile" end
+    if n:find("t160", 1, true) or n:find("tu95", 1, true) or n:find("t095", 1, true) or n:find("b52", 1, true) or n:find("bomber", 1, true) then return "bomber" end
+    if Aware and Aware.trackFor(o) then return "plane" end
+    if info.heli == nil then info.heli = hasAny(n, { "ah64", "mi24", "mi28", "ka50", "ka52", "uh60", "ch47", "ch48", "heli" }) end
+    if info.heli then return "heli" end
+    return "ground"
+end
 local function nearestEnemy(loc, skip, F, current, kmh)
     local best, bestScore, bestD, bestW = nil, -1, 0, 1
     local hiddenBest, hiddenD = nil, math.huge
@@ -1229,6 +1338,32 @@ local function nearestEnemy(loc, skip, F, current, kmh)
     local t = now()
     local objs = FindAllOf("GameObject") or {}
     local allies, names = {}, {}
+    -- Score phases: the points around each place (1.5 km squares of active enemies' bounty),
+    -- so the bot goes where the points are thick and keeps working there instead of flying
+    -- 20 km for one plane (Mission 06 phase 1, 19 Oct 2026: 28 ships in one harbour, 23 SAM
+    -- and AA sites with 20 houses and helicopters around them, about 7,600 points in a few km)
+    local cluster = nil
+    if ap and ap.scoreMode then
+        cluster = {}
+        scorePts = {}
+        for _, o in ipairs(objs) do
+            pcall(function()
+                if o.bIsActivated and o:GetFaction() == 0 and o:IsAlive() then
+                    local info = objInfo(o)
+                    if info.bounty == nil then
+                        local okB, b = pcall(function() return o.KillBountyScore end)
+                        info.bounty = okB and tonumber(b) or 0
+                    end
+                    if info.bounty > 0 then
+                        local l = o:K2_GetActorLocation()
+                        local key = math.floor(l.X / 15000) .. ":" .. math.floor(l.Y / 15000)
+                        cluster[key] = (cluster[key] or 0) + info.bounty
+                        if not (Aware and Aware.trackFor(o)) then scorePts[#scorePts + 1] = { l.X, l.Y, l.Z, info.bounty } end
+                    end
+                end
+            end)
+        end
+    end
     for _, o in ipairs(objs) do
         pcall(function()
             if o.bIsActivated and o:GetFaction() == 1 and o:IsAlive() and not objInfo(o).name:find("dummy", 1, true) then
@@ -1284,16 +1419,33 @@ local function nearestEnemy(loc, skip, F, current, kmh)
                 if until_ and t < until_ then return nil end
             end
             local l = o:K2_GetActorLocation()
+            -- not near or past the combat zone's edge (chasing it there fails the mission)
+            if zoneMargin(l.X, l.Y) < 20000 then return nil end
             local dx, dy, dz = l.X - loc.X, l.Y - loc.Y, l.Z - loc.Z
             local du = math.sqrt(dx * dx + dy * dy + dz * dz)
             local d = du / 10
             local w = enemyWeight(o, l)
+            if cluster then
+                local cx, cy = math.floor(l.X / 15000), math.floor(l.Y / 15000)
+                local sum = 0
+                for i = -1, 1 do for j = -1, 1 do sum = sum + (cluster[(cx + i) .. ":" .. (cy + j)] or 0) end end
+                w = w * math.min(4, 1 + sum / 2000)
+            end
             local ang = 0
             if F and du > 1 then ang = math.deg(math.acos(math.max(-1, math.min(1, (dx * F[1] + dy * F[2] + dz * F[3]) / du)))) end
             local tt = d / mps + ang / 30 + ((d < 1200 and ang > 60) and 8 or 0)
+            -- score phases: a ground target close by and off the nose needs a loop out and back
+            -- (about 25 s; 19 Oct 2026, Mission 06: after each shot the next target was often at
+            -- 1.2-1.6 km and 20-40 degrees off, and the bot extended); ones further ahead chain
+            if ap and ap.scoreMode and not (Aware and Aware.trackFor(o)) and d < 1600 and ang > 15 then tt = tt + 10 end
+            -- ...and on a sweep through a cluster, what is ahead comes first
+            if ap and ap.scoreMode and not (Aware and Aware.trackFor(o)) and ang > 30 then tt = tt + 12 end
             -- already turning for it (but not while flying away from it to turn round: then
             -- another target ahead is quicker, 19 Oct 2026, Mission 14's reinforcement waves)
             if curName and n == curName and ang < 60 then tt = d / mps + 2 end
+            -- score phases: points per second, the time to get there plus the time a kill of
+            -- that kind takes
+            if ap and ap.scoreMode then return w / (tt + (killTimes[killKind(o)] or 10)), d, w, n end
             return w / (tt + 4), d, w, n
         end)
         if ok and sc then
@@ -1383,10 +1535,20 @@ local function groundRun(c, key, st, loc, F, alt)
         c.runs[key] = run
     end
     if run == "in" and (dm < 700 or above < minAbove) then run = "out" end
+    -- score phases: close by and well off the nose, the plane cannot point at it without
+    -- circling (19 Oct 2026, Mission 06: 31 s around one RAM launcher 1.2 km away): loop out
+    if run == "in" and ap and ap.scoreMode and dm < 1600 then
+        local offNow = math.deg(math.acos(clamp((h[1] * F[1] + h[2] * F[2]) / math.max(math.sqrt(F[1] ^ 2 + F[2] ^ 2), 0.01), -1, 1)))
+        if offNow > 35 then run = "out" end
+    end
     if run == "in" and dm < 2500 then c.runInAt = now() end
     -- under clouds the runs are low and level: turn back at the missile's 2 km lock range
     -- (a pass is about 20 s; Mission 14's reinforcements leave about 100 s)
-    if run == "out" and dm > (c.underClouds and 2000 or 2600) then run = "in" end
+    -- in score phases the loop is short: about 1.5 km out, a hard turn, and back, and on the
+    -- way back any target ahead will do (19 Oct 2026, Mission 06: with 2.6 km loops the bot
+    -- fired 4-6 missiles a minute at ground targets; the Typhoon reloads for about 20)
+    local outTo = c.underClouds and 2000 or ((ap and ap.scoreMode) and 1500 or 2600)
+    if run == "out" and dm > outTo then run = "in" end
     if run ~= c.runs[key] then event("attack_run", { target = key, phase = run == "in" and "running in" or "extending", dist_m = dm }) end
     c.runs[key] = run
     if run == "out" then
@@ -1396,6 +1558,45 @@ local function groundRun(c, key, st, loc, F, alt)
         return unit({ h[1], h[2], clamp((inH - above) / 1500, -0.3, 0.4) }), run, dm
     end
     return unit({ h[1], h[2], math.max((st.Z - loc.Z) / math.max(hd, 1), maxDive) }), run, dm
+end
+
+-- Score phases against ground targets: sweep through a cluster rather than circle one target
+-- (19 Oct 2026, Mission 06: aiming the plane at one ground target at a time, with a loop out
+-- and back after each, made 24 kills in 15 minutes; a player makes three or four times that).
+-- The plane flies at the points-weighted middle of the targets within 2 km of the chosen one,
+-- level at 550 m above the ground until 2.5 km out, then a shallow dive no lower than 300 m;
+-- whatever comes into the cone ahead is chosen and shot (nearestEnemy prefers targets ahead);
+-- past the middle it flies on 1.5 km and turns back. Only with three or more targets there.
+local function sweepRun(c, loc, F, alt)
+    local cx, cy, cz = c.sweepX, c.sweepY, c.sweepZ
+    local hd = math.sqrt((cx - loc.X) ^ 2 + (cy - loc.Y) ^ 2)
+    local h = { (cx - loc.X) / math.max(hd, 1), (cy - loc.Y) / math.max(hd, 1) }
+    local above = ap.agl or alt
+    local Fh = unit({ F[1], F[2], 0 })
+    local off = math.deg(math.acos(clamp(h[1] * Fh[1] + h[2] * Fh[2], -1, 1)))
+    c.sweepRun = c.sweepRun or "in"
+    local t = now()
+    -- (with time between switches: the turn back in takes about 8 s, during which the middle
+    -- is still behind; without it the two switched every frame, 19 Oct 06:37)
+    if c.sweepRun == "in" and (hd < 6000 or (off > 100 and hd < 20000 and t - (c.sweepT or -100) > 8)) then
+        c.sweepRun, c.sweepT = "out", t
+        event("sweep", { phase = "past the middle", dist_m = hd / 10, targets = c.sweepN })
+    elseif c.sweepRun == "out" and hd > 15000 and t - (c.sweepT or -100) > 3 then
+        c.sweepRun, c.sweepT = "in", t
+        c.sweepFix = nil                     -- a new middle for the next pass
+        event("sweep", { phase = "turning back in", dist_m = hd / 10, targets = c.sweepN })
+    end
+    if c.sweepRun == "out" then
+        return unit({ Fh[1], Fh[2], clamp((5500 - above * 10) / 15000, -0.2, 0.3) }), "out", hd
+    end
+    local z
+    if hd > 25000 then
+        z = clamp((5500 - above * 10) / 15000, -0.3, 0.4)
+    else
+        z = math.max((cz - loc.Z) / math.max(hd, 1), -0.35)
+        if above < 300 then z = math.max(z, 0.05) end
+    end
+    return unit({ h[1], h[2], z }), "in", hd
 end
 
 local function combatStep(p, loc, rot, F, R, alt, dt)
@@ -1427,7 +1628,8 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
     local curOk = c.pref and alive(c.pref) and not (c.skip[objName(c.pref)] and t < c.skip[objName(c.pref)])
     -- while extending away from a ground target the choice is open again (see nearestEnemy)
     local extending = curOk and c.runs and c.runs[objName(c.pref)] == "out"
-    if t - (c.prefAt or -100) > 1 and not (curOk and not extending and t - (c.prefSince or -100) < 6) then
+    local holdFor = (ap.scoreMode and 4) or 6          -- score phases: sooner (a lock needs 1-2 s of it)
+    if t - (c.prefAt or -100) > 1 and not (curOk and not extending and t - (c.prefSince or -100) < holdFor) then
         c.prefAt = t
         local kmhNow = call(p, "GetSpeedKmph")
         local pref, prefDist, prefScore, prefW = nearestEnemy(loc, c.skip, F, curOk and c.pref or nil, kmhNow)
@@ -1514,6 +1716,9 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             creditedKills[c.targetName] = true
             c.kills = c.kills + 1
             event("kill", { target = c.targetName, callsign = c.targetCallsign, after_s = t - c.targetSince, missiles = c.shotsAtTarget })
+            if ap.scoreMode and c.targetKind and t - c.targetSince < 180 then
+                killTimes[c.targetKind] = (killTimes[c.targetKind] or 10) * 0.7 + (t - c.targetSince) * 0.3
+            end
             log(string.format("  KILL: %s %s after %.0f s, %d missiles", c.targetName, c.targetCallsign, t - c.targetSince, c.shotsAtTarget))
         end
         c.target = nil
@@ -1528,8 +1733,31 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
     if tgt and not c.target then
         c.target, c.targetSince, c.shotsAtTarget, c.prevTL, c.tv = tgt, t, 0, nil, nil
         c.targetName, c.targetCallsign = objName(tgt), callsign(tgt)
+        c.targetKind = ap.scoreMode and killKind(tgt) or nil
         local tl = locOf(tgt)
         event("target", { target = c.targetName, callsign = c.targetCallsign, dist_m = tl and math.sqrt((tl.X - loc.X) ^ 2 + (tl.Y - loc.Y) ^ 2 + (tl.Z - loc.Z) ^ 2) / 10 or -1 })
+    end
+    -- Score phases: a plane that will not die is a waste of the clock (19 Oct 2026, Mission
+    -- 06: 1.5 minutes, 52 missiles and 500 gun frames at one F-16C dogfighting at 300-900 m,
+    -- with 24,000 points wanted in 15 minutes). After 35 s and 6 missiles without the kill,
+    -- and no damage done to it for 25 s, leave it alone for 45 s and take the next best. (The
+    -- health check came after the rule let go of two Tu-160 bombers, 1,200 points each, that
+    -- simply need many hits.)
+    if ap.scoreMode and tgt and c.target then
+        local hpNow = call(tgt, "GetHealth")
+        if hpNow and c.tgtHpName == c.targetName and c.tgtHp and hpNow < c.tgtHp then c.tgtHpDropAt = t end
+        if c.tgtHpName ~= c.targetName then c.tgtHpName, c.tgtHpDropAt = c.targetName, t end
+        c.tgtHp = hpNow
+    end
+    if ap.scoreMode and c.target and c.targetSince and t - c.targetSince > 35 and (c.shotsAtTarget or 0) >= 6
+        and t - (c.tgtHpDropAt or c.targetSince) > 25 then
+        local n = c.targetName
+        if n and not (c.skip[n] and t < c.skip[n]) then
+            c.skip[n] = t + 45
+            event("give_up", { target = n, after_s = t - c.targetSince, missiles = c.shotsAtTarget })
+            log(string.format("  giving up on %s for 45 s: %.0f s and %d missiles without the kill", n, t - c.targetSince, c.shotsAtTarget))
+            c.pref, c.prefAt = nil, -100
+        end
     end
 
     -- defence: missile warning -> flares and a hard break for two seconds
@@ -1563,6 +1791,10 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         -- 500-1400 m and no kills; at 23:57 a whole reinforcement wave lost to breaks; 250/120 m
         -- was tried at 00:04 and cost 117 health in under 3 minutes)
         local breakMiss = (c.runInAt and t - c.runInAt < 0.5) and 2000 or 3500
+        -- score phases: a break costs the attack and the clock; with health to spare, only
+        -- for a missile predicted to pass within 200 m (19 Oct 2026, Mission 06: ten breaks in
+        -- five minutes for missiles predicted to miss by 290-350 m)
+        if ap.scoreMode and (call(p, "GetHealth") or 0) > 60 then breakMiss = 2000 end
         if threat.tgo < 4.0 and (not threat.miss or threat.miss < breakMiss) then
             local los = V.unit(V.sub(threat.p, { loc.X, loc.Y, loc.Z }))
             local side = V.unit(V.cross(los, { 0, 0, 1 }))
@@ -1725,6 +1957,11 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             elseif sp.LockonRange > mainRange * 1.3 then
                 -- an air-only special (the LAAM) for planes only: armed, it hides ground targets
                 local fits = sp.targets ~= "air only" or isPlane
+                -- not at agile drones: they dodge long shots (19 Oct 2026, Mission 06: seven LAAMs
+                -- at one drone from 9.5 km in, one kill after 30 s)
+                local ai = objInfo(tgt)
+                if ai.agile == nil then ai.agile = ai.name:find("uav", 1, true) ~= nil or ai.name:find("drone", 1, true) ~= nil end
+                if ai.agile then fits = false end
                 want = fits and du > mainRange * 0.9 and du < sp.LockonRange * 0.95; why = "beyond standard missile range"
             elseif sp.targets == "air only" and ((sp.Damage or 0) > ((W.main and W.main.Damage) or 0)
                     or (sp.MaxRotationAngle or 0) > ((W.main and W.main.MaxRotationAngle) or 0)) then
@@ -1763,7 +2000,21 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         -- 1.5 to 2.1 km 12 of 23 missiles were followed by the kill, from under 1.5 km 4 of 247):
         -- missiles from 1.3 km out to the lock range, the gun inside that
         local minRange = agile and 1300 or 0
-        if locked and dm < range and dm > minRange and offT < maxOff and t - c.lastMissile > gap then
+        if agile then range = math.min(range, 2200) end      -- and not beyond 2.2 km
+        -- a multi-lock ground special: hold fire while more locks are coming (at most 3 s,
+        -- and not inside 2 km), so one salvo takes as many targets as it can
+        local holdMulti = false
+        if armed and sp and sp.multi and sp.targets == "ground only" and locked then
+            local nL, nP = seekerCounts(ts)
+            c.multiHoldSince = c.multiHoldSince or t
+            if nP > 0 and nL < (sp.MultipleLockOnMaxNum or 4) and dm > 2000 and t - c.multiHoldSince < 3 then holdMulti = true end
+            c.multiLocks = nL
+        else
+            c.multiHoldSince = nil
+        end
+        if locked and dm < range and dm > minRange and offT < maxOff and t - c.lastMissile > gap and not holdMulti then
+            if c.multiHoldSince then event("salvo", { locks = c.multiLocks or 1, held_s = t - c.multiHoldSince, dist_m = dm }) end
+            c.multiHoldSince = nil
             tap(c, KEY.missile); c.lastMissile = t; c.shots = c.shots + 1; c.shotsAtTarget = c.shotsAtTarget + 1
             if armed then c.specialShots = (c.specialShots or 0) + 1 end
             event("missile", { target = c.targetName, dist_m = dm, off_deg = offT, special = armed })
@@ -1817,9 +2068,41 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         -- than 600 m above the ground, dive no steeper than 25 degrees, pull out by 900 m.
         if Aware and not airborne(tgt) then
             local phase
-            aim, phase = groundRun(c, c.targetName, tl, loc, F, alt)
-            c.groundText = string.format("ground attack run, %s, %.0f m above ground%s", phase == "in" and "running in" or "extending", ap.agl or alt,
-                c.underClouds and string.format(" (under the clouds at %.0f m)", c.underClouds) or "")
+            -- score phases: the middle of the cluster around this target, fixed for a pass
+            if ap.scoreMode and scorePts and not c.sweepFix then
+                local sx, sy, sz, sw, n = 0, 0, 0, 0, 0
+                for _, q in ipairs(scorePts) do
+                    if (q[1] - tl.X) ^ 2 + (q[2] - tl.Y) ^ 2 < 20000 ^ 2 then
+                        sx, sy, sz, sw, n = sx + q[1] * q[4], sy + q[2] * q[4], sz + q[3] * q[4], sw + q[4], n + 1
+                    end
+                end
+                if n >= 3 then
+                    c.sweepX, c.sweepY, c.sweepZ, c.sweepN, c.sweepFix = sx / sw, sy / sw, sz / sw, n, true
+                else
+                    c.sweepN = nil
+                end
+            end
+            if ap.scoreMode and c.sweepFix and c.sweepN and (c.sweepX - tl.X) ^ 2 + (c.sweepY - tl.Y) ^ 2 < 30000 ^ 2 then
+                aim, phase = sweepRun(c, loc, F, alt)
+                -- the nose on the chosen target while it is ahead, so its lock can build (about
+                -- a second or two; steering only at the middle, 19 Oct 06:39, every lock was
+                -- still "started" when the target slid off the nose)
+                local onTarget = false
+                if phase == "in" and dm > 900 and offT < 45 then
+                    local thd = math.sqrt((tl.X - loc.X) ^ 2 + (tl.Y - loc.Y) ^ 2)
+                    local tz = math.max((tl.Z - loc.Z) / math.max(thd, 1), -0.35)
+                    if (ap.agl or alt) < 300 then tz = math.max(tz, 0.05) end
+                    aim = unit({ (tl.X - loc.X) / math.max(thd, 1), (tl.Y - loc.Y) / math.max(thd, 1), tz })
+                    onTarget = true
+                end
+                c.groundText = string.format("sweep through %d targets, %s%s, %.0f m above ground", c.sweepN,
+                    phase == "in" and "running in" or "past the middle", onTarget and ", nose on the target" or "", ap.agl or alt)
+            else
+                c.sweepFix = nil
+                aim, phase = groundRun(c, c.targetName, tl, loc, F, alt)
+                c.groundText = string.format("ground attack run, %s, %.0f m above ground%s", phase == "in" and "running in" or "extending", ap.agl or alt,
+                    c.underClouds and string.format(" (under the clouds at %.0f m)", c.underClouds) or "")
+            end
         else
             c.groundText = nil
             -- A helicopter close by and far off the nose: a plane cannot turn tightly enough to
@@ -2059,6 +2342,16 @@ local function apStep(p, dt)
         aim = unit({ ap.home.X - loc.X, ap.home.Y - loc.Y, 0 })
     else
         ap.wasOutside = false
+    end
+    -- ...and the combat zone: within 4 km of its edge, back toward its middle
+    local zm = zoneMargin(loc.X, loc.Y)
+    if zm < 40000 and not ap.wasOutside then
+        local z = combatZone(loc.X, loc.Y)
+        if not ap.nearZoneEdge then event("zone_edge", { margin_m = zm / 10 }); log(string.format("  fly: %.1f km from the combat zone's edge, turning back in", zm / 10000)) end
+        ap.nearZoneEdge = true
+        aim = unit({ z.cx - loc.X, z.cy - loc.Y, clamp(aim[3], -0.2, 0.2) })
+    elseif zm > 50000 then
+        ap.nearZoneEdge = false
     end
     -- Stay alive: below the floor, or heading for it within 4 s, climb away first. The floor
     -- is height above the real ground where the terrain sensor sees ground (awareness.lua:
@@ -2464,7 +2757,7 @@ local function takeoffOrder(args)
 end
 
 local function flyOrder(args)
-    -- fly heading 90 alt 1500 [speed 650] [for 30] [floor 300]
+    -- fly heading 90 alt 1500 [speed 650] [for 30] [floor 300]; fly attack [score] [focus a,b]
     -- fly to <x> <y> <z>   (game units)         fly stop
     if args[1] == "stop" then
         if ap and ap.combat and Aware then event("prediction_stats", { text = Aware.describePredictions() }) end
@@ -2483,6 +2776,7 @@ local function flyOrder(args)
         elseif k == "for" then opts.duration = tonumber(args[i + 1]); i = i + 2
         elseif k == "floor" then opts.floor = tonumber(args[i + 1]); i = i + 2
         elseif k == "attack" then goal.kind = "attack"; i = i + 1
+        elseif k == "score" then opts.scoreMode = true; i = i + 1
         elseif k == "range" then opts.range = tonumber(args[i + 1]); i = i + 2
         elseif k == "to" then
             goal.kind = "point"; goal.x, goal.y, goal.z = tonumber(args[i + 1]), tonumber(args[i + 2]), tonumber(args[i + 3]); i = i + 4
@@ -2515,7 +2809,7 @@ local function flyOrder(args)
     ap = { goal = goal, t0 = now(), frames = 0, recoverFrames = 0, lastLog = -1, prevErr = {}, rate = {},
            floor = opts.floor, duration = opts.duration, big = false, home = { X = home.X, Y = home.Y, Z = home.Z },
            ceiling = opts.ceiling or (Gim and Gim.ceiling) or nil, navFloor = opts.navFloor,
-           cloudBase = opts.cloudBase, focus = opts.focus, vision = opts.vision,
+           cloudBase = opts.cloudBase, focus = opts.focus, vision = opts.vision, scoreMode = opts.scoreMode,
            -- beams are watched on a route (low-level infiltration), or when asked
            avoidBeams = (opts.avoidBeams == true) or (opts.avoidBeams == nil and goal.kind == "route") }
     -- (a cloud base does NOT become a ceiling for a fight: tried 19 Oct 00:00-00:17, and the

@@ -1,13 +1,14 @@
 # Mission 06 Long Day (story, Ace; level ms06)
 #
-# Phase 1 (15 minutes): "Spare Squadron! You haven't done enough damage to the base! Regular
-# forces will have trouble attacking." The phase fails on time unless the base is damaged
-# enough (19 Oct 05:13: the bot had spent its time on drones and fighters). So the base's
-# buildings and vehicles (Enemy_Ground_..., ms06_Warehouse, WatchTower, GasTank, trucks) and
-# the anti-air in the way ("Take out anti-air weapons that get in the way": Optional2_SAM,
-# Optional2_AARay) come first, six times the others; planes still count when they shoot at us.
+# Phase 1 (15 minutes) is won on points: the HUD shows "SCORE 003480/024000", and when time
+# runs out short of 24,000 the phase fails ("Spare Squadron! You haven't done enough damage to
+# the base!"). The points per kill (GameObject.KillBountyScore, read 19 Oct 05:29): drones 350
+# (23 of them), Tu-160 1,200 (3), the named F-14D 1,300, fighters 220-550, ground targets and
+# ships 120-200. A base-first plan with the 8AGM (05:19) made 3,480 points in 9.5 minutes; the
+# LAAM and the fight against planes had made 7,840 in 13. So: the LAAM, and "score": every
+# enemy weighed by its points against the time to get it.
 start:
-    pilot fly attack focus enemy_ground,ms06_,optional2_sam,optional2_aaray
+    pilot fly attack score
 retry MissionPhase_01 checkpoint
 phase MissionPhase_01:
-    pilot fly attack focus enemy_ground,ms06_,optional2_sam,optional2_aaray
+    pilot fly attack score

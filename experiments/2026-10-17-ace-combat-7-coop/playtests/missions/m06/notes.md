@@ -66,3 +66,27 @@ At 450 km/h from 1.5 km out it passes 2 m from the aim point, stays 38-47 m from
 and 19-21 m from roof and floor, and leaves over the hill 40 m and more above it; also from
 30 m off the line and 25 m high, at 550 km/h, and with a slower, laggier plane (15 deg/s,
 0.5 s). Wanting level flight after the pass, it cleared the hill by only 8 m.
+
+## Phase 1 is won on points
+
+- The radio only says "Spare Squadron! You haven't done enough damage to the base! Regular
+  forces will have trouble attacking." The HUD says what is needed: `SCORE 003480/024000`
+  (text block `ScoreInfo`, read 19 Oct 05:28): **24,000 points in 15 minutes**. The pilot now
+  puts the HUD's score line and its goal in the status (`hud_score`, `score_goal`).
+- The points per kill are in every game object (`GameObject.KillBountyScore`). Alive at 9.5
+  minutes into one attempt (263 objects with a bounty, about 52,600 points on the enemy side):
+  drones 350 (P2_Drone1-4, 23 of them), Tu-160 1,200 (3), the named F-14D 1,300, fighters
+  220-550 (MiG-21 and F-4E 220, F-16C 400, Gripen 500, Mirage 2000 550), AH-64 and SAMs 200,
+  AA guns, tanks, ships 150, trucks and BTRs 120.
+- Tried: LAAM fighting planes, 7,840 points in 13 minutes (shot down at 14); 8AGM with the
+  base first, 3,480 in 9.5 minutes. Now: LAAM and `fly attack score`, every enemy weighed by
+  its points against the time to get it (ground targets a little less: an attack run takes
+  longer than a missile at a plane).
+
+### Score mode, tries (19 Oct)
+
+| Run | Weapon, rules | Points | Notes |
+|---|---|---|---|
+| 05:39 | LAAM, score | 5,550 at 7 min | Tu-160s first (3,600 in 2 minutes), then a 1.5-minute duel with one F-16C (52 missiles), then 20 km to three AV-8Bs. Stopped for new rules. |
+| 05:49 | LAAM, score + give up after 35 s and 6 missiles + points around each target | 7,960 at 9 min (about 11,500 expected at 15) | The give-up rule wrongly let go of two Tu-160s (they need many hits; it should look at whether the target's health is falling). At the anti-air cluster 600-700 points a minute: one missile per target, but the next target was often 1.2-1.6 km away and off the nose, so 40-50 s loops out and back. Ten break turns in five minutes for missiles predicted to miss by 290-350 m. |
+| 05:59 | 8AGM, score + salvos held until four locks (at most 3 s, not inside 2 km) + breaks only for missiles within 200 m while health is above 60 + close, off-nose ground targets rated as needing a loop | | |

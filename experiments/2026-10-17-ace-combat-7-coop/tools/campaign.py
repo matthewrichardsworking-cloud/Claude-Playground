@@ -115,7 +115,16 @@ class Driver:
         self.unknown_seen = {}
         self.stop = None
         self.flown = []
-        self.briefed = None              # the mission number last seen on a title page
+        # the mission number last seen on a title page; kept in a small file too, so a driver
+        # started again at the hangar still knows the mission (19 Oct 05:35: it did not, and
+        # took the last-used special weapon instead of the mission's)
+        self.state_path = os.path.join(ROOT, "playtests", f"campaign-{self.name}-state.json")
+        self.briefed = None
+        try:
+            with open(self.state_path, "r", encoding="utf-8") as f:
+                self.briefed = json.load(f).get("briefed")
+        except (OSError, ValueError):
+            pass
         self.results_shot = {}
         self.last_folder = None
 
@@ -203,6 +212,11 @@ class Driver:
         n = mission_number(s)
         if n:
             self.briefed = n
+            try:
+                with open(self.state_path, "w", encoding="utf-8") as f:
+                    json.dump({"briefed": n}, f)
+            except OSError:
+                pass
         if s.get("story_mission"):
             say(f"briefing: {s.get('story_mission')} {s.get('story_title')}")
         presses = 0
@@ -285,7 +299,8 @@ class Driver:
         if pt.page() == "CampaignHangarAircraft_C":
             if plane:
                 self.choose_plane(plane)
-            if pt.press_until("Enter", ("CampaignHangarWeapon_C",), tries=4) != "CampaignHangarWeapon_C":
+            # (19 Oct 05:33: four presses were lost while the hangar was still loading the plane)
+            if pt.press_until("Enter", ("CampaignHangarWeapon_C",), tries=8) != "CampaignHangarWeapon_C":
                 menu_fail("the special weapon page did not open")
         if pt.page() == "CampaignHangarWeapon_C":
             time.sleep(1.0)
