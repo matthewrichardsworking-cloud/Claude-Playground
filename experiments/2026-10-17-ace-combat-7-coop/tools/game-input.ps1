@@ -1,4 +1,4 @@
-# Lets Claude "play" the Ace Combat 7 test copy without the owner at the keyboard:
+﻿# Lets Claude "play" the Ace Combat 7 test copy without the owner at the keyboard:
 # it finds the game's window, brings it to the front, presses keys in it and takes
 # screenshots of it, so menus can be read and driven from a session.
 #
@@ -61,11 +61,14 @@ $vk = @{
     Up = 0x26; Down = 0x28; Left = 0x25; Right = 0x27
     Home = 0x24; End = 0x23; PageUp = 0x21; PageDown = 0x22; Insert = 0x2D; Delete = 0x2E
     Shift = 0x10; Ctrl = 0x11; Alt = 0x12
+    # the right-hand modifiers and the number pad's 5, which the hangar's own key hints use
+    # ("Right Shift: AIRCRAFT TREE/SET", "Right Ctrl: PREVIEW", "Num 5: GUIDE"; 19 Oct 2026)
+    LShift = 0xA0; RShift = 0xA1; RCtrl = 0xA3; Num5 = 0x65
 }
 1..12 | ForEach-Object { $vk["F$_"] = 0x6F + $_ }
 65..90 | ForEach-Object { $vk[[string][char]$_] = $_ }   # A..Z
 48..57 | ForEach-Object { $vk[[string][char]$_] = $_ }   # 0..9
-$extended = @(0x26, 0x28, 0x25, 0x27, 0x24, 0x23, 0x21, 0x22, 0x2D, 0x2E)
+$extended = @(0x26, 0x28, 0x25, 0x27, 0x24, 0x23, 0x21, 0x22, 0x2D, 0x2E, 0xA3)
 
 function Get-GameWindows {
     $list = New-Object System.Collections.ArrayList

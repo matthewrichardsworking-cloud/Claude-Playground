@@ -1,9 +1,17 @@
 # Mission 06 Long Day (story, Ace; level ms06, the Space Elevator map again): a long defence
-# with several waves. Phase 1 is won on points (24,000 in 15 minutes). Active at the start:
-# about 19,000 points on the ground (ships, SAM/AA sites, buildings) and 9,500 in the air. LAAM
-# with the score mode made 7,960 in 9 minutes (19 Oct 05:49). The 8AGM (06:01) left the three
-# Tu-160s (3,600 points) to standard missiles: 2 minutes of chasing for nothing. So the LAAM.
-plane: Typhoon
-weapon: LAAM
+# with several waves. Phase 1 is won on points (24,000 in 15 minutes); about 30,000 exist in
+# phase 1, so nearly everything in areas A, B and C has to go. Best with the LAAM: 13,310 (19 Oct
+# 07:32). The standard missiles' reload (two, 5.5 s each) caps a ground pass; the 8AGM's four-
+# target salvos add to that, so the 8AGM again (07:52), with sweeps and the area weighting:
+# 4,150 at 8 minutes, salvos at 1-2 locks. Back to the LAAM (08:17) with the owner's advice in:
+# full throttle and high-G turns in score phases, and parts (08:40): the 7 multiplayer parts
+# cleared (workbench section 15), now Queen's Custom + standard missile reload, lock-on speed,
+# lock-on range, homing, power, special reload, Onboard Self-Defense Jammer. Parts are kept in
+# the save; the driver does not change them.
+# 09:35: the Typhoon's best (about 14,000) is still 10,000 short; on the owner's advice, another
+# aircraft: the F-22A with the XSDB (guided small bombs at several ground targets at once), its
+# multiplayer parts cleared too and campaign parts fitted.
+plane: F-22A Raptor
+weapon: XSDB
 attempts: 10
 time_limit_min: 45

@@ -188,9 +188,10 @@ def wait_page(pages, seconds):
 
 
 def press_until(key, pages, tries=4, wait_s=4.0):
-    """Press a key until one of the pages shows (screens sometimes swallow a press)."""
+    """Press a key until one of the pages shows (screens sometimes swallow a press; 19 Oct
+    2026: the campaign hangar ignored 80 ms presses for minutes, a 250 ms one went through)."""
     for _ in range(tries):
-        keys([key])
+        keys([key], hold_ms=250)
         p = wait_page(pages, wait_s)
         if p in pages:
             return p
@@ -338,8 +339,11 @@ def prep_and_sortie(fail):
         if press_until("Enter", ("CampaignHangarReview_C",), tries=4) != "CampaignHangarReview_C":
             fail("the standby page did not open")
     say("standby: Sortie")
+    # the cursor first to SORTIE, the top item (19 Oct 08:20: it was left on SELECT SP WEAPON
+    # after a hand-made change, and Enter reopened the weapon page)
+    keys(["Up"] * 6, gap_ms=300, hold_ms=150, wait_ms=500)
     for _ in range(4):
-        keys(["Enter"])
+        keys(["Enter"], hold_ms=250)
         deadline = time.time() + 8
         while time.time() < deadline and page() == "CampaignHangarReview_C":
             time.sleep(0.5)

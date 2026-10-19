@@ -1392,6 +1392,56 @@ within 200 m while health is above 60. In every mode now: the game's `CombatZone
 at the start (Mission 06: 60 by 60 km), targets within 2 km of its edge are left alone, and
 within 4 km of the edge the plane turns back in.
 
+**Sweeps.** The next step was structural: a player does not aim the plane at one ground target
+at a time; he flies through a group and shoots what comes into the cone. Now, in score phases,
+the bot flies at the points-weighted middle of the targets around its choice (550 m up, a
+shallow dive to no lower than 300 m), takes on that pass whichever target is nearest the nose
+(within 25 degrees and 1.9 km: the standard missile locks within 2.0 km and 32.5 degrees),
+points at it until the lock builds, fires one missile, takes the next, carries on 1.5 km past
+the middle and turns back. The first pass that worked killed 8 targets in 30 s. Bugs found on
+the way: the two pass states switched every frame at 2 km (no time between them), the pass
+picked houses that have points but no HUD box and no permission to engage (missiles cannot
+lock them), and picks out to 2.4 km never locked. Drones are no longer shot at with the LAAM
+or from beyond 2.2 km; targets are weighed by points per second, with each kind's time to kill
+learned from the bot's own kills. Results, one full 15-minute phase each: 9,000, 8,600, 9,300,
+10,460, **13,310** (46 kills), 10,600.
+
+**Where 24,000 points would come from.** A watcher (`toolsctivation-watch.py`) logs every group
+of enemies as the mission switches it on, with the plane's position. Phase 1 has about 30,000
+points in all: area A by the start (Tu-160s, F-16s, base, about 5,000), area B (the anti-air
+cluster, helicopters, then 11 drones that switch on when the plane nears their trigger sphere,
+about 11,000), area C in the west (two harbours with 17 ships, Gripens, SAMs, and fighter waves
+that switch on when the plane flies into spheres there, about 8,000). The large `AreaA_Add` and
+`AreaB_Add` fighter waves (about 10,000 more) never switched on in phase 1, not even after the
+bot hit base A; they probably belong to later phases. So 24,000 means clearing nearly
+everything in all three areas in 15 minutes, close to the best a Typhoon's missiles can do (two
+loaded, 5.5 s reload each). The bot had hardly been to area C; it now also weighs targets by the
+points in their whole area (6 km squares), and flies the 8AGM again, whose four-target salvos
+add throughput on ground groups.
+
+**Your advice of 08:0x, and the Typhoon's parts.** (1) Throttle: in score phases the bot now
+holds full throttle whenever its target is more than 2.5 km away (it used to aim for 650-1,150
+km/h and tap the throttle), flies its sweep passes at 650 km/h, and uses the high-G turn for any
+big turn above 500 km/h. (2) Parts: the campaign hangar (Standby > SELECT PARTS; tabs OWNED,
+BODY, ARMS, MISC, EQUIPPED, changed with Q/E) listed only Queen's Custom as fitted, yet all 8
+slots were full: the other 7 were multiplayer parts from your real install's
+"AllPartInCampaignMode2025v2" mod, invisible and inert in the vanilla copy (the 8AGM's hangar
+count of 40 against the 24 it carried in flight showed one of them was doing nothing). As you
+suggested: that mod's one file (305 KB) was read from your real install's Mod Loader library
+(checksums before and after identical; nothing there was written), installed into the copy's
+own loader (`--game "C:\AC7-Coop-Game" --install ...`) while the copy stayed in Vanilla mode, and
+deployed alone through a new copy profile "PartsOnly" (`--profile PartsOnly --vanilla off`;
+Double Trigger stayed off). With it the 7 showed (Light Blisk Lv. 2, Variable Cycle Engine
+Lv. 2, ECU Software Update Lv. 2, New Aileron Actuators Lv. 3, and three Lv. 2 special-weapon
+parts, all "Multiplayer only"); they were taken off and the hangar left, which saved. The copy
+went back to `--profile Default --vanilla on` (the parts mod stays in the copy's library,
+disabled). The Typhoon now carries Queen's Custom plus seven campaign parts: standard missile
+reload time, lock-on speed, lock-on range, homing and power, special-weapon reload time, and
+the Onboard Self-Defense Jammer (BODY 5/34, ARMS 32/34, MISC 9/34). The hangar also needed
+longer key presses (250 ms; 80 ms presses were ignored for minutes) and a fix for its Standby
+page, which the driver now handles. (3) Other aircraft: next, once Mission 06's result with
+this loadout is in.
+
 Two mistakes of mine cost two restarts of the copy, and changed how I work: (1) UE4SS's
 "restart all mods" (Ctrl+P), used to load new script code, crashed the game in mid-mission at
 04:53 (it had worked about ten times before); code now goes in only at a restart of the copy,

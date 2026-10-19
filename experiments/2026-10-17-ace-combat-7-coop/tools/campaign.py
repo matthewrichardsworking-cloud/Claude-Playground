@@ -296,11 +296,21 @@ class Driver:
         if pt.page() == "CampaignMenuActionSelect_C":
             if pt.press_until("Enter", ("CampaignHangarAircraft_C",), tries=4) != "CampaignHangarAircraft_C":
                 menu_fail("the aircraft page did not open")
+        if pt.page() == "CampaignHangarAircraft_C" and self.order.get("stop_at_hangar"):
+            # "run ... --hangar": stop here, for exploring the hangar (parts) by hand
+            say("stopping at the hangar's aircraft page (--hangar)")
+            raise SystemExit(0)
         if pt.page() == "CampaignHangarAircraft_C":
             if plane:
                 self.choose_plane(plane)
-            # (19 Oct 05:33: four presses were lost while the hangar was still loading the plane)
-            if pt.press_until("Enter", ("CampaignHangarWeapon_C",), tries=8) != "CampaignHangarWeapon_C":
+            # (19 Oct 05:33: four presses were lost while the hangar was still loading the plane;
+            # opened from the Standby menu, the aircraft page goes back to Standby, 08:18)
+            got = pt.press_until("Enter", ("CampaignHangarWeapon_C", "CampaignHangarReview_C"), tries=8)
+            if got == "CampaignHangarReview_C" and weapon:
+                pt.keys(["Up"] * 6, gap_ms=300, hold_ms=150, wait_ms=500)
+                pt.keys(["Down", "Down"], gap_ms=500, hold_ms=150, wait_ms=800)
+                got = pt.press_until("Enter", ("CampaignHangarWeapon_C",), tries=4)
+            if got not in ("CampaignHangarWeapon_C", "CampaignHangarReview_C"):
                 menu_fail("the special weapon page did not open")
         if pt.page() == "CampaignHangarWeapon_C":
             time.sleep(1.0)
@@ -471,6 +481,8 @@ class Driver:
 def main(argv):
     if len(argv) >= 3 and argv[1] == "run":
         order = pt.read_order(argv[2])
+        if "--hangar" in argv:
+            order["stop_at_hangar"] = True
         d = Driver(order)
         try:
             d.run()

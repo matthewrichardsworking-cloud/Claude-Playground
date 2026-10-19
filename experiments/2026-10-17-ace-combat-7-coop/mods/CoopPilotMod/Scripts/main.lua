@@ -1348,7 +1348,10 @@ local function nearestEnemy(loc, skip, F, current, kmh)
         scorePts = {}
         for _, o in ipairs(objs) do
             pcall(function()
-                if o.bIsActivated and o:GetFaction() == 0 and o:IsAlive() then
+                -- (only what a missile can lock: Mission 06's houses carry 100 points each but
+                -- have no HUD box and no permission to engage, so they pulled the sweeps toward
+                -- targets that never lock, 19 Oct 07:12)
+                if o.bIsActivated and o:GetFaction() == 0 and o:IsAlive() and o.bShowHUDBox ~= false and o.bPermissionToEngage ~= false then
                     local info = objInfo(o)
                     if info.bounty == nil then
                         local okB, b = pcall(function() return o.KillBountyScore end)
@@ -1358,7 +1361,9 @@ local function nearestEnemy(loc, skip, F, current, kmh)
                         local l = o:K2_GetActorLocation()
                         local key = math.floor(l.X / 15000) .. ":" .. math.floor(l.Y / 15000)
                         cluster[key] = (cluster[key] or 0) + info.bounty
-                        if not (Aware and Aware.trackFor(o)) then scorePts[#scorePts + 1] = { l.X, l.Y, l.Z, info.bounty } end
+                        local akey = "A" .. math.floor(l.X / 60000) .. ":" .. math.floor(l.Y / 60000)
+                        cluster[akey] = (cluster[akey] or 0) + info.bounty
+                        if not (Aware and Aware.trackFor(o)) then scorePts[#scorePts + 1] = { l.X, l.Y, l.Z, info.bounty, o } end
                     end
                 end
             end)
@@ -1425,11 +1430,19 @@ local function nearestEnemy(loc, skip, F, current, kmh)
             local du = math.sqrt(dx * dx + dy * dy + dz * dz)
             local d = du / 10
             local w = enemyWeight(o, l)
-            if cluster then
+            -- (ground targets only: a sweep takes them together; planes and drones move apart)
+            if cluster and not (Aware and Aware.trackFor(o)) then
                 local cx, cy = math.floor(l.X / 15000), math.floor(l.Y / 15000)
                 local sum = 0
                 for i = -1, 1 do for j = -1, 1 do sum = sum + (cluster[(cx + i) .. ":" .. (cy + j)] or 0) end end
                 w = w * math.min(4, 1 + sum / 2000)
+                -- and the points in the whole area (6 km squares): when one area is cleared, on to
+                -- the richest one left (Mission 06: about 5,000 points in area A, 11,000 in B,
+                -- 8,000 in C, and 24,000 needed; the bot had hardly been to C)
+                local ax, ay = math.floor(l.X / 60000), math.floor(l.Y / 60000)
+                local asum = 0
+                for i = -1, 1 do for j = -1, 1 do asum = asum + (cluster["A" .. (ax + i) .. ":" .. (ay + j)] or 0) end end
+                w = w * math.min(3, 1 + asum / 8000)
             end
             local ang = 0
             if F and du > 1 then ang = math.deg(math.acos(math.max(-1, math.min(1, (dx * F[1] + dy * F[2] + dz * F[3]) / du)))) end
@@ -1641,6 +1654,33 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
     elseif curOk then
         local pl = locOf(c.pref)
         if pl then c.prefDist = math.sqrt((pl.X - loc.X) ^ 2 + (pl.Y - loc.Y) ^ 2 + (pl.Z - loc.Z) ^ 2) / 10 end
+    end
+    -- On a sweep's run in, the target is simply the one nearest the nose within 25 degrees and
+    -- 0.9-1.9 km (the standard missile locks within 2.0 km and 32.5 degrees), picked again
+    -- every 0.3 s: what a player takes on a pass. (Chosen by points as
+    -- elsewhere, 19 Oct 06:54, the bot kept one SAM site well off its line for a minute of
+    -- passes and its lock never built.)
+    if ap.scoreMode and c.sweepFix and c.sweepRun == "in" and scorePts and t - (c.sweepPickAt or -100) > 0.3 then
+        c.sweepPickAt = t
+        local best, bestOff = nil, 25
+        -- (out to 95% of the standard missile's lock range as the game reports it: parts can
+        -- lengthen it, 19 Oct 2026)
+        local lr = (Aware and Aware.weapons and Aware.weapons.main and Aware.weapons.main.LockonRange) or 20000
+        for _, q in ipairs(scorePts) do
+            local dx, dy, dz = q[1] - loc.X, q[2] - loc.Y, q[3] - loc.Z
+            local du = math.sqrt(dx * dx + dy * dy + dz * dz)
+            if du > 9000 and du < lr * 0.95 then
+                local off = math.deg(math.acos(clamp((dx * F[1] + dy * F[2] + dz * F[3]) / du, -1, 1)))
+                if off < bestOff and alive(q[5]) then
+                    local okN, n = pcall(objName, q[5])
+                    if okN and not (c.skip[n] and t < c.skip[n]) then best, bestOff = q[5], off end
+                end
+            end
+        end
+        if best and not sameObj(best, c.pref) then
+            c.pref, c.prefSince, c.prefLockedAt, c.prefPointed, c.prefAt = best, t, nil, 0, t
+            c.prefW = c.prefW or 1
+        end
     end
     c.overriding = false
     -- The chosen enemy is selected directly: what a player does by pressing Tab until it
@@ -2161,6 +2201,16 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         if c.groundText then text = text .. "; " .. c.groundText end
         if c.lockDiag and dm < 2500 then text = text .. "; " .. c.lockDiag end
         c.speed = dm > 3000 and 1150 or (dm > 1200 and 850 or 650)   -- close the distance fast, then slow for the turn fight
+        -- Timed score phases: full throttle whenever the target is more than 2.5 km away
+        -- (the owner, 19 Oct 2026: "timid about going full throttle even when traveling long
+        -- distances ... for missions racing against the clock it is going to need to move
+        -- and maneuver more aggressively"); a sweep's run in at 650 km/h, so each lock still
+        -- gets a second or two with the target ahead
+        if ap.scoreMode and dm > 2500 then c.speed = 2000 end
+        if ap.scoreMode and c.sweepFix and c.sweepRun == "in" and c.groundText and c.groundText:find("sweep", 1, true) then
+            local sd = math.sqrt((c.sweepX - loc.X) ^ 2 + (c.sweepY - loc.Y) ^ 2)
+            if sd < 35000 then c.speed = 650 end
+        end
         c.lastDist = dm
     end
 
@@ -2556,6 +2606,12 @@ local function apStep(p, dt)
     if v > 0 then keys[#keys + 1] = KEY.pitch_up elseif v < 0 then keys[#keys + 1] = KEY.pitch_down end
     v = pulse("yaw", yawCmd)
     if v > 0 then keys[#keys + 1] = KEY.yaw_right elseif v < 0 then keys[#keys + 1] = KEY.yaw_left end
+    -- ...and the high-G turn for any big turn above 500 km/h (score phases)
+    if ap.scoreMode and ap.big and off > 50 and kmh > 500 and not recovering then
+        local has = false
+        for _, k in ipairs(extraKeys or {}) do if k == KEY.high_g then has = true end end
+        if not has then extraKeys = extraKeys or {}; extraKeys[#extraKeys + 1] = KEY.high_g end
+    end
     local speed = (ap.combat and ap.combat.speed) or ap.goal.speed or 650
     if ap.goal.kind == "route" and ap.routeKmh then speed = math.min(ap.routeKmh, ap.goal.maxspeed or 9999) end
     -- The beams as moving obstacles, four times a second: for the next 2 km of route, where

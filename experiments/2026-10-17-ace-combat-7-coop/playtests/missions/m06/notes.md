@@ -89,4 +89,14 @@ and 19-21 m from roof and floor, and leaves over the hill 40 m and more above it
 |---|---|---|---|
 | 05:39 | LAAM, score | 5,550 at 7 min | Tu-160s first (3,600 in 2 minutes), then a 1.5-minute duel with one F-16C (52 missiles), then 20 km to three AV-8Bs. Stopped for new rules. |
 | 05:49 | LAAM, score + give up after 35 s and 6 missiles + points around each target | 7,960 at 9 min (about 11,500 expected at 15) | The give-up rule wrongly let go of two Tu-160s (they need many hits; it should look at whether the target's health is falling). At the anti-air cluster 600-700 points a minute: one missile per target, but the next target was often 1.2-1.6 km away and off the nose, so 40-50 s loops out and back. Ten break turns in five minutes for missiles predicted to miss by 290-350 m. |
-| 05:59 | 8AGM, score + salvos held until four locks (at most 3 s, not inside 2 km) + breaks only for missiles within 200 m while health is above 60 + close, off-nose ground targets rated as needing a loop | | |
+| 06:01 | 8AGM, score + salvos held until four locks (at most 3 s, not inside 2 km) + breaks only for missiles within 200 m while health is above 60 + close, off-nose ground targets rated as needing a loop | 2,000 at 5 min, failed | Without the LAAM the Tu-160s needed standard missiles: 2 minutes of chasing, then the bot followed one out of the combat zone ("Spare 15! Stay within the operation area!") and the mission failed. The game's `CombatZone` box (60 x 60 km around (10, 0) km) is now read and kept to. |
+| 06:11 | LAAM, score, zone guard, 1.5 km loops, give-up only while the target's health stalls | about 9,000 | 24 kills; three spells of 1.5-2 minutes without a kill. |
+| 06:31 (attempts 1-2, code loaded in flight) | + sweeps through clusters (fly at the points-weighted middle, straight on 1.5 km, turn back) | 8,600 and 9,300 | The first sweep pass: 8 kills in 30 s. Then passes with nothing: the sweep steered at the middle, so each target slid off the nose before its lock built; next, the nose on the chosen target while it is within 45 degrees ahead. |
+| 06:31 (attempts 3-4) | + on a pass, the target nearest the nose; no LAAM at drones, standard missiles at them from 1.3-2.2 km only; points per second with learned kill times; cluster bonus for ground only; then (attempt 4) picks within 1.9 km (the standard missile locks within 2.0 km, 32.5 degrees) and only lockable targets (the houses, 100 points each, have no HUD box and no permission to engage) | 10,460 and 13,310 | Best so far. 46 kills in attempt 4. |
+
+**What the remaining points look like** (8.5 minutes into attempt 4, at 8,050 points): 14,790 points
+lockable and active, **23,630 not yet active**: fighter waves `AreaA_Add1-4` (north), `AreaB_Add1-4`
+(south-east), `AreaC_f16c/f04e/Mig21b` (west), drones `P2_Drone1-4`, the named F-14D. The mission has
+three battle areas (`BattleAreaA` around (11, 15) km, `BattleAreaB` (17, -1) km, `BattleAreaC`
+(-7, -2) km) with trigger volumes, and the bot fights mostly in B. Next: find what wakes the waves
+(`toolsctivation-watch.py` logs each group as it switches on, with the plane's position).
