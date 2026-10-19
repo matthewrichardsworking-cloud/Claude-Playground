@@ -10,8 +10,11 @@
 # the save; the driver does not change them.
 # 09:35: the Typhoon's best (about 14,000) is still 10,000 short; on the owner's advice, another
 # aircraft: the F-22A with the XSDB (guided small bombs at several ground targets at once), its
-# multiplayer parts cleared too and campaign parts fitted.
-plane: F-22A Raptor
-weapon: XSDB
+# multiplayer parts cleared too and campaign parts fitted: 4,450 at 6.5 minutes (worse; no LAAM
+# for the Tu-160s). 09:53: the Typhoon and LAAM again, with the two gun parts (radar lock and
+# auto-strafing) in place of missile homing and power: about 12,000 (the best, about 14,000, was
+# with homing and power). Session stopped 10:20; see notes.md, "Where Mission 06 stands".
+plane: Typhoon
+weapon: LAAM
 attempts: 10
 time_limit_min: 45

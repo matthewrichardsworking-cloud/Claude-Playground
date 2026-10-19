@@ -2,6 +2,21 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19 (morning): Ace Combat 7 co-op, Ace campaign stopped at Mission 06 Long Day
+
+- Mission 06's phase 1 is a score race (24,000 points in 15 minutes, read from the HUD; the
+  per-kill points from each object's KillBountyScore). Over ~6 hours and 25 attempts the bot went
+  from ~7,800 to ~14,000: points-per-second targeting with learned kill times, dense-area and
+  area weighting, sweeps through ground clusters, combat-zone guard, give-up on stalled targets,
+  drone discipline, flares in transit.
+- Owner's advice built in: full throttle and high-G turns in timed phases; aircraft parts (7 of
+  8 slots on most planes held inert multiplayer parts from the owner's AllPartInCampaignMode mod;
+  cleared through the copy's own Mod Loader on a separate profile, real install only read);
+  other aircraft (survey of all owned planes' specials; F-22A with XSDB tried, worse here).
+- Vision test 2 (tunnel): tube-ray vision passes in a new in-game simulator; the real try came
+  in too high and fast and hit the hillside. Next: a calmer approach.
+- Copy closed, Vanilla mode, real saves unchanged. Write-up: workbench section 15.
+
 ## 2026-10-19: Ace Combat 7 co-op, playtest bot phase 4: lock problem solved, Ace campaign under way
 
 - Owner's OK (18 Oct): fly the AC7 story campaign on Ace with the bot, start to finish, no

@@ -3,17 +3,19 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (19 Oct 2026, 05:25): Ace campaign, Missions 01 to 05 completed; Mission 06 Long
-Day and your tunnel test in progress.** Mission 05 (bombers that must not reach the base) was
-completed with no damage once the bot learned to put the mission's own targets first and took
-the long-range LAAM. In Mission 06 the bot was shot down once and failed phase 1 once (it is
-timed on damage to the enemy base); it is flying again with the 8AGM and a plan that puts the
-base first. Your tunnel test: the bot did not go in at the first real try, because my vision
-design judged a 36 m tunnel mouth too small from 400 m out; that is fixed, and a new simulator
-that flies a simple plane through the real tunnel with the real rays now gets through
-centred (workbench section 15). Two restarts of the copy tonight were my doing (a script
-reload crashed the game; a probe hung the script); your real saves were checked each time and
-are unchanged.
+**Status (19 Oct 2026, 10:20): the Ace campaign stopped at Mission 06 Long Day.** Missions
+01 to 05 are completed on Ace. Mission 06's first phase is a score race: 24,000 points in 15
+minutes (the HUD shows it; the radio only says "not enough damage to the base"), which means
+destroying nearly everything in the mission's three areas. Over about 6 hours and 25 attempts
+the bot went from about 7,800 to about 14,000 points: it now weighs targets by points per
+second, sweeps through ground clusters shooting whatever comes into its cone, keeps to the
+combat zone, flies full throttle in score phases (your advice), and carries campaign parts in
+the slots that your multiplayer parts were occupying (cleared through the copy's own Mod
+Loader, as you suggested; your real install was only read). Other planes were surveyed; the
+F-22A with XSDB was worse here (no LAAM for the bombers). Your tunnel test is still open: the
+fixed vision gets through in a simulator, but the real approach came in too high and fast and
+hit the hillside. Details: workbench section 15, `playtests\missions\m06\notes.md`. The copy
+is closed and back in Vanilla mode; your real saves are unchanged.
 
 **Earlier (19 Oct 2026, 01:35): the Ace campaign is under way, and the lock problem is
 solved.** On your OK the bot is flying the story campaign on Ace in the copy (the copy's own

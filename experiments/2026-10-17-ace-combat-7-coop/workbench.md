@@ -1326,6 +1326,7 @@ each loss taught something:
 
 | 04 Rescue | **Completed** (second sortie, 6th attempt; 03:59) | Stealth route flown unseen twice at the first try; phase 2 crashes into the elevator's structure fixed by the vision safety net; phases 3 to 5 needed the HCAA, the drone tactics, the exception-flag fix and the escort rule (above). |
 | 05 444 | **Completed** (second sortie, 1st attempt; 04:35), 6.9 min, no damage, score 16,700 | The penal squadron. Take-off flown, the "no missiles, make noise" decoy phase flown with the gun, then bombers that must not get through (below). |
+| 06 Long Day | **Not completed** (25 attempts, 19 Oct 04:38-10:18) | Phase 1 needs 24,000 points in 15 minutes; best about 14,000 (below). |
 
 **Mission 05: bombers first.** "Shoot down everything carrying bombs!" The mission fails the
 moment one bomber reaches the base ("Noli 1. Delivery complete."). Attempt 1 lost because the
@@ -1406,7 +1407,7 @@ or from beyond 2.2 km; targets are weighed by points per second, with each kind'
 learned from the bot's own kills. Results, one full 15-minute phase each: 9,000, 8,600, 9,300,
 10,460, **13,310** (46 kills), 10,600.
 
-**Where 24,000 points would come from.** A watcher (`toolsctivation-watch.py`) logs every group
+**Where 24,000 points would come from.** A watcher (`tools\activation-watch.py`) logs every group
 of enemies as the mission switches it on, with the plane's position. Phase 1 has about 30,000
 points in all: area A by the start (Tu-160s, F-16s, base, about 5,000), area B (the anti-air
 cluster, helicopters, then 11 drones that switch on when the plane nears their trigger sphere,
@@ -1439,8 +1440,28 @@ disabled). The Typhoon now carries Queen's Custom plus seven campaign parts: sta
 reload time, lock-on speed, lock-on range, homing and power, special-weapon reload time, and
 the Onboard Self-Defense Jammer (BODY 5/34, ARMS 32/34, MISC 9/34). The hangar also needed
 longer key presses (250 ms; 80 ms presses were ignored for minutes) and a fix for its Standby
-page, which the driver now handles. (3) Other aircraft: next, once Mission 06's result with
-this loadout is in.
+page, which the driver now handles. With this loadout and the full throttle: **about 14,000
+points, 53 kills, the best run** (08:41). (3) Other aircraft: a survey of the owned planes'
+special weapons (F-22A QAAM/XSDB/8AAM, F-35C SOD/4AAM/8AGM, F-15E 6AAM/SFFS/TLS, F-14D
+LAAM/GPB/8AAM, F/A-18F QAAM/LASM/EML, A-10C UGB/RKT/4AGM, F-2A LASM/HVAA/RKT, F-15C
+SASM/4AAM/PLSL, F-15J HCAA/SAAM/QAAM, F-16C 4AAM/GPB/SASM, YF-23 HVAA/4AAM/UGB, Mirage 2000-5
+GPB/4AAM/LASM, Rafale M HCAA/LACM/LAAM, F-104C SAAM/GRKT/HPAA, Typhoon LAAM/8AGM/HCAA). The
+multiplayer parts were cleared from the F-22A, F-35C, F-15E and F-14D too (same procedure, one
+pass) and the F-22A got campaign parts. The F-22A with the XSDB flew well (the controller needed
+no changes) but made only 4,450 in 6.5 minutes: without a LAAM the three Tu-160s took 3 minutes
+of chasing. Back on the Typhoon, the two gun parts (radar lock, auto-strafing) in place of
+missile homing and power gave about 12,000, within the run-to-run spread.
+
+**Vision test 2, try 3** (10:15, with the tube rays and the climb-out fix): the plane reached its
+second lead point 548 m up instead of 150 m and at 875 km/h, came down steeply toward the mouth
+while braking, and 380 m out swerved from a way it judged blocked into the hillside beside the
+mouth. The simulator gets through from a steady approach at tunnel height; the real approach
+needs a third lead point at tunnel height about 2.5 km out, flown slowly. Not done yet.
+
+**Where the campaign stands (19 Oct 10:20, session stopped):** Missions 01-05 completed on Ace;
+Mission 06 not (best 14,000 of the 24,000 points phase 1 needs, after about 6 hours and 25
+attempts). The copy is closed, back in Vanilla mode with its Default profile (Double Trigger
+off), your real saves and real install unchanged.
 
 Two mistakes of mine cost two restarts of the copy, and changed how I work: (1) UE4SS's
 "restart all mods" (Ctrl+P), used to load new script code, crashed the game in mid-mission at

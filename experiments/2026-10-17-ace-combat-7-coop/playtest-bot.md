@@ -3,6 +3,24 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (19 Oct 2026, 10:20): stopped at Mission 06's score race
+
+- **Campaign on Ace:** 01-05 completed; 06 Long Day not (phase 1 needs 24,000 points in 15
+  minutes; best about 14,000).
+- **New for score phases** (`fly attack score`): points per second (each enemy's own bounty,
+  `KillBountyScore`, against travel time and a learned time to kill its kind), dense areas and
+  whole areas weighted, sweeps through ground clusters (nose on the nearest target in the cone,
+  pass, short loop), give-up on targets that stop taking damage, fewer missile breaks, full
+  throttle and high-G turns. Everywhere: the game's `CombatZone` box is kept to; flares outside
+  the fight; drones never with the LAAM or beyond 2.2 km; a drone on the tail gets a hard turn.
+- **Loadout:** parts are now part of a mission's setup (the campaign hangar's parts page is
+  learned; `--hangar` stops the driver there). The owner's multiplayer parts were taking 7 of
+  8 slots on most planes, inert in the vanilla copy; cleared on five planes.
+- **Tools:** `tools\activation-watch.py` (which enemy groups the mission switches on, and
+  where the plane was), `tools\stunt.py` (line up and fly through a point), `tools\vision-sim.lua`
+  (simulate a plane through real geometry with the real rays), the HUD's score goal in the
+  status.
+
 ## Status (19 Oct 2026, 05:25): the Ace campaign at Mission 06
 
 - **Completed on Ace:** Missions 01 to 05 (`playtests\campaign-ace.md`). Mission 05 taught it

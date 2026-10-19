@@ -99,4 +99,33 @@ lockable and active, **23,630 not yet active**: fighter waves `AreaA_Add1-4` (no
 (south-east), `AreaC_f16c/f04e/Mig21b` (west), drones `P2_Drone1-4`, the named F-14D. The mission has
 three battle areas (`BattleAreaA` around (11, 15) km, `BattleAreaB` (17, -1) km, `BattleAreaC`
 (-7, -2) km) with trigger volumes, and the bot fights mostly in B. Next: find what wakes the waves
-(`toolsctivation-watch.py` logs each group as it switches on, with the plane's position).
+(`tools\activation-watch.py` logs each group as it switches on, with the plane's position).
+
+### Tunnel, attempt 3 (19 Oct 10:15): hit the hillside beside the mouth
+
+With the tube vision and the climb-out fix, from the start of a checkpoint retry. The plane
+reached the second lead point 548 m up instead of 150 m (and at 875 km/h), so the "through"
+order began high and fast: a steep descent toward the mouth while braking to 450 km/h, still
+above the roof line close in; 380 m out the vision found the wanted way blocked (379 m free,
+446 m needed) and swerved (+22 degrees yaw, +20 pitch), into the hillside 118 m from the aim
+point. Anti-aircraft fire on the way had taken 54 health. The simulator passes from a steady,
+aligned approach at tunnel height; what is missing is that approach: a third lead point about
+2.5 km out at 110 m on the axis, flown at 450 km/h, and the "through" order only from there
+(and checking that each lead point's height is really reached before going on).
+
+## Where Mission 06 stands (19 Oct 10:20, session stopped)
+
+Not completed. Phase 1 needs 24,000 points in 15 minutes; the best run made about 14,000
+(08:41: Typhoon, LAAM, seven campaign parts after the multiplayer parts were cleared, full
+throttle in score phases). Runs vary by about 2,000. Ideas not yet tried: plan a route through
+the three areas' clusters from the points map (A first for the bombers, then C's two harbours
+and SAMs, then B), rather than choosing target by target; the F-15E's TLS laser or SFFS for
+ground groups (needs new firing behaviour); a calmer, faster sweep with the gun parts (they
+fired, but the run was not better); keeping the bot out of the drone duels until the ground
+is cleared.
+
+The Typhoon's parts in the copy's save at the end: Queen's Custom, Electronic Optical Hybrid
+Sight (MSL), Multiple Enemy Detection Device (MSL), Infrared Seeker Cooling System, Multiple
+Enemy Detection Device (Sp. W), Onboard Self-Defense Jammer, Auto-Strafing Machine Gun Device,
+Machine Gun Radar Lock System. (The best run had Directional Proximity Fuze (MSL) and
+Thrust-Adjusting Steering Device (MSL) in place of the two gun parts.)
