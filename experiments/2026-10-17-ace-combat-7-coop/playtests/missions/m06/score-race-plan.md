@@ -3,6 +3,36 @@
 Written 19 Oct 2026 from a brainstorm with the owner. Read with `notes.md` (same folder) and
 workbench.md section 15 (end).
 
+## Priority: make the bot stronger, not the level easier (the owner, 19 Oct)
+
+The bot is a test tool: Claude, other AIs and modders use it to test their own AC7 modifications,
+so it must give useful data when objectives, enemy counts or positions, or the geography change.
+Every solution is judged first by "would this still work if a mod moved or changed it?".
+
+- **Read it live, never hard-code it.** Targets, points, objectives, zones, threats, terrain and
+  structures come from the running game each time (as `KillBountyScore`, the HUD score goal, the
+  combat zone, TGT and protect marks, the ray vision already do). No coordinates, routes or target
+  lists written for one level, except as test cases.
+- **Switch behaviours on by what the game shows, not by per-mission plans.** Score mode turns on
+  whenever the HUD shows a score goal; the same for other phase rules (stealth when radar areas are
+  active, protect when an ally carries the protect mark). `plan.txt` files stay for experiments and
+  for genuinely scripted moments, not for routine behaviour.
+- **Classify by game data, not by names.** Drones, helicopters, bombers and low-value targets are
+  recognised today by name fragments, which modded enemies will not share. Use the game's flags and
+  measured behaviour (air/ground/sea flags, speed, turn rate, health, weapons, size).
+- **Planners run inside the bot.** The kill-chain lane planner works from the live `scorePts`. The
+  Mission 04 radar-avoiding route and the tunnel approach were made by hand or offline; the native
+  versions are an in-bot route planner from live radar areas, and a "find the passage" skill that
+  scans a structure with rays, finds the opening and its axis, and plans its own approach.
+- **Simulators tune general rules, not one layout.** The offline targeting simulator must run many
+  varied scenarios (random clusters, other enemy counts and terrain) plus the real missions as test
+  cases; parameters count as good only if they hold across all of them.
+- **Report general data.** The time breakdown, kill rates per kind, failure reasons and the
+  activation log are the kind of output a modder needs; make them standard in every report.
+
+The kill-chaining fixes and the lane planner below are general by construction (live positions, the
+weapon's real lock cone and reload). Where an item below is level-specific, it is marked so.
+
 ## The problem in numbers
 
 - Phase 1 needs **24,000 points in 15 minutes** (HUD `ScoreInfo`, status `hud_score`/`score_goal`).
@@ -62,11 +92,13 @@ for the targets it will bring into the cone, and the target is whatever is in th
    points per second; hysteresis so it does not dither; target = the cone pick from fix 2. Uses the
    existing `scorePts` list (positions and bounty of lockable ground targets). Air targets keep the
    current pursuit logic (bombers with the LAAM first).
-2. **Offline targeting simulator.** Python: target positions, bounty and health dumped from the game
-   (`tools\activation-watch.py` has the query; add positions), plane turn rate and roll rate fitted
-   from the flight CSVs in `C:\AC7-Coop-Game\UserProfile\pilot\flight-*.csv`, lock cone, range and
-   lock time, missile reload and flight time. Replay 15 minutes in seconds; tune the lane planner
-   until it makes 24,000 in simulation, then fly. (Same idea as `tools\vision-sim.lua`, which got the
+2. **Offline targeting simulator, for general rules.** Python: target layouts (Mission 06's dumped
+   from the game as one case, plus generated ones: random clusters, rows, scattered targets, other
+   counts and spacings), plane turn and roll rates fitted from the flight CSVs in
+   `C:\AC7-Coop-Game\UserProfile\pilot\flight-*.csv` (and from other planes when flown), lock cone,
+   range and lock time, missile reload and flight time, all read from the weapon data. Replay 15
+   minutes in seconds; tune the lane planner's general parameters until they do well across all
+   scenarios (not only Mission 06), then fly. (Same idea as `tools\vision-sim.lua`, which got the
    tunnel test through.)
 3. **Row passes.** For each cluster, the long axis of its targets (principal axis); approach along it
    so targets arrive in the cone one after another. Can be a bonus term in the lane planner.
@@ -78,6 +110,12 @@ for the targets it will bring into the cone, and the target is whatever is in th
    breakdown (`<3 km off-nose`, locked, breaks, transit), computed automatically for each run (make
    the one-off analysis in this session a tool). Run the first 8 minutes only (pause menu restart
    from checkpoint) instead of waiting for the 15-minute timeout.
+
+6. **Generality work alongside (from the priority above).** Score mode on from the HUD's score goal
+   (drop `fly attack score` from Mission 06's plan once that works); drone/helicopter/bomber
+   recognition by game data instead of name lists; kill-time learning per measured class instead
+   of per name. Later: the in-bot "find the passage" skill to replace the hand-made tunnel route
+   (level-specific today: `m06-tunnel-approach.csv`, the coordinates in `notes.md`).
 
 ## What not to repeat
 
