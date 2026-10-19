@@ -60,10 +60,15 @@ a new session:
 Things a PC session should know (from `LOG.md` and this review):
 
 - **`um` needs `uv` or a Python with Pillow, numpy and PyYAML.** `bin\um.cmd` uses `uv` when it's on PATH,
-  otherwise `python`. The log doesn't show `uv` on the PC, and the default `python` there is 3.15, which some
-  packages don't have builds for yet. Options: install `uv` from its official GitHub release (check the
-  published SHA-256, as with the other tools in `Claude Tools`), or `py -3.13 -m pip install pillow numpy
-  pyyaml` and run `py -3.13 -m um` with `PYTHONPATH` set to the plugin folder.
+  otherwise `python`. The log doesn't show `uv` on the PC, and the default `python` there is 3.15, for which
+  PyYAML has no Windows package yet. Keep anything new out of AppData: inside the Store-app Claude, new files
+  under AppData land in the app's private storage, invisible to other programs (see `LOG.md`). So either:
+  - make a virtual environment in a normal folder on Python 3.13 (for example `Claude Tools\um-env`, next to
+    `coop-anything-env`), install Pillow, numpy and PyYAML from wheels checked against PyPI's SHA-256 with
+    `PIP_NO_CACHE_DIR=1`, and run `um` with that environment's python and `PYTHONPATH` set to the plugin
+    folder; or
+  - install `uv` from its official GitHub release (checksum checked, like the other tools in `Claude Tools`)
+    and set `UV_PYTHON=3.13` and `UV_CACHE_DIR` to a folder outside AppData before running `um`.
 - **The hook only helps the Bash tool.** It writes `um` onto the PATH through Claude Code's per-session
   environment file, which Bash commands read and PowerShell commands don't. PC sessions mostly use
   PowerShell, so call `bin\um.cmd` by its full path there (the plugin lives under
@@ -72,6 +77,29 @@ Things a PC session should know (from `LOG.md` and this review):
   repos with git, so it's very likely there; if the hook errors, that's the first thing to check.
 - **The fal connection shows as failed** unless a fal API key is set. That's expected. fal is a paid service;
   don't sign up for anything without the owner.
+
+## Where the Playground's rules win
+
+The toolkit has its own safety rules. Where they differ from the owner's, the owner's win. From the review
+(details in [observations.md](observations.md)):
+
+- **Ace Combat 7: no code dumps, even private ones.** universal-modder's `safety.md` allows "a private dump"
+  of a DRM-wrapped exe. The AC7 addendum forbids saving whole code sections or an unscrambled exe to disk.
+  Read single functions from live memory only, as the AC7 tools do.
+- **Ace Combat 7: start the game only with `tools\start-copy.ps1`.** `um win launch --steam 502500`, or the
+  copy's exe launched by path, starts the owner's real, modded install. Once the copy is running,
+  `um win shot`, `drive` and `record` are fine.
+- **`um win drive`: add `--no-retry` whenever the owner might be at the PC.** By default, when the owner has
+  switched to another app, it taps Alt into that app and pulls the game back to the front.
+- **`um win drive`: prefer keys to mouse clicks.** Clicks go to whatever window is under the cursor, which
+  may not be the game; keep any click well inside the game window.
+- **Ask before `um win setup`.** It downloads a daily ffmpeg build into `%LOCALAPPDATA%`, which the Store-app
+  Claude hides. Point `UM_FFMPEG_WIN` at an ffmpeg kept in `Claude Tools` and recorded like the other tools.
+- **Don't trust a PASS from `um publish check` on its own.** It misses many key-file types and most
+  decompiled code. In this repo, `git diff` before every commit is still the check.
+- **Don't run `um kb pr`.** Sharing a field note upstream needs the owner's OK, and that command can publish
+  unpushed commits, staged files and photo metadata along with the note. Use a fresh fork with only the
+  note.
 
 ## Turning it off
 
