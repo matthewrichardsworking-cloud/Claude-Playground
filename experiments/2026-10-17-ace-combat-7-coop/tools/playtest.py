@@ -513,9 +513,16 @@ def fly_attempt(n, order_, folder, limit_s, plan=None, entry="start"):
             time.sleep(1)
     tactics = order_.get("tactics") or {}
     runner = None
-    if plan:
+    if plan and (entry in plan["blocks"]):
         runner = PlanRunner(plan, ev_start)
         runner.add_block(entry)
+    elif plan:
+        # a checkpoint the plan has no orders for (Mission 04, 19 Oct 2026: the retry began
+        # at phase 2 and the plane flew on with no orders): fight, and follow the plan from
+        # the next phase on
+        runner = PlanRunner(plan, ev_start)
+        say(f"  plan: nothing for {entry}; fly attack")
+        order("fly", "attack")
     else:
         words = ["fly", "attack"]
         if "floor_m" in tactics:

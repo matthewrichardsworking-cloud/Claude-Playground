@@ -4,6 +4,7 @@ mission's searchlights at a glance.
 
     python tools\\terrain-map.py <survey.csv> <out.png> [--ceiling 600] [--gimmicks g.json]
                                  [--flight flight.csv ...] [--route route.csv] [--scale 3]
+                                 [--radar radar.csv]   (red circles: active radar spheres)
 
 Colours: dark blue = sea (nothing solid), greens = ground below the ceiling (the darker,
 the more room under it), orange to white = ground above the ceiling (closed to a plane
@@ -51,7 +52,7 @@ def main(argv):
         print(__doc__)
         return 1
     src, out = argv[1], argv[2]
-    ceiling, gim, flights, route, scale = None, None, [], None, 2
+    ceiling, gim, flights, route, scale, radar = None, None, [], None, 2, None
     i = 3
     while i < len(argv):
         a = argv[i]
@@ -65,6 +66,8 @@ def main(argv):
             route = argv[i + 1]; i += 2
         elif a == "--scale":
             scale = int(argv[i + 1]); i += 2
+        elif a == "--radar":
+            radar = argv[i + 1]; i += 2
         else:
             print("unknown option", a); return 1
     pts = {}
@@ -114,6 +117,16 @@ def main(argv):
                 if k % 5 == 0:
                     px, py = to_px(float(r["x"]), float(r["y"]))
                     dot(px, py, (230, 40, 40), 0)
+    if radar:
+        with open(radar, newline="") as f:
+            for r in csv.DictReader(f):
+                if str(r.get("active", "true")).lower() != "true":
+                    continue
+                cx, cy, rad = float(r["x"]), float(r["y"]), float(r["radius"])
+                n = max(24, int(rad / step * scale * 6))
+                for k in range(n):
+                    a1, a2 = 2 * math.pi * k / n, 2 * math.pi * (k + 1) / n
+                    line(cx + rad * math.cos(a1), cy + rad * math.sin(a1), cx + rad * math.cos(a2), cy + rad * math.sin(a2), (230, 50, 50))
     if route:
         prev = None
         with open(route, newline="") as f:

@@ -1,0 +1,430 @@
+# Playtest: Mission 03 ace
+
+Run 19 Oct 2026, 01:44 by tools\campaign.py (story mode); difficulty ace, mode fair.
+
+**Completed on attempt 2 of 2.**
+
+| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | failed | an objective failed | 16.1 min | 35 | 122 (0) | 41 | 38 (37) | 15520 |
+| 2 | completed | mission accomplished | 12.4 min | 21 | 76 (0) | 0 | 12 (12) | 0 |
+
+## Attempt 1
+
+- 00:56 missile warning: level=near
+- 00:56 missile fired at us by 01_en_fighter_2_1 from 1861 m (infrared)
+- 00:56 break turn: missile 1846 m away, impact in 3.7 s
+- 00:56 flare: dist_m=1774, missile=wp_msl_C_0, reason=tracker, tgo_s=1.88
+- 00:58 missile warning: level=very near
+- 00:59 flare: dist_m=315.5, missile=wp_msl_C_0, reason=tracker, tgo_s=0.4952
+- 00:59 that missile lost its lock at 302 m
+- 01:04 missile fired at us by 01_en_fighter_2_170 from 2257 m (infrared)
+- 01:05 missile warning: level=near
+- 01:07 break turn: missile 1427 m away, impact in 2.6 s
+- 01:07 missile from 01_en_fighter_2_1 gone after 11 s, closest 316 m
+- 01:08 flare: dist_m=966.5, missile=wp_msl_C_1, reason=tracker, tgo_s=0.9832
+- 01:08 that missile lost its lock at 957 m
+- 01:12 missile warning: level=near
+- 01:12 missile fired at us by 01_en_fighter_2_170 from 1923 m (infrared)
+- 01:14 break turn: missile 1534 m away, impact in 1.9 s
+- 01:14 destroyed 01_en_fighter_2_1  (None missiles, 0 s after picking it)
+- 01:15 break turn: missile 1357 m away, impact in 1.9 s
+- 01:15 missile from 01_en_fighter_2_170 gone after 11 s, closest 966 m
+- 01:16 flare: dist_m=863.4, missile=wp_msl_C_3, reason=tracker, tgo_s=1
+- 01:16 that missile lost its lock at 849 m
+- 01:23 missile from 01_en_fighter_2_170 gone after 11 s, closest 862 m
+- 01:33 destroyed 01_en_fighter_2_170  (None missiles, 0 s after picking it)
+- 01:44 missile warning: level=near
+- 01:44 missile fired at us by 01_en_fighter_1_2 from 1171 m (infrared)
+- 01:47 break turn: missile 898 m away, impact in 2.3 s
+- 01:47 missile warning: level=very near
+- 01:47 flare: dist_m=763.3, missile=wp_msl_C_0, reason=tracker, tgo_s=1.079
+- 01:49 flare: dist_m=380.6, missile=wp_msl_C_0, reason=tracker, tgo_s=0.3921
+- 01:49 that missile lost its lock at 65 m
+- 01:55 missile from 01_en_fighter_1_2 gone after 11 s, closest 73 m
+- 01:57 destroyed 01_en_fighter_3_2  (None missiles, 0 s after picking it)
+- 02:18 missile fired at us by 01_en_fighter_1_2 from 1700 m (infrared)
+- 02:18 missile warning: level=near
+- 02:20 break turn: missile 1096 m away, impact in 1.7 s
+- 02:21 missile warning: level=very near
+- 02:21 flare: dist_m=754.3, missile=wp_msl_C_0, reason=tracker, tgo_s=1.173
+- 02:22 that missile lost its lock at 72 m
+- 02:29 missile from 01_en_fighter_1_2 gone after 11 s, closest 71 m
+- 02:58 missile warning: level=near
+- 02:58 missile fired at us by 01_en_fighter_1_2 from 944 m (infrared)
+- 03:00 break turn: missile 922 m away, impact in 3.8 s
+- 03:00 break turn: missile 816 m away, impact in 3.5 s
+- 03:00 missile warning: level=very near
+- 03:00 flare: dist_m=796.1, missile=wp_msl_C_0, reason=tracker, tgo_s=4.624
+- 03:02 flare: dist_m=507.8, missile=wp_msl_C_0, reason=tracker, tgo_s=1.568
+- 03:03 that missile lost its lock at 53 m
+- 03:09 missile from 01_en_fighter_1_2 gone after 11 s, closest 49 m
+- 03:15 missile warning: level=very near
+- 03:15 flare: reason=warning
+- 03:15 missile fired at us by 01_en_fighter_1_2 from 718 m (infrared)
+- 03:16 flare: dist_m=288.4, missile=wp_msl_C_1, reason=tracker, tgo_s=0.8321
+- 03:17 that missile lost its lock at 40 m
+- 03:25 missile from 01_en_fighter_1_2 gone after 10 s, closest 42 m
+- 03:36 destroyed 01_en_fighter_1_2  (None missiles, 0 s after picking it)
+- 03:39 destroyed 01_en_fighter_4_1  (0 missiles, 3 s after picking it)
+- 03:40 destroyed 01_en_fighter_4_2  (0 missiles, 1 s after picking it)
+- 03:40 phase cleared: MissionPhase_01
+- 04:03 missile fired at us by 01_en_dummy_msl_1_1 from 10240 m (infrared)
+- 04:03 break turn: missile 10120 m away, impact in 2.4 s
+- 04:05 missile fired at us by 01_en_dummy_msl_1_1 from 9855 m (infrared)
+- 04:05 break turn: missile 7210 m away, impact in 2.6 s
+- 04:06 break turn: missile 6509 m away, impact in 3.1 s
+- 04:06 break turn: missile 5782 m away, impact in 1.7 s
+- 04:07 break turn: missile 5093 m away, impact in 2.6 s
+- 04:08 break turn: missile 2988 m away, impact in 2.0 s
+- 04:09 missile warning: level=near
+- 04:09 flare: dist_m=1752, missile=wp_ms03_aias_aam_C_8, reason=tracker, tgo_s=0.9906
+- 04:10 missile fired at us by 01_en_dummy_msl_1_1 from 9810 m (infrared)
+- 04:10 missile warning: level=very near
+- 04:11 flare: dist_m=134, missile=wp_ms03_aias_aam_C_8, reason=tracker, tgo_s=0.1106
+- 04:11 that missile lost its lock at 21 m
+- 04:11 missile warning: level=near
+- 04:11 missile warning: level=very near
+- 04:12 flare: dist_m=286.1, missile=wp_ms03_aias_aam_C_12, reason=tracker, tgo_s=0.2039
+- 04:12 that missile lost its lock at 24 m
+- 04:13 that missile lost its lock at 5909 m
+- 04:14 frozen
+- 04:38 phase start: MissionPhase_02
+- 04:50 missile fired at us by 02_en_UAV_2_1 from 6217 m (infrared)
+- 04:50 missile fired at us by 02_en_UAV_2_2 from 6265 m (infrared)
+- 04:50 missile fired at us by 02_en_UAV_4_1 from 5847 m (infrared)
+- 04:50 missile fired at us by 02_en_UAV_4_2 from 5893 m (infrared)
+- 04:51 break turn: missile 5591 m away, impact in 2.9 s
+- 04:51 break turn: missile 4996 m away, impact in 2.8 s
+- 04:52 break turn: missile 4441 m away, impact in 3.2 s
+- 04:52 flare: dist_m=3672, missile=ms03_wp_msl_uav_Child_C_3, reason=tracker, tgo_s=1.828
+- 04:54 missile warning: level=near
+- 04:54 break turn: missile 1621 m away, impact in 0.8 s
+- 04:55 missile warning: level=very near
+- 04:55 flare: dist_m=613.2, missile=ms03_wp_msl_uav_Child_C_2, reason=tracker, tgo_s=0.5866
+- 04:56 that missile lost its lock at 236 m
+- 04:56 that missile lost its lock at 240 m
+- 04:56 that missile lost its lock at 253 m
+- 04:56 that missile lost its lock at 250 m
+- 04:58 missile fired at us by 02_en_UAV_4_1 from 2071 m (infrared)
+- 04:59 missile warning: level=near
+- 04:59 break turn: missile 1900 m away, impact in 3.8 s
+- 05:00 flare: dist_m=1627, missile=ms03_wp_msl_uav_Child_C_5, reason=tracker, tgo_s=1.996
+- 05:00 missile fired at us by 02_en_UAV_2_1 from 1668 m (infrared)
+- 05:00 missile fired at us by 02_en_UAV_2_2 from 1369 m (infrared)
+- 05:01 flare: dist_m=939.5, missile=ms03_wp_msl_uav_Child_C_5, reason=tracker, tgo_s=0.7476
+- 05:01 missile warning: level=very near
+- 05:02 flare: dist_m=200.8, missile=ms03_wp_msl_uav_Child_C_5, reason=tracker, tgo_s=0.241
+- 05:02 that missile lost its lock at 156 m
+- 05:03 that missile lost its lock at 158 m
+- 05:03 flare: dist_m=258.5, missile=ms03_wp_msl_uav_Child_C_6, reason=tracker, tgo_s=0.3481
+- 05:03 that missile lost its lock at 139 m
+- 05:04 missile from 02_en_UAV_2_1 gone after 14 s, closest 251 m
+- 05:04 missile from 02_en_UAV_4_1 gone after 14 s, closest 257 m
+- 05:04 missile from 02_en_UAV_2_2 gone after 14 s, closest 248 m
+- 05:04 missile from 02_en_UAV_4_2 gone after 14 s, closest 282 m
+- 05:08 missile fired at us by AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 from 7062 m (infrared)
+- 05:09 missile fired at us by AAM_R5_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1453 from 6767 m (infrared)
+- 05:12 missile from 02_en_UAV_4_1 gone after 14 s, closest 155 m
+- 05:13 missile from 02_en_UAV_2_1 gone after 13 s, closest 138 m
+- 05:14 missile from 02_en_UAV_2_2 gone after 13 s, closest 165 m
+- 05:17 missile warning: level=near
+- 05:17 missile fired at us by 02_en_UAV_2_2 from 915 m (infrared)
+- 05:18 break turn: missile 900 m away, impact in 2.5 s
+- 05:18 missile warning: level=very near
+- 05:18 flare: dist_m=767.4, missile=ms03_wp_msl_uav_Child_C_9, reason=tracker, tgo_s=1.277
+- 05:19 destroyed 02_en_UAV_2_1  (None missiles, 0 s after picking it)
+- 05:19 that missile lost its lock at 2556 m
+- 05:19 missile from AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 gone after 11 s, closest 2555 m
+- 05:19 flare: dist_m=347.7, missile=ms03_wp_msl_uav_Child_C_9, reason=tracker, tgo_s=1.213
+- 05:20 that missile lost its lock at 49 m
+- 05:20 that missile lost its lock at 2353 m
+- 05:20 missile from AAM_R5_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1453 gone after 11 s, closest 2356 m
+- 05:25 destroyed 02_en_UAV_4_2  (None missiles, 0 s after picking it)
+- 05:29 destroyed 02_en_UAV_2_2  (None missiles, 0 s after picking it)
+- 05:31 missile from 02_en_UAV_2_2 gone after 13 s, closest 62 m
+- 05:38 missile fired at us by AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 from 4813 m (infrared)
+- 05:39 missile fired at us by AAM_R5_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1453 from 4303 m (infrared)
+- 05:42 break turn: missile 3182 m away, impact in 3.0 s
+- 05:43 missile warning: level=near
+- 05:45 missile warning: level=very near
+- 05:45 flare: dist_m=520.7, missile=wp_ms03_aias_aam_dummy_C_1, reason=tracker, tgo_s=0.7238
+- 05:47 that missile lost its lock at 146 m
+- 05:47 missile warning: level=near
+- 05:47 missile warning: level=very near
+- 05:47 flare: dist_m=429.1, missile=wp_ms03_aias_aam_dummy_low_C_57, reason=tracker, tgo_s=0.435
+- 05:49 that missile lost its lock at 339 m
+- 05:49 missile from AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 gone after 11 s, closest 67 m
+- 05:50 missile from AAM_R5_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1453 gone after 11 s, closest 95 m
+- 05:52 missile fired at us by 02_en_UAV_21_1 from 2029 m (infrared)
+- 05:52 missile warning: level=near
+- 05:53 break turn: missile 1883 m away, impact in 4.0 s
+- 05:55 missile warning: level=very near
+- 05:56 flare: dist_m=379.2, missile=ms03_wp_msl_uav_Child_C_4, reason=tracker, tgo_s=0.4732
+- 05:56 that missile lost its lock at 209 m
+- 06:06 missile from 02_en_UAV_21_1 gone after 14 s, closest 208 m
+- 06:07 destroyed AAM_R5_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1453  (None missiles, 0 s after picking it)
+- 06:08 missile warning: level=very near
+- 06:08 flare: reason=warning
+- 06:08 missile fired at us by AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 from 779 m (infrared)
+- 06:09 missile fired at us by AAM_L3_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1437 from 810 m (infrared)
+- 06:10 missile warning: level=near
+- 06:12 break turn: missile 837 m away, impact in 2.6 s
+- 06:12 missile warning: level=very near
+- 06:12 flare: dist_m=799, missile=wp_ms03_aias_aam_dummy_C_0, reason=tracker, tgo_s=3.839
+- 06:13 flare: dist_m=464.5, missile=wp_ms03_aias_aam_dummy_C_0, reason=tracker, tgo_s=1.239
+- 06:14 that missile lost its lock at 55 m
+- 06:14 missile warning: level=near
+- 06:15 missile warning: level=very near
+- 06:16 break turn: missile 610 m away, impact in 1.1 s
+- 06:16 flare: dist_m=335.6, missile=wp_ms03_aias_aam_dummy_low_C_36, reason=tracker, tgo_s=0.6489
+- 06:17 flare: dist_m=147.2, missile=wp_ms03_aias_aam_dummy_low_C_36, reason=tracker, tgo_s=None
+- 06:19 that missile lost its lock at 359 m
+- 06:19 missile from AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 gone after 11 s, closest 31 m
+- 06:20 missile from AAM_L3_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1437 gone after 11 s, closest 102 m
+- 06:25 destroyed 02_en_UAV_21_1  (None missiles, 0 s after picking it)
+- 06:31 destroyed 02_en_UAV_21_2  (None missiles, 0 s after picking it)
+- 06:38 destroyed LP_2_GEN_VARIABLE_AIAS_SmallPropellerAlt_2_C_CAT_34  (5 missiles, 7 s after picking it)
+- 06:38 missile warning: level=near
+- 06:39 missile fired at us by AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 from 975 m (infrared)
+- 06:39 break turn: missile 970 m away, impact in 3.2 s
+- 06:39 missile fired at us by AAM_L3_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1437 from 960 m (infrared)
+- 06:39 break turn: missile 953 m away, impact in 3.2 s
+- 06:42 missile warning: level=very near
+- 06:44 break turn: missile 530 m away, impact in 2.1 s
+- 06:44 flare: dist_m=371.8, missile=wp_ms03_aias_aam_dummy_C_1, reason=tracker, tgo_s=1.458
+- 06:46 flare: dist_m=19.58, missile=wp_ms03_aias_aam_dummy_C_1, reason=tracker, tgo_s=0.2876
+- 06:46 that missile lost its lock at 35 m
+- 06:46 took 40 damage, health 80
+- 06:46 missile from AAM_L3_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1437 gone after 7 s, closest 9 m
+- 06:49 missile from AAM_L1_GEN_VARIABLE_ms03_AIAS_AAMPod_C_CAT_1433 gone after 11 s, closest 19 m
+- 07:09 destroyed 02_en_UAV_22_2  (None missiles, 0 s after picking it)
+- 07:33 phase cleared: MissionPhase_02
+- 07:33 phase start: MissionPhase_03
+- 07:43 destroyed 02_en_UAV_10_1  (None missiles, 0 s after picking it)
+- 08:08 destroyed 02_en_UAV_10_2  (None missiles, 0 s after picking it)
+- 08:23 destroyed 02_en_UAV_15_2  (None missiles, 0 s after picking it)
+- 08:37 destroyed 02_en_UAV_3_2  (None missiles, 0 s after picking it)
+- 08:55 destroyed 02_en_UAV_12_1  (None missiles, 0 s after picking it)
+- 10:22 missile warning: level=near
+- 10:22 missile fired at us by 02_en_UAV_4_1 from 1709 m (infrared)
+- 10:22 break turn: missile 1682 m away, impact in 3.8 s
+- 10:23 flare: dist_m=1490, missile=ms03_wp_msl_uav_Child_C_3, reason=tracker, tgo_s=1.593
+- 10:24 flare: dist_m=804.2, missile=ms03_wp_msl_uav_Child_C_3, reason=tracker, tgo_s=1.516
+- 10:24 missile warning: level=very near
+- 10:25 that missile lost its lock at 264 m
+- 10:35 missile from 02_en_UAV_4_1 gone after 13 s, closest 275 m
+- 10:36 destroyed 02_en_UAV_4_1  (None missiles, 0 s after picking it)
+- 10:44 destroyed 02_en_UAV_12_2  (None missiles, 0 s after picking it)
+- 10:51 destroyed 03_en_UAVChaseG3_2_2  (None missiles, 0 s after picking it)
+- 10:54 missile warning: level=very near
+- 10:54 flare: reason=warning
+- 10:54 missile fired at us by 03_en_UAVChaseG3_1_2 from 768 m (infrared)
+- 10:56 that missile lost its lock at 226 m
+- 11:04 missile warning: level=near
+- 11:04 missile fired at us by 03_en_UAVChaseG3_1_2 from 1196 m (infrared)
+- 11:05 missile fired at us by 03_en_UAVChaseG3_1_1 from 2588 m (infrared)
+- 11:06 missile warning: level=very near
+- 11:07 that missile lost its lock at 449 m
+- 11:07 missile warning: level=near
+- 11:07 flare: dist_m=1648, missile=ms03_wp_msl_uav_Child2_C_15, reason=tracker, tgo_s=1.553
+- 11:07 break turn: missile 1648 m away, impact in 1.6 s
+- 11:08 flare: dist_m=855.6, missile=ms03_wp_msl_uav_Child2_C_15, reason=tracker, tgo_s=1.511
+- 11:08 missile warning: level=very near
+- 11:08 missile from 03_en_UAVChaseG3_1_2 gone after 14 s, closest 236 m
+- 11:09 that missile lost its lock at 65 m
+- 11:17 missile from 03_en_UAVChaseG3_1_2 gone after 13 s, closest 469 m
+- 11:18 missile from 03_en_UAVChaseG3_1_1 gone after 13 s, closest 72 m
+- 11:22 destroyed 03_en_UAVChaseG3_1_2  (None missiles, 0 s after picking it)
+- 11:27 missile warning: level=near
+- 11:27 missile fired at us by 03_en_UAVChaseG3_2_1 from 1911 m (infrared)
+- 11:29 break turn: missile 879 m away, impact in 0.9 s
+- 11:30 missile warning: level=very near
+- 11:31 that missile lost its lock at 222 m
+- 11:33 missile warning: level=near
+- 11:33 missile fired at us by 03_en_UAVChaseG3_2_1 from 845 m (infrared)
+- 11:33 break turn: missile 834 m away, impact in 3.0 s
+- 11:33 missile warning: level=very near
+- 11:35 flare: dist_m=228.3, missile=ms03_wp_msl_uav_Child2_C_10, reason=tracker, tgo_s=0.5587
+- 11:35 that missile lost its lock at 215 m
+- 11:40 missile from 03_en_UAVChaseG3_2_1 gone after 13 s, closest 231 m
+- 11:45 destroyed 03_en_UAVChaseG3_1_1  (None missiles, 0 s after picking it)
+- 11:47 missile from 03_en_UAVChaseG3_2_1 gone after 13 s, closest 205 m
+- 11:58 destroyed 03_en_UAVChaseG3_2_1  (None missiles, 0 s after picking it)
+- 12:17 missile fired at us by 03_en_UAVChaseG2_1_2 from 2496 m (infrared)
+- 12:17 break turn: missile 2353 m away, impact in 2.2 s
+- 12:18 missile warning: level=near
+- 12:18 flare: dist_m=1585, missile=ms03_wp_msl_uav_Child2_C_0, reason=tracker, tgo_s=0.9709
+- 12:20 missile warning: level=very near
+- 12:20 that missile lost its lock at 465 m
+- 12:30 missile from 03_en_UAVChaseG2_1_2 gone after 13 s, closest 475 m
+- 12:51 destroyed 03_en_UAVChaseG2_1_2  (None missiles, 0 s after picking it)
+- 12:57 destroyed 03_en_UAVChaseG2_1_1  (None missiles, 0 s after picking it)
+- 13:04 destroyed 02_en_UAV_3_1  (None missiles, 0 s after picking it)
+- 13:19 destroyed 02_en_UAV_22_1  (None missiles, 0 s after picking it)
+- 14:09 missile fired at us by 03_en_UAVChaseG4_1_1 from 2557 m (infrared)
+- 14:10 break turn: missile 2213 m away, impact in 2.3 s
+- 14:10 missile warning: level=near
+- 14:10 flare: dist_m=1910, missile=ms03_wp_msl_uav_Child2_C_0, reason=tracker, tgo_s=1.989
+- 14:11 flare: dist_m=1124, missile=ms03_wp_msl_uav_Child2_C_0, reason=tracker, tgo_s=1.261
+- 14:12 missile warning: level=very near
+- 14:13 flare: dist_m=266.3, missile=ms03_wp_msl_uav_Child2_C_0, reason=tracker, tgo_s=0.3682
+- 14:13 that missile lost its lock at 229 m
+- 14:22 missile from 03_en_UAVChaseG4_1_1 gone after 13 s, closest 228 m
+- 14:26 destroyed 03_en_UAVChaseG4_1_1  (None missiles, 0 s after picking it)
+- 14:34 missile fired at us by 03_en_UAVChaseG4_2_1 from 2122 m (infrared)
+- 14:35 missile warning: level=near
+- 14:35 break turn: missile 1775 m away, impact in 2.4 s
+- 14:36 missile fired at us by 03_en_UAVChaseG4_2_2 from 2170 m (infrared)
+- 14:36 flare: dist_m=1445, missile=ms03_wp_msl_uav_Child2_C_2, reason=tracker, tgo_s=1.754
+- 14:37 missile warning: level=very near
+- 14:37 flare: dist_m=637.5, missile=ms03_wp_msl_uav_Child2_C_2, reason=tracker, tgo_s=0.4443
+- 14:38 that missile lost its lock at 128 m
+- 14:38 missile warning: level=near
+- 14:38 missile warning: level=very near
+- 14:39 that missile lost its lock at 359 m
+- 14:46 missile warning: level=near
+- 14:47 missile fired at us by 03_en_UAVChaseG4_1_2 from 948 m (infrared)
+- 14:47 break turn: missile 906 m away, impact in 3.7 s
+- 14:47 missile warning: level=very near
+- 14:48 flare: dist_m=599.5, missile=ms03_wp_msl_uav_Child2_C_4, reason=tracker, tgo_s=1.622
+- 14:48 missile from 03_en_UAVChaseG4_2_1 gone after 14 s, closest 163 m
+- 14:49 flare: dist_m=171.8, missile=ms03_wp_msl_uav_Child2_C_4, reason=tracker, tgo_s=0.6569
+- 14:49 missile from 03_en_UAVChaseG4_2_2 gone after 13 s, closest 384 m
+- 14:49 that missile lost its lock at 146 m
+- 14:58 destroyed 03_en_UAVChaseG4_2_1  (None missiles, 0 s after picking it)
+- 15:00 missile from 03_en_UAVChaseG4_1_2 gone after 14 s, closest 143 m
+- 15:27 destroyed 03_en_UAVChaseG4_1_2  (None missiles, 0 s after picking it)
+- 15:36 destroyed 03_en_UAVChaseG4_2_2  (None missiles, 0 s after picking it)
+- 15:36 took 1 damage, health 79
+- 15:44 destroyed 02_en_UAV_7_1  (None missiles, 0 s after picking it)
+- 15:57 destroyed 02_en_UAV_7_2  (None missiles, 0 s after picking it)
+- 16:02 phase failed: MissionPhase_03
+- 16:02 **objective failed**
+- 16:04 how well enemy positions 2 s ahead were predicted: route planes: 1223 checks, the guess used was off by 29 m on average (each way: route 7 m, straight 28 m; now using straight); steady planes: 27810 checks, the guess used was off by 36 m on average (each way: full turn 36 m, half turn 36 m, straight 36 m; now using half turn); turning planes: 33186 checks, the guess used was off by 89 m on average (each way: full turn 112 m, half turn 89 m, straight 94 m; now using half turn)
+
+## Attempt 2
+
+- 00:02 frozen
+- 00:02 missile fired at us by 02_en_UAV_4_1 from 1333 m (infrared)
+- 00:02 missile warning: level=near
+- 00:02 break turn: missile 1274 m away, impact in 2.9 s
+- 00:02 flare: dist_m=986.5, missile=ms03_wp_msl_uav_Child_C_23, reason=tracker, tgo_s=1.043
+- 00:02 that missile lost its lock at 976 m
+- 00:14 missile from 02_en_UAV_4_1 gone after 13 s, closest 986 m
+- 00:27 destroyed 02_en_UAV_6_2  (None missiles, 0 s after picking it)
+- 00:33 destroyed 02_en_UAV_1_2  (None missiles, 0 s after picking it)
+- 00:56 destroyed 02_en_UAV_3_2  (None missiles, 0 s after picking it)
+- 01:07 missile fired at us by 02_en_UAV_3_1 from 2074 m (infrared)
+- 01:07 missile warning: level=near
+- 01:09 break turn: missile 936 m away, impact in 1.6 s
+- 01:09 destroyed 02_en_UAV_2_2  (None missiles, 0 s after picking it)
+- 01:10 missile warning: level=very near
+- 01:10 flare: dist_m=537.5, missile=ms03_wp_msl_uav_Child_C_24, reason=tracker, tgo_s=0.7316
+- 01:10 that missile lost its lock at 538 m
+- 01:20 missile from 02_en_UAV_3_1 gone after 14 s, closest 538 m
+- 01:23 destroyed 02_en_UAV_3_1  (None missiles, 0 s after picking it)
+- 02:01 missile fired at us by 03_en_UAVChaseG2_1_2 from 2557 m (infrared)
+- 02:03 missile warning: level=near
+- 02:04 break turn: missile 1275 m away, impact in 1.0 s
+- 02:05 missile warning: level=very near
+- 02:05 flare: dist_m=417.2, missile=ms03_wp_msl_uav_Child2_C_37, reason=tracker, tgo_s=0.3176
+- 02:05 that missile lost its lock at 404 m
+- 02:15 missile from 03_en_UAVChaseG2_1_2 gone after 13 s, closest 417 m
+- 02:23 destroyed 03_en_UAVChaseG2_1_2  (None missiles, 0 s after picking it)
+- 02:46 destroyed 03_en_UAVChaseG2_1_1  (None missiles, 0 s after picking it)
+- 02:54 destroyed 02_en_UAV_1_1  (None missiles, 0 s after picking it)
+- 03:14 destroyed 02_en_UAV_4_2  (None missiles, 0 s after picking it)
+- 03:49 missile fired at us by 03_en_UAVChaseG3_2_1 from 1487 m (infrared)
+- 03:49 missile warning: level=near
+- 03:50 missile warning: level=very near
+- 03:50 break turn: missile 733 m away, impact in 0.6 s
+- 03:51 that missile lost its lock at 300 m
+- 03:54 missile warning: level=near
+- 03:54 missile fired at us by 03_en_UAVChaseG3_1_1 from 1530 m (infrared)
+- 03:55 break turn: missile 828 m away, impact in 1.5 s
+- 03:55 missile warning: level=very near
+- 03:56 flare: dist_m=281.6, missile=ms03_wp_msl_uav_Child2_C_28, reason=tracker, tgo_s=0.6405
+- 03:56 that missile lost its lock at 281 m
+- 04:02 missile from 03_en_UAVChaseG3_2_1 gone after 14 s, closest 301 m
+- 04:03 destroyed 03_en_UAVChaseG3_1_1  (None missiles, 0 s after picking it)
+- 04:04 missile warning: level=very near
+- 04:04 flare: reason=warning
+- 04:04 missile fired at us by 03_en_UAVChaseG3_1_2 from 734 m (infrared)
+- 04:06 that missile lost its lock at 384 m
+- 04:07 missile from 03_en_UAVChaseG3_1_1 gone after 14 s, closest 282 m
+- 04:18 missile from 03_en_UAVChaseG3_1_2 gone after 13 s, closest 382 m
+- 04:19 missile warning: level=near
+- 04:19 missile fired at us by 03_en_UAVChaseG3_2_2 from 1484 m (infrared)
+- 04:19 break turn: missile 1471 m away, impact in 3.7 s
+- 04:19 flare: dist_m=1269, missile=ms03_wp_msl_uav_Child2_C_21, reason=tracker, tgo_s=1.987
+- 04:20 missile warning: level=very near
+- 04:21 flare: dist_m=601.1, missile=ms03_wp_msl_uav_Child2_C_21, reason=tracker, tgo_s=0.628
+- 04:21 that missile lost its lock at 194 m
+- 04:24 missile warning: level=near
+- 04:26 missile warning: level=near
+- 04:32 missile from 03_en_UAVChaseG3_2_2 gone after 14 s, closest 194 m
+- 04:39 destroyed 03_en_UAVChaseG3_2_2  (None missiles, 0 s after picking it)
+- 04:48 missile fired at us by 03_en_UAVChaseG3_2_1 from 2101 m (infrared)
+- 04:49 missile warning: level=near
+- 04:50 break turn: missile 1415 m away, impact in 2.2 s
+- 04:51 flare: dist_m=1168, missile=ms03_wp_msl_uav_Child2_C_31, reason=tracker, tgo_s=0.9484
+- 04:51 missile warning: level=very near
+- 04:52 flare: dist_m=194.2, missile=ms03_wp_msl_uav_Child2_C_31, reason=tracker, tgo_s=0.1644
+- 04:52 that missile lost its lock at 45 m
+- 04:56 missile warning: level=near
+- 04:56 missile warning: level=very near
+- 04:56 flare: reason=warning
+- 04:56 missile fired at us by 03_en_UAVChaseG3_1_2 from 794 m (infrared)
+- 04:58 that missile lost its lock at 568 m
+- 05:02 missile from 03_en_UAVChaseG3_2_1 gone after 13 s, closest 44 m
+- 05:03 missile fired at us by 03_en_UAVChaseG3_1_2 from 797 m (infrared)
+- 05:03 missile warning: level=very near
+- 05:03 flare: reason=warning
+- 05:03 missile warning: level=near
+- 05:03 destroyed 03_en_UAVChaseG3_2_1  (None missiles, 0 s after picking it)
+- 05:04 missile warning: level=very near
+- 05:05 flare: dist_m=580, missile=ms03_wp_msl_uav_Child2_C_23, reason=tracker, tgo_s=1.925
+- 05:06 that missile lost its lock at 110 m
+- 05:10 missile from 03_en_UAVChaseG3_1_2 gone after 13 s, closest 568 m
+- 05:14 destroyed 03_en_UAVChaseG3_1_2  (None missiles, 0 s after picking it)
+- 05:17 missile from 03_en_UAVChaseG3_1_2 gone after 14 s, closest 117 m
+- 05:31 destroyed 02_en_UAV_2_1  (None missiles, 0 s after picking it)
+- 05:49 destroyed 02_en_UAV_5_2  (None missiles, 0 s after picking it)
+- 05:55 destroyed 02_en_UAV_5_1  (None missiles, 0 s after picking it)
+- 06:37 ground recovery: above_ground_m=2089, alt_m=2090, lowest_ahead_m=-235.1, vz=-481
+- 06:47 destroyed 02_en_UAV_6_1  (None missiles, 0 s after picking it)
+- 06:53 destroyed 03_en_UAVChaseG4_2_1  (None missiles, 0 s after picking it)
+- 06:54 missile fired at us by 03_en_UAVChaseG4_2_2 from 2504 m (infrared)
+- 06:54 missile warning: level=near
+- 06:55 break turn: missile 1397 m away, impact in 1.8 s
+- 06:55 flare: dist_m=1304, missile=ms03_wp_msl_uav_Child2_C_22, reason=tracker, tgo_s=0.9168
+- 06:56 missile warning: level=very near
+- 06:57 flare: dist_m=163.5, missile=ms03_wp_msl_uav_Child2_C_22, reason=tracker, tgo_s=0.1443
+- 06:57 that missile lost its lock at 48 m
+- 07:07 missile from 03_en_UAVChaseG4_2_2 gone after 13 s, closest 47 m
+- 07:14 destroyed 03_en_UAVChaseG4_2_2  (None missiles, 0 s after picking it)
+- 07:26 missile fired at us by 03_en_UAVChaseG4_1_1 from 2111 m (infrared)
+- 07:27 missile warning: level=near
+- 07:27 break turn: missile 1880 m away, impact in 3.8 s
+- 07:28 break turn: missile 1680 m away, impact in 2.1 s
+- 07:29 flare: dist_m=1004, missile=ms03_wp_msl_uav_Child2_C_25, reason=tracker, tgo_s=1.174
+- 07:30 missile warning: level=very near
+- 07:30 that missile lost its lock at 60 m
+- 07:39 missile from 03_en_UAVChaseG4_1_1 gone after 13 s, closest 59 m
+- 07:42 destroyed 03_en_UAVChaseG4_1_1  (None missiles, 0 s after picking it)
+- 07:49 destroyed 03_en_UAVChaseG4_1_2  (None missiles, 0 s after picking it)
+- 07:49 phase cleared: MissionPhase_03
+- 08:31 frozen
+- 08:47 phase start: MissionPhaseBP_Landing
+- 08:47 ground recovery: above_ground_m=528.5, alt_m=528.5, lowest_ahead_m=-2992, vz=-591.1
+- 12:07 ground recovery: above_ground_m=1512, alt_m=463.2, lowest_ahead_m=1514, vz=-5666
+- 12:19 phase cleared: MissionPhaseBP_Landing
+- 12:19 **mission accomplished**
+- 12:22 how well enemy positions 2 s ahead were predicted: route planes: 1136 checks, the guess used was off by 45 m on average (each way: route 2 m, straight 45 m; now using route); steady planes: 9045 checks, the guess used was off by 35 m on average (each way: full turn 35 m, half turn 35 m, straight 35 m; now using half turn); turning planes: 16093 checks, the guess used was off by 90 m on average (each way: full turn 113 m, half turn 93 m, straight 89 m; now using half turn)
+
+## Notes
+
+- Story mode, flown by tools\campaign.py (ace).
+
+Files: events.jsonl (every event), attempt*-flight-*.csv (the plane ten times a second), pilot.log (the pilot's commentary), pictures\, saves-check.txt.

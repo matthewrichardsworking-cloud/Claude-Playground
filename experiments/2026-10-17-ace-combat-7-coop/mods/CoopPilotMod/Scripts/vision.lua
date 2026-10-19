@@ -146,7 +146,10 @@ return function(env)
             end
             if len(shift) > 0 and best then best = unit(add(best, shift)) end
         end
+        -- straight along the present flight path (the aim may lie outside the grid in a hard turn)
+        local velFree = free(p, vu, range)
         V.last = { i = bestI, j = bestJ, free = bestFree / 10, wantedFree = wantedFree and wantedFree / 10 or nil, walls = walls,
+                   velFree = velFree / 10,
                    yaw = YAWS[bestI], pitch = PITCHES[bestJ], range = range / 10 }
         local text = nil
         if best and (bestI ~= 8 or bestJ ~= 6 or (wantedFree and wantedFree < needed)) then

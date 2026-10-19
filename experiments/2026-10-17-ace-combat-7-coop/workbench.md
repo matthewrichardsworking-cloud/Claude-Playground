@@ -1205,7 +1205,86 @@ with the plane inside the cloud layer, which shortens the lock range by design
 **What it means for the campaign:** the bot can now lock whatever the game lets a player
 lock. What Mission 14 still asks for is speed against ground waves: each attack run costs
 about 25 s (extend to 2.6 km, turn, run in), so the next work there is shorter turnarounds and
-a plane or special weapon suited to ground targets.
+a plane or special weapon suited to ground targets. (A first change: while flying away from a
+ground target to turn round, the bot may now switch to another target ahead.)
+
+**The story campaign, as the driver sees it** (`tools\campaign.py`, learned 01:05 to 01:45 by
+walking through it once by hand, then letting the driver do it):
+
+| Screen | What the driver does |
+|---|---|
+| Campaign submenu (`CampaignMenuMain_C`) | Reads the selected item from the page's description ("Play campaign mode from the beginning using your completed game data" = RESTART STORY) and presses Up until the wanted one. |
+| "Do you want to reset your campaign mode progress...? Your records and all items you have obtained will be saved." (`DialogWidget_C`) | YES only when the order says restart (once). The selected option is the one drawn at full brightness (the others at 0.4), which the pilot now reports. |
+| Difficulty (`CampaignMenuDifficulty_C`) | To the top, then down to ACE ("The hardest difficulty level. Designed for true aces."). |
+| Movies (`CampaignMV_C`, `CampaignMvNews_C`, ...) | Escape shows "F1 SKIP", F1 skips. |
+| Mission title (`CampaignMissionTitle_C`: "MISSION 01 / Charge Assault"), briefing movie (`CampaignBriefingMV_C`) | Escape until the operation map, as in a free mission (32 to 39 presses). |
+| Operation map, Mission Prep, hangar | F1, then START MISSION; the plane and special weapon the mission's `mission.txt` names, found by reading the game instance's selected plane number and weapon index, which follow the cursor (Typhoon = 123), and the plane's name on the page; Sortie. |
+| The mission | `playtest.py`'s attempts and retries, with the mission's plan if it has one. Story missions can start on the runway (Mission 01): the take-off is flown. |
+| Replay after "mission accomplished" (`ReplayWidget_C`) | One Enter shows "PRESS Enter TO SKIP", a second while it shows skips the whole replay. |
+| MISSION RESULTS (`CampaignDebriefing_C`) | F1 skips the counting, a picture of the final numbers goes into the mission's report folder, Enter. |
+| MISSION COMPLETE (`CampaignMenuNext_C`: NEXT MISSION / RETRY MISSION / QUIT MISSION) | NEXT MISSION, by its description "Proceed to the next mission." |
+
+Any screen it does not know yet is photographed into `playtests\campaign-pictures\` with
+the list of visible widgets, given a few seconds, then Enter. The pilot now names any visible
+`Campaign...` page even when it is not in its list.
+
+**The copy's hangar** (your save's planes and parts carry over): A-10C, F-2A, F-14D, F-15C,
+F-15J, F-15E, F-16C, F/A-18F, F-22A, F-35C, YF-23, Mirage 2000-5, Rafale M, Typhoon and more
+further down; the Typhoon is fitted with parts and offers LAAM, 8AGM (eight ground-attack
+missiles at once) and HCAA. The bot is tuned for the Typhoon, so it flies the Typhoon with the
+LAAM against planes and the 8AGM where ground targets matter.
+
+**Campaign results so far (Ace, story mode):**
+
+| Mission | Result | Notes |
+|---|---|---|
+| 01 Charge Assault | **Completed, attempt 1**, 7.6 min | Take-off from the runway flown; 18 destroyed (9 Tu-95, 8 MiG-21, 1 Tu-160), rank A, no damage. |
+| 02 Charge the Enemy | **Completed, attempt 1**, 10.5 min | 37 kills, no damage; the 8AGM armed and fired by itself at ground targets in range. |
+| 03 Two-pronged Strategy | **Completed, attempt 2** | Phase 3 asks to protect a retreating friendly squadron (Gargoyle) from drones; attempt 1 failed when one was shot down ("Retreating ally has been shot down!"). Two fixes, loaded into the running attempt: enemies whose AI is chasing one of our planes now count 3.5 times, and 7 times when the chased ally carries the mission's "highlighted" lock-on mark (2), which is how the game marks allies to protect (Mission 14 marks its landing team the same way). Attempt 2 cleared the phase. Then a landing mini-game ("Mage 2, land immediately"): the game's skip only takes once the tower says "cleared for approach", so the pilot now asks for the skip every 6 s during any landing or refuelling phase. |
+
+**Mission 04 Rescue: a stealth run between radar spheres.** "If you're spotted, the mission is
+over. Stay out of enemy radar. Use of weaponry is also strictly forbidden." The bot's ordinary
+fight mode climbed and was spotted within 20 s. Read from the game: 87 `SystemObjectRadarArea`
+objects, 79 of them active on Ace, each a sphere of 3.5 to 10 km radius sitting on the ground.
+Measured: flying at 167 m straight at the centre of a 6 km one, the plane's own
+`IsInRadarArea` came on at 5.97 km, and "We've been spotted!" followed 3 s later, so there is no
+getting under them; the way is around. The mission's own trigger volumes show its intended
+path (`Phase01_Sect1End`, `Phase01_branch_root`, `Phase01_Sect2End`) and the end of the phase:
+`Phase01_Clear_Field`, a 14 km sphere by the Space Elevator. A new planner,
+`tools\route-avoid.py`, finds the shortest way that keeps 500 m outside every active sphere
+(A* on a 150 m grid, then straightened), and gives it heights 110 m over the highest ground
+nearby from a 200 m terrain survey (48,464 traces in 16 s, made while the retry menu was
+open): 128 km. `tools\terrain-map.py` now draws radar circles (`--radar`); the picture is
+`playtests\missions\m04\m04-route.png`. **Flown at the first try: 12 minutes at 110 m, 1 to
+40 m off the line, never inside a radar sphere, "Trigger, the first stage of the mission is
+clear."** (A time limit runs during the phase: "Five minutes remaining" came at the 10-minute
+mark, with the route 85% done.)
+
+**Your vision test 1 (Mission 04, 02:40): a surprise stunt through the Space Elevator.** As
+the test director I measured the elevator's base with rays first (horizontal rays from 1.5 km
+out at ten heights and eight directions): a solid base disc about 530 m across up to about
+100 m, the central tower about 45 m across, support legs on two opposite sides leaning in
+from 750 m out at the bottom to 150 m at 1,800 m, a ring 525 m out at 350 m height and
+another 330 m out at 700 m. Between the base and the first ring, 150 to 300 m up, the space is
+open to the tower. Then, without any survey for the bot, the order: fly through the point
+250 m beside the tower at 220 m height, vision on (`fly to X Y Z through vision on`). The bot
+saw only its own rays (a fan of 165 every 50 ms, plus walls left/right/up/down): it flew in from
+12 km out, measured the base below it (165 m down) and the ring above (83 to 113 m up), the
+tower 95 m to its right at the closest, and **passed 13 m from the point with no contact**. The
+29 damage on the way was anti-aircraft fire, not the structure.
+
+What went wrong next, and the fixes: 3 s after passing through, the order handed over to the
+fight mode while the plane was still inside the base, and the fight mode's "ground ahead"
+check (traces from 3 km above each point the plane will reach) took the ring overhead for
+rising ground and pulled up into it. The checkpoint retry then crashed into the structure
+during an attack run on a SAM site next to it. Now: (1) after a fly-through the bot carries
+straight on with vision for 1.5 km before switching; (2) the "ground ahead" check traces a
+second time from just above the predicted point when the first trace hits above it, and treats
+open space with ground below as an overhang, not ground; (3) **the fight mode has the vision
+layer as a safety net**: when the way it wants to fly, or its present flight path, is blocked
+within 3 seconds, it takes the nearest free direction (the normal controller keeps flying); (4)
+a retry that starts at a checkpoint the mission plan has no orders for now gets a plain attack
+order (it had none, and the plane flew on unattended).
 
 ## Your saves: what happened
 

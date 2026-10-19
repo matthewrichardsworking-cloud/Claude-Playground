@@ -525,9 +525,11 @@ tryHook("/Script/Nimbus.PlayerPlane:FrameUpdate", function(self, dt)
         if hookWrite.pitch then p.InputPitch = hookWrite.pitch end
     end
 end)
+local phaseName, phaseAt = nil, -100     -- the phase the mission is in, and since when
 tryHook("/Script/Nimbus.Mission:OnStartNextPhaseHandler", function(self, phase, restart)
     local again = restart:get()
-    event("phase_start", { phase = objName(phase:get()), restart = again })
+    phaseName, phaseAt = objName(phase:get()), now()
+    event("phase_start", { phase = phaseName, restart = again })
     if again and forgetWorld then forgetWorld("the phase restarted", nil) end
 end)
 tryHook("/Script/Nimbus.Mission:OnSuccessCurrentPhaseHandler", function(self, phase)
@@ -621,7 +623,8 @@ local function onRadio(self, rt)
     -- Mini-games (aerial refuelling, landing): the game's own skip, Mission:SkipMiniGame,
     -- as soon as one begins (they are scored side tasks, not the mission's objective).
     local lower = (speaker .. " " .. text):lower()
-    if skipMiniGames and (lower:find("tanker", 1, true) or lower:find("refuel", 1, true) or lower:find("landing approach", 1, true))
+    if skipMiniGames and (lower:find("tanker", 1, true) or lower:find("refuel", 1, true) or lower:find("landing approach", 1, true)
+        or lower:find("cleared for approach", 1, true) or lower:find("to runway", 1, true) or lower:find("land immediately", 1, true))
         and not lower:find("aborted", 1, true) and now() - (lastSkipAt or -100) > 8 then
         lastSkipAt = now()
         local m = mission()
@@ -1008,6 +1011,7 @@ local PARTY_THREAT = { "zouen", "tank", "t072", "t90", "apc", "tung", "bmp", "bt
 local SHOOTER = { "vads", "aagun", "rams", "sam", "ah64", "mi24", "mi-24", "ka50", "heli", "apc", "tank", "zouen",
                   "m1a", "t90", "bmp", "btr", "gun", "lav", "_en_" }
 local allyGround = {}          -- positions of our slow allies (ground units, helicopters), refreshed with each scan
+local allyNames = {}           -- names of every ally alive (any speed), refreshed with each scan
 local function classOf(o)
     local ok, n = pcall(function() return o:GetClass():GetFName():ToString() end)
     return ok and n or ""
@@ -1129,6 +1133,13 @@ local function enemyWeight(o, l)
     -- mission is usually lost unless it is stopped quickly (Mission 14: "We've been
     -- surrounded by the enemy reinforcements"), wherever it is
     if name:find("zouen", 1, true) then w = w * 4 end
+    -- an enemy chasing one of our own planes or helicopters (its AI is tracking an ally):
+    -- "protect the retreating squadron" (Mission 03 phase 3, 19 Oct 2026: a retreating ally
+    -- was shot down by drones while the bot fought elsewhere and the phase failed)
+    -- An ally the mission highlights (lock-on mark 2 or 4: the escort/protect marker; Mission
+    -- 03's retreating Gargoyle squadron, Mission 14's landing team) counts double again.
+    local tr = Aware and Aware.trackFor(o)
+    if tr and tr.tracking and allyNames[tr.tracking] then w = w * (allyNames[tr.tracking] == "protect" and 7 or 3.5) end
     -- what the order says matters most in this mission ("focus AH64_00,zouen")
     if ap and ap.focus and hasAny(name, ap.focus) then w = w * 6 end
     local okT, tgtFlag = pcall(function() return o:IsTGT() end)
@@ -1180,17 +1191,20 @@ local function nearestEnemy(loc, skip, F, current, kmh)
     local curScore, curD, curW = nil, 0, 1
     local t = now()
     local objs = FindAllOf("GameObject") or {}
-    local allies = {}
+    local allies, names = {}, {}
     for _, o in ipairs(objs) do
         pcall(function()
-            if o.bIsActivated and o:GetFaction() == 1 and o:IsAlive() and (o:GetSpeedKmph() or 0) < 350
-                and not objInfo(o).name:find("dummy", 1, true) then        -- markers, not units
-                local l = o:K2_GetActorLocation()
-                allies[#allies + 1] = { l.X, l.Y, l.Z }
+            if o.bIsActivated and o:GetFaction() == 1 and o:IsAlive() and not objInfo(o).name:find("dummy", 1, true) then
+                local mk = lockInfo(o).mark
+                names[objName(o)] = (mk == 2 or mk == 4) and "protect" or true
+                if (o:GetSpeedKmph() or 0) < 350 then                         -- markers, not units
+                    local l = o:K2_GetActorLocation()
+                    allies[#allies + 1] = { l.X, l.Y, l.Z }
+                end
             end
         end)
     end
-    allyGround = allies
+    allyGround, allyNames = allies, names
     local mps = math.max((kmh or 700) / 3.6, 150)
     local curName = current and objName(current)
     for _, o in ipairs(objs) do
@@ -1635,7 +1649,15 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         end
         local range = c.missileRange
         if armed and sp and sp.LockonRange then range = math.max(range, sp.LockonRange / 10) end
-        if locked and dm < range and offT < 40 and t - c.lastMissile > c.missileGap then
+        -- Agile targets (drones; 19 Oct 2026, Mission 04's container-launched UAVs on Ace: 51
+        -- missiles for 16 kills in 15 minutes, single shots from 2 km dodged): closer, nose-on,
+        -- and a pair at a time rather than one.
+        local agileInfo = objInfo(tgt)
+        if agileInfo.agile == nil then agileInfo.agile = agileInfo.name:find("uav", 1, true) ~= nil or agileInfo.name:find("drone", 1, true) ~= nil end
+        local agile = agileInfo.agile and not armed
+        local maxOff, gap = 40, c.missileGap
+        if agile then range, maxOff = math.min(range, 1400), 15; if c.shotsAtTarget % 2 == 1 then gap = 0.3 end end
+        if locked and dm < range and offT < maxOff and t - c.lastMissile > gap then
             tap(c, KEY.missile); c.lastMissile = t; c.shots = c.shots + 1; c.shotsAtTarget = c.shotsAtTarget + 1
             if armed then c.specialShots = (c.specialShots or 0) + 1 end
             event("missile", { target = c.targetName, dist_m = dm, off_deg = offT, special = armed })
@@ -1648,7 +1670,7 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             local hp = call(tgt, "GetHealth")
             local spec = armed and sp or (W and W.main)
             local dmgPer = spec and spec.Damage
-            if hp and dmgPer and hp > 0 and hp <= dmgPer then
+            if hp and dmgPer and hp > 0 and hp <= dmgPer and not agile then
                 local mspeed = (spec and spec.SpeedMaximum) or 10000
                 -- confirmed below when the missile count drops (a press with no missile
                 -- loaded launches nothing); unlimited counts (Casual) cannot confirm, so no
@@ -1830,11 +1852,20 @@ local function apStep(p, dt)
         if not g.dir then g.dir = unit(d); g.closest = math.huge; g.health0 = call(p, "GetHealth") end
         local dl = math.sqrt(d[1] ^ 2 + d[2] ^ 2 + d[3] ^ 2)
         if dl < g.closest then g.closest = dl end
-        if dot(d, g.dir) < 0 then
+        if not g.passed and dot(d, g.dir) < 0 then
             local hp = call(p, "GetHealth")
             event("stunt_done", { closest_m = g.closest / 10, damage = (g.health0 or 0) - (hp or 0), x = g.x, y = g.y, z = g.z })
-            log(string.format("  fly: through the point (closest %.0f m, damage %s)", g.closest / 10, tostring((g.health0 or 0) - (hp or 0))))
-            g.done = true
+            log(string.format("  fly: through the point (closest %.0f m, damage %s); straight on with vision for 1.5 km", g.closest / 10, tostring((g.health0 or 0) - (hp or 0))))
+            -- carry straight on, still seeing, until clear of the structure (19 Oct 2026: the
+            -- switch to the fight mode right inside the Space Elevator's base took the plane
+            -- into its ring 3 s after it had passed through cleanly)
+            g.passed, g.passedAt = true, { loc.X, loc.Y, loc.Z }
+        end
+        if g.passed then
+            aim = unit({ g.dir[1], g.dir[2], clamp(g.dir[3], -0.1, 0.1) })
+            if ap.vision and ap.visAim then aim = ap.visAim end
+            local away = math.sqrt((loc.X - g.passedAt[1]) ^ 2 + (loc.Y - g.passedAt[2]) ^ 2)
+            if away > 15000 then g.done = true end
         end
     end
     if (ap.goal.kind == "route" and ap.goal.route.done) or (ap.goal.kind == "point" and ap.goal.done) then
@@ -1913,10 +1944,23 @@ local function apStep(p, dt)
     end
     -- Vision (fans of rays, no survey): twenty times a second the free direction closest to
     -- the wanted one, and the walls around the plane (vision.lua)
-    if ap.vision and Vision and ap.myV and Nav and Nav.fast then
+    -- In a fight it is a safety net (19 Oct 2026, Mission 04: two crashes into the Space
+    -- Elevator's structure during attack runs on the SAM sites around it): the free direction
+    -- is only taken when the wanted one is blocked within the next 3 seconds, and the normal
+    -- controller keeps flying.
+    local visionSafety = ap.goal.kind == "attack" and not ap.vision
+    if (ap.vision or visionSafety) and Vision and ap.myV and Nav and Nav.fast then
         if t - (ap.visAt or -100) > 0.05 then
             ap.visAt = t
-            local d, why = Vision.choose({ loc.X, loc.Y, loc.Z }, ap.myV, aim, { horizon = 4.5, need = 3.0 })
+            local d, why = Vision.choose({ loc.X, loc.Y, loc.Z }, ap.myV, aim, { horizon = 4.5, need = 3.0, centre = not visionSafety })
+            if visionSafety then
+                local L = Vision.last
+                local sp = math.sqrt(ap.myV[1] ^ 2 + ap.myV[2] ^ 2 + ap.myV[3] ^ 2) / 10
+                local need = math.max(sp, 120) * 3.0
+                local blocked = L and ((L.wantedFree and L.wantedFree < need) or (L.velFree and L.velFree < need * 0.8))
+                if not blocked then d, why = nil, nil
+                elseif why then why = "obstacle: " .. why end
+            end
             ap.visAim, ap.visWhy = d, why
             if why and why ~= ap.visLogged and t - (ap.visLogAt or -100) > 0.5 then
                 ap.visLogged, ap.visLogAt = why, t
@@ -1926,6 +1970,8 @@ local function apStep(p, dt)
             end
         end
         if ap.visAim then aim = ap.visAim; ap.navText = ap.visWhy end
+    else
+        ap.visAim, ap.visWhy = nil, nil
     end
     local height = agl and math.min(agl, alt) or alt
     local recovering
@@ -3058,10 +3104,27 @@ local function watchAreas()
     end
 end
 
+-- A landing or refuelling phase (Mission 03's "MissionPhaseBP_Landing", 19 Oct 2026): the
+-- game's skip only takes once the approach itself has begun ("cleared for approach"), so it
+-- is asked for every 6 s while such a phase lasts (at most 20 times).
+local skipTries = 0
+local function miniGameWatch()
+    if not skipMiniGames or not phaseName then return end
+    local pl = phaseName:lower()
+    if not (pl:find("landing", 1, true) or pl:find("refuel", 1, true) or pl:find("supply", 1, true)) then skipTries = 0; return end
+    if skipTries >= 20 or now() - (lastSkipAt or -100) < 6 then return end
+    skipTries = skipTries + 1
+    lastSkipAt = now()
+    local m = mission()
+    local ok = m and pcall(function() m:SkipMiniGame() end)
+    log(string.format("  %s: asking the game to skip the mini-game (try %d, %s)", phaseName, skipTries, ok and "sent" or "failed"))
+end
+
 local statusTick = 0
 LoopInGameThreadWithDelay(100, function()
     statusTick = statusTick + 1
     pcall(pollOrders)
+    if statusTick % 10 == 0 then pcall(miniGameWatch) end
     if statusTick % 5 == 0 then writeStatus() end
     if statusTick % 3 == 0 then pcall(watchAreas) end
 end)

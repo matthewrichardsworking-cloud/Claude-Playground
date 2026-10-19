@@ -1,0 +1,8 @@
+# Mission 14 Cape Rainy Assault (story, Ace): the canyon (plan.txt: route, searchlight sweeps),
+# then the base attack. On Hard (19 Oct 00:44) every target locked once selection went through
+# the game's SelectTarget, but the reinforcement waves outlasted the ~100 s the landing team
+# holds: one attack run per target is too slow. The 8AGM locks up to eight ground targets at
+# once, so the waves get it here.
+plane: Typhoon
+weapon: 8AGM
+retry: checkpoint

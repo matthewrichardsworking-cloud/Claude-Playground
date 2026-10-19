@@ -1,0 +1,28 @@
+# Mission 04 Rescue (story, Ace; level ms04, the Space Elevator map, Selatapura)
+#
+# Phase 1 is a stealth run: "If you're spotted, the mission is over. Stay out of enemy radar.
+# Use of weaponry is also strictly forbidden." The radar areas are 79 active spheres (3.5 to
+# 10 km radius) sitting on the ground: measured 19 Oct, the plane at 167 m was "in radar"
+# 5.97 km from the centre of a 6 km one and "spotted" 3 s later, so low flight does not get
+# under them. The phase is cleared on entering "Phase01_Clear_Field", a 14 km sphere around
+# (-230296, 7181) by the Space Elevator; the mission's own section triggers (Phase01_Sect1End,
+# Phase01_branch_root, Phase01_Sect2End) lie on the way. m04-route.csv: 128 km around every
+# active sphere with 500 m to spare, 110 m over the highest ground nearby
+# (tools\route-avoid.py on m04-survey.csv and m04-radar.csv). No weapons: the route order
+# does not fire.
+file m04-survey.csv
+file m04-route.csv
+start:
+    pilot nav load {missions}\m04-survey.csv 2000
+    pilot fly route {missions}\m04-route.csv floor 40 maxspeed 650 navfloor 30 beams off then attack
+retry MissionPhase_01 checkpoint
+# The game restarts phase 1 by itself when the plane is spotted (no retry menu): the same orders again
+phase MissionPhase_01:
+    pilot nav load {missions}\m04-survey.csv 2000
+    pilot fly route {missions}\m04-route.csv floor 40 maxspeed 650 navfloor 30 beams off then attack
+# the checkpoint after the stealth run: destroy the anti-air around the space elevator
+phase MissionPhase_02:
+    pilot fly attack
+# the drone phase (15 minutes): fight
+phase MissionPhase_03:
+    pilot fly attack

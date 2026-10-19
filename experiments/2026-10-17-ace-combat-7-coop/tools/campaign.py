@@ -64,6 +64,10 @@ def mission_number(s):
     m = re.search(r"(\d+)", str(s.get("story_mission") or ""))
     if m:
         return int(m.group(1))
+    # Mission Prep's title: "MISSION 03"
+    m = re.match(r"MISSION (\d+)", str(s.get("menu_title") or ""))
+    if m:
+        return int(m.group(1))
     return None
 
 

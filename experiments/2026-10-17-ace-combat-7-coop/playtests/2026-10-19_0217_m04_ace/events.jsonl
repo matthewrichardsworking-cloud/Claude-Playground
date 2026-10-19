@@ -1,0 +1,24 @@
+{"clock": "02:17:13", "kind": "mark", "t": 5954, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "02:17:14", "goal": "attack", "kind": "autopilot_start", "t": 5956, "attempt": 1}
+{"clock": "02:17:17", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 5959, "text": "Use of weaponry is also strictly forbidden.", "attempt": 1}
+{"clock": "02:17:21", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 5962, "text": "Okay, you're heading up the Harling rescue mission.", "attempt": 1}
+{"clock": "02:17:24", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 5965, "text": "The success of this mission depends on you. Good luck.", "attempt": 1}
+{"alt_m": 958.4, "clock": "02:17:24", "kind": "area", "now": true, "t": 5966, "what": "in_radar", "attempt": 1}
+{"clock": "02:17:27", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 5969, "text": "We've been spotted! Abort mission! Sea Goblin in back, evacuate now!", "attempt": 1}
+{"clock": "02:17:30", "kind": "phase_failed", "phase": "MissionPhase_01", "reason": 1, "t": 5972, "attempt": 1}
+{"clock": "02:17:30", "kind": "objective_failed", "t": 5972, "attempt": 1}
+{"clock": "02:17:32", "kind": "prediction_stats", "t": 5973, "text": "steady planes: 348 checks, the guess used was off by 0 m on average (each way: full turn 0 m, half turn 0 m, straight 0 m; now using straight)", "attempt": 1}
+{"clock": "02:17:32", "kind": "radio", "speaker": "Erusean Surveillance Unit", "t": 5974, "text": "Enemy fighter presence confirmed. Requesting response.", "attempt": 1}
+{"clock": "02:17:50", "kind": "mark", "t": 5992, "text": "attempt 2 begins", "attempt": 2}
+{"clock": "02:17:52", "goal": "attack", "kind": "autopilot_start", "t": 5994, "attempt": 2}
+{"clock": "02:17:52", "kind": "frozen", "t": 5994, "attempt": 2}
+{"clock": "02:17:52", "kind": "unfrozen", "t": 5994, "attempt": 2}
+{"clock": "02:17:54", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 5995, "text": "Use of weaponry is also strictly forbidden.", "attempt": 2}
+{"clock": "02:17:57", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 5999, "text": "Okay, you're heading up the Harling rescue mission.", "attempt": 2}
+{"clock": "02:18:00", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 6002, "text": "The success of this mission depends on you. Good luck.", "attempt": 2}
+{"alt_m": 918.9, "clock": "02:18:02", "kind": "area", "now": true, "t": 6003, "what": "in_radar", "attempt": 2}
+{"clock": "02:18:04", "kind": "radio", "speaker": "AWACS Sky Keeper", "t": 6006, "text": "We've been spotted! Abort mission! Sea Goblin in back, evacuate now!", "attempt": 2}
+{"clock": "02:18:07", "kind": "phase_failed", "phase": "MissionPhase_01", "reason": 1, "t": 6009, "attempt": 2}
+{"clock": "02:18:07", "kind": "objective_failed", "t": 6009, "attempt": 2}
+{"clock": "02:18:09", "kind": "radio", "speaker": "Erusean Surveillance Unit", "t": 6011, "text": "Enemy fighter presence confirmed. Requesting response.", "attempt": 2}
+{"clock": "02:18:10", "kind": "prediction_stats", "t": 6011, "text": "steady planes: 684 checks, the guess used was off by 0 m on average (each way: full turn 0 m, half turn 0 m, straight 0 m; now using straight)", "attempt": 2}

@@ -1,4 +1,6 @@
-# Mission 03 Two-pronged Strategy (story, Ace; level ms03): first flight of it by the bot.
-# 8AGM for ground targets, standard missiles for the rest (the 8AGM worked in Mission 02).
+# Mission 03 Two-pronged Strategy (story, Ace; level ms03). Opens with an air battle ("Mage
+# Squadron, eliminate all bandits in the current airspace"). First flown with the 8AGM left
+# over from Mission 02 (the driver did not know the mission number on that pass); the LAAM
+# suits the air battle better.
 plane: Typhoon
-weapon: 8AGM
+weapon: LAAM

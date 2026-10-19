@@ -478,9 +478,22 @@ return function(env)
         local gz = groundZ(plane, myP[1], myP[2], myP[3] - 50, myP[3] - 60000)
         A.ground.below = gz and (myP[3] - gz) / 10 or nil          -- metres above the ground (nil: sea or nothing below)
         local worst, worstT = nil, nil
+        A.ground.overhang = nil
         for _, s in ipairs({ 1.0, 2.0, 3.0, 4.0 }) do
             local q = add(myP, mul(myV, s))
             local qz = groundZ(plane, q[1], q[2], q[3] + 30000, q[3] - 60000)
+            -- Something solid above where the plane will be: a mountain it would fly into, or
+            -- an overhang it will pass under (a bridge deck, the Space Elevator's ring; 19 Oct
+            -- 2026 the bot passed under the ring and the pull-up for "ground ahead" took it
+            -- straight into the ring). A second trace from just above that point tells them
+            -- apart: with open space and ground below, it is an overhang, not ground.
+            if qz and qz > q[3] then
+                local under = groundZ(plane, q[1], q[2], q[3] + 200, q[3] - 60000)
+                if under and under < q[3] - 50 then
+                    A.ground.overhang = (qz - q[3]) / 10
+                    qz = under
+                end
+            end
             if qz then
                 local clear = (q[3] - qz) / 10
                 if not worst or clear < worst then worst, worstT = clear, s end

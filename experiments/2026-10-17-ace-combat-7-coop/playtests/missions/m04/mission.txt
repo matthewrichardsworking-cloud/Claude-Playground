@@ -1,0 +1,8 @@
+# Mission 04 Rescue (story, Ace): phase 1 a stealth run between radar spheres (plan.txt),
+# then the fight near the Space Elevator, then 15 minutes against container-launched drones:
+# HCAA (multi-target air-to-air) for the drone swarms.
+plane: Typhoon
+weapon: HCAA
+retry: checkpoint
+attempts: 10
+time_limit_min: 30
