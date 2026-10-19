@@ -8,9 +8,9 @@ Newest first. One short entry per session.
   game-modding skills, the `um` CLI, 265 agent-written field notes) and for it to be wired in. Everything is
   in `experiments/2026-10-18-universal-modder/`.
 - Wiring: a repo-root plugin catalog (`.claude-plugin/marketplace.json`) pins it to the reviewed commit
-  `6a8865ae`; `.claude/settings.json` turns it on for PC sessions. Cloud sessions ignore repo-enabled
-  plugins, so they need two setup-script lines (`setup.md`). Tested here: a new Claude Code process got all
-  12 skills, 3 agents and `um`; their suite passes (163 passed, 1 skipped).
+  `6a8865ae`; `.claude/settings.json` marks it wanted, so PC sessions offer it (each PC installs it once).
+  Cloud sessions ignore repo-enabled plugins, so they need two setup-script lines (`setup.md`). Tested here:
+  a new Claude Code process got all 12 skills, 3 agents and `um`; their suite passes (163 passed, 1 skipped).
 - Review (36-agent workflow): 153 findings, 73 confirmed by a second agent. Best part: the knowledge base and
   its note format. Worst: `um publish check` and `um kb pr` let secrets and private files through while
   reporting success; mouse clicks from `um win drive` can land in other windows (the one high finding).

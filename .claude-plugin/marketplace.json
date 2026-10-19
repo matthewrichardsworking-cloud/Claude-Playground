@@ -1,5 +1,4 @@
 {
-  "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "claude-playground",
   "description": "Plugins that Claude-Playground sessions use, each pinned to a commit a session has read. Notes on each: experiments/.",
   "owner": {

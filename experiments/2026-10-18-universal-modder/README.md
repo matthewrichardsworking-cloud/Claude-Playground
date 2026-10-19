@@ -25,7 +25,7 @@ parts:
 
 - Installed it in this session's Claude Code and checked that a new session gets all 12 skills, the 3
   helpers and `um`. Their own test suite passes here (163 passed, 1 skipped).
-- Ran a ten-part review with 36 agents: each part read and tested by one agent, and every problem of medium
+- Ran an eleven-part review with 36 agents: each part read and tested by one agent, and every problem of medium
   or higher checked by a second agent trying to prove it wrong. Then three follow-ups on parts nobody had
   covered.
 - Wired it into the Playground, pinned to the reviewed version (see "How it's hooked up").
@@ -58,12 +58,14 @@ your rules win.
 
 ## How it's hooked up
 
-- **Sessions on your PC** that work in the Playground will see it listed as switched on but not installed
-  yet. Ask that session to install it, or type the two lines in [setup.md](setup.md).
+- **Sessions on your PC** that work in the Playground will see it listed as wanted but not installed yet.
+  Ask that session to install it, or use the Claude app's plugin menu (steps in [setup.md](setup.md)). It
+  installs once per PC and is then on in every project there.
 - **Cloud sessions** (browser and phone) ignore a repo's plugin settings; that's how Claude Code works. To
-  have it in every new cloud session, add two lines to the environment's setup script (exact steps in
-  setup.md). Optional: any session can also install it for itself when needed.
-- **To turn it off:** remove one line from `.claude/settings.json`, or see setup.md.
+  have it in new cloud sessions, add two lines to the environment's setup script (exact steps in setup.md).
+  Optional: any session can also install it for itself when needed.
+- **To turn it off:** see setup.md, "Turning it off". Changing the repo's settings alone isn't enough, and
+  this folder's `check.sh` checks that setting, so it needs the same change.
 
 ## Files
 
@@ -72,7 +74,7 @@ your rules win.
 | [setup.md](setup.md) | How it's wired in, how to switch it on for cloud and PC sessions, where the Playground's rules override the toolkit's, how to move the pin, and the snags found while setting it up. |
 | [observations.md](observations.md) | The review: method, verdict, what to borrow, the problems that matter, what it means for the Playground, and a table of all 153 findings with file and line. |
 | [field-note-ace-combat-7.md](field-note-ace-combat-7.md) | Our Ace Combat 7 lessons as one of their field notes (made with `um kb new`, passes `um kb check`). A draft; not sent anywhere. |
-| `check.sh` | CI check: the catalog and settings agree, the pin matches this README, the field note is complete. |
+| `check.sh` | CI check: the catalog and settings agree, the pin matches this README, the field note has every header key and no template placeholders left. |
 | `../../.claude-plugin/marketplace.json`, `../../.claude/settings.json` | The Playground's plugin catalog (one entry: universal-modder at the pinned commit) and the setting that switches it on. |
 
 ## Credits
@@ -88,5 +90,5 @@ is copied into this repo except the field-note template's headings and header ke
   first: those run in every session.
 - If the owner wants the problems reported upstream, their `SECURITY.md` asks for private reports for the
   security-related ones. Nothing has been sent.
-- On a 4-core container a workflow runs two agents at a time; a ten-reader review with checking took about
-  two hours. Checking findings in one batch per area, rather than one agent per finding, made it feasible.
+- On a 4-core container a workflow runs two agents at a time; an eleven-reader review with checking took about
+  two and a quarter hours. Checking findings in one batch per area, rather than one agent per finding, made it feasible.

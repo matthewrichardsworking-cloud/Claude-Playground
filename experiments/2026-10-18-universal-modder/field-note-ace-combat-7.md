@@ -21,7 +21,8 @@ tags: [ue4ss, ue4-18, steamstub, puppet-plane, playtest-bot, save-isolation, sec
 
 > Groundwork for two-player co-op in Ace Combat 7, done in a plain copy of the game with UE4SS. A Lua
 > "pilot" flies and fights by itself and completed Mission 01 (Casual and Ace) and Mission 02 (Hard) with no
-> damage; an AI plane can be made to fly a recorded or live-streamed flight path to within a few centimetres;
+> damage; an AI plane can be made to fly a recorded or live-streamed flight path, corrected by about 2 cm per
+> frame on a straight line and 10 to 60 cm per frame in turns;
 > a small C++ UE4SS add-on gives Lua a UDP socket. Two copies of the game on one PC don't work (no Steam
 > identity for the second). All verified in the running game; co-op itself is not built.
 
@@ -48,10 +49,13 @@ process reader for the few places where the reflected names weren't enough. The 
 does take that route was released while this work was going on.
 
 ## How the game works (what we had to learn)
-- Game module "Nimbus". Useful reflected classes: `PlayerPlane`, `PlayerWeaponActivator` (missile, gun and
-  flare press functions), `TargetSelectionComponent:SelectTarget`, `Mission` (completed / failed / score, and
-  can skip mini-games), `NimbusGameInstance` (`SetMissionID`, `SetPlaneAndSWP`). Enemy and ally are told apart
-  with the game's own `GetFaction` and `IsTGT`.
+- Game module "Nimbus". Named in the UE4SS object dump: `PlayerPlane`, `PlayerWeaponActivator` (missile, gun
+  and flare press functions), `TargetSelectionComponent:SelectTarget`, `Mission` (completed / failed / score,
+  a mini-game skip), `NimbusGameInstance` (`SetMissionID`, `SetPlaneAndSWP`). Tried and working:
+  `FlarePressed`, `ToggleSpecial`, and `Mission`'s `IsMissionCompleted`. Not confirmed: the missile and gun
+  presses (ammo is unlimited on Casual, so a shot doesn't show) and `SelectTarget`; the pilot uses keys for
+  those (Space, Left Ctrl, Tab). Not tried: the mini-game skip, `SetMissionID`, `SetPlaneAndSWP`.
+- Sides are told apart with each unit's `GetFaction` (0 = enemy, 1 = ally); `IsTGT` marks mission targets.
 - An AI plane can be turned into a puppet: `SetBehaviorActive(false)` switches its AI off and `K2_TeleportTo`
   moves it every frame. `SetFELocationAndRotation` does nothing visible. A plane the mission hasn't activated
   can be switched on with `SetActive` and used.
@@ -60,16 +64,19 @@ does take that route was released while this work was going on.
 - The reported altitude is height above the sea, not above the ground; terrain clearance needs a line trace.
 - The online layer ("SNL") sends its messages as Steam P2P packets. The lobby marks the host with member data
   `SNL_P2P_HOST`.
-- The `SNL_*` and save-switch developer commands on the cheat manager are empty in this build: 215 of 494
-  commands point at the same do-nothing function.
+- The `SNL_*` and save-switch developer commands on the cheat manager are empty in this build: 351 of 494
+  commands point at four shared do-nothing functions (215 at one of them).
 - Saves and settings live under the user's Local AppData folder (`BANDAI NAMCO Entertainment\ACE COMBAT 7`),
   found by asking Windows for that folder at runtime.
 
 ## Build steps
-1. Copy the whole game folder somewhere else and check the exe's SHA-256 against the original.
+1. Copy the game folder somewhere else, leaving out installed mods (`Game\Content\Paks\~mods`, a mod loader),
+   and check the exe's SHA-256 against the original.
 2. Install UE4SS into the copy only (`dwmapi.dll` + `ue4ss\`).
-3. Start the copy with `SteamAppId=502500` set in the environment of the launch, and with the game process's
-   user-profile folder pointed at a folder inside the copy, so it gets its own saves (see gotchas 1 and 3).
+3. Start the copy with `SteamAppId=502500` and `SteamGameId=502500` set for that launch only, and with
+   `USERPROFILE`, `LOCALAPPDATA` and `APPDATA` pointed, for that process only, at `<copy>\UserProfile`,
+   `<copy>\UserProfile\AppData\Local` and `<copy>\UserProfile\AppData\Roaming`, so it gets its own saves
+   (see gotchas 1 and 3).
 4. Lua mods go in `ue4ss\Mods\<Name>\Scripts\main.lua`, listed in `mods.txt`.
 
 ## Verification
@@ -78,7 +85,7 @@ does take that route was released while this work was going on.
   missiles fired at it lost their lock). The oracle is the game's own `Mission` object reporting completion
   plus the event log the pilot writes.
 - Puppet: a 32-second recording replayed with the puppet held to the unit; from live UDP packets at 90 fps it
-  was trimmed 1 to 2 units (10 to 20 cm) per frame, 100 ms behind the feed. Packets reach Lua 1 to 24 ms after
+  was trimmed 1 to 2.4 units (10 to 24 cm) per frame, 100 ms behind the feed. Packets reach Lua 1 to 24 ms after
   sending.
 - Save isolation: SHA-256 of every file in the real save folder compared before and after each run.
 - Not verified: anything with two players, Steam Cloud behaviour beyond the runs above, other game builds.
@@ -91,10 +98,12 @@ does take that route was released while this work was going on.
    command-line switches; change the process environment instead.
 3. **The copy rewrote the real save.** **Cause:** the save folder comes from Windows' Local AppData lookup,
    shared by both installs. **Fix:** start the game process with its user-profile folder pointed inside the
-   copy; it then creates and uses its own `AppData\Local\...` there. Steam Cloud still syncs the real save
-   whenever anything labelled app 502500 exits, so keep a backup anyway.
-4. **A second copy crashes on the title screen.** **Cause:** `SteamAPI_Init` fails in a second process, the
-   game's socket code then reads through a null `ISteamNetworking` pointer. No script can fix this. **Fix:** use
+   copy (`USERPROFILE`, `LOCALAPPDATA` and `APPDATA`, for that process only); it then creates and uses its own
+   `AppData\Local\...` there. Steam Cloud still syncs the real save whenever anything labelled app 502500
+   exits, so keep a backup anyway.
+4. **A second copy reaches the title screen but crashes as soon as Enter is pressed there.** **Cause:**
+   `SteamAPI_Init` fails in a second process, and the game's socket code then reads through a null
+   `ISteamNetworking` pointer. No script can fix this. **Fix:** use
    a second PC for two-player tests.
 5. **Writing the plane's `InputPitch`/`InputRoll`/`InputThrottle` does nothing.** **Cause:** rewritten every
    frame from the real input. **Fix:** press keyboard keys from inside the process (C++ add-on), with a watchdog

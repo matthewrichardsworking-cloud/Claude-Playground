@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Runs in CI. Offline on purpose: a slow GitHub or a change upstream must not turn every build red.
 # Checks that the repo's plugin catalog and project settings agree, that the pinned commit is the one this
-# folder's README says was reviewed, and that the field-note draft has every key the template asks for.
+# folder's README says was reviewed, and that the field-note draft has every key the template asks for and
+# no template text left.
 set -euo pipefail
 python3 - <<'EOF'
 import json, re, sys
@@ -29,8 +30,9 @@ if sha not in readme:
 mk = settings.get("extraKnownMarketplaces", {}).get(name) or fail(f"settings don't declare marketplace {name!r}")
 if mk["source"] != {"source": "github", "repo": "matthewrichardsworking-cloud/Claude-Playground"}:
     fail(f"settings point marketplace {name!r} somewhere else: {mk['source']}")
-if settings.get("enabledPlugins", {}).get(f"universal-modder@{name}") is not True:
-    fail(f"settings don't enable universal-modder@{name}")
+enabled = settings.get("enabledPlugins", {}).get(f"universal-modder@{name}")
+if not isinstance(enabled, bool):
+    fail(f"settings have no true/false entry for universal-modder@{name} (turning it off means false, not deleting it)")
 
 note = open("field-note-ace-combat-7.md", encoding="utf-8").read()
 m = re.match(r"---\n(.*?)\n---\n", note, re.S) or fail("field note has no frontmatter")
@@ -39,8 +41,12 @@ want = {"kind", "title", "game", "games_also", "game_version", "platform", "engi
         "anti_cheat", "status", "agents", "humans", "date", "links", "tags"}
 if want - keys:
     fail(f"field note is missing keys: {sorted(want - keys)}")
-if "FILL IN" in note:
-    fail("field note still has FILL IN placeholders")
+# The same placeholders upstream's `um kb check` looks for (um/kb.py, commit 6a8865ae).
+for ph in ("FILL IN", "Two to four sentences:", "Numbered; each one symptom", "What you saw. **Cause:** what it really was"):
+    if ph in note:
+        fail(f"field note still has template text: {ph!r}")
 
-print(f"ok: universal-modder pinned at {sha[:12]} in catalog {name!r}, enabled in project settings; field note complete")
+state = "on" if enabled else "off"
+print(f"ok: universal-modder pinned at {sha[:12]} in catalog {name!r}, turned {state} in project settings; "
+      "field note has every key and no template text")
 EOF

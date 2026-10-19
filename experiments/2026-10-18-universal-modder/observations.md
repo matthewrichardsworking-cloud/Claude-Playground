@@ -9,7 +9,7 @@ this file has the detail, for later sessions and for anyone reporting things ups
 - **By hand in this session:** installed it as a Claude Code plugin, ran their test suite and their own CI
   checks, ran `claude plugin validate`, ran `um scan` on a fake Ace Combat 7 folder, wrote our field-note
   draft with `um kb new` and checked it with `um kb check`.
-- **A review workflow:** ten reader agents, one per part of the repo (main skill and safety rules, engine
+- **A review workflow:** eleven reader agents, one per part of the repo (main skill and safety rules, engine
   guides, the other skills in two groups, the `um` core, `um` media tools, `um win` and its PowerShell, the
   plugin packaging, the knowledge base, the example mods, fit with the Playground). Each read its part and ran
   what it could in a scratch folder. One checker agent per part then went through every medium or high finding
@@ -18,7 +18,7 @@ this file has the detail, for later sessions and for anyone reporting things ups
   own reader and checker. 36 agents in all; none failed.
 - **Result:** 153 findings. 73 confirmed by a checker, 71 low-severity ones left as the reader reported them,
   9 plain observations. No checker rejected a finding outright, but they lowered the severity of 34 of them,
-  most often by one step (high to medium, medium to low). Exactly one finding is still rated high after the second skeptic.
+  each by one step (15 from high to medium, 19 from medium to low). Exactly one finding is still rated high after the second skeptic.
 - **Limits:** this is a Linux container. Nothing that needs Windows or a game was run (the `um win` findings
   come from reading the code, plus stand-ins for the parts that could be imitated). Codex, Cursor, Gemini
   CLI and Copilot were not installed; OpenCode was, in a sandbox, by the gap reader.
@@ -49,13 +49,13 @@ own Ace Combat 7 tools, and in a few places it would steer a session into breaki
 - **Evidence labels.** Several notes and guides tag each claim as verified in game, checked statically, or
   unverified, with the build it was checked on (`isaac.md`; the STALKER 2 note's `[kit]/[observed]/[inference]`;
   `knowledge/techniques/evidence-levels-for-mashup-claims.md`: only a real run supports "working").
-- **Generated, CI-checked index.** `INDEX.md` and `index.json` are built from note headers and CI fails when
-  they drift. Rebuilding them matched all 265 notes exactly.
+- **Generated, CI-checked index.** `INDEX.md` and `index.json` are built from note headers, and CI fails when
+  `INDEX.md` drifts (it doesn't check `index.json`, a low finding). Rebuilding both matched all 265 notes exactly.
 - **Defaults that do nothing until told.** `um backup restore` and `um kb pr` are dry runs until `--yes`;
   restore snapshots the current state first; backups never overwrite each other.
 - **Key handling in `um fal`.** The key goes to `secret-tool` on stdin, never on a command line; the plain-file
-  fallback is created owner-only before the first byte is written; manifests never record it. Nothing the
-  reviewers tried leaked it.
+  fallback is created owner-only before the first byte is written; manifests never record it. The one leak
+  found: the key follows a redirect to another host (low, `um/fal.py:276`).
 - **Hard-won rules with the reason attached** (the GTA V focus-steal close call, `pkill -f` matching the agent's
   own shell, crash reporters blocking a Steam relaunch), placed where the agent will see them, including in
   `um scan`'s report.
@@ -130,7 +130,7 @@ All confirmed by a checker. Severity after checking.
   original's licence (medium; `skills/publish-mod/SKILL.md:46`).
 - The multiplayer line is worded four ways across AGENTS.md, README, the skill and CONTRIBUTING (low).
 - In a Claude Code plugin install, `CLAUDE.md` (and the AGENTS.md rules it pulls in) is not loaded; Claude Code's
-  validator says so. Plugin users meet the rules only through the skills.
+  validator says so (found by hand, not by the checkers). Plugin users meet the rules only through the skills.
 
 ### The Unreal guide, measured against Ace Combat 7
 
@@ -203,7 +203,7 @@ Our field-note draft records the fix.
 
 ## Appendix: every finding
 
-Generated from the review's output. **Severity** is after checking (the reader's own rating in brackets when the checker changed it). **Checked** means a separate agent reproduced or traced it; *not re-checked* items are low-severity ones only the reader looked at (most readers ran them, but nobody tried to disprove them). Paths are in the upstream repo unless marked Playground.
+Generated from the review's output. **Severity** is after checking (the reader's own rating in brackets when the checker changed it). **confirmed** means a separate agent reproduced or traced it; *not re-checked* items are low-severity ones only the reader looked at (most readers ran them, but nobody tried to disprove them). Paths are in the upstream repo unless marked Playground.
 
 
 ### mod-any-game skill, safety rules, case studies
@@ -377,15 +377,15 @@ Generated from the review's output. **Severity** is after checking (the reader's
 |---|---|---|---|
 | low (medium) | confirmed | universal-modder allows a private dump of a DRM-unpacked exe, which the owner forbade for AC7 | `skills/mod-any-game/references/safety.md:24` |
 | low (medium) | confirmed | `um win launch` would start the owner's real, modded AC7 install instead of the copy | `um/win.py:199` |
-| low (medium) | confirmed | Playground setup.md's pip fallback for `um` would install into the Store app's hidden AppData | `Playground: experiments/2026-10-18-universal-modder/setup.md:65` |
+| low (medium) | confirmed | Playground setup.md's pip fallback for `um` would install into the Store app's hidden AppData (fixed in this session: setup.md now keeps installs out of AppData) | `Playground: experiments/2026-10-18-universal-modder/setup.md:65` |
 | low (medium) | confirmed | `um win setup` puts ffmpeg and its tools in %LOCALAPPDATA%, which the Store app hides, and has no ask step | `um/win.py:61` |
 | low | not re-checked | The SessionStart hook's PATH line can't reach PowerShell, and it blocks every other hook's variables from reaching it | `hooks/add-to-path.sh:9` |
 | low | not re-checked | um scan and the Unreal playbook don't spot AC7's layout or its SteamStub-scrambled exe | `um/scan.py:554` |
 | low | not re-checked | The reverse-engineering skill doesn't know REA, so a PC session may install a second Ghidra bridge | `skills/reverse-engineering/SKILL.md:34` |
 | low | not re-checked | The Playground's own input tool pulls AC7 to the front without checking whether the owner is typing | `Playground: experiments/2026-10-17-ace-combat-7-coop/tools/game-input.ps1:128` |
-| low | not re-checked | Cloning universal-modder into a PC session folder would hit the same path-length failure as Claude-Playground | `Playground: LOG.md:291` |
+| low | not re-checked | Cloning universal-modder into a PC session folder would hit the same path-length failure as Claude-Playground | `Playground: LOG.md`, 2026-10-17 health-check entry |
 | info | observation | um's publish lint finds the owner's Windows user folder in 6 files of the public Playground | `Playground: experiments/2026-10-17-ace-combat-7-coop/workbench.md:44` |
-| info | observation | Turning the plugin on for the whole repo adds its hook, the fal connection and the modding loop to every Playground session | `Playground: .claude/settings.json:12` |
+| info | observation | Turning the plugin on for the whole repo adds its hook, the fal connection and the modding loop to every Playground session | `Playground: .claude/settings.json:11` |
 
 ### gap: opencode-plugin-unchecked
 
