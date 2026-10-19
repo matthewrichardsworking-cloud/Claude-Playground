@@ -178,7 +178,7 @@ Our field-note draft records the fix.
 | Rules that clash with the owner's AC7 rules | Their safety page allows "a private dump" of a DRM-unpacked exe; the AC7 addendum forbids saving whole code sections or an unscrambled exe, even privately. `um win launch --steam 502500`, or launching the copy's exe by path, starts the real modded install. The owner's AC7 rules win in both cases (setup.md says so). |
 | PC snags | `um win setup` downloads a daily ffmpeg build into `%LOCALAPPDATA%`, which the Store-app Claude hides; the hook's PATH line reaches Bash but not PowerShell; the default `python` 3.15 lacks some packages. Details and fixes in setup.md. |
 | Cost of turning it on repo-wide | Every PC session in the repo gets the hook, a fal connection that fails without a key, and about 2,800 tokens of skill descriptions. Worth it while game modding is what the Playground mostly does; easy to turn off (setup.md). |
-| `um publish check` on the Playground | 0 failures, 6 warnings: the owner's Windows user folder (`C:\Users\<name>`) appears in `ace-combat-7-coop/workbench.md`, `tools/playtest.py` and four `saves-check.txt` reports. Low risk (the GitHub name already shows the same first name), left as is. |
+| `um publish check` on the Playground | 0 failures, 6 warnings: the name of the owner's Windows user folder appears in `ace-combat-7-coop/workbench.md`, `tools/playtest.py` and four `saves-check.txt` reports. Low risk (the GitHub name already shows the same first name), left as is. |
 
 ## Found by hand in this session
 
