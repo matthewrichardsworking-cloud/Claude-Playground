@@ -8,6 +8,14 @@
     }
   },
   "enabledPlugins": {
-    "universal-modder@claude-playground": true
+    "universal-modder@claude-playground": true,
+    "mcp-windbg-uvx@claude-playground": true
+  },
+  "permissions": {
+    "deny": [
+      "mcp__mcp-windbg__open_kd_session",
+      "mcp__mcp-windbg__open_kd_dump",
+      "mcp__mcp-windbg__run_kd_command"
+    ]
   }
 }
