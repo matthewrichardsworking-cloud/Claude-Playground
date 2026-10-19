@@ -1325,6 +1325,60 @@ each loss taught something:
   **Mission accomplished at the next try (03:59).**
 
 | 04 Rescue | **Completed** (second sortie, 6th attempt; 03:59) | Stealth route flown unseen twice at the first try; phase 2 crashes into the elevator's structure fixed by the vision safety net; phases 3 to 5 needed the HCAA, the drone tactics, the exception-flag fix and the escort rule (above). |
+| 05 444 | **Completed** (second sortie, 1st attempt; 04:35), 6.9 min, no damage, score 16,700 | The penal squadron. Take-off flown, the "no missiles, make noise" decoy phase flown with the gun, then bombers that must not get through (below). |
+
+**Mission 05: bombers first.** "Shoot down everything carrying bombs!" The mission fails the
+moment one bomber reaches the base ("Noli 1. Delivery complete."). Attempt 1 lost because the
+bot fought the escorts that were chasing the other Spare planes (the rules from Mission 03 made
+those worth 5 to 20 times a bomber) while the bombers flew on, and Bandog said so: "Spare 15,
+what the hell are you doing? Attack!" Now the game's own mission-target flag (TGT on the HUD)
+counts 4 times, and everything else a third while any mission target is alive, unless it shot
+at us or chases an ally the mission marks to protect. Attempt 2 went for the bombers, but with
+the HCAA (2.5 km) a Tu-160 pulled away from 3.9 to 5.4 km while escorts forced break turns, and
+bombed the base. The second sortie with the LAAM (10 km lock range, four missiles at once)
+cleared it at the first attempt with no damage.
+
+**Mission 06 Long Day, and your vision test 2 (the tunnel).** (In progress; notes in
+`playtests\missions\m06\notes.md`.) The tunnel: found by its game objects
+(`MES_GEN_Tunnel_11`, and `TunnelEventVolume_1`, the volume behind the game's own "in tunnel"
+flag), about 25 km west of the fighting. Measured with rays from inside: a bore 1.3 km long,
+35 m from floor to roof, 85 to 100 m wide, bending about 50 m sideways; flat ground for 15 km
+north of it, and south of it a hill that rises 200 m in the first 750 m.
+
+- **Try 1 (04:47), called off on the way:** the pilot had no missile defence outside the fight
+  mode, and two missiles took 80 health in 20 s. Now flares (no break turns, so a route or a
+  stunt keeps its line) in every mode that is not the fight.
+- **Try 2 (05:00), did not go in:** 400 m out the bot judged the mouth shut and pulled up over
+  the hill. The fault was in my vision design: a direction counted only as far as its
+  neighbouring rays (3 to 4 degrees away) also went, as room for the wings, which at 400 m is
+  25 m to each side; the 36 m mouth spans 2.5 degrees each way. Then the stunt mode fed the
+  vision's own choice back in as the wanted direction, and the plane drifted into a vertical
+  climb to 11.7 km. Fixed: room for the plane is now measured in metres, with four rays
+  parallel to a direction (7 m to each side, 4 m up and down); the exact wanted direction is
+  always a candidate; after the pass the bot wants a 17-degree climb (the roof keeps it level
+  until the exit).
+- **A simulator for vision, inside the game** (`tools\vision-sim.lua`, run through the pilot's
+  `eval`): a simple simulated plane (fixed speed, a turn-rate limit, steering lag) flies through
+  the real geometry, sensing with the real rays. Through the tunnel at 450 km/h it now passes 2 m
+  from the aim point, keeps 38-47 m from the side walls and 19-21 m from roof and floor, and
+  clears the hill beyond by 40 m and more; also from 30 m off the line, at 550 km/h, and with a
+  slower plane. (Wanting level flight after the exit, the clearance over the hill was only 8 m.)
+  Not flown for real yet.
+
+What went wrong in the mission itself, so far: a drone shot the plane down from 200 m behind
+while the bot was "opening out" (flying straight away to get missile room); with a drone on its
+tail it now turns hard into it instead. Phase 1 turned out to be timed on damage to the enemy
+base ("You haven't done enough damage to the base!"), and the bot had spent its time on drones
+and fighters: the next sortie flies the 8AGM with a plan that puts the base's buildings,
+vehicles and the anti-air around them first.
+
+Two mistakes of mine cost two restarts of the copy, and changed how I work: (1) UE4SS's
+"restart all mods" (Ctrl+P), used to load new script code, crashed the game in mid-mission at
+04:53 (it had worked about ten times before); code now goes in only at a restart of the copy,
+and a new `module vision` / `module route` order reloads just those files without touching the
+other mods. (2) An `eval` that read every property of the mission object hung the pilot's
+script at 05:14; such probes now get a narrower target. Your real saves were checked after
+each (unchanged).
 
 ## Your saves: what happened
 

@@ -1,0 +1,7 @@
+# story mission flown by tools\campaign.py
+mission: 6
+difficulty: ace
+attempts: 10
+time_limit_min: 45
+retry: checkpoint
+plan: -

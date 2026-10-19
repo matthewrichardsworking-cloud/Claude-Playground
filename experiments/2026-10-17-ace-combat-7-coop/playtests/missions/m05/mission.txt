@@ -1,4 +1,7 @@
 # Mission 05 444 (story, Ace; level ms05): not flown by the bot before. HCAA, the
 # Typhoon's best air-to-air special (60 damage, agile, 3.5 s reload), as the default for air fights.
 plane: Typhoon
-weapon: HCAA
+weapon: LAAM
+# 19 Oct 04:24: changed to the LAAM. Phase 3 ("Shoot down everything carrying bombs!") was lost
+# twice with the HCAA (2.5 km): a Tu-160 pulled away from 3.9 to 5.4 km while the escorts kept
+# firing, and "We're being bombed!" failed the mission. The LAAM reaches 10 km.

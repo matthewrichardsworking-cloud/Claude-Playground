@@ -1,0 +1,738 @@
+# Playtest: Mission 05
+
+Run 19 Oct 2026, 04:03 by tools\playtest.py; difficulty ace, mode fair.
+
+**Not completed** in 2 attempt(s).
+
+| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | failed | an objective failed | 11.7 min | 21 | 2 (50) | 26 | 27 (27) | ? |
+| 2 | failed | an objective failed | 7.7 min | 18 | 0 (56) | 26 | 38 (38) | ? |
+
+## Attempt 1
+
+- 00:10 takeoff end: after_s=9.806, ok=True
+- 00:10 ground recovery: above_ground_m=86.76, alt_m=90.86, lowest_ahead_m=86.76, vz=0
+- 00:10 phase cleared: MissionPhase_01
+- 00:10 phase start: MissionPhase_02
+- 00:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2350 m)
+- 00:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1825 m)
+- 00:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1306 m)
+- 00:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 876 m)
+- 00:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 510 m)
+- 00:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 92 m)
+- 00:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 280 m)
+- 00:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 427 m)
+- 00:50 missile fired at us by 02_en_w1_escortB_1_m29a from 2094 m (infrared)
+- 00:50 missile warning: level=near
+- 00:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 324 m)
+- 00:50 break turn: missile 1203 m away, impact in 1.6 s
+- 00:50 flare: dist_m=871.8, missile=wp_msl_C_0, reason=tracker, tgo_s=0.8538
+- 00:50 that missile lost its lock at 859 m
+- 00:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 215 m)
+- 00:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 398 m)
+- 01:00 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 871 m
+- 01:00 missile warning: level=near
+- 01:00 missile fired at us by 02_en_w1_escortB_1_m29a from 1249 m (infrared)
+- 01:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2373 m)
+- 01:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1921 m)
+- 01:00 break turn: missile 1155 m away, impact in 4.0 s
+- 01:00 break turn: missile 1048 m away, impact in 2.3 s
+- 01:00 flare: dist_m=906.9, missile=wp_msl_C_4, reason=tracker, tgo_s=1.946
+- 01:00 that missile lost its lock at 910 m
+- 01:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1301 m)
+- 01:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 918 m)
+- 01:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 652 m)
+- 01:10 missile warning: level=near
+- 01:10 missile fired at us by 02_en_w1_escortB_1_m29a from 1770 m (infrared)
+- 01:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 398 m)
+- 01:10 missile from 02_en_w1_escortB_1_m29a gone after 9 s, closest 907 m
+- 01:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 224 m)
+- 01:10 break turn: missile 1243 m away, impact in 1.5 s
+- 01:10 missile warning: level=very near
+- 01:10 flare: dist_m=635.8, missile=wp_msl_C_6, reason=tracker, tgo_s=0.5501
+- 01:10 that missile lost its lock at 620 m
+- 01:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 222 m)
+- 01:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 284 m)
+- 01:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 183 m)
+- 01:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 159 m)
+- 01:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 163 m)
+- 01:20 missile from 02_en_w1_escortB_1_m29a gone after 10 s, closest 636 m
+- 01:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 170 m)
+- 01:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 191 m)
+- 01:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 185 m)
+- 01:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 290 m)
+- 01:20 missile warning: level=near
+- 01:20 missile fired at us by 02_en_w1_escortC_2_su33 from 1801 m (infrared)
+- 01:20 ground recovery: above_ground_m=1383, alt_m=1522, lowest_ahead_m=686.9, vz=-495.5
+- 01:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 646 m)
+- 01:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1746 m)
+- 01:20 break turn: missile 997 m away, impact in 1.6 s
+- 01:20 missile warning: level=very near
+- 01:30 flare: dist_m=719.6, missile=wp_msl_C_0, reason=tracker, tgo_s=1.172
+- 01:30 that missile lost its lock at 708 m
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1847 m)
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1759 m)
+- 01:30 missile from 02_en_w1_escortC_2_su33 gone after 7 s, closest 719 m
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2336 m)
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2234 m)
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2098 m)
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1939 m)
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1813 m)
+- 01:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1645 m)
+- 01:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1566 m)
+- 01:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1566 m)
+- 01:40 missile warning: level=near
+- 01:40 missile fired at us by 02_en_w1_escortB_1_m29a from 1739 m (infrared)
+- 01:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1598 m)
+- 01:40 break turn: missile 1402 m away, impact in 2.5 s
+- 01:40 flare: dist_m=980.4, missile=wp_msl_C_3, reason=tracker, tgo_s=1.267
+- 01:40 missile warning: level=very near
+- 01:40 flare: dist_m=312.8, missile=wp_msl_C_3, reason=tracker, tgo_s=0.3862
+- 01:40 that missile lost its lock at 45 m
+- 01:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1317 m)
+- 01:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1560 m)
+- 01:50 missile warning: level=near
+- 01:50 missile fired at us by 02_en_w1_escortB_1_m29a from 1703 m (infrared)
+- 01:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1833 m)
+- 01:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 551 m)
+- 01:50 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 75 m
+- 01:50 break turn: missile 1285 m away, impact in 3.1 s
+- 01:50 break turn: missile 1131 m away, impact in 2.5 s
+- 01:50 flare: dist_m=951, missile=wp_msl_C_0, reason=tracker, tgo_s=1.638
+- 01:50 missile warning: level=very near
+- 01:50 flare: dist_m=242.2, missile=wp_msl_C_0, reason=tracker, tgo_s=0.3521
+- 01:50 that missile lost its lock at 35 m
+- 01:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1055 m)
+- 02:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1486 m)
+- 02:00 missile warning: level=near
+- 02:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1773 m)
+- 02:00 missile fired at us by 02_en_w1_escortB_1_m29a from 1593 m (infrared)
+- 02:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1556 m)
+- 02:00 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 33 m
+- 02:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1092 m)
+- 02:00 break turn: missile 1036 m away, impact in 2.0 s
+- 02:00 flare: dist_m=819.1, missile=wp_msl_C_2, reason=tracker, tgo_s=1.396
+- 02:00 missile warning: level=very near
+- 02:00 flare: dist_m=208.6, missile=wp_msl_C_2, reason=tracker, tgo_s=0.3381
+- 02:00 that missile lost its lock at 30 m
+- 02:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 462 m)
+- 02:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1065 m)
+- 02:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 718 m)
+- 02:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 286 m)
+- 02:10 took 1 damage, health 119
+- 02:10 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 28 m
+- 02:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 167 m)
+- 02:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 580 m)
+- 02:10 missile warning: level=very near
+- 02:10 flare: reason=warning
+- 02:10 missile fired at us by 02_en_w1_escortC_2_su33 from 547 m (infrared)
+- 02:10 flare: dist_m=311.5, missile=wp_msl_C_3, reason=tracker, tgo_s=0.8115
+- 02:10 phase cleared: MissionPhase_02
+- 02:10 phase start: MissionPhase_03
+- 02:10 that missile lost its lock at 35 m
+- 02:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 914 m)
+- 02:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 768 m)
+- 02:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 393 m)
+- 02:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 34 m)
+- 02:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 398 m)
+- 02:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 620 m)
+- 02:20 missile from 02_en_w1_escortC_2_su33 gone after 11 s, closest 37 m
+- 02:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 634 m)
+- 02:20 destroyed 02_en_w1_escortB_1_m29a  (None missiles, 0 s after picking it)
+- 02:30 destroyed 02_en_w1_escortC_2_su33  (None missiles, 0 s after picking it)
+- 02:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 3724 m)
+- 02:40 destroyed 02_en_w1_escortC_1_su33  (None missiles, 0 s after picking it)
+- 02:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2375 m)
+- 02:40 weapon switch to standard missiles (no longer: better air-to-air missile, target 11400 m)
+- 02:40 destroyed 02_en_w1_escortA_1_m29a  (None missiles, 0 s after picking it)
+- 03:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2366 m)
+- 03:20 weapon switch to standard missiles (no longer: better air-to-air missile, target 2375 m)
+- 03:30 ground recovery: above_ground_m=706.6, alt_m=731.8, lowest_ahead_m=351.6, vz=-199.6
+- 03:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 433 m)
+- 04:10 weapon switch to standard missiles (no longer: better air-to-air missile, target 3327 m)
+- 04:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 899 m)
+- 04:30 ground recovery: above_ground_m=745.5, alt_m=741.6, lowest_ahead_m=484.8, vz=-148.1
+- 04:50 weapon switch to standard missiles (no longer: better air-to-air missile, target 3963 m)
+- 04:50 ground recovery: above_ground_m=1581, alt_m=1571, lowest_ahead_m=1128, vz=-344.9
+- 04:50 destroyed 02_en_w1_bomberA_3_T95  (None missiles, 0 s after picking it)
+- 04:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2371 m)
+- 05:00 destroyed 02_en_w1_bomberA_2_T95  (None missiles, 0 s after picking it)
+- 05:00 weapon switch to standard missiles (no longer: better air-to-air missile, target 24140 m)
+- 05:00 destroyed 02_en_w1_bomberA_1_T95  (None missiles, 0 s after picking it)
+- 05:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2375 m)
+- 05:40 missile fired at us by 02_en_w2_escortC_1_m29a from 2193 m (infrared)
+- 05:40 break turn: missile 2163 m away, impact in 2.7 s
+- 05:40 missile warning: level=near
+- 05:40 break turn: missile 1919 m away, impact in 3.9 s
+- 05:40 flare: dist_m=1683, missile=wp_msl_C_0, reason=tracker, tgo_s=1.941
+- 05:40 flare: dist_m=1002, missile=wp_msl_C_0, reason=tracker, tgo_s=1.602
+- 05:40 missile warning: level=very near
+- 05:40 flare: dist_m=343.1, missile=wp_msl_C_0, reason=tracker, tgo_s=0.6391
+- 05:40 that missile lost its lock at 65 m
+- 05:50 missile fired at us by 02_en_w2_escortC_2_m29a from 2121 m (infrared)
+- 05:50 missile warning: level=near
+- 05:50 missile from 02_en_w2_escortC_1_m29a gone after 9 s, closest 64 m
+- 05:50 break turn: missile 1047 m away, impact in 1.2 s
+- 05:50 missile warning: level=very near
+- 05:50 flare: dist_m=555.2, missile=wp_msl_C_1, reason=tracker, tgo_s=1.064
+- 05:50 that missile lost its lock at 48 m
+- 06:00 missile warning: level=near
+- 06:00 missile fired at us by 02_en_w2_escortC_1_m29a from 1453 m (infrared)
+- 06:00 missile from 02_en_w2_escortC_2_m29a gone after 11 s, closest 52 m
+- 06:00 destroyed 02_en_w2_escortC_2_m29a  (None missiles, 0 s after picking it)
+- 06:00 break turn: missile 992 m away, impact in 1.2 s
+- 06:00 missile warning: level=very near
+- 06:00 break turn: missile 765 m away, impact in 2.3 s
+- 06:00 flare: dist_m=519.3, missile=wp_msl_C_2, reason=tracker, tgo_s=0.8879
+- 06:00 that missile lost its lock at 63 m
+- 06:10 destroyed 02_en_w2_escortC_1_m29a  (None missiles, 0 s after picking it)
+- 06:10 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 94 m
+- 06:10 weapon switch to standard missiles (no longer: better air-to-air missile, target 4860 m)
+- 06:10 destroyed 02_en_w2_bomberC_1_t95  (None missiles, 0 s after picking it)
+- 07:00 missile fired at us by 02_en_w2_escortD_1_m21 from 2189 m (infrared)
+- 07:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2059 m)
+- 07:00 missile warning: level=near
+- 07:00 break turn: missile 1206 m away, impact in 1.2 s
+- 07:00 flare: dist_m=841.4, missile=wp_msl_C_0, reason=tracker, tgo_s=1.455
+- 07:00 missile warning: level=very near
+- 07:00 flare: dist_m=47.6, missile=wp_msl_C_0, reason=tracker, tgo_s=0.1954
+- 07:00 that missile lost its lock at 48 m
+- 07:00 missile fired at us by 02_en_w2_escortD_2_su33 from 2238 m (infrared)
+- 07:10 missile warning: level=near
+- 07:10 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 47 m
+- 07:10 missile fired at us by 02_en_w2_escortD_1_m21 from 1076 m (infrared)
+- 07:10 break turn: missile 975 m away, impact in 1.4 s
+- 07:10 missile warning: level=very near
+- 07:10 flare: dist_m=565.8, missile=wp_msl_C_1, reason=tracker, tgo_s=0.8259
+- 07:10 that missile lost its lock at 75 m
+- 07:10 missile warning: level=near
+- 07:10 destroyed 02_en_w2_bomberC_2_t95  (None missiles, 0 s after picking it)
+- 07:10 break turn: missile 999 m away, impact in 2.5 s
+- 07:10 missile warning: level=very near
+- 07:10 flare: dist_m=793.9, missile=wp_msl_C_2, reason=tracker, tgo_s=3.073
+- 07:10 destroyed 02_en_w2_bomberC_3_t95  (None missiles, 0 s after picking it)
+- 07:10 missile from 02_en_w2_escortD_2_su33 gone after 8 s, closest 72 m
+- 07:10 flare: dist_m=373.5, missile=wp_msl_C_2, reason=tracker, tgo_s=0.9025
+- 07:10 that missile lost its lock at 10 m
+- 07:10 weapon switch to standard missiles (no longer: better air-to-air missile, target 5032 m)
+- 07:20 destroyed 02_en_w2_escortD_1_m21  (None missiles, 0 s after picking it)
+- 07:20 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 52 m
+- 07:20 missile fired at us by 02_en_w2_escortD_2_m29 from 2079 m (infrared)
+- 07:20 missile warning: level=near
+- 07:20 break turn: missile 1910 m away, impact in 2.6 s
+- 07:20 flare: dist_m=1596, missile=wp_msl_C_3, reason=tracker, tgo_s=1.665
+- 07:20 missile warning: level=very near
+- 07:20 flare: dist_m=405, missile=wp_msl_C_3, reason=tracker, tgo_s=0.8999
+- 07:30 that missile lost its lock at 130 m
+- 07:30 missile from 02_en_w2_escortD_2_m29 gone after 11 s, closest 132 m
+- 07:40 missile warning: level=very near
+- 07:40 flare: reason=warning
+- 07:40 missile fired at us by 02_en_w2_escortD_2_m29 from 368 m (infrared)
+- 07:40 flare: dist_m=287.4, missile=wp_msl_C_0, reason=tracker, tgo_s=2.467
+- 07:40 flare: dist_m=61.88, missile=wp_msl_C_0, reason=tracker, tgo_s=0.2394
+- 07:40 that missile lost its lock at 27 m
+- 07:40 took 1 damage, health 118
+- 07:40 took 1 damage, health 117
+- 07:50 took 1 damage, health 116
+- 07:50 took 1 damage, health 115
+- 07:50 took 1 damage, health 114
+- 07:50 took 1 damage, health 113
+- 07:50 took 1 damage, health 112
+- 07:50 took 1 damage, health 111
+- 07:50 took 1 damage, health 110
+- 07:50 took 1 damage, health 109
+- 07:50 took 1 damage, health 108
+- 07:50 took 1 damage, health 107
+- 07:50 missile from 02_en_w2_escortD_2_m29 gone after 11 s, closest 37 m
+- 07:50 took 1 damage, health 106
+- 07:50 took 1 damage, health 105
+- 07:50 took 1 damage, health 104
+- 07:50 took 1 damage, health 103
+- 07:50 took 1 damage, health 102
+- 07:50 took 1 damage, health 101
+- 07:50 took 1 damage, health 100
+- 07:50 took 1 damage, health 99
+- 07:50 took 1 damage, health 98
+- 07:50 took 1 damage, health 97
+- 07:50 took 1 damage, health 96
+- 07:50 took 1 damage, health 95
+- 07:50 took 1 damage, health 94
+- 07:50 missile warning: level=very near
+- 07:50 flare: reason=warning
+- 07:50 missile fired at us by 02_en_w2_escortD_2_m29 from 426 m (infrared)
+- 07:50 flare: dist_m=480.5, missile=wp_msl_C_1, reason=tracker, tgo_s=4.557
+- 07:50 flare: dist_m=316.6, missile=wp_msl_C_1, reason=tracker, tgo_s=0.9605
+- 07:50 that missile lost its lock at 126 m
+- 08:00 missile warning: level=very near
+- 08:00 flare: reason=warning
+- 08:00 missile fired at us by 02_en_w2_escortD_2_m29 from 392 m (infrared)
+- 08:00 flare: dist_m=273.7, missile=wp_msl_C_2, reason=tracker, tgo_s=1.078
+- 08:00 that missile lost its lock at 155 m
+- 08:00 missile from 02_en_w2_escortD_2_m29 gone after 11 s, closest 114 m
+- 08:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2182 m)
+- 08:10 missile from 02_en_w2_escortD_2_m29 gone after 11 s, closest 154 m
+- 08:10 destroyed 02_en_w2_escortD_2_m29  (None missiles, 0 s after picking it)
+- 08:10 weapon switch to standard missiles (no longer: better air-to-air missile, target 2375 m)
+- 08:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2370 m)
+- 08:20 weapon switch to standard missiles (no longer: better air-to-air missile, target 2978 m)
+- 08:30 destroyed 02_en_w2_BomberD_1_t095  (None missiles, 0 s after picking it)
+- 08:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2374 m)
+- 08:30 destroyed 02_en_w2_escortD_2_su33  (None missiles, 0 s after picking it)
+- 08:30 weapon switch to standard missiles (nothing selected; the special weapon hides some targets, target -1 m)
+- 09:20 missile fired at us by 02_en_w2_escortA_2_m21a from 2050 m (infrared)
+- 09:20 missile warning: level=near
+- 09:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2374 m)
+- 09:20 ground recovery: above_ground_m=1926, alt_m=1934, lowest_ahead_m=755.1, vz=-511.5
+- 09:20 missile warning: level=very near
+- 09:20 that missile lost its lock at 501 m
+- 09:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 2380 m)
+- 09:30 missile from 02_en_w2_escortA_2_m21a gone after 9 s, closest 499 m
+- 09:30 missile fired at us by 02_en_w2_escortA_2_m21a from 2262 m (infrared)
+- 09:30 break turn: missile 2104 m away, impact in 3.1 s
+- 09:30 missile warning: level=near
+- 09:30 missile warning: level=very near
+- 09:30 flare: dist_m=794.9, missile=wp_msl_C_1, reason=tracker, tgo_s=1.168
+- 09:30 that missile lost its lock at 182 m
+- 09:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1063 m)
+- 09:40 weapon switch to standard missiles (no longer: better air-to-air missile, target 2900 m)
+- 09:40 missile from 02_en_w2_escortA_2_m21a gone after 11 s, closest 204 m
+- 10:20 missile fired at us by 02_en_w2_escortA_1_m29a from 2430 m (infrared)
+- 10:20 break turn: missile 2036 m away, impact in 4.0 s
+- 10:20 missile warning: level=near
+- 10:20 break turn: missile 1859 m away, impact in 2.9 s
+- 10:20 flare: dist_m=1391, missile=wp_msl_ms05_WeakHorming_C_0, reason=tracker, tgo_s=1.962
+- 10:20 missile warning: level=very near
+- 10:20 break turn: missile 428 m away, impact in 0.5 s
+- 10:20 that missile lost its lock at 358 m
+- 10:30 missile fired at us by 02_en_w2_escortA_2_m21a from 2476 m (infrared)
+- 10:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1151 m)
+- 10:30 missile from 02_en_w2_escortA_1_m29a gone after 11 s, closest 365 m
+- 10:30 missile warning: level=near
+- 10:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 2540 m)
+- 10:30 break turn: missile 1282 m away, impact in 1.1 s
+- 10:30 flare: dist_m=846.8, missile=wp_msl_C_2, reason=tracker, tgo_s=0.6874
+- 10:30 missile warning: level=very near
+- 10:30 destroyed 02_en_w2_bomberA_2_tu95  (None missiles, 0 s after picking it)
+- 10:30 that missile lost its lock at 62 m
+- 10:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2237 m)
+- 10:40 destroyed 02_en_w2_escortA_2_m21a  (None missiles, 0 s after picking it)
+- 10:40 missile from 02_en_w2_escortA_2_m21a gone after 11 s, closest 60 m
+- 10:40 destroyed 02_en_w2_escortE_2_su33  (None missiles, 0 s after picking it)
+- 10:40 weapon switch to standard missiles (no longer: better air-to-air missile, target 2383 m)
+- 10:50 missile warning: level=near
+- 10:50 missile fired at us by 02_en_w2_escortF_m29a from 1532 m (infrared)
+- 10:50 break turn: missile 1521 m away, impact in 3.9 s
+- 10:50 flare: dist_m=1162, missile=wp_msl_C_3, reason=tracker, tgo_s=1.973
+- 10:50 missile warning: level=very near
+- 10:50 flare: dist_m=564.6, missile=wp_msl_C_3, reason=tracker, tgo_s=0.7383
+- 10:50 flare: dist_m=41.93, missile=wp_msl_C_3, reason=tracker, tgo_s=0.2507
+- 10:50 that missile lost its lock at 43 m
+- 11:00 missile from 02_en_w2_escortF_m29a gone after 11 s, closest 42 m
+- 11:00 missile warning: level=near
+- 11:00 missile fired at us by 02_en_w2_escortB_2_m29_1 from 871 m (infrared)
+- 11:00 break turn: missile 842 m away, impact in 3.9 s
+- 11:00 missile warning: level=very near
+- 11:00 flare: dist_m=602.2, missile=wp_msl_C_4, reason=tracker, tgo_s=0.8173
+- 11:00 flare: dist_m=200.6, missile=wp_msl_C_4, reason=tracker, tgo_s=0.4676
+- 11:00 that missile lost its lock at 55 m
+- 11:00 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 610 m)
+- 11:00 missile from 02_en_w2_escortB_2_m29_1 gone after 7 s, closest 53 m
+- 11:10 missile fired at us by 02_en_w2_escortE_3_m21 from 2427 m (infrared)
+- 11:10 destroyed 02_en_w2_escortB_2_m29_1  (None missiles, 0 s after picking it)
+- 11:10 missile warning: level=near
+- 11:10 break turn: missile 1214 m away, impact in 1.2 s
+- 11:10 flare: dist_m=975.8, missile=wp_msl_C_0, reason=tracker, tgo_s=1.413
+- 11:10 missile warning: level=very near
+- 11:10 flare: dist_m=340.5, missile=wp_msl_C_0, reason=tracker, tgo_s=0.4286
+- 11:10 that missile lost its lock at 59 m
+- 11:20 missile from 02_en_w2_escortE_3_m21 gone after 8 s, closest 48 m
+- 11:20 missile warning: level=near
+- 11:20 missile fired at us by 02_en_w2_escortE_3_m21 from 1430 m (infrared)
+- 11:20 destroyed 02_en_w2_escortF_m29a  (None missiles, 0 s after picking it)
+- 11:20 break turn: missile 830 m away, impact in 1.4 s
+- 11:20 missile warning: level=very near
+- 11:20 flare: dist_m=589, missile=wp_msl_C_3, reason=tracker, tgo_s=0.615
+- 11:20 that missile lost its lock at 83 m
+- 11:20 weapon switch to standard missiles (no longer: better air-to-air missile, target 5154 m)
+- 11:30 missile from 02_en_w2_escortE_3_m21 gone after 11 s, closest 80 m
+- 11:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1959 m)
+- 11:30 missile fired at us by 02_en_w2_escortA_1_m29a from 2558 m (infrared)
+- 11:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 2604 m)
+- 11:40 missile warning: level=near
+- 11:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2339 m)
+- 11:40 break turn: missile 1378 m away, impact in 1.8 s
+- 11:40 flare: dist_m=965.4, missile=wp_msl_ms05_WeakHorming_C_0, reason=tracker, tgo_s=1.114
+- 11:40 missile warning: level=very near
+- 11:40 that missile lost its lock at 155 m
+- 11:40 phase failed: MissionPhase_03
+- 11:40 **objective failed**
+- 11:40 weapon switch to standard missiles (no longer: better air-to-air missile, target 3567 m)
+- 11:40 how well enemy positions 2 s ahead were predicted: steady planes: 6337 checks, the guess used was off by 38 m on average (each way: full turn 38 m, half turn 38 m, straight 38 m; now using straight); turning planes: 6103 checks, the guess used was off by 146 m on average (each way: full turn 181 m, half turn 146 m, straight 161 m; now using half turn)
+
+## Attempt 2
+
+- 00:00 frozen
+- 00:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2372 m)
+- 00:20 weapon switch to standard missiles (no longer: better air-to-air missile, target 4519 m)
+- 00:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2373 m)
+- 00:40 destroyed 02_en_w1_bomberA_2_T95  (None missiles, 0 s after picking it)
+- 00:40 destroyed 02_en_w1_bomberA_1_T95  (None missiles, 0 s after picking it)
+- 00:50 destroyed 02_en_w1_bomberA_3_T95  (None missiles, 0 s after picking it)
+- 00:50 weapon switch to standard missiles (no longer: better air-to-air missile, target 15920 m)
+- 01:00 destroyed 02_en_w1_escortC_1_su33  (None missiles, 0 s after picking it)
+- 01:20 missile fired at us by 02_en_w2_escortD_2_m29 from 2062 m (infrared)
+- 01:20 missile warning: level=near
+- 01:20 break turn: missile 1905 m away, impact in 2.2 s
+- 01:20 flare: dist_m=1285, missile=wp_msl_C_9, reason=tracker, tgo_s=1.468
+- 01:20 missile warning: level=very near
+- 01:20 missile fired at us by 02_en_w2_escortD_2_su33 from 2018 m (infrared)
+- 01:20 flare: dist_m=394.4, missile=wp_msl_C_9, reason=tracker, tgo_s=0.8602
+- 01:20 that missile lost its lock at 377 m
+- 01:20 missile warning: level=near
+- 01:30 break turn: missile 951 m away, impact in 1.6 s
+- 01:30 missile warning: level=very near
+- 01:30 flare: dist_m=615.6, missile=wp_msl_C_10, reason=tracker, tgo_s=0.9561
+- 01:30 that missile lost its lock at 78 m
+- 01:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2034 m)
+- 01:30 missile from 02_en_w2_escortD_2_m29 gone after 11 s, closest 394 m
+- 01:30 missile from 02_en_w2_escortD_2_su33 gone after 11 s, closest 75 m
+- 01:40 destroyed 02_en_w2_escortD_2_m29  (None missiles, 0 s after picking it)
+- 01:40 missile warning: level=very near
+- 01:40 flare: reason=warning
+- 01:40 destroyed 02_en_w2_BomberD_1_t095  (None missiles, 0 s after picking it)
+- 01:50 destroyed 02_en_w2_escortD_2_su33  (None missiles, 0 s after picking it)
+- 01:50 weapon switch to standard missiles (no longer: better air-to-air missile, target 15840 m)
+- 02:00 missile warning: level=near
+- 02:00 missile fired at us by 02_en_w2_escortD_1_m21 from 1462 m (infrared)
+- 02:00 break turn: missile 1447 m away, impact in 3.9 s
+- 02:10 break turn: missile 1284 m away, impact in 2.6 s
+- 02:10 flare: dist_m=961.1, missile=wp_msl_C_10, reason=tracker, tgo_s=1.72
+- 02:10 that missile lost its lock at 965 m
+- 02:10 missile warning: level=near
+- 02:10 missile fired at us by 02_en_w2_escortD_1_m21 from 1326 m (infrared)
+- 02:10 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 961 m
+- 02:10 break turn: missile 1288 m away, impact in 3.6 s
+- 02:20 break turn: missile 1134 m away, impact in 3.3 s
+- 02:20 missile warning: level=very near
+- 02:20 flare: dist_m=469.6, missile=wp_msl_C_11, reason=tracker, tgo_s=0.5649
+- 02:20 that missile lost its lock at 108 m
+- 02:20 ground recovery: above_ground_m=1542, alt_m=1589, lowest_ahead_m=943.5, vz=-370.4
+- 02:30 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 107 m
+- 02:30 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2366 m)
+- 02:30 missile warning: level=near
+- 02:30 missile fired at us by 02_en_w2_escortD_1_m21 from 1289 m (infrared)
+- 02:30 break turn: missile 1222 m away, impact in 2.4 s
+- 02:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 4486 m)
+- 02:30 break turn: missile 814 m away, impact in 2.1 s
+- 02:30 missile warning: level=very near
+- 02:30 flare: dist_m=548.4, missile=wp_msl_C_14, reason=tracker, tgo_s=0.7203
+- 02:30 destroyed 02_en_w2_bomberC_2_t95  (None missiles, 0 s after picking it)
+- 02:30 destroyed 02_en_w2_bomberC_3_t95  (None missiles, 0 s after picking it)
+- 02:30 flare: dist_m=84.98, missile=wp_msl_C_14, reason=tracker, tgo_s=0.107
+- 02:30 that missile lost its lock at 21 m
+- 02:40 missile warning: level=very near
+- 02:40 flare: reason=warning
+- 02:40 missile fired at us by 02_en_w2_escortD_1_m21 from 588 m (infrared)
+- 02:40 flare: dist_m=400.4, missile=wp_msl_C_9, reason=tracker, tgo_s=0.8245
+- 02:40 missile from 02_en_w2_escortD_1_m21 gone after 10 s, closest 26 m
+- 02:40 flare: dist_m=40.32, missile=wp_msl_C_9, reason=tracker, tgo_s=0.3451
+- 02:40 that missile lost its lock at 43 m
+- 02:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2372 m)
+- 02:40 missile warning: level=near
+- 02:40 missile fired at us by 02_en_w2_escortD_1_m21 from 1081 m (infrared)
+- 02:40 destroyed 02_en_w2_bomberC_1_t95  (None missiles, 0 s after picking it)
+- 02:40 break turn: missile 985 m away, impact in 3.9 s
+- 02:50 missile warning: level=very near
+- 02:50 flare: dist_m=802.6, missile=wp_msl_C_8, reason=tracker, tgo_s=1.289
+- 02:50 ground recovery: above_ground_m=53.1, alt_m=839.7, lowest_ahead_m=659.7, vz=3.547
+- 02:50 missile fired at us by 02_en_w2_escortD_1_m21 from 1039 m (infrared)
+- 02:50 flare: dist_m=344.5, missile=wp_msl_C_8, reason=tracker, tgo_s=0.5715
+- 02:50 that missile lost its lock at 42 m
+- 02:50 missile warning: level=near
+- 02:50 missile warning: level=very near
+- 02:50 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 40 m
+- 02:50 flare: dist_m=557.9, missile=wp_msl_C_11, reason=tracker, tgo_s=1.026
+- 02:50 that missile lost its lock at 38 m
+- 02:50 destroyed 02_en_w1_escortA_1_m29a  (None missiles, 0 s after picking it)
+- 02:50 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 40 m
+- 03:00 missile from 02_en_w2_escortD_1_m21 gone after 10 s, closest 59 m
+- 03:00 weapon switch to standard missiles (no longer: better air-to-air missile, target 16500 m)
+- 03:10 missile warning: level=very near
+- 03:10 flare: reason=warning
+- 03:10 missile fired at us by 02_en_w2_escortC_2_m29a from 463 m (infrared)
+- 03:10 flare: dist_m=502, missile=wp_msl_C_13, reason=tracker, tgo_s=2.878
+- 03:10 flare: dist_m=301.1, missile=wp_msl_C_13, reason=tracker, tgo_s=1.11
+- 03:10 that missile lost its lock at 101 m
+- 03:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 1686 m)
+- 03:10 missile warning: level=near
+- 03:10 missile fired at us by 02_en_w2_escortD_1_m21 from 956 m (infrared)
+- 03:10 missile warning: level=very near
+- 03:10 break turn: missile 584 m away, impact in 2.0 s
+- 03:10 flare: dist_m=425.6, missile=wp_msl_C_9, reason=tracker, tgo_s=1.167
+- 03:10 flare: dist_m=95.61, missile=wp_msl_C_9, reason=tracker, tgo_s=0.1971
+- 03:10 that missile lost its lock at 21 m
+- 03:20 missile from 02_en_w2_escortC_2_m29a gone after 11 s, closest 107 m
+- 03:20 missile warning: level=very near
+- 03:20 flare: reason=warning
+- 03:20 missile fired at us by 02_en_w2_escortD_1_m21 from 283 m (infrared)
+- 03:20 flare: dist_m=182.6, missile=wp_msl_C_8, reason=tracker, tgo_s=7.84
+- 03:20 that missile lost its lock at 193 m
+- 03:20 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 19 m
+- 03:30 destroyed 02_en_w2_escortC_2_m29a  (None missiles, 0 s after picking it)
+- 03:30 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 183 m
+- 03:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 6621 m)
+- 03:40 missile fired at us by 02_en_w2_escortF_m29a from 2141 m (infrared)
+- 03:40 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2368 m)
+- 03:40 missile warning: level=near
+- 03:40 break turn: missile 1736 m away, impact in 3.9 s
+- 03:40 break turn: missile 816 m away, impact in 0.9 s
+- 03:40 missile warning: level=very near
+- 03:40 flare: dist_m=572.1, missile=wp_msl_C_10, reason=tracker, tgo_s=0.8111
+- 03:40 that missile lost its lock at 60 m
+- 03:50 missile fired at us by 02_en_w2_escortD_1_m21 from 2323 m (infrared)
+- 03:50 break turn: missile 2093 m away, impact in 3.4 s
+- 03:50 missile warning: level=near
+- 03:50 break turn: missile 1899 m away, impact in 4.0 s
+- 03:50 missile from 02_en_w2_escortF_m29a gone after 10 s, closest 64 m
+- 03:50 flare: dist_m=1529, missile=wp_msl_C_9, reason=tracker, tgo_s=1.757
+- 03:50 missile warning: level=very near
+- 03:50 flare: dist_m=794.9, missile=wp_msl_C_9, reason=tracker, tgo_s=1.163
+- 03:50 flare: dist_m=82.29, missile=wp_msl_C_9, reason=tracker, tgo_s=0.1204
+- 03:50 that missile lost its lock at 41 m
+- 04:00 missile warning: level=near
+- 04:00 missile fired at us by 02_en_w2_escortC_1_m29a from 1316 m (infrared)
+- 04:00 missile warning: level=very near
+- 04:00 destroyed 02_en_w2_bomberF_1_t160_1  (None missiles, 0 s after picking it)
+- 04:00 break turn: missile 750 m away, impact in 1.6 s
+- 04:00 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 47 m
+- 04:00 flare: dist_m=523.7, missile=wp_msl_C_8, reason=tracker, tgo_s=0.9304
+- 04:00 that missile lost its lock at 52 m
+- 04:00 weapon switch to standard missiles (no longer: better air-to-air missile, target 2631 m)
+- 04:00 missile warning: level=very near
+- 04:00 flare: reason=warning
+- 04:10 missile fired at us by 02_en_w2_escortC_1_m29a from 662 m (infrared)
+- 04:10 flare: dist_m=636.2, missile=wp_msl_C_11, reason=tracker, tgo_s=3.909
+- 04:10 break turn: missile 582 m away, impact in 2.4 s
+- 04:10 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 66 m
+- 04:10 flare: dist_m=424.1, missile=wp_msl_C_11, reason=tracker, tgo_s=1.266
+- 04:10 that missile lost its lock at 92 m
+- 04:10 missile warning: level=near
+- 04:10 missile fired at us by 02_en_w2_escortF_m29a from 929 m (infrared)
+- 04:20 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 90 m
+- 04:20 missile warning: level=very near
+- 04:20 break turn: missile 766 m away, impact in 1.8 s
+- 04:20 flare: dist_m=707.2, missile=wp_msl_C_10, reason=tracker, tgo_s=1.89
+- 04:20 flare: dist_m=405.3, missile=wp_msl_C_10, reason=tracker, tgo_s=1.217
+- 04:20 that missile lost its lock at 56 m
+- 04:20 missile fired at us by 02_en_w2_escortD_1_m21 from 2093 m (infrared)
+- 04:20 missile warning: level=near
+- 04:30 missile from 02_en_w2_escortF_m29a gone after 11 s, closest 54 m
+- 04:30 break turn: missile 1297 m away, impact in 2.8 s
+- 04:30 flare: dist_m=939.3, missile=wp_msl_C_9, reason=tracker, tgo_s=1.261
+- 04:30 missile warning: level=very near
+- 04:30 flare: dist_m=300.2, missile=wp_msl_C_9, reason=tracker, tgo_s=0.3467
+- 04:30 that missile lost its lock at 41 m
+- 04:30 missile warning: level=near
+- 04:30 missile fired at us by 02_en_w2_escortA_1_m29a from 1078 m (infrared)
+- 04:30 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 38 m
+- 04:40 break turn: missile 875 m away, impact in 1.4 s
+- 04:40 missile warning: level=very near
+- 04:40 flare: dist_m=580.9, missile=wp_msl_ms05_WeakHorming_C_1, reason=tracker, tgo_s=0.7875
+- 04:40 that missile lost its lock at 96 m
+- 04:40 missile from 02_en_w2_escortA_1_m29a gone after 11 s, closest 146 m
+- 04:40 missile warning: level=near
+- 04:50 missile fired at us by 02_en_w2_escortA_1_m29a from 928 m (infrared)
+- 04:50 flare: dist_m=926, missile=wp_msl_ms05_WeakHorming_C_2, reason=tracker, tgo_s=1.797
+- 04:50 break turn: missile 926 m away, impact in 1.8 s
+- 04:50 break turn: missile 814 m away, impact in 2.5 s
+- 04:50 flare: dist_m=816.3, missile=wp_msl_ms05_WeakHorming_C_2, reason=tracker, tgo_s=1.95
+- 04:50 missile warning: level=very near
+- 04:50 flare: dist_m=535.6, missile=wp_msl_ms05_WeakHorming_C_2, reason=tracker, tgo_s=1.227
+- 04:50 flare: dist_m=103.3, missile=wp_msl_ms05_WeakHorming_C_2, reason=tracker, tgo_s=0.4407
+- 04:50 that missile lost its lock at 93 m
+- 04:50 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2003 m)
+- 05:00 missile from 02_en_w2_escortA_1_m29a gone after 11 s, closest 99 m
+- 05:00 destroyed 02_en_w2_bomberF_2_t160  (None missiles, 0 s after picking it)
+- 05:10 missile warning: level=very near
+- 05:10 flare: reason=warning
+- 05:10 missile fired at us by 02_en_w2_escortE_2_su33 from 412 m (infrared)
+- 05:10 flare: dist_m=138.2, missile=wp_msl_C_9, reason=tracker, tgo_s=0.6476
+- 05:10 that missile lost its lock at 76 m
+- 05:10 missile warning: level=near
+- 05:10 missile fired at us by 02_en_w2_escortF_m29a from 1413 m (infrared)
+- 05:10 break turn: missile 1358 m away, impact in 2.6 s
+- 05:20 flare: dist_m=1146, missile=wp_msl_C_10, reason=tracker, tgo_s=1.777
+- 05:20 missile from 02_en_w2_escortE_2_su33 gone after 7 s, closest 78 m
+- 05:20 missile warning: level=very near
+- 05:20 flare: dist_m=490.9, missile=wp_msl_C_10, reason=tracker, tgo_s=0.8336
+- 05:20 that missile lost its lock at 48 m
+- 05:20 missile warning: level=near
+- 05:20 missile fired at us by 02_en_w2_escortE_2_su33 from 1630 m (infrared)
+- 05:20 break turn: missile 1431 m away, impact in 2.8 s
+- 05:20 break turn: missile 1299 m away, impact in 3.4 s
+- 05:20 destroyed 02_en_w2_escortF_m29a  (None missiles, 0 s after picking it)
+- 05:20 flare: dist_m=1121, missile=wp_msl_C_12, reason=tracker, tgo_s=1.72
+- 05:20 missile warning: level=very near
+- 05:20 flare: dist_m=605.7, missile=wp_msl_C_12, reason=tracker, tgo_s=0.6172
+- 05:20 that missile lost its lock at 37 m
+- 05:30 missile from 02_en_w2_escortF_m29a gone after 11 s, closest 57 m
+- 05:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 5383 m)
+- 05:30 missile from 02_en_w2_escortE_2_su33 gone after 11 s, closest 45 m
+- 05:30 missile warning: level=near
+- 05:30 missile fired at us by 02_en_w2_escortE_2_su33 from 865 m (infrared)
+- 05:30 flare: dist_m=855.6, missile=wp_msl_C_13, reason=tracker, tgo_s=1.322
+- 05:30 break turn: missile 856 m away, impact in 1.3 s
+- 05:30 missile warning: level=very near
+- 05:30 break turn: missile 660 m away, impact in 1.2 s
+- 05:30 flare: dist_m=520.8, missile=wp_msl_C_13, reason=tracker, tgo_s=1.158
+- 05:40 flare: dist_m=126.2, missile=wp_msl_C_13, reason=tracker, tgo_s=None
+- 05:40 that missile lost its lock at 38 m
+- 05:40 missile warning: level=very near
+- 05:40 flare: reason=warning
+- 05:40 missile fired at us by 02_en_w2_escortE_3_m21 from 541 m (infrared)
+- 05:40 flare: dist_m=528.3, missile=wp_msl_C_11, reason=tracker, tgo_s=3.051
+- 05:40 missile from 02_en_w2_escortE_2_su33 gone after 11 s, closest 35 m
+- 05:40 flare: dist_m=308.9, missile=wp_msl_C_11, reason=tracker, tgo_s=1.146
+- 05:50 that missile lost its lock at 58 m
+- 05:50 missile fired at us by 02_en_w2_escortD_1_m21 from 2349 m (infrared)
+- 05:50 missile warning: level=near
+- 05:50 break turn: missile 879 m away, impact in 1.3 s
+- 05:50 missile warning: level=very near
+- 05:50 flare: dist_m=488, missile=wp_msl_C_10, reason=tracker, tgo_s=1.084
+- 05:50 missile from 02_en_w2_escortE_3_m21 gone after 11 s, closest 53 m
+- 05:50 that missile lost its lock at 84 m
+- 06:00 took 1 damage, health 119
+- 06:00 took 1 damage, health 118
+- 06:00 took 1 damage, health 117
+- 06:00 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 81 m
+- 06:00 took 1 damage, health 116
+- 06:00 took 1 damage, health 115
+- 06:00 took 1 damage, health 114
+- 06:00 took 1 damage, health 113
+- 06:00 took 1 damage, health 112
+- 06:00 took 1 damage, health 111
+- 06:00 took 1 damage, health 110
+- 06:00 took 1 damage, health 109
+- 06:00 missile warning: level=near
+- 06:00 missile fired at us by 02_en_w2_escortD_1_m21 from 1072 m (infrared)
+- 06:00 took 1 damage, health 108
+- 06:00 took 1 damage, health 107
+- 06:00 took 1 damage, health 106
+- 06:00 missile warning: level=very near
+- 06:00 took 1 damage, health 105
+- 06:00 took 2 damage, health 103
+- 06:00 break turn: missile 637 m away, impact in 0.7 s
+- 06:00 took 1 damage, health 102
+- 06:00 took 1 damage, health 101
+- 06:00 took 2 damage, health 99
+- 06:00 flare: dist_m=478.7, missile=wp_msl_C_8, reason=tracker, tgo_s=0.5966
+- 06:00 took 1 damage, health 98
+- 06:00 took 1 damage, health 97
+- 06:00 took 1 damage, health 96
+- 06:10 took 1 damage, health 95
+- 06:10 that missile lost its lock at 49 m
+- 06:10 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 2374 m)
+- 06:10 missile warning: level=very near
+- 06:10 flare: reason=warning
+- 06:10 missile fired at us by 02_en_w2_escortB_2_su33_92 from 314 m (infrared)
+- 06:10 flare: dist_m=127, missile=wp_msl_C_12, reason=tracker, tgo_s=0.4361
+- 06:10 that missile lost its lock at 83 m
+- 06:10 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 52 m
+- 06:20 destroyed 02_en_w2_bomberE_1_t95  (None missiles, 0 s after picking it)
+- 06:20 missile from 02_en_w2_escortB_2_su33_92 gone after 11 s, closest 81 m
+- 06:20 missile warning: level=near
+- 06:20 missile fired at us by 02_en_w2_escortB_2_su33_92 from 1300 m (infrared)
+- 06:20 break turn: missile 1012 m away, impact in 1.5 s
+- 06:20 missile warning: level=very near
+- 06:20 flare: dist_m=705.3, missile=wp_msl_C_10, reason=tracker, tgo_s=0.7852
+- 06:20 that missile lost its lock at 75 m
+- 06:30 missile warning: level=near
+- 06:30 missile fired at us by 02_en_w2_escortD_1_m21 from 1290 m (infrared)
+- 06:30 break turn: missile 998 m away, impact in 1.8 s
+- 06:30 missile warning: level=very near
+- 06:30 break turn: missile 765 m away, impact in 0.9 s
+- 06:30 flare: dist_m=476.2, missile=wp_msl_C_11, reason=tracker, tgo_s=0.6997
+- 06:30 that missile lost its lock at 76 m
+- 06:30 missile from 02_en_w2_escortB_2_su33_92 gone after 11 s, closest 69 m
+- 06:30 missile warning: level=near
+- 06:30 missile fired at us by 02_en_w2_escortB_2_su33_92 from 1383 m (infrared)
+- 06:30 weapon switch to standard missiles (no longer: better air-to-air missile, target 4002 m)
+- 06:40 missile warning: level=very near
+- 06:40 break turn: missile 616 m away, impact in 1.8 s
+- 06:40 flare: dist_m=456.3, missile=wp_msl_C_8, reason=tracker, tgo_s=1.648
+- 06:40 destroyed 02_en_w2_bomberE_2_t95  (None missiles, 0 s after picking it)
+- 06:40 that missile lost its lock at 30 m
+- 06:40 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 75 m
+- 06:40 missile warning: level=near
+- 06:40 missile fired at us by 02_en_w2_escortB_2_m29_1 from 1091 m (infrared)
+- 06:40 missile warning: level=very near
+- 06:40 break turn: missile 764 m away, impact in 3.0 s
+- 06:40 flare: dist_m=665.3, missile=wp_msl_C_9, reason=tracker, tgo_s=1.674
+- 06:40 flare: dist_m=250.9, missile=wp_msl_C_9, reason=tracker, tgo_s=0.5343
+- 06:40 missile from 02_en_w2_escortB_2_su33_92 gone after 11 s, closest 27 m
+- 06:50 that missile lost its lock at 31 m
+- 06:50 missile warning: level=near
+- 06:50 missile fired at us by 02_en_w2_escortB_2_m29_1 from 904 m (infrared)
+- 06:50 break turn: missile 897 m away, impact in 3.4 s
+- 06:50 missile warning: level=very near
+- 06:50 break turn: missile 764 m away, impact in 3.3 s
+- 06:50 flare: dist_m=726.1, missile=wp_msl_C_12, reason=tracker, tgo_s=3.232
+- 06:50 missile from 02_en_w2_escortB_2_m29_1 gone after 11 s, closest 34 m
+- 06:50 flare: dist_m=388, missile=wp_msl_C_12, reason=tracker, tgo_s=1.073
+- 06:50 that missile lost its lock at 42 m
+- 07:00 missile warning: level=near
+- 07:00 missile fired at us by 02_en_w2_escortB_2_m29_1 from 899 m (infrared)
+- 07:00 missile warning: level=very near
+- 07:00 flare: dist_m=733.9, missile=wp_msl_C_10, reason=tracker, tgo_s=1.277
+- 07:00 break turn: missile 734 m away, impact in 1.3 s
+- 07:00 missile from 02_en_w2_escortB_2_m29_1 gone after 11 s, closest 40 m
+- 07:00 flare: dist_m=445.6, missile=wp_msl_C_10, reason=tracker, tgo_s=1.141
+- 07:00 that missile lost its lock at 46 m
+- 07:00 took 1 damage, health 94
+- 07:10 missile warning: level=near
+- 07:10 missile fired at us by 02_en_w2_escortB_2_m29_1 from 839 m (infrared)
+- 07:10 missile warning: level=very near
+- 07:10 break turn: missile 722 m away, impact in 1.6 s
+- 07:10 flare: dist_m=583.1, missile=wp_msl_C_8, reason=tracker, tgo_s=1.781
+- 07:10 flare: dist_m=195.9, missile=wp_msl_C_8, reason=tracker, tgo_s=0.4145
+- 07:10 that missile lost its lock at 36 m
+- 07:10 missile from 02_en_w2_escortB_2_m29_1 gone after 11 s, closest 49 m
+- 07:10 missile warning: level=very near
+- 07:10 flare: reason=warning
+- 07:10 missile fired at us by 02_en_w2_escortB_2_m29_1 from 776 m (infrared)
+- 07:20 flare: dist_m=685, missile=wp_msl_C_9, reason=tracker, tgo_s=4.27
+- 07:20 missile from 02_en_w2_escortB_2_m29_1 gone after 11 s, closest 37 m
+- 07:20 flare: dist_m=290.4, missile=wp_msl_C_9, reason=tracker, tgo_s=0.6236
+- 07:20 that missile lost its lock at 100 m
+- 07:20 weapon switch to plwp_hcaa_a0_C (better air-to-air missile, target 362 m)
+- 07:20 weapon switch to standard missiles (no longer: better air-to-air missile, target 5583 m)
+- 07:20 missile fired at us by 02_en_w2_escortA_1_m29a from 2212 m (infrared)
+- 07:20 missile warning: level=near
+- 07:20 destroyed 02_en_w2_escortD_1_m21  (None missiles, 0 s after picking it)
+- 07:20 break turn: missile 1878 m away, impact in 3.0 s
+- 07:20 flare: dist_m=1533, missile=wp_msl_ms05_WeakHorming_C_1, reason=tracker, tgo_s=1.791
+- 07:20 missile warning: level=very near
+- 07:20 flare: dist_m=657.6, missile=wp_msl_ms05_WeakHorming_C_1, reason=tracker, tgo_s=0.7703
+- 07:20 missile from 02_en_w2_escortB_2_m29_1 gone after 11 s, closest 102 m
+- 07:30 that missile lost its lock at 232 m
+- 07:30 missile fired at us by 02_en_w2_escortC_1_m29a from 2232 m (infrared)
+- 07:30 missile warning: level=near
+- 07:30 missile warning: level=very near
+- 07:30 missile from 02_en_w2_escortA_1_m29a gone after 11 s, closest 228 m
+- 07:30 break turn: missile 626 m away, impact in 1.2 s
+- 07:30 flare: dist_m=308.9, missile=wp_msl_C_11, reason=tracker, tgo_s=0.8399
+- 07:30 that missile lost its lock at 154 m
+- 07:40 missile warning: level=near
+- 07:40 missile fired at us by 02_en_w2_escortB_2_su33_92 from 1489 m (infrared)
+- 07:40 phase failed: MissionPhase_03
+- 07:40 **objective failed**
+- 07:40 break turn: missile 874 m away, impact in 0.6 s
+- 07:40 missile warning: level=very near
+- 07:40 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 156 m
+- 07:40 flare: dist_m=686, missile=wp_msl_C_8, reason=tracker, tgo_s=0.5557
+- 07:40 flare: dist_m=53.21, missile=wp_msl_C_8, reason=tracker, tgo_s=0.11
+- 07:40 that missile lost its lock at 37 m
+- 07:40 how well enemy positions 2 s ahead were predicted: steady planes: 4967 checks, the guess used was off by 40 m on average (each way: full turn 40 m, half turn 40 m, straight 40 m; now using half turn); turning planes: 4988 checks, the guess used was off by 102 m on average (each way: full turn 160 m, half turn 101 m, straight 131 m; now using half turn)
+
+Files: events.jsonl (every event), attempt*-flight-*.csv (the plane ten times a second), pilot.log (the pilot's commentary), pictures\, saves-check.txt.

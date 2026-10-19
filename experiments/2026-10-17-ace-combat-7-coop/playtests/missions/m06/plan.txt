@@ -1,0 +1,13 @@
+# Mission 06 Long Day (story, Ace; level ms06)
+#
+# Phase 1 (15 minutes): "Spare Squadron! You haven't done enough damage to the base! Regular
+# forces will have trouble attacking." The phase fails on time unless the base is damaged
+# enough (19 Oct 05:13: the bot had spent its time on drones and fighters). So the base's
+# buildings and vehicles (Enemy_Ground_..., ms06_Warehouse, WatchTower, GasTank, trucks) and
+# the anti-air in the way ("Take out anti-air weapons that get in the way": Optional2_SAM,
+# Optional2_AARay) come first, six times the others; planes still count when they shoot at us.
+start:
+    pilot fly attack focus enemy_ground,ms06_,optional2_sam,optional2_aaray
+retry MissionPhase_01 checkpoint
+phase MissionPhase_01:
+    pilot fly attack focus enemy_ground,ms06_,optional2_sam,optional2_aaray

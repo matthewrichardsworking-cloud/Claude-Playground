@@ -3,6 +3,24 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (19 Oct 2026, 05:25): the Ace campaign at Mission 06
+
+- **Completed on Ace:** Missions 01 to 05 (`playtests\campaign-ace.md`). Mission 05 taught it
+  to put the mission's own targets (TGT) first; Mission 06 Long Day is in progress (phase 1 is
+  timed on damage to the enemy base; flown now with the 8AGM and a base-first plan, the
+  `focus` words in `playtests\missions\m06\plan.txt`).
+- **New tonight:** flares in every mode that is not the fight (routes, fly-to, stunts); with a
+  drone on its tail it turns hard into it instead of opening out; the vision layer measures
+  room for the plane in metres (four parallel rays around a direction) instead of by the
+  neighbouring grid rays; `tools\stunt.py` lines the plane up with lead points and sends a
+  fly-through with live vision; `tools\vision-sim.lua` flies a simple simulated plane through
+  real geometry with the real rays, inside the running game, to test vision before flying;
+  `module vision|route` reloads those two files without UE4SS's reload of all mods (which
+  crashed the game once mid-mission).
+- **Your tunnel test (vision test 2):** first real try did not go in (the old room check saw
+  the 36 m mouth as shut from 400 m); the simulator now gets through centred; next real try
+  when a phase allows the 4-minute detour.
+
 ## Status (19 Oct 2026, 01:15): phase 4, the Ace campaign
 
 - **The lock problem is solved** (workbench section 15). The bot used to write its chosen
@@ -24,7 +42,17 @@ section 10). It builds on what the workbench already proved (sections 5, 7 and 9
   restarted on Ace at 01:06 (the copy's own save only).
 - **3D vision** (`vision.lua`, for your Mission 04 and 06 tests): a fan of 165 rays twenty
   times a second, free directions with room for the wings, and corridor centring between
-  walls; switched on with `vision on` in a fly order. Not flown yet.
+  walls; switched on with `vision on` in a fly order. **Vision test 1 done (Mission 04):** a
+  surprise fly-through of the Space Elevator's base, beside the tower and under the lowest ring,
+  passed 13 m from the chosen point with no contact. The same rays now also guard the fight mode
+  against structures.
+- **Campaign so far (Ace):** Missions 01 and 02 first try, 03 on attempt 2, 04 Rescue on the
+  second sortie (a 128 km stealth route between 79 radar spheres, planned by the new
+  `tools\route-avoid.py`, flown unseen twice; then drones, an escort and the Arsenal Bird's
+  drones). What the bot learned on the way: protect the allies a mission highlights, chase
+  what chases them, escort, use a "better air-to-air" special (HCAA), shoot agile drones only
+  from 1.3 km out, never split-S near the ground, skip landing mini-games once the approach
+  begins.
 
 ## Status (19 Oct 2026, 00:20): phase 3, terrain and mission gimmicks
 

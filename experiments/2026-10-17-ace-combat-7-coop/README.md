@@ -3,7 +3,19 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (19 Oct 2026, 01:35): the Ace campaign is under way, and the lock problem is
+**Status (19 Oct 2026, 05:25): Ace campaign, Missions 01 to 05 completed; Mission 06 Long
+Day and your tunnel test in progress.** Mission 05 (bombers that must not reach the base) was
+completed with no damage once the bot learned to put the mission's own targets first and took
+the long-range LAAM. In Mission 06 the bot was shot down once and failed phase 1 once (it is
+timed on damage to the enemy base); it is flying again with the 8AGM and a plan that puts the
+base first. Your tunnel test: the bot did not go in at the first real try, because my vision
+design judged a 36 m tunnel mouth too small from 400 m out; that is fixed, and a new simulator
+that flies a simple plane through the real tunnel with the real rays now gets through
+centred (workbench section 15). Two restarts of the copy tonight were my doing (a script
+reload crashed the game; a probe hung the script); your real saves were checked each time and
+are unchanged.
+
+**Earlier (19 Oct 2026, 01:35): the Ace campaign is under way, and the lock problem is
 solved.** On your OK the bot is flying the story campaign on Ace in the copy (the copy's own
 story save was restarted; your real game is untouched). First the problem that stopped
 Mission 14: the bot picked its targets by writing straight into the game's "selected target"
@@ -12,8 +24,12 @@ selects the way the Tab key does, and in Mission 14 on Hard every target that ne
 last night locked and fell (workbench section 15). A new campaign driver
 (`tools\campaign.py`) takes the story from the menu through movies, briefings, the hangar
 (plane and special weapon by name), the mission, the replay and the results to the next
-mission. **Mission 01 on Ace: completed at the first attempt, rank A, no damage.** Mission 02
-is being flown. Progress per mission: `playtests\campaign-ace.md`.
+mission. **Completed on Ace so far: Missions 01 (rank A, no damage), 02, 03 and 04 Rescue.**
+Mission 04 was the hard one: a 128 km stealth flight between 79 radar zones (the bot planned
+a route around them and flew it unseen), your first vision test (a surprise flight through
+the Space Elevator's base, rays only: 13 m from the aim point, no contact), then drone swarms
+and an escort that taught it several new tactics. Progress per mission:
+`playtests\campaign-ace.md`; details in workbench section 15.
 
 **Earlier (19 Oct 2026, 00:20): the playtest bot sees terrain and mission gimmicks.** On
 your request it learned to fly Mission 14's 47 km night canyon on Hard by itself: under the

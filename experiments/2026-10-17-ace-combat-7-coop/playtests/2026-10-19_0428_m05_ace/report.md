@@ -1,0 +1,241 @@
+# Playtest: Mission 05 ace
+
+Run 19 Oct 2026, 04:28 by tools\campaign.py (story mode); difficulty ace, mode fair.
+
+**Completed on attempt 1 of 1.**
+
+| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | completed | mission accomplished | 6.9 min | 3 | 22 (23) | 0 | 21 (21) | 0 |
+
+## Attempt 1
+
+- 00:10 takeoff end: after_s=9.825, ok=True
+- 00:10 ground recovery: above_ground_m=88.94, alt_m=93.04, lowest_ahead_m=88.94, vz=0
+- 00:20 phase cleared: MissionPhase_01
+- 00:20 phase start: MissionPhase_02
+- 00:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9496 m)
+- 00:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 8843 m)
+- 00:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 8108 m)
+- 00:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 7372 m)
+- 00:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 6526 m)
+- 00:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 5639 m)
+- 00:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 4754 m)
+- 00:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 3819 m)
+- 00:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2924 m)
+- 00:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2203 m)
+- 00:40 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2611 m)
+- 00:50 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2360 m)
+- 00:50 missile warning: level=near
+- 00:50 missile fired at us by 02_en_w1_escortB_1_m29a from 1839 m (infrared)
+- 00:50 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1994 m)
+- 00:50 break turn: missile 1150 m away, impact in 2.2 s
+- 00:50 flare: dist_m=1060, missile=wp_msl_C_0, reason=tracker, tgo_s=0.8427
+- 00:50 missile warning: level=very near
+- 00:50 flare: dist_m=453.6, missile=wp_msl_C_0, reason=tracker, tgo_s=0.55
+- 00:50 that missile lost its lock at 456 m
+- 01:00 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2881 m)
+- 01:00 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 454 m
+- 01:00 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2973 m)
+- 01:00 ground recovery: above_ground_m=1518, alt_m=1601, lowest_ahead_m=-726.2, vz=-347.1
+- 01:00 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2929 m)
+- 01:00 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 3060 m)
+- 01:00 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 3266 m)
+- 01:00 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 3097 m)
+- 01:10 missile warning: level=near
+- 01:10 missile fired at us by 02_en_w1_escortB_1_m29a from 1586 m (infrared)
+- 01:10 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2763 m)
+- 01:10 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2561 m)
+- 01:10 break turn: missile 829 m away, impact in 2.2 s
+- 01:10 missile warning: level=very near
+- 01:10 flare: dist_m=669.7, missile=wp_msl_C_5, reason=tracker, tgo_s=1.444
+- 01:10 that missile lost its lock at 661 m
+- 01:10 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2355 m)
+- 01:10 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2063 m)
+- 01:10 missile from 02_en_w1_escortB_1_m29a gone after 7 s, closest 669 m
+- 01:10 missile fired at us by 02_en_w1_escortB_1_m29a from 2425 m (infrared)
+- 01:20 missile warning: level=near
+- 01:20 break turn: missile 1502 m away, impact in 2.8 s
+- 01:20 flare: dist_m=1084, missile=wp_msl_C_6, reason=tracker, tgo_s=1.075
+- 01:20 missile warning: level=very near
+- 01:20 flare: dist_m=295.9, missile=wp_msl_C_6, reason=tracker, tgo_s=0.3374
+- 01:20 that missile lost its lock at 154 m
+- 01:30 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 153 m
+- 01:30 missile warning: level=near
+- 01:30 missile fired at us by 02_en_w1_escortB_1_m29a from 981 m (infrared)
+- 01:30 missile warning: level=very near
+- 01:30 missile fired at us by 02_en_w1_escortC_2_su33 from 1188 m (infrared)
+- 01:30 break turn: missile 902 m away, impact in 2.5 s
+- 01:30 flare: dist_m=588.9, missile=wp_msl_C_7, reason=tracker, tgo_s=0.7463
+- 01:30 that missile lost its lock at 299 m
+- 01:30 flare: dist_m=122.4, missile=wp_msl_C_7, reason=tracker, tgo_s=0.3164
+- 01:30 that missile lost its lock at 80 m
+- 01:30 missile from 02_en_w1_escortC_2_su33 gone after 6 s, closest 81 m
+- 01:40 missile fired at us by 02_en_w1_escortB_1_m29a from 1260 m (infrared)
+- 01:40 missile warning: level=near
+- 01:40 break turn: missile 1252 m away, impact in 3.0 s
+- 01:40 flare: dist_m=1063, missile=wp_msl_C_4, reason=tracker, tgo_s=1.726
+- 01:40 missile warning: level=very near
+- 01:40 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 308 m
+- 01:40 flare: dist_m=455.9, missile=wp_msl_C_4, reason=tracker, tgo_s=1.301
+- 01:40 flare: dist_m=51, missile=wp_msl_C_4, reason=tracker, tgo_s=0.2411
+- 01:40 that missile lost its lock at 45 m
+- 01:50 missile from 02_en_w1_escortB_1_m29a gone after 10 s, closest 48 m
+- 02:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 6135 m)
+- 02:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 6596 m)
+- 02:20 phase cleared: MissionPhase_02
+- 02:20 phase start: MissionPhase_03
+- 02:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 6764 m)
+- 02:20 missile warning: level=near
+- 02:20 missile fired at us by 02_en_w1_escortB_1_m29a from 1478 m (infrared)
+- 02:20 break turn: missile 1431 m away, impact in 3.1 s
+- 02:20 flare: dist_m=1328, missile=wp_msl_C_3, reason=tracker, tgo_s=1.685
+- 02:20 missile warning: level=very near
+- 02:20 missile fired at us by 02_en_w1_escortC_2_su33 from 1265 m (infrared)
+- 02:20 flare: dist_m=324.3, missile=wp_msl_C_3, reason=tracker, tgo_s=0.8907
+- 02:20 that missile lost its lock at 141 m
+- 02:20 missile warning: level=near
+- 02:20 flare: dist_m=902.3, missile=wp_msl_C_0, reason=tracker, tgo_s=1.901
+- 02:30 missile warning: level=very near
+- 02:30 flare: dist_m=516.2, missile=wp_msl_C_0, reason=tracker, tgo_s=0.6715
+- 02:30 that missile lost its lock at 88 m
+- 02:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 5253 m)
+- 02:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 5187 m)
+- 02:30 missile from 02_en_w1_escortB_1_m29a gone after 11 s, closest 139 m
+- 02:30 missile from 02_en_w1_escortC_2_su33 gone after 11 s, closest 83 m
+- 02:40 weapon switch to standard missiles (no longer: beyond standard missile range, target 9504 m)
+- 02:50 ground recovery: above_ground_m=1509, alt_m=1497, lowest_ahead_m=983.5, vz=-392.5
+- 02:50 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9497 m)
+- 02:50 weapon switch to standard missiles (no longer: beyond standard missile range, target 18250 m)
+- 03:10 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9418 m)
+- 03:10 weapon switch to standard missiles (no longer: beyond standard missile range, target 21850 m)
+- 03:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 7603 m)
+- 03:20 weapon switch to standard missiles (no longer: beyond standard missile range, target 18370 m)
+- 03:40 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9498 m)
+- 03:40 weapon switch to standard missiles (no longer: beyond standard missile range, target 12050 m)
+- 03:40 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9498 m)
+- 03:50 missile warning: level=near
+- 03:50 weapon switch to standard missiles (no longer: beyond standard missile range, target 1796 m)
+- 03:50 missile fired at us by 02_en_w2_escortD_2_su33 from 1782 m (infrared)
+- 03:50 break turn: missile 1766 m away, impact in 2.8 s
+- 03:50 flare: dist_m=1628, missile=wp_msl_C_1, reason=tracker, tgo_s=1.794
+- 03:50 missile fired at us by 02_en_w2_escortD_1_m21 from 2106 m (infrared)
+- 03:50 flare: dist_m=847.9, missile=wp_msl_C_1, reason=tracker, tgo_s=1.304
+- 03:50 missile warning: level=very near
+- 04:00 flare: dist_m=122.2, missile=wp_msl_C_1, reason=tracker, tgo_s=0.2224
+- 04:00 that missile lost its lock at 54 m
+- 04:00 missile warning: level=near
+- 04:00 break turn: missile 1059 m away, impact in 1.9 s
+- 04:00 missile warning: level=very near
+- 04:00 flare: dist_m=639.8, missile=wp_msl_C_2, reason=tracker, tgo_s=1.254
+- 04:00 that missile lost its lock at 37 m
+- 04:00 missile from 02_en_w2_escortD_2_su33 gone after 11 s, closest 53 m
+- 04:10 missile from 02_en_w2_escortD_1_m21 gone after 11 s, closest 47 m
+- 04:10 missile fired at us by 02_en_w2_escortC_1_m29a from 987 m (infrared)
+- 04:10 missile warning: level=near
+- 04:10 break turn: missile 852 m away, impact in 2.2 s
+- 04:10 flare: dist_m=853.6, missile=wp_msl_C_0, reason=tracker, tgo_s=1.833
+- 04:10 missile warning: level=very near
+- 04:10 flare: dist_m=534.9, missile=wp_msl_C_0, reason=tracker, tgo_s=1.484
+- 04:10 that missile lost its lock at 18 m
+- 04:10 missile warning: level=very near
+- 04:10 flare: reason=warning
+- 04:10 missile fired at us by 02_en_w2_escortD_2_m29 from 474 m (infrared)
+- 04:20 flare: dist_m=180.2, missile=wp_msl_C_4, reason=tracker, tgo_s=0.51
+- 04:20 that missile lost its lock at 38 m
+- 04:20 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 63 m
+- 04:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1802 m)
+- 04:20 missile fired at us by 02_en_w2_escortD_1_m21 from 2031 m (infrared)
+- 04:20 missile warning: level=near
+- 04:30 missile from 02_en_w2_escortD_2_m29 gone after 11 s, closest 37 m
+- 04:30 break turn: missile 1183 m away, impact in 1.8 s
+- 04:30 flare: dist_m=885.4, missile=wp_msl_C_5, reason=tracker, tgo_s=0.8514
+- 04:30 missile warning: level=very near
+- 04:30 that missile lost its lock at 46 m
+- 04:30 weapon switch to standard missiles (no longer: beyond standard missile range, target 1800 m)
+- 04:30 missile from 02_en_w2_escortD_1_m21 gone after 7 s, closest 44 m
+- 04:40 missile fired at us by 02_en_w2_escortC_1_m29a from 1230 m (infrared)
+- 04:40 missile warning: level=near
+- 04:50 missile warning: level=very near
+- 04:50 break turn: missile 796 m away, impact in 1.4 s
+- 04:50 flare: dist_m=503.9, missile=wp_msl_C_0, reason=tracker, tgo_s=1.149
+- 04:50 that missile lost its lock at 37 m
+- 04:50 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 6832 m)
+- 05:00 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 42 m
+- 05:00 weapon switch to standard missiles (no longer: beyond standard missile range, target 1489 m)
+- 05:00 missile fired at us by 02_en_w2_escortC_2_m29a from 2389 m (infrared)
+- 05:00 missile warning: level=near
+- 05:10 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2075 m)
+- 05:10 break turn: missile 1137 m away, impact in 0.9 s
+- 05:10 missile warning: level=very near
+- 05:10 flare: dist_m=724.7, missile=wp_msl_C_1, reason=tracker, tgo_s=1.514
+- 05:10 that missile lost its lock at 67 m
+- 05:10 weapon switch to standard missiles (no longer: beyond standard missile range, target 1579 m)
+- 05:10 missile from 02_en_w2_escortC_2_m29a gone after 10 s, closest 74 m
+- 05:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 2268 m)
+- 05:20 missile fired at us by 02_en_w2_escortC_1_m29a from 2528 m (infrared)
+- 05:20 missile warning: level=near
+- 05:20 break turn: missile 1612 m away, impact in 1.4 s
+- 05:20 flare: dist_m=1376, missile=wp_msl_C_0, reason=tracker, tgo_s=1.858
+- 05:20 missile warning: level=very near
+- 05:20 flare: dist_m=429.3, missile=wp_msl_C_0, reason=tracker, tgo_s=0.5033
+- 05:20 that missile lost its lock at 9 m
+- 05:20 weapon switch to standard missiles (no longer: beyond standard missile range, target 1706 m)
+- 05:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 6669 m)
+- 05:30 missile warning: level=very near
+- 05:30 flare: reason=warning
+- 05:30 missile fired at us by 02_en_w2_escortC_2_m29a from 444 m (infrared)
+- 05:30 break turn: missile 390 m away, impact in 1.6 s
+- 05:30 flare: dist_m=343.6, missile=wp_msl_C_4, reason=tracker, tgo_s=1.027
+- 05:30 missile from 02_en_w2_escortC_1_m29a gone after 9 s, closest 21 m
+- 05:30 flare: dist_m=111, missile=wp_msl_C_4, reason=tracker, tgo_s=0.3545
+- 05:30 that missile lost its lock at 68 m
+- 05:30 weapon switch to standard missiles (no longer: beyond standard missile range, target 1403 m)
+- 05:30 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 1903 m)
+- 05:30 destroyed 02_en_w2_bomberA_2_tu95  (None missiles, 0 s after picking it)
+- 05:40 missile warning: level=near
+- 05:40 missile from 02_en_w2_escortC_2_m29a gone after 11 s, closest 69 m
+- 05:40 missile fired at us by 02_en_w2_escortC_1_m29a from 1375 m (infrared)
+- 05:40 missile warning: level=very near
+- 05:40 break turn: missile 648 m away, impact in 1.1 s
+- 05:40 flare: dist_m=443.1, missile=wp_msl_C_2, reason=tracker, tgo_s=0.6031
+- 05:40 that missile lost its lock at 114 m
+- 05:40 destroyed 02_en_w2_bomberA_1_tu95  (None missiles, 0 s after picking it)
+- 05:50 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 116 m
+- 05:50 missile warning: level=near
+- 05:50 missile fired at us by 02_en_w2_escortC_2_m29a from 842 m (infrared)
+- 05:50 missile warning: level=very near
+- 05:50 flare: dist_m=718.8, missile=wp_msl_C_0, reason=tracker, tgo_s=3.576
+- 05:50 break turn: missile 719 m away, impact in 3.6 s
+- 05:50 flare: dist_m=427.4, missile=wp_msl_C_0, reason=tracker, tgo_s=0.9698
+- 05:50 that missile lost its lock at 25 m
+- 06:00 missile fired at us by 02_en_w2_escortA_1_m29a from 2207 m (infrared)
+- 06:00 missile warning: level=near
+- 06:00 weapon switch to standard missiles (no longer: beyond standard missile range, target 1799 m)
+- 06:00 missile from 02_en_w2_escortC_2_m29a gone after 11 s, closest 34 m
+- 06:00 missile warning: level=very near
+- 06:00 that missile lost its lock at 374 m
+- 06:00 missile fired at us by 02_en_w2_escortC_1_m29a from 2468 m (infrared)
+- 06:00 destroyed 02_en_w2_bomberB_1_t160  (None missiles, 0 s after picking it)
+- 06:10 missile warning: level=near
+- 06:10 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 5807 m)
+- 06:10 ground recovery: above_ground_m=5785, alt_m=6034, lowest_ahead_m=17.55, vz=127.1
+- 06:10 break turn: missile 1120 m away, impact in 1.5 s
+- 06:10 missile from 02_en_w2_escortA_1_m29a gone after 11 s, closest 389 m
+- 06:10 missile warning: level=very near
+- 06:10 flare: dist_m=592.3, missile=wp_msl_C_5, reason=tracker, tgo_s=0.6879
+- 06:10 that missile lost its lock at 60 m
+- 06:10 weapon switch to standard missiles (no longer: beyond standard missile range, target 324 m)
+- 06:10 phase cleared: MissionPhase_03
+- 06:10 missile from 02_en_w2_escortC_1_m29a gone after 11 s, closest 68 m
+- 06:50 phase start: MissionPhaseBP_Landing
+- 06:50 ground recovery: above_ground_m=692.6, alt_m=693.6, lowest_ahead_m=-1, vz=-49720.0
+- 06:50 phase cleared: MissionPhaseBP_Landing
+- 06:50 **mission accomplished**
+- 06:50 how well enemy positions 2 s ahead were predicted: steady planes: 8981 checks, the guess used was off by 99 m on average (each way: full turn 99 m, half turn 99 m, straight 99 m; now using half turn); turning planes: 9086 checks, the guess used was off by 128 m on average (each way: full turn 182 m, half turn 127 m, straight 157 m; now using half turn)
+
+## Notes
+
+- Story mode, flown by tools\campaign.py (ace).
+
+Files: events.jsonl (every event), attempt*-flight-*.csv (the plane ten times a second), pilot.log (the pilot's commentary), pictures\, saves-check.txt.

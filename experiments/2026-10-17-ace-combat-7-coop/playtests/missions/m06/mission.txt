@@ -1,0 +1,7 @@
+# Mission 06 Long Day (story, Ace; level ms06, the Space Elevator map again): a long defence
+# with several waves. LAAM for the first try (long range against bombers); since 19 Oct 05:15 the
+# 8AGM: phase 1 is timed on damage to the enemy base (see notes.md and plan.txt).
+plane: Typhoon
+weapon: 8AGM
+attempts: 10
+time_limit_min: 45

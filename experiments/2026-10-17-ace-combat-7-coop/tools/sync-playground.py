@@ -24,7 +24,7 @@ DEST = os.path.join(ROOT, "pg", "experiments", "2026-10-17-ace-combat-7-coop")
 PATTERNS = [
     "README.md", "workbench.md", "playtest-bot.md", "plan.md", "research.md", "identity.md",
     "double-trigger-review.md", "code/snl-map.md",
-    "tools/*.py", "tools/*.ps1",
+    "tools/*.py", "tools/*.ps1", "tools/*.lua",
     "mods/CoopPilotMod/Scripts/*.lua",
     "cpp/README.md", "cpp/build.ps1", "cpp/make-implib.py", "cpp/CoopPadMod/*.cpp", "cpp/CoopPadMod/*.hpp",
     "cpp/CoopNetMod/*.cpp", "cpp/CoopNetMod/*.hpp",

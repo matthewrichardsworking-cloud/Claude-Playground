@@ -17,9 +17,22 @@ Newest first. One short entry per session.
   briefings, hangar plane/weapon by name (the save has the Typhoon with LAAM/8AGM/HCAA), the
   mission with retries, replay skip (Enter twice), results, NEXT MISSION; a report per mission
   and playtests/campaign-ace.md.
-- Results so far (Ace): Mission 01 completed first try (rank A, no damage); Mission 02
-  completed first try (37 kills, no damage, 8AGM). Vision layer (ray fans, vision.lua) written
-  for the owner's Mission 04/06 tests, not flown yet. Write-up: workbench section 15.
+- Results so far (Ace): Missions 01 and 02 first try (no damage), 03 on attempt 2 (protect the
+  retreating allies), 04 Rescue on the second sortie (a 128 km route around 79 radar spheres
+  from a new planner, flown unseen; drones, an escort), 05 444 on the second sortie with the
+  LAAM (mission targets first; no damage). Mission 06 Long Day in progress (phase 1 is timed
+  on damage to the enemy base; now the 8AGM with a base-first plan).
+- Owner's vision tests (vision.lua, ray fans through the C++ trace): test 1, a surprise
+  fly-through of the Space Elevator's base, passed 13 m from the aim point with no contact.
+  Test 2, the Mission 06 tunnel (35 m high, 1.3 km, bent): the first real try did not go in
+  (room for the wings was judged by neighbouring grid rays, so a 36 m mouth looked shut from
+  400 m); fixed with plane-sized parallel "tube" rays, and a new in-game simulator
+  (tools/vision-sim.lua) now flies a simple plane through the real tunnel centred. Not flown
+  for real yet.
+- Two copy restarts were my doing (UE4SS's reload-all-mods crashed the game mid-mission; an
+  eval of every property of the mission object hung the script): new code now goes in only at
+  restarts, plus a `module vision|route` reload order. Saves checked each time, unchanged.
+  Write-up: workbench section 15.
 
 ## 2026-10-18/19: Ace Combat 7 co-op, playtest bot phase 3: terrain and mission gimmicks
 

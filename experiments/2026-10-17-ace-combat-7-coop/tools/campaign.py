@@ -55,6 +55,20 @@ def menu_fail(what):
     raise RuntimeError(f"menu route: {what} (page now: {pt.page()})")
 
 
+def quit_mission():
+    """Leave the mission through the pause menu (QUIT MISSION, YES): back to the Campaign
+    submenu, from where CONTINUE starts the same story mission again with its briefing and
+    hangar (the way to change the plane or special weapon; a retry keeps the loadout)."""
+    pt.order("fly", "stop")
+    if pt.page() != "CampaignHudPause_C":
+        pt.keys(["Escape"], wait_ms=1500)
+    if pt.page() != "CampaignHudPause_C":
+        return False
+    pt.keys(["Up"] * 5 + ["Down"] * 3 + ["Enter"], gap_ms=300, wait_ms=1500)
+    pt.keys(["Up", "Enter"], gap_ms=400)
+    return pt.wait_page(("CampaignMenuMain_C",), 30) == "CampaignMenuMain_C"
+
+
 def mission_number(s):
     """The mission being flown or briefed: from the loaded level (ms01) or the title page."""
     lvl = s.get("mission_level") or ""
@@ -299,6 +313,10 @@ class Driver:
             f.write(f"# story mission flown by tools\\campaign.py\nmission: {n}\ndifficulty: {self.difficulty}\n"
                     f"attempts: {attempts_max}\ntime_limit_min: {limit_s / 60:.0f}\nretry: {how}\nplan: {plan_name}\n")
         say(f"=== Mission {n:02d}: flying (up to {attempts_max} attempts, {limit_s / 60:.0f} min each), folder {folder}")
+        # what the mission has (special areas, searchlights, radar spheres, every enemy and
+        # whether it can be locked), into pilot.log for the first attempt's record
+        pt.order("probe", "gimmicks")
+        pt.order("locks", "all")
         attempts = []
         entry = "start"
         phase_now = next(iter(plan["retry"]), None) if plan else None
@@ -395,12 +413,10 @@ class Driver:
                     if texts:
                         with open(os.path.join(self.last_folder, "results.txt"), "w", encoding="utf-8") as f:
                             f.write("\n".join(str(x) for x in texts) + "\n")
-                        rank = None
-                        for i, x in enumerate(texts):
-                            if str(x).strip().upper() == "RANK" and i + 1 < len(texts):
-                                rank = texts[i + 1]
-                                break
-                        say(f"results: rank {rank}; {len(texts)} texts saved to results.txt")
+                        # the rank itself is a picture on this screen (19 Oct: the texts next
+                        # to "RANK" are labels like "[ MISSION 05 ]"); only a lone letter counts
+                        rank = next((str(x).strip() for x in texts if str(x).strip() in ("S", "A", "B", "C", "D")), None)
+                        say(f"results: rank {rank or 'not in the texts (see results.png)'}; {len(texts)} texts saved to results.txt")
                 return "results"
             pt.keys(["Enter"], wait_ms=3000)
             return "results"

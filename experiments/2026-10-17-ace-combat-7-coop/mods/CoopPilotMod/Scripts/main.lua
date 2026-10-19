@@ -1156,15 +1156,23 @@ local function enemyWeight(o, l)
     -- An ally the mission highlights (lock-on mark 2 or 4: the escort/protect marker; Mission
     -- 03's retreating Gargoyle squadron, Mission 14's landing team) counts double again.
     local tr = Aware and Aware.trackFor(o)
-    if tr and tr.tracking and allyNames[tr.tracking] then w = w * (allyNames[tr.tracking] == "protect" and 7 or 3.5) end
+    local chasesProtected = tr and tr.tracking and allyNames[tr.tracking] == "protect"
+    if tr and tr.tracking and allyNames[tr.tracking] then w = w * (chasesProtected and 7 or 2) end
     -- what the order says matters most in this mission ("focus AH64_00,zouen")
     if ap and ap.focus and hasAny(name, ap.focus) then w = w * 6 end
     local okT, tgtFlag = pcall(function() return o:IsTGT() end)
-    if okT and tgtFlag then w = w * 1.5 end
+    local isTgt = okT and tgtFlag
+    -- Mission targets (the game's TGT flag) are what a phase is won with (19 Oct 2026, Mission
+    -- 05: "Shoot down everything carrying bombs!" while the bot fought escorts chasing our
+    -- squadron, worth 5-20 times the bombers, and the base was bombed): 4 times, and while any
+    -- are alive, other enemies count a third unless they shot at us or chase an ally the
+    -- mission says to protect
+    if isTgt then w = w * 4
+    elseif tgtAliveCount > 0 and not shooters[objName(o)] and not chasesProtected then w = w * 0.35 end
     -- The last few mission targets (19 Oct 2026, Mission 04: two drones that counted were
     -- 21 km away while the bot attacked launch containers below it, and the phase ran out of
     -- time): with four or fewer left, everything else counts almost nothing
-    if tgtAliveCount > 0 and tgtAliveCount <= 4 and not (okT and tgtFlag) then w = w * 0.03 end
+    if tgtAliveCount > 0 and tgtAliveCount <= 4 and not isTgt then w = w * 0.03 end
     if hasAny(name, LOW_VALUE) then w = w * 0.35
     elseif hasAny(name, PARTY_THREAT) then w = w * 1.6
     elseif hasAny(name, SHOOTER) or (Aware and Aware.trackFor(o)) then w = w * 1.4 end
@@ -1306,6 +1314,40 @@ end
 
 local function tap(c, key, seconds)
     c.taps[key] = now() + (seconds or 0.08)   -- hold a few frames so the game sees the press
+end
+
+-- Missile defence when not fighting (flying to a point, along a route, a stunt): flares
+-- only, no break turn (that would throw a stunt or a canyon route off its line). 19 Oct
+-- 2026, Mission 06: two missiles took 80 health in the first 20 s of a "fly to" toward the
+-- tunnel, with 78 flares left unused.
+local function transitDefence(p, loc)
+    local d = ap.transit
+    if not d then d = { taps = {}, lastFlare = -100, flares = 0 }; ap.transit = d end
+    local t = now()
+    if Aware then
+        d.myName = d.myName or p:GetFullName()
+        if t - (d.enemyAt or -1) > 0.2 then d.enemyAt = t; pcall(Aware.updateEnemies, p, d.myName) end
+        pcall(Aware.updateMissiles, p, d.myName, { loc.X, loc.Y, loc.Z }, ap.myV or { 0, 0, 0 })
+    end
+    local alert = 0
+    pcall(function() alert = p.MissileAlert end)
+    alert = tonumber(alert) or 0
+    local threat = Aware and Aware.threats[1] or nil
+    if threat then
+        local vn = threat.info and threat.info.VeryNearWarningRadiusSquared and math.sqrt(threat.info.VeryNearWarningRadiusSquared) or 8000
+        if ((threat.miss == nil) or threat.miss < 2000) and (threat.tgo < 2.0 or threat.dist < vn) and t - d.lastFlare > 1.2 then
+            tap(d, KEY.flare); d.lastFlare = t; d.flares = d.flares + 1
+            event("flare", { reason = "tracker, not fighting", missile = threat.name, tgo_s = threat.tgo, dist_m = threat.dist / 10 })
+        end
+    elseif alert >= 2 and t - d.lastFlare > 1.5 then
+        tap(d, KEY.flare); d.lastFlare = t; d.flares = d.flares + 1
+        event("flare", { reason = "warning, not fighting" })
+    end
+    local keys = {}
+    for key, untilT in pairs(d.taps) do
+        if t < untilT then keys[#keys + 1] = key else d.taps[key] = nil end
+    end
+    return keys
 end
 
 -- An attack run on a ground object, the way a pilot flies one: run in from a few km out,
@@ -1790,7 +1832,20 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             if info.agile and not info.heli then
                 c.heliOut = c.heliOut or {}
                 local key = c.targetName
-                if not c.heliOut[key] and dm < 900 and offT > 25 then c.heliOut[key] = true; event("drone_open_out", { target = key, dist_m = dm }) end
+                -- ...but never with the drone on our tail: flying straight away from a drone
+                -- that is chasing us hands it a gun shot (19 Oct 2026, Mission 06: shot down
+                -- from 200 m behind, 31 health gone in one second, while "opening out").
+                -- Then turn hard into it instead, so it overshoots.
+                local dtr = Aware and Aware.trackFor(tgt)
+                local onTail = dtr and dtr.onMe and offT > 90 and dm < 1500
+                if onTail then
+                    c.heliOut[key] = nil
+                    aim = unit({ tl.X - loc.X, tl.Y - loc.Y, tl.Z - loc.Z })
+                    keys[#keys + 1] = KEY.high_g
+                    c.groundText = string.format("drone on our tail %.0f m behind: turning hard into it", dm)
+                    if t - (c.onTailAt or -100) > 5 then c.onTailAt = t; event("drone_on_tail", { target = key, dist_m = dm, off_deg = offT }) end
+                end
+                if not onTail and not c.heliOut[key] and dm < 900 and offT > 25 then c.heliOut[key] = true; event("drone_open_out", { target = key, dist_m = dm }) end
                 if c.heliOut[key] and dm > 1800 then c.heliOut[key] = nil end
                 if c.heliOut[key] then
                     local away = unit({ loc.X - tl.X, loc.Y - tl.Y, loc.Z - tl.Z })
@@ -1941,6 +1996,7 @@ local function apStep(p, dt)
         aim, extraKeys = combatStep(p, loc, rot, F, R, alt, dt)
     else
         aim = aimFor(p, loc, rot, alt)
+        extraKeys = transitDefence(p, loc)
     end
     if not aim then aim = F end
     -- "fly to X Y Z through": a point to fly THROUGH (a gap under a bridge, between towers;
@@ -1962,10 +2018,19 @@ local function apStep(p, dt)
             g.passed, g.passedAt = true, { loc.X, loc.Y, loc.Z }
         end
         if g.passed then
-            aim = unit({ g.dir[1], g.dir[2], clamp(g.dir[3], -0.1, 0.1) })
-            if ap.vision and ap.visAim then aim = ap.visAim end
-            local away = math.sqrt((loc.X - g.passedAt[1]) ^ 2 + (loc.Y - g.passedAt[2]) ^ 2)
-            if away > 15000 then g.done = true end
+            -- straight on, level-ish; the vision block below bends it round what is in the way.
+            -- (Until 19 Oct 05:05 the vision's own last choice was fed back in here as the
+            -- wanted direction, and in Mission 06 the plane drifted into a vertical climb to
+            -- 11.7 km; the end check counted only horizontal distance, so it never ended.)
+            -- Wanted: a 17 degree climb away (the vision keeps it level while a roof is
+            -- overhead). Simulated through Mission 06's tunnel with the real rays (tools\
+            -- vision-sim.lua): wanting level flight, the plane cleared the hill beyond the exit
+            -- by 8 m; wanting this climb, by 40 m and more.
+            local h = unit({ g.dir[1], g.dir[2], 0 })
+            aim = unit({ h[1], h[2], 0.3 })
+            local away = math.sqrt((loc.X - g.passedAt[1]) ^ 2 + (loc.Y - g.passedAt[2]) ^ 2 + (loc.Z - g.passedAt[3]) ^ 2)
+            g.passedT = g.passedT or now()
+            if away > 15000 or now() - g.passedT > 15 then g.done = true end
         end
     end
     if (ap.goal.kind == "route" and ap.goal.route.done) or (ap.goal.kind == "point" and ap.goal.done) then
@@ -2939,7 +3004,7 @@ local function evalOrder(args)
     local code = table.concat(args, " ")
     local fn, err = load("return " .. code, "eval", "t", setmetatable({ playerPlane = playerPlane, mission = mission,
         objName = objName, call = call, FindFirstOf = FindFirstOf, FindAllOf = FindAllOf, StaticFindObject = StaticFindObject,
-        Nav = Nav, Gim = Gim, Aware = Aware, ap = function() return ap end }, { __index = _G }))
+        Nav = Nav, Gim = Gim, Aware = Aware, ap = function() return ap end, vision = function() return Vision end }, { __index = _G }))
     if not fn then
         fn, err = load(code, "eval", "t", setmetatable({ playerPlane = playerPlane, mission = mission, objName = objName,
             call = call, Nav = Nav, Gim = Gim, Aware = Aware }, { __index = _G }))
@@ -2984,6 +3049,18 @@ local commands = {
     survey = survey,
     dumpgimmicks = dumpGimmicks,
     mark = function(args) local text = table.concat(args, " "); log("== " .. text); event("mark", { text = text }) end,
+    -- "module vision" / "module route": load that file again from the mod folder, without
+    -- UE4SS's restart of all mods (Ctrl+P), which crashed the game mid-mission on 19 Oct
+    -- 04:53. Only these two: they keep no state worth losing (nav and awareness do).
+    module = function(args)
+        local name = args[1]
+        if name ~= "vision" and name ~= "route" then log("module: give 'vision' or 'route'") return end
+        package.loaded[name] = nil
+        local ok, m = pcall(function() return require(name)({ log = log, event = event, now = now }) end)
+        if not ok then log("module: " .. name .. ".lua did not load: " .. tostring(m)) return end
+        if name == "vision" then Vision = m else Route = m end
+        log("module: " .. name .. ".lua loaded again")
+    end,
     -- "actors <text> [max]": every actor whose class or name contains the text (case
     -- ignored), with its position and the size of its bounding box: for finding structures
     -- to fly through (the Space Elevator, bridges, tunnels; the owner's vision tests)
