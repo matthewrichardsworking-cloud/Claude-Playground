@@ -1,0 +1,626 @@
+# Playtest: Mission 04
+
+Run 19 Oct 2026, 02:27 by tools\playtest.py; difficulty ace, mode fair.
+
+**Not completed** in 3 attempt(s).
+
+| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | failed | shot down or crashed | 13.5 min | 0 | 0 (0) | 120 | 1 (1) | ? |
+| 2 | failed | shot down or crashed | 0.8 min | 2 | 0 (4) | 120 | 4 (3) | ? |
+| 3 | failed | ran out of time | 16.7 min | 29 | 44 (23) | 60 | 63 (62) | ? |
+
+## Attempt 1
+
+- 00:06 ground recovery: above_ground_m=144.7, alt_m=139.7, lowest_ahead_m=-105, vz=-115.6
+- 07:17 ground recovery: above_ground_m=140.5, alt_m=138, lowest_ahead_m=-26.86, vz=-86.75
+- 11:57 phase cleared: MissionPhase_01
+- 12:08 phase start: MissionPhase_02
+- 12:14 ground recovery: above_ground_m=109.6, alt_m=109.6, lowest_ahead_m=110.1, vz=0.5456
+- 12:22 ground recovery: above_ground_m=369.2, alt_m=369.2, lowest_ahead_m=96.36, vz=-66.03
+- 12:29 ground recovery: above_ground_m=355.6, alt_m=355.6, lowest_ahead_m=88.62, vz=-65.46
+- 12:35 ground recovery: above_ground_m=484, alt_m=484, lowest_ahead_m=89.91, vz=-96.37
+- 13:15 took 1 damage, health 119
+- 13:16 took 1 damage, health 118
+- 13:16 took 1 damage, health 117
+- 13:16 took 1 damage, health 116
+- 13:16 took 1 damage, health 115
+- 13:16 took 1 damage, health 114
+- 13:17 took 1 damage, health 113
+- 13:17 took 1 damage, health 112
+- 13:17 took 1 damage, health 111
+- 13:17 took 1 damage, health 110
+- 13:17 took 1 damage, health 109
+- 13:17 took 1 damage, health 108
+- 13:18 took 1 damage, health 107
+- 13:18 took 1 damage, health 106
+- 13:18 took 2 damage, health 104
+- 13:19 took 1 damage, health 103
+- 13:19 took 2 damage, health 101
+- 13:19 took 1 damage, health 100
+- 13:19 took 1 damage, health 99
+- 13:20 took 1 damage, health 98
+- 13:20 took 1 damage, health 97
+- 13:20 took 1 damage, health 96
+- 13:20 took 1 damage, health 95
+- 13:21 took 1 damage, health 94
+- 13:22 took 1 damage, health 93
+- 13:23 took 1 damage, health 92
+- 13:24 took 1 damage, health 91
+- 13:24 ground recovery: above_ground_m=172.4, alt_m=214.7, lowest_ahead_m=-801.8, vz=0.6345
+- 13:24 missile fired at us by 02_en_SAM_06_01 from 634 m (infrared)
+- 13:24 missile warning: level=very near
+- 13:24 flare: reason=warning
+- 13:24 that missile lost its lock at 612 m
+- 13:26 weapon switch to plwp_8agm_a0_C (ground target, target 1907 m)
+- 13:27 **player dead**
+- 13:27 took 91 damage, health 0
+- 13:29 frozen
+- 13:29 how well enemy positions 2 s ahead were predicted: steady planes: 1152 checks, the guess used was off by 0 m on average (each way: full turn 0 m, half turn 0 m, straight 0 m; now using straight)
+
+## Attempt 2
+
+- 00:15 frozen
+- 00:15 weapon switch to plwp_8agm_a0_C (ground target, target 1718 m)
+- 00:17 ground recovery: above_ground_m=726.3, alt_m=716.5, lowest_ahead_m=392.5, vz=-131.3
+- 00:18 missile fired at us by 02_en_SAM_02_01 from 3047 m (infrared)
+- 00:18 destroyed 02_en_SAM_06_01  (None missiles, 0 s after picking it)
+- 00:18 missile fired at us by 02_en_SAM_04_01 from 3058 m (infrared)
+- 00:19 break turn: missile 2567 m away, impact in 3.3 s
+- 00:20 break turn: missile 2134 m away, impact in 4.0 s
+- 00:20 missile warning: level=near
+- 00:21 that missile lost its lock at 1791 m
+- 00:21 missile from 02_en_SAM_04_01 gone after 3 s, closest 1799 m
+- 00:22 missile warning: level=very near
+- 00:23 flare: dist_m=696.2, missile=wp_msl_SAM_C_6, reason=tracker, tgo_s=0.6761
+- 00:23 that missile lost its lock at 686 m
+- 00:23 took 1 damage, health 119
+- 00:23 took 1 damage, health 118
+- 00:24 took 2 damage, health 116
+- 00:24 took 1 damage, health 115
+- 00:24 ground recovery: above_ground_m=396.6, alt_m=393.1, lowest_ahead_m=258.1, vz=-56.38
+- 00:25 took 1 damage, health 114
+- 00:26 took 1 damage, health 113
+- 00:27 took 1 damage, health 112
+- 00:28 missile from 02_en_SAM_02_01 gone after 10 s, closest 696 m
+- 00:29 destroyed 02_en_SAM_04_01  (None missiles, 0 s after picking it)
+- 00:31 missile warning: level=near
+- 00:31 missile fired at us by 02_en_SAM_02_01 from 1605 m (infrared)
+- 00:31 ground recovery: above_ground_m=69.75, alt_m=422.8, lowest_ahead_m=526.5, vz=140.8
+- 00:32 took 1 damage, health 111
+- 00:33 break turn: missile 986 m away, impact in 1.5 s
+- 00:33 that missile lost its lock at 924 m
+- 00:34 missile from 02_en_SAM_02_01 gone after 3 s, closest 923 m
+- 00:39 ground recovery: above_ground_m=530.2, alt_m=525.5, lowest_ahead_m=320.7, vz=-82.65
+- 00:44 missile warning: level=near
+- 00:44 missile fired at us by 02_en_SAM_02_01 from 1985 m (infrared)
+- 00:45 took 1 damage, health 110
+- 00:45 took 1 damage, health 109
+- 00:46 missile from 02_en_SAM_02_01 gone after 2 s, closest 1302 m
+- 00:47 took 109 damage, health 0
+- 00:47 **player dead**
+- 00:48 frozen
+- 00:49 how well enemy positions 2 s ahead were predicted: steady planes: 1800 checks, the guess used was off by 0 m on average (each way: full turn 0 m, half turn 0 m, straight 0 m; now using straight)
+
+## Attempt 3
+
+- 00:02 missile fired at us by 02_en_SAM_06_01 from 3035 m (infrared)
+- 00:02 break turn: missile 3023 m away, impact in 3.8 s
+- 00:03 break turn: missile 2770 m away, impact in 3.4 s
+- 00:03 break turn: missile 2484 m away, impact in 2.5 s
+- 00:04 break turn: missile 2222 m away, impact in 4.0 s
+- 00:04 destroyed 02_en_SAM_06_01  (None missiles, 0 s after picking it)
+- 00:04 missile warning: level=near
+- 00:06 ground recovery: above_ground_m=521.6, alt_m=514.4, lowest_ahead_m=294.3, vz=-121.7
+- 00:07 missile warning: level=very near
+- 00:08 flare: dist_m=350.6, missile=wp_msl_SAM_C_9, reason=tracker, tgo_s=0.726
+- 00:08 break turn: missile 351 m away, impact in 0.7 s
+- 00:08 that missile lost its lock at 342 m
+- 00:11 ground recovery: above_ground_m=377, alt_m=375.5, lowest_ahead_m=216.6, vz=-41.6
+- 00:12 missile from 02_en_SAM_06_01 gone after 10 s, closest 350 m
+- 00:14 destroyed 02_en_Survey_AAGun_05_04  (None missiles, 0 s after picking it)
+- 00:15 missile fired at us by 02_en_SAM_04_01 from 3058 m (infrared)
+- 00:16 destroyed 02_en_Survey_AAGun_06_04  (None missiles, 0 s after picking it)
+- 00:16 destroyed 02_en_Survey_AAGun_06_03  (None missiles, 0 s after picking it)
+- 00:17 missile fired at us by 02_en_SAM_02_01 from 3071 m (infrared)
+- 00:17 missile warning: level=near
+- 00:18 destroyed 02_en_SAM_04_01  (0 missiles, 3 s after picking it)
+- 00:18 break turn: missile 1443 m away, impact in 1.4 s
+- 00:18 flare: dist_m=1229, missile=wp_msl_SAM_C_10, reason=tracker, tgo_s=1.559
+- 00:19 missile warning: level=very near
+- 00:20 flare: dist_m=418, missile=wp_msl_SAM_C_10, reason=tracker, tgo_s=0.6735
+- 00:20 that missile lost its lock at 404 m
+- 00:20 missile warning: level=near
+- 00:20 that missile lost its lock at 1529 m
+- 00:20 missile from 02_en_SAM_02_01 gone after 3 s, closest 1531 m
+- 00:21 ground recovery: above_ground_m=469.2, alt_m=471.5, lowest_ahead_m=336.9, vz=-110.6
+- 00:22 took 1 damage, health 119
+- 00:23 took 1 damage, health 118
+- 00:25 missile from 02_en_SAM_04_01 gone after 10 s, closest 405 m
+- 00:30 missile fired at us by 02_en_SAM_02_01 from 893 m (infrared)
+- 00:30 missile warning: level=near
+- 00:30 ground recovery: above_ground_m=189.6, alt_m=193.9, lowest_ahead_m=189.6, vz=0
+- 00:30 break turn: missile 858 m away, impact in 2.7 s
+- 00:30 missile warning: level=very near
+- 00:30 flare: dist_m=794.1, missile=wp_msl_SAM_C_12, reason=tracker, tgo_s=2.019
+- 00:30 that missile lost its lock at 791 m
+- 00:32 destroyed 02_en_SAM_02_01  (None missiles, 0 s after picking it)
+- 00:33 destroyed 02_en_Survey_AAGun_03_03  (None missiles, 0 s after picking it)
+- 00:40 missile from 02_en_SAM_02_01 gone after 10 s, closest 794 m
+- 00:42 ground recovery: above_ground_m=656.2, alt_m=645.5, lowest_ahead_m=360.3, vz=-153.5
+- 00:47 weapon switch to standard missiles (no longer: ground target, target 4000 m)
+- 00:49 weapon switch to plwp_8agm_a0_C (ground target, target 3993 m)
+- 00:51 ground recovery: above_ground_m=943, alt_m=935.4, lowest_ahead_m=689.5, vz=-201.7
+- 00:52 weapon switch to standard missiles (no longer: special weapon empty, target 2497 m)
+- 00:53 destroyed 02_en_Survey_AAGun_01_04  (None missiles, 0 s after picking it)
+- 00:54 destroyed 02_en_Survey_AAGun_06_02  (None missiles, 0 s after picking it)
+- 00:54 destroyed 02_en_Survey_AAGun_01_01  (None missiles, 0 s after picking it)
+- 00:54 destroyed 02_en_Survey_AAGun_03_01  (None missiles, 0 s after picking it)
+- 00:55 destroyed 02_en_Survey_AAGun_06_01  (None missiles, 0 s after picking it)
+- 00:57 ground recovery: above_ground_m=539.7, alt_m=550.7, lowest_ahead_m=349, vz=-88.63
+- 01:03 destroyed 02_en_Survey_AAGun_03_02  (None missiles, 0 s after picking it)
+- 01:03 phase cleared: MissionPhase_02
+- 01:27 ground recovery: above_ground_m=845.9, alt_m=845.9, lowest_ahead_m=-126.8, vz=-159.3
+- 01:34 frozen
+- 01:41 phase start: MissionPhase_03
+- 02:19 missile fired at us by ms04_uavc_launched_Child_C_45 from 2426 m (infrared)
+- 02:19 break turn: missile 2214 m away, impact in 2.8 s
+- 02:20 missile warning: level=near
+- 02:22 missile warning: level=very near
+- 02:22 break turn: missile 672 m away, impact in 0.8 s
+- 02:23 missile fired at us by ms04_uavc_launched_Child_C_45 from 1181 m (infrared)
+- 02:23 that missile lost its lock at 241 m
+- 02:23 missile warning: level=near
+- 02:24 missile warning: level=very near
+- 02:25 break turn: missile 527 m away, impact in 1.4 s
+- 02:26 that missile lost its lock at 325 m
+- 02:28 missile from ms04_uavc_launched_Child_C_45 gone after 9 s, closest 230 m
+- 02:32 missile from ms04_uavc_launched_Child_C_45 gone after 9 s, closest 330 m
+- 02:33 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 from 2604 m (infrared)
+- 02:34 break turn: missile 2049 m away, impact in 3.3 s
+- 02:34 missile warning: level=near
+- 02:35 destroyed ms04_uavc_launched_Child_C_49  (None missiles, 0 s after picking it)
+- 02:35 flare: dist_m=1713, missile=wp_msl_uav_C_4, reason=tracker, tgo_s=1.62
+- 02:36 flare: dist_m=985.1, missile=wp_msl_uav_C_4, reason=tracker, tgo_s=1.244
+- 02:36 missile warning: level=very near
+- 02:37 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 from 1500 m (infrared)
+- 02:37 flare: dist_m=267.1, missile=wp_msl_uav_C_4, reason=tracker, tgo_s=0.4339
+- 02:38 that missile lost its lock at 129 m
+- 02:38 missile warning: level=near
+- 02:40 missile warning: level=very near
+- 02:40 break turn: missile 770 m away, impact in 1.0 s
+- 02:40 flare: dist_m=594.5, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=1.066
+- 02:41 that missile lost its lock at 98 m
+- 02:44 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 gone after 11 s, closest 142 m
+- 02:44 missile warning: level=near
+- 02:44 missile fired at us by ms04_uavc_launched_Child_C_45 from 1579 m (infrared)
+- 02:46 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 gone after 9 s, closest 97 m
+- 02:46 break turn: missile 1030 m away, impact in 1.5 s
+- 02:47 flare: dist_m=856.4, missile=wp_msl_uav_C_6, reason=tracker, tgo_s=1.54
+- 02:47 missile warning: level=very near
+- 02:48 flare: dist_m=112.5, missile=wp_msl_uav_C_6, reason=tracker, tgo_s=0.1959
+- 02:48 that missile lost its lock at 56 m
+- 02:55 missile from ms04_uavc_launched_Child_C_45 gone after 11 s, closest 63 m
+- 03:04 ground recovery: above_ground_m=1076, alt_m=1062, lowest_ahead_m=531.6, vz=-307.9
+- 03:05 missile warning: level=near
+- 03:05 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 from 1557 m (infrared)
+- 03:06 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 1311 m (infrared)
+- 03:07 break turn: missile 955 m away, impact in 1.9 s
+- 03:07 missile warning: level=very near
+- 03:08 flare: dist_m=465.5, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.8468
+- 03:08 that missile lost its lock at 189 m
+- 03:08 missile warning: level=near
+- 03:10 missile warning: level=very near
+- 03:11 that missile lost its lock at 611 m
+- 03:13 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 gone after 7 s, closest 197 m
+- 03:14 missile fired at us by ms04_uavc_launched_Child_C_45 from 2010 m (infrared)
+- 03:14 missile warning: level=near
+- 03:15 break turn: missile 1797 m away, impact in 3.6 s
+- 03:15 break turn: missile 1559 m away, impact in 2.3 s
+- 03:17 missile warning: level=very near
+- 03:17 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 609 m
+- 03:17 flare: dist_m=615.8, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=1.327
+- 03:18 that missile lost its lock at 96 m
+- 03:24 missile warning: level=near
+- 03:25 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 from 1022 m (infrared)
+- 03:25 missile from ms04_uavc_launched_Child_C_45 gone after 11 s, closest 100 m
+- 03:26 missile warning: level=very near
+- 03:26 missile fired at us by ms04_uavc_launched_Child_C_45 from 658 m (infrared)
+- 03:26 break turn: missile 563 m away, impact in 2.6 s
+- 03:28 flare: dist_m=625.9, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=2.106
+- 03:28 that missile lost its lock at 278 m
+- 03:29 flare: dist_m=176.7, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=0.4059
+- 03:29 took 40 damage, health 73
+- 03:29 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467 gone after 5 s, closest 6 m
+- 03:33 missile warning: level=very near
+- 03:33 flare: reason=warning
+- 03:33 missile fired at us by ms04_uavc_launched_Child_C_45 from 322 m (infrared)
+- 03:34 flare: dist_m=132.9, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=1.741
+- 03:35 that missile lost its lock at 83 m
+- 03:37 missile from ms04_uavc_launched_Child_C_45 gone after 11 s, closest 277 m
+- 03:41 missile warning: level=near
+- 03:41 missile fired at us by ms04_uavc_launched_Child_C_51 from 1113 m (infrared)
+- 03:43 missile warning: level=very near
+- 03:44 break turn: missile 449 m away, impact in 1.3 s
+- 03:44 that missile lost its lock at 388 m
+- 03:44 missile from ms04_uavc_launched_Child_C_45 gone after 11 s, closest 82 m
+- 03:48 destroyed ms04_uavc_launched_Child_C_45  (None missiles, 0 s after picking it)
+- 03:52 missile from ms04_uavc_launched_Child_C_51 gone after 11 s, closest 389 m
+- 03:52 destroyed ms04_uavc_launched_Child_C_51  (None missiles, 0 s after picking it)
+- 03:53 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 2076 m (infrared)
+- 03:54 missile warning: level=near
+- 03:54 destroyed NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_467  (None missiles, 0 s after picking it)
+- 03:54 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 1801 m (infrared)
+- 03:55 break turn: missile 1644 m away, impact in 3.5 s
+- 03:55 flare: dist_m=1265, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=1.219
+- 03:56 missile warning: level=very near
+- 03:57 flare: dist_m=467.4, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=0.995
+- 03:58 that missile lost its lock at 171 m
+- 03:59 that missile lost its lock at 263 m
+- 04:03 missile warning: level=near
+- 04:03 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 918 m (infrared)
+- 04:03 that missile lost its lock at 925 m
+- 04:04 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 175 m
+- 04:05 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 261 m
+- 04:12 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 10 s, closest 920 m
+- 04:16 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 2202 m (infrared)
+- 04:20 missile warning: level=near
+- 04:20 break turn: missile 1919 m away, impact in 2.6 s
+- 04:21 break turn: missile 1730 m away, impact in 2.6 s
+- 04:21 flare: dist_m=1513, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=1.395
+- 04:23 missile warning: level=very near
+- 04:23 flare: dist_m=507.9, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.4613
+- 04:24 that missile lost its lock at 167 m
+- 04:26 ground recovery: above_ground_m=1362, alt_m=1324, lowest_ahead_m=407.1, vz=-295.1
+- 04:26 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 2614 m (infrared)
+- 04:27 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 180 m
+- 04:31 missile warning: level=near
+- 04:33 break turn: missile 1000 m away, impact in 1.6 s
+- 04:33 flare: dist_m=841.7, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=0.6654
+- 04:33 missile warning: level=very near
+- 04:34 flare: dist_m=130.5, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=0.1004
+- 04:34 that missile lost its lock at 83 m
+- 04:36 ground recovery: above_ground_m=730, alt_m=719.5, lowest_ahead_m=391.5, vz=-164.4
+- 04:37 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 81 m
+- 04:46 missile warning: level=near
+- 04:46 missile fired at us by ms04_uavc_launched_Child_C_59 from 1140 m (infrared)
+- 04:48 break turn: missile 999 m away, impact in 2.1 s
+- 04:49 missile warning: level=very near
+- 04:50 flare: dist_m=654, missile=wp_msl_uav_C_6, reason=tracker, tgo_s=0.7462
+- 04:51 that missile lost its lock at 108 m
+- 04:54 destroyed ms04_uavc_launched_Child_C_59  (None missiles, 0 s after picking it)
+- 04:57 missile fired at us by ms04_uavc_launched_Child_C_55 from 2520 m (infrared)
+- 04:57 missile from ms04_uavc_launched_Child_C_59 gone after 11 s, closest 124 m
+- 04:59 missile warning: level=near
+- 05:01 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 2554 m (infrared)
+- 05:02 break turn: missile 825 m away, impact in 1.2 s
+- 05:02 missile warning: level=very near
+- 05:03 flare: dist_m=252.6, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.4018
+- 05:03 that missile lost its lock at 195 m
+- 05:03 missile warning: level=near
+- 05:05 missile fired at us by ms04_uavc_launched_Child_C_55 from 1738 m (infrared)
+- 05:06 break turn: missile 1081 m away, impact in 2.5 s
+- 05:06 flare: dist_m=962.4, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=1.005
+- 05:06 missile warning: level=very near
+- 05:07 flare: dist_m=367, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=0.3505
+- 05:08 that missile lost its lock at 61 m
+- 05:08 missile warning: level=near
+- 05:08 missile from ms04_uavc_launched_Child_C_55 gone after 11 s, closest 213 m
+- 05:08 break turn: missile 1138 m away, impact in 2.4 s
+- 05:09 flare: dist_m=1001, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=1.941
+- 05:10 missile warning: level=very near
+- 05:10 flare: dist_m=510.5, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=0.8995
+- 05:11 that missile lost its lock at 119 m
+- 05:12 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 51 m
+- 05:14 missile from ms04_uavc_launched_Child_C_55 gone after 9 s, closest 117 m
+- 05:14 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2587 m (infrared)
+- 05:15 missile warning: level=near
+- 05:16 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 1993 m (infrared)
+- 05:18 break turn: missile 1186 m away, impact in 1.7 s
+- 05:19 flare: dist_m=1034, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=1.583
+- 05:19 missile warning: level=very near
+- 05:20 flare: dist_m=123, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=0.1499
+- 05:20 that missile lost its lock at 18 m
+- 05:21 flare: dist_m=92.2, missile=wp_msl_uav_C_4, reason=tracker, tgo_s=0.1686
+- 05:21 that missile lost its lock at 76 m
+- 05:26 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 83 m
+- 05:27 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 27 m
+- 05:27 missile warning: level=near
+- 05:27 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 1801 m (infrared)
+- 05:30 missile warning: level=very near
+- 05:30 missile fired at us by ms04_uavc_launched_Child_C_55 from 2439 m (infrared)
+- 05:30 break turn: missile 574 m away, impact in 1.2 s
+- 05:31 that missile lost its lock at 300 m
+- 05:31 missile warning: level=near
+- 05:34 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 1268 m (infrared)
+- 05:34 missile warning: level=very near
+- 05:34 flare: dist_m=584.6, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.5931
+- 05:35 that missile lost its lock at 145 m
+- 05:36 that missile lost its lock at 542 m
+- 05:38 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 303 m
+- 05:39 missile warning: level=near
+- 05:39 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 1128 m (infrared)
+- 05:40 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 from 2251 m (infrared)
+- 05:40 missile from ms04_uavc_launched_Child_C_55 gone after 10 s, closest 149 m
+- 05:41 missile warning: level=very near
+- 05:41 break turn: missile 716 m away, impact in 0.9 s
+- 05:42 flare: dist_m=395.7, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=0.7596
+- 05:42 that missile lost its lock at 187 m
+- 05:42 missile warning: level=near
+- 05:44 missile warning: level=very near
+- 05:45 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 540 m
+- 05:45 break turn: missile 401 m away, impact in 0.5 s
+- 05:45 that missile lost its lock at 369 m
+- 05:48 destroyed NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465  (None missiles, 0 s after picking it)
+- 05:50 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 186 m
+- 05:50 missile warning: level=near
+- 05:50 missile fired at us by ms04_uavc_launched_Child_C_53 from 1344 m (infrared)
+- 05:51 break turn: missile 1173 m away, impact in 3.0 s
+- 05:51 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_465 gone after 11 s, closest 377 m
+- 05:51 flare: dist_m=1004, missile=wp_msl_uav_C_4, reason=tracker, tgo_s=1.657
+- 05:52 missile warning: level=very near
+- 05:53 flare: dist_m=399.1, missile=wp_msl_uav_C_4, reason=tracker, tgo_s=0.4809
+- 05:53 that missile lost its lock at 53 m
+- 05:55 ground recovery: above_ground_m=1532, alt_m=1514, lowest_ahead_m=851.9, vz=-334.1
+- 06:01 missile from ms04_uavc_launched_Child_C_53 gone after 11 s, closest 52 m
+- 06:03 missile warning: level=near
+- 06:04 missile fired at us by ms04_uavc_launched_Child_C_53 from 1019 m (infrared)
+- 06:05 missile fired at us by ms04_uavc_launched_Child_C_53 from 971 m (infrared)
+- 06:05 missile warning: level=very near
+- 06:06 break turn: missile 661 m away, impact in 2.5 s
+- 06:06 flare: dist_m=497.7, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=1.535
+- 06:08 flare: dist_m=110.4, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=1.156
+- 06:08 that missile lost its lock at 102 m
+- 06:08 that missile lost its lock at 91 m
+- 06:15 missile from ms04_uavc_launched_Child_C_53 gone after 11 s, closest 110 m
+- 06:16 missile from ms04_uavc_launched_Child_C_53 gone after 11 s, closest 89 m
+- 06:23 missile warning: level=very near
+- 06:23 flare: reason=warning
+- 06:23 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 310 m (infrared)
+- 06:24 flare: dist_m=267.3, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=2.922
+- 06:26 flare: dist_m=50.51, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=0.2045
+- 06:26 that missile lost its lock at 18 m
+- 06:29 took 1 damage, health 72
+- 06:29 took 1 damage, health 71
+- 06:30 took 2 damage, health 69
+- 06:30 took 1 damage, health 68
+- 06:30 took 1 damage, health 67
+- 06:30 took 1 damage, health 66
+- 06:30 took 1 damage, health 65
+- 06:31 took 1 damage, health 64
+- 06:31 took 1 damage, health 63
+- 06:31 took 1 damage, health 62
+- 06:31 took 2 damage, health 60
+- 06:31 took 1 damage, health 59
+- 06:32 missile warning: level=very near
+- 06:32 flare: reason=warning
+- 06:32 took 2 damage, health 57
+- 06:32 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 321 m (infrared)
+- 06:32 took 1 damage, health 56
+- 06:32 took 1 damage, health 55
+- 06:32 break turn: missile 308 m away, impact in 2.4 s
+- 06:33 flare: dist_m=285.6, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=3.823
+- 06:34 flare: dist_m=101.4, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=3.229
+- 06:34 that missile lost its lock at 100 m
+- 06:34 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 20 m
+- 06:40 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 532 m (infrared)
+- 06:40 missile warning: level=very near
+- 06:40 flare: reason=warning
+- 06:41 break turn: missile 505 m away, impact in 3.9 s
+- 06:41 flare: dist_m=492.4, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=1.062
+- 06:42 flare: dist_m=251.3, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.7058
+- 06:43 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 101 m
+- 06:43 that missile lost its lock at 185 m
+- 06:51 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 180 m
+- 06:53 missile fired at us by ms04_uavc_launched_Child_C_55 from 2352 m (infrared)
+- 06:54 missile warning: level=near
+- 06:56 missile warning: level=very near
+- 06:56 break turn: missile 746 m away, impact in 0.9 s
+- 06:57 that missile lost its lock at 255 m
+- 06:59 missile from ms04_uavc_launched_Child_C_55 gone after 6 s, closest 258 m
+- 07:26 destroyed NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_457  (None missiles, 0 s after picking it)
+- 07:32 missile fired at us by ms04_uavc_launched_Child_C_55 from 2472 m (infrared)
+- 07:33 break turn: missile 2271 m away, impact in 3.0 s
+- 07:33 break turn: missile 2028 m away, impact in 3.1 s
+- 07:33 missile warning: level=near
+- 07:34 flare: dist_m=1420, missile=wp_msl_uav_C_6, reason=tracker, tgo_s=1.824
+- 07:35 missile warning: level=very near
+- 07:36 flare: dist_m=525.3, missile=wp_msl_uav_C_6, reason=tracker, tgo_s=0.5933
+- 07:37 missile fired at us by ms04_uavc_launched_Child_C_55 from 1437 m (infrared)
+- 07:37 that missile lost its lock at 141 m
+- 07:37 missile warning: level=near
+- 07:38 missile warning: level=very near
+- 07:38 flare: dist_m=737, missile=wp_msl_uav_C_9, reason=tracker, tgo_s=1.127
+- 07:40 flare: dist_m=150.2, missile=wp_msl_uav_C_9, reason=tracker, tgo_s=0.5217
+- 07:40 that missile lost its lock at 132 m
+- 07:43 missile from ms04_uavc_launched_Child_C_55 gone after 11 s, closest 146 m
+- 07:48 missile from ms04_uavc_launched_Child_C_55 gone after 11 s, closest 131 m
+- 07:48 missile warning: level=very near
+- 07:48 flare: reason=warning
+- 07:48 missile fired at us by ms04_uavc_launched_Child_C_55 from 678 m (infrared)
+- 07:51 break turn: missile 568 m away, impact in 1.2 s
+- 07:52 flare: dist_m=515.9, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=1.289
+- 07:53 missile fired at us by ms04_uavc_launched_Child_C_55 from 1329 m (infrared)
+- 07:53 flare: dist_m=168.2, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=0.456
+- 07:53 that missile lost its lock at 16 m
+- 07:53 missile warning: level=near
+- 07:56 break turn: missile 904 m away, impact in 2.4 s
+- 07:56 flare: dist_m=835.4, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=1.975
+- 07:56 missile warning: level=very near
+- 07:57 flare: dist_m=474.4, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=1.368
+- 07:57 missile fired at us by ms04_uavc_launched_Child_C_55 from 1862 m (infrared)
+- 07:58 that missile lost its lock at 55 m
+- 07:58 missile warning: level=near
+- 07:59 missile from ms04_uavc_launched_Child_C_55 gone after 11 s, closest 29 m
+- 08:01 break turn: missile 879 m away, impact in 1.2 s
+- 08:02 missile warning: level=very near
+- 08:02 missile fired at us by ms04_uavc_launched_Child_C_55 from 2110 m (infrared)
+- 08:02 flare: dist_m=598.7, missile=wp_msl_uav_C_4, reason=tracker, tgo_s=0.7709
+- 08:02 missile from ms04_uavc_launched_Child_C_55 gone after 10 s, closest 54 m
+- 08:03 that missile lost its lock at 160 m
+- 08:03 missile warning: level=near
+- 08:06 missile fired at us by ms04_uavc_launched_Child_C_55 from 2339 m (infrared)
+- 08:06 break turn: missile 1212 m away, impact in 1.3 s
+- 08:07 break turn: missile 1058 m away, impact in 2.8 s
+- 08:07 flare: dist_m=1011, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=1.011
+- 08:07 missile warning: level=very near
+- 08:08 flare: dist_m=368.6, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=0.4836
+- 08:08 missile from ms04_uavc_launched_Child_C_55 gone after 11 s, closest 140 m
+- 08:08 that missile lost its lock at 148 m
+- 08:09 missile warning: level=near
+- 08:11 break turn: missile 905 m away, impact in 1.7 s
+- 08:11 missile warning: level=very near
+- 08:11 ground recovery: above_ground_m=1082, alt_m=1072, lowest_ahead_m=754, vz=-288.8
+- 08:11 flare: dist_m=718.8, missile=wp_msl_uav_C_7, reason=tracker, tgo_s=1.054
+- 08:13 flare: dist_m=107.4, missile=wp_msl_uav_C_7, reason=tracker, tgo_s=0.1674
+- 08:13 missile from ms04_uavc_launched_Child_C_55 gone after 11 s, closest 151 m
+- 08:13 that missile lost its lock at 12 m
+- 08:14 destroyed ms04_uavc_launched_Child_C_53  (0 missiles, 31 s after picking it)
+- 08:16 missile from ms04_uavc_launched_Child_C_55 gone after 10 s, closest 16 m
+- 08:19 missile warning: level=near
+- 08:19 missile fired at us by ms04_uavc_launched_Child_C_55 from 1794 m (infrared)
+- 08:19 break turn: missile 1701 m away, impact in 3.9 s
+- 08:19 flare: dist_m=1592, missile=wp_msl_uav_C_9, reason=tracker, tgo_s=1.962
+- 08:21 flare: dist_m=964.2, missile=wp_msl_uav_C_9, reason=tracker, tgo_s=1.672
+- 08:21 missile warning: level=very near
+- 08:22 flare: dist_m=352.2, missile=wp_msl_uav_C_9, reason=tracker, tgo_s=0.7743
+- 08:22 missile fired at us by ms04_uavc_launched_Child_C_55 from 1041 m (infrared)
+- 08:23 that missile lost its lock at 143 m
+- 08:23 missile warning: level=near
+- 08:24 missile warning: level=very near
+- 08:24 break turn: missile 670 m away, impact in 1.1 s
+- 08:25 missile from ms04_uavc_launched_Child_C_55 gone after 6 s, closest 140 m
+- 08:26 that missile lost its lock at 235 m
+- 08:28 missile from ms04_uavc_launched_Child_C_55 gone after 6 s, closest 234 m
+- 08:32 ground recovery: above_ground_m=1022, alt_m=1010, lowest_ahead_m=514.1, vz=-251.6
+- 08:40 missile fired at us by ms04_uavc_launched_Child_C_55 from 2410 m (infrared)
+- 08:41 break turn: missile 2017 m away, impact in 3.3 s
+- 08:41 missile warning: level=near
+- 08:42 flare: dist_m=1748, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=1.967
+- 08:43 flare: dist_m=1032, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.6762
+- 08:43 missile warning: level=very near
+- 08:44 flare: dist_m=318, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.5078
+- 08:44 missile fired at us by ms04_uavc_launched_Child_C_55 from 1299 m (infrared)
+- 08:45 that missile lost its lock at 114 m
+- 08:45 missile warning: level=near
+- 08:47 missile warning: level=very near
+- 08:47 break turn: missile 802 m away, impact in 2.0 s
+- 08:47 flare: dist_m=524.5, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=1.068
+- 08:48 missile from ms04_uavc_launched_Child_C_55 gone after 8 s, closest 116 m
+- 08:48 that missile lost its lock at 144 m
+- 08:51 missile from ms04_uavc_launched_Child_C_55 gone after 7 s, closest 159 m
+- 08:53 destroyed ms04_uavc_launched_Child_C_55  (None missiles, 0 s after picking it)
+- 09:21 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2538 m (infrared)
+- 09:22 missile warning: level=near
+- 09:24 break turn: missile 925 m away, impact in 1.3 s
+- 09:24 missile warning: level=very near
+- 09:25 flare: dist_m=605.5, missile=wp_msl_uav_C_0, reason=tracker, tgo_s=0.6077
+- 09:25 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 1754 m (infrared)
+- 09:25 that missile lost its lock at 139 m
+- 09:25 missile warning: level=near
+- 09:26 ground recovery: above_ground_m=499.8, alt_m=492.6, lowest_ahead_m=309.8, vz=-100.6
+- 09:28 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 7 s, closest 143 m
+- 09:28 missile warning: level=very near
+- 09:29 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 1320 m (infrared)
+- 09:29 that missile lost its lock at 259 m
+- 09:29 missile warning: level=near
+- 09:31 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 6 s, closest 256 m
+- 09:31 destroyed 03_en_cUAV_c_07_01  (0 missiles, 40 s after picking it)
+- 09:31 missile warning: level=very near
+- 09:33 that missile lost its lock at 739 m
+- 09:35 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 6 s, closest 738 m
+- 09:37 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2436 m (infrared)
+- 09:41 break turn: missile 2130 m away, impact in 2.4 s
+- 09:41 missile warning: level=near
+- 09:41 ground recovery: above_ground_m=518.6, alt_m=514.8, lowest_ahead_m=190.9, vz=-76.89
+- 09:41 break turn: missile 1938 m away, impact in 3.3 s
+- 09:43 flare: dist_m=1258, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=1.658
+- 09:43 missile warning: level=very near
+- 09:44 flare: dist_m=523.2, missile=wp_msl_uav_C_5, reason=tracker, tgo_s=0.7737
+- 09:44 that missile lost its lock at 59 m
+- 09:48 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 58 m
+- 09:52 ground recovery: above_ground_m=636.9, alt_m=632.6, lowest_ahead_m=212, vz=-184.7
+- 09:54 destroyed 03_en_cUAV_t_08_01  (None missiles, 0 s after picking it)
+- 09:55 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2605 m (infrared)
+- 09:58 missile warning: level=near
+- 09:59 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2514 m (infrared)
+- 10:01 break turn: missile 923 m away, impact in 1.0 s
+- 10:01 missile warning: level=very near
+- 10:01 flare: dist_m=744.7, missile=wp_msl_uav_C_1, reason=tracker, tgo_s=1.043
+- 10:02 flare: dist_m=76.93, missile=wp_msl_uav_C_1, reason=tracker, tgo_s=0.2471
+- 10:02 that missile lost its lock at 68 m
+- 10:03 missile warning: level=near
+- 10:03 ground recovery: above_ground_m=500.4, alt_m=491.1, lowest_ahead_m=228, vz=-89.77
+- 10:04 break turn: missile 979 m away, impact in 0.8 s
+- 10:04 missile warning: level=very near
+- 10:05 that missile lost its lock at 246 m
+- 10:06 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 77 m
+- 10:08 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 9 s, closest 241 m
+- 10:08 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2066 m (infrared)
+- 10:11 missile warning: level=near
+- 10:11 break turn: missile 2003 m away, impact in 2.8 s
+- 10:12 break turn: missile 1888 m away, impact in 3.0 s
+- 10:13 break turn: missile 1523 m away, impact in 3.6 s
+- 10:14 flare: dist_m=1297, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=1.619
+- 10:15 missile warning: level=very near
+- 10:15 flare: dist_m=716.6, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=1.043
+- 10:16 that missile lost its lock at 127 m
+- 10:16 ground recovery: above_ground_m=459.2, alt_m=458.2, lowest_ahead_m=238.4, vz=-110
+- 10:19 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 108 m
+- 10:29 ground recovery: above_ground_m=519.5, alt_m=518, lowest_ahead_m=228, vz=-99.89
+- 10:33 destroyed 03_en_cUAV_t_04_01  (None missiles, 0 s after picking it)
+- 10:39 ground recovery: above_ground_m=897.3, alt_m=877.6, lowest_ahead_m=341.1, vz=-172.3
+- 10:47 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2574 m (infrared)
+- 10:48 ground recovery: above_ground_m=785, alt_m=826, lowest_ahead_m=540.7, vz=-187.3
+- 10:49 missile warning: level=near
+- 10:50 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2167 m (infrared)
+- 10:52 missile warning: level=very near
+- 10:52 flare: dist_m=487.6, missile=wp_msl_uav_C_2, reason=tracker, tgo_s=0.867
+- 10:52 break turn: missile 488 m away, impact in 0.9 s
+- 10:53 that missile lost its lock at 115 m
+- 10:53 missile warning: level=near
+- 10:55 missile warning: level=very near
+- 10:55 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 8 s, closest 123 m
+- 10:55 destroyed 03_en_cUAV_c_05_01  (None missiles, 0 s after picking it)
+- 10:55 flare: dist_m=506.2, missile=wp_msl_uav_C_3, reason=tracker, tgo_s=0.5745
+- 10:55 break turn: missile 506 m away, impact in 0.6 s
+- 10:56 that missile lost its lock at 102 m
+- 10:56 ground recovery: above_ground_m=566.4, alt_m=618.9, lowest_ahead_m=192, vz=-203.3
+- 11:00 destroyed 03_en_cUAV_c_04_01  (None missiles, 0 s after picking it)
+- 11:01 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 100 m
+- 11:01 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2509 m (infrared)
+- 11:05 missile warning: level=near
+- 11:06 break turn: missile 1360 m away, impact in 1.8 s
+- 11:06 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 2570 m (infrared)
+- 11:07 missile warning: level=very near
+- 11:07 flare: dist_m=770.8, missile=wp_msl_uav_C_6, reason=tracker, tgo_s=0.8762
+- 11:08 that missile lost its lock at 100 m
+- 11:08 missile warning: level=near
+- 11:09 break turn: missile 1282 m away, impact in 1.1 s
+- 11:10 flare: dist_m=1035, missile=wp_msl_uav_C_7, reason=tracker, tgo_s=1.399
+- 11:10 missile warning: level=very near
+- 11:11 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 1772 m (infrared)
+- 11:11 flare: dist_m=64.8, missile=wp_msl_uav_C_7, reason=tracker, tgo_s=0.1506
+- 11:11 that missile lost its lock at 43 m
+- 11:11 missile warning: level=near
+- 11:12 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 106 m
+- 11:13 missile warning: level=very near
+- 11:13 break turn: missile 793 m away, impact in 1.2 s
+- 11:14 flare: dist_m=496.6, missile=wp_msl_uav_C_1, reason=tracker, tgo_s=0.5112
+- 11:15 missile fired at us by NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 from 1044 m (infrared)
+- 11:15 that missile lost its lock at 158 m
+- 11:15 missile warning: level=near
+- 11:16 missile warning: level=very near
+- 11:17 break turn: missile 554 m away, impact in 1.9 s
+- 11:17 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 11 s, closest 42 m
+- 11:18 that missile lost its lock at 224 m
+- 11:20 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 9 s, closest 156 m
+- 11:21 missile from NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455 gone after 6 s, closest 222 m
+- 11:28 destroyed NimbusChildActor_GEN_VARIABLE_common_uavc_launched_C_CAT_455  (None missiles, 0 s after picking it)
+- 11:52 ground recovery: above_ground_m=503, alt_m=500.9, lowest_ahead_m=217.3, vz=-72.88
+- 11:56 destroyed 03_en_cUAV_c_08_01  (None missiles, 0 s after picking it)
+- 16:41 phase failed: MissionPhase_03
+- 16:41 **time out**
+- 16:44 how well enemy positions 2 s ahead were predicted: steady planes: 4549 checks, the guess used was off by 16 m on average (each way: full turn 16 m, half turn 16 m, straight 16 m; now using straight); turning planes: 4860 checks, the guess used was off by 79 m on average (each way: full turn 121 m, half turn 78 m, straight 103 m; now using half turn)
+
+Files: events.jsonl (every event), attempt*-flight-*.csv (the plane ten times a second), pilot.log (the pilot's commentary), pictures\, saves-check.txt.

@@ -1286,6 +1286,46 @@ within 3 seconds, it takes the nearest free direction (the normal controller kee
 a retry that starts at a checkpoint the mission plan has no orders for now gets a plain attack
 order (it had none, and the plane flew on unattended).
 
+**Mission 04, phase 3: 15 minutes against container-launched drones.** Lost twice on time, and
+each loss taught something:
+
+- With the 8AGM left over from Mission 02 (Mission 04 had no settings file at its first sortie)
+  the bot shot single standard missiles from 2 km at agile drones: 16 kills in 15 minutes from 51
+  missiles. Now drones (by name) are attacked from 1.4 km, nose-on, two missiles at a time.
+- The Typhoon's HCAA, read from the game: 60 damage (standard 40), turns harder (47.5 against
+  40), reloads in 3.5 s, 2.5 km lock range, air targets only, not multi-lock. The bot's weapon
+  logic knew only long-range, multi-lock and ground-only specials, so it would never have armed
+  it; a "better air-to-air missile" rule now arms it for anything in the air within its range.
+  With it: 7 drones in the first 3.6 minutes.
+- A split-S into the ground (upside down at 1,080 m after a missile break, the turn logic
+  pulled through the bottom): below 1,500 m above ground the bot now rolls upright before
+  pulling, and starts a pull-out from a dive by the room the dive really needs (a 5 g arc at
+  that speed and angle, one second to react).
+- **The last drones never came within reach.** "Three remaining!" came 4 minutes in, then
+  nothing: the drones that count wait inside launch containers (hidden: no HUD box, "attack
+  exception" flag), and the containers themselves are mission targets with the same
+  exception flag. Since 18 Oct the bot skipped every exception-flagged object (from the wrong
+  first theory about Mission 14's locks), so it never went for them; the game's own Tab still
+  offered the containers. Now exception-flagged targets count like any other, and when nothing
+  attackable is left the bot flies to the nearest hidden mission target, which is where the
+  next drones come out. With four or fewer mission targets left, everything else counts almost
+  nothing. With these the drone phase was cleared ("All UAVs have been splashed!") 7 minutes in.
+- **Phase 4: escort the transport carrying President Harling ("Mother Goose One")**, which the
+  mission marks with the "highlighted" lock-on mark. The drones that kill it appear about 80 s
+  into the phase and need 15 to 35 s; twice the bot was 20 km away chasing an unrelated drone.
+  Now enemies near a highlighted ally count up to 9 times (out to 5 km, at any speed; the old rule
+  counted only slow ground allies), and with an ally to protect and nothing within 8 km of it the
+  bot stays with the ally. The next try cleared the escort.
+- **Phase 5: 3 minutes against the Arsenal Bird's drones around the hit transport.** The first
+  try ran out of time with 88 missiles for 15 kills. The numbers settled the range question:
+  missiles fired at drones from 1.5 to 2.1 km were followed by the kill 12 times in 23, from
+  under 1.5 km 4 times in 247 (the drones out-turn a missile fired close, so the "closer" change
+  above was wrong). Now missiles at drones only from 1.3 km to lock range, the gun inside that,
+  and a drone that gets close and off the nose makes the bot open out to 1.8 km and come back.
+  **Mission accomplished at the next try (03:59).**
+
+| 04 Rescue | **Completed** (second sortie, 6th attempt; 03:59) | Stealth route flown unseen twice at the first try; phase 2 crashes into the elevator's structure fixed by the vision safety net; phases 3 to 5 needed the HCAA, the drone tactics, the exception-flag fix and the escort rule (above). |
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

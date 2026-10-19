@@ -1,0 +1,4 @@
+# Mission 05 444 (story, Ace; level ms05): not flown by the bot before. HCAA, the
+# Typhoon's best air-to-air special (60 damage, agile, 3.5 s reload), as the default for air fights.
+plane: Typhoon
+weapon: HCAA

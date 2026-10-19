@@ -391,9 +391,24 @@ class Driver:
                 self.results_shot[n] = True
                 if self.last_folder:
                     pt.picture(os.path.join(self.last_folder, "pictures", "results.png"))
+                    texts = st().get("results_texts") or []
+                    if texts:
+                        with open(os.path.join(self.last_folder, "results.txt"), "w", encoding="utf-8") as f:
+                            f.write("\n".join(str(x) for x in texts) + "\n")
+                        rank = None
+                        for i, x in enumerate(texts):
+                            if str(x).strip().upper() == "RANK" and i + 1 < len(texts):
+                                rank = texts[i + 1]
+                                break
+                        say(f"results: rank {rank}; {len(texts)} texts saved to results.txt")
                 return "results"
             pt.keys(["Enter"], wait_ms=3000)
             return "results"
+        if p == "CampaignUnlockMenu_C":
+            # NEW REWARD ("You got one or more new nicknames."): OK
+            say("new reward screen: OK")
+            pt.keys(["Enter"], wait_ms=2500)
+            return "reward"
         if p == "CampaignMenuNext_C":
             for _ in range(5):
                 if "next mission" in (st().get("menu_desc") or "").lower():

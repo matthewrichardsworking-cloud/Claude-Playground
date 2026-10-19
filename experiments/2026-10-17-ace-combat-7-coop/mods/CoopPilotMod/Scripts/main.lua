@@ -361,6 +361,22 @@ local function snapshot()
     end
     local dg = dialogInfo()
     if dg then s.dialog = dg end
+    -- MISSION RESULTS: every visible text on the page, in order (rank, times, rewards,
+    -- targets destroyed), for the mission's report
+    if s.page == "CampaignDebriefing_C" then
+        pcall(function()
+            local texts = {}
+            for _, t in ipairs(FindAllOf("TextBlock") or {}) do
+                if #texts >= 120 then break end
+                local n = t:GetFullName()
+                if n:find("CampaignDebriefing_C", 1, true) and t:IsVisible() then
+                    local x = textOf(t)
+                    if x and x ~= "" then texts[#texts + 1] = x end
+                end
+            end
+            s.results_texts = texts
+        end)
+    end
     -- In the hangar: the plane and special weapon under the cursor (the game instance's
     -- selection follows the cursor: Typhoon 123, Rafale M 117, Mirage 2000-5 115; weapon 0, 1, 2
     -- in the list's order), the plane's name and the weapon list (19 Oct 2026)
@@ -1012,6 +1028,7 @@ local SHOOTER = { "vads", "aagun", "rams", "sam", "ah64", "mi24", "mi-24", "ka50
                   "m1a", "t90", "bmp", "btr", "gun", "lav", "_en_" }
 local allyGround = {}          -- positions of our slow allies (ground units, helicopters), refreshed with each scan
 local allyNames = {}           -- names of every ally alive (any speed), refreshed with each scan
+local tgtAliveCount = 0        -- mission targets (IsTGT) still alive, refreshed with each scan
 local function classOf(o)
     local ok, n = pcall(function() return o:GetClass():GetFName():ToString() end)
     return ok and n or ""
@@ -1144,6 +1161,10 @@ local function enemyWeight(o, l)
     if ap and ap.focus and hasAny(name, ap.focus) then w = w * 6 end
     local okT, tgtFlag = pcall(function() return o:IsTGT() end)
     if okT and tgtFlag then w = w * 1.5 end
+    -- The last few mission targets (19 Oct 2026, Mission 04: two drones that counted were
+    -- 21 km away while the bot attacked launch containers below it, and the phase ran out of
+    -- time): with four or fewer left, everything else counts almost nothing
+    if tgtAliveCount > 0 and tgtAliveCount <= 4 and not (okT and tgtFlag) then w = w * 0.03 end
     if hasAny(name, LOW_VALUE) then w = w * 0.35
     elseif hasAny(name, PARTY_THREAT) then w = w * 1.6
     elseif hasAny(name, SHOOTER) or (Aware and Aware.trackFor(o)) then w = w * 1.4 end
@@ -1151,12 +1172,19 @@ local function enemyWeight(o, l)
     -- 0 m, nothing extra beyond 2 km (Mission 14: six enemy Apaches hovered 100-440 m from
     -- the landed transports while the bot fought elsewhere, and the landing failed)
     if l then
-        local nearest = math.huge
+        local nearest, nearestP = math.huge, math.huge
         for _, a in ipairs(allyGround) do
             local d2 = (a[1] - l.X) ^ 2 + (a[2] - l.Y) ^ 2
             if d2 < nearest then nearest = d2 end
+            if a.protect then
+                local d3 = d2 + (a[3] - l.Z) ^ 2
+                if d3 < nearestP then nearestP = d3 end
+            end
         end
-        if nearest < math.huge then
+        if nearestP < math.huge then
+            -- near an ally the mission says to protect: up to 9 times, out to 5 km
+            w = w * (1 + 8 * math.max(0, 1 - math.sqrt(nearestP) / 50000))
+        elseif nearest < math.huge then
             w = w * (1 + 6 * math.max(0, 1 - math.sqrt(nearest) / 25000))
         end
     end
@@ -1188,6 +1216,7 @@ end
 -- costs a turn). Returns the enemy, its distance (m), its score (higher = better), its weight.
 local function nearestEnemy(loc, skip, F, current, kmh)
     local best, bestScore, bestD, bestW = nil, -1, 0, 1
+    local hiddenBest, hiddenD = nil, math.huge
     local curScore, curD, curW = nil, 0, 1
     local t = now()
     local objs = FindAllOf("GameObject") or {}
@@ -1196,15 +1225,23 @@ local function nearestEnemy(loc, skip, F, current, kmh)
         pcall(function()
             if o.bIsActivated and o:GetFaction() == 1 and o:IsAlive() and not objInfo(o).name:find("dummy", 1, true) then
                 local mk = lockInfo(o).mark
-                names[objName(o)] = (mk == 2 or mk == 4) and "protect" or true
-                if (o:GetSpeedKmph() or 0) < 350 then                         -- markers, not units
+                local protect = (mk == 2 or mk == 4)
+                names[objName(o)] = protect and "protect" or true
+                -- slow allies (ground units, helicopters), and any ally the mission highlights
+                -- as one to protect, at any speed (Mission 04's transport, 19 Oct 2026)
+                if protect or (o:GetSpeedKmph() or 0) < 350 then
                     local l = o:K2_GetActorLocation()
-                    allies[#allies + 1] = { l.X, l.Y, l.Z }
+                    allies[#allies + 1] = { l.X, l.Y, l.Z, protect = protect }
                 end
             end
         end)
     end
     allyGround, allyNames = allies, names
+    local nT = 0
+    for _, o in ipairs(objs) do
+        pcall(function() if o.bIsActivated and o:GetFaction() == 0 and o:IsAlive() and o:IsTGT() then nT = nT + 1 end end)
+    end
+    tgtAliveCount = nT
     local mps = math.max((kmh or 700) / 3.6, 150)
     local curName = current and objName(current)
     for _, o in ipairs(objs) do
@@ -1214,7 +1251,19 @@ local function nearestEnemy(loc, skip, F, current, kmh)
             -- only what the game offers the player as a target: units without a HUD box or
             -- marked as an exception are scenery for now (Mission 14's reinforcement tanks:
             -- no lock however long the bot pointed at them)
-            if o.bShowHUDBox == false or o.bIsAttackTargetsException == true then return nil end
+            -- (bIsAttackTargetsException is NOT a reason to skip: Mission 04's drone
+            -- containers are mission targets with it set, 19 Oct 2026)
+            if o.bShowHUDBox == false then
+                -- hidden for now (a drone still in its container): remembered as a place to go
+                -- to when nothing attackable is left
+                local okT2, tg2 = pcall(function() return o:IsTGT() end)
+                if okT2 and tg2 then
+                    local l2 = o:K2_GetActorLocation()
+                    local d2 = math.sqrt((l2.X - loc.X) ^ 2 + (l2.Y - loc.Y) ^ 2 + (l2.Z - loc.Z) ^ 2)
+                    if not hiddenBest or d2 < hiddenD then hiddenBest, hiddenD = o, d2 end
+                end
+                return nil
+            end
             -- marked by the mission as impossible to lock, or a fake box, or a mission special
             -- object: the game never gives those a lock (lockInfo; read from its code)
             local mark = hudAttr[objName(o)]
@@ -1246,6 +1295,11 @@ local function nearestEnemy(loc, skip, F, current, kmh)
     end
     if curScore and curScore >= bestScore * 0.5 then
         return current, curD, curScore, curW
+    end
+    if not best and hiddenBest then
+        -- nothing attackable, but mission targets hidden somewhere (drones in their launch
+        -- containers): fly there, which is where they come out
+        return hiddenBest, hiddenD / 10, 0.001, 0.1
     end
     return best, bestD, bestScore, bestW
 end
@@ -1630,6 +1684,12 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
                 -- an air-only special (the LAAM) for planes only: armed, it hides ground targets
                 local fits = sp.targets ~= "air only" or isPlane
                 want = fits and du > mainRange * 0.9 and du < sp.LockonRange * 0.95; why = "beyond standard missile range"
+            elseif sp.targets == "air only" and ((sp.Damage or 0) > ((W.main and W.main.Damage) or 0)
+                    or (sp.MaxRotationAngle or 0) > ((W.main and W.main.MaxRotationAngle) or 0)) then
+                -- simply a better air-to-air missile (the HCAA: 60 damage against 40, turns
+                -- harder, reloads faster; 19 Oct 2026): armed for anything in the air within its
+                -- range, put away for ground targets (armed, it hides them)
+                want = isPlane and du < sp.LockonRange * 0.95; why = "better air-to-air missile"
             end
             local left = call(weapons(p), "GetSpecialWeaponCount")
             if left and left == 0 then want = false; why = "special weapon empty" end
@@ -1654,10 +1714,14 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         -- and a pair at a time rather than one.
         local agileInfo = objInfo(tgt)
         if agileInfo.agile == nil then agileInfo.agile = agileInfo.name:find("uav", 1, true) ~= nil or agileInfo.name:find("drone", 1, true) ~= nil end
-        local agile = agileInfo.agile and not armed
+        local agile = agileInfo.agile and not (armed and sp and sp.targets == "ground only")
         local maxOff, gap = 40, c.missileGap
-        if agile then range, maxOff = math.min(range, 1400), 15; if c.shotsAtTarget % 2 == 1 then gap = 0.3 end end
-        if locked and dm < range and offT < maxOff and t - c.lastMissile > gap then
+        if agile then maxOff = 20; if c.shotsAtTarget % 2 == 1 then gap = 0.3 end end
+        -- An agile drone outturns a missile fired close (Mission 04 on Ace, 19 Oct 2026: from
+        -- 1.5 to 2.1 km 12 of 23 missiles were followed by the kill, from under 1.5 km 4 of 247):
+        -- missiles from 1.3 km out to the lock range, the gun inside that
+        local minRange = agile and 1300 or 0
+        if locked and dm < range and dm > minRange and offT < maxOff and t - c.lastMissile > gap then
             tap(c, KEY.missile); c.lastMissile = t; c.shots = c.shots + 1; c.shotsAtTarget = c.shotsAtTarget + 1
             if armed then c.specialShots = (c.specialShots or 0) + 1 end
             event("missile", { target = c.targetName, dist_m = dm, off_deg = offT, special = armed })
@@ -1721,6 +1785,19 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             -- 200-700 m behind Apaches). Open out to 1.6 km, turn back, come in nose-on.
             local info = objInfo(tgt)
             if info.heli == nil then info.heli = hasAny(info.name, HELI) end
+            -- an agile drone too close for a missile and off the nose: open out the same way,
+            -- to 1.8 km, and come back for a missile shot from range
+            if info.agile and not info.heli then
+                c.heliOut = c.heliOut or {}
+                local key = c.targetName
+                if not c.heliOut[key] and dm < 900 and offT > 25 then c.heliOut[key] = true; event("drone_open_out", { target = key, dist_m = dm }) end
+                if c.heliOut[key] and dm > 1800 then c.heliOut[key] = nil end
+                if c.heliOut[key] then
+                    local away = unit({ loc.X - tl.X, loc.Y - tl.Y, loc.Z - tl.Z })
+                    aim = unit({ away[1], away[2], clamp(away[3], -0.2, 0.3) })
+                    c.groundText = "drone too close for a missile: opening out to 1.8 km"
+                end
+            end
             if info.heli then
                 c.heliOut = c.heliOut or {}
                 local key = c.targetName
@@ -1747,6 +1824,29 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         if c.lockDiag and dm < 2500 then text = text .. "; " .. c.lockDiag end
         c.speed = dm > 3000 and 1150 or (dm > 1200 and 850 or 650)   -- close the distance fast, then slow for the turn fight
         c.lastDist = dm
+    end
+
+    -- Escort (19 Oct 2026, Mission 04's transport "Mother Goose One", marked by the mission as
+    -- the one to protect: the drones that kill it appear 80 s into the phase and need only 15
+    -- to 35 s, while the bot was 20 km away chasing an unrelated drone). With an ally to protect
+    -- and nothing within 8 km of it, the bot stays with it instead of hunting far away.
+    local guard, guardD = nil, math.huge
+    for _, a in ipairs(allyGround) do
+        if a.protect then
+            local d2 = math.sqrt((a[1] - loc.X) ^ 2 + (a[2] - loc.Y) ^ 2 + (a[3] - loc.Z) ^ 2)
+            if d2 < guardD then guard, guardD = a, d2 end
+        end
+    end
+    c.escortText = nil
+    if guard and not (c.breakUntil and t < c.breakUntil) then
+        local tl2 = tgt and locOf(tgt)
+        local tgtNear = tl2 and math.sqrt((tl2.X - guard[1]) ^ 2 + (tl2.Y - guard[2]) ^ 2 + (tl2.Z - guard[3]) ^ 2) < 80000
+        if not tgtNear and guardD > 25000 then
+            aim = unit({ guard[1] - loc.X, guard[2] - loc.Y, (guard[3] + 3000) - loc.Z })
+            c.speed = guardD > 60000 and 1150 or 800
+            c.escortText = string.format("escorting the ally to protect, %.0f m away", guardD / 10)
+            text = c.escortText .. ((text and ("; was: " .. text)) or "")
+        end
     end
 
     -- Real launches: the ammunition going down (Casual's unlimited counts read -1).
@@ -1983,6 +2083,14 @@ local function apStep(p, dt)
         recovering = (agl ~= nil and agl < floor * 0.6) or (agl ~= nil and agl + ap.vz * 1.5 < floor * 0.4)
     else
         recovering = height < floor or alt + ap.vz * 4 < floor * 0.7 or (ahead ~= nil and ahead < (ap.ceiling and 60 or 150))
+        -- a dive needs room to pull out of: the arc of a 5 g pull from this dive angle at this
+        -- speed, plus a second to react, plus the floor (the measured climb rate lags a dive
+        -- that is getting steeper)
+        if not recovering and rot.Pitch < -10 then
+            local v = kmh / 3.6
+            local need = v * v / (9.81 * 5) * (1 - math.cos(math.rad(-rot.Pitch))) + v * 1.0 + floor * 0.5
+            if height < need then recovering = true end
+        end
     end
     ap.agl, ap.ahead = agl, ahead
     if recovering then
@@ -2058,6 +2166,14 @@ local function apStep(p, dt)
         if elev < 0 and math.abs(bankErr) < 50 then pitchCmd = 0 end   -- never push hard in a turn; roll and pull instead
         yawCmd = 0
         ap.prevErr.level, ap.prevErr.elev, ap.prevErr.side = nil, nil, nil
+        -- No split-S near the ground (19 Oct 2026, Mission 04: upside down at 1,080 m after a
+        -- missile break, the turn logic pulled through the bottom and the plane hit the ground
+        -- in a 60 degree dive at 880 km/h): with the lift pointing below the horizon and less
+        -- than 1,500 m of air, roll upright first and pull afterwards.
+        if U[3] < -0.1 and math.min(agl or alt, alt) < 1500 then
+            pitchCmd = 0
+            rollCmd = clamp(-rot.Roll / 25, -1, 1)
+        end
     else
         rollCmd = pd("level", -rot.Roll + clamp(side * 3, -35, 35), dt, 1 / 30, 1 / 140)
         pitchCmd = pd("elev", elev, dt, 1 / 6, 1 / 25)
