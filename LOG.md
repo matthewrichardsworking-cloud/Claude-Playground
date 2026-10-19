@@ -2,6 +2,24 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19: assimilated WinDbg and Detect It Easy (the two "do next" tools)
+
+- From the shortlist. Both run on the PC, not the cloud. Studied read-only in the sandbox;
+  `experiments/2026-10-19-windbg-and-die/` has the setup and guardrails.
+- `svnscha/mcp-windbg` (MIT, crash-dump + live WinDbg over MCP) pinned in `.claude-plugin/marketplace.json`
+  at commit `48e4350d`, and enabled in `.claude/settings.json`. Its plugin lives in a subfolder of its repo,
+  so the catalog entry uses the **git-subdir** source type (not `github` + `path`, which silently ignores the
+  path and installs an empty plugin — learned the hard way; confirmed git-subdir installs correctly here).
+  It runs `mcp-windbg@1.5.1` and needs WinDbg + uv on the PC.
+- Guardrail: the three kernel-debugging tools (`open_kd_session`, `open_kd_dump`, `run_kd_command`) are denied
+  repo-wide in settings (`mcp__mcp-windbg__...`) — kernel debugging can freeze the PC. User-mode live
+  debugging stays on, with a documented rule never to dump a DRM-protected game's memory to disk.
+- Detect It Easy (`horsicq/Detect-It-Easy`, MIT, release 3.21): no plugin, a portable `diec.exe` download.
+  Setup note + a recon convention: `diec -j Game.exe` first on any game; a packer/DRM hit means hands-off the
+  exe, a clean compiler/engine means proceed. Identify-only, never unpacks.
+- Couldn't confirm the WinDbg server actually connects (needs Windows + WinDbg; cloud has neither). Plugin
+  resolution and config placement are verified; the connection check happens on the PC.
+
 ## 2026-10-19: which GitHub repos to bring in next (AC7, F.E.A.R., future games)
 
 - The owner asked what else to assimilate, for modding many games: AC7 now, F.E.A.R. (LithTech Jupiter EX)

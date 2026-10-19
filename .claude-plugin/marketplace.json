@@ -16,6 +16,18 @@
       "description": "Game-modding skills, the um CLI and a field-note knowledge base (MIT, rehan-remade). Pinned to the commit reviewed in experiments/2026-10-18-universal-modder/.",
       "homepage": "https://github.com/rehan-remade/universal-modder",
       "license": "MIT"
+    },
+    {
+      "name": "mcp-windbg-uvx",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/svnscha/mcp-windbg.git",
+        "path": "plugins/mcp-windbg",
+        "sha": "48e4350d57c44a38068be4f64e89a0fe60fe5c04"
+      },
+      "description": "Microsoft WinDbg/CDB crash-dump analysis and live debugging for Claude, as an MCP server (MIT, svnscha). Windows + WinDbg + uv only. Pinned to the commit reviewed in experiments/2026-10-19-windbg-and-die/. Kernel tools are denied in .claude/settings.json.",
+      "homepage": "https://github.com/svnscha/mcp-windbg",
+      "license": "MIT"
     }
   ]
 }
