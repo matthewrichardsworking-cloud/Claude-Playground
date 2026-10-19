@@ -2,6 +2,26 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-18: universal-modder, reviewed and hooked up
+
+- The owner asked for a review of [universal-modder](https://github.com/rehan-remade/universal-modder) (MIT:
+  game-modding skills, the `um` CLI, 265 agent-written field notes) and for it to be wired in. Everything is
+  in `experiments/2026-10-18-universal-modder/`.
+- Wiring: a repo-root plugin catalog (`.claude-plugin/marketplace.json`) pins it to the reviewed commit
+  `6a8865ae`; `.claude/settings.json` marks it wanted, so PC sessions offer it (each PC installs it once).
+  Cloud sessions ignore repo-enabled plugins, so they need two setup-script lines (`setup.md`). Tested here:
+  a new Claude Code process got all 12 skills, 3 agents and `um`; their suite passes (163 passed, 1 skipped).
+- Review (36-agent workflow): 153 findings, 73 confirmed by a second agent. Best part: the knowledge base and
+  its note format. Worst: `um publish check` and `um kb pr` let secrets and private files through while
+  reporting success; mouse clicks from `um win drive` can land in other windows (the one high finding).
+  Its Unreal guide would have misled the AC7 work in five places.
+- On the PC the owner's AC7 rules beat the toolkit's (no private code dumps, start the copy only with
+  `start-copy.ps1`, `um win drive --no-retry`): `setup.md`, "Where the Playground's rules win". Our AC7
+  lessons are drafted as one of their field notes (passes `um kb check`, not submitted).
+- Snags: `claude plugin marketplace remove` run inside the repo also emptied the repo's settings file (CI's
+  `check.sh` now catches that); `claude -p` test runs share the parent session's environment file (start them
+  with `env -u CLAUDE_CODE_SESSION_ID`); a 4-core container runs two workflow agents at a time.
+
 ## 2026-10-18: Ace Combat 7 co-op, Double Trigger in the owner's real install (one-time exception)
 
 - The owner lifted the "never touch the real install" rule for this one install, asking for

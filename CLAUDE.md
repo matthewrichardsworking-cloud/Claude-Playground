@@ -42,6 +42,10 @@ so the log is the only record of what earlier sessions tried and learned.
   non-zero on failure. CI runs every `experiments/*/check.sh` on each push.
 - Keep shared code out of the root. If two experiments need the same thing,
   copy it. Experiments should not depend on each other.
+- `.claude-plugin/marketplace.json` and `.claude/settings.json` list the Claude Code
+  plugins sessions here use, each pinned to a commit a session has read. Before
+  moving a pin, read what changed upstream; how-to in
+  `experiments/2026-10-18-universal-modder/setup.md`.
 
 ## Branches and merging
 
