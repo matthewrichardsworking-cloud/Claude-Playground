@@ -2,6 +2,19 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19: which GitHub repos to bring in next (AC7, F.E.A.R., future games)
+
+- The owner asked what else to assimilate, for modding many games: AC7 now, F.E.A.R. (LithTech Jupiter EX)
+  next. No earlier F.E.A.R. notes exist in the Playground. Research workflow (9 search angles, 68 repos
+  vetted, ranked, then challenged by skeptics): `experiments/2026-10-19-repo-shortlist/`. Nothing installed.
+- Do next: `svnscha/mcp-windbg` (crash files and live debugging for Claude) and `horsicq/Detect-It-Easy`
+  (names a game's copy protection before anyone touches it). For AC7: `CreeperUX/AC7-Integrated-Mod` (MIT)
+  maps where AC7 reads analog flight input on build 9855922, the reason the bot's Input* writes did nothing.
+- F.E.A.R. trap: on the Steam copy, EchoPatch's first-run "large memory" offer strips SteamStub (DRM
+  removal); FEAR-MORE needs that stripped exe. The GOG copy is DRM-free. Asked the owner which they own.
+- Gaps: no LithTech toolkit or playbook anywhere; no F.E.A.R. co-op source; no maintained virtual gamepad.
+- The container restarted mid-workflow; the disk survived, and `resumeFromRunId` reused the 6 finished agents.
+
 ## 2026-10-18: universal-modder, reviewed and hooked up
 
 - The owner asked for a review of [universal-modder](https://github.com/rehan-remade/universal-modder) (MIT:
