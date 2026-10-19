@@ -3,7 +3,7 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (19 Oct 2026, 10:20): the Ace campaign stopped at Mission 06 Long Day.** Missions
+**Status (19 Oct 2026, 14:05): the Ace campaign stopped at Mission 06 Long Day; your tunnel test passed.** Missions
 01 to 05 are completed on Ace. Mission 06's first phase is a score race: 24,000 points in 15
 minutes (the HUD shows it; the radio only says "not enough damage to the base"), which means
 destroying nearly everything in the mission's three areas. Over about 6 hours and 25 attempts
@@ -12,9 +12,10 @@ second, sweeps through ground clusters shooting whatever comes into its cone, ke
 combat zone, flies full throttle in score phases (your advice), and carries campaign parts in
 the slots that your multiplayer parts were occupying (cleared through the copy's own Mod
 Loader, as you suggested; your real install was only read). Other planes were surveyed; the
-F-22A with XSDB was worse here (no LAAM for the bombers). Your tunnel test is still open: the
-fixed vision gets through in a simulator, but the real approach came in too high and fast and
-hit the hillside. Details: workbench section 15, `playtests\missions\m06\notes.md`. The copy
+F-22A with XSDB was worse here (no LAAM for the bombers). **Your tunnel test passes** (a later
+round the same day, at your request for more cycles): the bot flies into Mission 06's tunnel 1.6 m
+from the aim point, through the whole 1.3 km bore on its live rays alone, and out, with one small
+scrape at the last bend. Details: workbench section 15, `playtests\missions\m06\notes.md`. The copy
 is closed and back in Vanilla mode; your real saves are unchanged.
 
 **Earlier (19 Oct 2026, 01:35): the Ace campaign is under way, and the lock problem is

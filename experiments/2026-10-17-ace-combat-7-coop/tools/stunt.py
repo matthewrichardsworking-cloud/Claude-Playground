@@ -72,11 +72,15 @@ def main(argv):
     ap.add_argument("--name", default="STUNT")
     ap.add_argument("--lead", nargs=3, type=float, action="append", default=[])
     ap.add_argument("--through", nargs=3, type=float, required=True)
+    ap.add_argument("--route", help="after the lead points, fly this route CSV (absolute path) and send the "
+                                    "fly-through when it ends: the route follower holds the line and the height "
+                                    "(19 Oct 2026: 'fly to' lead points reach their height only at the point)")
     ap.add_argument("--speed", type=float, default=450)
     ap.add_argument("--lead-speed", type=float, default=650)
     ap.add_argument("--floor", type=float, default=10)
     ap.add_argument("--lead-floor", type=float, default=60)
     ap.add_argument("--lead-within", type=float, default=1500, help="metres")
+    ap.add_argument("--lead-height-tol", type=float, default=40, help="metres off a lead point's height still accepted")
     ap.add_argument("--timeout", type=float, default=420, help="seconds for the whole stunt")
     ap.add_argument("--min-health", type=float, default=60,
                     help="call it off on the way in when health falls below this (19 Oct: two missiles took 80 in 20 s)")
@@ -116,10 +120,35 @@ def main(argv):
                 if s.get("health") is not None and s["health"] < a.min_health:
                     return abort("health %s on the way in" % s["health"])
                 d = math.hypot(s["x"] - x, s["y"] - y) / 10
-                if d < a.lead_within:
-                    print(time.strftime("%H:%M:%S"), "lead point %d: %.0f m away, %.0f m up, %.0f km/h" % (k + 1, d, s.get("alt_m", 0), s.get("kmh", 0)), flush=True)
+                # (and near the lead point's height: 19 Oct 10:17 the plane reached the second
+                # lead point 400 m too high, and the fly-through began with a steep fast descent)
+                dz = abs((s.get("z") or z) - z) / 10
+                if d < a.lead_within and (dz < a.lead_height_tol or d < a.lead_within * 0.25):
+                    print(time.strftime("%H:%M:%S"), "lead point %d: %.0f m away, %.0f m up (%.0f m off its height), %.0f km/h" % (k + 1, d, s.get("alt_m", 0), dz, s.get("kmh", 0)), flush=True)
                     break
             time.sleep(0.25)
+
+    # 1b. the approach route, if any
+    if a.route:
+        send(["fly", "route", a.route, "floor", int(a.floor), "maxspeed", int(a.lead_speed), "beams", "off"])
+        while True:
+            if time.time() - t0 > a.timeout:
+                return abort("timed out on the approach route")
+            s = status()
+            done = False
+            for e in ev.new():
+                if e.get("kind") == "route_done":
+                    done = True
+                if e.get("kind") == "beyond_pullout":
+                    return abort("the route is outside the mission area")
+            if s and (s.get("failed") or s.get("completed")):
+                return abort("the mission ended")
+            if s and s.get("health") is not None and s["health"] < a.min_health:
+                return abort("health %s on the approach route" % s["health"])
+            if done:
+                print(time.strftime("%H:%M:%S"), "route done: %.0f m up, %.0f km/h" % (s.get("alt_m", 0), s.get("kmh", 0)), flush=True)
+                break
+            time.sleep(0.1)
 
     # 2. the stunt itself: live vision only from here
     x, y, z = a.through

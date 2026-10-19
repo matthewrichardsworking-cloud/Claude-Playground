@@ -3,6 +3,15 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (19 Oct 2026, 14:05): tunnel test passed; Mission 06 still open
+
+- **Vision test 2 passed:** through Mission 06's tunnel on live rays (try 10: 1.6 m from the aim
+  point, the whole bore in 10.5 s, out and away; one 24-point scrape at the last bend). What made
+  it work: the approach flown as a route (`fly route`, then the fly-through when it ends), travel
+  orders that use their own floor for the ground ahead, corridor following in `vision.lua`, and
+  the hand-over to the fight only once clear. `module vision` reloads just the vision file.
+- **Mission 06:** score race unchanged (best about 14,000 of 24,000).
+
 ## Status (19 Oct 2026, 10:20): stopped at Mission 06's score race
 
 - **Campaign on Ace:** 01-05 completed; 06 Long Day not (phase 1 needs 24,000 points in 15

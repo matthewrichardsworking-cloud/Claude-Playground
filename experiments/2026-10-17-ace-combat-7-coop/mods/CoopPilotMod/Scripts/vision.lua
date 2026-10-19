@@ -112,6 +112,32 @@ return function(env)
         -- the grid is centred between the flight direction and the wanted one (the plane can
         -- only turn so fast; directions far from where it is going are reached late)
         local vu = unit(vel)
+        -- In a corridor (walls close on both sides, or above and below), follow the corridor:
+        -- the wanted direction is pulled toward the deepest free direction ahead, so a bend is
+        -- taken while it is still far ahead (19 Oct 2026, Mission 06's tunnel: steering only
+        -- when the straight-ahead way was blocked, the plane met the bend near the far end too
+        -- late and hit the wall). A fan of level rays 30 degrees each side; the deepest wins.
+        local wallsNow = nil
+        if opts.centre ~= false then
+            wallsNow = V.walls(p, vu)
+            local sideWalls = wallsNow.left < 120 and wallsNow.right < 120
+            local roofFloor = wallsNow.up < 120 and wallsNow.down < 120
+            if sideWalls or roofFloor then
+                local fv, rv, uv = frame(vu)
+                local bestY, bestD = 0, -1
+                local depth = {}
+                for k = -10, 10 do depth[k] = free(p, dirAt(fv, rv, uv, k * 3, 0), range) end
+                for k = -9, 9 do
+                    local dk = (depth[k - 1] + depth[k] * 2 + depth[k + 1]) / 4
+                    if dk > bestD + 1 or (math.abs(dk - bestD) <= 1 and math.abs(k) < math.abs(bestY)) then bestY, bestD = k, dk end
+                end
+                local corridor = dirAt(fv, rv, uv, bestY * 3, 0)
+                aim = unit(add(mul(aim, 0.3), mul(corridor, 0.7)))
+                V.corridorYaw = bestY * 3
+            else
+                V.corridorYaw = nil
+            end
+        end
         local centre = unit(add(mul(vu, 0.6), mul(aim, 0.4)))
         local f, r, u = frame(centre)
         local needed = speed * (opts.need or 3.0)
@@ -158,7 +184,7 @@ return function(env)
         -- toward the middle, harder the closer they are
         local walls = nil
         if opts.centre ~= false then
-            walls = V.walls(p, vu)
+            walls = wallsNow or V.walls(p, vu)
             local _, rr, uu = frame(vu)
             local shift = { 0, 0, 0 }
             if walls.left < 120 and walls.right < 120 then

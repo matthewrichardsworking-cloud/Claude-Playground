@@ -1577,9 +1577,9 @@ end
 -- (19 Oct 2026, Mission 06: aiming the plane at one ground target at a time, with a loop out
 -- and back after each, made 24 kills in 15 minutes; a player makes three or four times that).
 -- The plane flies at the points-weighted middle of the targets within 2 km of the chosen one,
--- level at 550 m above the ground until 2.5 km out, then a shallow dive no lower than 300 m;
+-- level at 450 m above the ground until 2.5 km out, then a shallow dive no lower than 300 m;
 -- whatever comes into the cone ahead is chosen and shot (nearestEnemy prefers targets ahead);
--- past the middle it flies on 1.5 km and turns back. Only with three or more targets there.
+-- past the middle it flies on 1.1 km and turns back. Only with three or more targets there.
 local function sweepRun(c, loc, F, alt)
     local cx, cy, cz = c.sweepX, c.sweepY, c.sweepZ
     local hd = math.sqrt((cx - loc.X) ^ 2 + (cy - loc.Y) ^ 2)
@@ -1594,17 +1594,17 @@ local function sweepRun(c, loc, F, alt)
     if c.sweepRun == "in" and (hd < 6000 or (off > 100 and hd < 20000 and t - (c.sweepT or -100) > 8)) then
         c.sweepRun, c.sweepT = "out", t
         event("sweep", { phase = "past the middle", dist_m = hd / 10, targets = c.sweepN })
-    elseif c.sweepRun == "out" and hd > 15000 and t - (c.sweepT or -100) > 3 then
+    elseif c.sweepRun == "out" and hd > 11000 and t - (c.sweepT or -100) > 3 then
         c.sweepRun, c.sweepT = "in", t
         c.sweepFix = nil                     -- a new middle for the next pass
         event("sweep", { phase = "turning back in", dist_m = hd / 10, targets = c.sweepN })
     end
     if c.sweepRun == "out" then
-        return unit({ Fh[1], Fh[2], clamp((5500 - above * 10) / 15000, -0.2, 0.3) }), "out", hd
+        return unit({ Fh[1], Fh[2], clamp((4500 - above * 10) / 15000, -0.25, 0.3) }), "out", hd
     end
     local z
     if hd > 25000 then
-        z = clamp((5500 - above * 10) / 15000, -0.3, 0.4)
+        z = clamp((4500 - above * 10) / 15000, -0.35, 0.4)
     else
         z = math.max((cz - loc.Z) / math.max(hd, 1), -0.35)
         if above < 300 then z = math.max(z, 0.05) end
@@ -1662,7 +1662,9 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
     -- passes and its lock never built.)
     if ap.scoreMode and c.sweepFix and c.sweepRun == "in" and scorePts and t - (c.sweepPickAt or -100) > 0.3 then
         c.sweepPickAt = t
-        local best, bestOff = nil, 25
+        -- (within 40 degrees since 19 Oct 12:45: with 25, a quarter of a run's run-ins were spent
+        -- on a target picked by points that sat more than 45 degrees off the nose)
+        local best, bestOff = nil, 40
         -- (out to 95% of the standard missile's lock range as the game reports it: parts can
         -- lengthen it, 19 Oct 2026)
         local lr = (Aware and Aware.weapons and Aware.weapons.main and Aware.weapons.main.LockonRange) or 20000
@@ -1834,6 +1836,8 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         -- score phases: a break costs the attack and the clock; with health to spare, only
         -- for a missile predicted to pass within 200 m (19 Oct 2026, Mission 06: ten breaks in
         -- five minutes for missiles predicted to miss by 290-350 m)
+        -- (120 m was tried on 19 Oct 12:18 with the Onboard Self-Defense Jammer part fitted:
+        -- shot down 8 minutes in, the last hit from a missile it did not break for; back to 200)
         if ap.scoreMode and (call(p, "GetHealth") or 0) > 60 then breakMiss = 2000 end
         if threat.tgo < 4.0 and (not threat.miss or threat.miss < breakMiss) then
             local los = V.unit(V.sub(threat.p, { loc.X, loc.Y, loc.Z }))
@@ -2130,8 +2134,12 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
                 local onTarget = false
                 if phase == "in" and dm > 900 and offT < 45 then
                     local thd = math.sqrt((tl.X - loc.X) ^ 2 + (tl.Y - loc.Y) ^ 2)
-                    local tz = math.max((tl.Z - loc.Z) / math.max(thd, 1), -0.35)
-                    if (ap.agl or alt) < 300 then tz = math.max(tz, 0.05) end
+                    -- down to about 30 degrees while there is height to spare: from 600-1,100 m up the
+                    -- old 19 degree limit kept a tank 1.6 km out below the 32.5 degree lock cone for a
+                    -- minute and a half of passes (19 Oct 2026, 08:48)
+                    local above = ap.agl or alt
+                    local tz = math.max((tl.Z - loc.Z) / math.max(thd, 1), above > 450 and -0.6 or -0.35)
+                    if above < 300 then tz = math.max(tz, 0.05) end
                     aim = unit({ (tl.X - loc.X) / math.max(thd, 1), (tl.Y - loc.Y) / math.max(thd, 1), tz })
                     onTarget = true
                 end
@@ -2363,7 +2371,13 @@ local function apStep(p, dt)
             aim = unit({ h[1], h[2], 0.3 })
             local away = math.sqrt((loc.X - g.passedAt[1]) ^ 2 + (loc.Y - g.passedAt[2]) ^ 2 + (loc.Z - g.passedAt[3]) ^ 2)
             g.passedT = g.passedT or now()
-            if away > 15000 or now() - g.passedT > 15 then g.done = true end
+            -- handed back only once clear of it: nothing close above or beside, and some height
+            -- (19 Oct 2026, Mission 06's tunnel: a fixed 15 s handed over in the cutting beyond the
+            -- exit, 20 m up with a hill ahead, and the fight mode scraped the ground for 24 damage)
+            local W = Vision and Vision.last and Vision.last.walls
+            local enclosed = W and (W.up < 120 or W.left < 60 or W.right < 60)
+            local high = (ap.agl or alt) > 50
+            if (away > 15000 and not enclosed and high) or now() - g.passedT > 40 then g.done = true end
         end
     end
     if (ap.goal.kind == "route" and ap.goal.route.done) or (ap.goal.kind == "point" and ap.goal.done) then
@@ -2490,7 +2504,12 @@ local function apStep(p, dt)
         -- deck the plane is about to pass under for the ground.
         recovering = (agl ~= nil and agl < floor * 0.6) or (agl ~= nil and agl + ap.vz * 1.5 < floor * 0.4)
     else
-        recovering = height < floor or alt + ap.vz * 4 < floor * 0.7 or (ahead ~= nil and ahead < (ap.ceiling and 60 or 150))
+        -- the clearance wanted over the ground ahead: 150 m in a fight; on a "fly to" or a
+        -- heading order the order's own floor decides (19 Oct 2026: with a fixed 150 m the
+        -- plane could not come down to 115 m for the tunnel, it stayed 280-450 m too high)
+        local aheadMin = ap.ceiling and 60 or 150
+        if ap.goal.kind == "point" or ap.goal.kind == "heading" then aheadMin = math.max(floor * 1.2, 40) end
+        recovering = height < floor or alt + ap.vz * 4 < floor * 0.7 or (ahead ~= nil and ahead < aheadMin)
         -- a dive needs room to pull out of: the arc of a 5 g pull from this dive angle at this
         -- speed, plus a second to react, plus the floor (the measured climb rate lags a dive
         -- that is getting steeper)

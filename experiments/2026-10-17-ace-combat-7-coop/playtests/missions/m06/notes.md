@@ -129,3 +129,63 @@ Sight (MSL), Multiple Enemy Detection Device (MSL), Infrared Seeker Cooling Syst
 Enemy Detection Device (Sp. W), Onboard Self-Defense Jammer, Auto-Strafing Machine Gun Device,
 Machine Gun Radar Lock System. (The best run had Directional Proximity Fuze (MSL) and
 Thrust-Adjusting Steering Device (MSL) in place of the two gun parts.)
+
+## More cycles (19 Oct 12:10 onward, the owner: "keep going for a few more cycles")
+
+Where the best run's 15 minutes went (one combat line a second, 890 lines): 45% with the target
+within 3 km but more than 45 degrees off the nose (turning back after sweep passes, pursuing
+planes, and sweep run-ins whose chosen target sat to the side), 15% target ahead but not yet
+locked, 11% locked, 10% breaking away from missiles, 18% flying between areas. One tank was
+chosen pass after pass for 90 s: from 600-1,100 m up the sweep's 19 degree dive limit never
+brought it inside the missile's 32.5 degree lock cone. Changes: sweeps at 450 m, dives to about
+30 degrees on the chosen target when there is height, the pass pick out to 40 degrees, the
+outbound leg 1.1 km. A break only for missiles within 120 m (with the Jammer part) was tried and
+reverted: shot down 8 minutes in, the last hit from a missile it had not broken for.
+
+| Run | Points | Notes |
+|---|---|---|
+| 12:18 attempt 1 | 7,690 at 8 min, shot down | 120 m breaks (reverted). |
+| 12:39 attempt 3 | about 12,200 | Lower sweeps, wider pick, shorter loop; within the usual range. |
+
+Tunnel tries 4 and 5 (three lead points, the last 3 km out at 115 m): the plane still arrived
+too high. Cause found in the flying, not the vision: on a "fly to" order the ground check
+climbed whenever the lowest ground ahead was within 150 m (a fixed fight margin), so it could
+not get below about 150-200 m over the flat approach; and the lead points carried a 60 m floor.
+Now the travel orders use their own floor for that check, the last lead point is 2 km out at
+108 m with a 15 m floor, and a lead point counts only within 35 m of its height. Try 5 passed
+100 m from the aim point, 40 m above the roof line near the mouth, and climbed away unharmed.
+The tunnel sits inside area C's anti-aircraft cover (one trigger is even named
+"Tonnel_SAM_AtkArea"): every approach takes fire.
+
+### Tunnel try 7 (19 Oct 13:34): through the tunnel
+
+The approach as a route along the tunnel's line (`m06-tunnel-approach.csv`: from 10 km out at
+200 m down to 1.2 km out at 104 m, slowing to 450 km/h; the route follower holds line and
+height, which "fly to" lead points could not), then "fly to (P) through vision on" when the route
+ended. (Order words are split on spaces, so the route file is read from the copy's pilot folder,
+`C:\AC7-Coop-Game\UserProfile\pilot\missions\`.) The bot left the route at 104 m, entered the
+bore at 490 km/h (the game's own "in tunnel" flag came on), **passed 2.5 m from the aim point,
+and flew the bore on live rays alone: 38-49 m to the side walls, 17-23 m to roof and floor** (the
+wanted 17-degree climb blocked by the roof, so it held level), and came out the far end. Then a
+24-point scrape: the stunt handed back to the fight mode 15 s after the aim point, while the plane
+was still 20 m up in the cutting beyond the exit with the hill ahead. Fixed: the hand-over now
+waits until nothing is close above or beside and the plane is over 50 m up (40 s at most).
+
+### Tunnel tries 8-10 (19 Oct 13:41-14:02): the full tunnel on live vision
+
+- Try 8: called off on the approach route, missiles and anti-aircraft fire from full health to 5.
+- Try 9: in at 0.9 m from the aim point, then into the wall at the bend before the far exit: the
+  right wall closed from 47 m to 9 m and the vision only turned away once the straight-ahead way
+  was blocked. Fix (vision.lua): **corridor following**. When walls are close on both sides (or
+  above and below), a fan of level rays 30 degrees each side finds the deepest free direction,
+  and the wanted direction is pulled 70% toward it, so a bend is taken while it is still far
+  ahead. In the simulator a slow, laggy plane (10 deg/s, 0.7 s lag) now keeps at least 36 m from
+  the walls. Loaded with the new `module vision` order (no full script reload).
+- Try 10 (after 4 minutes of normal fighting, so the lead-in leg did not cross the start area's
+  fighters): **in at 106 m and 490 km/h, 1.6 m from the aim point, 10.5 s through the whole bore,
+  out at 113 m, climbed away, handed back to the fight once clear.** One 24-point scrape at the
+  last bend just before the far exit (9 m from the right wall, 8 m from the roof). The 51 health
+  lost on the run was anti-aircraft fire.
+
+Remaining for a perfect run: a little more lead into that last bend (a stronger or earlier
+corridor pull, or a lower speed inside the bore).

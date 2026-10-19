@@ -2,6 +2,14 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19 (afternoon): Ace Combat 7 co-op, vision test 2 passed (Mission 06 tunnel)
+
+- At the owner's request, a few more cycles. Mission 06's score race unchanged (best ~14,000 of
+  24,000; this round ~12,200). The tunnel test passes: approach flown as a route, the bore on live
+  rays with new corridor following (deepest free direction ahead between walls), hand-over only
+  once clear; try 10 went through the whole 1.3 km bore 1.6 m from the aim point and out, with one
+  small scrape at the last bend. Copy closed, vanilla, real saves unchanged.
+
 ## 2026-10-19 (morning): Ace Combat 7 co-op, Ace campaign stopped at Mission 06 Long Day
 
 - Mission 06's phase 1 is a score race (24,000 points in 15 minutes, read from the HUD; the

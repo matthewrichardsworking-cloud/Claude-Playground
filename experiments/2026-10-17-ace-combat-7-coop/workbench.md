@@ -1458,6 +1458,26 @@ while braking, and 380 m out swerved from a way it judged blocked into the hills
 mouth. The simulator gets through from a steady approach at tunnel height; the real approach
 needs a third lead point at tunnel height about 2.5 km out, flown slowly. Not done yet.
 
+**Vision test 2, later the same day (13:34): through the tunnel.** Three more tries showed the
+problem was the approach, not the vision: "fly to" lead points reach their height only at the
+point itself, and the ground check on such orders kept a fixed 150 m margin over the ground ahead
+(now the order's own floor decides). With the approach flown as a route along the tunnel's line
+(down to 104 m and 450 km/h, 1.2 km out), **the bot flew into the bore, passed 2.5 m from the aim
+point and through the whole tunnel on its rays, 38-49 m from the walls and 17-23 m from roof and
+floor, and out the far end.** One flaw: it handed back to the fight mode 15 s after the aim point,
+still low in the cutting beyond the exit, and scraped the ground for 24 damage; it now hands back
+only once clear.
+
+Two more changes made it repeatable. The next try hit the wall at the bend just before the far
+exit, because the vision only turned when the straight-ahead way was blocked; now, between walls,
+it follows the corridor (a fan of level rays finds the deepest free direction ahead, and the
+wanted direction is pulled toward it), so bends are taken early. And the lead-in waits until the
+bot has fought off the start area's fighters. **Try 10 (14:02): in 1.6 m from the aim point, 10.5 s
+through the whole bore, out at 113 m and away**, with one 24-point scrape at that last bend (9 m
+from the wall). Your Mission 06 tunnel test is passed, with that one scrape to iron out.
+Mission 06 itself: about 12,200 at best in this round (the score race is unchanged at about
+12,000-14,000).
+
 **Where the campaign stands (19 Oct 10:20, session stopped):** Missions 01-05 completed on Ace;
 Mission 06 not (best 14,000 of the 24,000 points phase 1 needs, after about 6 hours and 25
 attempts). The copy is closed, back in Vanilla mode with its Default profile (Double Trigger
