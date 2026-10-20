@@ -675,6 +675,11 @@ return function(env)
         return nil
     end
 
+    -- the ground's height at (x, y), traced down from zTop (game units; nil: sea or nothing)
+    function A.groundAt(plane, x, y, zTop)
+        return groundZ(plane, x, y, zTop, zTop - 60000)
+    end
+
     A.ground = { below = nil, ahead = nil, aheadT = nil, at = -100 }
     function A.updateGround(plane, myP, myV)
         local t = now()

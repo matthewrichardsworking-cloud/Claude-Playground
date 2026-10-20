@@ -453,6 +453,107 @@ The 8.5-minute gun tests (19:46, 19:58) are in `campaign-lanes-test.md`.
 | 05:41 | + a drone is not an engagement (taken in passing; moves still weighed), group air rate at each plane's own kill time, missile economy only past 1.3 times what is left | 22,000 | A for 3 min (all bombers and F-16s), B 3.5-8.4 min at about 1,500 a minute, C from 9 min; 110 kills, every standard missile at a target that died, **3 standard missiles left: ammunition now runs out with the time** |
 | 05:57 (attempt 2) | same | 20,120 | an F-16 dogfight at 0.75 min came before the long LAAM shot at the first bomber (attempt 1 got it at 0.67), so area A took 4 minutes; 600 points in minutes 8-10 (the move to C); **11 LAAMs unused**, no drone shot at; 82 damage taken |
 | 06:16 | + special weapon "use it or lose it": when more is left than the fight's rate would use in the time left (by 30%, and 2 more), air shots in passing take any aircraft up to 50 degrees off | 18,780 | the rule switched on at 7.96 min and LAAMs went at drones (3 of 4 fired), 5 left at the end; but a hard opening (2,000 points at 2 min, four starts of the move to area B pulled back by the bombers and F-16s) and heavy fire (66 break turns, 52 defensive attacks, 58 damage) |
+| 06:32 (attempt 2) | same | 18,910 | 9,940 at 5 min and 15,960 at 10, then 400 points in minutes 12-14: two drones sat 200-700 m behind the plane and fired every few seconds; with a missile always inbound the "turn into a pursuer" rule never ran, the plane broke for each missile and its lanes stalled. The surplus rule was on, but drones behind and inside 1.2 km get no LAAM: 23 LAAMs came home |
+| 06:52 | + an aircraft sitting on the plane (two missiles or more in 15 s from within 1.5 km, drone or fighter) is a furball target at any angle | 17,140 | **taken out again**: all six commitments to drones on the plane were dropped after 8 s without a shot (about 50 s lost); also a tour that left area B at 5.6 min for C and came back 26 km at 9.5 min (25% of the phase in transit) |
+| 07:11 | the 06:16 build again, left to retry by itself | 18,980 | minute 2-3 paid nothing (F-16 dogfights, the third bomber hunted until 3.3 min) |
+
+- **The morning's openings were slower.** Points at 3 minutes: about 6,100 on average in the
+  01:54-03:52 attempts, about 4,900 in the morning's seven; the third bomber fell at 2.0-2.7
+  minutes before and 2.1-3.3 (2.8 on average) after. That gap explains most of the lower finals
+  (about 19,300 against 20,700). The likely cause is the health factor as first written, a plain
+  health ratio: a hurt F-16 that one missile kills either way was rated twice as quick and could
+  draw the plane off the bombers. It now counts hits of the strongest air weapon instead (a
+  bomber with half its health left counts as half the work, a hurt F-16 as the same). The
+  special weapon surplus is judged only from 5 minutes of fight on (it had switched on in the
+  opening).
+
+| Campaign attempt | Build (what was new) | Score at 15:00 | Notes |
+|---|---|---|---|
+| 07:30 | health factor in hits, surplus from 5 min | 17,930 | 5,890 at 3 min (the opening back to the earlier pace), then 13,050 at 10 |
+| 07:48 | + **vertical attacks** (the owner, watching) | stopped at 1.5 min | 48 dives begun, 45 cancelled in the same moment: the plans are also made while the lanes are off (to weigh them against the air target), and each such dive was begun and ended at once; fixed (a dive begins only when the lanes fly its plan) |
+| 07:54 | + dives begun only in the lanes, braking to 450 km/h going down | **crashed at 9.7 min** (16,480 at 9.6 min) | 10,120 at 5 min; 23 launches in 78 s of dives (18 a minute, about 10 a minute otherwise), the lowest pull-outs 246-484 m; then a dive from 725 m entered inverted to 81 degrees: the pull-out aimed level ahead, so a 140-degree roll came first, the speed rose to 750 km/h, and the plane hit a hillside rising 280 m above the pull-out's line |
+| 08:10 | + pull-outs the shorter way (pulling on through when the canopy faces that way, as a split-S ends; also ground recoveries from a dive over 30 degrees in score phases), the ground along the pull-out's way traced, the higher ground counted, floor 150 m, margin 25% | 20,650 | no crash; 40 vertical attacks (6 up and over), 223 s of the phase, 53 launches in them (14 a minute, 9 for the attempt); lowest pull-outs 157 m and up (one reading of 32 m was a ridge after a finished pull-out, the ground recovery took it); **the standard missiles ran out at 13.6 min** and 11 LAAMs came home: now the missiles, not the time, set the score |
+| 08:29 | + missile economy from 1.1 times what is left again (it prefers the 150-200 point targets once the missiles are short), and with LAAMs to spare the air targets count half again against the lanes | stopped at 1 min | used for exploring the return line (below) |
+| 08:41 | + **resupply at the return line**; the copy's graphics lowered (the owner's request: less GPU strain) | 20,640 | 10,060 at 5 min, 16,490 at 10 (second best at 10); no resupply, rightly by the rule (42 missiles at 10 min, 18 left at the end); then area C at about 500 a minute in minutes 11-14: Gripen chases with the lanes off, drones on the tail, **the LAAMs gone at 13.5 min** |
+| 08:59 | + the resupply also for the special weapon (when it would run out more than the detour before the end, under half left, and aircraft worth 1,500 points or more flying) | **crashed at 6.6 min** (10,000 at 5 min) | a shallow "vertical attack" from 260 m above hilly ground on a target 1.6 km off and 9 degrees below: the vertical mode rolled the plane over and, without the straight-line ground check, flew it into a hill |
+| 09:11 | + vertical attacks straight down only with 450 m of air under the plane and on targets 20 degrees or more below (up and over from any height, for targets behind); the straight-line ground check kept in the vertical mode while the nose is less than 30 degrees down | **24,480: MISSION 06 ACCOMPLISHED, rank A** | the first attempt of this build; 9,600 at 5 min, 16,630 at 10, then 1,500 a minute to the end (health 80 to 40 in minute 11); 110 kills, all 112 standard missiles used (the last at 14.9 min), 46 vertical attacks (9 up and over); no resupply needed (the rule rightly stayed off); results: 3 Tu-160, 6 F-16C, 4 AH-64D, 3 AV-8B, 1 CH-47, 2 MiG-21, 2 F-4E, 4 Gripen E, 4 MQ-99 and 84 ground targets |
+
+## Mission 06 cleared (20 Oct 2026, 09:26)
+
+Phase 1's score race (24,000 points in 15 minutes, Ace) was won with 24,480, rank A, on the first
+attempt of the build with the owner's vertical attacks and the general limits around them; the
+campaign order went on to Mission 07 by itself. What it took, in order of what it added:
+
+1. Missiles that hit (19-20 Oct night): no unguided launches, a line-of-sight check, the missile
+   tracker, discipline: from about 13,000 to about 21,000-22,000.
+2. The leaving rule, kills counted after a checkpoint, threat-first air shots: best 23,200.
+3. This morning: a hurt aircraft rated by the hits it still needs (the opening's bombers always
+   fall), the missile economy loosened (the missiles now last exactly the phase), drones not an
+   engagement.
+4. **The owner's vertical attacks** (watching: "if a ground target is directly or almost directly
+   beneath them ... come directly down on the target"): about 14-18 launches a minute while
+   diving against 9 otherwise; two crashes on the way taught the pull-out the shorter way, the
+   ground along it, and that "straight down" needs height and a target really below.
+5. The return line, found because the owner asked about it: built and tested by hand (the phase
+   clock stops for the landing, the menu and the take-off), ready for missions where the missiles
+   run short; the clearing attempt did not need it.
+
+### The return line (20 Oct, 08:30; the owner: "were you aware of the return line ... that can refill ammo and flares?")
+
+Not known before: the gimmick scan listed `SystemObject_ReturnLine_C_0` (at 36.3, 6.0 km, 1,858 m;
+about 9 km from the start, 26 km from area A, 22 km from B, 46 km from C) but nothing used it.
+Explored by hand in the copy: flown over at 1,860 m (the mission's radio first: "Maintain course to
+return and resupply"), the game took the controls ("Make your landing check", PRESS Esc TO SKIP);
+Esc skipped the landing; the supply menu (SELECT SP WEAPON: LAAM, 8AGM, HCAA, the one flown
+selected) took Enter; TAKE OFF: YES / NO (NO selected) took Up and Enter; the take-off (PRESS Esc
+TO SKIP) took Esc. Back in the air over the line with 112 missiles, 30 LAAMs, 4 flares (111, 28 and
+1 before). **The phase clock stood still from the landing to the take-off** (758.9 s left all
+through), so a resupply costs only the flight.
+
+Built (general: any mission's switched-on return line):
+- `gimmicks.lua` `G.returnLine()`: the switched-on SystemObjectLine that is not a pull-out line.
+- `main.lua` (lanePlan): go when, at this fight's own launch rate, the standard missiles would run
+  out more than the detour's time before the phase ends, or health is under 40%; with two minutes
+  left after the detour and the missiles under 70% of the full load. The detour: to the line and
+  on to where the plane goes next, less the straight way. Then full throttle to the line at its
+  height (the combat-zone guard at 1 km instead of 4 for it); the landing is seen from the plane's
+  own control flag (events `resupply`, `resupply_landing`, `resupply_done`); the economies start
+  afresh with the new load.
+- `tools\playtest.py` `resupply_keys`: the keys above on the pilot's landing event, then a check
+  that the controls came back (a stray pause menu closed, Esc again if still landing).
+
+### Vertical attacks (20 Oct, 07:35 onward; the owner watching)
+
+The owner: "the bot spends a lot of time with its nose pointed at empty sky ... if a ground target
+is directly or almost directly beneath them, [a player will] just do a vertical loop, pitching up
+to do a full loop or inverting and then pitching towards the ground to come directly down on the
+target, firing, then pulling away", and "let it be more aggressive and risky with turning, too,
+maybe ease up on some of the limits if it would help target acquisition".
+
+Why the bot never did it: the lane planner only knew flat turns (and "run out, then turn back",
+about 20-25 s for a target close behind); the controller replaced any aim behind the plane by a
+level 90-degree turn; below 1,500 m it refused to pull with its lift below the horizon (no split-S,
+after a crash in Mission 04); and the ground check drew straight lines 1-4 s ahead, which always
+end in the ground in a dive.
+
+What was built (general: the plane's measured turn rate, the weapon's real cone, range and lock
+time, the target positions):
+
+- **The planner** (`lanes.lua`, `L.simulateDive`): for the three targets close by (within 2.6 km)
+  and outside the cone with the most value for the distance, two more manoeuvres: the nose
+  straight onto the target (the lift rolled toward it and pulled, which is a split-S for one
+  beneath), and up and over first (a loop) for one behind; the shots on the way are counted as
+  for every other manoeuvre, then the pull-out to level. A pull-out starts with the height it
+  needs (`L.pullNeed`: the arc at 60% of the measured turn rate, a reaction and a half roll at
+  the dive angle, and 120 m) and 15% more to spare; a manoeuvre whose pull-out would come below
+  60 m over the ground is not flown.
+- **The pilot** (`main.lua`): a planned vertical attack is flown to its end (up and over, nose on
+  the target until its missile is away or the height left is the pull-out's, then pull out level
+  the shorter way); no aim flattening, the roll-and-pull mode at any height, the high-G turn, the
+  slow-speed limit at 380 km/h instead of 450 during it. The ground check during it is the same
+  pull-out arc instead of the straight lines (the floor stays).
+- Events `dive` (target, over, height above it, distance, speed, the shots planned) and
+  `dive_end` (why, fired, the lowest height, how long).
 
 ### 20 Oct, 05:00-06:30: the morning's changes, and what the numbers say
 
@@ -469,6 +570,11 @@ The 8.5-minute gun tests (19:46, 19:58) are in `campaign-lanes-test.md`.
   (with it, one attempt fought the swarm for 4.5 minutes at about 700 points a minute while a
   3,050-point ground group waited 7 km away).
 - **Special weapon surplus**: LAAMs left over widen the air shots (above).
+- **Tried and taken out**: an aircraft sitting on the plane (two missiles in 15 s from within
+  1.5 km) as a furball target at any angle. Drones close behind cannot be turned on and shot
+  within 8 s: six commitments, no shot. Drones on the tail remain an open problem (two of them
+  stalled one attempt's last minutes), as does the tour going back to an area it left (26 km,
+  one attempt, 9.5 min).
 - **The ceiling**: 112 standard missiles at about 95% kills on ground targets of about 140 points,
   and 30 LAAMs at about 70% on aircraft of about 450, make roughly 25,500 points with nothing
   wasted. 24,000 needs nearly every missile at a target worth its points, inside the 15 minutes.

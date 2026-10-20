@@ -369,6 +369,27 @@ return function(env)
         return nil
     end
 
+    -- The mission's return line, if one is switched on (a SystemObjectLine that is not a
+    -- pull-out line): flying over it lands the plane for a resupply (20 Oct 2026, Mission 06:
+    -- the landing, a supply menu and the take-off; ammunition, special weapon and flares full).
+    -- Light enough for every few seconds: only that one class. Returns { x, y, z, name } or nil.
+    function G.returnLine()
+        for _, o in ipairs(FindAllOf("SystemObjectLine") or {}) do
+            local ok, res = pcall(function()
+                if not o:IsValid() then return nil end
+                if o:GetFullName():find("Default__", 1, true) then return nil end
+                local lt = num(o, "LineType")
+                if lt == 1 then return nil end
+                if prop(o, "bIsActivated") == false then return nil end
+                local p = vec(call(o, "K2_GetActorLocation"))
+                if not p then return nil end
+                return { x = p[1], y = p[2], z = p[3], name = objName(o) }
+            end)
+            if ok and res then return res end
+        end
+        return nil
+    end
+
     -- The areas (spheres) of a kind that contain q, e.g. G.areasAt("SystemObjectRadarArea", q)
     function G.areasAt(cls, q)
         local out = {}

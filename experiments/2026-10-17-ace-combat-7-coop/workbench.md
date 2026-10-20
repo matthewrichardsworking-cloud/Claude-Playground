@@ -1660,7 +1660,26 @@ leap of the day.
 - LAAMs left over late in the phase are now spent on any aircraft in reach (one attempt ended with
   11 unused).
 
-**Where it stands** (20 Oct, 06:30): not cleared yet; best 23,200 of 24,000; this morning's attempts
+**Mission 06 cleared** (20 Oct, 09:26): 24,480 of 24,000, rank A, on the first attempt of the build
+that had your two suggestions from the morning, then on to Mission 07 by itself.
+
+- **Vertical attacks** (yours: a target "directly or almost directly beneath", a loop or a
+  split-S onto it). The bot's planner only knew flat turns, and its controller flattened any aim
+  behind the plane; it now also tries diving straight onto close targets below and pulling up and
+  over onto ones behind, counting the shots each would give, and flies the best. While diving it
+  launched 14-18 missiles a minute against about 9 otherwise. Two crashes on the way taught it the
+  pull-out the shorter way (keep pulling through, as a split-S ends), to trace the ground along the
+  pull-out, and that straight down needs 450 m of air and a target really below.
+- **The return line** (you asked whether it knew): it did not. Explored by hand in the copy: Esc
+  skips the landing, Enter keeps the special weapon, YES takes off, Esc skips the take-off, and the
+  phase clock stands still the whole time, so a resupply costs only the flight. The bot now goes when
+  its own firing rate says the missiles (or the LAAMs, with aircraft still flying) will run out
+  well before the end, or when badly hurt. The clearing attempt used exactly its 112 missiles and
+  did not need it; later missions may.
+- The copy's graphics are turned down (your request): quality settings low, 60 fps cap, same
+  resolution; only the copy's own settings file, re-applied at every restart.
+
+**Where it stood before that** (20 Oct, 06:30): not cleared yet; best 23,200 of 24,000; this morning's attempts
 19,620-22,000. Now that the missiles and the minutes run out together, about 25,500 points is
 the most this loadout could make with nothing wasted, so 24,000 needs a nearly perfect phase. One
 attempt swings by about 2,000 with the order the fights come in. The campaign order is retrying

@@ -42,6 +42,19 @@ return function(env)
         rangeMargin = 0.97,      -- share of the weapon's lock range
         climbRate = 0.3,         -- the steepest climb or descent toward the pass height (sin of the angle; main.lua's dive, far above)
         omegaShare = 0.85,       -- share of the measured turn rate the plans count on
+        -- vertical attacks (L.simulateDive): targets close by and off the nose, below or behind
+        dive = {
+            maxD = 2600,         -- m: candidates within this distance (3D)
+            maxN = 3,            -- candidates tried (most value for the distance)
+            floor = 150,         -- m: the lowest the pull-out may come over the ground (120 until a crash, 20 Oct 2026)
+            react = 0.8,         -- s: reaction before the pull-out bites
+            rollOut = 1.0,       -- s: a half roll upright first (a dive entered inverted)
+            pullShare = 0.6,     -- share of the measured turn rate counted on for the pull-out
+            margin = 1.25,       -- the pull-out starts with this much of the height it needs to spare (1.15 until the crash)
+            rollIn = 0.5,        -- s: rolling the lift onto the target before the pull bites
+            minAgl = 450,        -- m: no vertical attack with less air under the plane
+            minBelow = 20,       -- deg: the target at least this far below the horizon (or behind)
+        },
     }
     -- (tools\lane-sim.py, 19 Oct 2026, 48 layouts of six kinds with the plane's turn rate, the
     -- weapon's cone, range, reload and lock time varied: the lanes cleared 92% of the targets in
@@ -182,6 +195,165 @@ return function(env)
         return value + P.terminal * term * exp(-P.horizon / P.discount), shots, first, x, y, psi, raw
     end
 
+    -- Vertical attacks (the owner, 20 Oct 2026, watching: "if a ground target is directly or
+    -- almost directly beneath them, [a player will] just do a vertical loop, pitching up to do a
+    -- full loop or inverting and then pitching towards the ground to come directly down on the
+    -- target, firing, then pulling away"; the flat turns above need 20-25 s to bring such a
+    -- target back in front). The plane is a velocity direction turned at the measured rate
+    -- toward where it wants to point, in any plane, after a moment to roll the lift that way.
+
+    -- The height a pull-out from a dive needs (game units): the arc at a share of the measured
+    -- turn rate, a reaction time at this speed, and a floor. 'sinDive' is the sine of the dive
+    -- angle (+ = nose down); 'omegaPull' rad/s. Also main.lua's ground check in score phases.
+    function L.pullNeed(v, sinDive, omegaPull, P)
+        P = P or L.P
+        local D = P.dive
+        if sinDive <= 0 then return D.floor * 10 end
+        local cosDive = sqrt(math.max(0, 1 - sinDive * sinDive))
+        -- (the reaction and the roll go by at the dive angle)
+        return v / math.max(omegaPull, 0.05) * (1 - cosDive) + v * (D.react + D.rollOut) * sinDive + D.floor * 10
+    end
+
+    -- turn the unit vector f toward the unit vector u by at most 'step' rad, in their plane
+    local function rotateToward(fx, fy, fz, ux, uy, uz, step)
+        local c = clamp(fx * ux + fy * uy + fz * uz, -1, 1)
+        local ang = acos(c)
+        if ang <= step then return ux, uy, uz end
+        -- the part of u square to f (for u opposite f, any square direction: the vertical one)
+        local wx, wy, wz = ux - c * fx, uy - c * fy, uz - c * fz
+        local wl = sqrt(wx * wx + wy * wy + wz * wz)
+        if wl < 1e-6 then wx, wy, wz, wl = -fz * fx, -fz * fy, 1 - fz * fz, sqrt(math.max(1 - fz * fz, 1e-9)) end
+        wx, wy, wz = wx / wl, wy / wl, wz / wl
+        local cs, sn = cos(step), sin(step)
+        return fx * cs + wx * sn, fy * cs + wy * sn, fz * cs + wz * sn
+    end
+    L.rotateToward = rotateToward
+
+    -- One look-ahead of a vertical attack on target leg.dive: (with leg.over) up and over
+    -- first, then the nose onto the target and the shots that come into the cone on the way
+    -- (the target itself, and any others, as in L.simulate), then the pull-out to level flight
+    -- once the target has its missile or the height left is what the pull-out needs, then
+    -- level. pl as for L.simulate, plus fz (sine of the climb angle now), omegaPull (rad/s)
+    -- and groundZ (the ground under the plane, units). A pull-out that would come lower than
+    -- half the floor over the ground makes the leg worthless (-1).
+    function L.simulateDive(pl, wp, tg, leg, P)
+        P = P or L.P
+        local D = P.dive
+        local q0 = tg[leg.dive]
+        -- (the higher of the ground under the plane and the target's: area C's hills, 20 Oct 2026)
+        local gz = math.max(q0[3], pl.groundZ or q0[3])
+        local x, y, z, v = pl.x, pl.y, pl.z, pl.v
+        local s0 = clamp(pl.fz or 0, -0.99, 0.99)
+        local c0 = sqrt(1 - s0 * s0)
+        local fx, fy, fz = cos(pl.psi) * c0, sin(pl.psi) * c0, s0
+        local omega, omegaPull = pl.omega, pl.omegaPull or pl.omega * 0.7
+        local loaded = wp.loaded
+        local reload = {}
+        for i, r in ipairs(wp.reloadIn or {}) do reload[i] = r end
+        local done = {}
+        local function isDone(i) return done[i] end
+        local sel, selNeed, selT = wp.sel, wp.selLeft or 0, 0
+        local cosCone = cos(wp.cone - rad(P.coneMargin))
+        local rMax = wp.range * P.rangeMargin
+        local rMin = wp.minRange or P.minRange * 10
+        local value, shots, first, raw = 0, 0, nil, 0
+        local phase = leg.over and 0 or 1
+        local rollUntil = P.rollIn + D.rollIn
+        local minH = math.huge
+        local t, dt = 0, P.dt
+        while t < P.horizon - 1e-6 do
+            t = t + dt
+            -- where the nose wants to go
+            local ux, uy, uz
+            local dx, dy, dz = q0[1] - x, q0[2] - y, q0[3] + 30 - z
+            local dl = sqrt(dx * dx + dy * dy + dz * dz)
+            if phase == 0 then
+                -- up and over: past the vertical, tilted toward the target
+                local hl = math.max(sqrt(dx * dx + dy * dy), 1)
+                ux, uy, uz = dx / hl * 0.4, dy / hl * 0.4, 1
+                local ul = sqrt(ux * ux + uy * uy + uz * uz)
+                ux, uy, uz = ux / ul, uy / ul, uz / ul
+                if fz > 0.9 or (fx * dx + fy * dy + fz * dz) > -0.2 * dl then phase = 1 end
+            end
+            if phase == 1 then
+                ux, uy, uz = dx / dl, dy / dl, dz / dl
+                -- the pull-out begins with the height it needs (and a margin) still left
+                local need = L.pullNeed(v, -fz, omegaPull, P) * D.margin
+                if done[leg.dive] or (fz < 0 and z - gz <= need) then
+                    phase = 2
+                    -- (the reaction and a half roll before the pull bites, as pullNeed counts them)
+                    if fz < 0 then rollUntil = t + D.react + D.rollOut end
+                end
+            end
+            if phase == 2 then
+                -- level again by the shorter pull: the horizontal direction in the plane of the
+                -- nose and the way it is turning
+                local hx, hy = fx, fy
+                local hl = sqrt(hx * hx + hy * hy)
+                if hl < 0.05 then hx, hy, hl = cos(pl.psi), sin(pl.psi), 1 end
+                ux, uy, uz = hx / hl, hy / hl, 0.05
+                if fz > -0.05 then phase = 3 end
+            end
+            if phase == 3 then
+                local hl = math.max(sqrt(fx * fx + fy * fy), 1e-6)
+                local vz = clamp((pl.zPass - z) / 3, -v * P.climbRate, v * P.climbRate) / v
+                ux, uy, uz = fx / hl * sqrt(1 - vz * vz), fy / hl * sqrt(1 - vz * vz), vz
+            end
+            if t > rollUntil then
+                local w = (phase == 2) and omegaPull or omega
+                fx, fy, fz = rotateToward(fx, fy, fz, ux, uy, uz, w * dt)
+                local l = sqrt(fx * fx + fy * fy + fz * fz)
+                fx, fy, fz = fx / l, fy / l, fz / l
+            end
+            x, y, z = x + fx * v * dt, y + fy * v * dt, z + fz * v * dt
+            minH = math.min(minH, z - gz)
+            if z - gz < D.floor * 5 then return -1, 0, nil, x, y, math.atan(fy, fx), 0 end
+            for i = #reload, 1, -1 do
+                if reload[i] <= t then loaded = loaded + 1; table.remove(reload, i) end
+            end
+            if sel then
+                local q = tg[sel]
+                local ex, ey, ez = q[1] - x, q[2] - y, q[3] - z
+                local d = sqrt(ex * ex + ey * ey + ez * ez)
+                if done[sel] or d > rMax or d < rMin or (ex * fx + ey * fy + ez * fz) < cosCone * d then sel = nil end
+            end
+            if not sel then
+                local ang
+                sel, ang = pick(x, y, z, fx, fy, fz, tg, isDone, cosCone, rMin, rMax)
+                if sel then selNeed = wp.lockBase + ang / wp.lockRate; selT = 0 end
+            end
+            if sel then
+                selT = selT + dt
+                if selT >= selNeed and loaded > 0 then
+                    loaded = loaded - 1
+                    reload[#reload + 1] = t + wp.loadTime
+                    value = value + tg[sel][4] * exp(-t / P.discount)
+                    raw = raw + tg[sel][4]
+                    shots = shots + 1
+                    first = first or t
+                    done[sel] = true
+                    sel = nil
+                end
+            end
+        end
+        local psi = math.atan(fy, fx)
+        local term = 0
+        local reach = wp.range * 3
+        local ch, sh = cos(psi), sin(psi)
+        for i = 1, #tg do
+            if not done[i] then
+                local q = tg[i]
+                local ex, ey = q[1] - x, q[2] - y
+                local d = sqrt(ex * ex + ey * ey)
+                if d < reach and d > 1 then
+                    local c = (ex * ch + ey * sh) / d
+                    if c > 0.5 then term = term + q[4] * (c - 0.5) * 2 * (1 - d / reach) end
+                end
+            end
+        end
+        return value + P.terminal * term * exp(-P.horizon / P.discount), shots, first, x, y, psi, raw, minH
+    end
+
     -- The plan: every manoeuvre in the set, the best one. 'prev' is the plan being flown
     -- ({ psi1, psi2, switchAt } with switchAt on the clock 'now'), kept unless clearly beaten;
     -- 'okEnd(x, y)' says whether a plan's end point is acceptable (inside the combat zone).
@@ -200,6 +372,44 @@ return function(env)
             if okEnd and not okEnd(ex, ey) then v = v * 0.2 end
             if v > bestV then best, bestV, bestShots, bestFirst, bestRaw = leg, v, shots, first, raw end
         end
+        -- vertical attacks on the targets close by and outside the cone now (the most value for
+        -- the distance first): straight onto each, and up and over first
+        if P.dive and pl.omegaPull then
+            local s0 = clamp(pl.fz or 0, -0.99, 0.99)
+            local c0 = sqrt(1 - s0 * s0)
+            local fx, fy, fz = cos(pl.psi) * c0, sin(pl.psi) * c0, s0
+            local cosCone = cos(wp.cone)
+            local cands = {}
+            -- (only with height to spare over the ground, and for targets well below or behind:
+            -- "directly or almost directly beneath", as the owner put it. 20 Oct 2026: a shallow
+            -- "vertical attack" from 260 m above hilly ground on a target 1.6 km off, 9 degrees
+            -- below, rolled the plane over and flew it into a hill)
+            local roomy = not pl.groundZ or (pl.z - pl.groundZ) > P.dive.minAgl * 10
+            for i = 1, #tg do
+                local q = tg[i]
+                local dx, dy, dz = q[1] - pl.x, q[2] - pl.y, q[3] - pl.z
+                local d = sqrt(dx * dx + dy * dy + dz * dz)
+                local below = -dz / math.max(d, 1)                       -- sine of the angle below the horizon
+                local behind = (dx * fx + dy * fy) < 0
+                if q[4] > 0 and d < P.dive.maxD * 10 and d > 1 and (dx * fx + dy * fy + dz * fz) < cosCone * d
+                    and ((roomy and below > sin(rad(P.dive.minBelow))) or behind) then
+                    cands[#cands + 1] = { i = i, s = q[4] / (d + 3000) }
+                end
+            end
+            table.sort(cands, function(a, b) return a.s > b.s end)
+            for n = 1, math.min(P.dive.maxN, #cands) do
+                -- (straight down only with the air for it; up and over climbs first)
+                for _, over in ipairs(roomy and { false, true } or { true }) do
+                    local leg = { dive = cands[n].i, over = over }
+                    local v, shots, first, ex, ey, epsi, raw = L.simulateDive(pl, wp, tg, leg, P)
+                    if okEnd and not okEnd(ex, ey) then v = v * 0.2 end
+                    if v > bestV and shots > 0 then
+                        leg.psi1 = epsi
+                        best, bestV, bestShots, bestFirst, bestRaw = leg, v, shots, first, raw
+                    end
+                end
+            end
+        end
         local kept = false
         if prev and best then
             local leg = { psi1 = prev.psi1 }
@@ -213,7 +423,8 @@ return function(env)
         end
         if not best then return nil end
         return { psi1 = best.psi1, psi2 = best.psi2, switchAt = best.tSwitch and (now + best.tSwitch) or nil,
-                 value = bestV, shots = bestShots, first = bestFirst, raw = bestRaw, kept = kept }
+                 value = bestV, shots = bestShots, first = bestFirst, raw = bestRaw, kept = kept,
+                 dive = best.dive, over = best.over }
     end
 
     -- The heading a plan wants at clock time 'now'

@@ -3,6 +3,26 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (20 Oct 2026, 09:30): Mission 06 cleared; vertical attacks and the return line
+
+- **Vertical attacks** (`lanes.lua` `L.simulateDive`, `L.pullNeed`; `main.lua` `diveAim`,
+  `pullOutAim`): for the three most valuable close targets outside the cone, straight down onto
+  each (with 450 m of air and the target 20 degrees or more below) and up and over first (for one
+  behind), simulated in 3D at the measured turn rate with the shots on the way and the pull-out;
+  flown with the roll-and-pull mode at any height, braking to 450 km/h going down; the pull-out
+  the shorter way (pulling through when the canopy faces that way), with the ground along it
+  traced; the ground check during it the pull-out arc (60% of the measured turn rate, a reaction
+  and a half roll, 150 m floor, 25% margin), the straight lines kept while the nose is less than
+  30 degrees down. Events `dive`, `dive_end`.
+- **Return line** (`gimmicks.lua` `G.returnLine`; `main.lua` lanePlan and apStep;
+  `tools\playtest.py` `resupply_keys`): go when the fight's own rate says the missiles (or the
+  special weapon, with aircraft worth 1,500 points flying) run out more than the detour before
+  the end, or health is under 40%; fly over the line; the runner presses Esc, Enter, Up, Enter,
+  Esc. Events `resupply`, `resupply_landing`, `resupply_done`. The phase clock stops meanwhile.
+- **Missile economy** from 1.1 times what is left again; spare LAAMs make air targets count 1.5
+  times against the lanes.
+- **Result**: Mission 06's phase 1 won with 24,480 (rank A); on to Mission 07.
+
 ## Status (20 Oct 2026, 06:30): missiles and minutes run out together
 
 - **Hurt aircraft**: the air pick's kill time is scaled by the target's health left

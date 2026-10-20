@@ -497,6 +497,36 @@ def current_phase(evs):
 
 # ---- one attempt ---------------------------------------------------------------------
 
+def resupply_keys(folder=None, n=0):
+    """A resupply at a mission's return line (the pilot's "resupply_landing" event; found on
+    20 Oct 2026 in Mission 06): Esc skips the landing, Enter keeps the special weapon the supply
+    menu shows selected, Up and Enter answer TAKE OFF: YES, Esc skips the take-off. The phase
+    clock stands still meanwhile. Then waits for the controls to come back; Esc again if they do
+    not (a landing not skipped yet), and a pause menu opened by a stray Esc is closed."""
+    time.sleep(2.0)
+    keys(["Escape"], wait_ms=4000)
+    keys(["Enter"], wait_ms=2500)
+    keys(["Up"], wait_ms=800)
+    keys(["Enter"], wait_ms=3500)
+    keys(["Escape"], wait_ms=1500)
+    for i in range(25):
+        s = status()
+        if s.get("page") == "CampaignHudPause_C":
+            say("  resupply: a pause menu came up; closing it")
+            keys(["Escape"], wait_ms=1500)
+            continue
+        if (s.get("input_enabled") or {}).get("move"):
+            say("  resupply: back in the air")
+            return True
+        if i in (6, 12, 18):
+            if folder:
+                picture(os.path.join(folder, "pictures", f"attempt{n}-resupply-{i}.png"))
+            keys(["Escape"], wait_ms=1500)
+        time.sleep(1)
+    say("  resupply: the controls did not come back")
+    return False
+
+
 def fly_attempt(n, order_, folder, limit_s, plan=None, entry="start"):
     """Fly until the mission is accomplished, fails, or the time limit passes. With a plan,
     the pilot's orders come from it, starting with block 'entry'."""
@@ -536,12 +566,19 @@ def fly_attempt(n, order_, folder, limit_s, plan=None, entry="start"):
         order(*words)
     result, cause = None, None
     last_report = 0
+    landings = 0
     while True:
         time.sleep(1 if runner else 2)
         evs = events_from(ev_start)
         if runner:
             runner.tick(evs)
         kinds = [e.get("kind") for e in evs]
+        # the pilot flew over a return line: the landing, supply menu and take-off keys
+        if kinds.count("resupply_landing") > landings:
+            landings = kinds.count("resupply_landing")
+            say(f"  attempt {n}: resupply landing; skipping it, keeping the special weapon, taking off")
+            resupply_keys(folder, n)
+            continue
         if "mission_accomplished" in kinds:
             result, cause = "completed", "mission accomplished"
             break

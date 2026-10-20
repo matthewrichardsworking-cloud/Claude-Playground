@@ -9,7 +9,9 @@ general rules for chaining kills, tuned across many varied target layouts rather
                                                  order) as one more test case
 
 The planner here is a line-for-line copy of mods\\CoopPilotMod\\Scripts\\lanes.lua (keep the two
-the same). Around it a simple world: a plane that turns at a measured rate after a roll-in lag
+the same), except the vertical attacks of 20 Oct 2026 (lanes.lua's L.simulateDive and the dive
+legs in L.plan): they need a 3D plane, which this world does not have yet, and were tuned in the
+game itself. Around it a simple world: a plane that turns at a measured rate after a roll-in lag
 (the Typhoon's flight logs: about 35-45 deg/s at 500-700 km/h with a full pull), holds its speed,
 and eases to the pass height; the standard missile's lock cone, lock range, lock time (a base
 time plus the angle the seeker travels), two loaded missiles with a reload clock each, missile

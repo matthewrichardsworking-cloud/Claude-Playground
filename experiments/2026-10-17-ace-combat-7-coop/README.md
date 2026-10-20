@@ -3,6 +3,13 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
+**Status (20 Oct 2026, 09:30): Mission 06 CLEARED (24,480 of 24,000, rank A); the campaign order
+is on Mission 07.** The last steps were the owner's own ideas: vertical attacks on targets beneath
+the plane (a split-S or a loop onto them; about twice the launches a minute while diving), and the
+return line, which the bot now uses to reload when its missiles would run short (the landing, menu
+and take-off stop the phase clock). Details: workbench section 17 and
+`playtests\missions\m06\notes.md`.
+
 **Status (20 Oct 2026, 06:30): Mission 06 still not cleared (best 23,200 of 24,000); the bot now
 runs out of missiles and minutes together.** Four more general changes this morning: an aircraft
 already hit counts as nearly dead (the game's own health reading), so the opening's three bombers

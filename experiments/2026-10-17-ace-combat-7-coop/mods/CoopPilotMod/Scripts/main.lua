@@ -1667,11 +1667,21 @@ local function nearestEnemy(loc, skip, F, current, kmh)
                     -- 06's third area paid about 700 points a minute against 1,000-1,400 for the
                     -- ground there; 20 Oct 2026)
                     local tf = (kk == "agile") and 1 or threatFactor(o, n)
-                    -- (one already hurt takes that much less to finish: the game's health of it
-                    -- over its full health; 20 Oct 2026, a Tu-160 hit by two missiles was left
-                    -- for a ground group 18 km away, rated as if untouched, 1,200 points lost)
+                    -- (one already hurt takes that much less to finish, counted in hits of the
+                    -- strongest weapon for the air: the hits its health now needs over the hits
+                    -- its full health needs, from the game's health readings; 20 Oct 2026, a Tu-160
+                    -- hit by two missiles was left for a ground group 18 km away, rated as if
+                    -- untouched, 1,200 points lost. As a plain health ratio, a hurt F-16 that one
+                    -- missile kills either way was rated twice as quick; with it the third bomber
+                    -- fell about half a minute later on average that morning, a likely cause)
                     local hp, hpMax = call(o, "GetHealth"), call(o, "GetMaxHealth")
-                    local hf = (type(hp) == "number" and type(hpMax) == "number" and hpMax > 0) and clamp(hp / hpMax, 0.25, 1) or 1
+                    local Wa = Aware and Aware.weapons
+                    local dmgA = math.max((Wa and Wa.main and Wa.main.Damage) or 40,
+                        (Wa and Wa.special and Wa.special.targets ~= "ground only" and Wa.special.Damage) or 0)
+                    local hf = 1
+                    if type(hp) == "number" and type(hpMax) == "number" and hp > 0 and hpMax > 0 and dmgA > 0 then
+                        hf = math.ceil(hp / dmgA) / math.ceil(hpMax / dmgA)
+                    end
                     local pr = (objInfo(o).bounty or 0) * tf / (tt + (killTimes[kk] or 20) * hf)
                     if pr > airPickRate then airPick, airPickRate = o, pr end
                 end
@@ -2032,10 +2042,11 @@ local function lanePlan(c, loc, F, t)
             local n = 0
             for _, lt in ipairs(c.launchTimes or {}) do if lt >= c.econSince then n = n + 1 end end
             need = n / span * T
-            -- (and only when the forecast is 30% over what is left: the first areas are the
+            -- (and only when the forecast is 10% over what is left: the first areas are the
             -- richest, and at minute 5 the whole-fight rate forecast 81 more launches where 52
-            -- came, the next attempt of 20 Oct 2026 again ending with 21 missiles)
-            if need > left * 1.3 then
+            -- came, an attempt of 20 Oct 2026 again ending with 21 missiles; 30% was used until
+            -- the vertical attacks, which shoot faster: then the missiles ran out at 13.6 min)
+            if need > left * 1.1 then
                 keep = clamp(left / need, 0.25, 1)
                 local vals = {}
                 for _, q in ipairs(tg) do vals[#vals + 1] = q[4] end
@@ -2050,7 +2061,9 @@ local function lanePlan(c, loc, F, t)
         local leftS = c.ammo and c.ammo.s
         c.spStart = c.spStart or leftS
         local surplus = false
-        if leftS and leftS > 0 and c.spStart and T and T > 20 and T < 7200 and span >= 90 then
+        -- (judged from 5 minutes of fight on: with 90 s it switched on in the opening's bomber
+        -- and F-16 fight, 20 Oct 2026, where the rate of the first minutes says little)
+        if leftS and leftS > 0 and c.spStart and T and T > 20 and T < 7200 and span >= 300 then
             surplus = leftS > (c.spStart - leftS) / span * T * 1.3 + 2
         end
         if surplus ~= (c.spSurplus or false) then
@@ -2084,9 +2097,18 @@ local function lanePlan(c, loc, F, t)
             wp.selLeft = c.laneLocked and 0 or math.max(0, wp.lockBase + (c.pickAng0 or 0) / wp.lockRate - (t - (c.pickAt or t)))
         end
     end
+    -- (and for the vertical attacks: the climb angle now, the turn rate counted on for a
+    -- pull-out, and the ground under the plane)
     local pl = { x = loc.X, y = loc.Y, z = loc.Z, psi = psi, v = v, omega = planeTurn.est * (Lanes.P.omegaShare or 0.85), zPass = zPass,
-                 roll = c.rollNow or 0 }
-    local plan = #tg > 0 and Lanes.plan(pl, wp, tg, c.lanePlan, t, function(x, y) return zoneMargin(x, y) > 30000 end) or nil
+                 roll = c.rollNow or 0, fz = F[3], omegaPull = planeTurn.est * Lanes.P.dive.pullShare,
+                 groundZ = ap.agl and (loc.Z - ap.agl * 10) or nil }
+    local plan
+    if c.dive then
+        -- a vertical attack is flown to its end (laneAim) without a new plan
+        plan = c.lanePlan
+    else
+        plan = #tg > 0 and Lanes.plan(pl, wp, tg, c.lanePlan, t, function(x, y) return zoneMargin(x, y) > 30000 end) or nil
+    end
     c.laneTg, c.laneWp, c.laneZPass, c.laneZNow = tg, wp, zPass, loc.Z
     -- lanes, or a plane in the air worth clearly more points per second? (the plan's shots,
     -- undiscounted, over its look-ahead: the same units as the air target's points per second;
@@ -2117,6 +2139,10 @@ local function lanePlan(c, loc, F, t)
             if n > 1 then airRate = math.max(airRate, sum / (tt + kts)) end
         end
     end
+    -- (with a special weapon that would otherwise come home unused, c.spSurplus, the air targets
+    -- it takes count half again against the lanes: 20 Oct 2026, 11 LAAMs were left at the end of
+    -- an attempt whose standard missiles ran out at 13.6 minutes)
+    if c.spSurplus and airRate > 0 then airRate = airRate * 1.5 end
     -- Committed to an air target being engaged: locked in the last 3 s, or within reach of the
     -- weapons and within 60 degrees of the nose (19 Oct 2026, the first lanes run: the lanes took
     -- over while the LAAM had a Tu-160 locked 8 km out, worth 1,200 points)
@@ -2169,7 +2195,7 @@ local function lanePlan(c, loc, F, t)
         for i = #Aware.missileLog, 1, -1 do
             local m = Aware.missileLog[i]
             if t - (m.born or 0) > 15 then break end
-            if m.ownerName then shot[m.ownerName] = true end
+            if m.ownerName then shot[m.ownerName] = (shot[m.ownerName] or 0) + 1 end
         end
     end
     local fb, fbD = nil, math.huge
@@ -2177,6 +2203,11 @@ local function lanePlan(c, loc, F, t)
         -- (not the drones: they fire too, and in one attempt 20 commitments to a swarm of them
         -- held the plane four minutes short of the area it was moving to, 20 Oct 2026; the air
         -- shots in passing and the lanes still take them)
+        -- (tried and taken out, 20 Oct 2026: one sitting on the plane, two missiles or more in 15 s
+        -- from within 1.5 km, as a furball target at any angle. Two drones 200-700 m behind had
+        -- fired every few seconds, a missile always inbound, and the plane scored 400 points in two
+        -- minutes of breaks; but in the next attempt all six such commitments to drones were
+        -- dropped after 8 s without a shot, about 50 s lost)
         local kF = tr.kind == "plane" and tr.p and alive(tr.obj) and gameKind(tr.obj)
         if kF and kF ~= "large" and kF ~= "agile" then
             local d = math.sqrt((tr.p[1] - loc.X) ^ 2 + (tr.p[2] - loc.Y) ^ 2 + (tr.p[3] - loc.Z) ^ 2)
@@ -2362,6 +2393,68 @@ local function lanePlan(c, loc, F, t)
         local tt = c.transitTo
         if (tt.x - loc.X) ^ 2 + (tt.y - loc.Y) ^ 2 > 60000 ^ 2 then bg, go = tt, true end
     end
+    -- The return line (the owner, 20 Oct 2026: "were you aware of the return line ... that can
+    -- refill ammo and flares?"). Flying over a mission's return line lands the plane; a supply
+    -- menu refills the missiles, the special weapon and the flares (and lets the special weapon
+    -- be changed), then it takes off again from the line. The landing, the menu and the take-off
+    -- stop the phase clock (Mission 06: 758.9 s left before and after), so a resupply costs only
+    -- the flight. Going when, at this fight's own launch rate, the standard missiles would run
+    -- out more than that detour's time before the phase ends (or health is under 40%), with two
+    -- minutes left after the detour, and the missiles under 70% of the full load. The detour:
+    -- here to the line and on to where the plane goes next, less the straight way there.
+    if t - (c.lineAt or -100) > 10 then
+        c.lineAt = t
+        c.line = (Gim and Gim.returnLine) and Gim.returnLine() or nil
+    end
+    if c.line and not c.resupply and not engaged and c.ammo and type(c.ammo.m) == "number" and c.ammo.m >= 0 and c.econSince
+        and t - (c.resupplyAt or -100) > 60 then
+        local ms = mission()
+        local T = ms and call(ms, "GetMissionPhaseTimeLeftInSeconds_S")
+        local span = t - c.econSince
+        if T and T > 0 and T < 7200 and span > 60 then
+            local n = 0
+            for _, lt in ipairs(c.launchTimes or {}) do if lt >= c.econSince then n = n + 1 end end
+            local rate = n / span
+            local Ln = c.line
+            local vT = 5000          -- units/s: the transits' speed, about 1,800 km/h
+            local dl = math.sqrt((Ln.x - loc.X) ^ 2 + (Ln.y - loc.Y) ^ 2)
+            local nx = c.transitTo or c.farGroup or c.bestGroup
+            local X
+            if nx then
+                X = (dl + math.sqrt((nx.x - Ln.x) ^ 2 + (nx.y - Ln.y) ^ 2) - math.sqrt((nx.x - loc.X) ^ 2 + (nx.y - loc.Y) ^ 2)) / vT + 20
+            else
+                X = 2 * dl / vT + 20
+            end
+            local runOut = c.ammo.m / math.max(rate, 1e-3)
+            local hp = ap.lastHealth or 120
+            local hpMax = call(playerPlane(), "GetMaxHealth") or 120
+            local hurt = hp < 0.4 * hpMax
+            local cap = c.ammoCap or c.ammo.m
+            -- ...and the special weapon the same way, while aircraft worth 1,500 points or more
+            -- are flying (an attempt of 20 Oct 2026 spent its last LAAM at 13.5 minutes, with
+            -- Mission 06's third area's fighters and drones, about 7,500 points, still about)
+            local spOut = false
+            local sL, s0 = c.ammo.s, c.spStart
+            if type(sL) == "number" and sL >= 0 and type(s0) == "number" and s0 > 0 and sL < s0 * 0.5 then
+                local spRate = (s0 - sL) / span
+                local airPts = 0
+                for _, tr in pairs(Aware.tracks) do
+                    if tr.kind == "plane" and alive(tr.obj) then airPts = airPts + (objInfo(tr.obj).bounty or 0) end
+                end
+                spOut = airPts >= 1500 and T - X > sL / math.max(spRate, 1e-3) + 30
+            end
+            if (T - X > runOut + 30 or hurt or spOut) and T > X + 120 and (c.ammo.m < cap * 0.7 or hurt or spOut) then
+                c.resupply = { x = Ln.x, y = Ln.y, z = Ln.z, t0 = t, name = Ln.name }
+                c.resupplyAt = t
+                event("resupply", { line = Ln.name, dist_m = dl / 10, detour_s = X, phase_left_s = T, missiles = c.ammo.m, special = c.ammo.s or -1,
+                                    runs_out_s = runOut, health = hp,
+                                    why = hurt and "health" or ((T - X > runOut + 30) and "missiles" or "special weapon") })
+                log(string.format("  resupply: to the return line %.1f km away (detour %.0f s; %d missiles last %.0f s of the %.0f s left; health %.0f)",
+                    dl / 10000, X, c.ammo.m, runOut, T, hp))
+            end
+        end
+    end
+    if c.resupply then go, on, c.transitTo, c.mvtMove = false, false, nil, nil end
     if go then
         c.moveMem = { x = bg.x, y = bg.y, t = t }
         if not c.transitTo then
@@ -2390,6 +2483,22 @@ local function lanePlan(c, loc, F, t)
     end
     c.laneOn = on
     c.lanePlan = on and plan or nil
+    -- a vertical attack begins when the lanes fly the plan that has one (the plans are also
+    -- made while the lanes are off, to weigh them against the air target)
+    if on and plan and plan.dive and not c.dive and tg[plan.dive] then
+        local q = tg[plan.dive]
+        c.dive = { name = q.name, obj = q.obj, over = plan.over, phase = plan.over and 0 or 1, t0 = t,
+                   untilT = t + Lanes.P.horizon + 4, minH = math.huge, psi0 = math.atan(F[2], F[1]) }
+        event("dive", { target = q.name, over = plan.over or false, above_m = (loc.Z - q[3]) / 10,
+                        dist_m = math.sqrt((q[1] - loc.X) ^ 2 + (q[2] - loc.Y) ^ 2) / 10,
+                        agl_m = ap.agl or -1, shots = plan.shots, first_s = plan.first or -1 })
+    end
+    -- (a vertical attack ends with the lanes: an air target or a move took over)
+    if not on and c.dive then
+        event("dive_end", { target = c.dive.name, why = "lanes off", fired = c.dive.fired or false, after_s = t - c.dive.t0,
+                            lowest_m = c.dive.minH < 1e9 and c.dive.minH or -1, over = c.dive.over or false })
+        c.dive, ap.vertical = nil, false
+    end
     c.laneRate = rate
     -- how far the nearest lane target is (m): the lanes fly at full throttle until it is within
     -- 5 km (the owner, 19 Oct 2026: "more willing to accelerate towards a large chunk of high
@@ -2414,7 +2523,10 @@ local function laneText(c, t, F)
     if not pl then return "no plan" end
     local d = math.deg(Lanes.wrapPi(Lanes.heading(pl, t) - math.atan(F[2], F[1])))
     local how
-    if pl.switchAt and t < pl.switchAt then
+    if c.dive then
+        how = string.format("vertical attack on %s (%s)", tostring(c.dive.name),
+            ({ [0] = "up and over", [1] = "nose on it", [2] = "pulling out" })[c.dive.phase] or "?")
+    elseif pl.switchAt and t < pl.switchAt then
         how = string.format("run out %.1f s more, then turn back %s", pl.switchAt - t, math.deg(Lanes.wrapPi(pl.psi2 - pl.psi1)) > 0 and "right" or "left")
     elseif math.abs(d) < 5 then
         how = "straight on"
@@ -2424,7 +2536,101 @@ local function laneText(c, t, F)
     return string.format("plan: %s, %d shots worth %.0f in %.0f s%s; %+.0f m from the pass height", how, pl.shots or 0, pl.value or 0, Lanes.P.horizon,
         pl.kept and " (kept)" or "", c.laneZNow and c.laneZPass and (c.laneZNow - c.laneZPass) / 10 or 0)
 end
+-- Out of a dive the shorter way: the level direction the plane reaches by pulling alone (toward
+-- its canopy) when that is within 110 degrees of pull, otherwise level along the way it is
+-- going (a roll first). F, U: the nose and the canopy. (20 Oct 2026: the first vertical attacks'
+-- pull-out always aimed level ahead; from a dive entered inverted, 81 degrees nose down with the
+-- canopy facing back, that meant a 140-degree roll before the pull, and the plane went into a
+-- hillside in area C. A player pulls on through, the end of a split-S.)
+local function pullOutAim(F, U)
+    if F[3] >= -0.05 then return unit({ F[1], F[2], 0.05 }) end
+    local a = math.atan(-F[3], U[3])
+    if a <= math.rad(110) then
+        local ca, sa = math.cos(a), math.sin(a)
+        local dx, dy = F[1] * ca + U[1] * sa, F[2] * ca + U[2] * sa
+        if dx * dx + dy * dy > 0.01 then return unit({ dx, dy, 0.05 }) end
+    end
+    return unit({ F[1], F[2], 0.05 })
+end
+-- a vertical attack ends: back to the plans
+local function diveEnd(c, t, why)
+    local dv = c.dive
+    if not dv then return end
+    event("dive_end", { target = dv.name, why = why, fired = dv.fired or false, after_s = t - dv.t0, lowest_m = dv.minH < 1e9 and dv.minH or -1,
+                        over = dv.over or false })
+    c.dive, c.lanePlan, ap.vertical = nil, nil, false
+end
+-- The vertical attack being flown (Lanes.simulateDive's phases, live): up and over first if
+-- planned, then the nose on the target until its missile is away or the height left is what
+-- the pull-out needs, then the pull-out to level flight, the shorter way round.
+local function diveAim(c, loc, t, alt)
+    local dv = c.dive
+    local V = ap.myV or { 0, 0, 0 }
+    local vl = math.sqrt(V[1] ^ 2 + V[2] ^ 2 + V[3] ^ 2)
+    if vl < 100 then diveEnd(c, t, "no speed") return nil end
+    local f = { V[1] / vl, V[2] / vl, V[3] / vl }
+    local height = math.min(ap.agl or alt, alt)
+    local live = dv.obj and alive(dv.obj)
+    local tl = live and locOf(dv.obj)
+    -- (and over the target: the lower of the two heights counts)
+    if tl then height = math.min(height, (loc.Z - tl.Z) / 10) end
+    -- ...and over the ground the pull-out will cross: traced along its way out, as far as the
+    -- arc reaches and 300 m on, five times a second (20 Oct 2026: the first crash, into a hill
+    -- rising 280 m above the line of the pull-out in area C)
+    if ap.F and ap.U and Aware and Aware.groundAt and (ap.F[3] < -0.2) then
+        if t - (dv.groundAt or -100) > 0.2 then
+            dv.groundAt = t
+            local d = pullOutAim(ap.F, ap.U)
+            local hl = math.sqrt(d[1] ^ 2 + d[2] ^ 2)
+            local reach = vl / math.max(planeTurn.est * Lanes.P.dive.pullShare, 0.05) * math.max(-ap.F[3], 0.3) + 3000
+            local top = nil
+            for _, s in ipairs({ 0.33, 0.66, 1.0 }) do
+                local gz = Aware.groundAt(playerPlane(), loc.X + d[1] / hl * reach * s, loc.Y + d[2] / hl * reach * s, loc.Z + 5000)
+                if gz and (not top or gz > top) then top = gz end
+            end
+            dv.aheadTop = top
+        end
+        if dv.aheadTop then height = math.min(height, (loc.Z - dv.aheadTop) / 10) end
+    end
+    dv.minH = math.min(dv.minH, height)
+    if dv.phase < 2 then
+        local fired = firedAt[dv.name] and firedAt[dv.name] > dv.t0
+        if fired then dv.fired = true end
+        if not tl or fired or (Aware and Aware.inFlight(dv.name) > 0) or t > dv.untilT then dv.phase = 2 end
+    end
+    if dv.phase == 0 then
+        local dx, dy, dz = tl.X - loc.X, tl.Y - loc.Y, tl.Z + 30 - loc.Z
+        local dl = math.sqrt(dx * dx + dy * dy + dz * dz)
+        local hl = math.max(math.sqrt(dx * dx + dy * dy), 1)
+        if f[3] > 0.9 or (f[1] * dx + f[2] * dy + f[3] * dz) > -0.2 * dl then
+            dv.phase = 1
+        else
+            return unit({ dx / hl * 0.4, dy / hl * 0.4, 1 })
+        end
+    end
+    if dv.phase == 1 then
+        local need = Lanes.pullNeed(vl, -f[3], planeTurn.est * Lanes.P.dive.pullShare) / 10 * Lanes.P.dive.margin
+        if f[3] < 0 and height <= need then
+            dv.phase = 2
+        else
+            return unit({ tl.X - loc.X, tl.Y - loc.Y, tl.Z + 30 - loc.Z })
+        end
+    end
+    -- the pull-out: level, the shorter way
+    if f[3] > -0.05 then diveEnd(c, t, dv.fired and "shot" or "pulled out") return nil end
+    return pullOutAim(ap.F or f, ap.U or { 0, 0, 1 })
+end
 local function laneAim(c, loc, t, alt)
+    if c.dive then
+        local a = diveAim(c, loc, t, alt)
+        if a then ap.vertical = true; return a end
+    end
+    ap.vertical = false
+    if not c.lanePlan then
+        -- (a dive just ended: level along the way the plane is going until the next plan)
+        local V = ap.myV or { 1, 0, 0 }
+        return unit({ V[1], V[2], 0 })
+    end
     local h = Lanes.heading(c.lanePlan, t)
     local above = ap.agl or alt
     -- (down by the height still to lose: about 19 degrees from 1 km above the pass height,
@@ -2947,6 +3153,19 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         aim = c.breakAim
         text = "BREAK (" .. (c.breakWhy or "?") .. ")"
         c.splitClass = "break"
+    elseif c.resupply and not c.resupply.landing then
+        -- to the return line for a resupply (lanePlan): full throttle, at the line's height
+        local L = c.resupply
+        local hd = math.max(math.sqrt((L.x - loc.X) ^ 2 + (L.y - loc.Y) ^ 2), 1)
+        aim = unit({ (L.x - loc.X) / hd, (L.y - loc.Y) / hd, clamp((L.z - loc.Z) / 15000, -0.25, 0.3) })
+        c.speed = 2000
+        text = string.format("to the return line for a resupply, %.1f km away", hd / 10000)
+        c.splitClass = "transit"
+        -- (not landing within 3 minutes: given up)
+        if t - L.t0 > 180 then
+            event("resupply_given_up", { after_s = t - L.t0, dist_m = hd / 10 })
+            c.resupply = nil
+        end
     elseif c.pursuer and not c.laneOn and (not c.lastDist or c.lastDist > 2500) then
         local P = c.pursuer.p
         aim = unit({ P[1] - loc.X, P[2] - loc.Y, P[3] - loc.Z })
@@ -3618,6 +3837,8 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             end
         end
         c.ammo = { m = m, s = sCount }
+        -- the full load (the most seen: a resupply brings it back)
+        if type(m) == "number" and m > (c.ammoCap or 0) then c.ammoCap = m end
     end
     for key, untilT in pairs(c.taps) do
         if t < untilT then keys[#keys + 1] = key else c.taps[key] = nil end
@@ -3661,6 +3882,9 @@ end
 
 local function apStep(p, dt)
     if not ap then return false end
+    -- (a vertical attack is flown only in a frame whose aim comes from it: laneAim sets it;
+    -- likewise a pull-out from a steep dive in a ground recovery)
+    ap.vertical, ap.pullThrough = false, false
     local t = now() - ap.t0
     if ap.duration and t >= ap.duration then
         finalSplit("time")
@@ -3680,6 +3904,7 @@ local function apStep(p, dt)
     local loc = p:K2_GetActorLocation()
     local rot = p:K2_GetActorRotation()
     local F, R, U = axes(rot)
+    ap.F, ap.U = F, U
     -- The game paused (focus lost, a menu) or the mission ended: the plane stops moving.
     -- Not moving at all = paused or in a menu: never press a key then (W and S also move a
     -- menu's cursor; 18 Oct 2026 a held W moved the pause menu to "Flight Option").
@@ -3699,6 +3924,37 @@ local function apStep(p, dt)
         ap.stillFor, ap.frozen = 0, false
     end
     ap.lastLoc = { X = loc.X, Y = loc.Y, Z = loc.Z }
+    -- A resupply's landing and take-off (lanePlan, combatStep): the game takes the controls once
+    -- the plane is over the return line; tools\playtest.py presses the keys that skip the landing,
+    -- keep the special weapon and take off ("resupply_landing"); the pilot lets go of every key
+    -- meanwhile, and when the controls come back the fight goes on with the new load
+    local cR = ap.combat
+    if cR and cR.resupply then
+        local mv = p.bEnableMovmentInput
+        if mv == false then
+            if not cR.resupply.landing then
+                cR.resupply.landing = now()
+                local dl = math.sqrt((cR.resupply.x - loc.X) ^ 2 + (cR.resupply.y - loc.Y) ^ 2) / 10
+                event("resupply_landing", { line = cR.resupply.name, dist_m = dl, after_s = now() - ap.t0 - cR.resupply.t0 })
+                log(string.format("  resupply: the landing has begun (%.0f m from the line)", dl))
+            end
+            CoopKeys_Set("")
+            return true
+        elseif mv == true and cR.resupply.landing then
+            local wa = weapons(p)
+            local m, sCount = call(wa, "GetMainWeaponCount"), call(wa, "GetSpecialWeaponCount")
+            event("resupply_done", { missiles = m or -1, special = sCount or -1, health = call(p, "GetHealth") or -1,
+                                     away_s = now() - cR.resupply.landing })
+            log(string.format("  resupply: back in the air with %s missiles, %s special, health %s", tostring(m), tostring(sCount), tostring(call(p, "GetHealth"))))
+            cR.resupply = nil
+            cR.ammo = { m = m, s = sCount }
+            if type(m) == "number" and m > (cR.ammoCap or 0) then cR.ammoCap = m end
+            -- the economies start afresh with the new load
+            cR.econSince, cR.spStart, cR.lambda = nil, nil, 0
+            cR.lanePlan, cR.laneOn, cR.transitTo, cR.dive = nil, false, nil, nil
+            ap.lastHealth = call(p, "GetHealth") or ap.lastHealth
+        end
+    end
     -- damage taken
     local health = call(p, "GetHealth")
     if health and ap.lastHealth and health < ap.lastHealth then
@@ -3815,9 +4071,11 @@ local function apStep(p, dt)
     else
         ap.wasOutside = false
     end
-    -- ...and the combat zone: within 4 km of its edge, back toward its middle
+    -- ...and the combat zone: within 4 km of its edge, back toward its middle (within 1 km on the
+    -- way to a return line, which lies near the edge: Mission 06's about 3.5 km inside it)
     local zm = zoneMargin(loc.X, loc.Y)
-    if zm < 40000 and not ap.wasOutside then
+    local zoneLim = (ap.combat and ap.combat.resupply) and 10000 or 40000
+    if zm < zoneLim and not ap.wasOutside then
         local z = combatZone(loc.X, loc.Y)
         if not ap.nearZoneEdge then event("zone_edge", { margin_m = zm / 10 }); log(string.format("  fly: %.1f km from the combat zone's edge, turning back in", zm / 10000)) end
         ap.nearZoneEdge = true
@@ -3931,10 +4189,19 @@ local function apStep(p, dt)
         if laneLow then aheadMin = 100 end
         if gunLow then aheadMin = Gun.mod.P.aheadMin end
         recovering = height < floor or alt + ap.vz * 4 < floor * 0.7 or (ahead ~= nil and ahead < aheadMin)
+        -- a vertical attack (lanes.lua) points the nose at the ground on purpose: the straight
+        -- lines 1-4 s ahead always end in it; the pull-out arc the attack was planned with is
+        -- the check instead (the floor stays)
+        -- (only for a real dive, nose 30 degrees down or more: shallower, the straight lines are
+        -- right, and without them a shallow attack flew into a hill, 20 Oct 2026)
+        if ap.vertical and ap.combat and ap.combat.dive and rot.Pitch < -30 then
+            local vms = kmh / 3.6 * 10
+            local sinDive = math.sin(math.rad(math.max(-rot.Pitch, 0)))
+            recovering = height < floor or (rot.Pitch < -5 and height < Lanes.pullNeed(vms, sinDive, planeTurn.est * Lanes.P.dive.pullShare) / 10)
         -- a dive needs room to pull out of: the arc of a 5 g pull from this dive angle at this
         -- speed, plus a second to react, plus the floor (the measured climb rate lags a dive
         -- that is getting steeper)
-        if not recovering and rot.Pitch < -10 then
+        elseif not recovering and rot.Pitch < -10 then
             local v = kmh / 3.6
             local need = v * v / (9.81 * 5) * (1 - math.cos(math.rad(-rot.Pitch))) + v * 1.0 + floor * 0.5
             if height < need then recovering = true end
@@ -3943,6 +4210,13 @@ local function apStep(p, dt)
     ap.agl, ap.ahead = agl, ahead
     if recovering then
         local h = unit({ F[1], F[2], 0 })
+        -- (score phases, from a dive steeper than 30 degrees: out the shorter way, pulling on
+        -- through if the canopy already faces that way; flown with the roll-and-pull mode below)
+        if ap.scoreMode and F[3] < -0.5 then
+            local d = pullOutAim(F, U)
+            h = unit({ d[1], d[2], 0 })
+            ap.pullThrough = true
+        end
         -- under a ceiling, climb only as far as it allows
         local up = 0.6
         if ap.ceiling then up = clamp((ap.ceiling - 50 - alt) / 250, 0.0, 0.6) end
@@ -4006,7 +4280,8 @@ local function apStep(p, dt)
     -- to side without pulling: the plane hung at 90 degrees of bank and climbed instead of
     -- turning (19 Oct 2026, the first lanes run: 100 s of turn-backs that never came round).
     local precise0 = ap.goal.kind == "route" or ap.vision
-    if not precise0 and not recovering then
+    -- (not in a vertical attack: its aim behind and below or above is meant as it is)
+    if not precise0 and not recovering and not ap.vertical then
         local fh = unit({ F[1], F[2], 0 })
         local ah, al = unit({ aim[1], aim[2], 0 })
         if al > 0.05 and fh[1] * ah[1] + fh[2] * ah[2] < 0 then
@@ -4051,8 +4326,14 @@ local function apStep(p, dt)
     -- high up (over 1,500 m) a big change of pitch is a big turn too (rolled and pulled, a split-S
     -- if need be); near the ground the small-corrections mode pitches the nose up or down
     local highUp = math.min(agl or alt, alt) >= 1500
+    -- a vertical attack (lanes.lua, planned with the pull-out's height): rolled and pulled like
+    -- high up, at any height
+    local vertical = (ap.vertical and not recovering) or (recovering and ap.pullThrough)
+    if vertical then highUp = true end
     if precise then
         ap.big = false
+    elseif vertical then
+        ap.big = off > 4
     elseif ap.big then
         if math.abs(dpsi) < bigOff and (not highUp or off < bigOff + 6) then ap.big = false end
     elseif math.abs(dpsi) > bigOn or (highUp and off > 25) then
@@ -4131,11 +4412,15 @@ local function apStep(p, dt)
         yawCmd = pd("side", side, dt, g / 3, g / 20)
         ap.prevErr.bank = nil
     end
-    if recovering and math.abs(rot.Roll) > 90 then pitchCmd = 0 end   -- upside down near the ground: roll first
+    -- upside down near the ground: roll first (not in a steep dive's pull-through: the canopy
+    -- already faces the way out there)
+    if recovering and math.abs(rot.Roll) > 90 and not ap.pullThrough then pitchCmd = 0 end
 
     -- Energy floor (every mode): below 450 km/h a hard pull or the high-G turn stalls the
     -- plane (18 Oct 2026, Mission 14 base attack: down to 146 km/h, then into the ground)
-    local slow = kmh < 450
+    -- (in a vertical attack 380: the top of a loop is slow by nature, and the owner, 20 Oct
+    -- 2026: "let it be more aggressive and risky with turning")
+    local slow = kmh < (vertical and 380 or 450)
     if slow then
         if pitchCmd > 0.5 then pitchCmd = 0.5 end
         if extraKeys then
@@ -4153,12 +4438,16 @@ local function apStep(p, dt)
     -- ...and the high-G turn for any big turn over 25 degrees above 420 km/h, in every fight
     -- (the owner, 19 Oct 2026: "aggressively hunt down that lock at maximum speed and
     -- ferocity"; until then score phases only, over 45 degrees above 450 km/h)
-    if ap.goal.kind == "attack" and ap.big and math.abs(dpsi) > 25 and kmh > 420 and not recovering then
+    if ap.goal.kind == "attack" and ap.big and (math.abs(dpsi) > 25 or (vertical and off > 20)) and kmh > (vertical and 380 or 420) and not recovering then
         local has = false
         for _, k in ipairs(extraKeys or {}) do if k == KEY.high_g then has = true end end
         if not has then extraKeys = extraKeys or {}; extraKeys[#extraKeys + 1] = KEY.high_g end
     end
     local speed = (ap.combat and ap.combat.speed) or ap.goal.speed or 650
+    -- a vertical attack: full power up and over, braking to 450 km/h on the way down so the
+    -- pull-out stays tight (20 Oct 2026: unbraked, the first dives gathered speed, the pull-out
+    -- came at 480-660 m, before the planned shot, two times in three)
+    if vertical and ap.combat and ap.combat.dive then speed = (ap.combat.dive.phase == 0) and 2000 or 450 end
     if ap.goal.kind == "route" and ap.routeKmh then speed = math.min(ap.routeKmh, ap.goal.maxspeed or 9999) end
     -- The beams as moving obstacles, four times a second: for the next 2 km of route, where
     -- every nearby beam will point at the moment the plane reaches each point (each beam's
