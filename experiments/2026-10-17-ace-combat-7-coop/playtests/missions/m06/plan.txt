@@ -2,13 +2,13 @@
 #
 # Phase 1 (15 minutes) is won on points: the HUD shows "SCORE 003480/024000", and when time
 # runs out short of 24,000 the phase fails ("Spare Squadron! You haven't done enough damage to
-# the base!"). The points per kill (GameObject.KillBountyScore, read 19 Oct 05:29): drones 350
-# (23 of them), Tu-160 1,200 (3), the named F-14D 1,300, fighters 220-550, ground targets and
-# ships 120-200. A base-first plan with the 8AGM (05:19) made 3,480 points in 9.5 minutes; the
-# LAAM and the fight against planes had made 7,840 in 13. So: the LAAM, and "score": every
-# enemy weighed by its points against the time to get it.
+# the base!"). Since 19 Oct 2026 (afternoon) the pilot switches its score mode on by itself
+# whenever the HUD shows a score goal (the owner's generality rule: behaviours switch on from
+# what the game shows, not from per-mission plans), and flies the lane planner in it (lanes.lua).
+# So this plan only says "fight"; it stays as the place for genuinely scripted moments.
+# (Until then: "fly attack score".)
 start:
-    pilot fly attack score
+    pilot fly attack
 retry MissionPhase_01 checkpoint
 phase MissionPhase_01:
-    pilot fly attack score
+    pilot fly attack

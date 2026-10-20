@@ -143,3 +143,27 @@ from about 4 a minute to 10+, locked share of time from 11% to 30%+, the off-nos
   `--game "C:\AC7-Coop-Game"`, copy stays Vanilla/Default; IN-USE note while driving; game window
   in front; don't drive while the owner uses the PC; Playground commits as Claude with the
   Co-Authored-By line.
+
+## What came of it (19 Oct 2026, evening session)
+
+Built (details: `notes.md` here, workbench section 16):
+- Fixes 1-3 (fire from the cone, chain targets with `SelectTarget` right after a launch, no
+  orbiting) and punch 1 (the lane planner) as `lanes.lua`; punch 2 (the offline simulator,
+  `tools\lane-sim.py`, six generated layout kinds with varied planes and missiles, plus this
+  mission's dumped layout as one test case); punch 5 (the automatic time breakdown and general
+  numbers in every report, `tools\run-stats.py`; the 8.5-minute test order).
+- Fix 4 (low passes): pass height 250 m; it took two steering fixes before the plane really flew
+  low (hard turns climbed; now slicing turns).
+- Fix 5 (aggressive turning): bank-to-turn with an immediate pull, high-G on every big turn,
+  braking into turns above 850 km/h (the owner, watching: "the tightest possible turn ... at
+  maximum speed and ferocity").
+- Fix 6 (breaks): replaced at the owner's request by a defensive attack (keep attacking, turned
+  across the missile's line); full breaks only in a missile's last 2.5 s if it is still on course,
+  or with health under 40.
+- Generality items: score mode from the HUD; kinds from game data; kill times per kind from game
+  data; the activation log in every report. Not done: the in-bot "find the passage" skill.
+- Punch 4a tried (the 8AGM with the lanes, salvos held for more locks); 4b (the F-15E's TLS) not.
+
+Results: kill rates up (best full phase 6.4 kills a minute against 3.4; the locked share 25-28%
+against 11%), but every full phase so far ended at 10,700-13,400 points or with the plane shot
+down; see the table in `notes.md`.

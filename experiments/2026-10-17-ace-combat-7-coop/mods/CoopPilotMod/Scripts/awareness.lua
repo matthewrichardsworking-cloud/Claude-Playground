@@ -53,6 +53,9 @@ return function(env)
         local v = prop(o, name)
         return type(v) == "number" and v or nil
     end
+    local function shortName(full)
+        return full and (full:match("([^%.:]+)$") or full) or nil
+    end
     local function fullName(o)
         local ok, n = pcall(function() return o:GetFullName() end)
         return ok and n or nil
@@ -101,6 +104,7 @@ return function(env)
     -- are freed about a minute later, and touching one then crashes the game).
     function A.reset()
         for k in pairs(tracks) do tracks[k] = nil end
+        for _, sh in ipairs(A.myShots or {}) do sh.obj = nil end
         A.threats = {}
         for _, tr in ipairs(A.missileLog or {}) do tr.obj = nil end
     end
@@ -298,7 +302,9 @@ return function(env)
                     if prev and prev ~= tr.state then tr.stateChanges = (tr.stateChanges or 0) + 1 end
                     tr.lastState = tr.state
                 end
-                tr.onMe = tr.tracking ~= nil and playerName ~= nil and tr.tracking == playerName
+                -- (the AI's target is read by its short name: until 19 Oct 2026 it was compared
+                -- with the plane's full name, so no enemy was ever seen chasing the plane)
+                tr.onMe = tr.tracking ~= nil and playerName ~= nil and (tr.tracking == playerName or tr.tracking == shortName(playerName))
                 -- Score the predictions: every 0.5 s guess where it will be in 2 s; when the
                 -- 2 s are up, compare with where it is (per method: route, turning, straight).
                 if tr.p and tr.v then
@@ -359,6 +365,29 @@ return function(env)
     local missileScanAt = -100
     A.threats = {}             -- missiles homing on the player, nearest impact first
     A.missileLog = {}          -- every missile seen homing on the player, for the report
+    A.myShots = {}             -- every missile the pilot fired: weapon, launch distance (m), target kind, hit
+    A.kindOf = nil             -- set by main.lua: the kind of a target from the game's data
+
+    -- From which distance a weapon still hits a kind of target, learned from its own shots: the
+    -- nearest 2-km band beyond 2 km with 5 or more shots and fewer than a quarter hitting caps
+    -- the firing range at that band's near edge (m). nil: no cap (not enough misses seen).
+    function A.rangeCap(weapon, kind)
+        local bands = {}
+        for _, sh in ipairs(A.myShots) do
+            if sh.weapon == weapon and sh.kind == kind and sh.dist and sh.dist > 0 then
+                local b = math.floor(sh.dist / 2000)
+                bands[b] = bands[b] or { n = 0, hit = 0 }
+                bands[b].n = bands[b].n + 1
+                if sh.hit then bands[b].hit = bands[b].hit + 1 end
+            end
+        end
+        local cap = nil
+        for b = 1, 10 do
+            local bd = bands[b]
+            if bd and bd.n >= 5 and bd.hit / bd.n < 0.25 then cap = b * 2000; break end
+        end
+        return cap
+    end
 
     function A.updateMissiles(player, playerName, myP, myV)
         local t = now()
@@ -383,12 +412,41 @@ return function(env)
                         tr.info.homing = ht and HOMING[ht] or "?"
                         tr.born = t
                         tr.minDist = math.huge
+                        -- The pilot's own missiles (19 Oct 2026): followed to their end, so hit
+                        -- rates by weapon, launch distance and kind of target are general data,
+                        -- and the pilot can learn from which distance a weapon still hits
+                        if playerName and owner and valid(owner) and fullName(owner) == playerName and tgt and valid(tgt) then
+                            tr.mine = true
+                            tr.tgtObj = tgt
+                            tr.tgtShort = objName(tgt)
+                            local okC, cn = pcall(function() return m:GetClass():GetFName():ToString() end)
+                            tr.weapon = okC and cn or "?"
+                            tr.tgtHp0 = call(tgt, "GetHealth")
+                            tr.tgtKind = A.kindOf and A.kindOf(tgt) or "?"
+                            local okL, tl = pcall(function() return tgt:K2_GetActorLocation() end)
+                            if okL and tl then tr.launchDist = len(sub(v3(tl), myP)) / 10 end
+                        end
                         tracks[n] = tr
                     end
                 end
             end
             for n, tr in pairs(tracks) do
                 if tr.kind == "missile" and not seen[n] then
+                    if tr.mine then
+                        local hit
+                        local tg = tr.tgtObj
+                        if tg and valid(tg) then
+                            local alive = call(tg, "IsAlive")
+                            local hp = call(tg, "GetHealth")
+                            hit = (alive == false) or (hp ~= nil and tr.tgtHp0 ~= nil and hp < tr.tgtHp0)
+                        else
+                            hit = true          -- the target object is gone: destroyed
+                        end
+                        tr.tgtObj = nil
+                        A.myShots[#A.myShots + 1] = { weapon = tr.weapon, dist = tr.launchDist or -1, hit = hit, kind = tr.tgtKind, t = t }
+                        event("my_missile", { weapon = tr.weapon, target = tr.tgtShort, target_kind = tr.tgtKind, dist_m = tr.launchDist or -1,
+                                              flew_s = t - tr.born, hit = hit })
+                    end
                     if tr.atMe then
                         tr.gone = t
                         event("missile_gone", { missile = tr.name, from = tr.ownerName, closest_m = tr.minDist / 10,

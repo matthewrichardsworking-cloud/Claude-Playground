@@ -291,8 +291,9 @@ class Driver:
         names (or the order's), then Sortie."""
         n = mission_number(s) or self.briefed
         cfg = read_mission_cfg(n) if n else {}
-        plane = cfg.get("plane") or self.order.get("plane")
-        weapon = cfg.get("weapon") or self.order.get("weapon")
+        plane = self.order.get("force_plane") or cfg.get("plane") or self.order.get("plane")
+        # (an experiment's order can override the mission's own choice: "force_weapon: 8AGM")
+        weapon = self.order.get("force_weapon") or cfg.get("weapon") or self.order.get("weapon")
         if pt.page() == "CampaignMenuActionSelect_C":
             if pt.press_until("Enter", ("CampaignHangarAircraft_C",), tries=4) != "CampaignHangarAircraft_C":
                 menu_fail("the aircraft page did not open")
@@ -327,6 +328,12 @@ class Driver:
             pt.install_plan_files(plan)
         attempts_max = int(cfg.get("attempts", self.attempts))
         limit_s = float(cfg.get("time_limit_min", self.limit_s / 60)) * 60
+        # a test loop (the score-race plan's "faster test loop", 19 Oct 2026): the order can
+        # force shorter attempts than the mission's own settings, e.g. the first 8.5 minutes
+        if self.order.get("force_attempts"):
+            attempts_max = int(self.order["force_attempts"])
+        if self.order.get("force_time_limit_min"):
+            limit_s = float(self.order["force_time_limit_min"]) * 60
         how = str(cfg.get("retry", "checkpoint"))
         stamp = datetime.datetime.now().strftime("%Y-%m-%d_%H%M")
         folder = os.path.join(ROOT, "playtests", f"{stamp}_m{n:02d}_{self.name}")

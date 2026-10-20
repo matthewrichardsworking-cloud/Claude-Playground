@@ -1,0 +1,11 @@
+# A test loop for Mission 06's score race (19 Oct 2026): the campaign driver, but each run is one
+# attempt of the first 8.5 minutes, so a change to the bot is judged quickly by the general numbers
+# in the report (time split, kills a minute while engaged, points). Then the pause menu's
+# "Restart from checkpoint" and run it again.
+#   python tools\campaign.py run playtests\orders\m06-lanes-test.yaml
+name: lanes-test
+difficulty: ace
+start: continue
+force_attempts: 1
+force_time_limit_min: 8.5
+last_mission: 6

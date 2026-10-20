@@ -1,0 +1,7 @@
+# story mission flown by tools\campaign.py
+mission: 6
+difficulty: ace
+attempts: 1
+time_limit_min: 8
+retry: checkpoint
+plan: playtests\missions\m06\plan.txt

@@ -71,10 +71,11 @@ return function(env)
 
     -- How far a plane-sized tube along direction d (unit) from p is free: four rays parallel
     -- to d, offset to the sides and up and down in d's own frame. The shortest one counts.
-    function V.tube(p, d, range)
+    function V.tube(p, d, range, scale)
         local _, r, u = frame(d)
         local m = range
-        for _, o in ipairs({ mul(r, V.halfWidth), mul(r, -V.halfWidth), mul(u, V.halfHeight), mul(u, -V.halfHeight) }) do
+        local hw, hh = V.halfWidth * (scale or 1), V.halfHeight * (scale or 1)
+        for _, o in ipairs({ mul(r, hw), mul(r, -hw), mul(u, hh), mul(u, -hh) }) do
             local fd = free(add(p, o), d, range)
             if fd < m then m = fd end
         end
@@ -101,6 +102,11 @@ return function(env)
     -- The direction to fly: as close as possible to 'aim' (unit vector) and free for the next
     -- seconds. p: plane position, vel: its velocity (game units/s). opts.horizon (s, default
     -- 4.5), opts.margin (s, how soon trouble must be met to count fully, default 1.2).
+    -- opts.wide: the fight's safety net (19 Oct 2026, Mission 06: blocked 300 m ahead at 650 km/h
+    -- by a bridge, the closest free direction was 3 degrees off the obstacle's edge, free for a
+    -- plane-sized tube, and the plane, still turning onto it, hit the edge): the tube is three
+    -- times as wide and high, and climbing costs less than diving or turning (structures stand
+    -- on the ground; the sky above them is free). Threading a gap keeps the plane-sized tube.
     -- Returns the direction and a short text (nil text: the wanted direction is free).
     function V.choose(p, vel, aim, opts)
         opts = opts or {}
@@ -141,10 +147,12 @@ return function(env)
         local centre = unit(add(mul(vu, 0.6), mul(aim, 0.4)))
         local f, r, u = frame(centre)
         local needed = speed * (opts.need or 3.0)
+        local tubeScale = opts.wide and 3 or 1
         local function costOf(d, fd)
             local off = math.deg(math.acos(clamp(dot(d, aim), -1, 1)))
             local turn = math.deg(math.acos(clamp(dot(d, vu), -1, 1)))
             local cost = off + turn * 0.3
+            if opts.wide then cost = cost - math.deg(math.asin(clamp(d[3], -1, 1))) * 0.5 end
             if fd < needed then
                 -- blocked within the time the plane needs: the sooner, the worse
                 cost = cost + 400 * (1 - fd / needed) + 100
@@ -174,12 +182,12 @@ return function(env)
         for k = 1, math.min(#cands, 12) do
             local cd = cands[k]
             if best and bestCost <= cd.cost then break end
-            local fd = math.min(cd.fd, V.tube(p, cd.d, range))
+            local fd = math.min(cd.fd, V.tube(p, cd.d, range, tubeScale))
             local c = costOf(cd.d, fd) + (cd.cost - costOf(cd.d, cd.fd))
             if cd.i == 0 then wantedFree = fd end
             if c < bestCost then best, bestCost, bestI, bestJ, bestFree = cd.d, c, cd.i, cd.j, fd end
         end
-        if not wantedFree then wantedFree = math.min(aimFd, V.tube(p, aim, range)) end
+        if not wantedFree then wantedFree = math.min(aimFd, V.tube(p, aim, range, tubeScale)) end
         -- corridor centring: walls close on both sides (or above and below) pull the aim
         -- toward the middle, harder the closer they are
         local walls = nil

@@ -1,0 +1,10 @@
+# Mission 06's score race, one whole phase 1 (15 minutes; 16 allowed so the phase ends by itself):
+# the campaign driver with one attempt, for the real total after changes judged with the 8.5-minute
+# test (m06-lanes-test.yaml).
+#   python tools\campaign.py run playtests\orders\m06-lanes-full.yaml
+name: lanes-full
+difficulty: ace
+start: continue
+force_attempts: 1
+force_time_limit_min: 16
+last_mission: 6

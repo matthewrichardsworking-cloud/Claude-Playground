@@ -2,6 +2,25 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-19 (evening): Ace Combat 7 co-op, kill chaining with a lane planner; Mission 06 still open
+
+- Followed the agreed score-race plan, generality first (the bot is a test tool for modded AC7):
+  a lane planner (`lanes.lua`: the flight path chosen for the targets it brings into the lock
+  cone, the target is whatever is in the cone, the next one selected right after each launch),
+  tuned in a new simulator over six generated layout kinds (`tools/lane-sim.py`: 10.1 against
+  6.1 kills a minute for the old attack). Score mode from the HUD's goal, enemy kinds from game
+  data (class tree, large flag, drones by lowest top speed), turn rate, lock time, reload and
+  missile ranges learned in flight.
+- General numbers in every report (`tools/run-stats.py`): time split frame by frame, kill rates,
+  hits by weapon and range, planner audit, steering summary, activation log.
+- Steering faults found that predate the lanes (rolling wing to wing without pulling; turns that
+  climbed); now bank-to-turn with high-G and slicing turns. The owner, watching, asked for more
+  aggression: tightest turns at max speed, a "defensive attack" instead of breaking off, threats
+  first, bombers over AA guns; built and measured (forcing every chasing fighter first failed).
+- Result: best kill rate 6.4 a minute over a phase (3.4 in the morning), but full phases still
+  end at 10,700-13,400 of 24,000 or shot down; the campaign stays at Mission 06. Next steps in
+  workbench section 16. Copy closed, Vanilla, real saves unchanged after every run.
+
 ## 2026-10-19 (afternoon): Ace Combat 7 co-op, vision test 2 passed (Mission 06 tunnel)
 
 - At the owner's request, a few more cycles. Mission 06's score race unchanged (best ~14,000 of

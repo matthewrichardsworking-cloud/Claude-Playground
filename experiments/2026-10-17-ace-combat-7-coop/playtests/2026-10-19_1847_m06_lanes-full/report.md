@@ -1,0 +1,191 @@
+# Playtest: Mission 06
+
+Run 19 Oct 2026, 18:47 by tools\playtest.py; difficulty ace, mode fair.
+
+**Not completed** in 1 attempt(s).
+
+| Attempt | Result | Why it ended | Time | Kills | Missiles fired (special) | Damage taken | Missiles at us (lock broken) | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | stopped | time limit or stopped | 4.9 min | 2 | 14 (4) | 82 | 12 (10) | ? |
+
+## General numbers (tools\run-stats.py)
+
+Attempt 1:
+- Time split over 4.0 min (pilot's frame-by-frame split): locked 13%, ahead 6%, offnose 64%, defend 0%, break 7%, transit 8%, recovery 2%.
+- Kills 2 (0.5 a minute; 0.6 a minute while engaged), missiles 14 (3.5 a minute, 7.0 per kill), special weapon 4.
+- Kills by kind (game data): ground 1, plane 1.
+- Points from kills (the game's bounty per kill): 500.
+- 12 locks (median 2.6 s from selection); 13 break turns, 5 defensive attacks; 82 damage taken.
+- Own missiles that hit (target lost health or died): plwp_laam_e0_C at large from 4-6 km: 0 of 2; plwp_laam_e0_C at large from 8-10 km: 0 of 2; plwp_msl_a0_C at agile from 0-2 km: 0 of 4; plwp_msl_a0_C at ground from 0-2 km: 1 of 1; plwp_msl_a0_C at large from 0-2 km: 2 of 2; plwp_msl_a0_C at plane from 0-2 km: 5 of 7.
+- Score on the HUD: 0:07 000000/024000, 1:07 000400/024000, 2:07 000400/024000, 3:07 000750/024000, 4:07 000750/024000.
+
+## Attempt 1
+
+- 00:02 score mode: goal=24000, hud=000000/024000, on=True, why=the HUD shows a score goal
+- 00:02 kind: class=ms06_WatchTower_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_Warehouse_C_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_Warehouse_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_Warehouse_A_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_Warehouse3_Wide_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_Warehouse3_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_RadarTower_A_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_OilTank_Middle_S_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_OilTank_Middle_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_OilTank_Big_S_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_OilTank_Big_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_GasTank_S_size_smoke_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_GasTank_NoSmoke_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_GasTank_Detonation_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_ControlTower_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_geck_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_ch47_C, native=AIHeli, top_kmh=-1, turn=-1, why=AIHeli
+- 00:02 kind: class=ms06_trkc_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=ms06_Bridge_Destructible_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_t072_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_shil_RayCheck_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_shil_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_rams_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_ah64_C, native=AIHeli, top_kmh=-1, turn=-1, why=AIHeli
+- 00:02 kind: class=common_btr9_C, native=AIGroundVehicle, top_kmh=-1, turn=-1, why=AIGroundVehicle
+- 00:02 kind: class=common_t160_C, native=AIPlane, top_kmh=666.7, turn=91.67, why=large plane flag
+- 00:02 kind: class=common_f16c_C, native=AIPlane, top_kmh=519.4, turn=125, why=AIPlane
+- 00:02 kind: class=common_av8b_C, native=AIPlane, top_kmh=519.4, turn=102.8, why=large plane flag
+- 00:20 weapon switch to plwp_laam_e0_C (beyond standard missile range, target 9499 m)
+- 00:28 ground recovery: above_ground_m=452.5, alt_m=644.7, lowest_ahead_m=-8.407, vz=-70.8
+- 00:35 weapon switch to standard missiles (no longer: beyond standard missile range, target 1799 m)
+- 00:37 ground recovery: above_ground_m=709.4, alt_m=793.9, lowest_ahead_m=359.7, vz=-173.4
+- 00:47 reload learned: class_load_s=5.5, load_s=5.369
+- 00:56 destroyed common_A1_f16c_2  (None missiles, 0 s after picking it)
+- 00:56 lanes: air=common_t160_2, air_rate=29, engaged=False, lane_rate=40.95, on=True, targets=18, value=206.7
+- 01:00 lanes: air=common_t160_2, air_rate=28.29, engaged=True, lane_rate=42.71, on=False, targets=18, value=253.1
+- 01:07 kind: class=common_f16c_C, kills=1, missiles=10, why=learned: many missiles for each kill
+- 01:10 common_A1_f16c_4 is after us, 563 m behind (PursueTarget)
+- 01:10 took 1 damage, health 119
+- 01:13 took 1 damage, health 118
+- 01:18 missile warning: level=near
+- 01:19 missile fired at us by common_A1_f16c_4 from 1067 m (infrared)
+- 01:20 missile warning: level=very near
+- 01:20 flare: dist_m=716.4, missile=wp_msl_C_0, reason=tracker, tgo_s=1.339
+- 01:20 break turn: missile 716 m away, impact in 1.3 s
+- 01:20 that missile lost its lock at 709 m
+- 01:20 common_A1_f16c_4 is after us, 941 m behind (MoveAwayFromTarget)
+- 01:29 missile from common_A1_f16c_4 gone after 11 s, closest 716 m
+- 01:31 common_A1_f16c_4 is after us, 807 m behind (Provoke)
+- 01:32 common_A1_f16c_3 is after us, 955 m behind (Provoke)
+- 01:34 missile fired at us by common_A1_f16c_1 from 2279 m (infrared)
+- 01:34 lanes: air=common_t160_2, air_rate=29.62, engaged=False, lane_rate=63.5, on=True, targets=15, value=346
+- 01:34 missile warning: level=near
+- 01:37 missile warning: level=very near
+- 01:37 flare: dist_m=678.4, missile=wp_msl_C_1, reason=tracker, tgo_s=1.198
+- 01:37 break turn: missile 678 m away, impact in 1.2 s
+- 01:37 that missile lost its lock at 666 m
+- 01:41 common_A1_f16c_1 is after us, 1141 m behind (PursueTarget)
+- 01:41 lanes: air=common_t160_3, air_rate=28.36, engaged=True, lane_rate=47.17, on=False, targets=18, value=418.4
+- 01:42 missile warning: level=near
+- 01:42 missile fired at us by common_A1_f16c_1 from 1089 m (infrared)
+- 01:44 missile warning: level=very near
+- 01:44 flare: dist_m=760.8, missile=wp_msl_C_3, reason=tracker, tgo_s=1.691
+- 01:44 break turn: missile 761 m away, impact in 1.7 s
+- 01:44 that missile lost its lock at 753 m
+- 01:45 missile from common_A1_f16c_1 gone after 11 s, closest 678 m
+- 01:49 common_A1_f16c_4 is after us, 1316 m behind (PursueTarget)
+- 01:51 common_A1_f16c_1 is after us, 607 m behind (PursueTarget)
+- 01:51 common_A1_f16c_4 is after us, 1401 m behind (PursueTarget)
+- 01:53 missile from common_A1_f16c_1 gone after 11 s, closest 760 m
+- 01:58 common_A1_f16c_4 is after us, 1742 m behind (PursueTarget)
+- 02:06 missile fired at us by common_A1_f16c_4 from 2029 m (infrared)
+- 02:07 missile warning: level=near
+- 02:08 flare: dist_m=1623, missile=wp_msl_C_0, reason=tracker, tgo_s=2.205
+- 02:08 break turn: missile 1623 m away, impact in 2.2 s
+- 02:10 break turn: missile 1216 m away, impact in 2.1 s
+- 02:10 flare: dist_m=1126, missile=wp_msl_C_0, reason=tracker, tgo_s=1.666
+- 02:10 missile warning: level=very near
+- 02:11 flare: dist_m=470.5, missile=wp_msl_C_0, reason=tracker, tgo_s=0.4918
+- 02:12 that missile lost its lock at 23 m
+- 02:12 common_A1_f16c_1 is after us, 876 m behind (ReturnToUnit)
+- 02:14 missile warning: level=near
+- 02:14 missile fired at us by common_A1_f16c_1 from 910 m (infrared)
+- 02:14 lanes: air=common_t160_2, air_rate=28.49, engaged=False, lane_rate=37.71, on=True, targets=15, value=113.1
+- 02:15 missile warning: level=very near
+- 02:16 flare: dist_m=629.3, missile=wp_msl_C_1, reason=tracker, tgo_s=1.953
+- 02:16 break turn: missile 629 m away, impact in 2.0 s
+- 02:17 missile from common_A1_f16c_4 gone after 11 s, closest 22 m
+- 02:17 flare: dist_m=242.1, missile=wp_msl_C_1, reason=tracker, tgo_s=0.8433
+- 02:18 took 40 damage, health 78
+- 02:18 missile from common_A1_f16c_1 gone after 4 s, closest 8 m
+- 02:19 lanes: air=common_t160_2, air_rate=26.44, engaged=True, lane_rate=35.91, on=False, targets=15, value=215.8
+- 02:21 missile warning: level=near
+- 02:21 missile fired at us by common_A1_f16c_3 from 1747 m (infrared)
+- 02:22 flare: dist_m=1328, missile=wp_msl_C_3, reason=tracker, tgo_s=2.777
+- 02:22 break turn: missile 1203 m away, impact in 2.4 s
+- 02:23 missile warning: level=very near
+- 02:23 flare: dist_m=709, missile=wp_msl_C_3, reason=tracker, tgo_s=0.947
+- 02:24 that missile lost its lock at 13 m
+- 02:32 missile from common_A1_f16c_3 gone after 11 s, closest 14 m
+- 02:35 lanes: air=common_t160_3, air_rate=26.81, engaged=False, lane_rate=45.78, on=True, targets=15, value=361.8
+- 02:37 lanes: air=common_t160_3, air_rate=28.38, engaged=True, lane_rate=42.42, on=False, targets=15, value=292.9
+- 02:39 common_A1_f16c_4 is after us, 1108 m behind (PursueTarget)
+- 02:41 destroyed ms06_OilTank_Big_122  (None missiles, 0 s after picking it)
+- 02:55 common_A1_f16c_4 is after us, 596 m behind (PursueTarget)
+- 02:56 common_A1_f16c_4 is after us, 598 m behind (PursueTarget)
+- 03:11 common_A1_f16c_4 is after us, 1097 m behind (Provoke)
+- 03:18 common_A1_f16c_4 is after us, 1841 m behind (PursueTarget)
+- 03:20 common_A1_f16c_4 is after us, 1860 m behind (PursueTarget)
+- 03:26 common_A1_f16c_3 is after us, 1315 m behind (PursueTarget)
+- 03:29 missile fired at us by common_A1_f16c_1 from 2503 m (infrared)
+- 03:31 missile warning: level=near
+- 03:32 missile fired at us by common_A1_f16c_1 from 2192 m (infrared)
+- 03:32 flare: dist_m=1517, missile=wp_msl_C_1, reason=tracker, tgo_s=2.118
+- 03:32 break turn: missile 1517 m away, impact in 2.1 s
+- 03:33 break turn: missile 1110 m away, impact in 1.1 s
+- 03:33 missile warning: level=very near
+- 03:33 flare: dist_m=781.2, missile=wp_msl_C_1, reason=tracker, tgo_s=1.041
+- 03:34 that missile lost its lock at 44 m
+- 03:34 missile warning: level=near
+- 03:35 flare: dist_m=1236, missile=wp_msl_C_2, reason=tracker, tgo_s=1.245
+- 03:35 break turn: missile 1236 m away, impact in 1.2 s
+- 03:35 missile warning: level=very near
+- 03:36 flare: dist_m=371.3, missile=wp_msl_C_2, reason=tracker, tgo_s=0.6555
+- 03:37 that missile lost its lock at 34 m
+- 03:38 common_A1_f16c_4 is after us, 895 m behind (PursueTarget)
+- 03:40 missile from common_A1_f16c_1 gone after 11 s, closest 43 m
+- 03:43 missile from common_A1_f16c_1 gone after 11 s, closest 33 m
+- 03:46 common_A1_f16c_1 is after us, 645 m behind (PursueTarget)
+- 03:47 missile warning: level=very near
+- 03:47 flare: reason=warning
+- 03:47 missile fired at us by common_A1_f16c_1 from 602 m (infrared)
+- 03:48 flare: dist_m=453.5, missile=wp_msl_C_3, reason=tracker, tgo_s=1.363
+- 03:49 flare: dist_m=132.7, missile=wp_msl_C_3, reason=tracker, tgo_s=0.4481
+- 03:50 took 40 damage, health 38
+- 03:50 missile from common_A1_f16c_1 gone after 3 s, closest 9 m
+- 03:50 common_A1_f16c_4 is after us, 974 m behind (AttackAvoidance)
+- 03:51 common_A1_f16c_1 is after us, 482 m behind (MoveAwayFromTarget)
+- 03:58 common_A1_f16c_1 is after us, 420 m behind (PursueTarget)
+- 04:11 missile warning: level=near
+- 04:11 missile fired at us by common_A1_f16c_4 from 1757 m (infrared)
+- 04:13 break turn: missile 1137 m away, impact in 1.3 s
+- 04:13 missile warning: level=very near
+- 04:14 flare: dist_m=681, missile=wp_msl_C_0, reason=tracker, tgo_s=1.311
+- 04:15 flare: dist_m=72.68, missile=wp_msl_C_0, reason=tracker, tgo_s=0.1641
+- 04:15 that missile lost its lock at 39 m
+- 04:16 common_A1_f16c_1 is after us, 649 m behind (PursueTarget)
+- 04:22 missile from common_A1_f16c_4 gone after 11 s, closest 37 m
+- 04:22 missile fired at us by common_A1_f16c_3 from 2425 m (infrared)
+- 04:24 missile warning: level=near
+- 04:25 break turn: missile 1672 m away, impact in 2.1 s
+- 04:25 flare: dist_m=1300, missile=wp_msl_C_1, reason=tracker, tgo_s=1.465
+- 04:26 missile warning: level=very near
+- 04:27 flare: dist_m=476.9, missile=wp_msl_C_1, reason=tracker, tgo_s=0.7564
+- 04:27 missile fired at us by common_A1_f16c_3 from 1761 m (infrared)
+- 04:27 that missile lost its lock at 51 m
+- 04:27 missile warning: level=near
+- 04:28 break turn: missile 1482 m away, impact in 2.2 s
+- 04:29 flare: dist_m=951.4, missile=wp_msl_C_2, reason=tracker, tgo_s=1.092
+- 04:29 missile warning: level=very near
+- 04:30 flare: dist_m=295.8, missile=wp_msl_C_2, reason=tracker, tgo_s=0.8011
+- 04:31 that missile lost its lock at 43 m
+- 04:34 missile from common_A1_f16c_3 gone after 11 s, closest 46 m
+- 04:38 missile from common_A1_f16c_3 gone after 11 s, closest 54 m
+- -1:55 phase start: MissionPhase_01
+
+Files: events.jsonl (every event), attempt*-flight-*.csv (the plane ten times a second), pilot.log (the pilot's commentary), pictures\, saves-check.txt.

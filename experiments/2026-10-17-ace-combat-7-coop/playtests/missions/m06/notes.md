@@ -189,3 +189,96 @@ waits until nothing is close above or beside and the plane is over 50 m up (40 s
 
 Remaining for a perfect run: a little more lead into that last bend (a stronger or earlier
 corridor pull, or a lower speed inside the bore).
+
+## The lane planner session (19 Oct 2026, 15:50 onward)
+
+Following `score-race-plan.md` with the owner's generality rule first. What was built (all
+general: live game data, nothing about this level):
+
+- **Score mode switches on from the HUD** (a visible "SCORE x/y" goal), so `plan.txt` now only
+  says `fly attack`. Seen working at once: "score mode ON: the HUD shows a score goal (000000/024000)".
+- **Kinds from the game's data**: the native class each unit is built on (`AIPlane`, `AIHeli`,
+  `AIGroundVehicle`), the large-plane flag (the Tu-160, and surprisingly the AV-8B too), and for
+  drones (Mission 06's `common_uavc_C` carry no UAV component) the game's numbers: the lowest top
+  speed of any plane (444 against 519-667) and 40 health; plus a learned rule (a class needing
+  more than four times the hits its health asks for, per kill, counts as agile).
+- **The lane planner** (`lanes.lua`, mirrored in `tools\lane-sim.py`): twice a second it flies 21
+  manoeuvres forward 12 s in a model (turn rate measured in flight, 43-53 deg/s; roll rate and
+  current bank; the missile's cone and range from the game; lock time learned from its own
+  locks, median 0.3 s; reload learned from launches, 4.4 s with the parts) and flies the one
+  that brings the most points into the lock cone; the target is whatever is in the cone,
+  nearest the nose; after each launch the next is selected at once (the chain).
+- **Where next**: groups of ground targets rated by points per second including the flight
+  there and the clearing time at the measured kill rate; air targets rated the same way, with
+  the planes flying together counted as one group (the three Tu-160s).
+- **General numbers in every report** (`tools\run-stats.py`, built into the report writer):
+  time split measured frame by frame, kills a minute (overall and while engaged), kills by kind,
+  points, locks and their time, chained picks, breaks and jinks, the plan audit (shots the
+  plans expected against launches), what the pilot learned (lock time, reload, turn rate), a
+  steering summary from the flight log, the HUD score every 30 s, and the activation log (each
+  class of enemy the mission switches on, where, and where the plane was).
+
+**The simulator** (`tools\lane-sim.py`): 6 layout kinds (clusters, rows, scatter, ring,
+harbour, mixed), 8 seeds each, the plane's turn and roll rate, the weapon's cone, range, reload
+and lock time all varied per scenario. Lanes against the old nose-on attack: 10.1 against 6.1
+kills a minute, 93% against 65% of the targets in 3 minutes. Tuning (coordinate descent, kept
+only if better on average without hurting the weakest layout kind): discount 20 -> 8 s, pass
+height 300 -> 200 m (flown at 250 for hills and flak), cone margin 3 -> 1 deg; a roll-aware turn
+model added 4.5% (10% on the weakest kind). Mission 06's real layout at the start of phase 1
+(`m06-targets-start.json`, dumped by the new `targets` order; a test case only): lanes 1,876
+points a minute on the ground targets against 1,340 for the old way.
+
+**Test runs** (first 8.5 minutes of phase 1, `playtests\orders\m06-lanes-test.yaml`; the old best
+run had 8,050 at that point, 3.4 kills a minute, locked 13% of the time):
+
+| Test | Points at 8.5 min | Kills a minute (engaged) | Locked | What it showed, what changed |
+|---|---|---|---|---|
+| 1 (16:18) | 7,670 | 2.8 (4.1) | 16% | Lanes on mid-attack on a locked Tu-160 (commitment rule added); on/off flipping (hysteresis); the order's 300 m floor kept every pass a ground recovery (lanes: 120 m floor). |
+| 2 (16:32) | 9,240 | 4.2 (5.1) | 21% | 1,630 points a minute for 5 minutes, then 370 in the anti-air site; the steering never pulled in most turns. |
+| 3 (16:45) | 2,000 | 0.8 | 10% | Broken by two changes of mine: the first learned-agility rule called the Tu-160 agile after one LAAM salvo, and a "level turns" patch made the steering worse. Both replaced. |
+| 4 (16:56) | (cut at 3 min) | | | Bank-to-turn steering in: hard-turn time 46% (was 85%), pulling 55% of it (was 24-36%), past 95 degrees of bank 7% (was 22-37%). Showed a bomber chase at 1,980 km/h. |
+| 5 (17:03) | 7,380 at 6.3 min, then shot down | 4.7 (6.2) | 26% | Best rates yet (9.2 missiles a minute; the plans 1.4 times optimistic); flew into a bridge: the safety net had chosen a way 3 degrees off its edge (now a three-times-wider tube that prefers climbing). |
+| 6 (17:14) | 10,230 | 4.4 (5.8) | 20% | Best 8.5 minutes yet, no crash; 94 of 101 selected targets locked and fired at: the limit is geometry, a new target in the cone every 5 s. |
+| full 1 (17:27) | **13,030 at 15:00** | 3.8 (4.7) | 19% | The same build over the whole phase: 12,010 at 10.5 min, then 4 minutes in an anti-aircraft site for 1,000 points; area C (6,650 ground points, 49 targets, and the Gripens) never visited; the 11 drones switched on at 9:00. |
+| 7 (17:46) | 9,880 | 4.7 (5.9) | 28% | The owner's defensive attack (29 of them, 16 breaks), tighter turns, full throttle toward far groups: 20 damage only. The plane still flew a median 570 m above its pass height near area B: every kind of hard turn climbed (now slicing turns down). |
+| full 3 (18:00) | (4,210 at 3:00) | | | Lost to a script error of mine at 3:20 (a variable used before it was defined); the flight loop now survives its own errors. |
+| full 4 (18:08) | 12,870, shot down at 8:43 | **6.4 (7.3)** | 25% | The best pace of the day: 9,330 at 5:00 (the 1,870 a minute 24,000 needs), 10.3 missiles a minute. Two 40-point hits from F-16 missiles fired at 450-850 m, the first predicted within 14 m while the plane only "defended" (now a full break from 3 s for a missile on a collision course), then 30 points of gun chip damage (now the guns that hit it are marked as threats; under 35 health the passes go 200 m higher). |
+| full 5 (18:20) | 6,330 at 5:06, stopped | 4.8 (6.4) | 27% | Another F-16 missile hit in minute 3 (predicted to miss by 199.8 m at 2.3 s, 38 m at 0.25 s); stopped to test fighters-first. |
+| full 6 (18:29) | **13,360**, shot down at 14:30 | 4.5 (5.2) | 18% | 4 minutes in area A, the remaining 10.7 in area B at 765 points a minute; chose area C only in the last minute (the "leave when it stops paying" rule tightened to 1.15 times the last 60 s). |
+| full 7 (18:47) | 750 at 4:00, stopped | 0.5 | 13% | Fighters forced first (after fixing the "who is chasing me" check, which had never worked): four F-16s in a turning fight, 1 killed, two 40-point hits. Reverted: fighters stay weighted as threats, not forced. |
+| full 8 (18:54) | 10,710, shot down at 13:20 | 3.9 (4.8) | 24% | Late break rule (full break in a missile's last 2.5 s if still on course); one F-16 hit, then 58 points of gun chip damage. |
+| 8AGM (19:12) | 4,280 at 5:00, stopped | 5.2 (**8.9**) | 12% | The 8AGM with the lanes: 14 of 15 salvos at one lock (the game adds no seekers the way the bot flies), yet the best engaged kill rate of the day and 1.1 missiles a kill; one bomber in 5 minutes without the LAAM, 39% transit. A lead, not a result. |
+
+### Where it stands (19 Oct 2026, 19:20)
+
+Not cleared. Every full phase on the new build ended at 10,700-13,400 points or shot down; the
+morning's best was about 14,000 with 3.4 kills a minute. What the general numbers say:
+
+- **Kill rate is up, not enough:** best full phase 6.4 kills a minute (7.3 while engaged), locked
+  25-28% of the time (11% in the morning). 24,000 needs about 95 kills at the average 250 points:
+  6.3 a minute for the whole 15 minutes, with no deaths. Run 4's pace would have made about 23,800.
+- **Survival is the limit now:** four F-16s around the start fire a missile every 5-10 s; in most
+  runs one or two hit (40 each) in minutes 2-4. Gun chip damage adds 30-60 over a phase in the
+  anti-aircraft sites. Aggression (the owner's advice) raised the rate and the losses together.
+- **The plan-reality gap:** the planner's plans promise 1.5-1.9 times the shots the plane fires.
+  Measured causes found and fixed on the way: the plane flew 300-600 m above its pass height
+  (turns climbed), the steering did not pull in half its hard-turn time. Not yet closed.
+- **The area tour:** the bot clears area A (bombers, about 5,000) and stays in area B; area C's
+  6,650 ground points and the Gripens (2,000) were never reached in time; the 11 drones (3,850)
+  switch on at 9:00 between B and C.
+
+Next, in order of expected value: (1) survive the F-16s (kill them with the LAAM while they are
+still ahead and far, before they turn in; or leave area A faster); (2) close the plan-reality gap
+(measure turn and lock performance per manoeuvre against the model; a lower, steadier pass);
+(3) an area tour that reaches C by about 9 minutes; (4) the 8AGM as a second ground weapon
+(the engaged rate says it is worth it) with the bombers taken first by standard missiles.
+
+
+**The steering faults found on the way** (general, they were there before the lanes too: the
+old best run spent 69% of its time in hard turns and pulled in only 36% of that): an aim behind
+the plane asked for an inverted pull that the "no split-S near the ground" rule refused, so the
+roll flipped from wing to wing (now a level turn the shorter way round); an aim a little below
+the nose did the same (now bank-to-turn: the bank from the heading still to turn, at most
+80-88 degrees, the pull once the bank is there); a big change of pitch high up went to the
+small-corrections mode and just pushed (now rolled and pulled above 1,500 m); full throttle
+toward a target far off the nose reached 1,980 km/h (now only with the target ahead).

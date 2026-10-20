@@ -630,6 +630,25 @@ def write_report(folder, order_, attempts, notes):
         broken = sum(1 for e in ev if e.get("kind") == "missile_lost_lock")
         lines.append(f"| {a['n']} | {a['result']} | {a['cause']} | {a['duration_s'] / 60:.1f} min | {len(kills)} | {shots} ({special}) | "
                      f"{dmg:.0f} | {at_us} ({broken}) | {a['final'].get('score', '?')} |")
+    # general numbers for every run (tools\run-stats.py): where the time went, kills a minute,
+    # kills by kind, locks, chained picks, breaks; the data a modder comparing two versions of a
+    # mission needs, whatever the mission
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("run_stats", os.path.join(HERE, "run-stats.py"))
+        rs = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(rs)
+        by_attempt = rs.folder_stats(folder)
+        if by_attempt:
+            lines.append("")
+            lines.append("## General numbers (tools\\run-stats.py)")
+            lines.append("")
+            for n, st_ in by_attempt.items():
+                lines.append(f"Attempt {n}:")
+                lines.extend(f"- {x}" for x in rs.describe(st_))
+    except Exception as ex:  # the report must not fail because of the numbers
+        lines.append("")
+        lines.append(f"(general numbers not available: {ex})")
     for a in attempts:
         lines.append("")
         lines.append(f"## Attempt {a['n']}")
@@ -664,7 +683,8 @@ def write_report(folder, order_, attempts, notes):
                 lines.append(f"- {stamp} how well enemy positions 2 s ahead were predicted: {e.get('text')}")
             elif k == "pursuer":
                 lines.append(f"- {stamp} {e.get('enemy')} is after us, {fnum(e.get('dist_m')):.0f} m behind ({e.get('state')})")
-            elif k in ("takeoff_end", "ground_recovery", "beyond_pullout", "frozen", "missile_warning", "flare"):
+            elif k in ("takeoff_end", "ground_recovery", "beyond_pullout", "frozen", "missile_warning", "flare",
+                       "score_mode", "lanes", "jink", "skip", "reload_learned", "shot_not_launched", "kind"):
                 detail = ", ".join(f"{x}={y}" for x, y in e.items() if x not in ("t", "kind", "clock", "attempt"))
                 lines.append(f"- {stamp} {k.replace('_', ' ')}{(': ' + detail) if detail else ''}")
     if notes:

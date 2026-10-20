@@ -1491,6 +1491,87 @@ other mods. (2) An `eval` that read every property of the mission object hung th
 script at 05:14; such probes now get a narrower target. Your real saves were checked after
 each (unchanged).
 
+## 16. Kill chaining: the lane planner, and your aggression advice (19 Oct, 15:50 onwards)
+
+The plan agreed with you that morning (`playtests\missions\m06\score-race-plan.md`), with your
+rule first: the bot is a test tool for people testing their own changes to the game, so
+everything has to work from what the game shows at the time, not from notes about one level.
+
+**What changed in how it fights**
+
+- **It flies for the cone, not at the target.** Twice a second the bot tries 21 manoeuvres
+  (straight on, turns of 15 to 179 degrees each way, "run out, then turn back"), flies each 12
+  seconds ahead in a small model of itself (its measured turn rate, how fast it rolls, its
+  current bank) and of its missile (the lock cone and range the game reports, the lock time and
+  reload it has measured on itself), and takes the one that brings the most points into the lock
+  cone. The target is then simply whatever sits in the cone nearest the nose; right after each
+  launch the next one is selected, so its lock builds while the first missile flies. No dives,
+  no set-up runs. (`lanes.lua`; the "lanes".)
+- **A simulator tuned it on many layouts, not this one** (`tools\lane-sim.py`): clusters, rows,
+  scattered targets, a ring round a base, harbours, mixtures, each with a different plane and
+  missile. Against the old way it killed 10.1 targets a minute instead of 6.1 and cleared 93% of
+  a group in 3 minutes instead of 65%.
+- **It reads more from the game.** Score mode switches itself on when the HUD shows a score goal
+  (the mission plan no longer has to say so). What kind of enemy something is comes from the
+  game's own class tree (plane, helicopter, ground vehicle), its large-plane flag and its numbers
+  (the drones have the lowest top speed of any plane); a class that keeps dodging missiles is
+  learned as agile. Its own missiles are followed to the end, so it learns from what range a
+  weapon still hits.
+- **Steering faults found and fixed** (they were there before the lanes too: your best run of
+  the morning spent 69% of its time in hard turns and pulled in only 36% of that): a target
+  behind or a little below the nose made it roll from wing to wing without pulling; hard turns
+  always climbed, so it fought a kilometre above its targets; full throttle in a dive reached
+  1,980 km/h where it can barely turn. Now it banks to the turn and pulls at once, uses the
+  high-G turn on every big turn, brakes into a turn above 850 km/h, and slices down through its
+  turns when it is too high.
+- **Your advice while watching** ("more aggression and risk taking", "a defensive attack",
+  "the tightest possible turn ... at maximum speed and ferocity", "neutralize the biggest
+  threats first", "bombers over AA guns"): it no longer breaks off for a missile while it has
+  something to attack; it keeps attacking, turned up to 35 degrees across the missile's line
+  with the high-G turn and flares, and only dodges hard at the last instant or when badly hurt.
+  It accelerates at full throttle toward a group until 5 km out. Anything that has fired a
+  missile at it in the last minute (fighters, SAM sites, attack helicopters) is worth two and a
+  half times its points, a plane chasing it twice; anti-aircraft guns count only their points.
+  It leaves a place once the points it really scores there drop, for the next group.
+- **Numbers in every report** (`tools\run-stats.py`, built into the report): where the time
+  went, frame by frame (locked, target ahead, target off the nose, defending, breaking, transit);
+  kills a minute; kills and points by kind; locks and their time; chained picks; how its own
+  missiles did by range; the planner's promises against what it delivered; what it learned
+  about itself; a steering summary; the HUD score every 30 seconds; and which enemies the
+  mission switched on, when and where.
+
+**What it scored** (phase 1 of Mission 06 on Ace, 24,000 points needed in 15 minutes; the
+morning's best was about 14,000 with 3.4 kills a minute):
+
+| Run | Points | Kills a minute (while engaged) | Locked | What it showed |
+|---|---|---|---|---|
+| First 8.5 minutes, tests 1-7 | 7,670 -> 10,230 at 8.5 min | 2.8 -> 4.7 (6.2) | 16% -> 28% | Each test found a fault (details in the Mission 06 notes); the morning's best had about 8,050 at that point. |
+| Full phase 1 | 13,030 | 3.8 (4.7) | 19% | 12,010 at 10.5 minutes, then stuck four minutes in an anti-aircraft site; never went to the third area (about 8,600 points there). |
+| Full phase 4 (aggressive) | 12,870, shot down at 8:43 | **6.4 (7.3)** | 25% | The pace 24,000 needs (9,330 at 5 minutes), but two missile hits from F-16s and gun chip damage. |
+| Full phase 6 | 13,360, shot down at 14:30 | 4.5 (5.2) | 18% | Stayed 10.7 minutes in the second area; chose the third in the last minute. |
+| Full phase 7 (fighters forced first) | 750 at 4 minutes, stopped | | | Four F-16s in a turning fight: it hits them when it fires (8 of 8) but rarely gets the shot; reverted to weighting them as threats. |
+| Full phase 8 (final balance) | 10,710, shot down at 13:20 | 3.9 (4.8) | 24% | One F-16 missile hit, then 58 points of gun chip damage over the anti-aircraft sites. |
+| 8AGM experiment | 4,280 at 5 minutes, stopped | 5.2 (8.9) | 12% | The best kill rate while engaged, but nearly every salvo went at one lock and only one bomber fell without the LAAM. |
+
+Two bugs of mine on the way: a variable used one line before it was defined stopped the flight
+loop and the plane crashed (the pilot now keeps flying through its own script errors, keys let
+go and the error logged), and a first "learned agility" rule called the Tu-160 bomber a drone.
+And one old bug found: the check "is this enemy chasing me" compared a short name with a full
+one, so it had never been true since 18 Oct.
+
+**Where Mission 06 stands:** not cleared, and so the story campaign is still stopped there (it
+cannot skip a mission). The bot now kills almost twice as fast as this morning while it is
+engaged, but over a whole phase it lands at the same 13,000-13,400, or is shot down: four F-16s
+near the start put one or two missiles into it in most runs, and the anti-aircraft sites add a
+steady trickle of damage that the more aggressive flying runs into. The run at your aggressive
+settings had exactly the pace 24,000 needs for five minutes, then died. What is next, in order:
+survive the F-16s (kill them with the LAAM before they turn in), close the gap between what the
+planner promises and what the plane flies, reach the third area by about 9 minutes, and try the
+8AGM as a second ground weapon. All runs, numbers and reasons: `playtests\missions\m06\notes.md`.
+Your real saves were checked after every run (unchanged); the copy is closed, still in Vanilla
+mode with its Default profile (the Mod Loader was not used).
+
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

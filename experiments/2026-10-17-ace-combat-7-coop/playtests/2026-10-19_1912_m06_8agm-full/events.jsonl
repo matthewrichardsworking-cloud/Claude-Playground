@@ -1,0 +1,1144 @@
+{"clock": "19:12:55", "kind": "mark", "t": 169.9, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "19:12:56", "kind": "radio", "speaker": "AWACS Bandog", "t": 170.6, "text": "Some welcome.", "attempt": 1}
+{"clock": "19:12:57", "goal": "attack", "kind": "autopilot_start", "t": 172.1, "attempt": 1}
+{"clock": "19:12:57", "goal": 24000, "hud": "000000/024000", "kind": "score_mode", "on": true, "t": 172.1, "why": "the HUD shows a score goal", "attempt": 1}
+{"clock": "19:12:57", "goal": 24000, "hud_score": "000000/024000", "kills": 0, "kind": "score_tick", "lanes": false, "left_s": 895.7, "score": 0, "t": 172.1, "attempt": 1}
+{"class": "ms06_WatchTower_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_Warehouse_C_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_Warehouse_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_Warehouse_A_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_Warehouse3_Wide_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_Warehouse3_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_RadarTower_A_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_OilTank_Middle_S_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_OilTank_Middle_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_OilTank_Big_S_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_OilTank_Big_C", "clock": "19:12:57", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_GasTank_S_size_smoke_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_GasTank_NoSmoke_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.1, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_GasTank_Detonation_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_ControlTower_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_geck_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_ch47_C", "clock": "19:12:58", "kind": "kind", "native": "AIHeli", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIHeli", "attempt": 1}
+{"class": "ms06_trkc_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "ms06_Bridge_Destructible_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_t072_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_shil_RayCheck_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_shil_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_rams_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_ah64_C", "clock": "19:12:58", "kind": "kind", "native": "AIHeli", "t": 172.2, "top_kmh": -1, "turn": -1, "why": "AIHeli", "attempt": 1}
+{"class": "ms06_Garage_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": 150, "start": true, "t": 172.2, "x": -65870.0, "y": -73590.0, "attempt": 1}
+{"class": "ms06_GasTank_S_size_smoke_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 400, "start": true, "t": 172.2, "x": -26410.0, "y": -9790, "attempt": 1}
+{"class": "ms06_OilTank_Middle_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": 100, "start": true, "t": 172.2, "x": 123800.0, "y": 130700.0, "attempt": 1}
+{"class": "ms06_House_A_C", "clock": "19:12:58", "kind": "activated", "n": 9, "plane_x": 299900.0, "plane_y": 130700.0, "points": 900, "start": true, "t": 172.2, "x": 151100.0, "y": -32470.0, "attempt": 1}
+{"class": "ms06_Warehouse_A_C", "clock": "19:12:58", "kind": "activated", "n": 3, "plane_x": 299900.0, "plane_y": 130700.0, "points": 300, "start": true, "t": 172.2, "x": 24580.0, "y": -18300.0, "attempt": 1}
+{"class": "ms06_OilTank_Big_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": 100, "start": true, "t": 172.2, "x": 118200.0, "y": 155600.0, "attempt": 1}
+{"class": "ms06_tnkl_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 480, "start": true, "t": 172.2, "x": 77980.0, "y": 53680.0, "attempt": 1}
+{"class": "ms06_OilTank_Middle_S_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": 100, "start": true, "t": 172.2, "x": 124000.0, "y": 130300.0, "attempt": 1}
+{"class": "ms06_Bridge_02_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": -1, "start": true, "t": 172.2, "x": 167400.0, "y": -28310.0, "attempt": 1}
+{"class": "ms06_Bridge_01_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": -1, "start": true, "t": 172.2, "x": 152200.0, "y": -3175, "attempt": 1}
+{"class": "common_ch47_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 800, "start": true, "t": 172.2, "x": 51610.0, "y": -36800.0, "attempt": 1}
+{"class": "ms06_Bridge_Destructible_C", "clock": "19:12:58", "kind": "activated", "n": 2, "plane_x": 299900.0, "plane_y": 130700.0, "points": 200, "start": true, "t": 172.2, "x": 159500.0, "y": -15680.0, "attempt": 1}
+{"class": "ms06_GasTank_Detonation_C", "clock": "19:12:58", "kind": "activated", "n": 2, "plane_x": 299900.0, "plane_y": 130700.0, "points": 200, "start": true, "t": 172.2, "x": 23850.0, "y": 30130.0, "attempt": 1}
+{"class": "common_shil_RayCheck_C", "clock": "19:12:58", "kind": "activated", "n": 37, "plane_x": 299900.0, "plane_y": 130700.0, "points": 5550, "start": true, "t": 172.2, "x": 21100.0, "y": -24560.0, "attempt": 1}
+{"class": "common_t160_C", "clock": "19:12:58", "kind": "activated", "n": 3, "plane_x": 299900.0, "plane_y": 130700.0, "points": 3600, "start": true, "t": 172.2, "x": 118600.0, "y": 143600.0, "attempt": 1}
+{"class": "ms06_Warehouse3_Wide_C", "clock": "19:12:58", "kind": "activated", "n": 6, "plane_x": 299900.0, "plane_y": 130700.0, "points": 600, "start": true, "t": 172.2, "x": 20920.0, "y": -13420.0, "attempt": 1}
+{"class": "ms06_RadarTower_A_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 600, "start": true, "t": 172.2, "x": 112500.0, "y": 25650.0, "attempt": 1}
+{"class": "ms06_GasTank_NoSmoke_C", "clock": "19:12:58", "kind": "activated", "n": 2, "plane_x": 299900.0, "plane_y": 130700.0, "points": 200, "start": true, "t": 172.2, "x": -76060.0, "y": -50300.0, "attempt": 1}
+{"class": "ms06_WatchTower_C", "clock": "19:12:58", "kind": "activated", "n": 6, "plane_x": 299900.0, "plane_y": 130700.0, "points": 600, "start": true, "t": 172.2, "x": 97100.0, "y": -19400.0, "attempt": 1}
+{"class": "ms06_House_B_C", "clock": "19:12:58", "kind": "activated", "n": 13, "plane_x": 299900.0, "plane_y": 130700.0, "points": 1300, "start": true, "t": 172.2, "x": 131100.0, "y": -29080.0, "attempt": 1}
+{"class": "common_ah64_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 800, "start": true, "t": 172.2, "x": 167400.0, "y": -19980.0, "attempt": 1}
+{"class": "ms06_House_B_Small_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": 100, "start": true, "t": 172.2, "x": 121800.0, "y": 69860.0, "attempt": 1}
+{"class": "common_av8b_C", "clock": "19:12:58", "kind": "activated", "n": 3, "plane_x": 299900.0, "plane_y": 130700.0, "points": 960, "start": true, "t": 172.2, "x": 197900.0, "y": -32160.0, "attempt": 1}
+{"class": "common_dummy_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": -1, "start": true, "t": 172.2, "x": 118400.0, "y": 143600.0, "attempt": 1}
+{"class": "common_f16c_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 1600, "start": true, "t": 172.2, "x": 128000.0, "y": 129700.0, "attempt": 1}
+{"class": "common_btr9_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 480, "start": true, "t": 172.2, "x": 69550.0, "y": 41370.0, "attempt": 1}
+{"class": "common_rams_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 800, "start": true, "t": 172.2, "x": 175200.0, "y": -21440.0, "attempt": 1}
+{"class": "ms06_Warehouse_C_C", "clock": "19:12:58", "kind": "activated", "n": 2, "plane_x": 299900.0, "plane_y": 130700.0, "points": 200, "start": true, "t": 172.2, "x": -86250.0, "y": -83660.0, "attempt": 1}
+{"class": "ms06_Warehouse_C", "clock": "19:12:58", "kind": "activated", "n": 2, "plane_x": 299900.0, "plane_y": 130700.0, "points": 200, "start": true, "t": 172.2, "x": 153400.0, "y": 9174, "attempt": 1}
+{"class": "ms06_OilTank_Big_S_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": 100, "start": true, "t": 172.2, "x": 118800.0, "y": 155800.0, "attempt": 1}
+{"class": "ms06_Hangar_C", "clock": "19:12:58", "kind": "activated", "n": 13, "plane_x": 299900.0, "plane_y": 130700.0, "points": 1300, "start": true, "t": 172.2, "x": 106800.0, "y": 28740.0, "attempt": 1}
+{"class": "common_t072_C", "clock": "19:12:58", "kind": "activated", "n": 6, "plane_x": 299900.0, "plane_y": 130700.0, "points": 900, "start": true, "t": 172.2, "x": 56230.0, "y": -24770.0, "attempt": 1}
+{"class": "ms06_ControlTower_C", "clock": "19:12:58", "kind": "activated", "n": 1, "plane_x": 299900.0, "plane_y": 130700.0, "points": 100, "start": true, "t": 172.2, "x": 121300.0, "y": 143600.0, "attempt": 1}
+{"class": "common_j39e_C", "clock": "19:12:58", "kind": "activated", "n": 4, "plane_x": 299900.0, "plane_y": 130700.0, "points": 2000, "start": true, "t": 172.2, "x": -71380.0, "y": -29600.0, "attempt": 1}
+{"class": "common_geck_C", "clock": "19:12:58", "kind": "activated", "n": 14, "plane_x": 299900.0, "plane_y": 130700.0, "points": 2800, "start": true, "t": 172.2, "x": 63520.0, "y": -31560.0, "attempt": 1}
+{"class": "ms06_Warehouse3_C", "clock": "19:12:58", "kind": "activated", "n": 6, "plane_x": 299900.0, "plane_y": 130700.0, "points": 600, "start": true, "t": 172.2, "x": 13020.0, "y": -20300.0, "attempt": 1}
+{"class": "ms06_trkc_C", "clock": "19:12:58", "kind": "activated", "n": 7, "plane_x": 299900.0, "plane_y": 130700.0, "points": 840, "start": true, "t": 172.2, "x": 108100.0, "y": 44880.0, "attempt": 1}
+{"class": "common_shil_C", "clock": "19:12:58", "kind": "activated", "n": 12, "plane_x": 299900.0, "plane_y": 130700.0, "points": 1800, "start": true, "t": 172.2, "x": 113600.0, "y": 6213, "attempt": 1}
+{"class": "ms06_WaterTower_C", "clock": "19:12:58", "kind": "activated", "n": 9, "plane_x": 299900.0, "plane_y": 130700.0, "points": 900, "start": true, "t": 172.2, "x": 90530.0, "y": -10660.0, "attempt": 1}
+{"class": "common_btr9_C", "clock": "19:12:58", "kind": "kind", "native": "AIGroundVehicle", "t": 172.3, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"class": "common_t160_C", "clock": "19:12:58", "kind": "kind", "native": "AIPlane", "t": 172.3, "top_kmh": 666.7, "turn": 91.67, "why": "large plane flag", "attempt": 1}
+{"class": "common_f16c_C", "clock": "19:12:58", "kind": "kind", "native": "AIPlane", "t": 172.3, "top_kmh": 519.4, "turn": 125, "why": "AIPlane", "attempt": 1}
+{"class": "common_av8b_C", "clock": "19:12:58", "kind": "kind", "native": "AIPlane", "t": 172.3, "top_kmh": 519.4, "turn": 102.8, "why": "large plane flag", "attempt": 1}
+{"clock": "19:12:58", "dist_m": 18250.0, "kind": "priority", "score": 0.04805, "t": 172.3, "target": "common_t160_3", "weight": 6.72, "attempt": 1}
+{"clock": "19:12:58", "kind": "select_refused", "mark": 0, "special": false, "t": 172.3, "target": "common_t160_3", "attempt": 1}
+{"callsign": "", "clock": "19:12:58", "dist_m": 18250.0, "kind": "target", "t": 172.3, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:12:59", "kind": "radio", "speaker": "AWACS Bandog", "t": 173.3, "text": "All aircraft, spread out and attack.", "attempt": 1}
+{"clock": "19:13:01", "kind": "radio", "speaker": "Spare 2 Count", "t": 175.6, "text": "We're clear to attack, right? I heard the regular forces were going to clean things up.", "attempt": 1}
+{"clock": "19:13:05", "kind": "radio", "speaker": "Spare 8 Champ", "t": 179.6, "text": "It's just like before. We blow the shit outta everything.", "attempt": 1}
+{"clock": "19:13:09", "kind": "radio", "speaker": "AWACS Bandog", "t": 183.4, "text": "Sharp as a tack, aren't you, Spare 8?", "attempt": 1}
+{"clock": "19:13:11", "kind": "radio", "speaker": "AWACS Bandog", "t": 185.6, "text": "Regular forces can reduce losses if you tenderize the base first.", "attempt": 1}
+{"clock": "19:13:15", "kind": "radio", "speaker": "AWACS Bandog", "t": 189.4, "text": "If you can't handle that, just fly and be a target.", "attempt": 1}
+{"alt_m": 1051, "clock": "19:13:17", "kind": "area", "now": true, "t": 191.2, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1051, "clock": "19:13:17", "kind": "cloud_base", "t": 191.2, "attempt": 1}
+{"alt_m": 1027, "clock": "19:13:17", "kind": "area", "now": false, "t": 191.7, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1027, "clock": "19:13:17", "kind": "cloud_base", "t": 191.7, "attempt": 1}
+{"alt_m": 994.9, "clock": "19:13:18", "kind": "area", "now": true, "t": 192.4, "what": "in_cloud", "attempt": 1}
+{"alt_m": 994.9, "clock": "19:13:18", "kind": "cloud_base", "t": 192.4, "attempt": 1}
+{"alt_m": 971.9, "clock": "19:13:18", "kind": "area", "now": false, "t": 192.8, "what": "in_cloud", "attempt": 1}
+{"alt_m": 971.9, "clock": "19:13:18", "kind": "cloud_base", "t": 192.8, "attempt": 1}
+{"above_ground_m": 735.2, "alt_m": 901.2, "clock": "19:13:19", "kind": "ground_recovery", "lowest_ahead_m": 35.01, "t": 194.1, "vz": -93.66, "attempt": 1}
+{"clock": "19:13:24", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 199.1, "text": "We are being attacked! Enemy aircraft! A whole squadron!", "attempt": 1}
+{"clock": "19:13:25", "down": -1, "free_m": 3135, "kind": "vision", "left": -1, "right": -1, "t": 199.2, "text": "obstacle: vision: free 1999 m ahead the way it wants (2090 m needed); flying +0 deg yaw, -4 deg pitch of centre, free 3135 m", "up": -1, "attempt": 1}
+{"above_ground_m": 547.8, "alt_m": 682.7, "clock": "19:13:25", "kind": "ground_recovery", "lowest_ahead_m": 109.7, "t": 200.1, "vz": -43.52, "attempt": 1}
+{"clock": "19:13:26", "down": -1, "free_m": 3223, "kind": "vision", "left": -1, "right": -1, "t": 200.5, "text": "obstacle: vision: free 1690 m ahead the way it wants (2149 m needed); flying +0 deg yaw, +4 deg pitch of centre, free 3223 m", "up": -1, "attempt": 1}
+{"clock": "19:13:26", "down": -1, "free_m": 2404, "kind": "vision", "left": -1, "right": -1, "t": 201, "text": "obstacle: vision: free 1555 m ahead the way it wants (1603 m needed); flying +0 deg yaw, +0 deg pitch of centre, free 2404 m", "up": -1, "attempt": 1}
+{"clock": "19:13:27", "goal": 24000, "hud_score": "000000/024000", "kills": 0, "kind": "score_tick", "lanes": false, "left_s": 865.7, "score": 0, "t": 202.1, "attempt": 1}
+{"clock": "19:13:28", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 202.6, "text": "Ready the anti-air interceptors! Open fire!", "attempt": 1}
+{"clock": "19:13:31", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 205.2, "text": "Affirmative! We'll do what we can.", "attempt": 1}
+{"clock": "19:13:34", "kind": "radio", "speaker": "AWACS Bandog", "t": 208.2, "text": "Transport trucks spotted. They're not a threat, but feel free to take them out.", "attempt": 1}
+{"clock": "19:13:34", "dist_m": 1057, "enemy": "common_A1_f16c_2", "kind": "hunter", "t": 208.2, "attempt": 1}
+{"clock": "19:13:34", "dist_m": 1025, "enemy": "common_A1_f16c_2", "kind": "hunter", "t": 208.7, "attempt": 1}
+{"clock": "19:13:35", "dist_m": 987.3, "enemy": "common_A1_f16c_2", "kind": "hunter", "t": 209.2, "attempt": 1}
+{"clock": "19:13:35", "dist_m": 949.5, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 209.8, "attempt": 1}
+{"clock": "19:13:36", "dist_m": 931, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 210.3, "attempt": 1}
+{"clock": "19:13:36", "dist_m": 952.5, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 210.8, "attempt": 1}
+{"clock": "19:13:37", "dist_m": 984.9, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 211.3, "attempt": 1}
+{"clock": "19:13:37", "dist_m": 1026, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 211.8, "attempt": 1}
+{"clock": "19:13:37", "kind": "radio", "speaker": "Spare 8 Champ", "t": 212, "text": "Leave 'em to me. Bullying the weak is kind of a specialty of mine.", "attempt": 1}
+{"clock": "19:13:38", "dist_m": 1072, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 212.3, "attempt": 1}
+{"clock": "19:13:38", "dist_m": 1099, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 212.8, "attempt": 1}
+{"clock": "19:13:39", "dist_m": 1112, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 213.3, "attempt": 1}
+{"clock": "19:13:39", "dist_m": 1091, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 213.8, "attempt": 1}
+{"air": "common_t160_2", "air_rate": 26.6, "clock": "19:13:39", "engaged": false, "kind": "lanes", "lane_rate": 33.68, "on": true, "t": 213.8, "targets": 18, "value": 245, "attempt": 1}
+{"clock": "19:13:40", "dist_m": 1044, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 214.3, "attempt": 1}
+{"clock": "19:13:40", "dist_m": 965.1, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 214.9, "attempt": 1}
+{"callsign": "", "clock": "19:13:40", "dist_m": 1366, "kind": "target", "t": 215.1, "target": "ms06_OilTank_Big_122", "attempt": 1}
+{"clock": "19:13:40", "dist_m": 1366, "kind": "weapon_switch", "t": 215.1, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"after_s": 0.144, "ang0_deg": 31.25, "base_s": -1, "clock": "19:13:41", "dist_m": 1351, "kind": "lock", "rate_dps": -1, "t": 215.2, "target": "ms06_OilTank_Big_122", "attempt": 1}
+{"clock": "19:13:41", "dist_m": 1351, "held_s": 0, "kind": "salvo", "locks": 1, "t": 215.2, "attempt": 1}
+{"clock": "19:13:41", "dist_m": 1351, "kind": "missile", "lanes": true, "off_deg": 29.03, "special": true, "t": 215.2, "target": "ms06_OilTank_Big_122", "attempt": 1}
+{"ang_deg": 30.85, "clock": "19:13:41", "from": "ms06_OilTank_Big_122", "gap_s": 0.009, "kind": "chain", "t": 215.2, "to": "common_shil_RC_A1", "attempt": 1}
+{"callsign": "", "clock": "19:13:41", "dist_m": 1392, "kind": "target", "t": 215.2, "target": "common_shil_RC_A1", "attempt": 1}
+{"clock": "19:13:41", "dist_m": 877.1, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 215.4, "attempt": 1}
+{"air": "common_t160_1", "air_rate": 26.36, "clock": "19:13:41", "engaged": true, "kind": "lanes", "lane_rate": 36.93, "on": false, "t": 215.4, "targets": 15, "value": 336.4, "attempt": 1}
+{"after_s": 0.154, "ang0_deg": 31.18, "base_s": -1, "clock": "19:13:41", "dist_m": 1371, "kind": "lock", "rate_dps": -1, "t": 215.4, "target": "common_shil_RC_A1", "attempt": 1}
+{"clock": "19:13:41", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 3.251, "t": 215.4, "target": "ms06_OilTank_Big_122", "attempt": 1}
+{"clock": "19:13:41", "kind": "launch", "left": 23, "n": 1, "t": 215.4, "target": "common_shil_RC_A1", "weapon": "special", "attempt": 1}
+{"clock": "19:13:41", "dist_m": 853.3, "kind": "priority", "score": 0.1476, "t": 215.4, "target": "common_t160_1", "weight": 6.72, "attempt": 1}
+{"callsign": "", "clock": "19:13:41", "dist_m": 834.7, "kind": "target", "t": 215.4, "target": "common_t160_1", "attempt": 1}
+{"clock": "19:13:41", "dist_m": 795.7, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 215.9, "attempt": 1}
+{"clock": "19:13:41", "kind": "shot_not_launched", "t": 215.9, "target": "ms06_OilTank_Big_122", "attempt": 1}
+{"clock": "19:13:42", "dist_m": 728.7, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 216.4, "attempt": 1}
+{"clock": "19:13:42", "dist_m": 797, "kind": "weapon_switch", "t": 216.6, "to": "standard missiles", "why": "no longer: ground target", "attempt": 1}
+{"clock": "19:13:42", "dist_m": 684.7, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 216.9, "attempt": 1}
+{"clock": "19:13:42", "kind": "radio", "speaker": "AWACS Bandog", "t": 217, "text": "You're hitting three locations. Some have air power, so their threat levels vary.", "attempt": 1}
+{"clock": "19:13:43", "dist_m": 664, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 217.4, "attempt": 1}
+{"callsign": "", "clock": "19:13:43", "kind": "death", "t": 217.7, "who": "ms06_OilTank_Big_122", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:13:43", "kind": "kill", "t": 217.7, "target": "ms06_OilTank_Big_122", "attempt": 1}
+{"clock": "19:13:43", "dist_m": 677.4, "enemy": "common_A1_f16c_1", "kind": "pursuer", "state": "PursueTarget", "t": 217.8, "attempt": 1}
+{"clock": "19:13:43", "dist_m": 1347, "flew_s": 2.627, "hit": true, "kind": "my_missile", "t": 217.9, "target": "ms06_OilTank_Big_122", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:13:43", "dist_m": 684.9, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 217.9, "attempt": 1}
+{"callsign": "", "clock": "19:13:44", "kind": "death", "t": 218.2, "who": "ms06_OilTank_Big_S_74", "attempt": 1}
+{"clock": "19:13:44", "dist_m": 751.2, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 218.4, "attempt": 1}
+{"callsign": "", "clock": "19:13:44", "kind": "death", "t": 218.7, "who": "common_shil_RC_A1", "attempt": 1}
+{"above_ground_m": 593.6, "alt_m": 679.4, "clock": "19:13:44", "kind": "ground_recovery", "lowest_ahead_m": 363.2, "t": 218.8, "vz": -119.8, "attempt": 1}
+{"clock": "19:13:44", "dist_m": 839.2, "enemy": "common_A1_f16c_2", "kind": "hunter", "t": 218.9, "attempt": 1}
+{"clock": "19:13:44", "down": -1, "free_m": 606.6, "kind": "vision", "left": -1, "right": -1, "t": 219, "text": "obstacle: vision: free 579 m ahead the way it wants (583 m needed); flying -3 deg yaw, -20 deg pitch of centre, free 607 m", "up": -1, "attempt": 1}
+{"clock": "19:13:45", "down": -1, "free_m": 617.4, "kind": "vision", "left": -1, "right": -1, "t": 219.7, "text": "obstacle: vision: free 506 m ahead the way it wants (616 m needed); flying -3 deg yaw, +0 deg pitch of centre, free 617 m", "up": -1, "attempt": 1}
+{"air": "common_t160_1", "air_rate": 34.66, "clock": "19:13:45", "engaged": false, "kind": "lanes", "lane_rate": 42.66, "on": true, "t": 220, "targets": 15, "value": 285.6, "attempt": 1}
+{"callsign": "", "clock": "19:13:45", "dist_m": 1118, "kind": "target", "t": 220, "target": "Enemy_Ground_A_GasTank_Dtn_2", "attempt": 1}
+{"after_s": 0.268, "ang0_deg": 17.64, "base_s": -1, "clock": "19:13:46", "dist_m": 1069, "kind": "lock", "rate_dps": -1, "t": 220.2, "target": "Enemy_Ground_A_GasTank_Dtn_2", "attempt": 1}
+{"clock": "19:13:46", "dist_m": 1069, "kind": "missile", "lanes": true, "off_deg": 23.75, "special": false, "t": 220.2, "target": "Enemy_Ground_A_GasTank_Dtn_2", "attempt": 1}
+{"ang_deg": 26.93, "clock": "19:13:46", "from": "Enemy_Ground_A_GasTank_Dtn_2", "gap_s": 0.009, "kind": "chain", "t": 220.2, "to": "ms06_GasTank_S_size_smoke_94", "attempt": 1}
+{"callsign": "", "clock": "19:13:46", "dist_m": 1039, "kind": "target", "t": 220.2, "target": "ms06_GasTank_S_size_smoke_94", "attempt": 1}
+{"clock": "19:13:46", "kind": "launch", "left": 111, "n": 1, "t": 220.4, "target": "ms06_GasTank_S_size_smoke_94", "weapon": "missile", "attempt": 1}
+{"clock": "19:13:46", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 2.644, "t": 220.4, "target": "Enemy_Ground_A_GasTank_Dtn_2", "attempt": 1}
+{"after_s": 0.317, "ang0_deg": 26.93, "base_s": -1, "clock": "19:13:46", "dist_m": 984, "kind": "lock", "rate_dps": -1, "t": 220.7, "target": "ms06_GasTank_S_size_smoke_94", "attempt": 1}
+{"clock": "19:13:46", "dist_m": 984, "kind": "missile", "lanes": true, "off_deg": 28.08, "special": false, "t": 220.7, "target": "ms06_GasTank_S_size_smoke_94", "attempt": 1}
+{"clock": "19:13:46", "kind": "launch", "left": 110, "n": 1, "t": 221, "target": "ms06_GasTank_S_size_smoke_94", "weapon": "missile", "attempt": 1}
+{"clock": "19:13:46", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 2.514, "t": 221, "target": "ms06_GasTank_S_size_smoke_94", "attempt": 1}
+{"clock": "19:13:46", "kind": "radio", "speaker": "AWACS Bandog", "t": 221, "text": "Think of the best way to rob them of their ability to respond. Use those empty heads of yours.", "attempt": 1}
+{"callsign": "", "clock": "19:13:48", "kind": "death", "t": 222.9, "who": "ms06_GasTank_S_size_smoke_94", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:13:48", "kind": "kill", "t": 222.9, "target": "ms06_GasTank_S_size_smoke_94", "attempt": 1}
+{"clock": "19:13:48", "dist_m": 920.8, "flew_s": 1.96, "hit": true, "kind": "my_missile", "t": 222.9, "target": "ms06_GasTank_S_size_smoke_94", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:13:48", "dist_m": 616.6, "kind": "target", "t": 222.9, "target": "Enemy_Ground_A_GasTank_Dtn_2", "attempt": 1}
+{"callsign": "", "clock": "19:13:49", "kind": "death", "t": 223.3, "who": "Enemy_Ground_A_GasTank_Dtn_2", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:13:49", "kind": "kill", "t": 223.3, "target": "Enemy_Ground_A_GasTank_Dtn_2", "attempt": 1}
+{"callsign": "", "clock": "19:13:49", "dist_m": 394.2, "kind": "target", "t": 223.3, "target": "common_A1_f16c_3", "attempt": 1}
+{"alt_m": 455.2, "amount": 1, "clock": "19:13:49", "health": 119, "kind": "damage", "t": 223.6, "attempt": 1}
+{"alt_m": 463.5, "amount": 1, "clock": "19:13:50", "health": 118, "kind": "damage", "t": 224.5, "attempt": 1}
+{"callsign": "", "clock": "19:13:51", "dist_m": 1299, "kind": "target", "t": 225.5, "target": "ms06_RadarTower_A_842", "attempt": 1}
+{"after_s": 0.517, "ang0_deg": 31.4, "base_s": -1, "clock": "19:13:51", "dist_m": 1238, "kind": "lock", "rate_dps": -1, "t": 226.1, "target": "ms06_RadarTower_A_842", "attempt": 1}
+{"clock": "19:13:51", "dist_m": 1238, "kind": "missile", "lanes": true, "off_deg": 31.94, "special": false, "t": 226.1, "target": "ms06_RadarTower_A_842", "attempt": 1}
+{"clock": "19:13:51", "kind": "launch", "left": 109, "n": 1, "t": 226.1, "target": "ms06_RadarTower_A_842", "weapon": "missile", "attempt": 1}
+{"clock": "19:13:51", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 2.905, "t": 226.1, "target": "ms06_RadarTower_A_842", "attempt": 1}
+{"clock": "19:13:52", "kind": "radio", "speaker": "AWACS Bandog", "t": 226.5, "text": "If you die too fast, you won't even be useful as targets.", "attempt": 1}
+{"callsign": "", "clock": "19:13:54", "kind": "death", "t": 228.8, "who": "ms06_RadarTower_A_842", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:13:54", "kind": "kill", "t": 228.8, "target": "ms06_RadarTower_A_842", "attempt": 1}
+{"callsign": "", "clock": "19:13:54", "dist_m": 605.1, "kind": "target", "t": 228.8, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:13:54", "dist_m": 1218, "flew_s": 2.753, "hit": true, "kind": "my_missile", "t": 229, "target": "ms06_RadarTower_A_842", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:13:56", "dist_m": 763.1, "kind": "weapon_switch", "t": 230.4, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"clock": "19:13:57", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 231.8, "text": "The fire set off a chain reaction! At least stop it from spreading!", "attempt": 1}
+{"clock": "19:13:57", "kills": 4, "kind": "time_split", "lanes": true, "order_t0": 172.1, "split": {"ahead": 5.131, "locked": 1.945, "offnose": 20.42, "recovery": 3.619, "transit": 28.88}, "t": 232.1, "attempt": 1}
+{"clock": "19:13:57", "goal": 24000, "hud_score": "000700/024000", "kills": 4, "kind": "score_tick", "lanes": true, "left_s": 835.7, "score": 700, "t": 232.1, "attempt": 1}
+{"clock": "19:13:58", "dist_m": 599.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 232.3, "attempt": 1}
+{"clock": "19:13:58", "dist_m": 522.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 232.9, "attempt": 1}
+{"callsign": "", "clock": "19:13:58", "dist_m": 1034, "kind": "target", "t": 232.9, "target": "Enemy_Ground_P1_A_ControlTower_1", "attempt": 1}
+{"after_s": 0.123, "ang0_deg": 31.44, "base_s": 0, "clock": "19:13:58", "dist_m": 1022, "kind": "lock", "rate_dps": -1, "t": 233, "target": "Enemy_Ground_P1_A_ControlTower_1", "attempt": 1}
+{"clock": "19:13:58", "dist_m": 1022, "held_s": 0, "kind": "salvo", "locks": 1, "t": 233, "attempt": 1}
+{"clock": "19:13:58", "dist_m": 1022, "kind": "missile", "lanes": true, "off_deg": 29.13, "special": true, "t": 233, "target": "Enemy_Ground_P1_A_ControlTower_1", "attempt": 1}
+{"clock": "19:13:58", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 2.703, "t": 233.1, "target": "Enemy_Ground_P1_A_ControlTower_1", "attempt": 1}
+{"clock": "19:13:58", "kind": "launch", "left": 22, "n": 1, "t": 233.1, "target": "Enemy_Ground_P1_A_ControlTower_1", "weapon": "special", "attempt": 1}
+{"clock": "19:13:58", "dist_m": 1011, "kind": "weapon_switch", "t": 233.1, "to": "standard missiles", "why": "no longer: special weapon reloading", "attempt": 1}
+{"clock": "19:13:58", "kind": "missile_warning", "level": "very near", "t": 233.1, "attempt": 1}
+{"clock": "19:13:58", "kind": "flare", "reason": "warning", "t": 233.1, "attempt": 1}
+{"clock": "19:13:59", "dist_m": 421.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 233.4, "attempt": 1}
+{"clock": "19:13:59", "kind": "shot_not_launched", "t": 233.8, "target": "Enemy_Ground_P1_A_ControlTower_1", "attempt": 1}
+{"clock": "19:13:59", "dist_m": 307.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 233.9, "attempt": 1}
+{"clock": "19:14:00", "dist_m": 180, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 234.4, "attempt": 1}
+{"clock": "19:14:00", "dist_m": 147.4, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 234.8, "attempt": 1}
+{"clock": "19:14:00", "dist_m": 154.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 234.9, "attempt": 1}
+{"callsign": "", "clock": "19:14:00", "kind": "death", "t": 235, "who": "Enemy_Ground_P1_A_ControlTower_1", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:14:00", "kind": "kill", "t": 235, "target": "Enemy_Ground_P1_A_ControlTower_1", "attempt": 1}
+{"callsign": "", "clock": "19:14:00", "dist_m": 12540.0, "kind": "target", "t": 235.1, "target": "movingAtoC_common_btr9_2", "attempt": 1}
+{"clock": "19:14:01", "dist_m": 1016, "flew_s": 2.201, "hit": true, "kind": "my_missile", "t": 235.2, "target": "Enemy_Ground_P1_A_ControlTower_1", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:14:01", "dist_m": 249, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 235.4, "attempt": 1}
+{"clock": "19:14:01", "dist_m": 380.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 235.9, "attempt": 1}
+{"clock": "19:14:02", "dist_m": 466.5, "enemy": "common_A1_f16c_1", "kind": "pursuer", "state": "PursueTarget", "t": 236.2, "attempt": 1}
+{"clock": "19:14:02", "dist_m": 484.6, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 236.4, "attempt": 1}
+{"clock": "19:14:02", "kind": "radio", "speaker": "Spare 7 High Roller", "t": 236.6, "text": "What're the odds of getting out alive?!", "attempt": 1}
+{"clock": "19:14:02", "dist_m": 545.7, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 236.9, "attempt": 1}
+{"callsign": "", "clock": "19:14:03", "dist_m": 1634, "kind": "target", "t": 237.3, "target": "ms06_OilTank_Middle_S_122", "attempt": 1}
+{"clock": "19:14:03", "dist_m": 588.3, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 237.4, "attempt": 1}
+{"clock": "19:14:03", "dist_m": 735.4, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 237.4, "attempt": 1}
+{"clock": "19:14:03", "dist_m": 809.4, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 237.9, "attempt": 1}
+{"alt_m": 679.3, "amount": 1, "clock": "19:14:03", "health": 117, "kind": "damage", "t": 237.9, "attempt": 1}
+{"clock": "19:14:03", "dist_m": 594.4, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 237.9, "attempt": 1}
+{"after_s": 0.59, "ang0_deg": 31.38, "base_s": 0, "clock": "19:14:03", "dist_m": 1542, "kind": "lock", "rate_dps": -1, "t": 237.9, "target": "ms06_OilTank_Middle_S_122", "attempt": 1}
+{"clock": "19:14:03", "dist_m": 1542, "kind": "missile", "lanes": true, "off_deg": 21.82, "special": false, "t": 237.9, "target": "ms06_OilTank_Middle_S_122", "attempt": 1}
+{"ang_deg": 22.16, "clock": "19:14:03", "from": "ms06_OilTank_Middle_S_122", "gap_s": 0.024, "kind": "chain", "t": 237.9, "to": "ms06_OilTank_Middle_154", "attempt": 1}
+{"callsign": "", "clock": "19:14:03", "dist_m": 1501, "kind": "target", "t": 237.9, "target": "ms06_OilTank_Middle_154", "attempt": 1}
+{"clock": "19:14:03", "kind": "launch", "left": 108, "n": 1, "t": 238, "target": "ms06_OilTank_Middle_154", "weapon": "missile", "attempt": 1}
+{"clock": "19:14:03", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.372, "t": 238, "target": "ms06_OilTank_Middle_S_122", "attempt": 1}
+{"after_s": 0.254, "ang0_deg": 22.16, "base_s": 0.1951, "clock": "19:14:04", "dist_m": 1460, "kind": "lock", "rate_dps": 277, "t": 238.2, "target": "ms06_OilTank_Middle_154", "attempt": 1}
+{"clock": "19:14:04", "dist_m": 1460, "kind": "missile", "lanes": true, "off_deg": 21.38, "special": false, "t": 238.2, "target": "ms06_OilTank_Middle_154", "attempt": 1}
+{"clock": "19:14:04", "kind": "launch", "left": 107, "n": 1, "t": 238.3, "target": "ms06_OilTank_Middle_154", "weapon": "missile", "attempt": 1}
+{"clock": "19:14:04", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.246, "t": 238.3, "target": "ms06_OilTank_Middle_154", "attempt": 1}
+{"clock": "19:14:04", "dist_m": 577.3, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 238.4, "attempt": 1}
+{"clock": "19:14:04", "kind": "radio", "speaker": "AWACS Bandog", "t": 238.5, "text": "That's for you to figure out, Spare 7.", "attempt": 1}
+{"clock": "19:14:04", "dist_m": 550.1, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 239, "attempt": 1}
+{"clock": "19:14:05", "dist_m": 523, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 239.5, "attempt": 1}
+{"clock": "19:14:05", "dist_m": 1228, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 239.9, "attempt": 1}
+{"clock": "19:14:05", "dist_m": 483.6, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 240, "attempt": 1}
+{"clock": "19:14:06", "dist_m": 444.6, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 240.5, "attempt": 1}
+{"clock": "19:14:06", "dist_m": 409.9, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 241, "attempt": 1}
+{"callsign": "", "clock": "19:14:06", "kind": "death", "t": 241, "who": "ms06_OilTank_Middle_S_122", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:14:06", "kind": "kill", "t": 241, "target": "ms06_OilTank_Middle_S_122", "attempt": 1}
+{"clock": "19:14:07", "dist_m": 1535, "flew_s": 3.207, "hit": true, "kind": "my_missile", "t": 241.2, "target": "ms06_OilTank_Middle_S_122", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:14:07", "kind": "death", "t": 241.2, "who": "ms06_OilTank_Middle_154", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:14:07", "kind": "kill", "t": 241.2, "target": "ms06_OilTank_Middle_154", "attempt": 1}
+{"callsign": "", "clock": "19:14:07", "dist_m": 13320.0, "kind": "target", "t": 241.2, "target": "ms06_Warehouse_13", "attempt": 1}
+{"clock": "19:14:07", "dist_m": 1433, "flew_s": 2.998, "hit": true, "kind": "my_missile", "t": 241.4, "target": "ms06_OilTank_Middle_154", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:14:07", "dist_m": 363.6, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 241.5, "attempt": 1}
+{"clock": "19:14:07", "kind": "radio", "speaker": "Spare Squadron", "t": 241.6, "text": "Target confirmed destroyed. Trigger again!", "attempt": 1}
+{"clock": "19:14:07", "dist_m": 314, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 242, "attempt": 1}
+{"clock": "19:14:08", "dist_m": 290.3, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 242.5, "attempt": 1}
+{"clock": "19:14:08", "dist_m": 1509, "enemy": "common_A1_f16c_2", "kind": "pursuer", "state": "PursueTarget", "t": 242.5, "attempt": 1}
+{"clock": "19:14:08", "dist_m": 315.5, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 243, "attempt": 1}
+{"clock": "19:14:09", "kind": "missile_warning", "level": "near", "t": 243.4, "attempt": 1}
+{"clock": "19:14:09", "dist_m": 398, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 243.5, "attempt": 1}
+{"callsign": "", "clock": "19:14:09", "dist_m": 1015, "kind": "target", "t": 243.6, "target": "common_shil_RC_A3", "attempt": 1}
+{"callsign": "", "clock": "19:14:09", "dist_m": 1285, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_1", "t": 243.6, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:09", "dist_m": 487, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 244.1, "attempt": 1}
+{"clock": "19:14:10", "dist_m": 574.2, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 244.6, "attempt": 1}
+{"callsign": "", "clock": "19:14:10", "dist_m": 1291, "kind": "target", "t": 245, "target": "common_shil_RC_A2", "attempt": 1}
+{"clock": "19:14:10", "dist_m": 662.4, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 245.1, "attempt": 1}
+{"clock": "19:14:10", "kind": "missile_warning", "level": "very near", "t": 245.1, "attempt": 1}
+{"clock": "19:14:10", "dist_m": 779.3, "kind": "flare", "missile": "wp_msl_C_1", "reason": "tracker", "t": 245.1, "tgo_s": 1.871, "attempt": 1}
+{"clock": "19:14:10", "dist_m": 779.3, "kind": "evade", "miss_m": 196.5, "missile": "wp_msl_C_1", "t": 245.1, "tgo_s": 1.871, "attempt": 1}
+{"clock": "19:14:11", "dist_m": 767.9, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_1", "t": 245.2, "attempt": 1}
+{"clock": "19:14:11", "kind": "missile_warning", "level": "near", "t": 245.2, "attempt": 1}
+{"callsign": "", "clock": "19:14:11", "dist_m": 1468, "from": "common_A1_f16c_2", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_2", "t": 245.3, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:11", "kind": "radio", "speaker": "AWACS Bandog", "t": 245.3, "text": "Any regular aircraft that join later needing any repairs or ammo will fly over the return line.", "attempt": 1}
+{"after_s": 0.503, "ang0_deg": 30.27, "base_s": 0.1597, "clock": "19:14:11", "dist_m": 1211, "kind": "lock", "rate_dps": 177, "t": 245.5, "target": "common_shil_RC_A2", "attempt": 1}
+{"clock": "19:14:11", "dist_m": 1211, "kind": "missile", "lanes": true, "off_deg": 23.88, "special": false, "t": 245.5, "target": "common_shil_RC_A2", "attempt": 1}
+{"ang_deg": 30.14, "clock": "19:14:11", "from": "common_shil_RC_A2", "gap_s": 0.01, "kind": "chain", "t": 245.5, "to": "common_shil_RC_A3", "attempt": 1}
+{"callsign": "", "clock": "19:14:11", "dist_m": 722.8, "kind": "target", "t": 245.5, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:11", "kind": "launch", "left": 106, "n": 1, "t": 245.5, "target": "common_shil_RC_A3", "weapon": "missile", "attempt": 1}
+{"clock": "19:14:11", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 2.863, "t": 245.5, "target": "common_shil_RC_A2", "attempt": 1}
+{"clock": "19:14:11", "dist_m": 715.9, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 245.6, "attempt": 1}
+{"clock": "19:14:11", "dist_m": 709.7, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 246.1, "attempt": 1}
+{"clock": "19:14:12", "dist_m": 615.5, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 246.6, "attempt": 1}
+{"clock": "19:14:12", "down": -1, "free_m": 544.7, "kind": "vision", "left": -1, "right": -1, "t": 246.6, "text": "obstacle: vision: free 25 m ahead the way it wants (543 m needed); flying +40 deg yaw, -20 deg pitch of centre, free 545 m", "up": -1, "attempt": 1}
+{"alt_m": 494.8, "amount": 1, "clock": "19:14:12", "health": 116, "kind": "damage", "t": 246.7, "attempt": 1}
+{"clock": "19:14:12", "dist_m": 545.7, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 247.1, "attempt": 1}
+{"clock": "19:14:13", "dist_m": 500.8, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 247.6, "attempt": 1}
+{"clock": "19:14:13", "dist_m": 900.2, "kind": "flare", "missile": "wp_msl_C_2", "reason": "tracker", "t": 247.7, "tgo_s": 1.281, "attempt": 1}
+{"clock": "19:14:13", "dist_m": 900.2, "kind": "evade", "miss_m": 178.9, "missile": "wp_msl_C_2", "t": 247.7, "tgo_s": 1.281, "attempt": 1}
+{"clock": "19:14:13", "dist_m": 881.5, "from": "common_A1_f16c_2", "kind": "missile_lost_lock", "missile": "wp_msl_C_2", "t": 247.8, "attempt": 1}
+{"clock": "19:14:13", "dist_m": 879.3, "enemy": "common_A1_f16c_1", "kind": "pursuer", "state": "PursueTarget", "t": 247.8, "attempt": 1}
+{"clock": "19:14:13", "dist_m": 455, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 248.1, "attempt": 1}
+{"clock": "19:14:13", "dist_m": 453.9, "kind": "weapon_switch", "t": 248.1, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"clock": "19:14:14", "dist_m": 411.4, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 248.6, "attempt": 1}
+{"alt_m": 493.3, "amount": 1, "clock": "19:14:14", "health": 115, "kind": "damage", "t": 249.1, "attempt": 1}
+{"clock": "19:14:14", "dist_m": 385.2, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 249.1, "attempt": 1}
+{"clock": "19:14:15", "dist_m": 391.7, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 249.6, "attempt": 1}
+{"clock": "19:14:15", "dist_m": 393.4, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 249.7, "attempt": 1}
+{"alt_m": 505.5, "amount": 1, "clock": "19:14:15", "health": 114, "kind": "damage", "t": 249.8, "attempt": 1}
+{"clock": "19:14:15", "dist_m": 443.4, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 250.1, "attempt": 1}
+{"clock": "19:14:15", "kind": "radio", "speaker": "AWACS Bandog", "t": 250.1, "text": "However, you guys do not have that luxury.", "attempt": 1}
+{"clock": "19:14:16", "dist_m": 535.2, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 250.6, "attempt": 1}
+{"clock": "19:14:16", "closest_m": 899.8, "flares_while_near": true, "flew_s": 5.456, "from": "common_A1_f16c_2", "kind": "missile_gone", "missile": "wp_msl_C_2", "t": 250.7, "attempt": 1}
+{"clock": "19:14:16", "dist_m": 639.4, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 251.1, "attempt": 1}
+{"clock": "19:14:17", "dist_m": 754.6, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 251.6, "attempt": 1}
+{"clock": "19:14:18", "dist_m": 863.6, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 252.2, "attempt": 1}
+{"clock": "19:14:18", "dist_m": 986, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 252.7, "attempt": 1}
+{"clock": "19:14:19", "dist_m": 1100, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 253.2, "attempt": 1}
+{"clock": "19:14:19", "kind": "radio", "speaker": "Spare 6 Full band", "t": 253.2, "text": "So, what're we supposed to do?", "attempt": 1}
+{"clock": "19:14:19", "dist_m": 1208, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 253.7, "attempt": 1}
+{"clock": "19:14:20", "dist_m": 1312, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 254.2, "attempt": 1}
+{"clock": "19:14:20", "closest_m": 774.1, "flares_while_near": true, "flew_s": 10.95, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_1", "t": 254.6, "attempt": 1}
+{"clock": "19:14:20", "dist_m": 1402, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 254.7, "attempt": 1}
+{"clock": "19:14:21", "dist_m": 1476, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 255.2, "attempt": 1}
+{"clock": "19:14:21", "dist_m": 1524, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 255.7, "attempt": 1}
+{"clock": "19:14:22", "dist_m": 1547, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 256.2, "attempt": 1}
+{"clock": "19:14:22", "dist_m": 1555, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 256.7, "attempt": 1}
+{"clock": "19:14:23", "dist_m": 1578, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 257.2, "attempt": 1}
+{"clock": "19:14:23", "dist_m": 1575, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 257.7, "attempt": 1}
+{"clock": "19:14:23", "kind": "missile_warning", "level": "near", "t": 257.8, "attempt": 1}
+{"callsign": "", "clock": "19:14:23", "dist_m": 1571, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_3", "t": 258, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:24", "dist_m": 1586, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 258.2, "attempt": 1}
+{"clock": "19:14:24", "kind": "radio", "speaker": "Spare 8 Champ", "t": 258.4, "text": "Trigger, you're rockin' it hard.", "attempt": 1}
+{"clock": "19:14:24", "dist_m": 1576, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 258.7, "attempt": 1}
+{"clock": "19:14:25", "dist_m": 1538, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 259.2, "attempt": 1}
+{"clock": "19:14:25", "dist_m": 1490, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 259.7, "attempt": 1}
+{"clock": "19:14:26", "dist_m": 1435, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 260.2, "attempt": 1}
+{"clock": "19:14:26", "dist_m": 1022, "kind": "flare", "missile": "wp_msl_C_3", "reason": "tracker", "t": 260.3, "tgo_s": 1.424, "attempt": 1}
+{"clock": "19:14:26", "dist_m": 1022, "kind": "evade", "miss_m": 199.5, "missile": "wp_msl_C_3", "t": 260.3, "tgo_s": 1.424, "attempt": 1}
+{"clock": "19:14:26", "kind": "radio", "speaker": "AWACS Bandog", "t": 260.4, "text": "Cut the crap. There's work to do.", "attempt": 1}
+{"clock": "19:14:26", "dist_m": 1359, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 260.7, "attempt": 1}
+{"clock": "19:14:26", "kind": "missile_warning", "level": "very near", "t": 260.8, "attempt": 1}
+{"clock": "19:14:27", "dist_m": 1282, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 261.3, "attempt": 1}
+{"clock": "19:14:27", "dist_m": 415.5, "kind": "flare", "missile": "wp_msl_C_3", "reason": "tracker", "t": 261.5, "tgo_s": 1.251, "attempt": 1}
+{"clock": "19:14:27", "dist_m": 1201, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 261.8, "attempt": 1}
+{"clock": "19:14:28", "dist_m": 38.6, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_3", "t": 262.2, "attempt": 1}
+{"clock": "19:14:28", "goal": 24000, "hud_score": "001000/024000", "kills": 7, "kind": "score_tick", "lanes": true, "left_s": 805.6, "score": 1000, "t": 262.2, "attempt": 1}
+{"clock": "19:14:28", "dist_m": 1143, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 262.3, "attempt": 1}
+{"clock": "19:14:28", "dist_m": 1080, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 262.8, "attempt": 1}
+{"clock": "19:14:29", "dist_m": 1018, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 263.3, "attempt": 1}
+{"clock": "19:14:29", "kind": "radio", "speaker": "Spare 2 Count", "t": 263.5, "text": "I'm out. Returning to resupply.", "attempt": 1}
+{"clock": "19:14:29", "dist_m": 954.9, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 263.8, "attempt": 1}
+{"clock": "19:14:29", "closest_m": 106.4, "flares_while_near": true, "flew_s": 5.8, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_3", "t": 263.8, "attempt": 1}
+{"clock": "19:14:30", "dist_m": 870.2, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 264.3, "attempt": 1}
+{"after_s": 18.88, "ang0_deg": 30.47, "base_s": 0.1597, "clock": "19:14:30", "dist_m": 2053, "kind": "lock", "rate_dps": 177, "t": 264.4, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:30", "dist_m": 2053, "held_s": 0, "kind": "salvo", "locks": 1, "t": 264.4, "attempt": 1}
+{"clock": "19:14:30", "dist_m": 2053, "kind": "missile", "lanes": true, "off_deg": 28.32, "special": true, "t": 264.4, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:30", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 4.421, "t": 264.6, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:30", "kind": "launch", "left": 21, "n": 1, "t": 264.6, "target": "common_shil_RC_A3", "weapon": "special", "attempt": 1}
+{"clock": "19:14:30", "dist_m": 2034, "kind": "weapon_switch", "t": 264.6, "to": "standard missiles", "why": "no longer: special weapon reloading", "attempt": 1}
+{"clock": "19:14:30", "dist_m": 784, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 264.8, "attempt": 1}
+{"clock": "19:14:31", "kind": "shot_not_launched", "t": 265.2, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:31", "dist_m": 1945, "kind": "missile", "lanes": true, "off_deg": 19.34, "special": false, "t": 265.2, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:31", "dist_m": 668.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 265.3, "attempt": 1}
+{"clock": "19:14:31", "kind": "launch", "left": 105, "n": 1, "t": 265.5, "target": "common_shil_RC_A3", "weapon": "missile", "attempt": 1}
+{"clock": "19:14:31", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.992, "t": 265.5, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:31", "kind": "radio", "speaker": "Spare 6 Full band", "t": 265.6, "text": "How are we supposed to work without ammo? I'm heading back.", "attempt": 1}
+{"ang_deg": 31.14, "clock": "19:14:31", "from": "common_shil_RC_A3", "gap_s": 0.465, "kind": "chain", "t": 265.7, "to": "common_shil_RC_A2", "attempt": 1}
+{"callsign": "", "clock": "19:14:31", "dist_m": 997, "kind": "target", "t": 265.7, "target": "common_shil_RC_A2", "attempt": 1}
+{"clock": "19:14:31", "dist_m": 548.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 265.8, "attempt": 1}
+{"clock": "19:14:31", "kind": "missile_warning", "level": "near", "t": 266, "attempt": 1}
+{"after_s": 0.336, "ang0_deg": 31.14, "base_s": 0.1596, "clock": "19:14:31", "dist_m": 947.4, "kind": "lock", "rate_dps": 176.9, "t": 266, "target": "common_shil_RC_A2", "attempt": 1}
+{"clock": "19:14:31", "dist_m": 947.4, "kind": "missile", "lanes": true, "off_deg": 28.34, "special": false, "t": 266, "target": "common_shil_RC_A2", "attempt": 1}
+{"callsign": "", "clock": "19:14:31", "dist_m": 1237, "from": "common_A1_f16c_3", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_0", "t": 266.1, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:32", "kind": "launch", "left": 104, "n": 1, "t": 266.2, "target": "common_shil_RC_A2", "weapon": "missile", "attempt": 1}
+{"clock": "19:14:32", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 2.457, "t": 266.2, "target": "common_shil_RC_A2", "attempt": 1}
+{"clock": "19:14:32", "dist_m": 471.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 266.3, "attempt": 1}
+{"clock": "19:14:32", "dist_m": 416.4, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 266.8, "attempt": 1}
+{"air": "common_t160_2", "air_rate": 34.77, "clock": "19:14:32", "engaged": false, "kind": "lanes", "lane_rate": 17.99, "on": false, "t": 266.8, "targets": 4, "value": 13.98, "attempt": 1}
+{"clock": "19:14:32", "dist_m": 548.5, "kind": "priority", "score": 0.1947, "t": 266.8, "target": "common_t160_2", "weight": 6.72, "attempt": 1}
+{"callsign": "", "clock": "19:14:32", "dist_m": 457.9, "kind": "target", "t": 266.8, "target": "common_t160_2", "attempt": 1}
+{"clock": "19:14:32", "down": -1, "free_m": 598.5, "kind": "vision", "left": -1, "right": -1, "t": 266.8, "text": "obstacle: vision: free 450 m ahead the way it wants (540 m needed); flying +6 deg yaw, -13 deg pitch of centre, free 598 m", "up": -1, "attempt": 1}
+{"clock": "19:14:33", "dist_m": 400.5, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 267.3, "attempt": 1}
+{"clock": "19:14:33", "down": -1, "free_m": 714.2, "kind": "vision", "left": -1, "right": -1, "t": 267.3, "text": "obstacle: vision: free 413 m ahead the way it wants (682 m needed); flying +6 deg yaw, +0 deg pitch of centre, free 714 m", "up": -1, "attempt": 1}
+{"clock": "19:14:33", "kind": "missile_warning", "level": "very near", "t": 267.5, "attempt": 1}
+{"clock": "19:14:33", "dist_m": 419.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 267.8, "attempt": 1}
+{"callsign": "", "clock": "19:14:33", "kind": "death", "t": 267.8, "who": "common_shil_RC_A3", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:14:33", "kind": "kill", "t": 267.8, "target": "common_shil_RC_A3", "attempt": 1}
+{"clock": "19:14:33", "dist_m": 2029, "flew_s": 3.291, "hit": true, "kind": "my_missile", "t": 267.9, "target": "common_shil_RC_A3", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:14:33", "down": -1, "free_m": 711.3, "kind": "vision", "left": -1, "right": -1, "t": 267.9, "text": "obstacle: vision: free 417 m ahead the way it wants (660 m needed); flying +10 deg yaw, -8 deg pitch of centre, free 711 m", "up": -1, "attempt": 1}
+{"clock": "19:14:33", "dist_m": 630.9, "kind": "flare", "missile": "wp_msl_C_0", "reason": "tracker", "t": 267.9, "tgo_s": 1.218, "attempt": 1}
+{"clock": "19:14:33", "dist_m": 630.9, "kind": "evade", "miss_m": 194.2, "missile": "wp_msl_C_0", "t": 267.9, "tgo_s": 1.218, "attempt": 1}
+{"callsign": "", "clock": "19:14:34", "kind": "death", "t": 268.2, "who": "common_shil_RC_A2", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:14:34", "kind": "kill", "t": 268.2, "target": "common_shil_RC_A2", "attempt": 1}
+{"clock": "19:14:34", "dist_m": 939.8, "flew_s": 2.177, "hit": true, "kind": "my_missile", "t": 268.2, "target": "common_shil_RC_A2", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:14:34", "dist_m": 456.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 268.3, "attempt": 1}
+{"clock": "19:14:34", "kind": "radio", "speaker": "AWACS Bandog", "t": 268.6, "text": "Nice try. This stuff isn't for you guys.", "attempt": 1}
+{"clock": "19:14:34", "dist_m": 509.8, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 268.8, "attempt": 1}
+{"clock": "19:14:34", "dist_m": 1940, "flew_s": 3.818, "hit": true, "kind": "my_missile", "t": 269.1, "target": "common_shil_RC_A3", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:14:35", "dist_m": 77.45, "kind": "flare", "missile": "wp_msl_C_0", "reason": "tracker", "t": 269.3, "tgo_s": 0.4194, "attempt": 1}
+{"clock": "19:14:35", "dist_m": 68.74, "from": "common_A1_f16c_3", "kind": "missile_lost_lock", "missile": "wp_msl_C_0", "t": 269.3, "attempt": 1}
+{"clock": "19:14:35", "dist_m": 576.9, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 269.3, "attempt": 1}
+{"clock": "19:14:35", "dist_m": 580.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 269.3, "attempt": 1}
+{"clock": "19:14:35", "dist_m": 675.5, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 269.9, "attempt": 1}
+{"clock": "19:14:36", "dist_m": 724.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 270.4, "attempt": 1}
+{"clock": "19:14:36", "dist_m": 720.6, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 270.7, "attempt": 1}
+{"clock": "19:14:36", "dist_m": 714.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 270.9, "attempt": 1}
+{"clock": "19:14:36", "closest_m": 77.45, "flares_while_near": true, "flew_s": 4.87, "from": "common_A1_f16c_3", "kind": "missile_gone", "missile": "wp_msl_C_0", "t": 270.9, "attempt": 1}
+{"clock": "19:14:37", "dist_m": 695.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 271.4, "attempt": 1}
+{"clock": "19:14:37", "kind": "radio", "speaker": "Spare 2 Count", "t": 271.6, "text": "Let's be honest here. Irregulars like us aren't allowed to resupply.", "attempt": 1}
+{"clock": "19:14:37", "dist_m": 674.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 271.9, "attempt": 1}
+{"clock": "19:14:38", "dist_m": 649.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 272.4, "attempt": 1}
+{"clock": "19:14:38", "kind": "missile_warning", "level": "very near", "t": 272.6, "attempt": 1}
+{"clock": "19:14:38", "kind": "flare", "reason": "warning", "t": 272.6, "attempt": 1}
+{"callsign": "", "clock": "19:14:38", "dist_m": 635.7, "from": "common_A1_f16c_3", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_2", "t": 272.7, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:38", "dist_m": 623.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 272.9, "attempt": 1}
+{"clock": "19:14:38", "dist_m": 612.7, "kind": "defend", "miss_m": 182.7, "missile": "wp_msl_C_2", "t": 273, "tgo_s": 3.216, "attempt": 1}
+{"clock": "19:14:39", "dist_m": 616.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 273.4, "attempt": 1}
+{"clock": "19:14:39", "dist_m": 599, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 273.9, "attempt": 1}
+{"clock": "19:14:40", "dist_m": 384.2, "kind": "flare", "missile": "wp_msl_C_2", "reason": "tracker", "t": 274.3, "tgo_s": 1.021, "attempt": 1}
+{"clock": "19:14:40", "dist_m": 384.2, "kind": "evade", "miss_m": 160.9, "missile": "wp_msl_C_2", "t": 274.3, "tgo_s": 1.021, "attempt": 1}
+{"clock": "19:14:40", "dist_m": 598.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 274.4, "attempt": 1}
+{"callsign": "", "clock": "19:14:40", "dist_m": 2336, "from": "common_A1_f16c_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_1", "t": 274.7, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:40", "dist_m": 610.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 275, "attempt": 1}
+{"clock": "19:14:41", "dist_m": 602.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 275.5, "attempt": 1}
+{"clock": "19:14:41", "dist_m": 44.83, "kind": "flare", "missile": "wp_msl_C_2", "reason": "tracker", "t": 275.6, "tgo_s": 0.07502, "attempt": 1}
+{"alt_m": 975.4, "amount": 40, "clock": "19:14:41", "health": 74, "kind": "damage", "t": 275.7, "attempt": 1}
+{"clock": "19:14:41", "closest_m": 8.184, "flares_while_near": true, "flew_s": 3.088, "from": "common_A1_f16c_3", "kind": "missile_gone", "missile": "wp_msl_C_2", "t": 275.8, "attempt": 1}
+{"clock": "19:14:41", "dist_m": 591.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 276, "attempt": 1}
+{"clock": "19:14:41", "kind": "radio", "speaker": "Spare 2 Count", "t": 276, "text": "But in your heart, you want us to smash that base. Am I off?", "attempt": 1}
+{"clock": "19:14:42", "dist_m": 575.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 276.5, "attempt": 1}
+{"clock": "19:14:42", "kind": "missile_warning", "level": "near", "t": 276.6, "attempt": 1}
+{"clock": "19:14:42", "dist_m": 527.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 277, "attempt": 1}
+{"clock": "19:14:43", "dist_m": 487.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 277.5, "attempt": 1}
+{"callsign": "", "clock": "19:14:43", "dist_m": 1892, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_5", "t": 277.9, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:43", "dist_m": 439, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 278, "attempt": 1}
+{"clock": "19:14:44", "dist_m": 395.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 278.5, "attempt": 1}
+{"clock": "19:14:44", "dist_m": 1054, "kind": "flare", "missile": "wp_msl_C_1", "reason": "tracker", "t": 278.7, "tgo_s": 1.035, "attempt": 1}
+{"clock": "19:14:44", "dist_m": 1054, "kind": "evade", "miss_m": 190.9, "missile": "wp_msl_C_1", "t": 278.7, "tgo_s": 1.035, "attempt": 1}
+{"clock": "19:14:44", "dist_m": 359.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 279, "attempt": 1}
+{"clock": "19:14:44", "kind": "missile_warning", "level": "very near", "t": 279.1, "attempt": 1}
+{"clock": "19:14:45", "dist_m": 1741, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 279.5, "attempt": 1}
+{"clock": "19:14:45", "dist_m": 253.6, "kind": "flare", "missile": "wp_msl_C_1", "reason": "tracker", "t": 279.9, "tgo_s": 0.3543, "attempt": 1}
+{"clock": "19:14:45", "dist_m": 1707, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 280, "attempt": 1}
+{"clock": "19:14:45", "kind": "radio", "speaker": "AWACS Bandog", "t": 280.1, "text": "You're gonna wish this mission never ended.", "attempt": 1}
+{"clock": "19:14:46", "dist_m": 76.3, "from": "common_A1_f16c_1", "kind": "missile_lost_lock", "missile": "wp_msl_C_1", "t": 280.3, "attempt": 1}
+{"clock": "19:14:46", "kind": "missile_warning", "level": "near", "t": 280.3, "attempt": 1}
+{"clock": "19:14:46", "dist_m": 350.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 280.5, "attempt": 1}
+{"clock": "19:14:46", "dist_m": 1091, "kind": "evade", "miss_m": 171.9, "missile": "wp_msl_C_5", "t": 280.6, "tgo_s": 1.192, "attempt": 1}
+{"clock": "19:14:46", "dist_m": 387, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 281, "attempt": 1}
+{"clock": "19:14:46", "dist_m": 833.4, "kind": "flare", "missile": "wp_msl_C_5", "reason": "tracker", "t": 281.1, "tgo_s": 1.507, "attempt": 1}
+{"clock": "19:14:47", "kind": "missile_warning", "level": "very near", "t": 281.4, "attempt": 1}
+{"clock": "19:14:47", "dist_m": 415.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 281.5, "attempt": 1}
+{"clock": "19:14:47", "dist_m": 472.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 282, "attempt": 1}
+{"clock": "19:14:48", "dist_m": 89.14, "kind": "flare", "missile": "wp_msl_C_5", "reason": "tracker", "t": 282.3, "tgo_s": 0.1466, "attempt": 1}
+{"clock": "19:14:48", "dist_m": 36.25, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_5", "t": 282.5, "attempt": 1}
+{"clock": "19:14:48", "dist_m": 530.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 282.6, "attempt": 1}
+{"clock": "19:14:48", "closest_m": 43.34, "flares_while_near": true, "flew_s": 8.256, "from": "common_A1_f16c_1", "kind": "missile_gone", "missile": "wp_msl_C_1", "t": 283, "attempt": 1}
+{"clock": "19:14:48", "dist_m": 627.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 283.1, "attempt": 1}
+{"clock": "19:14:49", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 283.5, "text": "Looks like Bandog's finally come round.", "attempt": 1}
+{"clock": "19:14:49", "dist_m": 716.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 283.6, "attempt": 1}
+{"after_s": 17.06, "ang0_deg": 59.86, "base_s": 0.1596, "clock": "19:14:49", "dist_m": 1817, "kind": "lock", "rate_dps": 176.9, "t": 283.9, "target": "common_t160_2", "attempt": 1}
+{"clock": "19:14:49", "dist_m": 1817, "kind": "missile", "lanes": false, "off_deg": 23.43, "special": false, "t": 283.9, "target": "common_t160_2", "attempt": 1}
+{"clock": "19:14:49", "dist_m": 794.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 284.1, "attempt": 1}
+{"clock": "19:14:49", "kind": "launch", "left": 103, "n": 1, "t": 284.1, "target": "common_t160_2", "weapon": "missile", "attempt": 1}
+{"clock": "19:14:50", "dist_m": 848.5, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 284.4, "attempt": 1}
+{"clock": "19:14:50", "dist_m": 871.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 284.6, "attempt": 1}
+{"clock": "19:14:50", "dist_m": 939.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 285.1, "attempt": 1}
+{"clock": "19:14:50", "dist_m": 1629, "kind": "missile", "lanes": false, "off_deg": 29.49, "special": false, "t": 285.1, "target": "common_t160_2", "attempt": 1}
+{"clock": "19:14:51", "kind": "launch", "left": 102, "n": 1, "t": 285.2, "target": "common_t160_2", "weapon": "missile", "attempt": 1}
+{"clock": "19:14:51", "dist_m": 989.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 285.6, "attempt": 1}
+{"clock": "19:14:51", "dist_m": 1005, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 286.1, "attempt": 1}
+{"clock": "19:14:52", "dist_m": 1350, "kind": "missile", "lanes": false, "off_deg": 25.86, "special": false, "t": 286.4, "target": "common_t160_2", "attempt": 1}
+{"clock": "19:14:52", "dist_m": 978.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 286.6, "attempt": 1}
+{"clock": "19:14:52", "kind": "missile_warning", "level": "near", "t": 286.7, "attempt": 1}
+{"callsign": "", "clock": "19:14:52", "dist_m": 941.4, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_3", "t": 286.8, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:14:52", "dist_m": 915, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 287.1, "attempt": 1}
+{"clock": "19:14:53", "dist_m": 882.4, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 287.6, "attempt": 1}
+{"clock": "19:14:53", "dist_m": 1801, "flew_s": 3.65, "hit": true, "kind": "my_missile", "t": 287.7, "target": "common_t160_2", "target_kind": "large", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:14:53", "dist_m": 1083, "kind": "missile", "lanes": false, "off_deg": 21.86, "special": false, "t": 287.7, "target": "common_t160_2", "attempt": 1}
+{"clock": "19:14:53", "kind": "missile_warning", "level": "very near", "t": 287.7, "attempt": 1}
+{"clock": "19:14:53", "dist_m": 857.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 288.1, "attempt": 1}
+{"clock": "19:14:54", "dist_m": 1601, "flew_s": 3.15, "hit": true, "kind": "my_missile", "t": 288.4, "target": "common_t160_2", "target_kind": "large", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:14:54", "dist_m": 799.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 288.6, "attempt": 1}
+{"clock": "19:14:54", "kind": "radio", "speaker": "Spare Squadron", "t": 288.7, "text": "Anti-air fire! I'm hit!", "attempt": 1}
+{"clock": "19:14:54", "closest_m": 39.19, "flares_while_near": true, "flew_s": 11.07, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_5", "t": 289, "attempt": 1}
+{"clock": "19:14:54", "dist_m": 738.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 289.1, "attempt": 1}
+{"clock": "19:14:55", "down": -1, "free_m": 1137, "kind": "vision", "left": -1, "right": -1, "t": 289.6, "text": "obstacle: vision: free 750 m ahead the way it wants (1081 m needed); flying +3 deg yaw, +0 deg pitch of centre, free 1137 m", "up": -1, "attempt": 1}
+{"clock": "19:14:55", "dist_m": 676.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 289.6, "attempt": 1}
+{"clock": "19:14:56", "dist_m": 611.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 290.2, "attempt": 1}
+{"clock": "19:14:56", "dist_m": 253.2, "kind": "flare", "missile": "wp_msl_C_3", "reason": "tracker", "t": 290.2, "tgo_s": 0.4998, "attempt": 1}
+{"clock": "19:14:56", "dist_m": 253.2, "kind": "evade", "miss_m": 199, "missile": "wp_msl_C_3", "t": 290.2, "tgo_s": 0.4998, "attempt": 1}
+{"clock": "19:14:56", "dist_m": 204.7, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_3", "t": 290.4, "attempt": 1}
+{"clock": "19:14:56", "dist_m": 1144, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 290.4, "attempt": 1}
+{"clock": "19:14:56", "dist_m": 544.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 290.7, "attempt": 1}
+{"clock": "19:14:57", "dist_m": 490.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 291.2, "attempt": 1}
+{"clock": "19:14:57", "down": -1, "free_m": 774.3, "kind": "vision", "left": -1, "right": -1, "t": 291.6, "text": "obstacle: vision: free 553 m ahead the way it wants (758 m needed); flying +0 deg yaw, -8 deg pitch of centre, free 774 m", "up": -1, "attempt": 1}
+{"clock": "19:14:57", "dist_m": 434.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 291.7, "attempt": 1}
+{"clock": "19:14:57", "kills": 9, "kind": "time_split", "lanes": false, "order_t0": 172.1, "split": {"ahead": 13.03, "break": 14.43, "locked": 10.6, "offnose": 44.81, "recovery": 3.619, "transit": 33.52}, "t": 292.1, "attempt": 1}
+{"clock": "19:14:57", "closest_m": 229.7, "flares_while_near": true, "flew_s": 5.287, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_3", "t": 292.1, "attempt": 1}
+{"clock": "19:14:57", "down": -1, "free_m": 640.7, "kind": "vision", "left": -1, "right": -1, "t": 292.1, "text": "obstacle: vision: free 525 m ahead the way it wants (618 m needed); flying +0 deg yaw, -8 deg pitch of centre, free 641 m", "up": -1, "attempt": 1}
+{"clock": "19:14:58", "dist_m": 391.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 292.2, "attempt": 1}
+{"clock": "19:14:58", "goal": 24000, "hud_score": "001300/024000", "kills": 9, "kind": "score_tick", "lanes": false, "left_s": 775.6, "score": 1300, "t": 292.2, "attempt": 1}
+{"clock": "19:14:58", "dist_m": 338.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 292.7, "attempt": 1}
+{"above_ground_m": 490, "alt_m": 580, "clock": "19:14:58", "kind": "ground_recovery", "lowest_ahead_m": -140.5, "t": 292.7, "vz": -95.29, "attempt": 1}
+{"clock": "19:14:58", "down": -1, "free_m": 615.6, "kind": "vision", "left": -1, "right": -1, "t": 292.8, "text": "obstacle: vision: free 511 m ahead the way it wants (608 m needed); flying +40 deg yaw, -20 deg pitch of centre, free 616 m", "up": -1, "attempt": 1}
+{"clock": "19:14:59", "dist_m": 295, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 293.2, "attempt": 1}
+{"clock": "19:14:59", "down": -1, "free_m": 664.2, "kind": "vision", "left": -1, "right": -1, "t": 293.5, "text": "obstacle: vision: free 531 m ahead the way it wants (644 m needed); flying +40 deg yaw, +0 deg pitch of centre, free 664 m", "up": -1, "attempt": 1}
+{"clock": "19:14:59", "dist_m": 255.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 293.8, "attempt": 1}
+{"clock": "19:15:00", "dist_m": 234.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 294.3, "attempt": 1}
+{"clock": "19:15:00", "dist_m": 264.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 294.8, "attempt": 1}
+{"clock": "19:15:01", "dist_m": 355.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 295.3, "attempt": 1}
+{"clock": "19:15:01", "dist_m": 407.6, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "ReturnToWorld", "t": 295.5, "attempt": 1}
+{"clock": "19:15:01", "dist_m": 466.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 295.8, "attempt": 1}
+{"clock": "19:15:02", "dist_m": 613.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 296.3, "attempt": 1}
+{"clock": "19:15:02", "dist_m": 753.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 296.8, "attempt": 1}
+{"clock": "19:15:03", "dist_m": 893.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 297.3, "attempt": 1}
+{"clock": "19:15:03", "dist_m": 1009, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 297.8, "attempt": 1}
+{"clock": "19:15:04", "dist_m": 1133, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 298.3, "attempt": 1}
+{"clock": "19:15:04", "dist_m": 1237, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 298.8, "attempt": 1}
+{"clock": "19:15:04", "down": -1, "free_m": 806.9, "kind": "vision", "left": -1, "right": -1, "t": 299, "text": "obstacle: vision: free 602 m ahead the way it wants (614 m needed); flying +3 deg yaw, -20 deg pitch of centre, free 807 m", "up": -1, "attempt": 1}
+{"clock": "19:15:05", "dist_m": 1333, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 299.3, "attempt": 1}
+{"clock": "19:15:05", "dist_m": 1346, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 299.8, "attempt": 1}
+{"clock": "19:15:06", "dist_m": 922.3, "kind": "priority", "score": 0.3302, "t": 300.2, "target": "common_A1_f16c_2", "weight": 8.96, "attempt": 1}
+{"callsign": "", "clock": "19:15:06", "dist_m": 976.1, "kind": "target", "t": 300.2, "target": "common_A1_f16c_2", "attempt": 1}
+{"clock": "19:15:06", "dist_m": 1271, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 300.5, "attempt": 1}
+{"clock": "19:15:06", "dist_m": 1213, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 300.9, "attempt": 1}
+{"clock": "19:15:07", "kind": "radio", "speaker": "Spare 6 Full band", "t": 301.2, "text": "There's a lock on Trigger's bird!", "attempt": 1}
+{"clock": "19:15:07", "dist_m": 1160, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 301.5, "attempt": 1}
+{"clock": "19:15:07", "dist_m": 1148, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 301.6, "attempt": 1}
+{"clock": "19:15:07", "dist_m": 1132, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 301.9, "attempt": 1}
+{"clock": "19:15:07", "kind": "missile_warning", "level": "near", "t": 302.1, "attempt": 1}
+{"callsign": "", "clock": "19:15:08", "dist_m": 1104, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_2", "t": 302.2, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:15:08", "dist_m": 1096, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 302.5, "attempt": 1}
+{"clock": "19:15:08", "dist_m": 1076, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 303, "attempt": 1}
+{"clock": "19:15:09", "dist_m": 1041, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 303.5, "attempt": 1}
+{"after_s": 3.415, "ang0_deg": 86.38, "base_s": 0, "clock": "19:15:09", "dist_m": 1262, "kind": "lock", "rate_dps": 19.86, "t": 303.6, "target": "common_A1_f16c_2", "attempt": 1}
+{"clock": "19:15:09", "dist_m": 1262, "kind": "missile", "lanes": false, "off_deg": 25.61, "special": false, "t": 303.6, "target": "common_A1_f16c_2", "attempt": 1}
+{"clock": "19:15:09", "kind": "launch", "left": 101, "n": 1, "t": 303.6, "target": "common_A1_f16c_2", "weapon": "missile", "attempt": 1}
+{"clock": "19:15:09", "kind": "missile_warning", "level": "very near", "t": 304, "attempt": 1}
+{"clock": "19:15:09", "dist_m": 1019, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 304, "attempt": 1}
+{"clock": "19:15:10", "dist_m": 979.2, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 304.6, "attempt": 1}
+{"clock": "19:15:10", "dist_m": 520, "kind": "flare", "missile": "wp_msl_C_2", "reason": "tracker", "t": 304.7, "tgo_s": 0.7941, "attempt": 1}
+{"clock": "19:15:10", "dist_m": 520, "kind": "evade", "miss_m": 176.9, "missile": "wp_msl_C_2", "t": 304.7, "tgo_s": 0.7941, "attempt": 1}
+{"clock": "19:15:10", "dist_m": 948.4, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 305.1, "attempt": 1}
+{"clock": "19:15:11", "dist_m": 926.6, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 305.6, "attempt": 1}
+{"clock": "19:15:11", "dist_m": 77.37, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_2", "t": 305.8, "attempt": 1}
+{"clock": "19:15:11", "dist_m": 917.2, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 306.1, "attempt": 1}
+{"clock": "19:15:12", "dist_m": 1154, "kind": "priority", "score": 0.1557, "t": 306.2, "target": "common_A1_f16c_3", "weight": 4.48, "attempt": 1}
+{"callsign": "", "clock": "19:15:12", "dist_m": 1021, "kind": "target", "t": 306.2, "target": "common_A1_f16c_3", "attempt": 1}
+{"clock": "19:15:12", "dist_m": 910.6, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 306.6, "attempt": 1}
+{"clock": "19:15:12", "dist_m": 895.5, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 307.1, "attempt": 1}
+{"clock": "19:15:13", "dist_m": 1259, "flew_s": 3.433, "hit": true, "kind": "my_missile", "t": 307.2, "target": "common_A1_f16c_2", "target_kind": "plane", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:15:13", "dist_m": 839, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 307.6, "attempt": 1}
+{"clock": "19:15:13", "dist_m": 778.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 308.1, "attempt": 1}
+{"clock": "19:15:14", "dist_m": 716.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 308.6, "attempt": 1}
+{"clock": "19:15:14", "dist_m": 661.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 309.1, "attempt": 1}
+{"clock": "19:15:15", "dist_m": 779.9, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 309.6, "attempt": 1}
+{"clock": "19:15:15", "dist_m": 711.7, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 310.1, "attempt": 1}
+{"clock": "19:15:16", "dist_m": 627.1, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 310.6, "attempt": 1}
+{"clock": "19:15:16", "dist_m": 529.5, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 311.1, "attempt": 1}
+{"clock": "19:15:17", "dist_m": 439.1, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 311.6, "attempt": 1}
+{"clock": "19:15:17", "kind": "missile_warning", "level": "very near", "t": 312, "attempt": 1}
+{"clock": "19:15:17", "kind": "flare", "reason": "warning", "t": 312, "attempt": 1}
+{"callsign": "", "clock": "19:15:17", "dist_m": 361.3, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_1", "t": 312, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:15:17", "dist_m": 350.8, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 312.1, "attempt": 1}
+{"clock": "19:15:18", "dist_m": 298.5, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 312.6, "attempt": 1}
+{"clock": "19:15:18", "dist_m": 272.4, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_1", "t": 312.7, "attempt": 1}
+{"clock": "19:15:18", "dist_m": 296.8, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 312.9, "attempt": 1}
+{"clock": "19:15:18", "dist_m": 311.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 313.1, "attempt": 1}
+{"clock": "19:15:19", "kind": "radio", "speaker": "Erusean Fighter", "t": 313.2, "text": "Dodged!", "attempt": 1}
+{"clock": "19:15:19", "closest_m": 74.89, "flares_while_near": true, "flew_s": 11, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_2", "t": 313.2, "attempt": 1}
+{"clock": "19:15:19", "dist_m": 387.7, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 313.7, "attempt": 1}
+{"clock": "19:15:20", "dist_m": 505.8, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 314.2, "attempt": 1}
+{"clock": "19:15:20", "dist_m": 624.2, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 314.7, "attempt": 1}
+{"clock": "19:15:21", "dist_m": 732.7, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 315.2, "attempt": 1}
+{"clock": "19:15:21", "dist_m": 818.6, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 315.7, "attempt": 1}
+{"after_s": 9.838, "ang0_deg": 60.56, "base_s": 0, "clock": "19:15:21", "dist_m": 191.5, "kind": "lock", "rate_dps": 19.86, "t": 316, "target": "common_A1_f16c_3", "attempt": 1}
+{"clock": "19:15:21", "dist_m": 191.5, "kind": "missile", "lanes": false, "off_deg": 18.66, "special": false, "t": 316, "target": "common_A1_f16c_3", "attempt": 1}
+{"clock": "19:15:22", "dist_m": 185.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 316.2, "attempt": 1}
+{"clock": "19:15:22", "kind": "launch", "left": 100, "n": 1, "t": 316.2, "target": "common_A1_f16c_3", "weapon": "missile", "attempt": 1}
+{"clock": "19:15:22", "dist_m": 191.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 316.7, "attempt": 1}
+{"clock": "19:15:22", "kind": "radio", "speaker": "AWACS Bandog", "t": 316.8, "text": "Missile away.", "attempt": 1}
+{"clock": "19:15:23", "dist_m": 238.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 317.2, "attempt": 1}
+{"clock": "19:15:23", "dist_m": 191.8, "flew_s": 1.579, "hit": true, "kind": "my_missile", "t": 317.6, "target": "common_A1_f16c_3", "target_kind": "plane", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:15:23", "dist_m": 294.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 317.7, "attempt": 1}
+{"clock": "19:15:24", "dist_m": 384.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 318.2, "attempt": 1}
+{"clock": "19:15:24", "dist_m": 461.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 318.7, "attempt": 1}
+{"clock": "19:15:25", "dist_m": 490.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 319.2, "attempt": 1}
+{"clock": "19:15:25", "dist_m": 533.1, "kind": "missile", "lanes": false, "off_deg": 19.38, "special": false, "t": 319.4, "target": "common_A1_f16c_3", "attempt": 1}
+{"clock": "19:15:25", "kind": "launch", "left": 99, "n": 1, "t": 319.4, "target": "common_A1_f16c_3", "weapon": "missile", "attempt": 1}
+{"clock": "19:15:25", "damage": 40, "hp": 12, "kind": "one_shot", "set_aside_s": 1.82, "t": 319.4, "target": "common_A1_f16c_3", "attempt": 1}
+{"clock": "19:15:25", "dist_m": 448.5, "kind": "priority", "score": 0.1797, "t": 319.4, "target": "common_A1_f16c_3", "weight": 4.48, "attempt": 1}
+{"clock": "19:15:25", "dist_m": 2656, "kind": "priority", "score": 0.1348, "t": 319.7, "target": "common_t160_3", "weight": 6.72, "attempt": 1}
+{"callsign": "", "clock": "19:15:25", "dist_m": 2656, "kind": "target", "t": 319.7, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:15:25", "kind": "missile_warning", "level": "near", "t": 319.7, "attempt": 1}
+{"clock": "19:15:25", "dist_m": 544.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 319.7, "attempt": 1}
+{"callsign": "", "clock": "19:15:25", "dist_m": 984.1, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_0", "t": 319.7, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:15:25", "kind": "radio", "speaker": "Erusean Fighter", "t": 319.9, "text": "Missile! Break! Break!", "attempt": 1}
+{"clock": "19:15:26", "dist_m": 570.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 320.2, "attempt": 1}
+{"clock": "19:15:26", "dist_m": 609.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 320.7, "attempt": 1}
+{"clock": "19:15:26", "kind": "missile_warning", "level": "very near", "t": 321.1, "attempt": 1}
+{"clock": "19:15:27", "dist_m": 679.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 321.2, "attempt": 1}
+{"clock": "19:15:27", "dist_m": 695.7, "kind": "flare", "missile": "wp_msl_C_0", "reason": "tracker", "t": 321.5, "tgo_s": 2.062, "attempt": 1}
+{"clock": "19:15:27", "dist_m": 695.7, "kind": "evade", "miss_m": 185.9, "missile": "wp_msl_C_0", "t": 321.5, "tgo_s": 2.062, "attempt": 1}
+{"clock": "19:15:27", "dist_m": 761.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 321.7, "attempt": 1}
+{"clock": "19:15:28", "goal": 24000, "hud_score": "001300/024000", "kills": 9, "kind": "score_tick", "lanes": false, "left_s": 745.6, "score": 1300, "t": 322.2, "attempt": 1}
+{"clock": "19:15:28", "dist_m": 860.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 322.2, "attempt": 1}
+{"clock": "19:15:28", "dist_m": 209.2, "kind": "flare", "missile": "wp_msl_C_0", "reason": "tracker", "t": 322.7, "tgo_s": 0.4337, "attempt": 1}
+{"clock": "19:15:28", "dist_m": 842.6, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 322.7, "attempt": 1}
+{"clock": "19:15:28", "dist_m": 41.01, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_0", "t": 323.1, "attempt": 1}
+{"clock": "19:15:28", "dist_m": 1032, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 323.1, "attempt": 1}
+{"clock": "19:15:28", "closest_m": 274.6, "flares_while_near": false, "flew_s": 11.09, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_1", "t": 323.1, "attempt": 1}
+{"clock": "19:15:29", "dist_m": 776.1, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 323.2, "attempt": 1}
+{"clock": "19:15:29", "kind": "radio", "speaker": "AWACS Bandog", "t": 323.5, "text": "A bomber has taken off. That's for us. Take care of it.", "attempt": 1}
+{"clock": "19:15:29", "dist_m": 683.9, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 323.8, "attempt": 1}
+{"clock": "19:15:30", "dist_m": 587.8, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 324.3, "attempt": 1}
+{"clock": "19:15:30", "dist_m": 500.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 324.8, "attempt": 1}
+{"clock": "19:15:31", "dist_m": 436.1, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 325.3, "attempt": 1}
+{"clock": "19:15:31", "dist_m": 392.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 325.8, "attempt": 1}
+{"clock": "19:15:32", "dist_m": 376.1, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 326.3, "attempt": 1}
+{"clock": "19:15:32", "dist_m": 406.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 326.9, "attempt": 1}
+{"clock": "19:15:32", "dist_m": 1145, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 326.9, "attempt": 1}
+{"clock": "19:15:32", "dist_m": 420.9, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 327, "attempt": 1}
+{"clock": "19:15:33", "dist_m": 464.5, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 327.4, "attempt": 1}
+{"clock": "19:15:33", "dist_m": 542, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 327.9, "attempt": 1}
+{"clock": "19:15:34", "dist_m": 623.8, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 328.4, "attempt": 1}
+{"clock": "19:15:34", "dist_m": 541.6, "flew_s": 8.999, "hit": false, "kind": "my_missile", "t": 328.5, "target": "common_A1_f16c_3", "target_kind": "plane", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:15:34", "dist_m": 918.7, "from": "common_A1_f16c_3", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_3", "t": 328.7, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:15:34", "kind": "missile_warning", "level": "near", "t": 328.7, "attempt": 1}
+{"clock": "19:15:34", "dist_m": 696.3, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 328.9, "attempt": 1}
+{"clock": "19:15:34", "dist_m": 851, "kind": "defend", "miss_m": 71.39, "missile": "wp_msl_C_3", "t": 329.1, "tgo_s": 3.989, "attempt": 1}
+{"clock": "19:15:35", "kind": "missile_warning", "level": "very near", "t": 329.3, "attempt": 1}
+{"clock": "19:15:35", "dist_m": 781.8, "kind": "flare", "missile": "wp_msl_C_3", "reason": "tracker", "t": 329.4, "tgo_s": 1.477, "attempt": 1}
+{"clock": "19:15:35", "dist_m": 781.8, "kind": "evade", "miss_m": 52.16, "missile": "wp_msl_C_3", "t": 329.4, "tgo_s": 1.477, "attempt": 1}
+{"clock": "19:15:35", "dist_m": 771.4, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 329.4, "attempt": 1}
+{"clock": "19:15:35", "kind": "radio", "speaker": "AWACS Bandog", "t": 329.4, "text": "Missile incoming!", "attempt": 1}
+{"clock": "19:15:35", "dist_m": 750.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 329.9, "attempt": 1}
+{"clock": "19:15:35", "dist_m": 602.7, "kind": "defend", "miss_m": 186.2, "missile": "wp_msl_C_3", "t": 330, "tgo_s": 2.99, "attempt": 1}
+{"clock": "19:15:36", "dist_m": 678.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 330.4, "attempt": 1}
+{"clock": "19:15:36", "dist_m": 373.6, "kind": "flare", "missile": "wp_msl_C_3", "reason": "tracker", "t": 330.6, "tgo_s": 1.679, "attempt": 1}
+{"clock": "19:15:36", "closest_m": 48.97, "flares_while_near": true, "flew_s": 10.88, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_0", "t": 330.6, "attempt": 1}
+{"clock": "19:15:36", "dist_m": 615.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 330.9, "attempt": 1}
+{"clock": "19:15:37", "dist_m": 79.25, "from": "common_A1_f16c_3", "kind": "missile_lost_lock", "missile": "wp_msl_C_3", "t": 331.3, "attempt": 1}
+{"clock": "19:15:37", "dist_m": 559.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 331.4, "attempt": 1}
+{"clock": "19:15:37", "dist_m": 508.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 331.9, "attempt": 1}
+{"clock": "19:15:38", "dist_m": 480.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 332.4, "attempt": 1}
+{"clock": "19:15:38", "dist_m": 495.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 332.9, "attempt": 1}
+{"clock": "19:15:39", "dist_m": 558.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 333.4, "attempt": 1}
+{"clock": "19:15:39", "dist_m": 633.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 333.9, "attempt": 1}
+{"clock": "19:15:40", "dist_m": 1574, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 334.4, "attempt": 1}
+{"clock": "19:15:40", "dist_m": 698.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 334.4, "attempt": 1}
+{"clock": "19:15:40", "dist_m": 740.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 334.9, "attempt": 1}
+{"clock": "19:15:41", "dist_m": 790.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 335.5, "attempt": 1}
+{"clock": "19:15:41", "dist_m": 840.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 336, "attempt": 1}
+{"clock": "19:15:42", "dist_m": 897.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 336.5, "attempt": 1}
+{"clock": "19:15:42", "kind": "radio", "speaker": "AWACS Bandog", "t": 336.6, "text": "That bomber is getting away. Chase it down like you mean it, morons.", "attempt": 1}
+{"clock": "19:15:42", "dist_m": 948.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 337, "attempt": 1}
+{"clock": "19:15:43", "dist_m": 1030, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 337.5, "attempt": 1}
+{"clock": "19:15:43", "closest_m": 76.21, "flares_while_near": true, "flew_s": 9.084, "from": "common_A1_f16c_3", "kind": "missile_gone", "missile": "wp_msl_C_3", "t": 337.8, "attempt": 1}
+{"clock": "19:15:43", "dist_m": 1099, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 338, "attempt": 1}
+{"clock": "19:15:44", "dist_m": 1192, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 338.5, "attempt": 1}
+{"clock": "19:15:44", "dist_m": 1291, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 339, "attempt": 1}
+{"clock": "19:15:45", "dist_m": 1390, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 339.5, "attempt": 1}
+{"clock": "19:15:45", "dist_m": 2042, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 340, "attempt": 1}
+{"clock": "19:15:46", "dist_m": 2034, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 340.5, "attempt": 1}
+{"clock": "19:15:46", "dist_m": 2008, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 341, "attempt": 1}
+{"clock": "19:15:47", "dist_m": 1966, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 341.5, "attempt": 1}
+{"clock": "19:15:47", "dist_m": 1921, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 342, "attempt": 1}
+{"clock": "19:15:48", "dist_m": 1865, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 342.5, "attempt": 1}
+{"clock": "19:15:48", "dist_m": 1813, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 343, "attempt": 1}
+{"clock": "19:15:49", "dist_m": 1749, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 343.5, "attempt": 1}
+{"clock": "19:15:49", "dist_m": 1670, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 344.1, "attempt": 1}
+{"clock": "19:15:50", "dist_m": 1579, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 344.6, "attempt": 1}
+{"clock": "19:15:50", "dist_m": 1494, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 345.1, "attempt": 1}
+{"clock": "19:15:51", "dist_m": 1406, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 345.6, "attempt": 1}
+{"clock": "19:15:51", "dist_m": 1318, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 346.1, "attempt": 1}
+{"clock": "19:15:52", "dist_m": 1226, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 346.6, "attempt": 1}
+{"clock": "19:15:52", "dist_m": 1138, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 347.1, "attempt": 1}
+{"clock": "19:15:53", "dist_m": 1070, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 347.6, "attempt": 1}
+{"clock": "19:15:53", "dist_m": 1049, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 348.1, "attempt": 1}
+{"clock": "19:15:54", "dist_m": 1068, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 348.5, "attempt": 1}
+{"clock": "19:15:54", "dist_m": 1083, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 348.6, "attempt": 1}
+{"clock": "19:15:54", "dist_m": 1186, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 349.1, "attempt": 1}
+{"clock": "19:15:55", "dist_m": 1335, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 349.7, "attempt": 1}
+{"clock": "19:15:56", "dist_m": 1472, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 350.2, "attempt": 1}
+{"clock": "19:15:56", "dist_m": 1611, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 350.7, "attempt": 1}
+{"clock": "19:15:57", "dist_m": 1728, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 351.2, "attempt": 1}
+{"clock": "19:15:57", "dist_m": 1828, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 351.7, "attempt": 1}
+{"clock": "19:15:57", "dist_m": 1844, "enemy": "common_A1_f16c_4", "kind": "pursuer", "state": "PursueTarget", "t": 351.8, "attempt": 1}
+{"clock": "19:15:57", "kills": 9, "kind": "time_split", "lanes": false, "order_t0": 172.1, "split": {"ahead": 15.99, "break": 22.28, "defend": 0.283, "locked": 12.66, "offnose": 68.37, "pursuer": 10.59, "recovery": 4.103, "transit": 45.73}, "t": 352.1, "attempt": 1}
+{"clock": "19:15:58", "dist_m": 1939, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 352.2, "attempt": 1}
+{"clock": "19:15:58", "goal": 24000, "hud_score": "001300/024000", "kills": 9, "kind": "score_tick", "lanes": false, "left_s": 715.6, "score": 1300, "t": 352.2, "attempt": 1}
+{"clock": "19:15:58", "dist_m": 2049, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 352.7, "attempt": 1}
+{"clock": "19:15:59", "dist_m": 2145, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 353.2, "attempt": 1}
+{"clock": "19:15:59", "dist_m": 2223, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 353.7, "attempt": 1}
+{"clock": "19:16:00", "dist_m": 2319, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 354.2, "attempt": 1}
+{"clock": "19:16:00", "dist_m": 2440, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 354.7, "attempt": 1}
+{"clock": "19:16:01", "dist_m": 2580, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 355.3, "attempt": 1}
+{"clock": "19:16:01", "dist_m": 2708, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 355.8, "attempt": 1}
+{"clock": "19:16:02", "dist_m": 2799, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 356.3, "attempt": 1}
+{"clock": "19:16:02", "dist_m": 2866, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 356.8, "attempt": 1}
+{"clock": "19:16:03", "dist_m": 2926, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 357.3, "attempt": 1}
+{"clock": "19:16:08", "dist_m": 1227, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 362.9, "attempt": 1}
+{"clock": "19:16:09", "dist_m": 1083, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 363.4, "attempt": 1}
+{"clock": "19:16:09", "dist_m": 1005, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 363.9, "attempt": 1}
+{"clock": "19:16:10", "dist_m": 1017, "enemy": "common_A1_f16c_1", "kind": "pursuer", "state": "PursueTarget", "t": 364.3, "attempt": 1}
+{"clock": "19:16:10", "dist_m": 1015, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 364.4, "attempt": 1}
+{"above_ground_m": 618.6, "alt_m": 935.3, "clock": "19:16:10", "kind": "ground_recovery", "lowest_ahead_m": 115.4, "t": 364.8, "vz": -126, "attempt": 1}
+{"clock": "19:16:10", "dist_m": 1113, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 364.9, "attempt": 1}
+{"clock": "19:16:11", "dist_m": 1228, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 365.5, "attempt": 1}
+{"clock": "19:16:11", "dist_m": 1293, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 366.1, "attempt": 1}
+{"clock": "19:16:12", "dist_m": 1305, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 366.5, "attempt": 1}
+{"clock": "19:16:12", "dist_m": 1304, "enemy": "common_A1_f16c_1", "kind": "pursuer", "state": "PursueTarget", "t": 366.5, "attempt": 1}
+{"clock": "19:16:12", "dist_m": 1367, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 367.1, "attempt": 1}
+{"clock": "19:16:13", "dist_m": 1460, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 367.6, "attempt": 1}
+{"air": "common_t160_3", "air_rate": 32.21, "clock": "19:16:13", "engaged": false, "kind": "lanes", "lane_rate": 36.96, "on": true, "t": 367.6, "targets": 16, "value": 287.3, "attempt": 1}
+{"clock": "19:16:13", "dist_m": 1581, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 368.1, "attempt": 1}
+{"air": "common_t160_3", "air_rate": 32.31, "clock": "19:16:13", "engaged": true, "kind": "lanes", "lane_rate": 38.97, "on": false, "t": 368.1, "targets": 22, "value": 314.3, "attempt": 1}
+{"clock": "19:16:13", "dist_m": 6274, "kind": "priority", "score": 0.2287, "t": 368.1, "target": "common_A1_f16c_4", "weight": 8.96, "attempt": 1}
+{"callsign": "", "clock": "19:16:13", "dist_m": 6307, "kind": "target", "t": 368.1, "target": "common_A1_f16c_4", "attempt": 1}
+{"clock": "19:16:14", "kind": "radio", "speaker": "Spare 8 Champ", "t": 368.6, "text": "Trigger, they have a lock!", "attempt": 1}
+{"clock": "19:16:14", "dist_m": 1728, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 368.6, "attempt": 1}
+{"clock": "19:16:15", "dist_m": 1822, "enemy": "common_A1_f16c_1", "kind": "hunter", "t": 369.2, "attempt": 1}
+{"clock": "19:16:21", "dist_m": 865.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 375.8, "attempt": 1}
+{"clock": "19:16:22", "dist_m": 693.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 376.3, "attempt": 1}
+{"clock": "19:16:22", "dist_m": 597.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 376.8, "attempt": 1}
+{"clock": "19:16:23", "dist_m": 612.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 377.3, "attempt": 1}
+{"clock": "19:16:23", "dist_m": 685.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 377.8, "attempt": 1}
+{"clock": "19:16:23", "dist_m": 710.9, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 377.9, "attempt": 1}
+{"clock": "19:16:24", "dist_m": 798.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 378.3, "attempt": 1}
+{"clock": "19:16:24", "kind": "radio", "speaker": "Spare 2 Count", "t": 378.8, "text": "Damn! Missed again!", "attempt": 1}
+{"clock": "19:16:24", "dist_m": 904.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 378.8, "attempt": 1}
+{"clock": "19:16:25", "dist_m": 963.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 379.3, "attempt": 1}
+{"clock": "19:16:25", "dist_m": 907.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 379.8, "attempt": 1}
+{"clock": "19:16:26", "dist_m": 4191, "kind": "priority", "score": 0.1471, "t": 380.3, "target": "common_t160_3", "weight": 6.72, "attempt": 1}
+{"callsign": "", "clock": "19:16:26", "dist_m": 4214, "kind": "target", "t": 380.3, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:16:26", "dist_m": 818, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 380.3, "attempt": 1}
+{"clock": "19:16:26", "dist_m": 764.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 380.8, "attempt": 1}
+{"clock": "19:16:27", "dist_m": 711, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 381.3, "attempt": 1}
+{"clock": "19:16:27", "dist_m": 712.7, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 381.3, "attempt": 1}
+{"clock": "19:16:27", "dist_m": 690.9, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 381.4, "attempt": 1}
+{"clock": "19:16:27", "dist_m": 672.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 381.8, "attempt": 1}
+{"clock": "19:16:28", "goal": 24000, "hud_score": "001300/024000", "kills": 9, "kind": "score_tick", "lanes": false, "left_s": 685.6, "score": 1300, "t": 382.2, "attempt": 1}
+{"clock": "19:16:28", "dist_m": 618.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 382.3, "attempt": 1}
+{"clock": "19:16:28", "dist_m": 591.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 382.8, "attempt": 1}
+{"clock": "19:16:29", "dist_m": 553.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 383.3, "attempt": 1}
+{"clock": "19:16:29", "dist_m": 480.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 383.8, "attempt": 1}
+{"clock": "19:16:30", "dist_m": 338.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 384.4, "attempt": 1}
+{"clock": "19:16:30", "dist_m": 184.3, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 384.9, "attempt": 1}
+{"clock": "19:16:31", "dist_m": 107.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 385.4, "attempt": 1}
+{"clock": "19:16:31", "dist_m": 186, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 385.8, "attempt": 1}
+{"clock": "19:16:31", "dist_m": 217.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 385.9, "attempt": 1}
+{"clock": "19:16:32", "dist_m": 360.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 386.4, "attempt": 1}
+{"clock": "19:16:32", "dist_m": 505.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 386.9, "attempt": 1}
+{"clock": "19:16:33", "dist_m": 593.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 387.4, "attempt": 1}
+{"clock": "19:16:33", "dist_m": 658.2, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 387.9, "attempt": 1}
+{"clock": "19:16:34", "kind": "radio", "speaker": "Spare Squadron", "t": 388.3, "text": "You've got company, Spare 15!", "attempt": 1}
+{"clock": "19:16:34", "dist_m": 685.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 388.4, "attempt": 1}
+{"clock": "19:16:34", "dist_m": 678.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 388.9, "attempt": 1}
+{"clock": "19:16:35", "dist_m": 655.4, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 389.3, "attempt": 1}
+{"clock": "19:16:35", "dist_m": 652.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 389.4, "attempt": 1}
+{"clock": "19:16:35", "dist_m": 624.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 390, "attempt": 1}
+{"clock": "19:16:36", "dist_m": 588.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 390.5, "attempt": 1}
+{"clock": "19:16:36", "dist_m": 540.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 391, "attempt": 1}
+{"clock": "19:16:37", "dist_m": 468.1, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 391.5, "attempt": 1}
+{"clock": "19:16:37", "dist_m": 424.9, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 392, "attempt": 1}
+{"clock": "19:16:37", "dist_m": 413.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 392, "attempt": 1}
+{"clock": "19:16:37", "dist_m": 414.7, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 392, "attempt": 1}
+{"clock": "19:16:38", "dist_m": 399.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 392.5, "attempt": 1}
+{"after_s": 12.28, "ang0_deg": 122.8, "base_s": 0, "clock": "19:16:38", "dist_m": 2279, "kind": "lock", "rate_dps": 19.86, "t": 392.5, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:16:38", "dist_m": 2279, "kind": "missile", "lanes": false, "off_deg": 4.495, "special": false, "t": 392.5, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:16:38", "kind": "launch", "left": 98, "n": 1, "t": 392.6, "target": "common_t160_3", "weapon": "missile", "attempt": 1}
+{"clock": "19:16:38", "dist_m": 380.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 393, "attempt": 1}
+{"clock": "19:16:39", "kind": "radio", "speaker": "AWACS Bandog", "t": 393.3, "text": "Locked on target.", "attempt": 1}
+{"clock": "19:16:39", "dist_m": 366.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 393.5, "attempt": 1}
+{"clock": "19:16:39", "dist_m": 1834, "kind": "missile", "lanes": false, "off_deg": 13.26, "special": false, "t": 393.8, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:16:39", "kind": "launch", "left": 97, "n": 1, "t": 393.9, "target": "common_t160_3", "weapon": "missile", "attempt": 1}
+{"clock": "19:16:39", "dist_m": 312.6, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 394, "attempt": 1}
+{"clock": "19:16:39", "dist_m": 301.7, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 394.1, "attempt": 1}
+{"clock": "19:16:40", "dist_m": 276.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 394.6, "attempt": 1}
+{"clock": "19:16:40", "dist_m": 1401, "kind": "missile", "lanes": false, "off_deg": 2.866, "special": false, "t": 395, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:16:40", "dist_m": 238.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 395.1, "attempt": 1}
+{"clock": "19:16:41", "dist_m": 190.9, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 395.6, "attempt": 1}
+{"clock": "19:16:41", "dist_m": 178.5, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 395.8, "attempt": 1}
+{"clock": "19:16:41", "dist_m": 2269, "flew_s": 3.254, "hit": true, "kind": "my_missile", "t": 395.8, "target": "common_t160_3", "target_kind": "large", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:16:41", "dist_m": 173.7, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 395.9, "attempt": 1}
+{"clock": "19:16:41", "dist_m": 169.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 396.1, "attempt": 1}
+{"clock": "19:16:41", "dist_m": 169.5, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 396.1, "attempt": 1}
+{"clock": "19:16:42", "dist_m": 925.2, "kind": "missile", "lanes": false, "off_deg": 1.926, "special": false, "t": 396.4, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:16:42", "kind": "radio", "speaker": "AWACS Bandog", "t": 396.4, "text": "Missile hit.", "attempt": 1}
+{"clock": "19:16:42", "dist_m": 140.8, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 396.6, "attempt": 1}
+{"clock": "19:16:42", "dist_m": 1759, "flew_s": 2.64, "hit": true, "kind": "my_missile", "t": 396.6, "target": "common_t160_3", "target_kind": "large", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:16:42", "kind": "death", "t": 396.9, "who": "common_t160_3", "attempt": 1}
+{"bounty": 1200, "by": "missile on its way", "callsign": "", "class": "large", "clock": "19:16:42", "kind": "kill", "t": 396.9, "target": "common_t160_3", "attempt": 1}
+{"clock": "19:16:42", "dist_m": 925.2, "kind": "priority", "score": 0.1839, "t": 396.9, "target": "common_t160_3", "weight": 6.72, "attempt": 1}
+{"callsign": "", "clock": "19:16:42", "dist_m": 6168, "kind": "target", "t": 396.9, "target": "common_shil3", "attempt": 1}
+{"clock": "19:16:42", "dist_m": 136.5, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 397.1, "attempt": 1}
+{"air": "common_t160_3", "air_rate": 0, "clock": "19:16:42", "engaged": false, "kind": "lanes", "lane_rate": 19.6, "on": true, "t": 397.1, "targets": 9, "value": 125.5, "attempt": 1}
+{"above_ground_m": 1406, "alt_m": 1519, "clock": "19:16:43", "kind": "ground_recovery", "lowest_ahead_m": 13.2, "t": 397.5, "vz": -29.23, "attempt": 1}
+{"clock": "19:16:43", "dist_m": 147.7, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 397.6, "attempt": 1}
+{"clock": "19:16:43", "dist_m": 208.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 398.1, "attempt": 1}
+{"clock": "19:16:44", "dist_m": 270.4, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 398.6, "attempt": 1}
+{"clock": "19:16:44", "dist_m": 310, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 399.1, "attempt": 1}
+{"clock": "19:16:45", "dist_m": 3512, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 399.6, "attempt": 1}
+{"clock": "19:16:45", "kind": "radio", "speaker": "Erusean Fighter", "t": 399.9, "text": "Bandit acquired. Initiating attack.", "attempt": 1}
+{"clock": "19:16:45", "dist_m": 3438, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 400.1, "attempt": 1}
+{"clock": "19:16:46", "dist_m": 3378, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 400.6, "attempt": 1}
+{"clock": "19:16:47", "dist_m": 3341, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 401.2, "attempt": 1}
+{"clock": "19:16:47", "dist_m": 3281, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 401.7, "attempt": 1}
+{"clock": "19:16:48", "dist_m": 3196, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 402.2, "attempt": 1}
+{"clock": "19:16:48", "dist_m": 3163, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 402.7, "attempt": 1}
+{"clock": "19:16:49", "dist_m": 3070, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 403.2, "attempt": 1}
+{"clock": "19:16:49", "dist_m": 3001, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 403.7, "attempt": 1}
+{"callsign": "", "clock": "19:16:50", "dist_m": 1946, "kind": "target", "t": 404.2, "target": "ms06_trkc_1_8", "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1946, "kind": "weapon_switch", "t": 404.2, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"clock": "19:16:50", "dist_m": 2945, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 404.2, "attempt": 1}
+{"after_s": 0.094, "ang0_deg": 18.23, "base_s": 0, "clock": "19:16:50", "dist_m": 1932, "kind": "lock", "rate_dps": 20.31, "t": 404.3, "target": "ms06_trkc_1_8", "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1932, "held_s": 0, "kind": "salvo", "locks": 1, "t": 404.3, "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1932, "kind": "missile", "lanes": true, "off_deg": 18.31, "special": true, "t": 404.3, "target": "ms06_trkc_1_8", "attempt": 1}
+{"ang_deg": 17.8, "clock": "19:16:50", "from": "ms06_trkc_1_8", "gap_s": 0.264, "kind": "chain", "t": 404.5, "to": "ms06_trkc_1_7", "attempt": 1}
+{"callsign": "", "clock": "19:16:50", "dist_m": 1939, "kind": "target", "t": 404.5, "target": "ms06_trkc_1_7", "attempt": 1}
+{"clock": "19:16:50", "damage": 80, "hp": 20, "kind": "one_shot", "set_aside_s": 4.219, "t": 404.5, "target": "ms06_trkc_1_8", "attempt": 1}
+{"clock": "19:16:50", "kind": "launch", "left": 20, "n": 1, "t": 404.5, "target": "ms06_trkc_1_7", "weapon": "special", "attempt": 1}
+{"after_s": 0.089, "ang0_deg": 17.69, "base_s": 0, "clock": "19:16:50", "dist_m": 1926, "kind": "lock", "rate_dps": 20.71, "t": 404.6, "target": "ms06_trkc_1_7", "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1926, "held_s": 0, "kind": "salvo", "locks": 1, "t": 404.6, "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1926, "kind": "missile", "lanes": true, "off_deg": 17.81, "special": true, "t": 404.6, "target": "ms06_trkc_1_7", "attempt": 1}
+{"clock": "19:16:50", "dist_m": 2877, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 404.7, "attempt": 1}
+{"clock": "19:16:50", "damage": 80, "hp": 20, "kind": "one_shot", "set_aside_s": 4.21, "t": 404.8, "target": "ms06_trkc_1_7", "attempt": 1}
+{"clock": "19:16:50", "kind": "launch", "left": 19, "n": 1, "t": 404.8, "target": "ms06_trkc_1_7", "weapon": "special", "attempt": 1}
+{"ang_deg": 17.24, "clock": "19:16:50", "from": "ms06_trkc_1_7", "gap_s": 0.179, "kind": "chain", "t": 404.8, "to": "ms06_trkc_1_6", "attempt": 1}
+{"callsign": "", "clock": "19:16:50", "dist_m": 1941, "kind": "target", "t": 404.8, "target": "ms06_trkc_1_6", "attempt": 1}
+{"after_s": 0.082, "ang0_deg": 17.21, "base_s": 0, "clock": "19:16:50", "dist_m": 1928, "kind": "lock", "rate_dps": 21.06, "t": 404.9, "target": "ms06_trkc_1_6", "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1928, "held_s": 0, "kind": "salvo", "locks": 1, "t": 404.9, "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1928, "kind": "missile", "lanes": true, "off_deg": 17.31, "special": true, "t": 404.9, "target": "ms06_trkc_1_6", "attempt": 1}
+{"clock": "19:16:50", "kind": "radio", "speaker": "AWACS Bandog", "t": 405, "text": "Missile launched!", "attempt": 1}
+{"ang_deg": 16.88, "clock": "19:16:50", "from": "ms06_trkc_1_6", "gap_s": 0.161, "kind": "chain", "t": 405, "to": "ms06_trkc_1_5", "attempt": 1}
+{"callsign": "", "clock": "19:16:50", "dist_m": 1943, "kind": "target", "t": 405, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:50", "damage": 80, "hp": 20, "kind": "one_shot", "set_aside_s": 4.213, "t": 405, "target": "ms06_trkc_1_6", "attempt": 1}
+{"clock": "19:16:50", "kind": "launch", "left": 18, "n": 1, "t": 405, "target": "ms06_trkc_1_5", "weapon": "special", "attempt": 1}
+{"after_s": 0.08, "ang0_deg": 16.78, "base_s": 0, "clock": "19:16:50", "dist_m": 1930, "kind": "lock", "rate_dps": 21.39, "t": 405.1, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1930, "held_s": 0, "kind": "salvo", "locks": 1, "t": 405.1, "attempt": 1}
+{"clock": "19:16:50", "dist_m": 1930, "kind": "missile", "lanes": true, "off_deg": 16.79, "special": true, "t": 405.1, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:51", "dist_m": 2830, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 405.2, "attempt": 1}
+{"clock": "19:16:51", "damage": 80, "hp": 20, "kind": "one_shot", "set_aside_s": 4.216, "t": 405.3, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:51", "kind": "launch", "left": 17, "n": 1, "t": 405.3, "target": "ms06_trkc_1_5", "weapon": "special", "attempt": 1}
+{"clock": "19:16:51", "dist_m": 1840, "kind": "weapon_switch", "t": 405.7, "to": "standard missiles", "why": "no longer: special weapon reloading", "attempt": 1}
+{"clock": "19:16:51", "dist_m": 2765, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 405.8, "attempt": 1}
+{"clock": "19:16:51", "kind": "shot_not_launched", "t": 406, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:51", "dist_m": 1777, "kind": "missile", "lanes": true, "off_deg": 17.76, "special": false, "t": 406.1, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:52", "dist_m": 2737, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 406.2, "attempt": 1}
+{"clock": "19:16:52", "kind": "launch", "left": 96, "n": 1, "t": 406.3, "target": "ms06_trkc_1_5", "weapon": "missile", "attempt": 1}
+{"clock": "19:16:52", "damage": 40, "hp": 20, "kind": "one_shot", "set_aside_s": 3.734, "t": 406.3, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:52", "dist_m": 2664, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 406.7, "attempt": 1}
+{"clock": "19:16:53", "dist_m": 2610, "enemy": "common_A1_f16c_4", "kind": "hunter", "t": 407.3, "attempt": 1}
+{"clock": "19:16:53", "kind": "radio", "speaker": "Erusean Fighter", "t": 407.3, "text": "Missed!", "attempt": 1}
+{"callsign": "", "clock": "19:16:53", "kind": "death", "t": 407.5, "who": "ms06_trkc_1_8", "attempt": 1}
+{"bounty": 120, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:16:53", "kind": "kill", "t": 407.5, "target": "ms06_trkc_1_8", "attempt": 1}
+{"clock": "19:16:53", "dist_m": 1900, "flew_s": 3.005, "hit": true, "kind": "my_missile", "t": 407.5, "target": "ms06_trkc_1_8", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:16:53", "kind": "death", "t": 407.7, "who": "ms06_trkc_1_7", "attempt": 1}
+{"bounty": 120, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:16:53", "kind": "kill", "t": 407.7, "target": "ms06_trkc_1_7", "attempt": 1}
+{"clock": "19:16:53", "dist_m": 1603, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 407.8, "attempt": 1}
+{"clock": "19:16:53", "dist_m": 1913, "flew_s": 3.212, "hit": true, "kind": "my_missile", "t": 407.9, "target": "ms06_trkc_1_7", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:16:53", "kind": "death", "t": 408, "who": "ms06_trkc_1_6", "attempt": 1}
+{"bounty": 120, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:16:53", "kind": "kill", "t": 408, "target": "ms06_trkc_1_6", "attempt": 1}
+{"clock": "19:16:53", "dist_m": 1924, "flew_s": 3.212, "hit": true, "kind": "my_missile", "t": 408.1, "target": "ms06_trkc_1_6", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:16:54", "kind": "death", "t": 408.2, "who": "ms06_trkc_1_5", "attempt": 1}
+{"bounty": 120, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:16:54", "kind": "kill", "t": 408.2, "target": "ms06_trkc_1_5", "attempt": 1}
+{"clock": "19:16:54", "dist_m": 1650, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 408.3, "attempt": 1}
+{"callsign": "", "clock": "19:16:54", "dist_m": 2526, "kind": "target", "t": 408.3, "target": "ms06_WatchTower2_226", "attempt": 1}
+{"clock": "19:16:54", "dist_m": 1898, "flew_s": 3.003, "hit": true, "kind": "my_missile", "t": 408.3, "target": "ms06_trkc_1_5", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:16:54", "dist_m": 2493, "from": "common_A1_f16c_4", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_C_1", "t": 408.3, "top_kmh": 8333, "turn": 25.5, "attempt": 1}
+{"clock": "19:16:54", "kind": "radio", "speaker": "Erusean Fighter", "t": 408.6, "text": "Fox 2!", "attempt": 1}
+{"clock": "19:16:54", "dist_m": 1727, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 408.8, "attempt": 1}
+{"clock": "19:16:55", "dist_m": 1779, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 409.3, "attempt": 1}
+{"clock": "19:16:55", "dist_m": 1763, "flew_s": 3.405, "hit": true, "kind": "my_missile", "t": 409.6, "target": "ms06_trkc_1_5", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"after_s": 1.323, "ang0_deg": 2.367, "base_s": 0, "clock": "19:16:55", "dist_m": 2273, "kind": "lock", "rate_dps": 28.28, "t": 409.6, "target": "ms06_WatchTower2_226", "attempt": 1}
+{"clock": "19:16:55", "dist_m": 2273, "kind": "missile", "lanes": true, "off_deg": 2.539, "special": false, "t": 409.6, "target": "ms06_WatchTower2_226", "attempt": 1}
+{"clock": "19:16:55", "dist_m": 1801, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 409.8, "attempt": 1}
+{"clock": "19:16:55", "kind": "launch", "left": 95, "n": 1, "t": 409.8, "target": "ms06_WatchTower2_226", "weapon": "missile", "attempt": 1}
+{"clock": "19:16:55", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 4.497, "t": 409.8, "target": "ms06_WatchTower2_226", "attempt": 1}
+{"clock": "19:16:56", "dist_m": 1795, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 410.3, "attempt": 1}
+{"clock": "19:16:56", "kind": "missile_warning", "level": "near", "t": 410.5, "attempt": 1}
+{"clock": "19:16:56", "kind": "radio", "speaker": "AWACS Bandog", "t": 410.5, "text": "The vehicles have been taken out. Move on to the next target.", "attempt": 1}
+{"clock": "19:16:56", "dist_m": 1891, "kind": "defend", "miss_m": 137, "missile": "wp_msl_C_1", "t": 410.7, "tgo_s": 3.245, "attempt": 1}
+{"clock": "19:16:56", "dist_m": 1756, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 410.8, "attempt": 1}
+{"ang_deg": 3.624, "clock": "19:16:56", "from": "ms06_WatchTower2_226", "gap_s": 1.463, "kind": "chain", "t": 411, "to": "common_shil4", "attempt": 1}
+{"callsign": "", "clock": "19:16:56", "dist_m": 1935, "kind": "target", "t": 411, "target": "common_shil4", "attempt": 1}
+{"after_s": 0.058, "ang0_deg": 3.624, "base_s": 0, "clock": "19:16:56", "dist_m": 1925, "kind": "lock", "rate_dps": 29.7, "t": 411.1, "target": "common_shil4", "attempt": 1}
+{"clock": "19:16:56", "dist_m": 1925, "kind": "missile", "lanes": true, "off_deg": 3.651, "special": false, "t": 411.1, "target": "common_shil4", "attempt": 1}
+{"clock": "19:16:57", "dist_m": 1681, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 411.3, "attempt": 1}
+{"clock": "19:16:57", "kind": "launch", "left": 94, "n": 1, "t": 411.4, "target": "common_shil4", "weapon": "missile", "attempt": 1}
+{"class_load_s": 5.5, "clock": "19:16:57", "kind": "reload_learned", "load_s": 5.009, "t": 411.4, "attempt": 1}
+{"clock": "19:16:57", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.961, "t": 411.4, "target": "common_shil4", "attempt": 1}
+{"callsign": "", "clock": "19:16:57", "dist_m": 1932, "kind": "target", "t": 411.5, "target": "common_shil_947", "attempt": 1}
+{"after_s": 0.15, "ang0_deg": 4.004, "base_s": 0, "clock": "19:16:57", "dist_m": 1892, "kind": "lock", "rate_dps": 31.09, "t": 411.6, "target": "common_shil_947", "attempt": 1}
+{"clock": "19:16:57", "dist_m": 1892, "kind": "missile", "lanes": true, "off_deg": 6.589, "special": false, "t": 411.6, "target": "common_shil_947", "attempt": 1}
+{"clock": "19:16:57", "dist_m": 1491, "kind": "flare", "missile": "wp_msl_C_1", "reason": "tracker", "t": 411.6, "tgo_s": 2.823, "attempt": 1}
+{"clock": "19:16:57", "dist_m": 1388, "kind": "evade", "miss_m": 124, "missile": "wp_msl_C_1", "t": 411.8, "tgo_s": 2.363, "attempt": 1}
+{"clock": "19:16:57", "dist_m": 1575, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 411.8, "attempt": 1}
+{"clock": "19:16:57", "kills": 14, "kind": "time_split", "lanes": true, "order_t0": 172.1, "split": {"ahead": 20.27, "break": 22.57, "defend": 1.418, "locked": 21.64, "offnose": 70.64, "pursuer": 18.86, "recovery": 4.423, "transit": 80.21}, "t": 412.1, "attempt": 1}
+{"clock": "19:16:58", "goal": 24000, "hud_score": "002980/024000", "kills": 14, "kind": "score_tick", "lanes": true, "left_s": 655.6, "score": 2980, "t": 412.2, "attempt": 1}
+{"clock": "19:16:58", "dist_m": 1472, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 412.3, "attempt": 1}
+{"clock": "19:16:58", "kind": "missile_warning", "level": "very near", "t": 412.7, "attempt": 1}
+{"clock": "19:16:58", "dist_m": 745.9, "kind": "flare", "missile": "wp_msl_C_1", "reason": "tracker", "t": 412.8, "tgo_s": 0.7051, "attempt": 1}
+{"clock": "19:16:58", "dist_m": 1365, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 412.8, "attempt": 1}
+{"clock": "19:16:59", "kind": "radio", "speaker": "Spare 2 Count", "t": 413.2, "text": "You're our official flyswatter now, Trigger.", "attempt": 1}
+{"clock": "19:16:59", "dist_m": 1306, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 413.3, "attempt": 1}
+{"callsign": "", "clock": "19:16:59", "kind": "death", "t": 413.6, "who": "ms06_WatchTower2_226", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:16:59", "kind": "kill", "t": 413.6, "target": "ms06_WatchTower2_226", "attempt": 1}
+{"clock": "19:16:59", "dist_m": 2241, "flew_s": 3.852, "hit": true, "kind": "my_missile", "t": 413.6, "target": "ms06_WatchTower2_226", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:16:59", "dist_m": 41.11, "from": "common_A1_f16c_4", "kind": "missile_lost_lock", "missile": "wp_msl_C_1", "t": 413.7, "attempt": 1}
+{"clock": "19:16:59", "dist_m": 1237, "enemy": "common_A1_f16c_3", "kind": "pursuer", "state": "PursueTarget", "t": 413.7, "attempt": 1}
+{"clock": "19:16:59", "dist_m": 1222, "enemy": "common_A1_f16c_3", "kind": "hunter", "t": 413.9, "attempt": 1}
+{"air": "common_A1_f16c_4", "air_rate": 28.2, "clock": "19:17:00", "engaged": false, "kind": "lanes", "lane_rate": 14.39, "on": false, "t": 414.4, "targets": 2, "value": 9.938, "attempt": 1}
+{"clock": "19:17:00", "dist_m": 1908, "kind": "priority", "score": 0.1263, "t": 414.4, "target": "common_A1_f16c_4", "weight": 4.48, "attempt": 1}
+{"callsign": "", "clock": "19:17:00", "dist_m": 1766, "kind": "target", "t": 414.4, "target": "common_A1_f16c_4", "attempt": 1}
+{"callsign": "", "clock": "19:17:00", "kind": "death", "t": 414.6, "who": "common_shil4", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:17:00", "kind": "kill", "t": 414.6, "target": "common_shil4", "attempt": 1}
+{"clock": "19:17:00", "dist_m": 1901, "flew_s": 3.611, "hit": true, "kind": "my_missile", "t": 414.9, "target": "common_shil4", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"after_s": 1.393, "ang0_deg": 51.68, "base_s": 0, "clock": "19:17:01", "dist_m": 1650, "kind": "lock", "rate_dps": 30.84, "t": 415.7, "target": "common_A1_f16c_4", "attempt": 1}
+{"clock": "19:17:01", "dist_m": 1650, "kind": "missile", "lanes": false, "off_deg": 24.89, "special": false, "t": 415.7, "target": "common_A1_f16c_4", "attempt": 1}
+{"clock": "19:17:01", "kind": "launch", "left": 93, "n": 1, "t": 415.9, "target": "common_A1_f16c_4", "weapon": "missile", "attempt": 1}
+{"clock": "19:17:03", "dist_m": 1550, "kind": "missile", "lanes": false, "off_deg": 25.26, "special": false, "t": 417.4, "target": "common_A1_f16c_4", "attempt": 1}
+{"clock": "19:17:03", "closest_m": 39.67, "flares_while_near": true, "flew_s": 9.296, "from": "common_A1_f16c_4", "kind": "missile_gone", "missile": "wp_msl_C_1", "t": 417.6, "attempt": 1}
+{"clock": "19:17:03", "kind": "launch", "left": 92, "n": 1, "t": 417.7, "target": "common_A1_f16c_4", "weapon": "missile", "attempt": 1}
+{"clock": "19:17:03", "kind": "radio", "speaker": "Erusean Fighter", "t": 418, "text": "Gotta break! Breaking! Breaking!", "attempt": 1}
+{"clock": "19:17:04", "dist_m": 1434, "kind": "missile", "lanes": false, "off_deg": 26.09, "special": false, "t": 418.6, "target": "common_A1_f16c_4", "attempt": 1}
+{"clock": "19:17:05", "dist_m": 1342, "kind": "missile", "lanes": false, "off_deg": 23.07, "special": false, "t": 419.8, "target": "common_A1_f16c_4", "attempt": 1}
+{"clock": "19:17:05", "dist_m": 1643, "flew_s": 4.014, "hit": true, "kind": "my_missile", "t": 419.9, "target": "common_A1_f16c_4", "target_kind": "plane", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:17:06", "kind": "death", "t": 420.9, "who": "common_A1_f16c_4", "attempt": 1}
+{"bounty": 400, "by": "missile on its way", "callsign": "", "class": "plane", "clock": "19:17:06", "kind": "kill", "t": 420.9, "target": "common_A1_f16c_4", "attempt": 1}
+{"clock": "19:17:06", "dist_m": 1283, "kind": "priority", "score": 0.1625, "t": 421, "target": "common_A1_f16c_4", "weight": 4.48, "attempt": 1}
+{"callsign": "", "clock": "19:17:06", "dist_m": 6815, "kind": "target", "t": 421, "target": "common_A1_f16c_2", "attempt": 1}
+{"air_rate": 0, "clock": "19:17:06", "dist_m": 13450.0, "here_rate": 12.67, "kind": "next_group", "points": 5050, "rate": 16.2, "sec_per_kill": 8.968, "t": 421, "targets": 31, "attempt": 1}
+{"clock": "19:17:06", "dist_m": 1533, "flew_s": 3.514, "hit": true, "kind": "my_missile", "t": 421.1, "target": "common_A1_f16c_4", "target_kind": "plane", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:17:07", "dist_m": 6781, "kind": "priority", "score": 0.08962, "t": 422, "target": "common_A1_f16c_2", "weight": 4.48, "attempt": 1}
+{"clock": "19:17:11", "kind": "radio", "speaker": "Spare 2 Count", "t": 425.2, "text": "Hostile has a lock!", "attempt": 1}
+{"air": "common_t160_2", "air_rate": 14.83, "clock": "19:17:17", "engaged": false, "kind": "lanes", "lane_rate": 28.69, "on": true, "t": 431.3, "targets": 38, "value": 187.8, "attempt": 1}
+{"above_ground_m": 674.4, "alt_m": 757.8, "clock": "19:17:18", "kind": "ground_recovery", "lowest_ahead_m": 330.4, "t": 432.9, "vz": -194.1, "attempt": 1}
+{"callsign": "", "clock": "19:17:21", "dist_m": 1940, "kind": "target", "t": 435.3, "target": "common_shil2_2833", "attempt": 1}
+{"clock": "19:17:21", "dist_m": 1940, "kind": "weapon_switch", "t": 435.3, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"after_s": 0.125, "ang0_deg": 21.63, "base_s": 0, "clock": "19:17:21", "dist_m": 1909, "kind": "lock", "rate_dps": 30.68, "t": 435.4, "target": "common_shil2_2833", "attempt": 1}
+{"clock": "19:17:21", "dist_m": 1909, "held_s": 0, "kind": "salvo", "locks": 1, "t": 435.4, "attempt": 1}
+{"clock": "19:17:21", "dist_m": 1909, "kind": "missile", "lanes": true, "off_deg": 21.58, "special": true, "t": 435.4, "target": "common_shil2_2833", "attempt": 1}
+{"ang_deg": 21.41, "clock": "19:17:21", "from": "common_shil2_2833", "gap_s": 0.06, "kind": "chain", "t": 435.4, "to": "common_shil3", "attempt": 1}
+{"callsign": "", "clock": "19:17:21", "dist_m": 1938, "kind": "target", "t": 435.4, "target": "common_shil3", "attempt": 1}
+{"after_s": 0.103, "ang0_deg": 21.41, "base_s": 0, "clock": "19:17:21", "dist_m": 1901, "kind": "lock", "rate_dps": 30.52, "t": 435.5, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:21", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 4.181, "t": 435.6, "target": "common_shil2_2833", "attempt": 1}
+{"clock": "19:17:21", "kind": "launch", "left": 16, "n": 1, "t": 435.6, "target": "common_shil3", "weapon": "special", "attempt": 1}
+{"clock": "19:17:21", "dist_m": 1886, "held_s": 0.061, "kind": "salvo", "locks": 1, "t": 435.6, "attempt": 1}
+{"clock": "19:17:21", "dist_m": 1886, "kind": "missile", "lanes": true, "off_deg": 21.34, "special": true, "t": 435.6, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:21", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 4.144, "t": 435.9, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:21", "kind": "launch", "left": 15, "n": 1, "t": 435.9, "target": "common_shil3", "weapon": "special", "attempt": 1}
+{"clock": "19:17:22", "kind": "shot_not_launched", "t": 436.4, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:22", "dist_m": 1708, "held_s": 0.795, "kind": "salvo", "locks": 6, "t": 436.4, "attempt": 1}
+{"clock": "19:17:22", "dist_m": 1708, "kind": "missile", "lanes": true, "off_deg": 11.6, "special": true, "t": 436.4, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:22", "dist_m": 1633, "kind": "weapon_switch", "t": 436.9, "to": "standard missiles", "why": "no longer: special weapon reloading", "attempt": 1}
+{"clock": "19:17:22", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 3.847, "t": 436.9, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:22", "kind": "launch", "left": 9, "n": 6, "t": 436.9, "target": "common_shil3", "weapon": "special", "attempt": 1}
+{"clock": "19:17:23", "kind": "shot_not_launched", "t": 437.3, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:23", "dist_m": 1517, "kind": "missile", "lanes": true, "off_deg": 6.958, "special": false, "t": 437.4, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:23", "kind": "launch", "left": 91, "n": 1, "t": 437.6, "target": "common_shil3", "weapon": "missile", "attempt": 1}
+{"clock": "19:17:23", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.334, "t": 437.6, "target": "common_shil3", "attempt": 1}
+{"callsign": "", "clock": "19:17:24", "kind": "death", "t": 438.2, "who": "common_shil2_2833", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:17:24", "kind": "kill", "t": 438.2, "target": "common_shil2_2833", "attempt": 1}
+{"callsign": "", "clock": "19:17:24", "kind": "death", "t": 438.4, "who": "common_shil3", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:17:24", "kind": "kill", "t": 438.4, "target": "common_shil3", "attempt": 1}
+{"clock": "19:17:24", "dist_m": 1846, "flew_s": 2.627, "hit": true, "kind": "my_missile", "t": 438.4, "target": "common_shil3", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:24", "dist_m": 1888, "flew_s": 2.932, "hit": true, "kind": "my_missile", "t": 438.4, "target": "common_shil2_2833", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:17:24", "dist_m": 9673, "kind": "target", "t": 438.4, "target": "movingAtoC_common_btr9_2", "attempt": 1}
+{"air_rate": 6.083, "clock": "19:17:24", "dist_m": 10020.0, "here_rate": 15.8, "kind": "next_group", "points": 5200, "rate": 19.06, "sec_per_kill": 7.743, "t": 438.9, "targets": 32, "attempt": 1}
+{"air": "common_t160_2", "air_rate": 6.083, "clock": "19:17:24", "engaged": false, "kind": "lanes", "lane_rate": 15.8, "on": false, "t": 438.9, "targets": 12, "value": 132.4, "attempt": 1}
+{"clock": "19:17:24", "dist_m": 6579, "kind": "priority", "score": 0.06705, "t": 438.9, "target": "common_A1_f16c_3", "weight": 4.48, "attempt": 1}
+{"callsign": "", "clock": "19:17:24", "dist_m": 6551, "kind": "target", "t": 438.9, "target": "common_A1_f16c_3", "attempt": 1}
+{"clock": "19:17:25", "dist_m": 1644, "flew_s": 2.65, "hit": true, "kind": "my_missile", "t": 439.3, "target": "common_shil2_2833", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:25", "dist_m": 1644, "flew_s": 2.65, "hit": true, "kind": "my_missile", "t": 439.3, "target": "common_shil2_2833", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:25", "dist_m": 1674, "flew_s": 2.65, "hit": true, "kind": "my_missile", "t": 439.3, "target": "common_shil3", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:25", "dist_m": 1674, "flew_s": 2.65, "hit": true, "kind": "my_missile", "t": 439.3, "target": "common_shil3", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:25", "dist_m": 1644, "flew_s": 2.65, "hit": true, "kind": "my_missile", "t": 439.3, "target": "common_shil2_2833", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:25", "dist_m": 1674, "flew_s": 2.65, "hit": true, "kind": "my_missile", "t": 439.3, "target": "common_shil3", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:25", "kind": "radio", "speaker": "AWACS Bandog", "t": 440.1, "text": "Vehicle down!", "attempt": 1}
+{"clock": "19:17:26", "dist_m": 1497, "flew_s": 3.051, "hit": true, "kind": "my_missile", "t": 440.5, "target": "common_shil3", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:17:28", "goal": 24000, "hud_score": "003930/024000", "kills": 19, "kind": "score_tick", "lanes": false, "left_s": 625.6, "score": 3930, "t": 442.2, "attempt": 1}
+{"clock": "19:17:32", "dist_m": 9243, "kind": "priority", "score": 0.09932, "t": 447, "target": "common_ah64_5", "weight": 4.522, "attempt": 1}
+{"callsign": "", "clock": "19:17:32", "dist_m": 9184, "kind": "target", "t": 447, "target": "common_ah64_5", "attempt": 1}
+{"air": "common_t160_2", "air_rate": 11.12, "clock": "19:17:34", "engaged": false, "kind": "lanes", "lane_rate": 33.18, "on": true, "t": 449, "targets": 46, "value": 311.9, "attempt": 1}
+{"clock": "19:17:35", "down": -1, "free_m": 2736, "kind": "vision", "left": -1, "right": -1, "t": 450.1, "text": "obstacle: vision: free 1842 m ahead the way it wants (2328 m needed); flying +6 deg yaw, -8 deg pitch of centre, free 2736 m", "up": -1, "attempt": 1}
+{"clock": "19:17:36", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 450.7, "text": "I finally have a read on the targets. They're in one hell of a place.", "attempt": 1}
+{"clock": "19:17:40", "kind": "radio", "speaker": "Spare 2 Count", "t": 454.9, "text": "I'll take it from here.", "attempt": 1}
+{"callsign": "", "clock": "19:17:46", "dist_m": 1934, "kind": "target", "t": 460.2, "target": "Optional2_SAM_1_4", "attempt": 1}
+{"clock": "19:17:46", "dist_m": 1934, "kind": "weapon_switch", "t": 460.2, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"after_s": 0.048, "ang0_deg": 2.972, "base_s": 0, "clock": "19:17:46", "dist_m": 1925, "kind": "lock", "rate_dps": 31.49, "t": 460.2, "target": "Optional2_SAM_1_4", "attempt": 1}
+{"clock": "19:17:46", "dist_m": 1925, "held_s": 0, "kind": "salvo", "locks": 1, "t": 460.2, "attempt": 1}
+{"clock": "19:17:46", "dist_m": 1925, "kind": "missile", "lanes": true, "off_deg": 3.033, "special": true, "t": 460.2, "target": "Optional2_SAM_1_4", "attempt": 1}
+{"clock": "19:17:46", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 4.209, "t": 460.4, "target": "Optional2_SAM_1_4", "attempt": 1}
+{"clock": "19:17:46", "kind": "launch", "left": 8, "n": 1, "t": 460.4, "target": "Optional2_SAM_1_4", "weapon": "special", "attempt": 1}
+{"clock": "19:17:46", "kind": "shot_not_launched", "t": 461.1, "target": "Optional2_SAM_1_4", "attempt": 1}
+{"ang_deg": 9.816, "clock": "19:17:46", "from": "Optional2_SAM_1_4", "gap_s": 0.931, "kind": "chain", "t": 461.1, "to": "common_t072_2", "attempt": 1}
+{"callsign": "", "clock": "19:17:46", "dist_m": 1925, "kind": "target", "t": 461.1, "target": "common_t072_2", "attempt": 1}
+{"clock": "19:17:46", "dist_m": 1762, "kind": "missile", "off_deg": 4.653, "special": true, "t": 461.1, "target": "Optional2_SAM_1_4", "why": "the game's lock, not the chosen target", "attempt": 1}
+{"after_s": 0.077, "ang0_deg": 9.816, "base_s": 0, "clock": "19:17:47", "dist_m": 1912, "kind": "lock", "rate_dps": 31.69, "t": 461.2, "target": "common_t072_2", "attempt": 1}
+{"clock": "19:17:47", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 3.936, "t": 461.3, "target": "Optional2_SAM_1_4", "attempt": 1}
+{"clock": "19:17:47", "kind": "launch", "left": 7, "n": 1, "t": 461.3, "target": "common_t072_2", "weapon": "special", "attempt": 1}
+{"clock": "19:17:47", "dist_m": 1900, "held_s": 0.075, "kind": "salvo", "locks": 1, "t": 461.3, "attempt": 1}
+{"clock": "19:17:47", "dist_m": 1900, "kind": "missile", "lanes": true, "off_deg": 9.984, "special": true, "t": 461.3, "target": "common_t072_2", "attempt": 1}
+{"clock": "19:17:47", "damage": 80, "hp": 60, "kind": "one_shot", "set_aside_s": 4.166, "t": 461.5, "target": "common_t072_2", "attempt": 1}
+{"clock": "19:17:47", "kind": "launch", "left": 6, "n": 1, "t": 461.5, "target": "common_t072_2", "weapon": "special", "attempt": 1}
+{"clock": "19:17:47", "dist_m": 1834, "kind": "weapon_switch", "t": 461.6, "to": "standard missiles", "why": "no longer: special weapon reloading", "attempt": 1}
+{"clock": "19:17:48", "kind": "shot_not_launched", "t": 462.1, "target": "common_t072_2", "attempt": 1}
+{"clock": "19:17:48", "dist_m": 1745, "kind": "missile", "lanes": true, "off_deg": 12.51, "special": false, "t": 462.2, "target": "common_t072_2", "attempt": 1}
+{"ang_deg": 13.37, "clock": "19:17:48", "from": "common_t072_2", "gap_s": 0.977, "kind": "chain", "t": 462.3, "to": "common_t072_2", "attempt": 1}
+{"clock": "19:17:48", "kind": "launch", "left": 90, "n": 1, "t": 462.4, "target": "common_t072_2", "weapon": "missile", "attempt": 1}
+{"callsign": "", "clock": "19:17:49", "kind": "death", "t": 463.3, "who": "Optional2_SAM_1_4", "attempt": 1}
+{"bounty": 200, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:17:49", "kind": "kill", "t": 463.3, "target": "Optional2_SAM_1_4", "attempt": 1}
+{"clock": "19:17:49", "dist_m": 1899, "flew_s": 2.991, "hit": true, "kind": "my_missile", "t": 463.3, "target": "Optional2_SAM_1_4", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:17:49", "dist_m": 1542, "kind": "missile", "lanes": true, "off_deg": 14.11, "special": false, "t": 463.4, "target": "common_t072_2", "attempt": 1}
+{"clock": "19:17:49", "kind": "launch", "left": 89, "n": 1, "t": 463.4, "target": "common_t072_2", "weapon": "missile", "attempt": 1}
+{"callsign": "", "clock": "19:17:50", "kind": "death", "t": 464.3, "who": "common_t072_2", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:17:50", "kind": "kill", "t": 464.3, "target": "common_t072_2", "attempt": 1}
+{"callsign": "", "clock": "19:17:50", "dist_m": 1757, "kind": "target", "t": 464.3, "target": "Optional2_AA_1_4", "attempt": 1}
+{"clock": "19:17:50", "dist_m": 1889, "flew_s": 2.994, "hit": true, "kind": "my_missile", "t": 464.4, "target": "common_t072_2", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"after_s": 0.195, "ang0_deg": 12.36, "base_s": 0, "clock": "19:17:50", "dist_m": 1724, "kind": "lock", "rate_dps": 31.88, "t": 464.5, "target": "Optional2_AA_1_4", "attempt": 1}
+{"clock": "19:17:50", "dist_m": 1724, "kind": "missile", "lanes": true, "off_deg": 12.58, "special": false, "t": 464.5, "target": "Optional2_AA_1_4", "attempt": 1}
+{"clock": "19:17:51", "dist_m": 1740, "flew_s": 3.393, "hit": true, "kind": "my_missile", "t": 465.6, "target": "common_t072_2", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:17:51", "dist_m": 1521, "kind": "missile", "lanes": true, "off_deg": 14.27, "special": false, "t": 465.7, "target": "Optional2_AA_1_4", "attempt": 1}
+{"clock": "19:17:52", "kind": "radio", "speaker": "Spare Squadron", "t": 466.2, "text": "Enemy's locked on me! Someone help me out here!", "attempt": 1}
+{"clock": "19:17:52", "dist_m": 1513, "flew_s": 3.086, "hit": true, "kind": "my_missile", "t": 466.6, "target": "common_t072_2", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:17:52", "dist_m": 1319, "kind": "missile", "lanes": true, "off_deg": 16.52, "special": false, "t": 466.9, "target": "Optional2_AA_1_4", "attempt": 1}
+{"clock": "19:17:52", "kind": "launch", "left": 88, "n": 1, "t": 467, "target": "Optional2_AA_1_4", "weapon": "missile", "attempt": 1}
+{"class_load_s": 5.5, "clock": "19:17:52", "kind": "reload_learned", "load_s": 4.559, "t": 467, "attempt": 1}
+{"clock": "19:17:52", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.029, "t": 467, "target": "Optional2_AA_1_4", "attempt": 1}
+{"callsign": "", "clock": "19:17:52", "dist_m": 1669, "kind": "target", "t": 467, "target": "Optional2_AARay1_2", "attempt": 1}
+{"after_s": 0.374, "ang0_deg": 30.58, "base_s": 0, "clock": "19:17:53", "dist_m": 1608, "kind": "lock", "rate_dps": 32.13, "t": 467.3, "target": "Optional2_AARay1_2", "attempt": 1}
+{"clock": "19:17:53", "dist_m": 1608, "kind": "missile", "lanes": true, "off_deg": 31.97, "special": false, "t": 467.3, "target": "Optional2_AARay1_2", "attempt": 1}
+{"callsign": "", "clock": "19:17:53", "dist_m": 1881, "kind": "target", "t": 467.5, "target": "Optional2_SAM_1_5", "attempt": 1}
+{"after_s": 0.119, "ang0_deg": 9.49, "base_s": 0, "clock": "19:17:53", "dist_m": 1860, "kind": "lock", "rate_dps": 32.4, "t": 467.6, "target": "Optional2_SAM_1_5", "attempt": 1}
+{"clock": "19:17:53", "dist_m": 1858, "kind": "missile", "lanes": true, "off_deg": 9.616, "special": false, "t": 467.6, "target": "Optional2_SAM_1_5", "attempt": 1}
+{"callsign": "", "clock": "19:17:54", "dist_m": 1641, "from": "Optional2_SAM_1_5", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 468.8, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "19:17:54", "kind": "missile_warning", "level": "near", "t": 468.8, "attempt": 1}
+{"clock": "19:17:54", "dist_m": 1636, "kind": "missile", "lanes": true, "off_deg": 11.48, "special": false, "t": 468.8, "target": "Optional2_SAM_1_5", "attempt": 1}
+{"ang_deg": 11.65, "clock": "19:17:54", "from": "Optional2_SAM_1_5", "gap_s": 0.008, "kind": "chain", "t": 468.8, "to": "Optional2_AARay1_5", "attempt": 1}
+{"callsign": "", "clock": "19:17:54", "dist_m": 1733, "kind": "target", "t": 468.8, "target": "Optional2_AARay1_5", "attempt": 1}
+{"clock": "19:17:54", "dist_m": 1604, "kind": "defend", "miss_m": 110.2, "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 468.9, "tgo_s": 3.523, "attempt": 1}
+{"clock": "19:17:54", "down": -1, "free_m": 987.5, "kind": "vision", "left": -1, "right": -1, "t": 468.9, "text": "obstacle: vision: free 477 m ahead the way it wants (658 m needed); flying +22 deg yaw, +8 deg pitch of centre, free 987 m", "up": -1, "attempt": 1}
+{"after_s": 0.146, "ang0_deg": 11.65, "base_s": 0, "clock": "19:17:54", "dist_m": 1707, "kind": "lock", "rate_dps": 32.55, "t": 469, "target": "Optional2_AARay1_5", "attempt": 1}
+{"clock": "19:17:54", "dist_m": 1309, "flew_s": 1.955, "hit": false, "kind": "my_missile", "t": 469, "target": "Optional2_AA_1_4", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:17:54", "kind": "launch", "left": 87, "n": 1, "t": 469, "target": "Optional2_AARay1_5", "weapon": "missile", "attempt": 1}
+{"clock": "19:17:54", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.517, "t": 469, "target": "Optional2_SAM_1_5", "attempt": 1}
+{"clock": "19:17:54", "dist_m": 1697, "kind": "missile", "lanes": true, "off_deg": 11.91, "special": false, "t": 469, "target": "Optional2_AARay1_5", "attempt": 1}
+{"clock": "19:17:55", "dist_m": 1426, "kind": "defend", "miss_m": 66.92, "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 469.4, "tgo_s": 3.9, "attempt": 1}
+{"clock": "19:17:55", "down": -1, "free_m": 825.9, "kind": "vision", "left": -1, "right": -1, "t": 469.5, "text": "obstacle: vision: free 373 m ahead the way it wants (551 m needed); flying +22 deg yaw, +8 deg pitch of centre, free 826 m", "up": -1, "attempt": 1}
+{"clock": "19:17:55", "dist_m": 1394, "kind": "flare", "missile": "wp_msl_SAM_TerrainCheck_C_1", "reason": "tracker", "t": 469.5, "tgo_s": 2.85, "attempt": 1}
+{"clock": "19:17:55", "dist_m": 1379, "kind": "evade", "miss_m": 70.28, "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 469.6, "tgo_s": 2.046, "attempt": 1}
+{"clock": "19:17:55", "down": -1, "free_m": 670.7, "kind": "vision", "left": -1, "right": -1, "t": 470, "text": "obstacle: vision: free 369 m ahead the way it wants (447 m needed); flying +40 deg yaw, +8 deg pitch of centre, free 671 m", "up": -1, "attempt": 1}
+{"clock": "19:17:56", "dist_m": 1110, "kind": "evade", "miss_m": 138.1, "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 470.2, "tgo_s": 1.751, "attempt": 1}
+{"above_ground_m": 274.1, "alt_m": 383.8, "clock": "19:17:56", "kind": "ground_recovery", "lowest_ahead_m": 91.14, "t": 470.3, "vz": 12.49, "attempt": 1}
+{"callsign": "", "clock": "19:17:56", "dist_m": 729.2, "kind": "target", "t": 470.5, "target": "Optional2_AA_1_4", "attempt": 1}
+{"clock": "19:17:56", "down": -1, "free_m": 761.8, "kind": "vision", "left": -1, "right": -1, "t": 470.5, "text": "obstacle: vision: free 299 m ahead the way it wants (508 m needed); flying +30 deg yaw, +4 deg pitch of centre, free 762 m", "up": -1, "attempt": 1}
+{"clock": "19:17:57", "kind": "missile_warning", "level": "very near", "t": 471.2, "attempt": 1}
+{"clock": "19:17:57", "dist_m": 481.3, "kind": "flare", "missile": "wp_msl_SAM_TerrainCheck_C_1", "reason": "tracker", "t": 471.9, "tgo_s": 1.185, "attempt": 1}
+{"clock": "19:17:57", "dist_m": 481.3, "kind": "evade", "miss_m": 188.4, "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 471.9, "tgo_s": 1.185, "attempt": 1}
+{"clock": "19:17:57", "down": -1, "free_m": 734.8, "kind": "vision", "left": -1, "right": -1, "t": 471.9, "text": "obstacle: vision: free 243 m ahead the way it wants (490 m needed); flying +6 deg yaw, -13 deg pitch of centre, free 735 m", "up": -1, "attempt": 1}
+{"clock": "19:17:58", "kills": 21, "kind": "time_split", "lanes": true, "order_t0": 172.1, "split": {"ahead": 25.46, "break": 25.1, "defend": 2.238, "locked": 34.7, "offnose": 71.96, "pursuer": 18.86, "recovery": 5.613, "transit": 116.2}, "t": 472.2, "attempt": 1}
+{"clock": "19:17:58", "goal": 24000, "hud_score": "004280/024000", "kills": 21, "kind": "score_tick", "lanes": true, "left_s": 595.5, "score": 4280, "t": 472.3, "attempt": 1}
+{"clock": "19:17:58", "dist_m": 162.5, "from": "Optional2_SAM_1_5", "kind": "missile_lost_lock", "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 472.8, "attempt": 1}
+{"clock": "19:18:02", "dist_m": 544.5, "kind": "weapon_switch", "t": 476.5, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"callsign": "", "clock": "19:18:03", "dist_m": 1308, "kind": "target", "t": 477.3, "target": "common_rams_2", "attempt": 1}
+{"after_s": 0.123, "ang0_deg": 30.74, "base_s": 0, "clock": "19:18:03", "dist_m": 1291, "kind": "lock", "rate_dps": 33.08, "t": 477.4, "target": "common_rams_2", "attempt": 1}
+{"clock": "19:18:03", "dist_m": 1291, "held_s": 0, "kind": "salvo", "locks": 1, "t": 477.4, "attempt": 1}
+{"clock": "19:18:03", "dist_m": 1291, "kind": "missile", "lanes": true, "off_deg": 28.3, "special": true, "t": 477.4, "target": "common_rams_2", "attempt": 1}
+{"ang_deg": 28.59, "clock": "19:18:03", "from": "common_rams_2", "gap_s": 0.009, "kind": "chain", "t": 477.4, "to": "ms06_RadarTower_A3", "attempt": 1}
+{"callsign": "", "clock": "19:18:03", "dist_m": 1308, "kind": "target", "t": 477.4, "target": "ms06_RadarTower_A3", "attempt": 1}
+{"after_s": 0.119, "ang0_deg": 28.59, "base_s": 0, "clock": "19:18:03", "dist_m": 1290, "kind": "lock", "rate_dps": 33.4, "t": 477.6, "target": "ms06_RadarTower_A3", "attempt": 1}
+{"clock": "19:18:03", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 3.152, "t": 477.6, "target": "common_rams_2", "attempt": 1}
+{"clock": "19:18:03", "kind": "launch", "left": 5, "n": 1, "t": 477.6, "target": "ms06_RadarTower_A3", "weapon": "special", "attempt": 1}
+{"clock": "19:18:03", "dist_m": 1287, "held_s": 0.017, "kind": "salvo", "locks": 1, "t": 477.6, "attempt": 1}
+{"clock": "19:18:03", "dist_m": 1287, "kind": "missile", "lanes": true, "off_deg": 27.26, "special": true, "t": 477.6, "target": "ms06_RadarTower_A3", "attempt": 1}
+{"ang_deg": 28.05, "clock": "19:18:03", "from": "ms06_RadarTower_A3", "gap_s": 0.009, "kind": "chain", "t": 477.6, "to": "Optional2_AA_1_7", "attempt": 1}
+{"callsign": "", "clock": "19:18:03", "dist_m": 1901, "kind": "target", "t": 477.6, "target": "Optional2_AA_1_7", "attempt": 1}
+{"after_s": 0.122, "ang0_deg": 28.05, "base_s": 0, "clock": "19:18:03", "dist_m": 1880, "kind": "lock", "rate_dps": 33.66, "t": 477.7, "target": "Optional2_AA_1_7", "attempt": 1}
+{"clock": "19:18:03", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 3.145, "t": 477.8, "target": "ms06_RadarTower_A3", "attempt": 1}
+{"clock": "19:18:03", "kind": "launch", "left": 4, "n": 1, "t": 477.8, "target": "Optional2_AA_1_7", "weapon": "special", "attempt": 1}
+{"clock": "19:18:03", "dist_m": 1846, "held_s": 0.203, "kind": "salvo", "locks": 1, "t": 477.9, "attempt": 1}
+{"clock": "19:18:03", "dist_m": 1846, "kind": "missile", "lanes": true, "off_deg": 29.83, "special": true, "t": 477.9, "target": "Optional2_AA_1_7", "attempt": 1}
+{"clock": "19:18:03", "dist_m": 1830, "kind": "weapon_switch", "t": 478, "to": "standard missiles", "why": "no longer: special weapon reloading", "attempt": 1}
+{"clock": "19:18:03", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 4.077, "t": 478.1, "target": "Optional2_AA_1_7", "attempt": 1}
+{"clock": "19:18:03", "kind": "launch", "left": 3, "n": 1, "t": 478.1, "target": "Optional2_AA_1_7", "weapon": "special", "attempt": 1}
+{"clock": "19:18:04", "kind": "radio", "speaker": "AWACS Bandog", "t": 478.3, "text": "Missile away.", "attempt": 1}
+{"clock": "19:18:04", "kind": "shot_not_launched", "t": 478.6, "target": "Optional2_AA_1_7", "attempt": 1}
+{"clock": "19:18:04", "closest_m": 160.3, "flares_while_near": true, "flew_s": 10.17, "from": "Optional2_SAM_1_5", "kind": "missile_gone", "missile": "wp_msl_SAM_TerrainCheck_C_1", "t": 479, "attempt": 1}
+{"callsign": "", "clock": "19:18:05", "kind": "death", "t": 479.8, "who": "common_rams_2", "attempt": 1}
+{"bounty": 200, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:18:05", "kind": "kill", "t": 479.8, "target": "common_rams_2", "attempt": 1}
+{"callsign": "", "clock": "19:18:05", "kind": "death", "t": 479.9, "who": "ms06_RadarTower_A3", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:18:05", "kind": "kill", "t": 479.9, "target": "ms06_RadarTower_A3", "attempt": 1}
+{"clock": "19:18:05", "dist_m": 1272, "flew_s": 2.291, "hit": true, "kind": "my_missile", "t": 480, "target": "ms06_RadarTower_A3", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:18:05", "dist_m": 1284, "flew_s": 2.493, "hit": true, "kind": "my_missile", "t": 480, "target": "common_rams_2", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:18:06", "kind": "radio", "speaker": "AWACS Bandog", "t": 480.3, "text": "Don't worry about crashing. Worry about your sins.", "attempt": 1}
+{"callsign": "", "clock": "19:18:06", "kind": "death", "t": 480.9, "who": "Optional2_AA_1_7", "attempt": 1}
+{"bounty": 150, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:18:06", "kind": "kill", "t": 480.9, "target": "Optional2_AA_1_7", "attempt": 1}
+{"callsign": "", "clock": "19:18:06", "dist_m": 4223, "kind": "target", "t": 480.9, "target": "common_ah64_4680", "attempt": 1}
+{"clock": "19:18:06", "dist_m": 1818, "flew_s": 2.928, "hit": true, "kind": "my_missile", "t": 481, "target": "Optional2_AA_1_7", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:18:10", "kind": "missile_warning", "level": "near", "t": 484.6, "attempt": 1}
+{"callsign": "", "clock": "19:18:10", "dist_m": 977.5, "from": "Optional2_SAM_1_5", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_SAM_TerrainCheck_C_6", "t": 484.8, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "19:18:12", "kind": "missile_warning", "level": "very near", "t": 486.2, "attempt": 1}
+{"above_ground_m": 650.3, "alt_m": 760.3, "clock": "19:18:12", "kind": "ground_recovery", "lowest_ahead_m": 72.53, "t": 486.4, "vz": -67.49, "attempt": 1}
+{"callsign": "", "clock": "19:18:13", "dist_m": 1938, "kind": "target", "t": 487.2, "target": "Optional2_AARay4_11", "attempt": 1}
+{"after_s": 0.229, "ang0_deg": 15.62, "base_s": 0, "clock": "19:18:13", "dist_m": 1898, "kind": "lock", "rate_dps": 33.75, "t": 487.4, "target": "Optional2_AARay4_11", "attempt": 1}
+{"clock": "19:18:13", "dist_m": 1898, "kind": "missile", "lanes": true, "off_deg": 14.25, "special": false, "t": 487.4, "target": "Optional2_AARay4_11", "attempt": 1}
+{"clock": "19:18:13", "down": -1, "free_m": 820.6, "kind": "vision", "left": -1, "right": -1, "t": 487.4, "text": "obstacle: vision: free 777 m ahead the way it wants (803 m needed); flying -15 deg yaw, -8 deg pitch of centre, free 821 m", "up": -1, "attempt": 1}
+{"clock": "19:18:13", "dist_m": 555.9, "kind": "flare", "missile": "wp_msl_SAM_TerrainCheck_C_6", "reason": "tracker", "t": 487.4, "tgo_s": 1.989, "attempt": 1}
+{"clock": "19:18:13", "dist_m": 555.9, "kind": "evade", "miss_m": 175.8, "missile": "wp_msl_SAM_TerrainCheck_C_6", "t": 487.4, "tgo_s": 1.989, "attempt": 1}
+{"clock": "19:18:13", "kind": "launch", "left": 86, "n": 1, "t": 487.5, "target": "Optional2_AARay4_11", "weapon": "missile", "attempt": 1}
+{"clock": "19:18:13", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.92, "t": 487.5, "target": "Optional2_AARay4_11", "attempt": 1}
+{"clock": "19:18:13", "dist_m": 532.3, "kind": "defend", "miss_m": 197.8, "missile": "wp_msl_SAM_TerrainCheck_C_6", "t": 487.5, "tgo_s": 2.503, "attempt": 1}
+{"ang_deg": 13.37, "clock": "19:18:13", "from": "Optional2_AARay4_11", "gap_s": 0.332, "kind": "chain", "t": 487.7, "to": "Optional2_AARay3_2", "attempt": 1}
+{"callsign": "", "clock": "19:18:13", "dist_m": 1939, "kind": "target", "t": 487.7, "target": "Optional2_AARay3_2", "attempt": 1}
+{"clock": "19:18:13", "kind": "radio", "speaker": "Spare 2 Count", "t": 487.7, "text": "You freelancing as a priest now as well as a jailer?", "attempt": 1}
+{"clock": "19:18:14", "dist_m": 226.7, "kind": "flare", "missile": "wp_msl_SAM_TerrainCheck_C_6", "reason": "tracker", "t": 488.7, "tgo_s": 0.7779, "attempt": 1}
+{"clock": "19:18:15", "dist_m": 30.28, "from": "Optional2_SAM_1_5", "kind": "missile_lost_lock", "missile": "wp_msl_SAM_TerrainCheck_C_6", "t": 489.2, "attempt": 1}
+{"clock": "19:18:15", "dist_m": 1864, "flew_s": 1.855, "hit": false, "kind": "my_missile", "t": 489.5, "target": "Optional2_AARay4_11", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "19:18:18", "kind": "radio", "speaker": "Spare 6 Full band", "t": 492.1, "text": "Trigger's taken out one of the AA guns!", "attempt": 1}
+{"clock": "19:18:18", "dist_m": 1860, "kind": "weapon_switch", "t": 493.1, "to": "plwp_8agm_a0_C", "why": "ground target", "attempt": 1}
+{"callsign": "", "clock": "19:18:19", "dist_m": 1886, "kind": "target", "t": 493.4, "target": "ms06_Warehouse_14", "attempt": 1}
+{"after_s": 0.139, "ang0_deg": 31.47, "base_s": 0, "clock": "19:18:19", "dist_m": 1871, "kind": "lock", "rate_dps": 34.3, "t": 493.6, "target": "ms06_Warehouse_14", "attempt": 1}
+{"clock": "19:18:19", "dist_m": 1871, "held_s": 0, "kind": "salvo", "locks": 1, "t": 493.6, "attempt": 1}
+{"clock": "19:18:19", "dist_m": 1871, "kind": "missile", "lanes": true, "off_deg": 30.75, "special": true, "t": 493.6, "target": "ms06_Warehouse_14", "attempt": 1}
+{"ang_deg": 30.59, "clock": "19:18:19", "from": "ms06_Warehouse_14", "gap_s": 0.017, "kind": "chain", "t": 493.6, "to": "Optional2_AARay1_2", "attempt": 1}
+{"callsign": "", "clock": "19:18:19", "dist_m": 1939, "kind": "target", "t": 493.6, "target": "Optional2_AARay1_2", "attempt": 1}
+{"after_s": 0.133, "ang0_deg": 30.59, "base_s": 0, "clock": "19:18:19", "dist_m": 1923, "kind": "lock", "rate_dps": 34.74, "t": 493.7, "target": "Optional2_AARay1_2", "attempt": 1}
+{"clock": "19:18:19", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 4.119, "t": 493.8, "target": "ms06_Warehouse_14", "attempt": 1}
+{"clock": "19:18:19", "kind": "launch", "left": 2, "n": 1, "t": 493.8, "target": "Optional2_AARay1_2", "weapon": "special", "attempt": 1}
+{"clock": "19:18:19", "dist_m": 1906, "held_s": 0.162, "kind": "salvo", "locks": 2, "t": 493.9, "attempt": 1}
+{"clock": "19:18:19", "dist_m": 1906, "kind": "missile", "lanes": true, "off_deg": 29.12, "special": true, "t": 493.9, "target": "Optional2_AARay1_2", "attempt": 1}
+{"ang_deg": 29.18, "clock": "19:18:19", "from": "Optional2_AARay1_2", "gap_s": 0.01, "kind": "chain", "t": 493.9, "to": "ms06_Warehouse_13", "attempt": 1}
+{"callsign": "", "clock": "19:18:19", "dist_m": 1904, "kind": "target", "t": 493.9, "target": "ms06_Warehouse_13", "attempt": 1}
+{"clock": "19:18:19", "damage": 80, "hp": 40, "kind": "one_shot", "set_aside_s": 4.177, "t": 494, "target": "Optional2_AARay1_2", "attempt": 1}
+{"clock": "19:18:19", "kind": "launch", "left": 0, "n": 2, "t": 494, "target": "ms06_Warehouse_13", "weapon": "special", "attempt": 1}
+{"ang_deg": 31.19, "clock": "19:18:20", "from": "Optional2_AARay1_2", "gap_s": 0.524, "kind": "chain", "t": 494.4, "to": "common_ah64_3", "attempt": 1}
+{"callsign": "", "clock": "19:18:20", "dist_m": 1102, "kind": "target", "t": 494.4, "target": "common_ah64_3", "attempt": 1}
+{"clock": "19:18:20", "dist_m": 1088, "kind": "weapon_switch", "t": 494.6, "to": "standard missiles", "why": "no longer: special weapon empty", "attempt": 1}
+{"clock": "19:18:20", "closest_m": 37.06, "flares_while_near": true, "flew_s": 9.869, "from": "Optional2_SAM_1_5", "kind": "missile_gone", "missile": "wp_msl_SAM_TerrainCheck_C_6", "t": 494.6, "attempt": 1}
+{"clock": "19:18:20", "kind": "shot_not_launched", "t": 494.8, "target": "Optional2_AARay1_2", "attempt": 1}
+{"after_s": 0.509, "ang0_deg": 31.26, "base_s": 0, "clock": "19:18:20", "dist_m": 1056, "kind": "lock", "rate_dps": 34.81, "t": 494.9, "target": "common_ah64_3", "attempt": 1}
+{"clock": "19:18:20", "dist_m": 1056, "kind": "missile", "lanes": true, "off_deg": 22.1, "special": false, "t": 494.9, "target": "common_ah64_3", "attempt": 1}
+{"clock": "19:18:20", "kind": "launch", "left": 85, "n": 1, "t": 495.1, "target": "common_ah64_3", "weapon": "missile", "attempt": 1}
+{"clock": "19:18:20", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 2.624, "t": 495.1, "target": "common_ah64_3", "attempt": 1}
+{"ang_deg": 31.42, "clock": "19:18:21", "from": "common_ah64_3", "gap_s": 0.288, "kind": "chain", "t": 495.2, "to": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "attempt": 1}
+{"callsign": "", "clock": "19:18:21", "dist_m": 917.7, "kind": "target", "t": 495.2, "target": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "attempt": 1}
+{"clock": "19:18:21", "dist_m": 1857, "flew_s": 1.744, "hit": false, "kind": "my_missile", "t": 495.5, "target": "ms06_Warehouse_14", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"after_s": 0.363, "ang0_deg": 31.42, "base_s": 0, "clock": "19:18:21", "dist_m": 878.7, "kind": "lock", "rate_dps": 35.04, "t": 495.6, "target": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "attempt": 1}
+{"clock": "19:18:21", "dist_m": 878.7, "kind": "missile", "lanes": true, "off_deg": 29.44, "special": false, "t": 495.6, "target": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "attempt": 1}
+{"clock": "19:18:21", "dist_m": 1884, "flew_s": 1.543, "hit": false, "kind": "my_missile", "t": 495.7, "target": "Optional2_AARay1_2", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:18:21", "dist_m": 1815, "flew_s": 1.543, "hit": false, "kind": "my_missile", "t": 495.7, "target": "ms06_Warehouse_14", "target_kind": "ground", "weapon": "plwp_8agm_a0_C", "attempt": 1}
+{"clock": "19:18:21", "kind": "launch", "left": 84, "n": 1, "t": 495.7, "target": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "weapon": "missile", "attempt": 1}
+{"clock": "19:18:21", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 2.352, "t": 495.7, "target": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "attempt": 1}
+{"clock": "19:18:22", "kind": "radio", "speaker": "AWACS Bandog", "t": 496.3, "text": "Locked!", "attempt": 1}
+{"callsign": "", "clock": "19:18:23", "dist_m": 1819, "kind": "target", "t": 497.5, "target": "Optional2_AA_1_4", "attempt": 1}
+{"callsign": "", "clock": "19:18:23", "kind": "death", "t": 497.6, "who": "common_ah64_3", "attempt": 1}
+{"bounty": 200, "by": "missile on its way", "callsign": "", "class": "heli", "clock": "19:18:23", "kind": "kill", "t": 497.6, "target": "common_ah64_3", "attempt": 1}
+{"clock": "19:18:23", "dist_m": 1046, "flew_s": 2.753, "hit": true, "kind": "my_missile", "t": 497.8, "target": "common_ah64_3", "target_kind": "heli", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"callsign": "", "clock": "19:18:23", "kind": "death", "t": 497.8, "who": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "attempt": 1}
+{"bounty": 100, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "19:18:23", "kind": "kill", "t": 497.8, "target": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "attempt": 1}
+{"callsign": "", "clock": "19:18:23", "kind": "death", "t": 497.8, "who": "ms06_Bridge_01", "attempt": 1}
+{"clock": "19:18:23", "dist_m": 871.2, "flew_s": 2.347, "hit": true, "kind": "my_missile", "t": 498, "target": "DestructableParts_GEN_VARIABLE_ms06_Bridge_Destructible_C_CAT_2912", "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}

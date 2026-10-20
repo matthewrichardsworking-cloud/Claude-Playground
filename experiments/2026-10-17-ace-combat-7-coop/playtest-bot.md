@@ -3,6 +3,31 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (19 Oct 2026, evening): kill chaining with the lane planner
+
+- **How it attacks ground targets now** (`lanes.lua`): the flight path is chosen for the targets
+  it brings into the lock cone (21 manoeuvres flown 12 s ahead in a model of the plane and the
+  missile, twice a second), the target is whatever is in the cone nearest the nose, and the next
+  one is selected right after each launch. Tuned with `tools\lane-sim.py` over six kinds of
+  generated layouts with varied planes and missiles (10.1 against 6.1 kills a minute for the old
+  nose-on attack); Mission 06's real layout is one test case among them.
+- **General, read live** (the owner's priority): score mode from the HUD's score goal; enemy
+  kinds from the game's class tree, flags and numbers (no name lists); turn rate, lock time,
+  reload and missile ranges measured on itself in flight; the next group of targets chosen by
+  points per second including the flight there, judged by the points really scored.
+- **Flying** (the owner's advice while watching): bank-to-turn with an immediate pull and the
+  high-G turn on every big turn, slicing turns down when too high, brakes into turns above 850
+  km/h, full throttle toward a group until 5 km out; a **defensive attack** instead of breaking
+  off (keeps attacking, turned up to 35 degrees across the missile's line, flares, high-G; a hard
+  dodge only at the last instant or with health under 40); threats first (anything that fired a
+  missile at it counts 2.5 times its points).
+- **Data in every report** (`tools\run-stats.py`): time split frame by frame, kills a minute
+  overall and while engaged, kills and points by kind, own missile hits by weapon and range,
+  locks, chained picks, defensive attacks and breaks, the planner audit, what it learned about
+  itself, steering summary, HUD score every 30 s, the activation log.
+- **The pilot keeps flying through its own script errors** (keys let go, error logged, loop
+  kept), after one bad line crashed a test plane.
+
 ## Status (19 Oct 2026, 14:05): tunnel test passed; Mission 06 still open
 
 - **Vision test 2 passed:** through Mission 06's tunnel on live rays (try 10: 1.6 m from the aim
