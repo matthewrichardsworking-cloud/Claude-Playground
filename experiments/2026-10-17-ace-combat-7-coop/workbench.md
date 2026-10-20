@@ -1568,6 +1568,12 @@ settings had exactly the pace 24,000 needs for five minutes, then died. What is 
 survive the F-16s (kill them with the LAAM before they turn in), close the gap between what the
 planner promises and what the plane flies, reach the third area by about 9 minutes, and try the
 8AGM as a second ground weapon. All runs, numbers and reasons: `playtests\missions\m06\notes.md`.
+**Found afterwards, when you asked why it lags a human player:** the bot runs out of missiles. It
+carries 112 standard missiles and used 1.6 to 2.3 per kill with almost no gun kills, so in every full
+phase they ran low between minute 10 and 11.5 and the score stopped climbing; that is the 13,000
+ceiling. A human uses about one missile per kill, the gun on trucks and guns, and a special weapon
+suited to the ground targets. The analysis and the revised order of next steps (ammunition first):
+`playtests\missions\m06\gap-analysis.md`. Reports now show the ammunition.
 Your real saves were checked after every run (unchanged); the copy is closed, still in Vanilla
 mode with its Default profile (the Mod Loader was not used).
 

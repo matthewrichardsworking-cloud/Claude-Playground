@@ -267,7 +267,14 @@ morning's best was about 14,000 with 3.4 kills a minute. What the general number
   6,650 ground points and the Gripens (2,000) were never reached in time; the 11 drones (3,850)
   switch on at 9:00 between B and C.
 
-Next, in order of expected value: (1) survive the F-16s (kill them with the LAAM while they are
+**Found afterwards (19:40): the bot runs out of standard missiles.** 112 at the start, 1.6-2.3
+per kill, under 20 left between minute 9.6 and 11.5 of every full phase, and the score flattens
+from about minute 11 (one run ran dry at 11.6). That is the ~13,000 plateau. Full analysis and
+the revised order of next steps: `gap-analysis.md` (ammunition economy first: gun kills on soft
+targets, missile discipline, a ground special, then survival and the route). The reports now
+show ammunition.
+
+Earlier list, before that finding: (1) survive the F-16s (kill them with the LAAM while they are
 still ahead and far, before they turn in; or leave area A faster); (2) close the plan-reality gap
 (measure turn and lock performance per manoeuvre against the model; a lower, steadier pass);
 (3) an area tour that reaches C by about 9 minutes; (4) the 8AGM as a second ground weapon

@@ -174,6 +174,20 @@ def stats_for(events, log_lines, t_from=None, t_to=None):
     launches = [e for e in ev if e.get("kind") == "launch" and e.get("weapon") == "missile"]
     out["missiles"] = sum(int(e.get("n", 1)) for e in launches)
     out["special"] = sum(int(e.get("n", 1)) for e in ev if e.get("kind") == "launch" and e.get("weapon") == "special")
+    # ammunition: what was left after the first and the last launch, and when the standard
+    # missiles fell under 20 and ran out (19 Oct 2026: every full phase of Mission 06 flattened
+    # out exactly when they ran low, a ceiling the time split could not show)
+    ammo = {}
+    for w in ("missile", "special"):
+        ls = [e for e in ev if e.get("kind") == "launch" and e.get("weapon") == w and e.get("left") is not None]
+        if ls:
+            a = {"start": int(ls[0]["left"]) + int(ls[0].get("n", 1)), "end": int(ls[-1]["left"])}
+            for th in (20, 0):
+                hit = next((e for e in ls if int(e["left"]) <= th), None)
+                if hit:
+                    a[f"le{th}_min"] = round((hit["t"] - t0) / 60, 1)
+            ammo[w] = a
+    out["ammo"] = ammo
     if not launches:
         out["missiles"] = sum(1 for e in ev if e.get("kind") == "missile")
     out["breaks"] = sum(1 for e in ev if e.get("kind") == "evade")
@@ -239,6 +253,15 @@ def describe(st):
                  + f"), missiles {st['missiles']} ({st['missiles_per_min']:.1f} a minute"
                  + (f", {st['missiles_per_kill']:.1f} per kill" if st.get("missiles_per_kill") else "") + ")"
                  + (f", special weapon {st['special']}" if st.get("special") else "") + ".")
+    if st.get("ammo"):
+        parts = []
+        for w, a in st["ammo"].items():
+            txt = f"{'standard missiles' if w == 'missile' else 'special weapon'} {a['start']} -> {a['end']}"
+            if "le20_min" in a:
+                txt += f" (under 20 at {a['le20_min']} min"
+                txt += f", none left at {a['le0_min']} min)" if "le0_min" in a else ")"
+            parts.append(txt)
+        lines.append("Ammunition: " + "; ".join(parts) + ".")
     if st.get("kills_by_kind") and any(k != "?" for k in st["kills_by_kind"]):
         lines.append("Kills by kind (game data): " + ", ".join(f"{k} {v}" for k, v in sorted(st["kills_by_kind"].items())) + ".")
     if st.get("points"):

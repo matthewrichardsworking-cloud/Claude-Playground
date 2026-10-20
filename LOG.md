@@ -20,6 +20,10 @@ Newest first. One short entry per session.
 - Result: best kill rate 6.4 a minute over a phase (3.4 in the morning), but full phases still
   end at 10,700-13,400 of 24,000 or shot down; the campaign stays at Mission 06. Next steps in
   workbench section 16. Copy closed, Vanilla, real saves unchanged after every run.
+- Afterwards (asked why it lags a human): it runs out of its 112 standard missiles by minute
+  10-11.5 (1.6-2.3 per kill, almost no gun kills), which is the ~13,000 plateau. Analysis and the
+  revised order (ammunition economy first) in the experiment's
+  `playtests/missions/m06/gap-analysis.md`; reports now count ammunition.
 
 ## 2026-10-19 (afternoon): Ace Combat 7 co-op, vision test 2 passed (Mission 06 tunnel)
 
