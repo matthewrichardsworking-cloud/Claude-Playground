@@ -73,6 +73,45 @@ local killTally = { n = 0 }    -- every kill credited to the bot (both ways of c
 -- ...and per kind of target: kills, and seconds spent with one of that kind as the target
 -- (killTally.kindKills, killTally.kindTime; see combatStep, 20 Oct 2026)
 killTally.kindKills, killTally.kindTime = {}, {}
+-- ...and what dies with a kill (20 Oct 2026, Mission 08: of 21,750 points, 9,550 came from oil
+-- tanks set off by the ones the bot's missiles hit): per class of target, the kills, the other
+-- targets standing within 400 m then, and the points of those that died within 1.5 s and 400 m
+-- of it without the bot having fired at them. Points per neighbour times the neighbours a target
+-- has now is what a missile at it is worth beyond its own points (killTally.chainValue; used
+-- by the lanes once a class has three kills). Learned, so a class that sets nothing off stays 0.
+-- killTally.cands: the score-phase candidates (laneCands, defined further down), with .nb.
+killTally.chain, killTally.recent = {}, {}
+function killTally.chainNote(name, ours)
+    local cands = killTally.cands
+    if not cands then return end
+    local q = nil
+    for _, r in ipairs(cands) do if r.name == name then q = r; break end end
+    if not q or not q.x then return end
+    local t = now()
+    if ours then
+        local cls = q.cls or "?"
+        local ch = killTally.chain[cls] or { k = 0, nb = 0, pts = 0 }
+        killTally.chain[cls] = ch
+        ch.k, ch.nb = ch.k + 1, ch.nb + (q.nb or 0)
+        local rc = killTally.recent
+        rc[#rc + 1] = { t = t, x = q.x, y = q.y, cls = cls }
+        if #rc > 20 then table.remove(rc, 1) end
+    else
+        local rc = killTally.recent
+        for i = #rc, 1, -1 do
+            local k = rc[i]
+            if t - k.t <= 1.5 and (q.x - k.x) ^ 2 + (q.y - k.y) ^ 2 < 4000 ^ 2 then
+                killTally.chain[k.cls].pts = killTally.chain[k.cls].pts + (q.bounty or 0)
+                break
+            end
+        end
+    end
+end
+function killTally.chainValue(q)
+    local ch = killTally.chain[q.cls or "?"]
+    if not ch or ch.k < 3 or ch.nb < 1 then return 0 end
+    return ch.pts / ch.nb * (q.nb or 0)
+end
 local pointsLog = {}           -- { time, points } of every kill credited to the bot (the rate it really scores at)
 local learnAgileHook           -- set further down (learnAgile): a kill of a class, for the agility measure
 local cloudBase, cloudMission = nil, nil   -- the lowest cloud met in this mission (m), see watchAreas
@@ -207,6 +246,29 @@ local Lanes = loadModule("lanes")
 
 -- The mission's special objects: searchlights, radar areas, the altitude ceiling (gimmicks.lua)
 local Gim = loadModule("gimmicks", { call = call, objName = objName })
+
+-- The manoeuvre planner: every way the pilot wants to fly, flown ahead in this plane's model and
+-- traced against the ground; a safe manoeuvre instead when it is not (maneuver.lua, 20 Oct 2026)
+local Man = loadModule("maneuver")
+if Man then
+    -- the ground and structures for its look-ahead: the engine's own line traces (CoopPadMod)
+    Man.ctx = {
+        segFree = function(a, b)
+            local ok, hit = pcall(CoopTrace_Line, a[1], a[2], a[3], b[1], b[2], b[3])
+            return not (ok and hit)
+        end,
+        clearBelow = function(p, m)
+            local ok, hit = pcall(CoopTrace_Line, p[1], p[2], p[3], p[1], p[2], p[3] - m * 10)
+            return not (ok and hit)
+        end,
+        omega = function() return math.rad(38) end,      -- set to the measured turn rate in apStep
+    }
+end
+
+-- Attack lines: where a ground target can be seen from, the line the plane is on soonest, and
+-- the way onto it (approach.lua, 20 Oct 2026); its traces and turn rate are set in groundRun.
+-- (kept in Man: the main chunk is at Lua's limit of 200 locals)
+if Man then Man.approach = loadModule("approach") end
 
 -- The plane's own area checks: which of the mission's special areas it is in right now.
 local AREA_CHECKS = { { "over_ceiling", "IsOverRestrictedAltitude" }, { "in_radar", "IsInRadarArea" },
@@ -658,9 +720,11 @@ tryHook("/Script/Nimbus.GameObject:OnDeath", function(self, dead)
     local o = self:get()
     local n = objName(o)
     event("death", { who = n, callsign = callsign(o) })
+    local ours = firedAt[n] and now() - firedAt[n] < 20 and not creditedKills[n]
+    pcall(killTally.chainNote, n, ours and true or false)
     -- an enemy the bot fired at in the last 20 s: its kill (the missile may land after the
     -- bot has switched to the next target, so the target-change check never sees it)
-    if firedAt[n] and now() - firedAt[n] < 20 and not creditedKills[n] then
+    if ours then
         creditedKills[n] = true
         -- (what it was, as known when the missile was fired: the dying unit itself is not asked)
         local si = shotInfo[n] or {}
@@ -1397,6 +1461,16 @@ local function enemyWeight(o, l)
     local tr = Aware and Aware.trackFor(o)
     local chasesProtected = tr and tr.tracking and allyNames[tr.tracking] == "protect"
     if tr and tr.tracking and allyNames[tr.tracking] then w = w * (chasesProtected and 7 or 2) end
+    -- An enemy chasing an ally that lost health in the last 10 s counts 4 times: it is the one
+    -- shooting (20 Oct 2026, Mission 07's recon team, "not even one is to go down")
+    if tr and tr.tracking and allyGround.hurt then
+        local hA = allyGround.hurt[tr.tracking]
+        if hA and now() - hA < 10 then w = w * 4 end
+    end
+    -- (tried 20 Oct 2026, Mission 07's recon team: up to 5 times more the closer it is to the
+    -- ally it chases, within 1.5 km. Weights then swung with every UAV's distance to its plane
+    -- and the bot switched among UAVs 10-13 km away for 104 s without a kill; taken out. The
+    -- ally positions stay in allyGround.pos.)
     -- what the order says matters most in this mission ("focus AH64_00,zouen")
     if ap and ap.focus and hasAny(name, ap.focus) then w = w * 6 end
     -- Score phases ("fly attack score"): a phase won on points, not on particular targets
@@ -1497,7 +1571,7 @@ local function nearestEnemy(loc, skip, F, current, kmh)
     local curScore, curD, curW = nil, 0, 1
     local t = now()
     local objs = FindAllOf("GameObject") or {}
-    local allies, names = {}, {}
+    local allies, names = { pos = {}, hp = allyGround.hp or {}, hurt = allyGround.hurt or {} }, {}
     -- Score phases: the points around each place (1.5 km squares of active enemies' bounty),
     -- so the bot goes where the points are thick and keeps working there instead of flying
     -- 20 km for one plane (Mission 06 phase 1, 19 Oct 2026: 28 ships in one harbour, 23 SAM
@@ -1538,6 +1612,15 @@ local function nearestEnemy(loc, skip, F, current, kmh)
             end)
         end
         laneCandsAt = now()
+        -- (each one's neighbours within 400 m, for what dies with a kill: killTally.chainValue)
+        for _, q in ipairs(laneCands) do
+            local nb = 0
+            for _, r in ipairs(laneCands) do
+                if r ~= q and (r.x - q.x) ^ 2 + (r.y - q.y) ^ 2 < 4000 ^ 2 then nb = nb + 1 end
+            end
+            q.nb = nb
+        end
+        killTally.cands = laneCands
     end
     for _, o in ipairs(objs) do
         pcall(function()
@@ -1545,6 +1628,13 @@ local function nearestEnemy(loc, skip, F, current, kmh)
                 local mk = lockInfo(o).mark
                 local protect = (mk == 2 or mk == 4)
                 names[objName(o)] = protect and "protect" or true
+                local la = o:K2_GetActorLocation()
+                local an = objName(o)
+                allies.pos[an] = { la.X, la.Y, la.Z }
+                -- (its health: an ally losing health is being shot at that moment)
+                local hpA = call(o, "GetHealth")
+                if hpA and allies.hp[an] and hpA < allies.hp[an] then allies.hurt[an] = now() end
+                if hpA then allies.hp[an] = hpA end
                 -- slow allies (ground units, helicopters), and any ally the mission highlights
                 -- as one to protect, at any speed (Mission 04's transport, 19 Oct 2026)
                 if protect or (o:GetSpeedKmph() or 0) < 350 then
@@ -1756,6 +1846,39 @@ local Gun = { test = nil, stats = { bursts = 0, kills = 0, dmg = 0, secs = 0 }, 
 -- degrees straight at it; too close (700 m) or too low (250 m above the ground): extend,
 -- flying away and climbing until 3.5 km out, then turn back in. Returns the aim and the
 -- phase ("in" or "out").
+-- Where a ground target can be seen from (attack geometry, 20 Oct 2026; the owner asked for
+-- better pathfinding): from the target, rays outward in eight directions (the plane's side
+-- first) at climbing angles of 20-80 degrees, 3 km long; on each side the lowest clear angle,
+-- and the side with the lowest wins. Mission 07's radar and SAM sites sit in canyons and were
+-- blocked from 3 km at 550 m above the ground, run after run. Kept 15 s. Returns { az, el
+-- (degrees), at } or { at } when no side is clear.
+local function attackGeometry(c, key, st, loc)
+    c.geo = c.geo or {}
+    local g = c.geo[key]
+    if g and now() - g.at < 15 then return g end
+    if type(CoopTrace_Line) ~= "function" then return nil end
+    local tz = st.Z + 300
+    local azPlane = math.atan(loc.Y - st.Y, loc.X - st.X)
+    local best = nil
+    for i = 0, 7 do
+        local az = azPlane + i * math.pi / 4
+        local ca, sa = math.cos(az), math.sin(az)
+        for _, e in ipairs({ 20, 30, 40, 50, 60, 70, 80 }) do
+            local ce, se = math.cos(math.rad(e)), math.sin(math.rad(e))
+            local ok, hit = pcall(CoopTrace_Line, st.X + ca * ce * 300, st.Y + sa * ce * 300, tz + se * 300,
+                st.X + ca * ce * 30000, st.Y + sa * ce * 30000, tz + se * 30000)
+            if ok and not hit then
+                local cost = e + ((i == 0) and 0 or 3)
+                if not best or cost < best.cost then best = { az = az, el = e, cost = cost } end
+                break
+            end
+        end
+    end
+    g = best and { az = best.az, el = best.el, at = now() } or { at = now() }
+    c.geo[key] = g
+    return g
+end
+
 local function groundRun(c, key, st, loc, F, alt)
     c.runs = c.runs or {}
     local hd = math.sqrt((st.X - loc.X) ^ 2 + (st.Y - loc.Y) ^ 2)
@@ -1782,8 +1905,70 @@ local function groundRun(c, key, st, loc, F, alt)
             c.underClouds = cb
         end
     end
+    -- On an attack line (approach.lua): the side and angle the target can be seen from, chosen
+    -- by how soon the plane is on it, flown onto from outside and down to the shot (not in score
+    -- phases, whose sweeps and lanes fly their own way, nor in the gun test). 20 Oct 2026: in
+    -- the wargame over Mission 07's ground, 3.1 shots a minute against 1.1 for the runs below;
+    -- that day's Mission 07 runs spent four minutes on one SAM site in a canyon.
+    local Appr = Man and Man.approach
+    if Appr and type(CoopTrace_Line) == "function" and not (ap and ap.scoreMode) and not Gun.test then
+        Appr.ctx.trace = CoopTrace_Line
+        if Man and Man.ctx and Man.ctx.omega then Appr.ctx.omega = Man.ctx.omega end
+        local V = ap.myV
+        local u, spd = F, 200
+        if V then
+            local vu, vl = unit(V)
+            if vl > 100 then u, spd = vu, vl / 10 end
+        end
+        local cloudZ = (cb and not rugged) and cb * 10 or nil
+        local ok, aim, run = pcall(Appr.guide, key, { loc.X, loc.Y, loc.Z }, u, spd, above, { st.X, st.Y, st.Z + 30 }, cloudZ)
+        if ok and aim then
+            if run ~= c.runs[key] then event("attack_run", { target = key, phase = run == "in" and "running in" or "extending", dist_m = dm }) end
+            c.runs[key] = run
+            if run == "in" and dm < 2500 then c.runInAt = now() end
+            return aim, run, dm
+        elseif ok then
+            -- seen from no usable line: set aside a minute (another target meanwhile)
+            if c.skip and not (c.skip[key] and c.skip[key] > now()) then
+                c.skip[key] = now() + 60
+                event("skip", { target = key, why = "no attack line it can be seen along", for_s = 60 })
+            end
+        else
+            log("approach.lua: " .. tostring(aim))
+        end
+    end
     -- a target whose line was blocked by terrain: the run from high, diving steeply (above)
     if c.runHigh and c.runHigh[key] then outH, inH, minAbove, maxDive = 1600, 1600, 500, -0.8 end
+    -- ...and from the side and at the angle it can be seen from (attackGeometry): to an entry
+    -- point on that side first, 2.4 km out and high enough for that angle, then down at it
+    local geoAim = nil
+    if c.runHigh and c.runHigh[key] then
+        local geo = attackGeometry(c, key, st, loc)
+        if geo and not geo.el then
+            if c.skip then c.skip[key] = now() + 60 end      -- seen from nowhere: set aside a minute
+        elseif geo then
+            local el = math.rad(math.min(geo.el + 5, 80))
+            maxDive = -math.tan(el)
+            c.geoIn = c.geoIn or {}
+            if not c.geoIn[key] then
+                -- (on the ray found clear, 2.4 km along it; reached within 600 m: with the point
+                -- 2.4 km out level and 1.5 km of slack, the first try's line was blocked again
+                -- the moment it turned in)
+                local D = 24000
+                local ce = math.cos(math.rad(geo.el))
+                local ex, ey = st.X + math.cos(geo.az) * D * ce, st.Y + math.sin(geo.az) * D * ce
+                local ez = st.Z + 300 + math.sin(math.rad(geo.el)) * D
+                local dx, dy, dz = ex - loc.X, ey - loc.Y, ez - loc.Z
+                if math.sqrt(dx * dx + dy * dy + dz * dz) < 6000 then
+                    c.geoIn[key] = true
+                    event("attack_entry", { target = key, el_deg = geo.el, az_deg = math.deg(geo.az) })
+                else
+                    local hde = math.max(math.sqrt(dx * dx + dy * dy), 1)
+                    geoAim = unit({ dx / hde, dy / hde, clamp(dz / hde, -0.3, 0.5) })
+                end
+            end
+        end
+    end
     local run = c.runs[key]
     if not run then
         local off = math.deg(math.acos(clamp((h[1] * F[1] + h[2] * F[2]) / math.max(math.sqrt(F[1] ^ 2 + F[2] ^ 2), 0.01), -1, 1)))
@@ -1805,7 +1990,7 @@ local function groundRun(c, key, st, loc, F, alt)
     -- (inside the turn-back distance only, 2.6 km away from the run's ground: checked from 3 km,
     -- the next run "from above" was judged again before it had climbed, and set aside at once)
     local outToL = c.underClouds and 2000 or ((ap and ap.scoreMode) and 1500 or 2600)
-    if run == "in" and dm < outToL and Aware and Aware.losBlocked then
+    if run == "in" and dm < outToL and Aware and Aware.losBlocked and not geoAim then
         if now() - (c.runLosAt or -100) > 0.2 then
             c.runLosAt = now()
             c.runLosShort = Aware.losBlocked({ loc.X, loc.Y, loc.Z }, { st.X, st.Y, st.Z }, 3)
@@ -1837,8 +2022,10 @@ local function groundRun(c, key, st, loc, F, alt)
     if run ~= c.runs[key] then event("attack_run", { target = key, phase = run == "in" and "running in" or "extending", dist_m = dm }) end
     c.runs[key] = run
     if run == "out" then
+        if c.geoIn then c.geoIn[key] = nil end      -- (the next run goes by the entry point again)
         return unit({ -h[1], -h[2], clamp((outH - above) / 1500, -0.3, 0.4) }), run, dm
     end
+    if geoAim then return geoAim, run, dm end
     if dm > 2600 then
         return unit({ h[1], h[2], clamp((inH - above) / 1500, -0.3, 0.4) }), run, dm
     end
@@ -2043,7 +2230,8 @@ local function lanePlan(c, loc, F, t)
                         -- a missile's value at it: its points, the share of its health one missile
                         -- takes, the threat it poses, and how often the pilot's missiles hit its
                         -- class in this fight (20 Oct 2026)
-                        local val = q.bounty * math.min(1, wp.damage / rem) * threatFactor(q.obj, n)
+                        -- (plus what it sets off, learned: killTally.chainValue)
+                        local val = (q.bounty + killTally.chainValue(q)) * math.min(1, wp.damage / rem) * threatFactor(q.obj, n)
                             * ((Aware and Aware.pHit) and Aware.pHit(q.cls) or 1)
                         c.laneValue[n] = val
                         tg[#tg + 1] = { l.X, l.Y, l.Z, val, obj = q.obj, name = n }
@@ -2758,6 +2946,10 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
     -- while extending away from a ground target the choice is open again (see nearestEnemy)
     local extending = curOk and c.runs and c.runs[objName(c.pref)] == "out"
     local holdFor = (ap.scoreMode and 4) or 6          -- score phases: sooner (a lock needs 1-2 s of it)
+    -- ...and a close drone the plane is opening out from to come back at is kept (20 Oct 2026,
+    -- Mission 07: opened out from a UAV 490 m away among the recon team, re-judged it from
+    -- behind and went for one 9 km off; the near one shot down a recon plane and the phase failed)
+    local openingOut = curOk and c.heliOut and c.heliOut[objName(c.pref)]
     -- Score phases with the lane planner: the scan (lane candidates, the best target in the air,
     -- allies, mission targets) runs every second on its own clock, the plan twice a second, and
     -- while the lanes are flown the target is the cone pick (lanePick), not the scan's choice.
@@ -2854,7 +3046,7 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         c.pref, c.lanePickName, c.prefW, c.prefAt = c.furball.obj, nil, 3, t
     elseif c.laneOn then
         lanePick(c, loc, F, t)
-    elseif t - (c.prefAt or -100) > 1 and not (curOk and not extending and t - (c.prefSince or -100) < holdFor) then
+    elseif t - (c.prefAt or -100) > 1 and not openingOut and not (curOk and not extending and t - (c.prefSince or -100) < holdFor) then
         c.prefAt = t
         local kmhNow = call(p, "GetSpeedKmph")
         local pref, prefDist, prefScore, prefW
@@ -2959,6 +3151,29 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
     -- a target that never locks (the game will not let it be attacked, or it hides) is left
     -- alone for a minute after 6 s of pointing at it within 2.5 km without a lock (only the
     -- time it is in front counts: an attack run spends half its time flying away)
+    -- A lock the game holds on another enemy on the ground, in reach and in sight, is taken: what
+    -- a player does (20 Oct 2026, Mission 07: the game would not select a SAM site in a canyon,
+    -- its lock-on mark 0, and its seeker locked the AA gun 600 m from it instead; the bot held
+    -- fire through two dives at 1.4-2.4 km). Not in the lanes, which pick from the cone themselves.
+    -- (only for a target the game would not select or lock, and at most once in 5 s: Mission 08's
+    -- fuel trucks on split routes, 20 Oct 2026, the game's lock and the bot's choice took turns
+    -- 143 times in 10 minutes and 7 of 22 trucks died)
+    local prefStuck = c.pref and ((c.refused and c.refused[objName(c.pref)]) or not lockInfo(c.pref).lockable)
+    if not lanesHere and not Gun.test and c.pref and tgt and ts and prefStuck and t - (c.takeLockAt or -100) > 5 then
+        local lk = call(p, "GetLockedOnTarget")
+        if lk and not sameObj(lk, c.pref) and alive(lk) and not airborne(lk) then
+            local ll = locOf(lk)
+            local du = ll and math.sqrt((ll.X - loc.X) ^ 2 + (ll.Y - loc.Y) ^ 2 + (ll.Z - loc.Z) ^ 2) / 10
+            local short = du and Aware and Aware.losBlocked and Aware.losBlocked({ loc.X, loc.Y, loc.Z }, { ll.X, ll.Y, ll.Z }, 3)
+            if du and du < 2200 and (short or 0) < 40 then
+                c.takeLockAt = t
+                event("take_lock", { target = objName(lk), instead_of = objName(c.pref), dist_m = du })
+                c.pref, c.prefSince, c.prefLockedAt, c.prefPointed, c.prefAt = lk, t, t, 0, t
+                pcall(function() ts.SelectedTarget = lk end)
+                tgt = lk
+            end
+        end
+    end
     if tgt and c.pref and sameObj(tgt, c.pref) then
         if sameObj(call(p, "GetLockedOnTarget"), tgt) then c.prefLockedAt = t end
         local pl = locOf(tgt)
@@ -3131,6 +3346,10 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             if c.furball and (c.lastDist or 1e9) < 2000 and (c.lastOff or 180) < 30 then
                 lastInstant = threat.tgo < 1.5 and (not threat.miss or threat.miss < 1500)
             end
+            -- (no last-instant break for a missile the smallest dodge was found to clear: the owner,
+            -- 20 Oct 2026, the minimum change of the attack, back on it once the missile passes;
+            -- if that lets hits through, the dodges widen 2.5% at a time, awareness.lua)
+            if lastInstant and c.dodgeClears == threat.name then lastInstant = false end
             local attacking = (tgt ~= nil) or (c.laneOn and c.lanePlan ~= nil)
             -- (in a furball down to 20 health, elsewhere 40; 20 Oct 2026)
             if attacking and hpNow > (c.furball and 20 or 40) and not lastInstant then
@@ -3138,7 +3357,12 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
                     c.defends = (c.defends or 0) + 1
                     event("defend", { missile = threat.name, tgo_s = threat.tgo, dist_m = threat.dist / 10, miss_m = threat.miss and threat.miss / 10 or -1 })
                 end
-                c.defSide, c.defUntil = { side[1], side[2], 0 }, t + 0.4
+                c.defSide, c.defUntil, c.defThreat = { side[1], side[2], 0 }, t + 0.4, threat
+                -- (a missile from the target itself while diving at it on its attack line, within
+                -- 3 km: a side-step of 12 degrees, so the target stays in the lock cone; the 35 took
+                -- the nose 64 degrees off a canyon SAM site at 2 km, run after run, 20 Oct 2026)
+                local apS = Man and Man.approach and c.targetName and Man.approach.st[c.targetName]
+                c.defAngle = (apS and apS.est and threat.ownerName == c.targetName and (c.lastDist or 1e9) < 3000) and 12 or 35
                 c.defWhy = string.format("missile from %s, impact in %.1f s", threat.ownerName or "?", threat.tgo)
                 if threat.tgo < 2.5 then keys[#keys + 1] = KEY.high_g end
             else
@@ -3653,6 +3877,8 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
                 end
                 c.groundText = string.format("ground attack run, %s, %.0f m above ground%s", phase == "in" and "running in" or "extending", ap.agl or alt,
                     c.underClouds and string.format(" (under the clouds at %.0f m)", c.underClouds) or "")
+                local lt = Man and Man.approach and not ap.scoreMode and Man.approach.text(c.targetName)
+                if lt then c.groundText = string.format("ground attack, %s, %.0f m above ground", lt, ap.agl or alt) end
             end
         else
             c.groundText = nil
@@ -3724,6 +3950,23 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         if c.groundText then text = text .. "; " .. c.groundText end
         if c.lockDiag and dm < 2500 then text = text .. "; " .. c.lockDiag end
         c.speed = dm > 3000 and 1150 or (dm > 1200 and 850 or 650)   -- close the distance fast, then slow for the turn fight
+        -- on an attack line (approach.lua): fast only well out, 850 km/h for the turn onto the line
+        -- and 700 down it (from the measured turn rates: a turn radius of about 400 m at 850 km/h
+        -- against 650 m at 1,150)
+        local apSt = c.groundText and not ap.scoreMode and Man and Man.approach and Man.approach.st[c.targetName]
+        if apSt and apSt.line then
+            c.speed = dm > 4500 and 1150 or (dm > 2600 and 850 or 700)
+            -- a steep line (35 degrees or more): 650 km/h from 6 km, before the push over (the brake
+            -- only holds the speed in a 30-60 degree dive; Mission 07, 20 Oct 2026: dives at
+            -- 1,050-1,150 km/h down 50-60 degree lines passed 2 km to 700 m in about 4 s)
+            local el = Man.approach.lineEl(c.targetName)
+            if el and el >= 35 and dm <= 6000 then c.speed = 650 end
+        end
+        -- any fight: full throttle to a target more than 6 km away within 30 degrees of the nose
+        -- (20 Oct 2026, Mission 07: half of phase 1 was transit at 1,150 km/h; the owner had found
+        -- the bot timid with the throttle over long distances, which until now only the score
+        -- phases answered)
+        if dm > 6000 and offT < 30 and not (c.laneOn and c.lanePlan) then c.speed = 2000 end
         -- Timed score phases: full throttle whenever the target is more than 2.5 km away
         -- (the owner, 19 Oct 2026: "timid about going full throttle even when traveling long
         -- distances ... for missions racing against the clock it is going to need to move
@@ -3775,10 +4018,41 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         local perp = { sd[1] - aim[1] * dot(sd, aim), sd[2] - aim[2] * dot(sd, aim), sd[3] - aim[3] * dot(sd, aim) }
         local pu, pl = unit(perp)
         if pl > 0.05 then
-            local a = math.rad(35)
+            -- the smallest turn off the attack that the missile misses by, flown ahead for each
+            -- of 0-35 degrees against the missile's own turn rate (awareness.lua's minDodge; the
+            -- owner, 20 Oct 2026: the minimum alteration, so the attack is back on as soon as the
+            -- missile passes); when none of them clears it 35, or 12 for a missile from the target
+            -- dived at on its attack line (the full break stays for the last instant)
+            if Aware and Aware.minDodge and c.defThreat and ap.myV and t - (c.dodgeAt or -100) > 0.1 then
+                c.dodgeAt = t
+                local om = (Man and Man.ctx and Man.ctx.omega and Man.ctx.omega()) or math.rad(38)
+                local sc = Aware.dodgeScale or 1
+                c.defThreat.dodged = true
+                local okD, dg, pass = pcall(Aware.minDodge, c.defThreat, { loc.X, loc.Y, loc.Z }, ap.myV, aim, pu, om * 0.85, 120 * sc)
+                if okD and dg then c.dodgeClears = c.defThreat.name end
+                -- (none of them clears it: the fallback, 35 degrees or 12 for the target's own missile)
+                if okD then dg = dg and math.min(45, dg * sc) or (c.defAngle or 35) end
+                -- (for one missile the dodge only grows until it has passed: worked out ten times a
+                -- second it jumped 25, 0, 35, 0 degrees within a second; a jink back and forth costs
+                -- the turn twice)
+                if c.dodgeMissile == c.defThreat.name and c.dodgeDeg then
+                    dg = math.max(okD and dg or 0, c.dodgeDeg)
+                    okD = true
+                end
+                c.dodgeMissile = c.defThreat.name
+                c.dodgeDeg = okD and dg or nil
+                if not okD and not c.dodgeErr then c.dodgeErr = true; log("minDodge: " .. tostring(dg)) end
+                if okD and dg ~= c.lastDodgeDeg then
+                    event("dodge", { missile = c.defThreat.name, deg = dg or -1, pass_m = pass or -1, tgo_s = c.defThreat.tgo })
+                end
+                c.lastDodgeDeg = okD and dg or nil
+            end
+            local deg = c.dodgeDeg or c.defAngle or 35
+            local a = math.rad(deg)
             aim = unit({ aim[1] * math.cos(a) + pu[1] * math.sin(a), aim[2] * math.cos(a) + pu[2] * math.sin(a), aim[3] * math.cos(a) + pu[3] * math.sin(a) })
+            c.defDeg = deg
         end
-        text = (text or "") .. " | DEFENSIVE ATTACK (" .. (c.defWhy or "?") .. ")"
+        text = (text or "") .. " | DEFENSIVE ATTACK (" .. (c.defWhy or "?") .. string.format(", %d deg off the attack)", c.defDeg or 35)
         c.splitClass = "defend"
     end
     -- Escort (19 Oct 2026, Mission 04's transport "Mother Goose One", marked by the mission as
@@ -3995,6 +4269,7 @@ local function apStep(p, dt)
     local health = call(p, "GetHealth")
     if health and ap.lastHealth and health < ap.lastHealth then
         event("damage", { amount = ap.lastHealth - health, health = health, alt_m = call(p, "GetAltitudeMeters") })
+        if Aware and Aware.noteDamage then Aware.noteDamage(now(), ap.lastHealth - health, ap.agl) end
         log(string.format("  DAMAGE: -%s, health now %s", fmt(ap.lastHealth - health), fmt(health)))
         -- gunfire (a few points a hit): the ground enemies within 2.5 km are marked as the guns
         -- firing at the plane, and count as threats for a minute (threatFactor). 19 Oct 2026, the
@@ -4183,7 +4458,45 @@ local function apStep(p, dt)
     -- Elevator's structure during attack runs on the SAM sites around it): the free direction
     -- is only taken when the wanted one is blocked within the next 3 seconds, and the normal
     -- controller keeps flying.
-    local visionSafety = ap.goal.kind == "attack" and not ap.vision
+    -- The manoeuvre planner (maneuver.lua; the owner, 20 Oct 2026: "pathfinding, maneuvering,
+    -- innate knowledge of its own aircraft's capabilities"): in a fight, four times a second the
+    -- way the pilot wants is flown 5 s ahead in this plane's model (its measured turn rate, roll
+    -- rate and speed changes) and traced against the ground and structures; when it is not
+    -- clear with room to spare, the safe manoeuvre closest to it is flown instead, held a moment,
+    -- braking when it brakes. It takes the place of the straight-ray safety net below in fights
+    -- (in Mission 07's surveyed ground: 1.3% of simulated attack flights crashed against 64%).
+    local manOn = ap.goal.kind == "attack" and not ap.vision and Man and ap.myV and Nav and Nav.fast and type(CoopTrace_Line) == "function"
+    if manOn then
+        if t - (ap.manAt or -100) >= Man.P.every then
+            ap.manAt = t
+            local V = ap.myV
+            local vl = math.sqrt(V[1] ^ 2 + V[2] ^ 2 + V[3] ^ 2)
+            if vl > 500 then
+                local u = { V[1] / vl, V[2] / vl, V[3] / vl }
+                local du = U[1] * u[1] + U[2] * u[2] + U[3] * u[3]
+                local Lp = unit({ U[1] - du * u[1], U[2] - du * u[2], U[3] - du * u[3] })
+                local want = (ap.combat and ap.combat.speed) or ap.goal.speed or 650
+                local mode = (kmh < want - 25) and "throttle" or ((kmh > want + 40) and "brake" or "none")
+                local est = planeTurn.est
+                Man.ctx.omega = function() return est end
+                local a, m, text = Man.filter({ p = { loc.X, loc.Y, loc.Z }, u = u, L = Lp, s = vl / 10, k = clamp(ap.lastPitchCmd or 0, -0.5, 1) },
+                    aim, mode, t, Man.ctx)
+                ap.manAim, ap.manMode, ap.manText = text and a or nil, text and m or nil, text
+                ap.manOk = not (text and text:find("no clear way", 1, true))
+                if text then
+                    ap.visBlockedAt = t              -- (the "obstacles near" signal for the speed and cloud rules)
+                    if text ~= ap.manLogged and t - (ap.manLogAt or -100) > 1.0 then
+                        ap.manLogged, ap.manLogAt = text, t
+                        event("maneuver", { text = text, kmh = kmh, agl_m = agl or -1 })
+                    end
+                end
+            end
+        end
+        if ap.manAim then aim = ap.manAim; ap.navText = ap.manText end
+    else
+        ap.manAim, ap.manMode, ap.manOk = nil, nil, false
+    end
+    local visionSafety = ap.goal.kind == "attack" and not ap.vision and not manOn
     if (ap.vision or visionSafety) and Vision and ap.myV and Nav and Nav.fast then
         if t - (ap.visAt or -100) > 0.05 then
             ap.visAt = t
@@ -4226,6 +4539,10 @@ local function apStep(p, dt)
         if laneLow then aheadMin = 100 end
         if gunLow then aheadMin = Gun.mod.P.aheadMin end
         recovering = height < floor or alt + ap.vz * 4 < floor * 0.7 or (ahead ~= nil and ahead < aheadMin)
+        -- (with the manoeuvre planner flying a way it found clear, the straight lines ahead are
+        -- not the test: they cross every wall it is turning away from; only a real emergency,
+        -- 60 m over the ground, takes over)
+        if manOn and ap.manOk then recovering = height < 60 end
         -- a vertical attack (lanes.lua) points the nose at the ground on purpose: the straight
         -- lines 1-4 s ahead always end in it; the pull-out arc the attack was planned with is
         -- the check instead (the floor stays)
@@ -4481,6 +4798,8 @@ local function apStep(p, dt)
         if not has then extraKeys = extraKeys or {}; extraKeys[#extraKeys + 1] = KEY.high_g end
     end
     local speed = (ap.combat and ap.combat.speed) or ap.goal.speed or 650
+    -- the manoeuvre planner braking (its plan flies slower: tighter turns, more time)
+    if ap.manMode == "brake" then speed = math.min(speed, 380) end
     -- a vertical attack: full power up and over, braking to 450 km/h on the way down so the
     -- pull-out stays tight (20 Oct 2026: unbraked, the first dives gathered speed, the pull-out
     -- came at 480-660 m, before the planned shot, two times in three)
@@ -4492,7 +4811,11 @@ local function apStep(p, dt)
     -- rock face anyway)
     -- (the next attempt still went in at 830 km/h between reports and hit a pillar 3 minutes in:
     -- terrain like that is all around, so the caution lasts 20 s after the last report, at 550)
-    if ap.goal.kind == "attack" and ap.visBlockedAt and t - ap.visBlockedAt < 20 then speed = math.min(speed, 550) end
+    -- (with the manoeuvre planner on, 4 s: it flies its own brake when its look-ahead needs it,
+    -- and its every adjustment counts as a report, so in rugged ground the 20 s cap held the
+    -- plane at 550 km/h nearly all the time; the owner, 20 Oct 2026: safety at about the
+    -- minimum plus 10%, more skill and less timidity)
+    if ap.goal.kind == "attack" and ap.visBlockedAt and t - ap.visBlockedAt < (manOn and 4 or 20) then speed = math.min(speed, 550) end
     if ap.goal.kind == "route" and ap.routeKmh then speed = math.min(ap.routeKmh, ap.goal.maxspeed or 9999) end
     -- The beams as moving obstacles, four times a second: for the next 2 km of route, where
     -- every nearby beam will point at the moment the plane reaches each point (each beam's
@@ -4623,6 +4946,21 @@ local function apStep(p, dt)
         keys[#keys + 1] = KEY.brake                   -- into a hard turn too fast: brake, the turn tightens
     elseif kmh < speed - 25 then keys[#keys + 1] = KEY.throttle elseif kmh > speed + 40 then keys[#keys + 1] = KEY.brake end
     for _, k in ipairs(extraKeys or {}) do keys[#keys + 1] = k end
+    -- this plane's speed changes, learned in flight for the manoeuvre planner: what was pressed
+    -- in the frame before and what the speed did since, by climb angle
+    if Man and ap.myV and ap.prevKmhAt and t > ap.prevKmhAt then
+        local V = ap.myV
+        local vl = math.sqrt(V[1] ^ 2 + V[2] ^ 2 + V[3] ^ 2)
+        if vl > 500 then
+            Man.learn(ap.prevSpeedMode or "none", math.asin(clamp(V[3] / vl, -1, 1)), (kmh - ap.prevKmh) / 3.6 / (t - ap.prevKmhAt), t - ap.prevKmhAt, ap.prevKmh / 3.6)
+        end
+    end
+    ap.prevKmh, ap.prevKmhAt = kmh, t
+    ap.prevSpeedMode = "none"
+    for _, k in ipairs(keys) do
+        if k == KEY.high_g then ap.prevSpeedMode = "high-G"; break end
+        if k == KEY.throttle then ap.prevSpeedMode = "throttle" elseif k == KEY.brake then ap.prevSpeedMode = "brake" end
+    end
     local list = table.concat(keys, ",")
     local inFront = CoopKeys_Set(list)
 

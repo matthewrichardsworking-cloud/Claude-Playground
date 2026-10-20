@@ -404,8 +404,11 @@ return function(env)
                 if gap > bestGap then cap, bestGap = sh.dist, gap end
             end
         end
-        -- (no shots inside yet: the far misses alone say where the edge is)
-        if not cap and tot >= minN and totH == 0 then cap = L[#L].dist end
+        -- (no shots inside yet: the far misses alone say where the edge is; but no nearer than
+        -- 2 km: misses from everywhere say nothing about closer shots. 20 Oct 2026, Mission 07:
+        -- an ace dodged the standard missile from 1.3-2.1 km, the cap fell to 1,281 m and the
+        -- bot held fire through six minutes of locks on him at 1.4-2.2 km)
+        if not cap and tot >= minN and totH == 0 then cap = math.max(L[#L].dist, 2000) end
         if cap and cap < 1000 then cap = 1000 end
         capCache[key] = { n = #A.myShots, cap = cap }
         return cap
@@ -419,12 +422,16 @@ return function(env)
             if sh.weapon == weapon and sh.kind == kind and sh.dist and sh.dist > 0 then L[#L + 1] = sh end
         end
         table.sort(L, function(a, b) return a.dist < b.dist end)
-        local n, floor = 0, nil
+        local n, floor, sawHit = 0, nil, false
         for _, sh in ipairs(L) do
-            if sh.hit then break end
+            if sh.hit then sawHit = true; break end
             n = n + 1
             if n >= 2 then floor = sh.dist end
         end
+        -- (no floor without a hit farther out: misses from everywhere say nothing about range.
+        -- 20 Oct 2026, Mission 07: every shot at an ace missed, this floor rose to 2.2 km, above
+        -- the 2 km cap, and the bot could not fire while locked on him at 0.8-1.8 km)
+        if not sawHit then return nil end
         return floor
     end
 
@@ -453,6 +460,103 @@ return function(env)
     -- along the line to 15 m short of the target's middle ('upM' metres above its origin).
     -- Returns how many metres short of the target the line is blocked (0: clear), or nil when
     -- the fast traces are not there.
+    -- The smallest change of the attack's aim that a missile homing on the plane misses by
+    -- (the owner, 20 Oct 2026: "visually gauge the angle of the incoming missile and perform the
+    -- minimum alteration of attack angle needed so I can maneuver back into the attack angle as
+    -- quickly as possible once the missile passes"). For each deviation of 0, 5, ... 35 degrees
+    -- from the aim toward 'side' (a unit vector square to the aim, across the missile's line),
+    -- the plane is flown ahead turning onto it at its turn rate omega (rad/s) at its speed, and
+    -- the missile chasing it from where it is, at its present speed, steering for where the plane
+    -- will be when it gets there, within its own turn rate (its MaxRotationAngle, degrees a
+    -- second); 0.05 s steps to its time to go plus a second. Returns the smallest deviation
+    -- (degrees) whose closest pass is wider than 'clear' (m), and that pass; nil when none is.
+    local function rotateToward(a, b, step)
+        local c = math.max(-1, math.min(1, dot(a, b)))
+        local ang = math.acos(c)
+        if ang <= step then return b end
+        local w = unit(sub(b, mul(a, c)))
+        if len(w) < 1e-6 then return a end
+        return (unit(add(mul(a, math.cos(step)), mul(w, math.sin(step)))))
+    end
+    -- ...and how much wider the dodges are flown than that minimum, learned from how they end
+    -- (the owner, 20 Oct 2026: "if your minimum still results in getting hit a lot, increase the
+    -- deviation very incrementally, by maybe like +2.5%, until you get it to an acceptable miss
+    -- %"): every missile met with a dodge counts as a hit only when it was the cause of the
+    -- damage (the owner: damage from AA guns or a collision must not teach the wrong thing): 10
+    -- or more damage at once (gunfire and lightning do 1-2 a hit; SAM missiles did 24), more than
+    -- 30 m above the ground (not a scrape), from 0.3 s before its track ended to 0.5 s after
+    -- (a missile that strikes is gone at once), and the missile within 200 m at its last sight;
+    -- several such missiles: the nearest. Else it counts as a miss. While more than a tenth of
+    -- the last ten (four or more) hit, the scale grows by 2.5% after each one that ends. The
+    -- deviation flown and the clearance it is worked out for are both multiplied by it.
+    A.dodgeScale, A.dodgeHitMax = 1.0, 0.10
+    A.dodgeOutcomes, A.dodgePending, A.lastDamage = {}, {}, { t = -100 }
+    function A.noteDamage(t, amount, agl)
+        if (amount or 0) < 10 or (agl and agl < 30) then return end
+        A.lastDamage = { t = t, amount = amount }
+        local best = nil
+        for _, e in ipairs(A.dodgePending) do
+            if t - e.t <= 0.5 and t >= e.t - 0.3 and e.last <= 200 and (not best or e.last < best.last) then best = e end
+        end
+        if best then best.hit = true end
+    end
+    local function resolveDodges(t)
+        local i = 1
+        while i <= #A.dodgePending do
+            local e = A.dodgePending[i]
+            if t - e.t > 1.0 then
+                table.remove(A.dodgePending, i)
+                local o = A.dodgeOutcomes
+                o[#o + 1] = e.hit and true or false
+                if #o > 10 then table.remove(o, 1) end
+                local h = 0
+                for _, x in ipairs(o) do if x then h = h + 1 end end
+                if #o >= 4 and h / #o > A.dodgeHitMax and A.dodgeScale < 2.5 then
+                    A.dodgeScale = math.min(2.5, A.dodgeScale * 1.025)
+                    event("dodge_scale", { scale = A.dodgeScale, hit_share = h / #o, of = #o, missile = e.name, closest_m = e.closest })
+                end
+            else
+                i = i + 1
+            end
+        end
+    end
+    function A.minDodge(tr, myP, myV, aim, side, omega, clear)
+        local mp, mv = tr.p, tr.v
+        if not (mp and mv and myP and myV) then return nil end
+        local mw, ms = unit(mv)
+        local u0, vs = unit(myV)
+        if ms < 100 or vs < 100 then return nil end
+        local mTurn = math.rad(tonumber(tr.info and tr.info.MaxRotationAngle) or 30)
+        local horizon = math.min((tr.tgo or 4) + 1.0, 6)
+        local dt = 0.05
+        for _, deg in ipairs({ 0, 5, 10, 15, 20, 25, 30, 35 }) do
+            local a = math.rad(deg)
+            local want = unit(add(mul(aim, math.cos(a)), mul(side, math.sin(a))))
+            local p, u, m, w = myP, u0, mp, mw
+            local minD = len(sub(p, m))
+            local k = 0
+            while k * dt < horizon do
+                k = k + 1
+                u = rotateToward(u, want, omega * dt)
+                local p2 = add(p, mul(u, vs * dt))
+                local d = len(sub(p2, m))
+                local lead = add(p2, mul(u, vs * d / ms))
+                w = rotateToward(w, unit(sub(lead, m)), mTurn * dt)
+                local m2 = add(m, mul(w, ms * dt))
+                -- the closest point of this step (relative motion along a straight segment)
+                local r0, r1 = sub(p, m), sub(p2, m2)
+                local dr = sub(r1, r0)
+                local s = math.max(0, math.min(1, -dot(r0, dr) / math.max(dot(dr, dr), 1e-9)))
+                local dmin = len(add(r0, mul(dr, s)))
+                if dmin < minD then minD = dmin end
+                if dot(r1, sub(mul(u, vs), mul(w, ms))) > 0 and len(r1) > len(r0) and k > 2 then break end   -- passed
+                p, m = p2, m2
+            end
+            if minD / 10 >= clear then return deg, minD / 10 end
+        end
+        return nil
+    end
+
     function A.losBlocked(from, to, upM)
         if type(CoopTrace_Line) ~= "function" or not A.fastReady then return nil end
         local tz = to[3] + (upM or 3) * 10
@@ -594,6 +698,12 @@ return function(env)
             for n, tr in pairs(tracks) do
                 if tr.kind == "missile" and not seen[n] then
                     if tr.own and not tr.ended then reportOwn(tr, t) end
+                    if tr.atMe and tr.dodged then
+                        -- (damage the moment it hit may come just before its track ends)
+                        local last = (tr.dist or tr.minDist) / 10
+                        A.dodgePending[#A.dodgePending + 1] = { name = tr.name, t = t, closest = tr.minDist / 10, last = last,
+                            hit = (t - A.lastDamage.t <= 0.3 and last <= 200) or nil }
+                    end
                     if tr.atMe then
                         tr.gone = t
                         event("missile_gone", { missile = tr.name, from = tr.ownerName, closest_m = tr.minDist / 10,
@@ -644,6 +754,7 @@ return function(env)
         end
         table.sort(threats, function(a, b) return a.tgo < b.tgo end)
         A.threats = threats
+        resolveDodges(t)
         return threats
     end
 

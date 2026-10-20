@@ -1,0 +1,8 @@
+# Mission 08 Pipeline Destruction (story, Ace; level ms08): a score race, 22,000 points in a phase
+# of about 5 minutes over oil tanks, facilities and four tankers (500 points each). With the LAAM
+# (20 Oct 2026, 13:41 and 13:47): 16,050 and 15,150, time short, missiles left; the 8AGM (the
+# Typhoon's multi-target ground missile: the best engaged kill rate of Mission 06's tests) next.
+plane: Typhoon
+weapon: 8AGM
+attempts: 8
+time_limit_min: 25

@@ -3,6 +3,61 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (20 Oct 2026, afternoon): the plane, the ground and where to attack from
+
+- **The plane, measured** (`tools\aircraft-model.py` -> `playtests\aircraft\typhoon.json`, now
+  also `dv_by_kmh`: speed change by 30-degree climb band and 200 km/h speed band together): the
+  turn rate 37-43 deg/s at 300-1,600 km/h; the brake 46-130 m/s each second held level but only
+  holding the speed in a 30-60 degree dive.
+- **Manoeuvre planner** (`maneuver.lua`): the wanted way flown ahead 5 s in that model (its
+  speed table now speed-aware for the brake, learned in flight by speed too) and traced against
+  the ground (engine line traces), with 50 alternatives when it would hit; held 1.5 s; margin 80
+  m (60, which the wargame allowed, hit a rock pillar the survey's 50 m grid smooths away). Events
+  `maneuver`.
+- **Attack lines** (`approach.lua`, called from `groundRun` outside score phases): the target's
+  visibility map (16 directions x 10-80 degrees, 3 km, from 3 m above it); a usable line (clear,
+  10 degrees lower clear, a side neighbour clear); the line the plane is on soonest (`M.cost`:
+  the way to the approach point 3 km out, the climb, the turns at the measured rate); held unless
+  another is 4 s sooner, plus half the seconds held (up to 12); flown with a carrot 800 m down the
+  line (straight for the approach point until 2.5 km from it), back in a turn radius past the
+  gate (2.2 km) after a pass; an aim more than 80 degrees off is a level turn toward its side,
+  unless steeper than 70 degrees (then dived at); a target in sight ahead is attacked on the line
+  the plane is on ("direct"); a line blocked from the plane inside the gate for a second is
+  dropped for 30 s. 650 km/h before lines of 35 degrees or more (the brake cannot slow the dive).
+  Events `attack_line`, `on_line`, `line_blocked`.
+- **Shooting**: a lock the game holds on another ground enemy in reach and in sight is taken
+  when the game would not select or lock the bot's own target, at most once in 5 s (event
+  `take_lock`; taken any time, it flip-flopped 143 times in Mission 08's truck phase); while every shot at a kind of target has missed, the learned range cap is
+  no nearer than 2 km and there is no learned minimum range at all (an ace dodged them all: first
+  the cap fell to 1.3 km and the bot held fire for six minutes; then the minimum rose to 2.2 km,
+  above the cap, and it could not fire while locked on him at 0.8-1.8 km).
+- **Missiles** (`awareness.lua` `A.minDodge`, the owner's advice): the defensive attack turns off
+  the attack only by the smallest angle (0-35 degrees) that the missile, flown ahead chasing the
+  plane within its own turn rate, misses by 120 m; for one missile it only grows; 12 degrees for a
+  missile from the target dived at on its line when nothing clears it; no last-instant full break
+  for a missile a small dodge was found to clear. `A.dodgeScale` widens
+  every dodge 2.5% while more than a tenth of the last ten dodged missiles hit, a hit counted only
+  when the damage is the missile's (10 or more at once, within 0.3 s before to 0.5 s after its
+  end, the missile last seen within 200 m, the plane over 30 m above the ground). Events `dodge`,
+  `dodge_scale`.
+- **What dies with a kill** (`killTally.chainNote` / `chainValue` in main.lua, from the death
+  hook): per class, the kills, the candidates within 400 m of each, and the points of enemies the
+  bot did not fire at that died within 1.5 s and 400 m; points per neighbour times a target's live
+  neighbours is added to its value in the lanes once the class has three kills (Mission 08: 44% of
+  a 21,750 score was tanks set off by the ones hit).
+- **Escort**: an enemy chasing an ally that lost health in the last 10 s counts 4 times (each
+  ally's health is read every scan; weighting by distance to the chased ally was tried and made
+  the bot switch among far UAVs); a close drone the plane is opening out from stays its target.
+- **Caution trimmed** (the owner: safety near the minimum plus a little, skill over timidity):
+  the 550 km/h cap after an obstacle lasts 4 s with the planner (was 20); full throttle in any
+  fight to a target more than 6 km away within 30 degrees of the nose.
+- **Runner**: after an attempt stopped by its time limit, the pause menu's Restart from
+  checkpoint and its YES (`playtest.restart_from_checkpoint`), waiting until the game runs.
+- **Wargame** (`tools\maneuver-sim.py`): Mission 07's 17 ground targets where the game has them,
+  ten-minute flights, the next target nearest, a one-second lock; flags `SIM_LINE`, `SIM_PICK`,
+  `SIM_SHORTOUT`, `SIM_LOCKR`, `SIM_DG`, `SIM_DA`, `SIM_FARA`, `SIM_STEEP`, `SIM_WIDE`,
+  `SIM_WORKERS`, `SIM_DUR`.
+
 ## Status (20 Oct 2026, 09:30): Mission 06 cleared; vertical attacks and the return line
 
 - **Vertical attacks** (`lanes.lua` `L.simulateDive`, `L.pullNeed`; `main.lua` `diveAim`,

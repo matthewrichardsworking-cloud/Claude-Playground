@@ -28,7 +28,7 @@ PATTERNS = [
     "mods/CoopPilotMod/Scripts/*.lua",
     "cpp/README.md", "cpp/build.ps1", "cpp/make-implib.py", "cpp/CoopPadMod/*.cpp", "cpp/CoopPadMod/*.hpp",
     "cpp/CoopNetMod/*.cpp", "cpp/CoopNetMod/*.hpp",
-    "playtests/orders/*", "playtests/campaign-*.md",
+    "playtests/orders/*", "playtests/campaign-*.md", "playtests/aircraft/*.json",
     "playtests/missions/*.json", "playtests/missions/*/*.txt", "playtests/missions/*/*.csv",
     "playtests/missions/*/*.json", "playtests/missions/*/*.png", "playtests/missions/*/*.md",
     "playtests/2026-*/report.md", "playtests/2026-*/events.jsonl", "playtests/2026-*/order.yaml",

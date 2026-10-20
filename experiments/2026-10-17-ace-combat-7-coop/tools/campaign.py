@@ -131,7 +131,8 @@ class Driver:
     # ---- the campaign log ----------------------------------------------------------------
     def record(self, line):
         new = not os.path.exists(self.log_path)
-        with open(self.log_path, "a", encoding="utf-8") as f:
+        # (LF, like the rest of the file: in text mode Windows wrote CRLF rows into it)
+        with open(self.log_path, "a", encoding="utf-8", newline="\n") as f:
             if new:
                 f.write(f"# Campaign run: {self.name} ({self.difficulty})\n\n"
                         "Written by tools\\campaign.py, one line per mission flown (newest last).\n\n"
@@ -365,10 +366,7 @@ class Driver:
                 if entry == "start":
                     phase_now = next(iter(plan["retry"]), None) if plan else None
                 if att["result"] == "stopped":
-                    pt.keys(["Escape"], wait_ms=1500)
-                    pt.keys(["Down"], wait_ms=800)
-                    pt.keys(["Enter"], wait_ms=3000)
-                    pt.wait_status(lambda x: pt.plane_ready(x), 150, "the restarted mission")
+                    pt.restart_from_checkpoint()
                 elif not pt.retry(this_how):
                     entry = phase_now or "start"
         self.last_folder = folder

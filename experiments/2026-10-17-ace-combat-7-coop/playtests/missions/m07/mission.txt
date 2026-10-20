@@ -1,0 +1,9 @@
+# Mission 07 First Contact (story, Ace; level ms07): rugged canyons, cloud and rain. Phase 1:
+# the 4 SAM and 3 radar sites within 10 minutes (cleared at 545 s on 20 Oct 2026, 11:16);
+# phase 2: the UAVs over the recon team (about 7 minutes); phase 3: Mihaly's Su-30SM and
+# two Sol Squadron Su-30s, with about 14 minutes on its clock. Over 25 minutes in all, so the
+# attempt's limit is 45 (the 11:07 attempt was stopped by the 25-minute limit in phase 3).
+plane: Typhoon
+weapon: LAAM
+attempts: 8
+time_limit_min: 45

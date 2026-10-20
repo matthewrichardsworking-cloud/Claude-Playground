@@ -356,6 +356,26 @@ def prep_and_sortie(fail):
     return s
 
 
+def restart_from_checkpoint():
+    """After an attempt stopped in flight (its time limit): the pause menu's Restart from
+    checkpoint (its second item), and the YES/NO that follows (NO is selected); then wait until
+    the restarted phase is running, the pause menu gone, not just until there is a plane: a
+    paused game still has one (20 Oct 2026, Mission 07: without the YES the next attempt "flew"
+    16 minutes on the pause menu)."""
+    keys(["Escape"], wait_ms=1500)
+    keys(["Down"], wait_ms=800)
+    keys(["Enter"], wait_ms=1500)
+    if page() == "CampaignHudPause_C":
+        keys(["Up"], wait_ms=500)
+        keys(["Enter"], wait_ms=3000)
+    try:
+        return wait_status(lambda x: plane_ready(x) and x.get("page") != "CampaignHudPause_C", 150, "the restarted mission")
+    except TimeoutError:
+        say("the pause menu is still showing: Escape (resume) and on")
+        keys(["Escape"], wait_ms=1500)
+        return None
+
+
 def retry(how):
     """On the retry menu after a failed attempt: from the checkpoint (fast) or the start.
     Returns False when the game restarted the phase by itself (no menu to press)."""
@@ -801,10 +821,7 @@ def run(order_path):
                 if entry == "start":
                     phase_now = next(iter(plan["retry"]), None) if plan else None
                 if a["result"] == "stopped":
-                    keys(["Escape"], wait_ms=1500)      # pause menu: Restart from checkpoint is second
-                    keys(["Down"], wait_ms=800)
-                    keys(["Enter"], wait_ms=3000)
-                    wait_status(lambda s: plane_ready(s), 150, "the restarted mission")
+                    restart_from_checkpoint()
                 elif not retry(this_how):
                     entry = phase_now or "start"           # restarted by the game: that phase's block
     finally:

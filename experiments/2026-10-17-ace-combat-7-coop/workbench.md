@@ -1698,6 +1698,85 @@ Mission 06 by itself. Full numbers for every run are in `playtests\missions\m06\
 real saves were checked after every run (unchanged); the copy stays in Vanilla mode with its
 Default profile (the Mod Loader was not used).
 
+## 18. Mission 07: knowing the plane, the ground and where to attack from (20 Oct, 10:20 onwards)
+
+You asked for general improvement to the bot's pathfinding, manoeuvring, knowledge of its own
+aircraft and how to use it, decision making and decisiveness, with Mission 07 as the test, and
+for the generalised capabilities to be kept. Everything below reads the ground, the targets and
+the plane from the game and the bot's own logs; nothing is written for Mission 07.
+
+- **The plane, measured** (`tools\aircraft-model.py`, `playtests\aircraft\typhoon.json`, from 145
+  flight logs): the flight path turns 37-43 degrees a second with a full pull at any speed from
+  300 to 1,600 km/h, so the turn radius grows with speed (about 400 m at 850 km/h, 650 m at
+  1,150); the roll is about 70 degrees a second typical, 130 at full stick; the throttle adds
+  about 45 m/s each second at 600-1,200 km/h; the brake takes off 46-130 m/s each second held
+  level (more the faster), but in a 30-60 degree dive it only holds the speed, so a steep dive is
+  flown at the speed it starts with.
+- **The manoeuvre planner** (`maneuver.lua`): four times a second the way the pilot wants to fly
+  is flown ahead 5 seconds in that model and traced against the real ground with the engine's
+  own line traces; if it would hit, or end where no pull-out is possible, about 50 other
+  manoeuvres are tried the same way and the safe one closest to the wanted way is flown, held
+  1.5 s (decisiveness: you had seen it hesitate at walls and in furballs). Over Mission 07's
+  surveyed ground, in a wargame of two-minute attack flights (`tools\maneuver-sim.py`), 92% of
+  flights crashed with no safety layer, 64% with the old straight-ray net, and about 1% with the
+  planner, with more shots a minute.
+- **Attack lines** (`approach.lua`): before attacking a ground target the bot works out where it
+  can be seen from (rays out of the target in 16 directions at 10-80 degrees), picks the line it
+  can be on soonest from its own turn rate and speed, flies onto it from outside and down it to the
+  shot, and repositions out along it when it ends up inside; a target already in sight ahead is
+  attacked from where the plane is. In the wargame over ten-minute flights at Mission 07's 17
+  ground targets: 3.1-3.25 shots a minute against 1.1 for the entry-point runs it replaces. Two
+  crash types the wargame found, and fixed: a turn back toward an aim behind the plane became a
+  split-S (now a level turn toward its side), and the turn onto a line below is kept nearly level.
+- **What you said while watching, built in**: a missile is met with the smallest change of the
+  attack that it misses by, worked out in a flown-ahead model of it, and grown only while it is
+  coming, so the attack is back on as soon as it passes; when dodged missiles still hit too often
+  every dodge widens by 2.5% at a time, and only damage that a dodged missile really caused counts
+  (not gunfire, lightning or a scrape). Your point that the bot looks into the distance and the sky
+  where a player keeps the nose on the objective, and plays too safe: the long reposition legs
+  out along a line are a tight turn back now, a target nearly straight below is dived at rather
+  than circled (one attempt circled one for 160 s), the obstacle speed cap lasts 4 s instead of
+  20, full throttle to anything far ahead in any fight, no full break for a missile a small dodge
+  clears. Tried and taken back, with reasons in `playtests\missions\m07\notes.md`: a lower ground
+  margin (a rock pillar the survey had smoothed away), a longer aim point onto lines, and weighting
+  UAVs by how close they were to the plane they chased (it made the bot switch among far ones).
+- **Shooting and decisions**: a lock the game offers on another ground enemy in reach is taken
+  (the game would not select a SAM site in a canyon, but locked the AA gun beside it); misses at
+  every range no longer narrow the missile's range (the cap had fallen to 1.3 km and the bot held
+  fire at Mihaly for six minutes; then a learned minimum of 2.2 km sat above a 2 km cap, so it
+  could not fire at all while locked on him); an enemy chasing an ally that is losing health counts four times; a close drone being
+  opened out from stays the target.
+- **Mission 07** (attempts and numbers in the notes): phase 1 (the four SAM and three radar sites
+  in 10 minutes) went from 545 s with 72 health this morning to 531, 355, 474, 358 and 183 s at full
+  health in the afternoon's builds; phase 2 (UAVs on the recon team, none to be lost) failed six
+  times in a row while the target choice was being worked out, then was cleared in 347 s with no
+  recon plane lost; phase 3 (the ace Mihaly in his Su-30SM) was cleared once the range limits no
+  longer stopped it firing: he broke off after losing 120 of his 320 health. **Mission 07
+  completed** at 13:38 on the first attempt of that build (22 minutes), and the campaign order went
+  on to Mission 08 by itself.
+- **Mission 08 Pipeline Destruction** (a score race: 22,000 points in about 5 minutes over oil
+  tanks, facilities and four 500-point tankers; notes in `playtests\missions\m08\notes.md`), a
+  mission the bot had never seen: 16,050 and 15,150 with the LAAM (time short, 50 missiles left),
+  then with the 8AGM (`playtests\missions\m08\mission.txt`; the Typhoon's multi-target ground
+  missile, the best engaged kill rate of Mission 06's tests) 21,750 (250 short), 19,370, 18,570,
+  18,600, 21,490, 21,140 and then **22,690: phase 1 cleared** at 14:37.
+  90 launches in 300 s is about what the two weapons' reloads allow, so the rest has to
+  come from points per missile, and a finding there: of the 21,750 only 12,200 were the bot's own
+  kills, 9,550 were tanks its hits set off. The pilot now learns per class of target what dies
+  with a kill (points per neighbour within 400 m) and counts it in the lanes' values. Phase 2
+  (fuel trucks escaping on split routes in a sandstorm, 10 minutes) failed on its first try: 7 of
+  22 trucks, and the "take the game's lock" rule flip-flopped 143 times (now only for a target the
+  game will not select, at most once in 5 s); on the second the plane was lost 6.5 minutes in,
+  most likely colliding with a UAV it was chasing.
+- **Next steps**: Mission 08's score phase was cleared twice in eleven tries (22,690 and 22,940); the clearest loss is
+  the fighter rule (commit to aircraft after the plane, your Mission 06 advice), which in a score
+  phase held the plane 90 s on F-15Cs for 850 points while the lanes' targets paid two to three
+  times as much a second; weighing that commitment on points a second unless the plane's survival
+  is at stake is the first thing to try. Then the endgame of a score phase (single high-value
+  targets a few km off once the area near the plane is worked out), and phase 2's trucks. The
+  wargame (`tools\maneuver-sim.py`) is good for terrain and approach geometry but smooths thin
+  rock pillars away: margins it suggests need a live check.
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

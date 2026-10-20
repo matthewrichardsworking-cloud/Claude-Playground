@@ -1,0 +1,609 @@
+{"clock": "11:57:41", "kind": "mark", "t": 173.4, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "11:57:43", "goal": "attack", "kind": "autopilot_start", "t": 174.8, "attempt": 1}
+{"class": "common_shil_C", "clock": "11:57:43", "kind": "activated", "n": 3, "plane_x": 230900.0, "plane_y": -216000.0, "points": 450, "start": true, "t": 174.9, "x": -7875, "y": -18820.0, "attempt": 1}
+{"class": "common_xsam_C", "clock": "11:57:43", "kind": "activated", "n": 4, "plane_x": 230900.0, "plane_y": -216000.0, "points": 800, "start": true, "t": 174.9, "x": 11350.0, "y": -37960.0, "attempt": 1}
+{"class": "common_vads_C", "clock": "11:57:43", "kind": "activated", "n": 1, "plane_x": 230900.0, "plane_y": -216000.0, "points": 150, "start": true, "t": 174.9, "x": 5440, "y": -27520.0, "attempt": 1}
+{"class": "common_shil_RayCheck_C", "clock": "11:57:43", "kind": "activated", "n": 6, "plane_x": 230900.0, "plane_y": -216000.0, "points": 900, "start": true, "t": 174.9, "x": 85590.0, "y": -103400.0, "attempt": 1}
+{"class": "ms07_RadarSite2_C", "clock": "11:57:43", "kind": "activated", "n": 1, "plane_x": 230900.0, "plane_y": -216000.0, "points": 150, "start": true, "t": 174.9, "x": -29740.0, "y": 80670.0, "attempt": 1}
+{"class": "ms07_RadarSite_C", "clock": "11:57:43", "kind": "activated", "n": 2, "plane_x": 230900.0, "plane_y": -216000.0, "points": 300, "start": true, "t": 174.9, "x": 13180.0, "y": -44490.0, "attempt": 1}
+{"class": "common_ah64_C", "clock": "11:57:43", "kind": "activated", "n": 6, "plane_x": 230900.0, "plane_y": -216000.0, "points": 1200, "start": true, "t": 174.9, "x": 22920.0, "y": 28900.0, "attempt": 1}
+{"clock": "11:57:43", "dist_m": 19810.0, "kind": "priority", "score": 0.04944, "t": 174.9, "target": "01_en_xsam_1_1", "weight": 5.6, "attempt": 1}
+{"clock": "11:57:43", "kind": "select_refused", "mark": 0, "special": false, "t": 174.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"callsign": "", "clock": "11:57:43", "dist_m": 19810.0, "kind": "target", "t": 174.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"class": "common_xsam_C", "clock": "11:57:43", "kind": "kind", "native": "AIGroundVehicle", "t": 174.9, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"az_deg": -23, "clock": "11:57:43", "direct": false, "el_deg": 60, "kind": "attack_line", "soon_s": 95.3, "t": 174.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:57:43", "dist_m": 19810.0, "kind": "attack_run", "phase": "running in", "t": 174.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:57:44", "kind": "radio", "speaker": "AWACS Bandog", "t": 176.1, "text": "Target radar facilities and AA weaponry.", "attempt": 1}
+{"clock": "11:57:47", "kind": "radio", "speaker": "AWACS Bandog", "t": 178.7, "text": "They're set up on rugged terrain and there's a lot of cloud cover.", "attempt": 1}
+{"clock": "11:57:49", "kind": "radio", "speaker": "AWACS Bandog", "t": 181.7, "text": "You will be near thunderclouds.\nMan, you guys were born unlucky.", "attempt": 1}
+{"clock": "11:57:54", "kind": "radio", "speaker": "Spare 8 Champ", "t": 186, "text": "Wait. Who's the dumbass who came up with this batshit plan?", "attempt": 1}
+{"clock": "11:57:57", "kind": "radio", "speaker": "AWACS Bandog", "t": 189.5, "text": "Just obey orders.", "attempt": 1}
+{"clock": "11:58:00", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 192.4, "text": "Air Force Base 444 Squadron, this is Cyclops 1.", "attempt": 1}
+{"clock": "11:58:04", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 196.6, "text": "The Cyclops and Strider squadrons currently contain seven aircraft.", "attempt": 1}
+{"clock": "11:58:08", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 200.1, "text": "Stand by. We'll be arriving shortly.", "attempt": 1}
+{"clock": "11:58:11", "kind": "radio", "speaker": "AWACS Bandog", "t": 203.5, "text": "Understood.", "attempt": 1}
+{"clock": "11:58:13", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 205.4, "text": "We're low on ammunition. It'll be hard to take on hostiles.", "attempt": 1}
+{"clock": "11:58:17", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 208.9, "text": "We'll have to rely on you guys to make it home.", "attempt": 1}
+{"clock": "11:58:19", "kind": "radio", "speaker": "AWACS Bandog", "t": 211.6, "text": "Cyclops 1, this is Bandog.\nWe need the job done on time.", "attempt": 1}
+{"alt_m": 3133, "clock": "11:58:22", "kind": "area", "now": true, "t": 214.6, "what": "in_cloud", "attempt": 1}
+{"alt_m": 3133, "clock": "11:58:22", "kind": "cloud_base", "t": 214.6, "attempt": 1}
+{"clock": "11:58:23", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 215.5, "text": "Bandog? Cool name.\nNice working with you, Mr. Guard Dog.", "attempt": 1}
+{"alt_m": 3107, "clock": "11:58:24", "kind": "area", "now": false, "t": 216, "what": "in_cloud", "attempt": 1}
+{"alt_m": 3107, "clock": "11:58:24", "kind": "cloud_base", "t": 216, "attempt": 1}
+{"clock": "11:58:29", "kind": "radio", "speaker": "AWACS Bandog", "t": 220.7, "text": "The terrain makes the airstream bumpy. Don't damage those planes.", "attempt": 1}
+{"clock": "11:58:33", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 225.4, "text": "The radar's working! We're under attack!", "attempt": 1}
+{"callsign": "", "clock": "11:58:36", "dist_m": 4719, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 227.7, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "11:58:36", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 228.3, "text": "Don't wait for interceptors! Use missiles!", "attempt": 1}
+{"along_m": 4108, "clock": "11:58:38", "kind": "on_line", "off_m": 471.7, "t": 230.2, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:58:39", "dist_m": 2811, "kind": "defend", "miss_m": 349.4, "missile": "wp_msl_xsam_C_1", "t": 231.1, "tgo_s": 3.78, "attempt": 1}
+{"clock": "11:58:39", "kind": "missile_warning", "level": "near", "t": 231.5, "attempt": 1}
+{"clock": "11:58:40", "dist_m": 1856, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 232.3, "tgo_s": 2.155, "attempt": 1}
+{"clock": "11:58:40", "dist_m": 1856, "kind": "evade", "miss_m": 186.1, "missile": "wp_msl_xsam_C_1", "t": 232.3, "tgo_s": 2.155, "attempt": 1}
+{"clock": "11:58:41", "kind": "missile_warning", "level": "very near", "t": 233.6, "attempt": 1}
+{"clock": "11:58:42", "dist_m": 565.1, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 233.8, "attempt": 1}
+{"clock": "11:58:43", "kills": 0, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"break": 0.753, "defend": 2.309, "transit": 56.94}, "t": 234.8, "attempt": 1}
+{"alt_m": 2848, "clock": "11:58:45", "kind": "area", "now": true, "t": 237.5, "what": "in_cloud", "attempt": 1}
+{"alt_m": 2848, "clock": "11:58:45", "kind": "cloud_base", "t": 237.5, "attempt": 1}
+{"alt_m": 2617, "clock": "11:58:46", "kind": "area", "now": false, "t": 238.5, "what": "in_cloud", "attempt": 1}
+{"alt_m": 2617, "clock": "11:58:46", "kind": "cloud_base", "t": 238.5, "attempt": 1}
+{"callsign": "", "clock": "11:58:46", "dist_m": 2790, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_3", "t": 238.5, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "11:58:47", "kind": "missile_warning", "level": "near", "t": 239.1, "attempt": 1}
+{"clock": "11:58:47", "dist_m": 2388, "kind": "defend", "miss_m": 237.6, "missile": "wp_msl_xsam_C_3", "t": 239.3, "tgo_s": 2.012, "attempt": 1}
+{"clock": "11:58:47", "closest_m": 565.2, "flares_while_near": true, "flew_s": 11.63, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 239.4, "attempt": 1}
+{"clock": "11:58:47", "dist_m": 2366, "kind": "flare", "missile": "wp_msl_xsam_C_3", "reason": "tracker", "t": 239.4, "tgo_s": 1.99, "attempt": 1}
+{"clock": "11:58:47", "dist_m": 2366, "kind": "evade", "miss_m": 168.5, "missile": "wp_msl_xsam_C_3", "t": 239.4, "tgo_s": 1.99, "attempt": 1}
+{"above_ground_m": 1899, "alt_m": 2240, "clock": "11:58:48", "kind": "ground_recovery", "lowest_ahead_m": 504.7, "t": 239.9, "vz": -308.1, "attempt": 1}
+{"clock": "11:58:48", "dist_m": 2031, "kind": "evade", "miss_m": 173.6, "missile": "wp_msl_xsam_C_3", "t": 239.9, "tgo_s": 1.734, "attempt": 1}
+{"clock": "11:58:48", "kind": "radio", "speaker": "AWACS Bandog", "t": 240.1, "text": "Chaff and flares are running low.", "attempt": 1}
+{"clock": "11:58:48", "dist_m": 1530, "kind": "flare", "missile": "wp_msl_xsam_C_3", "reason": "tracker", "t": 240.6, "tgo_s": 1.582, "attempt": 1}
+{"clock": "11:58:49", "kind": "missile_warning", "level": "very near", "t": 241.5, "attempt": 1}
+{"clock": "11:58:49", "dist_m": 750.9, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_3", "t": 241.6, "attempt": 1}
+{"clock": "11:58:51", "dist_m": 1545, "kind": "attack_run", "phase": "extending", "t": 242.8, "target": "01_en_xsam_1_1", "attempt": 1}
+{"az_deg": 45, "clock": "11:58:55", "direct": false, "el_deg": 50, "kind": "attack_line", "soon_s": 15.2, "t": 246.8, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:58:57", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 249.2, "text": "Fly between those rocks in this wind?!", "attempt": 1}
+{"clock": "11:58:58", "closest_m": 783.1, "flares_while_near": true, "flew_s": 11.46, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_3", "t": 250, "attempt": 1}
+{"callsign": "", "clock": "11:58:59", "dist_m": 2765, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_5", "t": 251.4, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "11:59:00", "kind": "radio", "speaker": "Spare 8 Champ", "t": 251.9, "text": "This bastard wants a piece of me!", "attempt": 1}
+{"callsign": "", "clock": "11:59:00", "dist_m": 4552, "from": "01_en_xsam_2_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_6", "t": 252.5, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "11:59:01", "dist_m": 2774, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_5", "t": 252.8, "attempt": 1}
+{"clock": "11:59:01", "closest_m": 2767, "flares_while_near": false, "flew_s": 1.477, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_5", "t": 252.9, "attempt": 1}
+{"clock": "11:59:05", "dist_m": 2564, "kind": "defend", "miss_m": 242.9, "missile": "wp_msl_xsam_C_6", "t": 257.1, "tgo_s": 2.98, "attempt": 1}
+{"clock": "11:59:05", "kind": "missile_warning", "level": "near", "t": 257.2, "attempt": 1}
+{"clock": "11:59:05", "dist_m": 2230, "kind": "flare", "missile": "wp_msl_xsam_C_6", "reason": "tracker", "t": 257.6, "tgo_s": 2.163, "attempt": 1}
+{"clock": "11:59:05", "dist_m": 2230, "kind": "evade", "miss_m": 199.7, "missile": "wp_msl_xsam_C_6", "t": 257.6, "tgo_s": 2.163, "attempt": 1}
+{"clock": "11:59:06", "dist_m": 1876, "kind": "evade", "miss_m": 163.7, "missile": "wp_msl_xsam_C_6", "t": 258.2, "tgo_s": 1.929, "attempt": 1}
+{"clock": "11:59:06", "kind": "radio", "speaker": "AWACS Bandog", "t": 258.3, "text": "Chaff and flares at zero.", "attempt": 1}
+{"clock": "11:59:07", "dist_m": 1415, "kind": "flare", "missile": "wp_msl_xsam_C_6", "reason": "tracker", "t": 258.8, "tgo_s": 1.06, "attempt": 1}
+{"clock": "11:59:07", "dist_m": 1042, "kind": "defend", "miss_m": 335.2, "missile": "wp_msl_xsam_C_6", "t": 259.4, "tgo_s": 2.469, "attempt": 1}
+{"clock": "11:59:07", "kind": "missile_warning", "level": "very near", "t": 259.6, "attempt": 1}
+{"clock": "11:59:08", "dist_m": 454.9, "kind": "flare", "missile": "wp_msl_xsam_C_6", "reason": "tracker", "t": 260, "tgo_s": 0.5695, "attempt": 1}
+{"clock": "11:59:08", "dist_m": 360.2, "from": "01_en_xsam_2_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_6", "t": 260.2, "attempt": 1}
+{"clock": "11:59:09", "dist_m": 3380, "kind": "attack_run", "phase": "running in", "t": 261.4, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:59:12", "closest_m": 359.3, "flares_while_near": true, "flew_s": 11.46, "from": "01_en_xsam_2_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_6", "t": 263.9, "attempt": 1}
+{"callsign": "", "clock": "11:59:12", "dist_m": 4843, "from": "01_en_xsam_2_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 263.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "11:59:12", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 264.2, "text": "Warning! Missile in the air!", "attempt": 1}
+{"callsign": "", "clock": "11:59:12", "dist_m": 3356, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_7", "t": 264.5, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"along_m": 3359, "clock": "11:59:12", "kind": "on_line", "off_m": 345.6, "t": 264.5, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:59:14", "dist_m": 2841, "kind": "defend", "miss_m": 342.1, "missile": "wp_msl_xsam_C_7", "t": 265.7, "tgo_s": 2.619, "attempt": 1}
+{"clock": "11:59:14", "dist_m": 2518, "kind": "defend", "miss_m": 291.4, "missile": "wp_msl_xsam_C_7", "t": 266.3, "tgo_s": 2.866, "attempt": 1}
+{"clock": "11:59:14", "kind": "missile_warning", "level": "near", "t": 266.3, "attempt": 1}
+{"clock": "11:59:15", "dist_m": 1733, "kind": "defend", "miss_m": 343.4, "missile": "wp_msl_xsam_C_7", "t": 267.5, "tgo_s": 2.128, "attempt": 1}
+{"clock": "11:59:15", "dist_m": 3879, "from": "01_en_xsam_2_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 267.6, "attempt": 1}
+{"clock": "11:59:16", "closest_m": 3877, "flares_while_near": false, "flew_s": 3.749, "from": "01_en_xsam_2_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 267.7, "attempt": 1}
+{"clock": "11:59:16", "dist_m": 1073, "kind": "defend", "miss_m": 330, "missile": "wp_msl_xsam_C_7", "t": 268.5, "tgo_s": 1.487, "attempt": 1}
+{"clock": "11:59:16", "kind": "radio", "speaker": "Spare 8 Champ", "t": 268.5, "text": "Locked on.", "attempt": 1}
+{"clock": "11:59:17", "kind": "missile_warning", "level": "very near", "t": 268.9, "attempt": 1}
+{"clock": "11:59:17", "dist_m": 756.2, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_7", "t": 269, "attempt": 1}
+{"clock": "11:59:21", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 273.2, "text": "Fire! They have nowhere to run!", "attempt": 1}
+{"alt_m": 1321, "clock": "11:59:22", "kind": "area", "now": true, "t": 273.7, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1321, "clock": "11:59:22", "kind": "cloud_base", "t": 273.7, "attempt": 1}
+{"above_ground_m": 1124, "alt_m": 1186, "clock": "11:59:22", "kind": "ground_recovery", "lowest_ahead_m": 145.1, "t": 274.3, "vz": -234.3, "attempt": 1}
+{"clock": "11:59:24", "closest_m": 771.5, "flares_while_near": false, "flew_s": 11.5, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_7", "t": 276, "attempt": 1}
+{"agl_m": 726, "clock": "11:59:24", "kind": "maneuver", "kmh": 1153, "t": 276.1, "text": "manoeuvre: lift -30, pull 0.6, none", "attempt": 1}
+{"alt_m": 803.2, "clock": "11:59:24", "kind": "area", "now": false, "t": 276.2, "what": "in_cloud", "attempt": 1}
+{"alt_m": 803.2, "clock": "11:59:24", "kind": "cloud_base", "t": 276.2, "attempt": 1}
+{"clock": "11:59:24", "dist_m": 694.3, "kind": "attack_run", "phase": "extending", "t": 276.3, "target": "01_en_xsam_1_1", "attempt": 1}
+{"alt_m": 684.7, "amount": 24, "clock": "11:59:25", "health": 96, "kind": "damage", "t": 277.1, "attempt": 1}
+{"agl_m": 486.1, "clock": "11:59:27", "kind": "maneuver", "kmh": 908.5, "t": 279.2, "text": "manoeuvre: lift -60, pull 1.0, none", "attempt": 1}
+{"agl_m": 304.6, "clock": "11:59:28", "kind": "maneuver", "kmh": 733.8, "t": 280.2, "text": "manoeuvre: holding -60|1.0|none", "attempt": 1}
+{"agl_m": 377.8, "clock": "11:59:29", "kind": "maneuver", "kmh": 577.6, "t": 281.3, "text": "manoeuvre: holding -60|0.6|none", "attempt": 1}
+{"alt_m": 1124, "clock": "11:59:30", "kind": "area", "now": true, "t": 282.4, "what": "in_cloud", "attempt": 1}
+{"clock": "11:59:32", "kind": "missile_warning", "level": "near", "t": 284.1, "attempt": 1}
+{"alt_m": 1662, "clock": "11:59:35", "kind": "area", "now": false, "t": 286.9, "what": "in_cloud", "attempt": 1}
+{"clock": "11:59:43", "kills": 0, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 7.331, "break": 4.517, "defend": 6.353, "offnose": 28.85, "recovery": 3.227, "transit": 69.73}, "t": 294.8, "attempt": 1}
+{"clock": "11:59:45", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 297.2, "text": "Anti-surface attacks in this weather?\nGimme a break, man.", "attempt": 1}
+{"callsign": "", "clock": "11:59:45", "dist_m": 2976, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 297.3, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "11:59:47", "dist_m": 3346, "kind": "attack_run", "phase": "running in", "t": 299.6, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:59:48", "kind": "missile_warning", "level": "near", "t": 300.2, "attempt": 1}
+{"clock": "11:59:49", "dist_m": 2281, "kind": "defend", "miss_m": 332.1, "missile": "wp_msl_xsam_C_1", "t": 300.7, "tgo_s": 3.779, "attempt": 1}
+{"clock": "11:59:49", "kind": "radio", "speaker": "Spare 2 Count", "t": 300.9, "text": "Man, I need missions that can help me improve my score. Not this crap.", "attempt": 1}
+{"clock": "11:59:49", "dist_m": 2017, "kind": "defend", "miss_m": 299, "missile": "wp_msl_xsam_C_1", "t": 301.3, "tgo_s": 2.188, "attempt": 1}
+{"clock": "11:59:50", "dist_m": 1212, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 302.6, "tgo_s": 1.301, "attempt": 1}
+{"clock": "11:59:50", "dist_m": 1212, "kind": "evade", "miss_m": 174.6, "missile": "wp_msl_xsam_C_1", "t": 302.6, "tgo_s": 1.301, "attempt": 1}
+{"clock": "11:59:51", "kind": "missile_warning", "level": "very near", "t": 303.1, "attempt": 1}
+{"clock": "11:59:51", "dist_m": 391.4, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 303.6, "attempt": 1}
+{"along_m": 3475, "clock": "11:59:54", "kind": "on_line", "off_m": 323.7, "t": 306, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "11:59:56", "closest_m": 454.9, "flares_while_near": true, "flew_s": 11.39, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 308.7, "attempt": 1}
+{"callsign": "", "clock": "11:59:58", "dist_m": 2599, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_2", "t": 310.1, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "11:59:58", "kind": "missile_warning", "level": "near", "t": 310.4, "attempt": 1}
+{"clock": "11:59:58", "dist_m": 2448, "kind": "defend", "miss_m": 224.9, "missile": "wp_msl_xsam_C_2", "t": 310.5, "tgo_s": 2.557, "attempt": 1}
+{"clock": "11:59:58", "dist_m": 2433, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 310.5, "tgo_s": 2.578, "attempt": 1}
+{"clock": "11:59:59", "dist_m": 2182, "kind": "defend", "miss_m": 173.6, "missile": "wp_msl_xsam_C_2", "t": 311.1, "tgo_s": 2.544, "attempt": 1}
+{"clock": "11:59:59", "dist_m": 2166, "kind": "evade", "miss_m": 120.4, "missile": "wp_msl_xsam_C_2", "t": 311.1, "tgo_s": 2.441, "attempt": 1}
+{"clock": "12:00:00", "dist_m": 1822, "kind": "evade", "miss_m": 155.1, "missile": "wp_msl_xsam_C_2", "t": 311.7, "tgo_s": 1.85, "attempt": 1}
+{"clock": "12:00:00", "dist_m": 1803, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 311.7, "tgo_s": 2.428, "attempt": 1}
+{"clock": "12:00:01", "dist_m": 863, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_2", "t": 313.3, "attempt": 1}
+{"agl_m": 1488, "clock": "12:00:01", "kind": "maneuver", "kmh": 1099, "t": 313.4, "text": "manoeuvre: lift straight, pull 0.0, none", "attempt": 1}
+{"alt_m": 1426, "clock": "12:00:02", "kind": "area", "now": true, "t": 314.3, "what": "in_cloud", "attempt": 1}
+{"clock": "12:00:02", "dist_m": 1769, "kind": "attack_run", "phase": "extending", "t": 314.5, "target": "01_en_xsam_1_1", "attempt": 1}
+{"alt_m": 1289, "clock": "12:00:05", "kind": "area", "now": false, "t": 316.7, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1375, "clock": "12:00:06", "kind": "area", "now": true, "t": 317.7, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1433, "clock": "12:00:06", "kind": "area", "now": false, "t": 318.4, "what": "in_cloud", "attempt": 1}
+{"clock": "12:00:09", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 321.3, "text": "Enemy sighted! Closing fast!", "attempt": 1}
+{"clock": "12:00:10", "closest_m": 863.9, "flares_while_near": true, "flew_s": 11.59, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_2", "t": 321.7, "attempt": 1}
+{"callsign": "", "clock": "12:00:11", "dist_m": 2680, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_5", "t": 323.2, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:00:12", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 324, "text": "You sure? In this weather?", "attempt": 1}
+{"clock": "12:00:13", "kind": "missile_warning", "level": "near", "t": 324.7, "attempt": 1}
+{"clock": "12:00:14", "dist_m": 1985, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_5", "t": 326.4, "attempt": 1}
+{"clock": "12:00:14", "closest_m": 1982, "flares_while_near": false, "flew_s": 3.354, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_5", "t": 326.5, "attempt": 1}
+{"clock": "12:00:18", "kind": "radio", "speaker": "AWACS Bandog", "t": 329.8, "text": "Missile inbound! Evade!", "attempt": 1}
+{"callsign": "", "clock": "12:00:24", "dist_m": 3176, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_4", "t": 336.1, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:00:26", "dist_m": 3359, "kind": "attack_run", "phase": "running in", "t": 338, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:00:27", "kind": "missile_warning", "level": "near", "t": 339.3, "attempt": 1}
+{"clock": "12:00:28", "dist_m": 2227, "kind": "defend", "miss_m": 250.2, "missile": "wp_msl_xsam_C_4", "t": 339.9, "tgo_s": 2.829, "attempt": 1}
+{"clock": "12:00:28", "dist_m": 2228, "kind": "flare", "missile": "wp_msl_xsam_C_4", "reason": "tracker", "t": 340, "tgo_s": 2.694, "attempt": 1}
+{"callsign": "", "clock": "12:00:28", "dist_m": 4958, "from": "01_en_xsam_2_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_7", "t": 340.2, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:00:28", "dist_m": 1951, "kind": "evade", "miss_m": 172.9, "missile": "wp_msl_xsam_C_4", "t": 340.5, "tgo_s": 2.403, "attempt": 1}
+{"clock": "12:00:29", "dist_m": 1629, "kind": "evade", "miss_m": 176.8, "missile": "wp_msl_xsam_C_4", "t": 341.1, "tgo_s": 1.375, "attempt": 1}
+{"clock": "12:00:29", "dist_m": 1583, "kind": "flare", "missile": "wp_msl_xsam_C_4", "reason": "tracker", "t": 341.2, "tgo_s": 2.334, "attempt": 1}
+{"clock": "12:00:30", "kind": "missile_warning", "level": "very near", "t": 342.3, "attempt": 1}
+{"clock": "12:00:30", "dist_m": 752.6, "kind": "flare", "missile": "wp_msl_xsam_C_4", "reason": "tracker", "t": 342.4, "tgo_s": 0.9839, "attempt": 1}
+{"clock": "12:00:31", "dist_m": 339.5, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_4", "t": 342.9, "attempt": 1}
+{"clock": "12:00:33", "dist_m": 2691, "kind": "defend", "miss_m": 339.8, "missile": "wp_msl_xsam_C_7", "t": 345, "tgo_s": 2.598, "attempt": 1}
+{"clock": "12:00:33", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 345.3, "text": "Careful. Don't crash into the mountains.", "attempt": 1}
+{"clock": "12:00:33", "kind": "missile_warning", "level": "near", "t": 345.3, "attempt": 1}
+{"along_m": 3553, "clock": "12:00:34", "kind": "on_line", "off_m": 425.3, "t": 346.7, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:00:35", "dist_m": 1097, "kind": "defend", "miss_m": 347.5, "missile": "wp_msl_xsam_C_7", "t": 347.3, "tgo_s": 0.9697, "attempt": 1}
+{"clock": "12:00:35", "dist_m": 845.1, "from": "01_en_xsam_2_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_7", "t": 347.7, "attempt": 1}
+{"clock": "12:00:36", "closest_m": 338.5, "flares_while_near": true, "flew_s": 11.63, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_4", "t": 347.7, "attempt": 1}
+{"clock": "12:00:36", "kind": "radio", "speaker": "AWACS Bandog", "t": 348, "text": "And unless you have a death wish, watch your altitude.", "attempt": 1}
+{"clock": "12:00:39", "closest_m": 862.4, "flares_while_near": false, "flew_s": 11.42, "from": "01_en_xsam_2_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_7", "t": 351.7, "attempt": 1}
+{"callsign": "", "clock": "12:00:42", "dist_m": 5512, "from": "01_en_xsam_2_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 354.6, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:00:43", "kills": 0, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 15.02, "break": 9.372, "defend": 10.27, "offnose": 44.95, "recovery": 3.227, "transit": 97.19}, "t": 354.8, "attempt": 1}
+{"alt_m": 1322, "clock": "12:00:43", "kind": "area", "now": true, "t": 355.4, "what": "in_cloud", "attempt": 1}
+{"agl_m": 1140, "clock": "12:00:44", "kind": "maneuver", "kmh": 1045, "t": 355.9, "text": "manoeuvre: lift -30, pull 0.6, brake", "attempt": 1}
+{"above_ground_m": 1028, "alt_m": 1116, "clock": "12:00:44", "kind": "ground_recovery", "lowest_ahead_m": 29.04, "t": 356.4, "vz": -224.2, "attempt": 1}
+{"agl_m": 854.8, "clock": "12:00:45", "kind": "maneuver", "kmh": 1120, "t": 357.2, "text": "manoeuvre: lift -30, pull 0.6, none", "attempt": 1}
+{"clock": "12:00:45", "dist_m": 4976, "from": "01_en_xsam_2_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 357.6, "attempt": 1}
+{"clock": "12:00:46", "closest_m": 4966, "flares_while_near": false, "flew_s": 3.123, "from": "01_en_xsam_2_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 357.7, "attempt": 1}
+{"clock": "12:00:46", "dist_m": 702.5, "kind": "attack_run", "phase": "extending", "t": 358.1, "target": "01_en_xsam_1_1", "attempt": 1}
+{"az_deg": -90, "clock": "12:00:46", "direct": false, "el_deg": 50, "kind": "attack_line", "soon_s": 23.6, "t": 358.1, "target": "01_en_xsam_1_1", "attempt": 1}
+{"alt_m": 783.5, "clock": "12:00:46", "kind": "area", "now": false, "t": 358.2, "what": "in_cloud", "attempt": 1}
+{"alt_m": 783.5, "clock": "12:00:46", "kind": "cloud_base", "t": 358.2, "attempt": 1}
+{"agl_m": 638.4, "clock": "12:00:46", "kind": "maneuver", "kmh": 1090, "t": 358.3, "text": "manoeuvre: lift -60, pull 0.6, brake", "attempt": 1}
+{"agl_m": 436, "clock": "12:00:48", "kind": "maneuver", "kmh": 1042, "t": 359.8, "text": "manoeuvre: lift -30, pull 1.0, none", "attempt": 1}
+{"alt_m": 654.5, "amount": 24, "clock": "12:00:49", "health": 72, "kind": "damage", "t": 360.8, "attempt": 1}
+{"clock": "12:00:51", "kind": "missile_warning", "level": "near", "t": 362.8, "attempt": 1}
+{"callsign": "", "clock": "12:00:51", "dist_m": 953.2, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_2", "t": 362.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:00:52", "dist_m": 900.8, "kind": "defend", "miss_m": 253.4, "missile": "wp_msl_xsam_C_2", "t": 364, "tgo_s": 3.892, "attempt": 1}
+{"clock": "12:00:52", "dist_m": 821.5, "kind": "defend", "miss_m": 236.8, "missile": "wp_msl_xsam_C_2", "t": 364.5, "tgo_s": 3.716, "attempt": 1}
+{"clock": "12:00:52", "dist_m": 824.5, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 364.6, "tgo_s": 2.854, "attempt": 1}
+{"clock": "12:00:52", "kind": "missile_warning", "level": "very near", "t": 364.7, "attempt": 1}
+{"clock": "12:00:53", "dist_m": 702.1, "kind": "evade", "miss_m": 146.1, "missile": "wp_msl_xsam_C_2", "t": 365.1, "tgo_s": 1.963, "attempt": 1}
+{"clock": "12:00:54", "dist_m": 511.3, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 365.8, "tgo_s": 1.36, "attempt": 1}
+{"clock": "12:00:55", "dist_m": 76.3, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_2", "t": 366.8, "attempt": 1}
+{"alt_m": 1135, "clock": "12:00:57", "kind": "area", "now": true, "t": 368.8, "what": "in_cloud", "attempt": 1}
+{"clock": "12:00:57", "kind": "radio", "speaker": "Spare Squadron", "t": 369.3, "text": "I've never flown this close to a mountain!", "attempt": 1}
+{"alt_m": 1184, "clock": "12:01:00", "kind": "area", "now": false, "t": 372.2, "what": "in_cloud", "attempt": 1}
+{"clock": "12:01:02", "closest_m": 71.7, "flares_while_near": true, "flew_s": 11.41, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_2", "t": 374.3, "attempt": 1}
+{"callsign": "", "clock": "12:01:04", "dist_m": 1979, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_3", "t": 375.8, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:01:04", "kind": "missile_warning", "level": "near", "t": 375.8, "attempt": 1}
+{"clock": "12:01:07", "dist_m": 1463, "kind": "defend", "miss_m": 341.7, "missile": "wp_msl_xsam_C_3", "t": 378.7, "tgo_s": 3.053, "attempt": 1}
+{"clock": "12:01:08", "dist_m": 1022, "kind": "flare", "missile": "wp_msl_xsam_C_3", "reason": "tracker", "t": 379.9, "tgo_s": 1.477, "attempt": 1}
+{"clock": "12:01:08", "dist_m": 1022, "kind": "evade", "miss_m": 181.1, "missile": "wp_msl_xsam_C_3", "t": 379.9, "tgo_s": 1.477, "attempt": 1}
+{"clock": "12:01:08", "kind": "missile_warning", "level": "very near", "t": 380.3, "attempt": 1}
+{"clock": "12:01:09", "dist_m": 461.4, "kind": "defend", "miss_m": 277.9, "missile": "wp_msl_xsam_C_3", "t": 381, "tgo_s": 1.393, "attempt": 1}
+{"clock": "12:01:09", "dist_m": 346.1, "kind": "flare", "missile": "wp_msl_xsam_C_3", "reason": "tracker", "t": 381.1, "tgo_s": 0.4439, "attempt": 1}
+{"clock": "12:01:09", "dist_m": 86.37, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_3", "t": 381.4, "attempt": 1}
+{"alt_m": 1710, "clock": "12:01:12", "kind": "area", "now": true, "t": 384.5, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1741, "clock": "12:01:14", "kind": "area", "now": false, "t": 386.2, "what": "in_cloud", "attempt": 1}
+{"clock": "12:01:15", "closest_m": 96.97, "flares_while_near": true, "flew_s": 11.5, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_3", "t": 387.3, "attempt": 1}
+{"callsign": "", "clock": "12:01:17", "dist_m": 3012, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 388.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:01:17", "kind": "radio", "speaker": "AWACS Bandog", "t": 389.5, "text": "Break! Break!", "attempt": 1}
+{"clock": "12:01:20", "kind": "missile_warning", "level": "near", "t": 392, "attempt": 1}
+{"clock": "12:01:20", "dist_m": 3527, "kind": "attack_run", "phase": "running in", "t": 392.1, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:01:21", "dist_m": 2099, "kind": "defend", "miss_m": 321.7, "missile": "wp_msl_xsam_C_0", "t": 392.9, "tgo_s": 2.492, "attempt": 1}
+{"clock": "12:01:21", "kind": "radio", "speaker": "Spare 6 Full band", "t": 393.4, "text": "Are you telling us we have to dodge lighting?", "attempt": 1}
+{"clock": "12:01:22", "dist_m": 1326, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 394.1, "tgo_s": 1.767, "attempt": 1}
+{"clock": "12:01:22", "dist_m": 1326, "kind": "evade", "miss_m": 199.8, "missile": "wp_msl_xsam_C_0", "t": 394.1, "tgo_s": 1.767, "attempt": 1}
+{"clock": "12:01:23", "kind": "missile_warning", "level": "very near", "t": 394.8, "attempt": 1}
+{"clock": "12:01:23", "dist_m": 560.8, "kind": "defend", "miss_m": 308.5, "missile": "wp_msl_xsam_C_0", "t": 395.2, "tgo_s": 0.9729, "attempt": 1}
+{"clock": "12:01:23", "dist_m": 405.5, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 395.3, "attempt": 1}
+{"clock": "12:01:28", "closest_m": 405.3, "flares_while_near": true, "flew_s": 11.46, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 400.4, "attempt": 1}
+{"along_m": 2794, "clock": "12:01:29", "kind": "on_line", "off_m": 335.1, "t": 401.6, "target": "01_en_xsam_1_1", "attempt": 1}
+{"callsign": "", "clock": "12:01:30", "dist_m": 2765, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_5", "t": 401.8, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:01:30", "kind": "missile_warning", "level": "near", "t": 402.5, "attempt": 1}
+{"clock": "12:01:31", "dist_m": 2414, "kind": "defend", "miss_m": 327.6, "missile": "wp_msl_xsam_C_5", "t": 402.7, "tgo_s": 2.444, "attempt": 1}
+{"clock": "12:01:31", "dist_m": 1972, "kind": "defend", "miss_m": 195, "missile": "wp_msl_xsam_C_5", "t": 403.5, "tgo_s": 3.546, "attempt": 1}
+{"clock": "12:01:32", "dist_m": 1812, "kind": "flare", "missile": "wp_msl_xsam_C_5", "reason": "tracker", "t": 403.8, "tgo_s": 1.43, "attempt": 1}
+{"clock": "12:01:32", "dist_m": 1812, "kind": "evade", "miss_m": 158.2, "missile": "wp_msl_xsam_C_5", "t": 403.8, "tgo_s": 1.43, "attempt": 1}
+{"alt_m": 1852, "clock": "12:01:32", "kind": "area", "now": true, "t": 404, "what": "in_cloud", "attempt": 1}
+{"clock": "12:01:33", "kind": "missile_warning", "level": "very near", "t": 405.4, "attempt": 1}
+{"alt_m": 1719, "clock": "12:01:34", "kind": "area", "now": false, "t": 405.7, "what": "in_cloud", "attempt": 1}
+{"clock": "12:01:34", "dist_m": 560.6, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_5", "t": 405.8, "attempt": 1}
+{"alt_m": 1682, "clock": "12:01:36", "kind": "area", "now": true, "t": 408.5, "what": "in_cloud", "attempt": 1}
+{"away_s": 60, "clock": "12:01:39", "dist_m": 1315, "kind": "unselectable", "t": 411.1, "target": "01_en_xsam_1_1", "why": "no lock after 8 s pointed at it in range", "attempt": 1}
+{"clock": "12:01:39", "dist_m": 7063, "kind": "priority", "score": 0.7083, "t": 411.1, "target": "01_en_xsam_2_1", "weight": 28, "attempt": 1}
+{"callsign": "", "clock": "12:01:39", "dist_m": 7063, "kind": "target", "t": 411.1, "target": "01_en_xsam_2_1", "attempt": 1}
+{"az_deg": -90, "clock": "12:01:39", "direct": false, "el_deg": 40, "kind": "attack_line", "soon_s": 35.8, "t": 411.1, "target": "01_en_xsam_2_1", "attempt": 1}
+{"clock": "12:01:39", "dist_m": 7063, "kind": "attack_run", "phase": "running in", "t": 411.1, "target": "01_en_xsam_2_1", "attempt": 1}
+{"clock": "12:01:41", "closest_m": 572.8, "flares_while_near": true, "flew_s": 11.47, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_5", "t": 413.3, "attempt": 1}
+{"clock": "12:01:43", "kind": "missile_warning", "level": "near", "t": 414.8, "attempt": 1}
+{"clock": "12:01:43", "kills": 0, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 23.23, "break": 16.14, "defend": 14.78, "offnose": 71.52, "recovery": 4.148, "transit": 110.2}, "t": 414.8, "attempt": 1}
+{"clock": "12:01:43", "kind": "radio", "speaker": "AWACS Bandog", "t": 415, "text": "Don't ice up in there!", "attempt": 1}
+{"alt_m": 1561, "clock": "12:01:44", "kind": "area", "now": false, "t": 416.3, "what": "in_cloud", "attempt": 1}
+{"clock": "12:01:45", "kind": "radio", "speaker": "Spare 2 Count", "t": 417.5, "text": "Nearing the clouds.", "attempt": 1}
+{"along_m": 3927, "clock": "12:01:54", "kind": "on_line", "off_m": 471.1, "t": 426.1, "target": "01_en_xsam_2_1", "attempt": 1}
+{"callsign": "", "clock": "12:01:54", "dist_m": 3842, "from": "01_en_xsam_2_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 426.6, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:01:56", "dist_m": 3080, "kind": "defend", "miss_m": 343.7, "missile": "wp_msl_xsam_C_0", "t": 428.3, "tgo_s": 3.71, "attempt": 1}
+{"clock": "12:01:57", "dist_m": 2751, "kind": "defend", "miss_m": 294, "missile": "wp_msl_xsam_C_0", "t": 428.8, "tgo_s": 2.234, "attempt": 1}
+{"callsign": "", "clock": "12:01:57", "dist_m": 4367, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 428.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:01:57", "kind": "missile_warning", "level": "near", "t": 429.2, "attempt": 1}
+{"clock": "12:01:57", "dist_m": 2375, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 429.4, "tgo_s": 2.397, "attempt": 1}
+{"clock": "12:01:57", "dist_m": 2375, "kind": "evade", "miss_m": 195.4, "missile": "wp_msl_xsam_C_0", "t": 429.4, "tgo_s": 2.397, "attempt": 1}
+{"clock": "12:01:58", "dist_m": 4286, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 430.2, "attempt": 1}
+{"clock": "12:01:58", "closest_m": 4288, "flares_while_near": false, "flew_s": 1.461, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 430.4, "attempt": 1}
+{"clock": "12:01:59", "dist_m": 899.3, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 431.4, "tgo_s": 1.096, "attempt": 1}
+{"clock": "12:01:59", "dist_m": 899.3, "kind": "evade", "miss_m": 170.3, "missile": "wp_msl_xsam_C_0", "t": 431.4, "tgo_s": 1.096, "attempt": 1}
+{"clock": "12:01:59", "kind": "missile_warning", "level": "very near", "t": 431.5, "attempt": 1}
+{"clock": "12:02:00", "dist_m": 127.3, "from": "01_en_xsam_2_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 432.3, "attempt": 1}
+{"after_s": 26.43, "ang0_deg": 55.91, "base_s": -1, "clock": "12:02:05", "dist_m": 1772, "kind": "lock", "rate_dps": -1, "t": 437.5, "target": "01_en_xsam_2_1", "attempt": 1}
+{"agl_m": 1132, "clock": "12:02:05", "dist_m": 1772, "elev_deg": -44.91, "in_flight": 0, "kind": "missile", "lanes": false, "los_short_m": 0, "off_deg": 18.64, "special": false, "t": 437.5, "target": "01_en_xsam_2_1", "value": -1, "attempt": 1}
+{"clock": "12:02:05", "dist_m": 1770, "in_flight": 1, "kind": "hold_fire", "need": 1, "t": 437.5, "target": "01_en_xsam_2_1", "attempt": 1}
+{"clock": "12:02:06", "kind": "launch", "left": 111, "n": 1, "t": 437.8, "target": "01_en_xsam_2_1", "weapon": "missile", "attempt": 1}
+{"clock": "12:02:06", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.727, "t": 437.8, "target": "01_en_xsam_2_1", "attempt": 1}
+{"clock": "12:02:06", "dist_m": 1693, "kind": "priority", "score": 0.4757, "t": 437.8, "target": "01_en_radar_1_22", "weight": 5.6, "attempt": 1}
+{"callsign": "", "clock": "12:02:06", "dist_m": 1693, "kind": "target", "t": 437.8, "target": "01_en_radar_1_22", "attempt": 1}
+{"class": "ms07_RadarSite_C", "clock": "12:02:06", "kind": "kind", "native": "AIGroundVehicle", "t": 437.8, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"az_deg": -76, "clock": "12:02:06", "direct": true, "el_deg": 46, "kind": "attack_line", "soon_s": 6.8, "t": 437.8, "target": "01_en_radar_1_22", "attempt": 1}
+{"clock": "12:02:06", "dist_m": 1693, "kind": "attack_run", "phase": "running in", "t": 437.8, "target": "01_en_radar_1_22", "attempt": 1}
+{"after_s": 0.297, "ang0_deg": 21.48, "base_s": -1, "clock": "12:02:06", "dist_m": 1626, "kind": "lock", "rate_dps": -1, "t": 438.1, "target": "01_en_radar_1_22", "attempt": 1}
+{"clock": "12:02:06", "closest_m": 127, "flares_while_near": true, "flew_s": 11.5, "from": "01_en_xsam_2_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 438.1, "attempt": 1}
+{"agl_m": 1097, "clock": "12:02:06", "dist_m": 1615, "elev_deg": -46.83, "in_flight": 0, "kind": "missile", "lanes": false, "los_short_m": 0, "off_deg": 25.65, "special": false, "t": 438.1, "target": "01_en_radar_1_22", "value": -1, "attempt": 1}
+{"clock": "12:02:06", "kind": "launch", "left": 110, "n": 1, "t": 438.3, "target": "01_en_radar_1_22", "weapon": "missile", "attempt": 1}
+{"clock": "12:02:06", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.485, "t": 438.3, "target": "01_en_radar_1_22", "attempt": 1}
+{"clock": "12:02:06", "dist_m": 14260.0, "kind": "priority", "score": 0.08458, "t": 438.3, "target": "01_en_xsam_3_1", "weight": 5.6, "attempt": 1}
+{"callsign": "", "clock": "12:02:06", "dist_m": 14260.0, "kind": "target", "t": 438.3, "target": "01_en_xsam_3_1", "attempt": 1}
+{"az_deg": -45, "clock": "12:02:06", "direct": false, "el_deg": 10, "kind": "attack_line", "soon_s": 54, "t": 438.3, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:02:06", "dist_m": 14260.0, "kind": "attack_run", "phase": "running in", "t": 438.3, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:02:07", "kind": "missile_warning", "level": "near", "t": 439.4, "attempt": 1}
+{"callsign": "", "clock": "12:02:07", "dist_m": 1272, "from": "01_en_xsam_2_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_5", "t": 439.6, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"callsign": "", "clock": "12:02:08", "kind": "death", "t": 440.6, "who": "01_en_xsam_2_1", "attempt": 1}
+{"bounty": 0, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "12:02:08", "kind": "kill", "t": 440.6, "target": "01_en_xsam_2_1", "attempt": 1}
+{"clock": "12:02:09", "dist_m": 1736, "flew_s": 3.145, "hit": true, "kind": "my_missile", "obj": "plwp_msl_a0_C_0", "t": 440.8, "target": "01_en_xsam_2_1", "target_after_s": 0, "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "12:02:09", "kind": "missile_warning", "level": "very near", "t": 440.9, "attempt": 1}
+{"callsign": "", "clock": "12:02:09", "kind": "death", "t": 441, "who": "01_en_radar_1_22", "attempt": 1}
+{"bounty": 0, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "12:02:09", "kind": "kill", "t": 441, "target": "01_en_radar_1_22", "attempt": 1}
+{"clock": "12:02:09", "dist_m": 1579, "flew_s": 2.932, "hit": true, "kind": "my_missile", "obj": "plwp_msl_a0_C_1", "t": 441.2, "target": "01_en_radar_1_22", "target_after_s": 0, "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "12:02:09", "dist_m": 686.3, "from": "01_en_xsam_2_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_5", "t": 441.3, "attempt": 1}
+{"clock": "12:02:09", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 441.3, "text": "Don't panic! They'll crash on their own!", "attempt": 1}
+{"clock": "12:02:13", "kind": "radio", "speaker": "AWACS Bandog", "t": 445.4, "text": "Destruction of target facility is confirmed.", "attempt": 1}
+{"clock": "12:02:19", "closest_m": 691.2, "flares_while_near": false, "flew_s": 11.4, "from": "01_en_xsam_2_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_5", "t": 451, "attempt": 1}
+{"alt_m": 2078, "clock": "12:02:28", "kind": "area", "now": true, "t": 459.8, "what": "in_cloud", "attempt": 1}
+{"alt_m": 2279, "clock": "12:02:29", "kind": "area", "now": false, "t": 461.5, "what": "in_cloud", "attempt": 1}
+{"clock": "12:02:31", "kind": "radio", "speaker": "Spare 6 Full band", "t": 463.5, "text": "Missile in the air! Heads up!", "attempt": 1}
+{"clock": "12:02:34", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 466, "text": "Do they have a death wish?!", "attempt": 1}
+{"along_m": 6117, "clock": "12:02:34", "kind": "on_line", "off_m": 450.8, "t": 466.2, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:02:39", "kind": "radio", "speaker": "AWACS Bandog", "t": 471, "text": "Five minutes remaining.", "attempt": 1}
+{"clock": "12:02:39", "dist_m": 12490.0, "kind": "priority", "score": 0.5716, "t": 471.5, "target": "01_en_xsam_1_1", "weight": 28, "attempt": 1}
+{"callsign": "", "clock": "12:02:39", "dist_m": 12490.0, "kind": "target", "t": 471.5, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:02:39", "dist_m": 12490.0, "kind": "attack_run", "phase": "extending", "t": 471.5, "target": "01_en_xsam_1_1", "attempt": 1}
+{"az_deg": 135, "clock": "12:02:39", "direct": false, "el_deg": 80, "kind": "attack_line", "soon_s": 41.4, "t": 471.5, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:02:39", "dist_m": 12500.0, "kind": "attack_run", "phase": "running in", "t": 471.5, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:02:43", "kills": 2, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 27.43, "break": 17.87, "defend": 17.39, "locked": 0.497, "offnose": 72.37, "recovery": 4.148, "transit": 160.3}, "t": 474.8, "attempt": 1}
+{"callsign": "", "clock": "12:02:45", "dist_m": 4450, "from": "01_en_xsam_3_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 477.5, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:02:45", "dist_m": 4466, "kind": "priority", "score": 1.036, "t": 477.5, "target": "01_en_xsam_3_1", "weight": 28, "attempt": 1}
+{"callsign": "", "clock": "12:02:45", "dist_m": 4466, "kind": "target", "t": 477.5, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:02:50", "dist_m": 3023, "kind": "defend", "miss_m": 298.9, "missile": "wp_msl_xsam_C_1", "t": 482.1, "tgo_s": 3.856, "attempt": 1}
+{"along_m": 4836, "clock": "12:02:50", "kind": "on_line", "off_m": 244.2, "t": 482.1, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:02:50", "dist_m": 2850, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 482.3, "tgo_s": 1.9, "attempt": 1}
+{"clock": "12:02:50", "dist_m": 2850, "kind": "evade", "miss_m": 169.5, "missile": "wp_msl_xsam_C_1", "t": 482.3, "tgo_s": 1.9, "attempt": 1}
+{"clock": "12:02:51", "kind": "missile_warning", "level": "near", "t": 482.7, "attempt": 1}
+{"clock": "12:02:51", "dist_m": 2368, "kind": "evade", "miss_m": 91.34, "missile": "wp_msl_xsam_C_1", "t": 482.9, "tgo_s": 1.849, "attempt": 1}
+{"clock": "12:02:51", "dist_m": 1786, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 483.5, "tgo_s": 1.56, "attempt": 1}
+{"clock": "12:02:52", "kind": "missile_warning", "level": "very near", "t": 484.6, "attempt": 1}
+{"clock": "12:02:53", "dist_m": 641.4, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 484.7, "tgo_s": 0.7038, "attempt": 1}
+{"clock": "12:02:53", "dist_m": 46.13, "from": "01_en_xsam_3_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 485.4, "attempt": 1}
+{"along_m": 4335, "clock": "12:02:56", "kind": "on_line", "off_m": 253.1, "t": 488.2, "target": "01_en_xsam_3_1", "attempt": 1}
+{"callsign": "", "clock": "12:02:57", "dist_m": 4250, "from": "01_en_xsam_3_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_2", "t": 488.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:02:57", "closest_m": 71.77, "flares_while_near": true, "flew_s": 11.69, "from": "01_en_xsam_3_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 489.2, "attempt": 1}
+{"clock": "12:02:57", "kind": "radio", "speaker": "Spare Squadron", "t": 489.4, "text": "Cliffs below me and clouds above!\nThis is a joke. It has to be.", "attempt": 1}
+{"clock": "12:02:59", "dist_m": 3149, "kind": "defend", "miss_m": 324.7, "missile": "wp_msl_xsam_C_2", "t": 491.4, "tgo_s": 2.694, "attempt": 1}
+{"clock": "12:03:00", "dist_m": 2773, "kind": "defend", "miss_m": 282.7, "missile": "wp_msl_xsam_C_2", "t": 491.9, "tgo_s": 2.401, "attempt": 1}
+{"clock": "12:03:00", "kind": "missile_warning", "level": "near", "t": 492.3, "attempt": 1}
+{"clock": "12:03:00", "dist_m": 2354, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 492.5, "tgo_s": 1.79, "attempt": 1}
+{"clock": "12:03:00", "dist_m": 2354, "kind": "evade", "miss_m": 172, "missile": "wp_msl_xsam_C_2", "t": 492.5, "tgo_s": 1.79, "attempt": 1}
+{"clock": "12:03:02", "dist_m": 1458, "kind": "defend", "miss_m": 296, "missile": "wp_msl_xsam_C_2", "t": 493.7, "tgo_s": 1.442, "attempt": 1}
+{"clock": "12:03:02", "kind": "radio", "speaker": "Spare 8 Champ", "t": 494.2, "text": "I wanna send Eruseans to hell, but I sure ain't joinin' 'em.", "attempt": 1}
+{"clock": "12:03:02", "dist_m": 902.4, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 494.4, "tgo_s": 1.095, "attempt": 1}
+{"clock": "12:03:02", "dist_m": 902.4, "kind": "evade", "miss_m": 199.2, "missile": "wp_msl_xsam_C_2", "t": 494.4, "tgo_s": 1.095, "attempt": 1}
+{"clock": "12:03:02", "kind": "missile_warning", "level": "very near", "t": 494.5, "attempt": 1}
+{"clock": "12:03:03", "dist_m": 74.02, "from": "01_en_xsam_3_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_2", "t": 495.4, "attempt": 1}
+{"clock": "12:03:08", "closest_m": 86.51, "flares_while_near": true, "flew_s": 11.51, "from": "01_en_xsam_3_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_2", "t": 500.5, "attempt": 1}
+{"after_s": 23.34, "ang0_deg": 167.1, "base_s": -1, "clock": "12:03:09", "dist_m": 2269, "kind": "lock", "rate_dps": -1, "t": 500.9, "target": "01_en_xsam_3_1", "attempt": 1}
+{"agl_m": 927, "clock": "12:03:09", "dist_m": 2269, "elev_deg": -14.54, "in_flight": 0, "kind": "missile", "lanes": false, "los_short_m": 0, "off_deg": 11.97, "special": false, "t": 500.9, "target": "01_en_xsam_3_1", "value": -1, "attempt": 1}
+{"clock": "12:03:09", "dist_m": 2264, "in_flight": 1, "kind": "hold_fire", "need": 1, "t": 500.9, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:03:09", "kind": "launch", "left": 109, "n": 1, "t": 500.9, "target": "01_en_xsam_3_1", "weapon": "missile", "attempt": 1}
+{"clock": "12:03:09", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 4.491, "t": 500.9, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:03:09", "dist_m": 2301, "kind": "priority", "score": 0.3434, "t": 500.9, "target": "01_en_radar_3_1", "weight": 5.6, "attempt": 1}
+{"callsign": "", "clock": "12:03:09", "dist_m": 2301, "kind": "target", "t": 500.9, "target": "01_en_radar_3_1", "attempt": 1}
+{"az_deg": -45, "clock": "12:03:09", "direct": true, "el_deg": 14, "kind": "attack_line", "soon_s": 12.8, "t": 500.9, "target": "01_en_radar_3_1", "attempt": 1}
+{"clock": "12:03:09", "dist_m": 2301, "kind": "attack_run", "phase": "running in", "t": 500.9, "target": "01_en_radar_3_1", "attempt": 1}
+{"after_s": 0.18, "ang0_deg": 14.7, "base_s": -1, "clock": "12:03:09", "dist_m": 2267, "kind": "lock", "rate_dps": -1, "t": 501.1, "target": "01_en_radar_3_1", "attempt": 1}
+{"agl_m": 905.4, "clock": "12:03:09", "dist_m": 2237, "elev_deg": -14.08, "in_flight": 0, "kind": "missile", "lanes": false, "los_short_m": 0, "off_deg": 13.73, "special": false, "t": 501.3, "target": "01_en_radar_3_1", "value": -1, "attempt": 1}
+{"clock": "12:03:09", "kind": "launch", "left": 108, "n": 1, "t": 501.4, "target": "01_en_radar_3_1", "weapon": "missile", "attempt": 1}
+{"clock": "12:03:09", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 4.441, "t": 501.4, "target": "01_en_radar_3_1", "attempt": 1}
+{"clock": "12:03:09", "dist_m": 10370.0, "kind": "priority", "score": 0.0962, "t": 501.4, "target": "01_en_xsam_4_1", "weight": 5.6, "attempt": 1}
+{"callsign": "", "clock": "12:03:09", "dist_m": 10370.0, "kind": "target", "t": 501.4, "target": "01_en_xsam_4_1", "attempt": 1}
+{"az_deg": -67, "clock": "12:03:09", "direct": false, "el_deg": 50, "kind": "attack_line", "soon_s": 53.3, "t": 501.4, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:03:09", "dist_m": 10370.0, "kind": "attack_run", "phase": "running in", "t": 501.4, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:03:09", "kind": "radio", "speaker": "AWACS Bandog", "t": 501.5, "text": "Spare 15, locked on.", "attempt": 1}
+{"clock": "12:03:09", "kind": "missile_warning", "level": "near", "t": 501.6, "attempt": 1}
+{"callsign": "", "clock": "12:03:10", "dist_m": 2104, "from": "01_en_xsam_3_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 501.7, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:03:10", "dist_m": 1927, "kind": "defend", "miss_m": 152.3, "missile": "wp_msl_xsam_C_0", "t": 502.2, "tgo_s": 3.474, "attempt": 1}
+{"clock": "12:03:10", "dist_m": 1914, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 502.2, "tgo_s": 2.964, "attempt": 1}
+{"clock": "12:03:10", "dist_m": 1728, "kind": "defend", "miss_m": 136.5, "missile": "wp_msl_xsam_C_0", "t": 502.6, "tgo_s": 3.99, "attempt": 1}
+{"clock": "12:03:11", "dist_m": 1672, "kind": "evade", "miss_m": 156.4, "missile": "wp_msl_xsam_C_0", "t": 502.8, "tgo_s": 2.127, "attempt": 1}
+{"clock": "12:03:13", "kind": "missile_warning", "level": "very near", "t": 504.8, "attempt": 1}
+{"callsign": "", "clock": "12:03:13", "kind": "death", "t": 504.8, "who": "01_en_xsam_3_1", "attempt": 1}
+{"bounty": 0, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "12:03:13", "kind": "kill", "t": 504.8, "target": "01_en_xsam_3_1", "attempt": 1}
+{"clock": "12:03:13", "dist_m": 2230, "flew_s": 3.742, "hit": true, "kind": "my_missile", "obj": "plwp_msl_a0_C_0", "t": 504.8, "target": "01_en_xsam_3_1", "target_after_s": 0, "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "12:03:13", "dist_m": 713, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 504.9, "tgo_s": 1.481, "attempt": 1}
+{"clock": "12:03:13", "dist_m": 713, "kind": "evade", "miss_m": 199.4, "missile": "wp_msl_xsam_C_0", "t": 504.9, "tgo_s": 1.481, "attempt": 1}
+{"callsign": "", "clock": "12:03:13", "kind": "death", "t": 505.1, "who": "01_en_radar_3_1", "attempt": 1}
+{"bounty": 0, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "12:03:13", "kind": "kill", "t": 505.1, "target": "01_en_radar_3_1", "attempt": 1}
+{"clock": "12:03:13", "dist_m": 2196, "flew_s": 3.758, "hit": true, "kind": "my_missile", "obj": "plwp_msl_a0_C_1", "t": 505.2, "target": "01_en_radar_3_1", "target_after_s": 0, "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "12:03:13", "dist_m": 414.2, "kind": "defend", "miss_m": 279.4, "missile": "wp_msl_xsam_C_0", "t": 505.6, "tgo_s": 1.289, "attempt": 1}
+{"clock": "12:03:14", "dist_m": 97.89, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 506.2, "tgo_s": 0.3035, "attempt": 1}
+{"clock": "12:03:14", "dist_m": 103.3, "from": "01_en_xsam_3_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 506.2, "attempt": 1}
+{"clock": "12:03:17", "kind": "radio", "speaker": "Spare 2 Count", "t": 508.9, "text": "The regular forces' secret reconnaissance plane is deep inside Erusea?", "attempt": 1}
+{"clock": "12:03:21", "kind": "radio", "speaker": "Spare 6 Full band", "t": 513.1, "text": "They're investigating the ruins.\nThat's all I know.", "attempt": 1}
+{"clock": "12:03:21", "closest_m": 97.89, "flares_while_near": true, "flew_s": 11.46, "from": "01_en_xsam_3_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 513.1, "attempt": 1}
+{"clock": "12:03:24", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 515.8, "text": "You sure found out quick.\nThey got a secret weapon, maybe?", "attempt": 1}
+{"clock": "12:03:27", "kind": "radio", "speaker": "Spare 6 Full band", "t": 519.2, "text": "There's only so much I could find out.", "attempt": 1}
+{"clock": "12:03:29", "kind": "radio", "speaker": "AWACS Bandog", "t": 521.1, "text": "Enough talk.", "attempt": 1}
+{"clock": "12:03:30", "kind": "radio", "speaker": "AWACS Bandog", "t": 522.6, "text": "Destruction of target facility confirmed.", "attempt": 1}
+{"clock": "12:03:33", "kind": "radio", "speaker": "Spare 6 Full band", "t": 525.3, "text": "Thunderclouds are common this time of year.", "attempt": 1}
+{"along_m": 4332, "clock": "12:03:36", "kind": "on_line", "off_m": 190.6, "t": 527.7, "target": "01_en_xsam_4_1", "attempt": 1}
+{"callsign": "", "clock": "12:03:36", "dist_m": 4283, "from": "01_en_xsam_4_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_2", "t": 527.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:03:38", "dist_m": 3290, "kind": "defend", "miss_m": 328.6, "missile": "wp_msl_xsam_C_2", "t": 530.1, "tgo_s": 3.271, "attempt": 1}
+{"clock": "12:03:39", "dist_m": 2925, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 530.7, "tgo_s": 2.683, "attempt": 1}
+{"clock": "12:03:39", "dist_m": 2925, "kind": "defend", "miss_m": 163, "missile": "wp_msl_xsam_C_2", "t": 530.7, "tgo_s": 2.683, "attempt": 1}
+{"clock": "12:03:39", "dist_m": 2530, "kind": "evade", "miss_m": 196.2, "missile": "wp_msl_xsam_C_2", "t": 531.3, "tgo_s": 1.798, "attempt": 1}
+{"clock": "12:03:39", "kind": "missile_warning", "level": "near", "t": 531.4, "attempt": 1}
+{"clock": "12:03:41", "dist_m": 902.1, "from": "01_en_xsam_4_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_2", "t": 533.5, "attempt": 1}
+{"clock": "12:03:43", "kills": 4, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 31.46, "break": 25.45, "defend": 24.04, "locked": 0.88, "offnose": 72.37, "recovery": 4.148, "transit": 201.7}, "t": 534.8, "attempt": 1}
+{"az_deg": -45, "clock": "12:03:43", "direct": false, "el_deg": 60, "kind": "attack_line", "soon_s": 13.7, "t": 534.9, "target": "01_en_xsam_4_1", "attempt": 1}
+{"az_deg": -45, "clock": "12:03:44", "direct": false, "el_deg": 70, "kind": "attack_line", "soon_s": 14, "t": 535.9, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:03:44", "kind": "radio", "speaker": "Spare 6 Full band", "t": 536.4, "text": "The enemy's gunning for me!", "attempt": 1}
+{"az_deg": -45, "clock": "12:03:46", "direct": false, "el_deg": 80, "kind": "attack_line", "soon_s": 14.7, "t": 537.9, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:03:47", "closest_m": 902.2, "flares_while_near": true, "flew_s": 11.47, "from": "01_en_xsam_4_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_2", "t": 539.4, "attempt": 1}
+{"callsign": "", "clock": "12:03:47", "dist_m": 2867, "from": "01_en_xsam_4_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 539.4, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:03:48", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 539.7, "text": "Missile incoming! Break!", "attempt": 1}
+{"along_m": 2798, "clock": "12:03:48", "kind": "on_line", "off_m": 87.86, "t": 540.2, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:03:48", "kind": "missile_warning", "level": "near", "t": 540.5, "attempt": 1}
+{"clock": "12:03:48", "dist_m": 2472, "kind": "defend", "miss_m": 344.5, "missile": "wp_msl_xsam_C_0", "t": 540.5, "tgo_s": 3.456, "attempt": 1}
+{"above_ground_m": 2473, "alt_m": 2865, "clock": "12:03:49", "kind": "ground_recovery", "lowest_ahead_m": 1324, "t": 541, "vz": -305.7, "attempt": 1}
+{"clock": "12:03:49", "dist_m": 2188, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 541, "tgo_s": 2.986, "attempt": 1}
+{"clock": "12:03:49", "dist_m": 2159, "kind": "evade", "miss_m": 191.2, "missile": "wp_msl_xsam_C_0", "t": 541, "tgo_s": 2.328, "attempt": 1}
+{"clock": "12:03:50", "dist_m": 1217, "kind": "defend", "miss_m": 212.9, "missile": "wp_msl_xsam_C_0", "t": 542.2, "tgo_s": 0.8385, "attempt": 1}
+{"clock": "12:03:50", "dist_m": 1214, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 542.2, "tgo_s": 1.056, "attempt": 1}
+{"clock": "12:03:50", "kind": "missile_warning", "level": "very near", "t": 542.6, "attempt": 1}
+{"agl_m": 1450, "clock": "12:03:51", "kind": "maneuver", "kmh": 2415, "t": 543.1, "text": "manoeuvre: lift 30, pull 1.0, none", "attempt": 1}
+{"clock": "12:03:51", "dist_m": 172.9, "from": "01_en_xsam_4_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 543.2, "attempt": 1}
+{"alt_m": 1683, "clock": "12:03:51", "kind": "area", "now": true, "t": 543.5, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1553, "clock": "12:03:52", "kind": "area", "now": false, "t": 543.8, "what": "in_cloud", "attempt": 1}
+{"agl_m": 1066, "clock": "12:03:52", "kind": "maneuver", "kmh": 2326, "t": 544.1, "text": "manoeuvre: holding 30|1.0|none", "attempt": 1}
+{"clock": "12:03:52", "dist_m": 1245, "kind": "attack_run", "phase": "extending", "t": 544.2, "target": "01_en_xsam_4_1", "attempt": 1}
+{"az_deg": -158, "clock": "12:03:52", "direct": false, "el_deg": 40, "kind": "attack_line", "soon_s": 9.6, "t": 544.2, "target": "01_en_xsam_4_1", "attempt": 1}
+{"agl_m": 1004, "clock": "12:03:53", "kind": "maneuver", "kmh": 1892, "t": 545.4, "text": "manoeuvre: lift 0, pull 0.6, none", "attempt": 1}
+{"clock": "12:03:53", "kind": "radio", "speaker": "AWACS Bandog", "t": 545.5, "text": "Hostile has a lock.", "attempt": 1}
+{"clock": "12:03:54", "kind": "missile_warning", "level": "near", "t": 546.2, "attempt": 1}
+{"clock": "12:03:57", "kind": "radio", "speaker": "Spare Squadron", "t": 549.5, "text": "The wind! I can't fly straight!", "attempt": 1}
+{"clock": "12:03:59", "closest_m": 187.7, "flares_while_near": true, "flew_s": 11.38, "from": "01_en_xsam_4_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 550.8, "attempt": 1}
+{"callsign": "", "clock": "12:04:00", "dist_m": 3136, "from": "01_en_xsam_4_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 552.3, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:04:00", "kind": "radio", "speaker": "Spare 2 Count", "t": 552.3, "text": "Use the winds to guide you, amateurs!", "attempt": 1}
+{"clock": "12:04:02", "dist_m": 3358, "kind": "attack_run", "phase": "running in", "t": 554, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:04:03", "dist_m": 2548, "kind": "defend", "miss_m": 331.1, "missile": "wp_msl_xsam_C_1", "t": 555.4, "tgo_s": 2.929, "attempt": 1}
+{"clock": "12:04:03", "kind": "missile_warning", "level": "near", "t": 555.5, "attempt": 1}
+{"clock": "12:04:04", "dist_m": 2008, "kind": "defend", "miss_m": 334.2, "missile": "wp_msl_xsam_C_1", "t": 556.5, "tgo_s": 1.615, "attempt": 1}
+{"clock": "12:04:05", "dist_m": 1369, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 557.4, "tgo_s": 1.606, "attempt": 1}
+{"clock": "12:04:05", "dist_m": 1369, "kind": "evade", "miss_m": 199, "missile": "wp_msl_xsam_C_1", "t": 557.4, "tgo_s": 1.606, "attempt": 1}
+{"clock": "12:04:06", "kind": "missile_warning", "level": "very near", "t": 558.1, "attempt": 1}
+{"clock": "12:04:06", "dist_m": 752.6, "kind": "defend", "miss_m": 216.4, "missile": "wp_msl_xsam_C_1", "t": 558.2, "tgo_s": 1.1, "attempt": 1}
+{"clock": "12:04:06", "dist_m": 349.5, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 558.6, "tgo_s": 0.3815, "attempt": 1}
+{"clock": "12:04:07", "dist_m": 47.06, "from": "01_en_xsam_4_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 558.9, "attempt": 1}
+{"along_m": 3309, "clock": "12:04:08", "kind": "on_line", "off_m": 69.05, "t": 560.6, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:04:12", "closest_m": 46.74, "flares_while_near": true, "flew_s": 11.5, "from": "01_en_xsam_4_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 563.8, "attempt": 1}
+{"callsign": "", "clock": "12:04:13", "dist_m": 2557, "from": "01_en_xsam_4_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_2", "t": 565.2, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:04:13", "kind": "missile_warning", "level": "near", "t": 565.4, "attempt": 1}
+{"clock": "12:04:14", "dist_m": 2374, "kind": "defend", "miss_m": 86.24, "missile": "wp_msl_xsam_C_2", "t": 565.8, "tgo_s": 3.282, "attempt": 1}
+{"clock": "12:04:14", "dist_m": 2357, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 565.8, "tgo_s": 2.984, "attempt": 1}
+{"clock": "12:04:14", "dist_m": 2138, "kind": "defend", "miss_m": 66.55, "missile": "wp_msl_xsam_C_2", "t": 566.3, "tgo_s": 3.157, "attempt": 1}
+{"after_s": 65.21, "ang0_deg": 30.02, "base_s": -1, "clock": "12:04:14", "dist_m": 2288, "kind": "lock", "rate_dps": -1, "t": 566.6, "target": "01_en_xsam_4_1", "attempt": 1}
+{"agl_m": 1425, "clock": "12:04:14", "dist_m": 2288, "elev_deg": -39.86, "in_flight": 0, "kind": "missile", "lanes": false, "los_short_m": 0, "off_deg": 3.995, "special": false, "t": 566.6, "target": "01_en_xsam_4_1", "value": -1, "attempt": 1}
+{"clock": "12:04:14", "dist_m": 2285, "in_flight": 1, "kind": "hold_fire", "need": 1, "t": 566.6, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:04:15", "kind": "launch", "left": 107, "n": 1, "t": 566.8, "target": "01_en_xsam_4_1", "weapon": "missile", "attempt": 1}
+{"clock": "12:04:15", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 4.52, "t": 566.8, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:04:15", "dist_m": 2616, "kind": "priority", "score": 0.3555, "t": 566.9, "target": "01_en_radar_2_1", "weight": 5.6, "attempt": 1}
+{"callsign": "", "clock": "12:04:15", "dist_m": 2616, "kind": "target", "t": 566.9, "target": "01_en_radar_2_1", "attempt": 1}
+{"class": "ms07_RadarSite2_C", "clock": "12:04:15", "kind": "kind", "native": "AIGroundVehicle", "t": 566.9, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"az_deg": -158, "clock": "12:04:15", "direct": false, "el_deg": 50, "kind": "attack_line", "soon_s": 12.5, "t": 566.9, "target": "01_en_radar_2_1", "attempt": 1}
+{"clock": "12:04:15", "dist_m": 2616, "kind": "attack_run", "phase": "running in", "t": 566.9, "target": "01_en_radar_2_1", "attempt": 1}
+{"clock": "12:04:15", "dist_m": 1712, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 567.1, "tgo_s": 2.927, "attempt": 1}
+{"clock": "12:04:16", "dist_m": 855.9, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 568.6, "tgo_s": 1.337, "attempt": 1}
+{"clock": "12:04:16", "dist_m": 855.9, "kind": "evade", "miss_m": 174.4, "missile": "wp_msl_xsam_C_2", "t": 568.6, "tgo_s": 1.337, "attempt": 1}
+{"clock": "12:04:16", "kind": "missile_warning", "level": "very near", "t": 568.6, "attempt": 1}
+{"agl_m": 1258, "clock": "12:04:17", "kind": "maneuver", "kmh": 726.3, "t": 568.8, "text": "manoeuvre: lift straight, pull 0.0, none", "attempt": 1}
+{"clock": "12:04:18", "dist_m": 88.46, "from": "01_en_xsam_4_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_2", "t": 569.7, "attempt": 1}
+{"az_deg": -165, "clock": "12:04:18", "direct": true, "el_deg": 40, "kind": "attack_line", "soon_s": 10.1, "t": 570.1, "target": "01_en_radar_2_1", "attempt": 1}
+{"callsign": "", "clock": "12:04:18", "kind": "death", "t": 570.5, "who": "01_en_xsam_4_1", "attempt": 1}
+{"bounty": 0, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "12:04:18", "kind": "kill", "t": 570.5, "target": "01_en_xsam_4_1", "attempt": 1}
+{"clock": "12:04:18", "dist_m": 2277, "flew_s": 3.954, "hit": true, "kind": "my_missile", "obj": "plwp_msl_a0_C_0", "t": 570.6, "target": "01_en_xsam_4_1", "target_after_s": 0, "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"after_s": 6.355, "ang0_deg": 7.415, "base_s": -1, "clock": "12:04:21", "dist_m": 1644, "kind": "lock", "rate_dps": -1, "t": 573.2, "target": "01_en_radar_2_1", "attempt": 1}
+{"agl_m": 1238, "clock": "12:04:21", "dist_m": 1644, "elev_deg": -53.48, "in_flight": 0, "kind": "missile", "lanes": false, "los_short_m": 0, "off_deg": 27.43, "special": false, "t": 573.2, "target": "01_en_radar_2_1", "value": -1, "attempt": 1}
+{"clock": "12:04:21", "dist_m": 1643, "in_flight": 1, "kind": "hold_fire", "need": 1, "t": 573.2, "target": "01_en_radar_2_1", "attempt": 1}
+{"clock": "12:04:21", "kind": "launch", "left": 106, "n": 1, "t": 573.3, "target": "01_en_radar_2_1", "weapon": "missile", "attempt": 1}
+{"clock": "12:04:21", "damage": 40, "hp": 40, "kind": "one_shot", "set_aside_s": 3.529, "t": 573.3, "target": "01_en_radar_2_1", "attempt": 1}
+{"clock": "12:04:21", "dist_m": 23840.0, "kind": "priority", "score": 0.03661, "t": 573.3, "target": "01_en_xsam_1_1", "weight": 5.6, "attempt": 1}
+{"callsign": "", "clock": "12:04:21", "dist_m": 23840.0, "kind": "target", "t": 573.3, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:04:21", "kind": "radio", "speaker": "Spare Squadron", "t": 573.6, "text": "This mission is crazy. All our commander thinks about is looking good for the General Staff Office.", "attempt": 1}
+{"agl_m": 1194, "clock": "12:04:22", "kind": "maneuver", "kmh": 570.5, "t": 573.9, "text": "manoeuvre: the pilot's way, braking", "attempt": 1}
+{"callsign": "", "clock": "12:04:24", "kind": "death", "t": 576.5, "who": "01_en_radar_2_1", "attempt": 1}
+{"bounty": 0, "by": "missile on its way", "callsign": "", "class": "ground", "clock": "12:04:24", "kind": "kill", "t": 576.5, "target": "01_en_radar_2_1", "attempt": 1}
+{"clock": "12:04:24", "dist_m": 1631, "flew_s": 3.31, "hit": true, "kind": "my_missile", "obj": "plwp_msl_a0_C_1", "t": 576.7, "target": "01_en_radar_2_1", "target_after_s": 0, "target_kind": "ground", "weapon": "plwp_msl_a0_C", "attempt": 1}
+{"clock": "12:04:25", "closest_m": 88.3, "flares_while_near": true, "flew_s": 11.63, "from": "01_en_xsam_4_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_2", "t": 576.9, "attempt": 1}
+{"clock": "12:04:26", "kind": "radio", "speaker": "AWACS Bandog", "t": 578.2, "text": "The mission doesn't require you to talk.", "attempt": 1}
+{"alt_m": 1619, "clock": "12:04:26", "kind": "area", "now": true, "t": 578.6, "what": "in_cloud", "attempt": 1}
+{"agl_m": 1177, "clock": "12:04:27", "kind": "maneuver", "kmh": 566.9, "t": 579.3, "text": "manoeuvre: holding the pilot's way, braking", "attempt": 1}
+{"clock": "12:04:28", "kind": "radio", "speaker": "AWACS Bandog", "t": 580, "text": "Use your head as well as your hands.", "attempt": 1}
+{"agl_m": 1159, "clock": "12:04:29", "kind": "maneuver", "kmh": 453.6, "t": 581.4, "text": "manoeuvre: the pilot's way, braking", "attempt": 1}
+{"agl_m": 1160, "clock": "12:04:30", "kind": "maneuver", "kmh": 453.3, "t": 582.4, "text": "manoeuvre: holding 180|0.6|brake", "attempt": 1}
+{"clock": "12:04:31", "kind": "radio", "speaker": "Spare 2 Count", "t": 582.7, "text": "Righto.", "attempt": 1}
+{"agl_m": 1167, "clock": "12:04:31", "kind": "maneuver", "kmh": 540.2, "t": 583.4, "text": "manoeuvre: holding 150|0.6|none", "attempt": 1}
+{"agl_m": 1202, "clock": "12:04:32", "kind": "maneuver", "kmh": 491.6, "t": 584.5, "text": "manoeuvre: holding 120|0.6|brake", "attempt": 1}
+{"clock": "12:04:33", "kind": "radio", "speaker": "AWACS Bandog", "t": 585, "text": "Radar facilities are silent, but those SAM sites are still a threat. Eliminate them.", "attempt": 1}
+{"alt_m": 1851, "clock": "12:04:33", "kind": "area", "now": false, "t": 585.6, "what": "in_cloud", "attempt": 1}
+{"clock": "12:04:39", "kind": "radio", "speaker": "AWACS Bandog", "t": 591, "text": "Three minutes remaining.", "attempt": 1}
+{"clock": "12:04:41", "kind": "radio", "speaker": "Spare Squadron", "t": 592.9, "text": "I can't see in this soup!\nGotta fly by instruments.", "attempt": 1}
+{"clock": "12:04:43", "kills": 6, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 37.81, "break": 28.95, "defend": 27.71, "locked": 0.917, "offnose": 82.32, "recovery": 7.562, "transit": 234.8}, "t": 594.8, "attempt": 1}
+{"alt_m": 2536, "clock": "12:04:43", "kind": "area", "now": true, "t": 595.2, "what": "in_cloud", "attempt": 1}
+{"clock": "12:04:45", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 597, "text": "I'm spiked! I'll shake 'im!", "attempt": 1}
+{"alt_m": 3071, "clock": "12:04:53", "kind": "area", "now": false, "t": 604.9, "what": "in_cloud", "attempt": 1}
+{"clock": "12:05:07", "kind": "radio", "speaker": "Spare Squadron", "t": 618.8, "text": "Crosswind's gonna slam us into the rocks!", "attempt": 1}
+{"clock": "12:05:09", "kind": "radio", "speaker": "Spare 6 Full band", "t": 621.6, "text": "It's blowing me off course!", "attempt": 1}
+{"clock": "12:05:31", "kind": "radio", "speaker": "AWACS Bandog", "t": 642.7, "text": "It's real cloudy around there.\nRadar visibility is limited. Stay alert.", "attempt": 1}
+{"clock": "12:05:39", "kind": "radio", "speaker": "AWACS Bandog", "t": 651, "text": "Two minutes remaining.", "attempt": 1}
+{"clock": "12:05:43", "kills": 6, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 37.81, "break": 28.95, "defend": 27.71, "locked": 0.917, "offnose": 82.32, "recovery": 7.562, "transit": 294.8}, "t": 654.8, "attempt": 1}
+{"callsign": "", "clock": "12:05:46", "dist_m": 3959, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 658.5, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:05:47", "kind": "radio", "speaker": "Spare 8 Champ", "t": 659, "text": "Missile coming for you! Move it!", "attempt": 1}
+{"clock": "12:05:47", "dist_m": 3534, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 659.6, "attempt": 1}
+{"clock": "12:05:48", "closest_m": 3549, "flares_while_near": false, "flew_s": 1.236, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 659.8, "attempt": 1}
+{"above_ground_m": 2221, "alt_m": 2426, "clock": "12:05:52", "kind": "ground_recovery", "lowest_ahead_m": 774.4, "t": 664.4, "vz": -335.2, "attempt": 1}
+{"clock": "12:05:53", "dist_m": 2248, "kind": "attack_run", "phase": "extending", "t": 664.8, "target": "01_en_xsam_1_1", "attempt": 1}
+{"alt_m": 1807, "clock": "12:05:54", "kind": "area", "now": true, "t": 666.3, "what": "in_cloud", "attempt": 1}
+{"az_deg": -67, "clock": "12:05:54", "direct": false, "el_deg": 50, "kind": "attack_line", "soon_s": 18.4, "t": 666.3, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:05:55", "kind": "radio", "speaker": "Spare Squadron", "t": 666.8, "text": "This wind!", "attempt": 1}
+{"alt_m": 1788, "clock": "12:05:56", "kind": "area", "now": false, "t": 667.7, "what": "in_cloud", "attempt": 1}
+{"callsign": "", "clock": "12:05:57", "dist_m": 2544, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 668.8, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"alt_m": 2516, "clock": "12:05:59", "kind": "area", "now": true, "t": 670.8, "what": "in_cloud", "attempt": 1}
+{"alt_m": 2631, "clock": "12:05:59", "kind": "area", "now": false, "t": 671.4, "what": "in_cloud", "attempt": 1}
+{"clock": "12:05:59", "dist_m": 3533, "kind": "attack_run", "phase": "running in", "t": 671.6, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:06:00", "kind": "missile_warning", "level": "near", "t": 672.3, "attempt": 1}
+{"clock": "12:06:02", "dist_m": 1687, "kind": "defend", "miss_m": 346.9, "missile": "wp_msl_xsam_C_1", "t": 673.9, "tgo_s": 1.316, "attempt": 1}
+{"clock": "12:06:03", "kind": "missile_warning", "level": "very near", "t": 675, "attempt": 1}
+{"clock": "12:06:03", "dist_m": 671.4, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 675.1, "attempt": 1}
+{"along_m": 3441, "clock": "12:06:06", "kind": "on_line", "off_m": 412.8, "t": 678.1, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:06:08", "closest_m": 671.9, "flares_while_near": false, "flew_s": 11.43, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 680.3, "attempt": 1}
+{"callsign": "", "clock": "12:06:10", "dist_m": 2584, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 681.7, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:06:10", "dist_m": 2527, "kind": "defend", "miss_m": 306.7, "missile": "wp_msl_xsam_C_0", "t": 681.9, "tgo_s": 2.876, "attempt": 1}
+{"clock": "12:06:10", "kind": "missile_warning", "level": "near", "t": 682, "attempt": 1}
+{"clock": "12:06:10", "dist_m": 2261, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 682.5, "tgo_s": 2.759, "attempt": 1}
+{"clock": "12:06:10", "dist_m": 2261, "kind": "defend", "miss_m": 152.4, "missile": "wp_msl_xsam_C_0", "t": 682.5, "tgo_s": 2.759, "attempt": 1}
+{"clock": "12:06:11", "dist_m": 1945, "kind": "evade", "miss_m": 186.3, "missile": "wp_msl_xsam_C_0", "t": 683, "tgo_s": 1.842, "attempt": 1}
+{"agl_m": 1599, "clock": "12:06:12", "kind": "maneuver", "kmh": 1092, "t": 684.2, "text": "manoeuvre: lift -60, pull 1.0, none", "attempt": 1}
+{"clock": "12:06:13", "dist_m": 967.6, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 684.8, "attempt": 1}
+{"clock": "12:06:14", "dist_m": 1781, "kind": "attack_run", "phase": "extending", "t": 685.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"alt_m": 1308, "clock": "12:06:15", "kind": "area", "now": true, "t": 687, "what": "in_cloud", "attempt": 1}
+{"clock": "12:06:19", "kind": "radio", "speaker": "Spare Squadron", "t": 690.9, "text": "I'd rather be back in my cell.", "attempt": 1}
+{"alt_m": 1595, "clock": "12:06:21", "kind": "area", "now": false, "t": 692.8, "what": "in_cloud", "attempt": 1}
+{"clock": "12:06:21", "kind": "radio", "speaker": "Spare 8 Champ", "t": 693.2, "text": "There's no way I'm going back to the brig.\nDon't get in my way.", "attempt": 1}
+{"clock": "12:06:21", "closest_m": 999.3, "flares_while_near": true, "flew_s": 11.49, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 693.2, "attempt": 1}
+{"clock": "12:06:23", "kind": "missile_warning", "level": "near", "t": 694.7, "attempt": 1}
+{"callsign": "", "clock": "12:06:23", "dist_m": 2376, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_2", "t": 694.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:06:24", "dist_m": 2154, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_2", "t": 696.3, "attempt": 1}
+{"clock": "12:06:24", "closest_m": 2156, "flares_while_near": false, "flew_s": 1.666, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_2", "t": 696.5, "attempt": 1}
+{"clock": "12:06:32", "dist_m": 3357, "kind": "attack_run", "phase": "running in", "t": 703.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"callsign": "", "clock": "12:06:36", "dist_m": 3612, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 707.9, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:06:36", "kind": "radio", "speaker": "Spare 8 Champ", "t": 708.2, "text": "Missile coming for you! Move it!", "attempt": 1}
+{"clock": "12:06:38", "dist_m": 2634, "kind": "defend", "miss_m": 328.8, "missile": "wp_msl_xsam_C_1", "t": 710.5, "tgo_s": 2.324, "attempt": 1}
+{"clock": "12:06:38", "kind": "missile_warning", "level": "near", "t": 710.7, "attempt": 1}
+{"clock": "12:06:39", "kind": "radio", "speaker": "AWACS Bandog", "t": 711, "text": "One minute remaining.", "attempt": 1}
+{"clock": "12:06:39", "dist_m": 2110, "kind": "defend", "miss_m": 348.2, "missile": "wp_msl_xsam_C_1", "t": 711.3, "tgo_s": 3.128, "attempt": 1}
+{"clock": "12:06:40", "dist_m": 1374, "kind": "defend", "miss_m": 345.6, "missile": "wp_msl_xsam_C_1", "t": 712.3, "tgo_s": 1.74, "attempt": 1}
+{"clock": "12:06:41", "kind": "missile_warning", "level": "very near", "t": 713, "attempt": 1}
+{"clock": "12:06:41", "dist_m": 691, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 713.2, "attempt": 1}
+{"clock": "12:06:42", "kind": "radio", "speaker": "Spare 8 Champ", "t": 713.7, "text": "This bastard wants a piece of me!", "attempt": 1}
+{"clock": "12:06:43", "kills": 6, "kind": "time_split", "lanes": false, "order_t0": 174.8, "split": {"ahead": 42.53, "break": 29.38, "defend": 32.46, "locked": 0.917, "offnose": 104.2, "recovery": 8.681, "transit": 321.9}, "t": 714.8, "attempt": 1}
+{"along_m": 2732, "clock": "12:06:43", "kind": "on_line", "off_m": 126, "t": 715.1, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:06:44", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 716.2, "text": "They're flying between the columns!", "attempt": 1}
+{"alt_m": 1585, "clock": "12:06:47", "kind": "area", "now": true, "t": 718.7, "what": "in_cloud", "attempt": 1}
+{"clock": "12:06:47", "closest_m": 711.9, "flares_while_near": false, "flew_s": 11.49, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 719.4, "attempt": 1}
+{"agl_m": 1262, "clock": "12:06:47", "kind": "maneuver", "kmh": 1090, "t": 719.6, "text": "manoeuvre: lift 90, pull 1.0, brake", "attempt": 1}
+{"above_ground_m": 1055, "alt_m": 1308, "clock": "12:06:48", "kind": "ground_recovery", "lowest_ahead_m": 159.9, "t": 719.9, "vz": -238.5, "attempt": 1}
+{"clock": "12:06:49", "kind": "missile_warning", "level": "near", "t": 720.7, "attempt": 1}
+{"callsign": "", "clock": "12:06:49", "dist_m": 1166, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 720.8, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"alt_m": 1063, "clock": "12:06:49", "kind": "area", "now": false, "t": 721.1, "what": "in_cloud", "attempt": 1}
+{"clock": "12:06:49", "kind": "missile_warning", "level": "very near", "t": 721.6, "attempt": 1}
+{"clock": "12:06:50", "dist_m": 657.3, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 722, "attempt": 1}
+{"alt_m": 957.5, "clock": "12:06:51", "kind": "area", "now": true, "t": 723.2, "what": "in_cloud", "attempt": 1}
+{"agl_m": 723.4, "clock": "12:06:52", "kind": "maneuver", "kmh": 750.3, "t": 723.7, "text": "manoeuvre: lift 60, pull 1.0, none", "attempt": 1}
+{"clock": "12:06:52", "dist_m": 702.6, "kind": "attack_run", "phase": "extending", "t": 724, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:06:52", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 724.4, "text": "Visibility low!", "attempt": 1}
+{"agl_m": 98.5, "clock": "12:06:53", "kind": "maneuver", "kmh": 706.5, "t": 724.7, "text": "manoeuvre: holding 0|1.0|brake", "attempt": 1}
+{"agl_m": 373.5, "clock": "12:06:54", "kind": "maneuver", "kmh": 533.2, "t": 725.8, "text": "manoeuvre: the pilot's way, braking", "attempt": 1}
+{"alt_m": 920.4, "amount": 1, "clock": "12:06:54", "health": 71, "kind": "damage", "t": 726.3, "attempt": 1}
+{"agl_m": 839.5, "clock": "12:06:55", "kind": "maneuver", "kmh": 493.7, "t": 727, "text": "manoeuvre: holding the pilot's way, braking", "attempt": 1}
+{"clock": "12:06:55", "kind": "missile_warning", "level": "near", "t": 727.1, "attempt": 1}
+{"clock": "12:06:57", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 729.4, "text": "My wings are frozen up!", "attempt": 1}
+{"clock": "12:07:00", "closest_m": 665.1, "flares_while_near": false, "flew_s": 11.39, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 732.2, "attempt": 1}
+{"alt_m": 1727, "clock": "12:07:05", "kind": "area", "now": false, "t": 737.2, "what": "in_cloud", "attempt": 1}
+{"clock": "12:07:08", "kind": "missile_warning", "level": "near", "t": 740.2, "attempt": 1}
+{"callsign": "", "clock": "12:07:08", "dist_m": 2199, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 740.3, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:07:09", "kind": "radio", "speaker": "AWACS Bandog", "t": 741, "text": "Thirty seconds remaining!", "attempt": 1}
+{"clock": "12:07:10", "dist_m": 1943, "kind": "defend", "miss_m": 309.6, "missile": "wp_msl_xsam_C_1", "t": 742.4, "tgo_s": 3.477, "attempt": 1}
+{"clock": "12:07:11", "dist_m": 1796, "kind": "defend", "miss_m": 308.6, "missile": "wp_msl_xsam_C_1", "t": 742.9, "tgo_s": 3.774, "attempt": 1}
+{"clock": "12:07:11", "dist_m": 1609, "kind": "defend", "miss_m": 241.3, "missile": "wp_msl_xsam_C_1", "t": 743.5, "tgo_s": 2.259, "attempt": 1}
+{"clock": "12:07:11", "dist_m": 1611, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 743.5, "tgo_s": 2.144, "attempt": 1}
+{"clock": "12:07:11", "dist_m": 1611, "kind": "evade", "miss_m": 196.3, "missile": "wp_msl_xsam_C_1", "t": 743.5, "tgo_s": 2.144, "attempt": 1}
+{"clock": "12:07:12", "dist_m": 1389, "kind": "evade", "miss_m": 160.8, "missile": "wp_msl_xsam_C_1", "t": 744, "tgo_s": 1.955, "attempt": 1}
+{"clock": "12:07:13", "dist_m": 1085, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 744.7, "tgo_s": 1.936, "attempt": 1}
+{"clock": "12:07:13", "kind": "missile_warning", "level": "very near", "t": 745.2, "attempt": 1}
+{"clock": "12:07:14", "dist_m": 401.8, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 745.8, "attempt": 1}
+{"clock": "12:07:20", "closest_m": 421, "flares_while_near": true, "flew_s": 11.37, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 751.7, "attempt": 1}
+{"clock": "12:07:20", "dist_m": 3373, "kind": "attack_run", "phase": "running in", "t": 752, "target": "01_en_xsam_1_1", "attempt": 1}
+{"callsign": "", "clock": "12:07:21", "dist_m": 3515, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 753.2, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"az_deg": -90, "clock": "12:07:21", "direct": false, "el_deg": 50, "kind": "attack_line", "soon_s": 11, "t": 753.3, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "12:07:24", "kind": "missile_warning", "level": "near", "t": 756.3, "attempt": 1}
+{"clock": "12:07:26", "dist_m": 953.4, "kind": "defend", "miss_m": 330, "missile": "wp_msl_xsam_C_0", "t": 758.6, "tgo_s": 1.104, "attempt": 1}
+{"clock": "12:07:26", "dist_m": 912.9, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 758.7, "attempt": 1}
+{"along_m": 3309, "clock": "12:07:26", "kind": "on_line", "off_m": 285.6, "t": 758.7, "target": "01_en_xsam_1_1", "attempt": 1}
+{"above_ground_m": 1400, "alt_m": 2625, "clock": "12:07:28", "kind": "ground_recovery", "lowest_ahead_m": 1067, "t": 760.3, "vz": -234.7, "attempt": 1}
+{"alt_m": 1664, "clock": "12:07:33", "kind": "area", "now": true, "t": 764.8, "what": "in_cloud", "attempt": 1}
+{"clock": "12:07:33", "closest_m": 936.1, "flares_while_near": false, "flew_s": 11.64, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 764.8, "attempt": 1}
+{"above_ground_m": 1106, "alt_m": 1370, "clock": "12:07:34", "kind": "ground_recovery", "lowest_ahead_m": 431.9, "t": 766.2, "vz": -186.6, "attempt": 1}
+{"clock": "12:07:34", "kind": "missile_warning", "level": "near", "t": 766.2, "attempt": 1}
+{"callsign": "", "clock": "12:07:34", "dist_m": 1435, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_2", "t": 766.3, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "12:07:34", "dist_m": 1424, "kind": "defend", "miss_m": 39.24, "missile": "wp_msl_xsam_C_2", "t": 766.3, "tgo_s": 3.078, "attempt": 1}
+{"clock": "12:07:34", "dist_m": 1365, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 766.4, "tgo_s": 2.983, "attempt": 1}
+{"clock": "12:07:34", "kind": "radio", "speaker": "Spare 8 Champ", "t": 766.6, "text": "Trigger! Missile!", "attempt": 1}
+{"clock": "12:07:35", "dist_m": 1235, "kind": "evade", "miss_m": 12.43, "missile": "wp_msl_xsam_C_2", "t": 766.7, "tgo_s": 2.383, "attempt": 1}
+{"agl_m": 984.7, "clock": "12:07:35", "kind": "maneuver", "kmh": 1069, "t": 766.8, "text": "manoeuvre: lift 30, pull 1.0, brake", "attempt": 1}
+{"alt_m": 1134, "clock": "12:07:35", "kind": "area", "now": false, "t": 767.2, "what": "in_cloud", "attempt": 1}
+{"clock": "12:07:35", "dist_m": 928.1, "kind": "defend", "miss_m": 166.4, "missile": "wp_msl_xsam_C_2", "t": 767.3, "tgo_s": 2.507, "attempt": 1}
+{"clock": "12:07:35", "kind": "missile_warning", "level": "very near", "t": 767.5, "attempt": 1}
+{"clock": "12:07:35", "dist_m": 735.4, "kind": "flare", "missile": "wp_msl_xsam_C_2", "reason": "tracker", "t": 767.6, "tgo_s": 1.178, "attempt": 1}
+{"agl_m": 632.9, "clock": "12:07:36", "kind": "maneuver", "kmh": 1104, "t": 768, "text": "manoeuvre: lift 60, pull 1.0, none", "attempt": 1}
+{"clock": "12:07:36", "dist_m": 431.8, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_2", "t": 768.2, "attempt": 1}
+{"alt_m": 980.3, "clock": "12:07:37", "kind": "area", "now": true, "t": 769.6, "what": "in_cloud", "attempt": 1}
+{"clock": "12:07:38", "dist_m": 891.2, "kind": "attack_run", "phase": "extending", "t": 770.1, "target": "01_en_xsam_1_1", "attempt": 1}
+{"agl_m": 594, "clock": "12:07:38", "kind": "maneuver", "kmh": 772.4, "t": 770.2, "text": "manoeuvre: lift 120, pull 1.0, brake", "attempt": 1}
+{"clock": "12:07:39", "kind": "phase_failed", "phase": "MissionPhase_01", "reason": 0, "t": 770.9, "attempt": 1}
+{"alt_m": 190.8, "class": "common_xsam_C", "clock": "12:07:39", "dist_m": 921.8, "enemy": "01_en_xsam_1_1", "kind": "failure_enemy", "t": 770.9, "attempt": 1}
+{"alt_m": 200.8, "class": "common_shil_RayCheck_C", "clock": "12:07:39", "dist_m": 1122, "enemy": "01_en_aagun_1_91", "kind": "failure_enemy", "t": 770.9, "attempt": 1}
+{"alt_m": 88.27, "class": "common_shil_RayCheck_C", "clock": "12:07:39", "dist_m": 987.4, "enemy": "01_en_aagun_1_1", "kind": "failure_enemy", "t": 770.9, "attempt": 1}
+{"clock": "12:07:39", "kind": "time_out", "t": 770.9, "attempt": 1}
+{"agl_m": 939.8, "clock": "12:07:39", "kind": "maneuver", "kmh": 540.4, "t": 771.5, "text": "manoeuvre: the pilot's way, braking", "attempt": 1}
+{"clock": "12:07:39", "kind": "radio", "speaker": "AWACS Bandog", "t": 771.6, "text": "We've run out of time. Return to base.\nThe mission has failed.", "attempt": 1}
+{"audit_expected": 0, "audit_launched": 0, "audit_plans": 0, "chains": 0, "clock": "12:07:41", "defends": 53, "final": true, "gun_bursts": 0, "gun_dmg": 0, "gun_kills": 0, "gun_s": 0, "kill_times": {"agile": 35, "ground": 10, "heli": 12, "large": 30, "plane": 20}, "kills": 6, "kind": "time_split", "kind_kills": {"ground": 6}, "kind_time": {}, "load_s": -1, "lock_base_s": -1, "lock_rate_dps": -1, "locks": 6, "order_t0": 174.8, "split": {"ahead": 52.96, "break": 33.57, "defend": 34.05, "locked": 0.917, "offnose": 134.3, "recovery": 11.46, "transit": 331.6}, "t": 773.6, "turn_dps": 48.96, "turn_samples": 5991, "why": "stop", "attempt": 1}
+{"clock": "12:07:41", "kind": "prediction_stats", "t": 773.6, "text": "no checks yet", "attempt": 1}
