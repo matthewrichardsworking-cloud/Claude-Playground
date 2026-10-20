@@ -3,6 +3,15 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
+**Status (20 Oct 2026, 06:30): Mission 06 still not cleared (best 23,200 of 24,000); the bot now
+runs out of missiles and minutes together.** Four more general changes this morning: an aircraft
+already hit counts as nearly dead (the game's own health reading), so the opening's three bombers
+now always fall; the missile economy no longer brings 20-30 missiles home; a drone chasing the
+plane no longer pins it in a slow fight; leftover LAAMs are spent late. Attempts since: 18,780-22,000.
+With missiles and time both used up, about 25,500 is this loadout's ceiling, so 24,000 needs a
+nearly perfect phase; one attempt swings about 2,000 with the order the fights come in. Workbench
+section 17 and `playtests\missions\m06\notes.md` have the numbers.
+
 **Status (20 Oct 2026, 03:00): the bot's missiles hit now; Mission 06 at 19,500-23,200 of 24,000
 (best 23,200, 800 short), still being flown.** Following the gap analysis (it ran out of missiles), this session found the missiles were
 mostly wasted, not too few: a quarter flew unguided (the bot picked its next target while the fire

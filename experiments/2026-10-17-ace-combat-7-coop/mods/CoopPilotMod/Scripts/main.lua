@@ -1667,7 +1667,12 @@ local function nearestEnemy(loc, skip, F, current, kmh)
                     -- 06's third area paid about 700 points a minute against 1,000-1,400 for the
                     -- ground there; 20 Oct 2026)
                     local tf = (kk == "agile") and 1 or threatFactor(o, n)
-                    local pr = (objInfo(o).bounty or 0) * tf / (tt + (killTimes[kk] or 20))
+                    -- (one already hurt takes that much less to finish: the game's health of it
+                    -- over its full health; 20 Oct 2026, a Tu-160 hit by two missiles was left
+                    -- for a ground group 18 km away, rated as if untouched, 1,200 points lost)
+                    local hp, hpMax = call(o, "GetHealth"), call(o, "GetMaxHealth")
+                    local hf = (type(hp) == "number" and type(hpMax) == "number" and hpMax > 0) and clamp(hp / hpMax, 0.25, 1) or 1
+                    local pr = (objInfo(o).bounty or 0) * tf / (tt + (killTimes[kk] or 20) * hf)
                     if pr > airPickRate then airPick, airPickRate = o, pr end
                 end
                 return w / (tt + (killTimes[kk] or 10)), d, w, n
@@ -2007,7 +2012,7 @@ local function lanePlan(c, loc, F, t)
     end
     -- The missile economy (timed score phases; 20 Oct 2026: in every full 15-minute phase of
     -- Mission 06 the standard missiles ran out between minute 9.6 and 11.5 and the score
-    -- stopped there). Every 2 s: at the rate of the last two minutes, do the standard missiles
+    -- stopped there). Every 2 s: at the rate of the fight so far, do the standard missiles
     -- last the phase? If not, only the best share of the shots on offer is taken, the share that
     -- makes them last: targets worth less than that share's bar (by the values above, over the
     -- targets in reach now) are left out of the plan. Toward the end of the phase the bar falls.
@@ -2018,12 +2023,19 @@ local function lanePlan(c, loc, F, t)
         local ms = mission()
         local T = ms and call(ms, "GetMissionPhaseTimeLeftInSeconds_S")
         local bar, keep, need = 0, 1, 0
-        local span = math.min(120, t - c.econSince)
+        -- (at the rate of the whole fight so far, flights and air fights included: with the last
+        -- two minutes' rate, the busiest minutes of an area, every attempt of Mission 06 on 20 Oct
+        -- 2026 held fire on 100-point targets in mid-phase and ended it with 11-51 standard
+        -- missiles, mostly 20-30, never fired)
+        local span = t - c.econSince
         if left and left >= 0 and T and T > 20 and T < 7200 and span >= 45 and #tg >= 4 then
             local n = 0
-            for _, lt in ipairs(c.launchTimes or {}) do if t - lt < 120 then n = n + 1 end end
+            for _, lt in ipairs(c.launchTimes or {}) do if lt >= c.econSince then n = n + 1 end end
             need = n / span * T
-            if need > left * 1.05 then
+            -- (and only when the forecast is 30% over what is left: the first areas are the
+            -- richest, and at minute 5 the whole-fight rate forecast 81 more launches where 52
+            -- came, the next attempt of 20 Oct 2026 again ending with 21 missiles)
+            if need > left * 1.3 then
                 keep = clamp(left / need, 0.25, 1)
                 local vals = {}
                 for _, q in ipairs(tg) do vals[#vals + 1] = q[4] end
@@ -2031,6 +2043,20 @@ local function lanePlan(c, loc, F, t)
                 bar = vals[math.floor((1 - keep) * #vals) + 1] or 0
             end
         end
+        -- ...and the special weapon the other way round: what is left at the end of the phase is
+        -- worth nothing, so when more is left than the fight's rate would use in the time left
+        -- (by 30%, and 2 more), the air shots in passing widen (below; 20 Oct 2026, an attempt of
+        -- Mission 06 ended with 11 LAAMs, its 11 drones never shot at)
+        local leftS = c.ammo and c.ammo.s
+        c.spStart = c.spStart or leftS
+        local surplus = false
+        if leftS and leftS > 0 and c.spStart and T and T > 20 and T < 7200 and span >= 90 then
+            surplus = leftS > (c.spStart - leftS) / span * T * 1.3 + 2
+        end
+        if surplus ~= (c.spSurplus or false) then
+            event("special_surplus", { on = surplus, left = leftS or -1, phase_left_s = T or -1 })
+        end
+        c.spSurplus = surplus
         c.lambda = (c.lambda or 0) * 0.5 + bar * 0.5
         if math.abs(c.lambda - (c.lambdaLogged or 0)) > 8 then
             c.lambdaLogged = c.lambda
@@ -2079,14 +2105,16 @@ local function lanePlan(c, loc, F, t)
         local kt = killTimes[kk] or 20
         if al and pb > 0 then
             local tt = math.max(pb / airRate - kt, 0)
-            local sum, n = 0, 0
+            -- (each at its own kind's kill time: with the first one's for all, Mission 06's drone
+            -- swarm counted at a Gripen's 22 s a kill instead of its own 33, 20 Oct 2026)
+            local sum, n, kts = 0, 0, 0
             for _, tr in pairs(Aware.tracks) do
                 if tr.kind == "plane" and tr.p and alive(tr.obj) and (tr.p[1] - al.X) ^ 2 + (tr.p[2] - al.Y) ^ 2 + (tr.p[3] - al.Z) ^ 2 < 80000 ^ 2 then
                     local b = objInfo(tr.obj).bounty or 0
-                    if b > 0 then sum, n = sum + b, n + 1 end
+                    if b > 0 then sum, n, kts = sum + b, n + 1, kts + (killTimes[killKind(tr.obj)] or kt) end
                 end
             end
-            if n > 1 then airRate = math.max(airRate, sum / (tt + n * kt)) end
+            if n > 1 then airRate = math.max(airRate, sum / (tt + kts)) end
         end
     end
     -- Committed to an air target being engaged: locked in the last 3 s, or within reach of the
@@ -2102,6 +2130,11 @@ local function lanePlan(c, loc, F, t)
         -- (an air shot in passing is not an engagement: the lanes fly on through it; each one
         -- switched them off and on again, 20 Oct 2026, part of what looked "indecisive")
         if c.airShot and sameObj(c.target, c.airShot.obj) then engaged = false end
+        -- (nor a drone: they follow the plane anyway and are taken in passing, by air shots and
+        -- the gun, while the lanes and the moves go on; 20 Oct 2026, with a drone counted as an
+        -- engagement the bot never weighed a move from minute 10.4 to the end of a phase and
+        -- fought the swarm at about 700 points a minute, a 3,050-point ground group 7 km away)
+        if killKind(c.target) == "agile" then engaged = false end
     end
     -- Fighters first (the owner, 19 Oct 2026: "neutralize the biggest threats (fighters, then
     -- SAMs, attack helicopters, finally AA guns)"): a plane or drone chasing this one within 5 km
@@ -2303,7 +2336,14 @@ local function lanePlan(c, loc, F, t)
             local ms = mission()
             local left = ms and call(ms, "GetMissionPhaseTimeLeftInSeconds_S")
             local timeOk = not left or left < 0 or left > c.farGroup.dist / 4000 + 90
-            if got / win < 0.5 * avg and timeOk then
+            -- (nor while an air target here pays better than the group there: on 20 Oct 2026 the
+            -- rule left the first area at 2.3 minutes during a fight with its F-16s, its three
+            -- bombers, 3,600 points, still flying)
+            -- (and with the margin a move by the best-group rule asks, 20%: at 5 am on 20 Oct
+            -- 2026 it left at 2.75 minutes with a bomber worth 18.1 points a second against
+            -- a group worth 18.2)
+            local airHere = (airRate or 0) * 1.2 >= c.farGroup.rate
+            if got / win < 0.5 * avg and timeOk and not airHere then
                 leave = true
                 event("leave_patch", { here_rate = got / win, fight_rate = avg, to_points = c.farGroup.points, to_n = c.farGroup.n,
                                        to_km = c.farGroup.dist / 10000 })
@@ -2519,6 +2559,17 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
         local leftSp = sp and sp.targets == "air only" and sp.LockonRange and call(weapons(p), "GetSpecialWeaponCount") or 0
         if leftSp > 0 then
             local best, bestOff, bestD = nil, (sp.LockonAngle or 25) - 4, 0
+            -- (a plane that has fired at this one in the last 30 s may be taken from up to 50
+            -- degrees off, the nose flicking onto it, and comes first: most missile hits of 20
+            -- Oct 2026's attempts came from the fighters of Mission 06's third area, an F-16
+            -- among them firing from 360 m)
+            local shotAt = {}
+            for i = #(Aware.missileLog or {}), 1, -1 do
+                local m = Aware.missileLog[i]
+                if t - (m.born or 0) > 30 then break end
+                if m.ownerName then shotAt[m.ownerName] = true end
+            end
+            local bestScore = math.huge
             for _, tr in pairs(Aware.tracks) do
                 if tr.kind == "plane" and tr.p and alive(tr.obj) and (objInfo(tr.obj).bounty or 0) > 0
                     and not (c.airBan and c.airBan[gameKind(tr.obj)] and t < c.airBan[gameKind(tr.obj)]) then
@@ -2533,8 +2584,13 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
                         local cap = Aware.rangeCap and Aware.rangeCap(sp.class, gameKind(tr.obj))
                         local floorA = Aware.rangeFloor and Aware.rangeFloor(sp.class, gameKind(tr.obj))
                         local inside = not (cap and dl / 10 > cap) and not (floorA and dl / 10 < floorA + 100)
-                        if off < bestOff and Aware.inFlight(nm) == 0 and inside and not (c.skip[nm] and t < c.skip[nm]) then
-                            best, bestOff, bestD = tr.obj, off, dl
+                        local thr = shotAt[nm] and gameKind(tr.obj) ~= "agile"
+                        -- (and any of them when the special weapon would otherwise come home
+                        -- unused: c.spSurplus, the missile economy above)
+                        local lim = (thr or c.spSurplus) and 50 or ((sp.LockonAngle or 25) - 4)
+                        local score = off - (thr and 40 or 0)
+                        if off < lim and score < bestScore and Aware.inFlight(nm) == 0 and inside and not (c.skip[nm] and t < c.skip[nm]) then
+                            best, bestOff, bestD, bestScore = tr.obj, off, dl, score
                         end
                     end
                 end
@@ -3285,6 +3341,12 @@ local function combatStep(p, loc, rot, F, R, alt, dt)
             aim, ph, dmG, low = Gun.mod.run(c, c.targetName, tl, loc, F, ap.agl or alt)
             c.gunPass = low and ph == "in" or nil
             c.groundText = string.format("strafing pass, %s, %.0f m above ground", ph == "in" and "running in" or "breaking off", ap.agl or alt)
+        elseif c.laneOn and c.lanePlan and c.airShot and sameObj(tgt, c.airShot.obj) then
+            -- an air shot in passing: the nose flicks onto the plane for its few seconds (the aim
+            -- worked out above, where it will be), then the lanes go on (20 Oct 2026: flying the
+            -- lane through them, 4 of 5 air shots at drones 17-23 degrees off never fired, the
+            -- drone sliding out of the LAAM's cone before the lock built)
+            c.groundText = "air shot in passing: nose on " .. tostring(c.airShot.name)
         elseif c.laneOn and c.lanePlan then
             aim = laneAim(c, loc, t, alt)
             c.groundText = "lanes: " .. laneText(c, t, F)

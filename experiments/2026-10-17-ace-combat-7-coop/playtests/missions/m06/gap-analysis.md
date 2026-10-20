@@ -86,3 +86,16 @@ the report (standard missiles left at minute 10 and 15) and the score at 15:00, 
 kill rate. Then (2), then (4). Expected: with missiles lasting the full 15 minutes, about
 16,000-17,000 at the sixth full phase's pace (about 1,100 points a minute) and about 21,000 at
 the fourth's (about 1,450, if it survives); with area C reached as well, 24,000 is within reach.
+
+## What came of it (20 Oct 2026, the ammunition session)
+
+The shortage was mostly waste. With every missile now followed (the game reuses missile objects,
+which the old tracker missed), a quarter of the standard missiles turned out to fly unguided (the
+next target was selected while the fire key was still down) and many others hit terrain or
+buildings (no line-of-sight check). Both fixed: standard missiles at ground targets hit 92 of 94
+and 72 of 73 times, one missile per kill, and they last the phase. The gun was measured (weak for
+this bot, then zeroed from its own bullets: useful in passing), houses without a target box never
+died, the 8AGM loadout was clearly worse (3,850 at 5 minutes), the LAAM took the opening F-16s
+"in passing", and a leaving rule from foraging theory moved the plane between areas at the right
+time. Full phases went from about 13,000 to 21,900-23,200; Mission 06 still needs 24,000. Details
+and every attempt: `notes.md`, section "The ammunition session".

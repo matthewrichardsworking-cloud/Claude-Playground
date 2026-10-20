@@ -1648,10 +1648,25 @@ leap of the day.
   checkpoint were not counted (the enemies come back with the same names), which threw off every
   retry's rates.
 
-**Where it stands** (20 Oct, 03:00): not cleared yet; best 23,200 of 24,000. The campaign order is
-flying Mission 06 again with these changes, retrying from the checkpoint by itself; full numbers for every run are
-in `playtests\missions\m06\notes.md`. Your real saves were checked after every run (unchanged);
-the copy stays in Vanilla mode with its Default profile (the Mod Loader was not used).
+**The early morning (05:00-06:30)**, four more general changes, each from one attempt's data:
+
+- A bomber already hit counts as nearly dead: the bot now reads an aircraft's health from the game
+  and rates a hurt one as quicker to finish. Before, it twice left the first area with two
+  bombers (2,400 points) still flying; since, all three fell in every attempt.
+- The missile economy had been too careful: every attempt ended with 11-51 unused missiles. Now
+  they run out with the time (3-10 left), so the phase is limited by missiles and minutes together.
+- A drone chasing the plane no longer holds it in a fight: one attempt fought the drone swarm for
+  4.5 minutes at about 700 points a minute while a 3,050-point ground group waited 7 km away.
+- LAAMs left over late in the phase are now spent on any aircraft in reach (one attempt ended with
+  11 unused).
+
+**Where it stands** (20 Oct, 06:30): not cleared yet; best 23,200 of 24,000; this morning's attempts
+19,620-22,000. Now that the missiles and the minutes run out together, about 25,500 points is
+the most this loadout could make with nothing wasted, so 24,000 needs a nearly perfect phase. One
+attempt swings by about 2,000 with the order the fights come in. The campaign order is retrying
+Mission 06 by itself. Full numbers for every run are in `playtests\missions\m06\notes.md`. Your
+real saves were checked after every run (unchanged); the copy stays in Vanilla mode with its
+Default profile (the Mod Loader was not used).
 
 ## Your saves: what happened
 

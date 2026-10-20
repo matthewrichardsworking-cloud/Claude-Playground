@@ -3,6 +3,21 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (20 Oct 2026, 06:30): missiles and minutes run out together
+
+- **Hurt aircraft**: the air pick's kill time is scaled by the target's health left
+  (`GetHealth` / `GetMaxHealth`, at least 0.25); the leaving rule asks a 20% margin over the air
+  target here, as a best-group move does. The opening's three bombers now always fall.
+- **Missile economy**: forecast from the whole fight's launch rate, acting only past 1.3 times
+  what is left (3-10 standard missiles left at the end, from 11-51).
+- **Drones**: a drone as the target is not an engagement (moves and lanes go on; air shots and
+  the gun take it in passing). The group-of-planes air rate uses each plane's own kill time.
+- **Special weapon surplus** (`c.spSurplus`, event `special_surplus`): when more is left than the
+  fight's rate would use in the time left (by 30%, and 2 more), air shots take any aircraft up to
+  50 degrees off.
+- **Result**: Mission 06 attempts 18,780-22,000; best still 23,200. With both weapons used up,
+  about 25,500 is the loadout's ceiling.
+
 ## Status (20 Oct 2026, 03:00): missiles that hit; Mission 06 at up to 23,200
 
 - **Moving between areas** (latest): a "leaving rule" from foraging theory (leave a place once its

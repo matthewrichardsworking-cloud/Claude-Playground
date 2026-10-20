@@ -445,3 +445,42 @@ The 8.5-minute gun tests (19:46, 19:58) are in `campaign-lanes-test.md`.
 | 01:52 (attempt 2) | same | about 21,500 | kills on a retry not counted (names reused after a checkpoint restart); fixed |
 | 02:29 | + kills counted afresh after a restart | **23,200** | A, then B for 1.5 min, C from 5.2 to 9.7 min, back to B; 101 kills, 11 standard missiles and no LAAMs left |
 | 02:45 (attempt 2) | same | about 19,500 | lost most of its health by minute 9 |
+| 03:00 (attempt 3) | same | 19,970, crashed at 14:15 | shot down in the drone swarm (they switch on at about minute 8-9 near area C) |
+| 03:19 | + the nose flicks onto the plane during an air shot | about 19,500 | air shots fired 16 of 20 (about 1 in 5 before); two missile hits from area C's fighters (an F-16 from 360 m) |
+| 03:52 | + air shots at threats first, up to 50 degrees off | 20,610; 22,490; 22,900; 13,480 (at 14:45, four attempts) | the fourth left area A at 2.3 min during the F-16 fight, two bombers (2,400 points) still flying |
+| 04:57 | + no leaving while an air target here pays more than the group there | 20,190 | left area A at 2.75 min anyway: a bomber hit twice rated 18.1 points a second against the group's 18.2; the second attempt, 5,740 at 5 min after losing 55 health early, was stopped |
+| 05:21 | + a hurt air target rated by its health left (the game's GetHealth over GetMaxHealth), 20% margin before leaving for a group, missile economy forecast from the whole fight | 19,620 | **10,760 at 5 min, the best opening yet** (all three bombers down by 2.5 min); then area C paid about 940 a minute: from minute 10.4 a drone after the plane counted as an engagement, so no move was weighed and it fought the swarm to the end at about 700 a minute, a 3,050-point ground group 7 km away; 21 standard missiles left |
+| 05:41 | + a drone is not an engagement (taken in passing; moves still weighed), group air rate at each plane's own kill time, missile economy only past 1.3 times what is left | 22,000 | A for 3 min (all bombers and F-16s), B 3.5-8.4 min at about 1,500 a minute, C from 9 min; 110 kills, every standard missile at a target that died, **3 standard missiles left: ammunition now runs out with the time** |
+| 05:57 (attempt 2) | same | 20,120 | an F-16 dogfight at 0.75 min came before the long LAAM shot at the first bomber (attempt 1 got it at 0.67), so area A took 4 minutes; 600 points in minutes 8-10 (the move to C); **11 LAAMs unused**, no drone shot at; 82 damage taken |
+| 06:16 | + special weapon "use it or lose it": when more is left than the fight's rate would use in the time left (by 30%, and 2 more), air shots in passing take any aircraft up to 50 degrees off | 18,780 | the rule switched on at 7.96 min and LAAMs went at drones (3 of 4 fired), 5 left at the end; but a hard opening (2,000 points at 2 min, four starts of the move to area B pulled back by the bombers and F-16s) and heavy fire (66 break turns, 52 defensive attacks, 58 damage) |
+
+### 20 Oct, 05:00-06:30: the morning's changes, and what the numbers say
+
+- **A hurt aircraft is worth finishing**: the air target's kill time is scaled by its health left
+  (the game's `GetHealth` over `GetMaxHealth`, 0.25 at least), and the leaving rule now asks the
+  group elsewhere for the same 20% margin over the air target here as a best-group move does. In
+  the two worst attempts before it the bot left area A with two bombers (2,400 points) flying; in
+  every attempt since, all three fell.
+- **Missile economy**: forecast from the whole fight's launch rate, and only past 1.3 times what is
+  left. Every earlier attempt ended with 11-51 standard missiles; now 3-10. **The standard missiles
+  and the time now run out together**, so a better phase needs more points per missile, not more
+  shots.
+- **Drones are not an engagement**: a drone as the target no longer stops the lanes and the moves
+  (with it, one attempt fought the swarm for 4.5 minutes at about 700 points a minute while a
+  3,050-point ground group waited 7 km away).
+- **Special weapon surplus**: LAAMs left over widen the air shots (above).
+- **The ceiling**: 112 standard missiles at about 95% kills on ground targets of about 140 points,
+  and 30 LAAMs at about 70% on aircraft of about 450, make roughly 25,500 points with nothing
+  wasted. 24,000 needs nearly every missile at a target worth its points, inside the 15 minutes.
+  Attempts with the morning's builds: 19,620, 22,000, 20,120, 18,780. One attempt varies by about
+  2,000 with the order the fights come in (an F-16 dogfight before or after the first long LAAM
+  shot at a bomber, whether area C's fighters switch on), more than any one change since 03:00.
+
+- **Air shots that fire**: with the plane flying its ground lane through an air shot, 4 of 5 at
+  drones 17-23 degrees off never fired (the drone left the LAAM's cone before the lock). Now the
+  nose turns onto the target for those few seconds: 16 of 20 fired in the next attempt, 6 drones
+  and 10 planes killed.
+- **What still ends attempts**: area C's fighters (2 F-16s, 2 MiG-21s, 2 F-4Es, switching on as the
+  plane comes near, plus 4 Gripens) and the 11 drones that switch on at about minute 8-9, firing
+  while the plane works the ground and dodges the SAM sites; most missile hits of the evening's
+  attempts came from them.
