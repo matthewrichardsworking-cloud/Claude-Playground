@@ -1,0 +1,153 @@
+{"clock": "09:35:22", "kind": "mark", "t": 173.4, "text": "attempt 1 begins", "attempt": 1}
+{"clock": "09:35:24", "goal": "attack", "kind": "autopilot_start", "t": 174.7, "attempt": 1}
+{"class": "common_shil_RayCheck_C", "clock": "09:35:24", "kind": "activated", "n": 6, "plane_x": 230700.0, "plane_y": -215800.0, "points": 900, "start": true, "t": 174.8, "x": 85590.0, "y": -103400.0, "attempt": 1}
+{"class": "ms07_RadarSite2_C", "clock": "09:35:24", "kind": "activated", "n": 1, "plane_x": 230700.0, "plane_y": -215800.0, "points": 150, "start": true, "t": 174.8, "x": -29740.0, "y": 80670.0, "attempt": 1}
+{"class": "common_ah64_C", "clock": "09:35:24", "kind": "activated", "n": 6, "plane_x": 230700.0, "plane_y": -215800.0, "points": 1200, "start": true, "t": 174.8, "x": 22920.0, "y": 28890.0, "attempt": 1}
+{"class": "common_xsam_C", "clock": "09:35:24", "kind": "activated", "n": 4, "plane_x": 230700.0, "plane_y": -215800.0, "points": 800, "start": true, "t": 174.8, "x": 11350.0, "y": -37960.0, "attempt": 1}
+{"class": "common_vads_C", "clock": "09:35:24", "kind": "activated", "n": 1, "plane_x": 230700.0, "plane_y": -215800.0, "points": 150, "start": true, "t": 174.8, "x": 5440, "y": -27520.0, "attempt": 1}
+{"class": "common_shil_C", "clock": "09:35:24", "kind": "activated", "n": 3, "plane_x": 230700.0, "plane_y": -215800.0, "points": 450, "start": true, "t": 174.8, "x": -7875, "y": -18820.0, "attempt": 1}
+{"class": "ms07_RadarSite_C", "clock": "09:35:24", "kind": "activated", "n": 2, "plane_x": 230700.0, "plane_y": -215800.0, "points": 300, "start": true, "t": 174.8, "x": 13180.0, "y": -44490.0, "attempt": 1}
+{"clock": "09:35:24", "dist_m": 19780.0, "kind": "priority", "score": 0.05064, "t": 174.8, "target": "01_en_xsam_1_1", "weight": 5.6, "attempt": 1}
+{"clock": "09:35:24", "kind": "select_refused", "mark": 0, "special": false, "t": 174.8, "target": "01_en_xsam_1_1", "attempt": 1}
+{"callsign": "", "clock": "09:35:24", "dist_m": 19780.0, "kind": "target", "t": 174.8, "target": "01_en_xsam_1_1", "attempt": 1}
+{"class": "common_xsam_C", "clock": "09:35:24", "kind": "kind", "native": "AIGroundVehicle", "t": 174.8, "top_kmh": -1, "turn": -1, "why": "AIGroundVehicle", "attempt": 1}
+{"clock": "09:35:25", "kind": "radio", "speaker": "AWACS Bandog", "t": 176, "text": "Target radar facilities and AA weaponry.", "attempt": 1}
+{"clock": "09:35:27", "kind": "radio", "speaker": "AWACS Bandog", "t": 178.6, "text": "They're set up on rugged terrain and there's a lot of cloud cover.", "attempt": 1}
+{"alt_m": 3505, "clock": "09:35:28", "kind": "area", "now": true, "t": 179.2, "what": "in_cloud", "attempt": 1}
+{"alt_m": 3505, "clock": "09:35:28", "kind": "cloud_base", "t": 179.2, "attempt": 1}
+{"clock": "09:35:30", "kind": "radio", "speaker": "AWACS Bandog", "t": 181.5, "text": "You will be near thunderclouds.\nMan, you guys were born unlucky.", "attempt": 1}
+{"alt_m": 3136, "clock": "09:35:32", "kind": "area", "now": false, "t": 183.1, "what": "in_cloud", "attempt": 1}
+{"alt_m": 3136, "clock": "09:35:32", "kind": "cloud_base", "t": 183.1, "attempt": 1}
+{"clock": "09:35:35", "kind": "radio", "speaker": "Spare 8 Champ", "t": 185.9, "text": "Wait. Who's the dumbass who came up with this batshit plan?", "attempt": 1}
+{"clock": "09:35:38", "kind": "radio", "speaker": "AWACS Bandog", "t": 189.5, "text": "Just obey orders.", "attempt": 1}
+{"clock": "09:35:41", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 192.5, "text": "Air Force Base 444 Squadron, this is Cyclops 1.", "attempt": 1}
+{"clock": "09:35:46", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 196.7, "text": "The Cyclops and Strider squadrons currently contain seven aircraft.", "attempt": 1}
+{"clock": "09:35:49", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 200.2, "text": "Stand by. We'll be arriving shortly.", "attempt": 1}
+{"clock": "09:35:52", "kind": "radio", "speaker": "AWACS Bandog", "t": 203.5, "text": "Understood.", "attempt": 1}
+{"clock": "09:35:54", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 205.5, "text": "We're low on ammunition. It'll be hard to take on hostiles.", "attempt": 1}
+{"alt_m": 1449, "clock": "09:35:55", "kind": "area", "now": true, "t": 206.3, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1449, "clock": "09:35:55", "kind": "cloud_base", "t": 206.3, "attempt": 1}
+{"clock": "09:35:58", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 209, "text": "We'll have to rely on you guys to make it home.", "attempt": 1}
+{"alt_m": 1168, "clock": "09:35:58", "kind": "area", "now": false, "t": 209.3, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1168, "clock": "09:35:58", "kind": "cloud_base", "t": 209.3, "attempt": 1}
+{"clock": "09:36:01", "kind": "radio", "speaker": "AWACS Bandog", "t": 211.6, "text": "Cyclops 1, this is Bandog.\nWe need the job done on time.", "attempt": 1}
+{"alt_m": 950.4, "clock": "09:36:02", "kind": "area", "now": true, "t": 212.8, "what": "in_cloud", "attempt": 1}
+{"alt_m": 950.4, "clock": "09:36:02", "kind": "cloud_base", "t": 212.8, "attempt": 1}
+{"clock": "09:36:04", "kind": "radio", "speaker": "Cyclops 1 Wiseman", "t": 215.4, "text": "Bandog? Cool name.\nNice working with you, Mr. Guard Dog.", "attempt": 1}
+{"alt_m": 869.6, "clock": "09:36:05", "kind": "area", "now": false, "t": 216, "what": "in_cloud", "attempt": 1}
+{"alt_m": 869.6, "clock": "09:36:05", "kind": "cloud_base", "t": 216, "attempt": 1}
+{"clock": "09:36:10", "kind": "radio", "speaker": "AWACS Bandog", "t": 220.6, "text": "The terrain makes the airstream bumpy. Don't damage those planes.", "attempt": 1}
+{"clock": "09:36:14", "kind": "radio", "speaker": "Spare Squadron", "t": 225.4, "text": "The wind! I can't fly straight!", "attempt": 1}
+{"clock": "09:36:17", "kind": "radio", "speaker": "Spare 2 Count", "t": 228.3, "text": "Use the winds to guide you, amateurs!", "attempt": 1}
+{"clock": "09:36:20", "kind": "missile_warning", "level": "near", "t": 231, "attempt": 1}
+{"callsign": "", "clock": "09:36:20", "dist_m": 2223, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 231.1, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"above_ground_m": 604, "alt_m": 643.4, "clock": "09:36:20", "kind": "ground_recovery", "lowest_ahead_m": 133, "t": 231.2, "vz": -50.89, "attempt": 1}
+{"clock": "09:36:20", "dist_m": 2121, "kind": "defend", "miss_m": 33.24, "missile": "wp_msl_xsam_C_1", "t": 231.4, "tgo_s": 3, "attempt": 1}
+{"clock": "09:36:20", "dist_m": 2110, "kind": "flare", "missile": "wp_msl_xsam_C_1", "reason": "tracker", "t": 231.4, "tgo_s": 2.963, "attempt": 1}
+{"clock": "09:36:21", "dist_m": 1853, "kind": "evade", "miss_m": 17.58, "missile": "wp_msl_xsam_C_1", "t": 232, "tgo_s": 2.269, "attempt": 1}
+{"clock": "09:36:21", "dist_m": 1845, "kind": "defend", "miss_m": 18.82, "missile": "wp_msl_xsam_C_1", "t": 232, "tgo_s": 3.218, "attempt": 1}
+{"clock": "09:36:21", "kind": "radio", "speaker": "AWACS Bandog", "t": 232.1, "text": "Flares and chaff fired.", "attempt": 1}
+{"clock": "09:36:21", "dist_m": 1730, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 232.2, "attempt": 1}
+{"clock": "09:36:21", "closest_m": 1742, "flares_while_near": true, "flew_s": 1.254, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 232.4, "attempt": 1}
+{"clock": "09:36:22", "down": -1, "free_m": 888.8, "kind": "vision", "left": -1, "right": -1, "t": 232.7, "text": "obstacle: vision: free 694 m ahead the way it wants (711 m needed); flying +0 deg yaw, -8 deg pitch of centre, free 889 m", "up": -1, "attempt": 1}
+{"clock": "09:36:23", "down": -1, "free_m": 809.1, "kind": "vision", "left": -1, "right": -1, "t": 233.7, "text": "obstacle: vision: free 643 m ahead the way it wants (658 m needed); flying +0 deg yaw, -13 deg pitch of centre, free 809 m", "up": -1, "attempt": 1}
+{"clock": "09:36:24", "kills": 0, "kind": "time_split", "lanes": false, "order_t0": 174.7, "split": {"ahead": 4.96, "defend": 0.438, "recovery": 1.255, "transit": 53.34}, "t": 234.7, "attempt": 1}
+{"clock": "09:36:24", "down": -1, "free_m": 922.5, "kind": "vision", "left": -1, "right": -1, "t": 234.8, "text": "obstacle: vision: free 542 m ahead the way it wants (762 m needed); flying +3 deg yaw, +8 deg pitch of centre, free 922 m", "up": -1, "attempt": 1}
+{"clock": "09:36:24", "down": -1, "free_m": 564.8, "kind": "vision", "left": -1, "right": -1, "t": 235.4, "text": "obstacle: vision: free 470 m ahead the way it wants (531 m needed); flying +3 deg yaw, -4 deg pitch of centre, free 565 m", "up": -1, "attempt": 1}
+{"clock": "09:36:25", "down": -1, "free_m": 641.1, "kind": "vision", "left": -1, "right": -1, "t": 236, "text": "obstacle: vision: free 504 m ahead the way it wants (511 m needed); flying +3 deg yaw, -13 deg pitch of centre, free 641 m", "up": -1, "attempt": 1}
+{"above_ground_m": 295.9, "alt_m": 677.1, "clock": "09:36:26", "kind": "ground_recovery", "lowest_ahead_m": 260, "t": 236.6, "vz": 43.4, "attempt": 1}
+{"clock": "09:36:31", "down": -1, "free_m": 2171, "kind": "vision", "left": -1, "right": -1, "t": 241.6, "text": "obstacle: vision: free 1133 m ahead the way it wants (1447 m needed); flying +3 deg yaw, -4 deg pitch of centre, free 2171 m", "up": -1, "attempt": 1}
+{"alt_m": 961.4, "clock": "09:36:31", "kind": "area", "now": true, "t": 242.4, "what": "in_cloud", "attempt": 1}
+{"clock": "09:36:33", "kind": "missile_warning", "level": "very near", "t": 244, "attempt": 1}
+{"clock": "09:36:33", "kind": "flare", "reason": "warning", "t": 244, "attempt": 1}
+{"clock": "09:36:34", "kind": "radio", "speaker": "AWACS Bandog", "t": 244.7, "text": "Chaff and flares are running low.", "attempt": 1}
+{"above_ground_m": 724.5, "alt_m": 918.7, "clock": "09:36:34", "kind": "ground_recovery", "lowest_ahead_m": 48.06, "t": 244.9, "vz": 10.72, "attempt": 1}
+{"clock": "09:36:35", "dist_m": 839.4, "kind": "attack_run", "phase": "extending", "t": 246.4, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "09:36:36", "down": -1, "free_m": 2197, "kind": "vision", "left": -1, "right": -1, "t": 247.3, "text": "obstacle: vision: free 1309 m ahead the way it wants (1465 m needed); flying -6 deg yaw, -20 deg pitch of centre, free 2197 m", "up": -1, "attempt": 1}
+{"clock": "09:36:38", "kind": "radio", "speaker": "Spare Squadron", "t": 249.1, "text": "This wind!", "attempt": 1}
+{"clock": "09:36:44", "dist_m": 2002, "kind": "attack_run", "phase": "running in", "t": 255.2, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "09:36:46", "kind": "missile_warning", "level": "near", "t": 257, "attempt": 1}
+{"callsign": "", "clock": "09:36:46", "dist_m": 2315, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_1", "t": 257.1, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "09:36:47", "dist_m": 2203, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_1", "t": 257.9, "attempt": 1}
+{"clock": "09:36:47", "closest_m": 2203, "flares_while_near": false, "flew_s": 0.847, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_1", "t": 258, "attempt": 1}
+{"clock": "09:36:48", "down": -1, "free_m": 1078, "kind": "vision", "left": -1, "right": -1, "t": 258.7, "text": "obstacle: vision: free 503 m ahead the way it wants (718 m needed); flying -30 deg yaw, +30 deg pitch of centre, free 1078 m", "up": -1, "attempt": 1}
+{"alt_m": 926.8, "clock": "09:36:48", "kind": "area", "now": false, "t": 258.8, "what": "in_cloud", "attempt": 1}
+{"clock": "09:36:48", "down": -1, "free_m": 484.8, "kind": "vision", "left": -1, "right": -1, "t": 259.3, "text": "obstacle: vision: free 399 m ahead the way it wants (470 m needed); flying -40 deg yaw, -4 deg pitch of centre, free 485 m", "up": -1, "attempt": 1}
+{"above_ground_m": 593.7, "alt_m": 923.3, "clock": "09:36:48", "kind": "ground_recovery", "lowest_ahead_m": 17.2, "t": 259.5, "vz": -9.913, "attempt": 1}
+{"clock": "09:36:49", "down": -1, "free_m": 374.7, "kind": "vision", "left": -1, "right": -1, "t": 259.9, "text": "obstacle: vision: free 310 m ahead the way it wants (360 m needed); flying -30 deg yaw, -4 deg pitch of centre, free 375 m", "up": -1, "attempt": 1}
+{"clock": "09:36:49", "down": -1, "free_m": 600, "kind": "vision", "left": -1, "right": -1, "t": 260.4, "text": "obstacle: vision: free 212 m ahead the way it wants (360 m needed); flying -30 deg yaw, +13 deg pitch of centre, free 600 m", "up": -1, "attempt": 1}
+{"clock": "09:36:50", "down": -1, "free_m": 600, "kind": "vision", "left": -1, "right": -1, "t": 260.9, "text": "obstacle: vision: free 112 m ahead the way it wants (361 m needed); flying -15 deg yaw, +20 deg pitch of centre, free 600 m", "up": -1, "attempt": 1}
+{"callsign": "", "clock": "09:36:50", "dist_m": 4902, "from": "01_en_xsam_2_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_3", "t": 261.3, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "09:36:50", "down": -1, "free_m": 625.2, "kind": "vision", "left": -1, "right": -1, "t": 261.4, "text": "obstacle: vision: free 62 m ahead the way it wants (417 m needed); flying -10 deg yaw, +20 deg pitch of centre, free 625 m", "up": -1, "attempt": 1}
+{"clock": "09:36:51", "down": -1, "free_m": 679.3, "kind": "vision", "left": -1, "right": -1, "t": 261.9, "text": "obstacle: vision: free 26 m ahead the way it wants (453 m needed); flying -6 deg yaw, +20 deg pitch of centre, free 679 m", "up": -1, "attempt": 1}
+{"clock": "09:36:51", "down": -1, "free_m": 43.73, "kind": "vision", "left": -1, "right": -1, "t": 262.4, "text": "obstacle: vision: free 6 m ahead the way it wants (418 m needed); flying -6 deg yaw, +20 deg pitch of centre, free 44 m", "up": -1, "attempt": 1}
+{"alt_m": 1029, "clock": "09:36:51", "kind": "area", "now": true, "t": 262.6, "what": "in_cloud", "attempt": 1}
+{"clock": "09:36:52", "dist_m": 2000, "kind": "attack_run", "phase": "extending", "t": 262.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "09:36:53", "dist_m": 4401, "from": "01_en_xsam_2_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_3", "t": 263.7, "attempt": 1}
+{"clock": "09:36:53", "closest_m": 4407, "flares_while_near": false, "flew_s": 2.515, "from": "01_en_xsam_2_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_3", "t": 263.8, "attempt": 1}
+{"alt_m": 1383, "clock": "09:36:56", "kind": "area", "now": false, "t": 267.4, "what": "in_cloud", "attempt": 1}
+{"clock": "09:36:59", "kind": "missile_warning", "level": "near", "t": 270, "attempt": 1}
+{"callsign": "", "clock": "09:36:59", "dist_m": 1766, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_5", "t": 270.1, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "09:36:59", "kind": "radio", "speaker": "Spare 8 Champ", "t": 270.4, "text": "Missile incoming! Don't get hit!", "attempt": 1}
+{"clock": "09:37:00", "dist_m": 1671, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_5", "t": 271, "attempt": 1}
+{"clock": "09:37:00", "closest_m": 1669, "flares_while_near": false, "flew_s": 1.051, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_5", "t": 271.1, "attempt": 1}
+{"clock": "09:37:01", "dist_m": 2006, "kind": "attack_run", "phase": "running in", "t": 271.8, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "09:37:02", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 273.2, "text": "Anti-surface attacks in this weather?\nGimme a break, man.", "attempt": 1}
+{"above_ground_m": 978.2, "alt_m": 1298, "clock": "09:37:05", "kind": "ground_recovery", "lowest_ahead_m": 148, "t": 275.7, "vz": -10.14, "attempt": 1}
+{"alt_m": 1295, "clock": "09:37:05", "kind": "area", "now": true, "t": 275.9, "what": "in_cloud", "attempt": 1}
+{"clock": "09:37:06", "kind": "radio", "speaker": "Spare 2 Count", "t": 276.8, "text": "Man, I need missions that can help me improve my score. Not this crap.", "attempt": 1}
+{"alt_m": 1479, "clock": "09:37:09", "kind": "area", "now": false, "t": 280, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1457, "clock": "09:37:11", "kind": "area", "now": true, "t": 281.7, "what": "in_cloud", "attempt": 1}
+{"clock": "09:37:12", "kind": "missile_warning", "level": "near", "t": 283, "attempt": 1}
+{"callsign": "", "clock": "09:37:12", "dist_m": 1413, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 283.2, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "09:37:13", "dist_m": 1027, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 284.1, "attempt": 1}
+{"clock": "09:37:13", "closest_m": 1034, "flares_while_near": false, "flew_s": 1.041, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 284.2, "attempt": 1}
+{"above_ground_m": 342.8, "alt_m": 1191, "clock": "09:37:15", "kind": "ground_recovery", "lowest_ahead_m": 395.5, "t": 285.6, "vz": -59.48, "attempt": 1}
+{"above_ground_m": 598.2, "alt_m": 1143, "clock": "09:37:20", "kind": "ground_recovery", "lowest_ahead_m": 7.727, "t": 291.2, "vz": 7.23, "attempt": 1}
+{"clock": "09:37:24", "kills": 0, "kind": "time_split", "lanes": false, "order_t0": 174.7, "split": {"ahead": 10.78, "break": 0.948, "defend": 0.438, "offnose": 39.77, "recovery": 14.72, "transit": 53.34}, "t": 294.7, "attempt": 1}
+{"clock": "09:37:25", "down": -1, "free_m": 579.6, "kind": "vision", "left": -1, "right": -1, "t": 296.4, "text": "obstacle: vision: free 548 m ahead the way it wants (558 m needed); flying -3 deg yaw, -20 deg pitch of centre, free 580 m", "up": -1, "attempt": 1}
+{"clock": "09:37:26", "down": -1, "free_m": 555.9, "kind": "vision", "left": -1, "right": -1, "t": 296.9, "text": "obstacle: vision: free 534 m ahead the way it wants (541 m needed); flying +0 deg yaw, -20 deg pitch of centre, free 556 m", "up": -1, "attempt": 1}
+{"clock": "09:37:26", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 297.3, "text": "Careful. Don't crash into the mountains.", "attempt": 1}
+{"above_ground_m": 584.3, "alt_m": 1480, "clock": "09:37:28", "kind": "ground_recovery", "lowest_ahead_m": 113.9, "t": 299, "vz": 20.24, "attempt": 1}
+{"clock": "09:37:29", "kind": "radio", "speaker": "AWACS Bandog", "t": 299.9, "text": "And unless you have a death wish, watch your altitude.", "attempt": 1}
+{"clock": "09:37:29", "dist_m": 1389, "kind": "attack_run", "phase": "extending", "t": 300.5, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "09:37:30", "kind": "missile_warning", "level": "near", "t": 301.5, "attempt": 1}
+{"clock": "09:37:34", "dist_m": 2004, "kind": "attack_run", "phase": "running in", "t": 304.9, "target": "01_en_xsam_1_1", "attempt": 1}
+{"clock": "09:37:34", "down": -1, "free_m": 1032, "kind": "vision", "left": -1, "right": -1, "t": 304.9, "text": "obstacle: vision: free 782 m ahead the way it wants (935 m needed); flying -40 deg yaw, -30 deg pitch of centre, free 1032 m", "up": -1, "attempt": 1}
+{"above_ground_m": 941.4, "alt_m": 1554, "clock": "09:37:43", "kind": "ground_recovery", "lowest_ahead_m": 122.7, "t": 313.7, "vz": -60.83, "attempt": 1}
+{"clock": "09:37:43", "down": -1, "free_m": 1246, "kind": "vision", "left": -1, "right": -1, "t": 313.9, "text": "obstacle: vision: free 760 m ahead the way it wants (830 m needed); flying +3 deg yaw, +0 deg pitch of centre, free 1246 m", "up": -1, "attempt": 1}
+{"callsign": "", "clock": "09:37:43", "dist_m": 1716, "from": "01_en_xsam_1_1", "homing": "infrared", "kind": "missile_at_me", "missile": "wp_msl_xsam_C_0", "t": 314.5, "top_kmh": 8333, "turn": 12.75, "attempt": 1}
+{"clock": "09:37:43", "kind": "missile_warning", "level": "near", "t": 314.5, "attempt": 1}
+{"clock": "09:37:43", "down": -1, "free_m": 1246, "kind": "vision", "left": -1, "right": -1, "t": 314.5, "text": "obstacle: vision: free 634 m ahead the way it wants (831 m needed); flying +3 deg yaw, +0 deg pitch of centre, free 1246 m", "up": -1, "attempt": 1}
+{"clock": "09:37:44", "kind": "radio", "speaker": "Spare 11 Tabloid", "t": 315, "text": "Missile incoming! Evade!", "attempt": 1}
+{"clock": "09:37:44", "down": -1, "free_m": 953.5, "kind": "vision", "left": -1, "right": -1, "t": 315.1, "text": "obstacle: vision: free 516 m ahead the way it wants (636 m needed); flying +6 deg yaw, +0 deg pitch of centre, free 953 m", "up": -1, "attempt": 1}
+{"clock": "09:37:45", "down": -1, "free_m": 883.4, "kind": "vision", "left": -1, "right": -1, "t": 315.6, "text": "obstacle: vision: free 414 m ahead the way it wants (589 m needed); flying +3 deg yaw, +4 deg pitch of centre, free 883 m", "up": -1, "attempt": 1}
+{"clock": "09:37:45", "down": -1, "free_m": 600, "kind": "vision", "left": -1, "right": -1, "t": 316.2, "text": "obstacle: vision: free 337 m ahead the way it wants (360 m needed); flying +3 deg yaw, +4 deg pitch of centre, free 600 m", "up": -1, "attempt": 1}
+{"clock": "09:37:46", "down": -1, "free_m": 669.6, "kind": "vision", "left": -1, "right": -1, "t": 316.7, "text": "obstacle: vision: free 252 m ahead the way it wants (446 m needed); flying +3 deg yaw, +4 deg pitch of centre, free 670 m", "up": -1, "attempt": 1}
+{"clock": "09:37:46", "kind": "missile_warning", "level": "very near", "t": 316.8, "attempt": 1}
+{"clock": "09:37:46", "dist_m": 788.9, "kind": "flare", "missile": "wp_msl_xsam_C_0", "reason": "tracker", "t": 316.8, "tgo_s": 1.497, "attempt": 1}
+{"clock": "09:37:46", "dist_m": 788.9, "kind": "evade", "miss_m": 197.3, "missile": "wp_msl_xsam_C_0", "t": 316.8, "tgo_s": 1.497, "attempt": 1}
+{"clock": "09:37:46", "dist_m": 777.4, "from": "01_en_xsam_1_1", "kind": "missile_lost_lock", "missile": "wp_msl_xsam_C_0", "t": 316.8, "attempt": 1}
+{"clock": "09:37:46", "down": -1, "free_m": 600, "kind": "vision", "left": -1, "right": -1, "t": 317.3, "text": "obstacle: vision: free 170 m ahead the way it wants (360 m needed); flying +3 deg yaw, +0 deg pitch of centre, free 600 m", "up": -1, "attempt": 1}
+{"clock": "09:37:47", "down": -1, "free_m": 600, "kind": "vision", "left": -1, "right": -1, "t": 317.9, "text": "obstacle: vision: free 86 m ahead the way it wants (360 m needed); flying +0 deg yaw, +0 deg pitch of centre, free 600 m", "up": -1, "attempt": 1}
+{"clock": "09:37:50", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 321.3, "text": "Enemy sighted! Closing fast!", "attempt": 1}
+{"clock": "09:37:53", "kind": "radio", "speaker": "Erusean Ground Unit", "t": 324.1, "text": "You sure? In this weather?", "attempt": 1}
+{"above_ground_m": 977.5, "alt_m": 1088, "clock": "09:37:54", "kind": "ground_recovery", "lowest_ahead_m": 76.29, "t": 324.8, "vz": 12.86, "attempt": 1}
+{"clock": "09:37:54", "kind": "missile_warning", "level": "near", "t": 325, "attempt": 1}
+{"clock": "09:37:55", "closest_m": 788.2, "flares_while_near": true, "flew_s": 11.49, "from": "01_en_xsam_1_1", "kind": "missile_gone", "missile": "wp_msl_xsam_C_0", "t": 326, "attempt": 1}
+{"alt_m": 1494, "clock": "09:37:58", "kind": "area", "now": false, "t": 329.5, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1679, "clock": "09:38:04", "kind": "area", "now": true, "t": 335.3, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1638, "clock": "09:38:05", "kind": "area", "now": false, "t": 336, "what": "in_cloud", "attempt": 1}
+{"alt_m": 1591, "clock": "09:38:06", "kind": "area", "now": true, "t": 336.7, "what": "in_cloud", "attempt": 1}
+{"above_ground_m": 1041, "alt_m": 1547, "clock": "09:38:06", "kind": "ground_recovery", "lowest_ahead_m": 70.66, "t": 337.3, "vz": -111.7, "attempt": 1}
+{"clock": "09:38:07", "kind": "missile_warning", "level": "near", "t": 337.9, "attempt": 1}
+{"clock": "09:38:08", "down": -1, "free_m": 914.2, "kind": "vision", "left": -1, "right": -1, "t": 339.2, "text": "obstacle: vision: free 405 m ahead the way it wants (609 m needed); flying -30 deg yaw, +20 deg pitch of centre, free 914 m", "up": -1, "attempt": 1}
+{"clock": "09:38:09", "down": -1, "free_m": 1276, "kind": "vision", "left": -1, "right": -1, "t": 340.2, "text": "obstacle: vision: free 849 m ahead the way it wants (850 m needed); flying -40 deg yaw, -30 deg pitch of centre, free 1276 m", "up": -1, "attempt": 1}
+{"clock": "09:38:10", "kind": "radio", "speaker": "AWACS Bandog", "t": 341.4, "text": "Don't ice up in there!", "attempt": 1}
+{"callsign": "", "clock": "09:38:12", "kind": "death", "t": 342.9, "who": "AcePlayerPawn_typn_s03_C_0", "attempt": 1}
+{"clock": "09:38:12", "kind": "player_dead", "t": 342.9, "attempt": 1}
+{"alt_m": 1383, "amount": 120, "clock": "09:38:12", "health": 0, "kind": "damage", "t": 342.9, "attempt": 1}
+{"clock": "09:38:13", "kind": "radio", "speaker": "AWACS Bandog", "t": 343.6, "text": "Spare 15 is out of commission!", "attempt": 1}
+{"clock": "09:38:13", "kind": "frozen", "t": 344.5, "attempt": 1}
+{"audit_expected": 0, "audit_launched": 0, "audit_plans": 0, "chains": 0, "clock": "09:38:13", "defends": 2, "final": true, "gun_bursts": 0, "gun_dmg": 0, "gun_kills": 0, "gun_s": 0, "kill_times": {"agile": 35, "ground": 10, "heli": 12, "large": 30, "plane": 20}, "kills": 0, "kind": "time_split", "kind_kills": {}, "kind_time": {}, "load_s": -1, "lock_base_s": -1, "lock_rate_dps": -1, "locks": 0, "order_t0": 174.7, "split": {"ahead": 15.49, "break": 1.331, "defend": 0.438, "offnose": 73.45, "recovery": 24.19, "transit": 53.34}, "t": 344.5, "turn_dps": 65.77, "turn_samples": 1361, "why": "stop", "attempt": 1}
+{"clock": "09:38:13", "kind": "prediction_stats", "t": 344.5, "text": "no checks yet", "attempt": 1}

@@ -1768,7 +1768,12 @@ local function groundRun(c, key, st, loc, F, alt)
     if cloudBase and cloudMission == (missionLevel() or "?") and (not cb or cloudBase < cb) then cb = cloudBase end
     local outH, inH, minAbove, maxDive = 700, 550, 250, -0.47
     c.underClouds = nil
-    if cb then
+    -- (not among obstacles: the vision safety net reported one in the last 30 s. 20 Oct 2026,
+    -- Mission 07: under its 820-870 m cloud base the runs were flown among rock pillars rising
+    -- into the clouds, and two attempts ended against them in under three minutes; a shorter
+    -- lock range in cloud costs less than that)
+    local rugged = ap.visBlockedAt and (now() - ap.t0) - ap.visBlockedAt < 30
+    if cb and not rugged then
         local ground = alt - above
         local cap = cb - 80 - ground
         if cap < 650 then
@@ -1777,6 +1782,8 @@ local function groundRun(c, key, st, loc, F, alt)
             c.underClouds = cb
         end
     end
+    -- a target whose line was blocked by terrain: the run from high, diving steeply (above)
+    if c.runHigh and c.runHigh[key] then outH, inH, minAbove, maxDive = 1600, 1600, 500, -0.8 end
     local run = c.runs[key]
     if not run then
         local off = math.deg(math.acos(clamp((h[1] * F[1] + h[2] * F[2]) / math.max(math.sqrt(F[1] ^ 2 + F[2] ^ 2), 0.01), -1, 1)))
@@ -1789,6 +1796,35 @@ local function groundRun(c, key, st, loc, F, alt)
     if run == "in" and ap and ap.scoreMode and dm < 1600 then
         local offNow = math.deg(math.acos(clamp((h[1] * F[1] + h[2] * F[2]) / math.max(math.sqrt(F[1] ^ 2 + F[2] ^ 2), 0.01), -1, 1)))
         if offNow > 35 then run = "out" end
+    end
+    -- terrain between the plane and the target, more than 150 m short of it (one ray trace,
+    -- five times a second, within 3 km): no running in at it; it is set aside for 20 s, so another
+    -- target is taken, and this one comes back from another side later (20 Oct 2026, Mission 07:
+    -- a 25-degree dive at a SAM site 1.5-2 km away behind rock, the lock "invalid" all along,
+    -- ended in the rock; extending alone flip-flopped at 2.6 km with the "far enough out" rule)
+    -- (inside the turn-back distance only, 2.6 km away from the run's ground: checked from 3 km,
+    -- the next run "from above" was judged again before it had climbed, and set aside at once)
+    local outToL = c.underClouds and 2000 or ((ap and ap.scoreMode) and 1500 or 2600)
+    if run == "in" and dm < outToL and Aware and Aware.losBlocked then
+        if now() - (c.runLosAt or -100) > 0.2 then
+            c.runLosAt = now()
+            c.runLosShort = Aware.losBlocked({ loc.X, loc.Y, loc.Z }, { st.X, st.Y, st.Z }, 3)
+        end
+        if c.runLosShort and c.runLosShort > 150 then
+            run = "out"
+            -- (the first time, the next run at it comes from above: a target in a canyon is seen
+            -- from high, not from 550 m at 3 km; 20 Oct 2026, Mission 07's radar sites and SAMs,
+            -- 10 blocked runs in 5 minutes. Set aside only when blocked from above too)
+            c.runHigh = c.runHigh or {}
+            local how = "from above next"
+            if c.runHigh[key] then
+                if c.skip then c.skip[key] = now() + 20 end
+                how = "set aside 20 s"
+            end
+            c.runHigh[key] = true
+            event("run_blocked", { target = key, dist_m = dm, short_m = c.runLosShort, next = how })
+            c.runLosShort = nil
+        end
     end
     if run == "in" and dm < 2500 then c.runInAt = now() end
     -- under clouds the runs are low and level: turn back at the missile's 2 km lock range
@@ -3935,7 +3971,7 @@ local function apStep(p, dt)
             if not cR.resupply.landing then
                 cR.resupply.landing = now()
                 local dl = math.sqrt((cR.resupply.x - loc.X) ^ 2 + (cR.resupply.y - loc.Y) ^ 2) / 10
-                event("resupply_landing", { line = cR.resupply.name, dist_m = dl, after_s = now() - ap.t0 - cR.resupply.t0 })
+                event("resupply_landing", { line = cR.resupply.name, dist_m = dl, after_s = now() - cR.resupply.t0 })
                 log(string.format("  resupply: the landing has begun (%.0f m from the line)", dl))
             end
             CoopKeys_Set("")
@@ -4161,6 +4197,7 @@ local function apStep(p, dt)
                 elseif why then why = "obstacle: " .. why end
             end
             ap.visAim, ap.visWhy = d, why
+            if why then ap.visBlockedAt = t end
             if why and why ~= ap.visLogged and t - (ap.visLogAt or -100) > 0.5 then
                 ap.visLogged, ap.visLogAt = why, t
                 local W = Vision.last and Vision.last.walls
@@ -4448,6 +4485,14 @@ local function apStep(p, dt)
     -- pull-out stays tight (20 Oct 2026: unbraked, the first dives gathered speed, the pull-out
     -- came at 480-660 m, before the planned shot, two times in three)
     if vertical and ap.combat and ap.combat.dive then speed = (ap.combat.dive.phase == 0) and 2000 or 450 end
+    -- Obstacles close ahead (the vision safety net in a fight): slow to 500 km/h for 3 s after the
+    -- last one, braking, so the turns away are tighter and come in time (20 Oct 2026, Mission 07's
+    -- first attempt: 75 s in, flying 540-830 km/h under an 817 m cloud base among cliffs that
+    -- rise into the clouds, the net reported a blocked way six times in 13 s and the plane hit a
+    -- rock face anyway)
+    -- (the next attempt still went in at 830 km/h between reports and hit a pillar 3 minutes in:
+    -- terrain like that is all around, so the caution lasts 20 s after the last report, at 550)
+    if ap.goal.kind == "attack" and ap.visBlockedAt and t - ap.visBlockedAt < 20 then speed = math.min(speed, 550) end
     if ap.goal.kind == "route" and ap.routeKmh then speed = math.min(ap.routeKmh, ap.goal.maxspeed or 9999) end
     -- The beams as moving obstacles, four times a second: for the next 2 km of route, where
     -- every nearby beam will point at the moment the plane reaches each point (each beam's

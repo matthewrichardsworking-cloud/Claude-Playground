@@ -1679,6 +1679,17 @@ that had your two suggestions from the morning, then on to Mission 07 by itself.
 - The copy's graphics are turned down (your request): quality settings low, 60 fps cap, same
   resolution; only the copy's own settings file, re-applied at every restart.
 
+**Mission 07 First Contact** (20 Oct, 09:29-10:06): not cleared in six attempts. It is a terrain
+mission: radar and SAM sites in canyons among rock pillars and cliffs rising into a cloud base of
+about 820-870 m, in rain. Four attempts ended against rock within 73-169 seconds. Three general
+changes helped (slowing to 550 km/h near obstacles the vision net reports; not keeping under the
+cloud base among them; not running in at a target with rock in the line, and coming back from
+above); one attempt then lived 3.6 minutes with no damage to speak of. What is still missing (in
+`playtests\missions\m07\notes.md`): turning away from walls too tall to climb, cruising above
+the highest ground around rather than above the ground directly below, and steep attacks from
+above on canyon targets outside score races. The session stopped there: the copy is closed, the
+IN-USE note removed, and your real saves were checked after every run (unchanged).
+
 **Where it stood before that** (20 Oct, 06:30): not cleared yet; best 23,200 of 24,000; this morning's attempts
 19,620-22,000. Now that the missiles and the minutes run out together, about 25,500 points is
 the most this loadout could make with nothing wasted, so 24,000 needs a nearly perfect phase. One

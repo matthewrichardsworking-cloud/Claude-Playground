@@ -22,6 +22,13 @@ section 10). It builds on what the workbench already proved (sections 5, 7 and 9
 - **Missile economy** from 1.1 times what is left again; spare LAAMs make air targets count 1.5
   times against the lanes.
 - **Result**: Mission 06's phase 1 won with 24,480 (rank A); on to Mission 07.
+- **Mission 07 (terrain), first day**: slow to 550 km/h for 20 s after each obstacle the vision
+  net reports (`ap.visBlockedAt`); among obstacles the ground runs leave the cloud-base cap; a
+  ground run with rock in the line (one `Aware.losBlocked` trace, inside the turn-back distance)
+  extends, comes back from 1,600 m diving up to about 40 degrees, and only then sets the target
+  aside (event `run_blocked`). Not cleared; still missing: turning away from walls too tall to
+  climb, cruising above the highest ground around, steep attacks on canyon targets outside the
+  lanes (`playtests\missions\m07\notes.md`).
 
 ## Status (20 Oct 2026, 06:30): missiles and minutes run out together
 

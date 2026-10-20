@@ -3,8 +3,10 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (20 Oct 2026, 09:30): Mission 06 CLEARED (24,480 of 24,000, rank A); the campaign order
-is on Mission 07.** The last steps were the owner's own ideas: vertical attacks on targets beneath
+**Status (20 Oct 2026, 10:10): Mission 06 CLEARED (24,480 of 24,000, rank A); Mission 07 not yet
+(six attempts: a terrain mission, canyons and cliffs into low cloud; four ended against rock;
+the work still needed is listed in `playtests\missions\m07\notes.md`). The session stopped there;
+the copy is closed and your real saves are unchanged.** The last steps were the owner's own ideas: vertical attacks on targets beneath
 the plane (a split-S or a loop onto them; about twice the launches a minute while diving), and the
 return line, which the bot now uses to reload when its missiles would run short (the landing, menu
 and take-off stop the phase clock). Details: workbench section 17 and
