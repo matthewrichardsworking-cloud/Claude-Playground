@@ -1768,11 +1768,11 @@ the plane from the game and the bot's own logs; nothing is written for Mission 0
   22 trucks, and the "take the game's lock" rule flip-flopped 143 times (now only for a target the
   game will not select, at most once in 5 s); on the second the plane was lost 6.5 minutes in,
   most likely colliding with a UAV it was chasing.
-- **Next steps**: Mission 08's score phase was cleared twice in eleven tries (22,690 and 22,940); the clearest loss is
-  the fighter rule (commit to aircraft after the plane, your Mission 06 advice), which in a score
-  phase held the plane 90 s on F-15Cs for 850 points while the lanes' targets paid two to three
-  times as much a second; weighing that commitment on points a second unless the plane's survival
-  is at stake is the first thing to try. Then the endgame of a score phase (single high-value
+- **Next steps**: Mission 08's score phase was cleared twice in fifteen tries (22,690 and 22,940).
+  The fighter rule (commit to aircraft after the plane, your Mission 06 advice) had held the plane
+  90 s on F-15Cs for 850 points while the lanes paid two to three times as much a second; in the
+  last hour it was made to weigh that (only while the air pays at least half, or under half
+  health): four tries at 20,820-21,400, a higher and tighter spread, no clear yet. Then the endgame of a score phase (single high-value
   targets a few km off once the area near the plane is worked out), and phase 2's trucks. The
   wargame (`tools\maneuver-sim.py`) is good for terrain and approach geometry but smooths thin
   rock pillars away: margins it suggests need a live check.

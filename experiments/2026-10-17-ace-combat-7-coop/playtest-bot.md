@@ -40,6 +40,9 @@ section 10). It builds on what the workbench already proved (sections 5, 7 and 9
   when the damage is the missile's (10 or more at once, within 0.3 s before to 0.5 s after its
   end, the missile last seen within 200 m, the plane over 30 m above the ground). Events `dodge`,
   `dodge_scale`.
+- **Fighters in score phases**: the commitment to an aircraft after the plane (the furball rule) is
+  taken only while the air targets pay at least half the lanes' points a second, or below half
+  health (event `furball_declined`; Mission 08: 90 s on F-15Cs for 850 points had cost a phase).
 - **What dies with a kill** (`killTally.chainNote` / `chainValue` in main.lua, from the death
   hook): per class, the kills, the candidates within 400 m of each, and the points of enemies the
   bot did not fire at that died within 1.5 s and 400 m; points per neighbour times a target's live

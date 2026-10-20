@@ -31,6 +31,10 @@ T-90 tanks, two AH-64s, six F-15Cs.
 | 14:51 (camp52, the lock rule narrowed, fresh start) | failed on time: 17,900 at 300 s | 11,750 by 124 s, then 1,400 in two minutes: 90 s committed to the F-15Cs "after us" (the furball rule) for one F-15C (550) and two AA guns, while the lanes rated their targets at 38-73 points a second against 22-31 for the air target |
 | 14:57 (camp52, 2, from the checkpoint) | **phase 1 CLEARED again: 22,940** (15:02) | 11,150 by 124 s, 21,440 by 245 s, health 118 |
 | 15:02 (camp52, 2, phase 2) | shot down or crashed at 15:08:39 (about 6.5 minutes in) | health 118 to 77 by about 600 s (missile hits from UAVs), then 77 to 0 at once at 920 m above the ground, diving 25 degrees at 887 km/h with the nose 2 degrees off a UAV it was chasing: most likely a collision with it (not confirmed); the score 25,060; the session's six hours ended here and the copy was closed |
+| 15:14 (camp53, the fighter rule weighed, fresh start) | failed on time: 21,400 at 300 s | health 120 throughout; five commitments to F-15Cs declined (the lanes at 70-136 points a second against 34-42 for the air), two taken where the air paid enough |
+| 15:20 (camp53, 2, from the checkpoint) | failed on time: 20,820 | health 120; 20,120 by 245 s, then 700 in the last 55 s (the endgame) |
+| 15:25 (camp53, 3) | failed on time: 21,290 | health 80 |
+| 15:30 (camp53, 4) | failed on time: 21,190 | health 118; the session ended here (15:36), the copy closed |
 
 ## What dies with a kill
 
@@ -46,7 +50,11 @@ that sets nothing off stays at its own points.
 
 ## Next steps (20 Oct 2026, 14:30)
 
-1. The F-15Cs (550 points each) hunting the plane: in camp52 the furball rule (commit to aircraft
+1. (Done at 15:12, camp53: in a score phase the commitment to a fighter after the plane is taken only
+   while the air pays at least half what the lanes do a second, or under half health. Four tries:
+   21,400, 20,820, 21,290, 21,190 at 80-120 health: a higher, tighter spread than the nine tries
+   before (17,900-22,940, two clears), but no clear yet; kept, the question open.) Before it:
+   the F-15Cs (550 points each) hunting the plane: in camp52 the furball rule (commit to aircraft
    after it, the owner's Mission 06 advice) held the plane 90 s on them for 850 points while the
    lanes rated their own targets at 38-73 points a second against 22-31; in camp51 their missiles
    cost five full breaks in the last minute. In a score phase the commitment could be weighed on

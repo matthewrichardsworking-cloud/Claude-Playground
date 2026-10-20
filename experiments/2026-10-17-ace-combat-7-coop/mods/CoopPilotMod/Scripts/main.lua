@@ -2463,6 +2463,22 @@ local function lanePlan(c, loc, F, t)
         local cl = locOf(cur.obj)
         if not cl or (cl.X - loc.X) ^ 2 + (cl.Y - loc.Y) ^ 2 + (cl.Z - loc.Z) ^ 2 > 50000 ^ 2 then cur = nil end
     end
+    -- ...and only when the air pays: the air targets' rate at least half the lanes' here, or the
+    -- plane below half its health (then its survival comes first). 20 Oct 2026, Mission 08: 90 s
+    -- committed to F-15Cs after it for 850 points while the lanes rated their targets at 38-73
+    -- points a second against 22-31 for the air, and the phase ended 4,000 short.
+    if not cur and fb and c.laneRateS and c.laneRateS > 0 and airRate < 0.5 * c.laneRateS then
+        local pp = playerPlane()
+        local hpN, hpM = pp and call(pp, "GetHealth"), pp and call(pp, "GetMaxHealth")
+        local healthy = not (hpN and hpM and hpM > 0) or hpN / hpM > 0.5
+        if healthy then
+            if t - (c.furDeclAt or -100) > 5 then
+                c.furDeclAt = t
+                event("furball_declined", { target = objName(fb), air_rate = airRate, lane_rate = c.laneRateS })
+            end
+            fb = nil
+        end
+    end
     if not cur and fb then
         cur = { obj = fb, name = objName(fb), untilT = t + 10, t0 = t }
         event("furball", { target = cur.name, dist_m = fbD / 10, target_kind = gameKind(fb) })

@@ -3,7 +3,7 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (20 Oct 2026, 15:15): Mission 07 COMPLETED (13:38, first attempt of that build, all three
+**Status (20 Oct 2026, 15:40): Mission 07 COMPLETED (13:38, first attempt of that build, all three
 phases); Mission 08's score phase CLEARED (22,690 of 22,000), its second phase not yet.** You asked
 for general improvement to the bot's pathfinding, manoeuvring, knowledge of its own aircraft,
 decision making and decisiveness, with Mission 07 as the test. New and general (nothing written for
@@ -20,12 +20,14 @@ firing at the ace Mihaly). Mission 07's first phase went from 545 s this morning
 health; the escort phase, failed six times while the target choice was worked out, was cleared with
 no recon plane lost; Mihaly broke off once the bot had taken 120 of his 320 health. Mission 08
 (never seen before, a 22,000-point score race over an oil field): 15,000-16,000 with the LAAM,
-17,900-21,750 with the 8AGM, and cleared twice (22,690 and 22,940) in eleven tries; it also learned
+17,900-21,750 with the 8AGM, and cleared twice (22,690 and 22,940) in fifteen tries; it also learned
 that 44% of its points there came from tanks its hits set off, and now counts that in its choices.
-The phase after it (fuel trucks escaping in a sandstorm) failed once, and once the plane was lost
-6.5 minutes in (most likely colliding with a drone it chased). The copy is closed, the in-use note
-removed, and your real saves were checked after every run (unchanged). Details: workbench section
-18, `playtests\missions\m07\notes.md` and `playtests\missions\m08\notes.md`.
+In the last hour its commitment to fighters chasing it was made to weigh what they pay against the
+ground targets (four tries at 20,820-21,400, more even, no clear yet). The phase after it (fuel
+trucks escaping in a sandstorm) failed once, and once the plane was lost 6.5 minutes in (most likely
+colliding with a drone it chased). The copy is closed, the in-use note removed, and your real saves
+were checked after every run (unchanged). Details: workbench section 18,
+`playtests\missions\m07\notes.md` and `playtests\missions\m08\notes.md`.
 
 **Status (20 Oct 2026, 10:10): Mission 06 CLEARED (24,480 of 24,000, rank A); Mission 07 not yet
 (six attempts: a terrain mission, canyons and cliffs into low cloud; four ended against rock;
