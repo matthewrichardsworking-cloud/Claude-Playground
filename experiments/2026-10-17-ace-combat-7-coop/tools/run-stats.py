@@ -222,6 +222,11 @@ def stats_for(events, log_lines, t_from=None, t_to=None):
                         sum(1 for e in ev if e.get("kind") == "air_shot_end" and e.get("fired")))
     out["snaps"] = sum(1 for e in ev if e.get("kind") == "gun_snap")
     out["furballs"] = sum(1 for e in ev if e.get("kind") == "furball")
+    # the area moves: each move started (next_group) and the leaving rule's departures
+    out["moves"] = [(round((e["t"] - t0) / 60, 1), int(e.get("points") or 0), round(float(e.get("dist_m") or 0) / 1000, 1))
+                    for e in ev if e.get("kind") == "next_group"]
+    out["leaves"] = [(round((e["t"] - t0) / 60, 1), round(float(e.get("here_rate") or 0) * 60), round(float(e.get("fight_rate") or 0) * 60))
+                     for e in ev if e.get("kind") == "leave_patch"]
     econ = [e for e in ev if e.get("kind") == "missile_economy"]
     if econ:
         out["econ"] = [(round((e["t"] - t0) / 60, 1), round(float(e.get("bar") or 0)), round(float(e.get("keep") or 1), 2)) for e in econ]
@@ -343,6 +348,11 @@ def describe(st):
     if st.get("air_shots") and st["air_shots"][0]:
         lines.append(f"Air shots in passing (a plane in the special weapon's cone while the lanes are flown): {st['air_shots'][0]} tried, "
                      f"{st['air_shots'][1]} fired.")
+    if st.get("moves"):
+        lines.append("Moves to another group (minute, its points, km): " + ", ".join(f"{m} min {p} pts {k} km" for m, p, k in st["moves"][:12]) + ".")
+    if st.get("leaves"):
+        lines.append("Left a place by the leaving rule (minute, points a minute there, fight average): "
+                     + ", ".join(f"{m} min {h}/{a}" for m, h, a in st["leaves"]) + ".")
     if st.get("furballs"):
         lines.append(f"Furball commitments (a plane or drone after this one taken as the target and kept): {st['furballs']}.")
     if st.get("snaps"):

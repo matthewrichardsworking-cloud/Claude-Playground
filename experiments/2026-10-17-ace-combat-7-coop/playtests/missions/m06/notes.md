@@ -406,3 +406,42 @@ The 8.5-minute gun tests (19:46, 19:58) are in `campaign-lanes-test.md`.
   locked drone 7-17 degrees off at 500-1,000 m got neither a missile (inside the 1.3 km minimum
   for drones) nor the gun (5 degree window). Drones now count their plain points against the
   lanes, and the gun may fire at one inside 900 m within 7 degrees.
+
+- **The 8AGM loadout run** (the gap analysis's item, 20 Oct 00:23, with the fixed build): 3,850
+  points at 5:02, stopped. No bomber fell (standard missiles at planes hit 5 of 14 without the
+  LAAM's reach), and even its ground minutes paid about 950 a minute against about 2,400 for the
+  LAAM build's best ground minutes. With the waste gone the standard missiles last the phase
+  anyway; the LAAM stays.
+- **Move rules tried and taken out again**: a fresh group rated at the pace of the fight's best
+  minute; the "stay" rate scaled by the plans' delivered/promised ratio; only groups more than 6
+  km away as destinations. Each moved the plane on sooner but also to small groups, and the
+  attempts with them scored 14,500-21,350 against 21,900-22,000 for the rules of the 20:54 and
+  21:13 full phases, which are back (with the arrival memory against the ping-pong).
+
+| Campaign attempt | Build (what was new) | Score at 15:00 | Notes |
+|---|---|---|---|
+| 21:33 | move commitment, drones by LAAM, gun snap | stopped at 5 min | F-16 learned "agile" (the press-counting fault) |
+| 21:42 | + agility from real missiles | 21,350 | area C at 8.3 min |
+| 22:00 | + best-minute pace | about 18,500, shot down 14:17 | |
+| 22:17 | + no move margin | stopped at 8 min | skipped area A's bombers at the start |
+| 22:29 | + plans' rate scaled by the audit | 16,140, shot down | the 6 km ping-pong begins |
+| 22:48 | + furball (any plane tracking it) | 18,310 | C's ground passes lost to fights |
+| 23:08 | + furball drop after 15 s, slower at drones | about 18,000 | |
+| 23:27 | furball narrowed to aircraft that fired at it | 15,660 | drone swarm held it 4 min short of C |
+| 23:46 | + no drones in the furball, arrival memory | 21,320 | |
+| 00:05 | + drones at plain points, gun window | about 17,700 | |
+| 00:32 | + destinations only beyond 6 km | about 14,500 | hopped between small groups |
+| 00:51 | move rules back to the 21:13 ones | about 17,000 | 6 dogfight commitments in area C |
+| 01:10 | furball only for attackers in front, dropped after 8 s | 20,210 and about 19,800 (two attempts) | |
+| 01:44 | + the leaving rule (45 s, 60%) | stopped at 6.6 min | left area C 100 s after arriving |
+| 01:52 | leaving rule at 90 s, 50%, no going back for 3 min | **about 23,000** (22,520 at 14:45) | left area B at 7.9 min; area C then paid about 1,500 a minute |
+
+- **The leaving rule** (the marginal value theorem of foraging): leave a place once the last
+  minute there paid under half of this fight's average points a second (after 90 s there and 2
+  minutes of fight), for the best group of 2,000 points or more at least 8 km away, and keep
+  going until arrived; never back toward a place left in the last 3 minutes; not if the phase
+  ends before the flight and 90 s of work. General and live; the first full attempt with it made
+  about 23,000, the best yet.
+| 01:52 (attempt 2) | same | about 21,500 | kills on a retry not counted (names reused after a checkpoint restart); fixed |
+| 02:29 | + kills counted afresh after a restart | **23,200** | A, then B for 1.5 min, C from 5.2 to 9.7 min, back to B; 101 kills, 11 standard missiles and no LAAMs left |
+| 02:45 (attempt 2) | same | about 19,500 | lost most of its health by minute 9 |

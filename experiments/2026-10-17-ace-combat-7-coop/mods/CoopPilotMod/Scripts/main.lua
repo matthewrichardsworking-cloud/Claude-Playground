@@ -1922,20 +1922,10 @@ local function bestCluster(c, loc)
         local busy = (c.split.locked or 0) + (c.split.ahead or 0) + (c.split.offnose or 0) + (c.split["break"] or 0)
         secPerKill = clamp(busy / c.kills, 3, 25)
     end
-    -- ...but a fresh group is cleared at the pace of the best minute of this fight, not the
-    -- average over picked-over places (20 Oct 2026: rated at 6.7 s a kill, Mission 06's third
-    -- area looked no better than a picked-over second one at minute 6; reached at 8.3 minutes,
-    -- it paid 1,400 points a minute against 500-700 in the second)
-    local best60 = 0
-    for i = 1, #pointsLog do
-        local n = 0
-        for j = i, #pointsLog do
-            if pointsLog[j][1] - pointsLog[i][1] > 60 then break end
-            n = n + 1
-        end
-        if n > best60 then best60 = n end
-    end
-    if best60 >= 6 then secPerKill = math.min(secPerKill, clamp(60 / best60, 3, 25)) end
+    -- (20 Oct 2026, tried and taken out again: a fresh group rated at the pace of the fight's best
+    -- minute, and only groups more than 6 km away as destinations. Each moved the plane on sooner,
+    -- but to small groups as well, and the attempts with them scored 14,500-21,300 against
+    -- 21,900-22,000 without; see playtests\missions\m06\notes.md.)
     local cruise = 4000                              -- units/s at full throttle (about 1,450 km/h)
     local best, bestRate = nil, 0
     for _, q in ipairs(laneCands) do
@@ -1961,9 +1951,19 @@ local function bestCluster(c, loc)
             if rate > bestRate and n >= 6 and sum >= 1000 and zoneMargin(q.x, q.y) > 20000 and not nearArrival then
                 best, bestRate = { x = sx / n, y = sy / n, z = sz / n, points = sum, n = n, dist = d, rate = rate, secPerKill = secPerKill }, rate
             end
+            -- ...and the best substantial group elsewhere (2,000 points or more, its middle 8 km
+            -- or more away): where to go when this place stops paying (the leaving rule in lanePlan)
+            local gx, gy = sx / n, sy / n
+            local gd2 = (gx - loc.X) ^ 2 + (gy - loc.Y) ^ 2
+            if sum >= 2000 and gd2 > 80000 ^ 2 and zoneMargin(q.x, q.y) > 20000 and rate > (c.farRateTmp or 0) then
+                c.farRateTmp = rate
+                c.farTmp = { x = gx, y = gy, z = sz / n, points = sum, n = n, dist = math.sqrt(gd2), rate = rate, secPerKill = secPerKill }
+            end
         end
     end
-    return best
+    local far = c.farTmp
+    c.farTmp, c.farRateTmp = nil, nil
+    return best, far
 end
 local function lanePlan(c, loc, F, t)
     if t - (c.lanePlanAt or -100) < 0.5 then return end
@@ -2148,20 +2148,24 @@ local function lanePlan(c, loc, F, t)
         if kF and kF ~= "large" and kF ~= "agile" then
             local d = math.sqrt((tr.p[1] - loc.X) ^ 2 + (tr.p[2] - loc.Y) ^ 2 + (tr.p[3] - loc.Z) ^ 2)
             local nm = objName(tr.obj)
-            if shot[nm] and d < 25000 and d < fbD and not (c.skip[nm] and t < c.skip[nm]) then
+            -- (in front only, within 60 degrees of the nose: in a timed score phase a quick kill is
+            -- worth it, a turning fight is not; with any attacker, the fights with area C's
+            -- fighters cost 12-20 s of break turns a minute and its ground passes)
+            local offF = d > 1 and math.deg(math.acos(clamp(((tr.p[1] - loc.X) * F[1] + (tr.p[2] - loc.Y) * F[2] + (tr.p[3] - loc.Z) * F[3]) / d, -1, 1))) or 180
+            if shot[nm] and d < 25000 and offF < 60 and d < fbD and not (c.skip[nm] and t < c.skip[nm]) then
                 fb, fbD = tr.obj, d
             end
         end
     end
     local cur = c.furball
     if cur and (not alive(cur.obj) or t > cur.untilT) then cur = nil end
-    -- ...but not a chase that gets nowhere: 15 s without a missile fired at it or a gun hit on
+    -- ...but not a chase that gets nowhere: 8 s without a missile fired at it or a gun hit on
     -- it, and it is left alone for 30 s (20 Oct 2026: chases of drones over Mission 06's third
     -- area ran 30-60 s for nothing while the ground there paid 1,000 points a minute)
     if cur then
         local fired = firedAt[cur.name] and firedAt[cur.name] > cur.t0
         if fired or (c.lastGunHitName == cur.name and (c.lastGunHitAt or -100) > cur.t0) then cur.progressAt = t end
-        if t - (cur.progressAt or cur.t0) > 15 then
+        if t - (cur.progressAt or cur.t0) > 8 then
             c.skip[cur.name] = t + 30
             event("furball_dropped", { target = cur.name, after_s = t - cur.t0 })
             cur = nil
@@ -2195,7 +2199,7 @@ local function lanePlan(c, loc, F, t)
     -- least 10 s once chosen; the lanes take over within 6 km of it
     if t - (c.clusterAt or -100) > 2 then
         c.clusterAt = t
-        c.bestGroup = bestCluster(c, loc)
+        c.bestGroup, c.farGroup = bestCluster(c, loc)
     end
     local bg = c.bestGroup
     local go = false
@@ -2205,9 +2209,9 @@ local function lanePlan(c, loc, F, t)
             -- (the smoothed lane rate here, also while the lanes are off for a moment: a switch
             -- to a bomber must not send the plane 18 km away from a group still paying)
             local here = c.laneRateS or 0
-            -- (made honest by the plan audit: the shots the plans delivered over those they
-            -- promised, 0.45-0.5 on 20 Oct 2026; with the plans' own rate a picked-over area
-            -- looked twice as good as it was)
+            -- (the plan audit's delivered/promised ratio, 0.4-0.5, is worked out for the record;
+            -- scaling this rate by it, tried on 20 Oct 2026, made every small group 6 km away
+            -- worth a move and the plane hopped between them; not applied)
             if t - (c.auditRatioAt or -100) > 10 then
                 c.auditRatioAt = t
                 local ex, got = 0, 0
@@ -2220,7 +2224,6 @@ local function lanePlan(c, loc, F, t)
                 end
                 if ex >= 10 then c.auditRatio = clamp(got / ex, 0.25, 1) end
             end
-            here = here * (c.auditRatio or 0.6)
             -- ...but no more than this place really pays: the points scored in the last 90 s
             -- (19 Oct 2026, the first full phase with the lanes: four minutes in an anti-aircraft
             -- site scoring 4 points a second while the plans promised 10-25, and 6,650 points in
@@ -2267,6 +2270,58 @@ local function lanePlan(c, loc, F, t)
         c.areaViewAt = t
         event("area_view", { group_points = bg.points, group_n = bg.n, engaged = true })
     end
+    -- The leaving rule (the marginal value theorem of foraging: leave a patch once it pays less
+    -- than the whole has paid on average; 20 Oct 2026): after 90 s of lanes in a place and two
+    -- minutes of fight, if the last minute here paid under half this fight's average points a
+    -- second, go to the best substantial group elsewhere (bestCluster's second answer) and keep
+    -- going there until arrived, through a short air fight on the way. In five attempts that
+    -- evening Mission 06's second area paid 2,000-2,500 points a minute for two minutes and
+    -- 350-1,100 for the next four or five, while the third, once reached, paid about 1,250; the
+    -- "best group" rule never weighed a move because the second area's own leftovers won it.
+    c.fightT0 = c.fightT0 or t
+    local mv = c.mvtMove
+    if not engaged and c.farGroup and not (c.transitTo and c.transitTo.mvt) then
+        local leave = mv and t - mv.t < 60 and mv.group and (mv.group.x - loc.X) ^ 2 + (mv.group.y - loc.Y) ^ 2 > 60000 ^ 2
+        local since = c.laneSince and (t - c.laneSince) or 0
+        local fightS = t - c.fightT0
+        -- (90 s in the place at least, under half the average, and never back toward a place left
+        -- in the last 3 minutes: with 45 s, 60% and no such memory the first try left the third
+        -- area 100 s after arriving, the first minute anywhere paying little, and flew back 25 km)
+        local lf = c.leftFrom
+        local backTo = lf and t - lf.t < 180 and (c.farGroup.x - lf.x) ^ 2 + (c.farGroup.y - lf.y) ^ 2 < 100000 ^ 2
+        if not leave and not go and since > 90 and fightS > 120 and not backTo then
+            local win = math.min(60, since)
+            local got, total = 0, 0
+            for i = #pointsLog, 1, -1 do
+                local pt = pointsLog[i]
+                if pt[1] < c.fightT0 then break end
+                total = total + pt[2]
+                if t - pt[1] <= win then got = got + pt[2] end
+            end
+            local avg = total / fightS
+            -- (not when the phase ends before the flight there and a minute and a half of work)
+            local ms = mission()
+            local left = ms and call(ms, "GetMissionPhaseTimeLeftInSeconds_S")
+            local timeOk = not left or left < 0 or left > c.farGroup.dist / 4000 + 90
+            if got / win < 0.5 * avg and timeOk then
+                leave = true
+                event("leave_patch", { here_rate = got / win, fight_rate = avg, to_points = c.farGroup.points, to_n = c.farGroup.n,
+                                       to_km = c.farGroup.dist / 10000 })
+                mv = { group = c.farGroup, t = t }
+                c.leftFrom = { x = loc.X, y = loc.Y, t = t }
+            end
+        end
+        if leave then
+            bg, go = mv.group, true
+            bg.mvt = true
+            c.mvtMove = { group = bg, t = mv.t }
+        end
+    end
+    -- a move by the leaving rule goes on until it has arrived
+    if c.transitTo and c.transitTo.mvt and not engaged then
+        local tt = c.transitTo
+        if (tt.x - loc.X) ^ 2 + (tt.y - loc.Y) ^ 2 > 60000 ^ 2 then bg, go = tt, true end
+    end
     if go then
         c.moveMem = { x = bg.x, y = bg.y, t = t }
         if not c.transitTo then
@@ -2281,6 +2336,7 @@ local function lanePlan(c, loc, F, t)
         local tt = c.transitTo
         if tt and (tt.x - loc.X) ^ 2 + (tt.y - loc.Y) ^ 2 < 65000 ^ 2 then
             c.arrived = { x = tt.x, y = tt.y, t = t }
+            c.mvtMove = nil
             event("arrived", { points = tt.points, targets = tt.n })
         end
         c.transitTo = nil
@@ -4310,6 +4366,10 @@ local function flyOrder(args)
                       lastFlare = -100, scanAt = -100, taps = {}, lastAlert = 0,
                       missileRange = opts.range or 3000, missileGap = 1.2 }
         goal.speed = goal.speed or 700
+        -- a new fight: kills are counted afresh (an enemy of the same name may come back after
+        -- a retry; see forgetWorld)
+        for k in pairs(creditedKills) do creditedKills[k] = nil end
+        for k in pairs(firedAt) do firedAt[k] = nil end
     end
     -- a new flight log for every order, so the test runner can file each attempt's own
     if flightFile then flightFile:close() end
@@ -4589,6 +4649,11 @@ forgetWorld = function(why, p)
     activeSeen, activationStarted = {}, false
     for k in pairs(infoCache) do infoCache[k] = nil end
     for k in pairs(lockCache) do lockCache[k] = nil end
+    -- (and the kills already counted, by name: after a restart from a checkpoint the enemies come
+    -- back under the same names, and on 20 Oct 2026 a second attempt counted almost none of its
+    -- kills, so the rates the moves are judged by read zero)
+    for k in pairs(creditedKills) do creditedKills[k] = nil end
+    for k in pairs(firedAt) do firedAt[k] = nil end
     if Aware then Aware.reset(); Aware.fastReady = false end
     if Gim then Gim.reset() end
     if Nav then Nav.fast = false end

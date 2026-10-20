@@ -3,8 +3,8 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
-**Status (20 Oct 2026, 00:05): the bot's missiles hit now; Mission 06 at about 21,000-22,000 of
-24,000.** Following the gap analysis (it ran out of missiles), this session found the missiles were
+**Status (20 Oct 2026, 03:00): the bot's missiles hit now; Mission 06 at 19,500-23,200 of 24,000
+(best 23,200, 800 short), still being flown.** Following the gap analysis (it ran out of missiles), this session found the missiles were
 mostly wasted, not too few: a quarter flew unguided (the bot picked its next target while the fire
 key was still down) and many of the rest hit hills or buildings on the way (no line-of-sight
 check). With both fixed, a missile tracker that follows every missile, one missile in the air per
@@ -13,8 +13,10 @@ learned gun correction from watching its own bullets, the standard missiles hit 
 of 94 times and full phases went from about 13,000 to 21,900 and 21,990 points (109 and 101
 kills; the old best was 13,360). You watched the end of one and called it the biggest leap of the
 day; watching later attempts you asked it to commit to the aircraft dogfighting it instead of
-dodging, which is in (narrowed by the data to aircraft that have fired at it close by). Mission
-06 is not cleared yet; the campaign order keeps flying it. Details: workbench section 17 and
+dodging, which is in (narrowed by the data to aircraft that have just fired at it from in front
+and close by: committing to every attacker cost the third area's points). A "leaving rule" from
+foraging theory (leave a place once it pays under half the fight's average) then lifted the best
+attempt to 23,200. Mission 06 is not cleared yet; the campaign order keeps flying it. Details: workbench section 17 and
 `playtests\missions\m06\notes.md`. Your real saves are unchanged.
 
 **Status (19 Oct 2026, 19:20): faster kill chaining; Mission 06 still not cleared.** Following

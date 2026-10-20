@@ -3,7 +3,12 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
-## Status (20 Oct 2026, 00:05): missiles that hit; Mission 06 at about 22,000
+## Status (20 Oct 2026, 03:00): missiles that hit; Mission 06 at up to 23,200
+
+- **Moving between areas** (latest): a "leaving rule" from foraging theory (leave a place once its
+  last minute paid under half of the fight's average; go to the best group of 2,000+ points 8 km
+  or more away and keep going until there; not back to a place left in the last 3 minutes). Best
+  attempt 23,200 of the 24,000 needed. Kills are now counted afresh after a checkpoint restart.
 
 - **Waste found and fixed** (general, not level-specific): fire key still down while the next
   target was selected (a quarter of the missiles flew unguided; the selection now waits 0.25 s);

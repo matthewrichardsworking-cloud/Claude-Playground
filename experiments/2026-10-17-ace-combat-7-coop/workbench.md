@@ -1640,8 +1640,16 @@ leap of the day.
   well (inside the missiles' minimum for drones and outside the gun's narrow window). Drones now
   count their plain points, and the gun has a wider window for them close in.
 
-**Where it stands** (20 Oct, 00:05): not cleared yet. The campaign order is flying Mission 06
-again with these changes, retrying from the checkpoint by itself; full numbers for every run are
+- **The leaving rule** (from foraging theory): leave a place once its last minute paid under half
+  of the fight's average, for the best substantial group elsewhere, and keep going until there.
+  The second area pays about 2,000 points a minute for two minutes and much less after; the rule
+  moves the plane on at the right time. With it: 23,000 and 23,200 in two attempts (19,500-21,500
+  in others), 800 short of the goal at best. Also fixed on the way: kills after a restart from a
+  checkpoint were not counted (the enemies come back with the same names), which threw off every
+  retry's rates.
+
+**Where it stands** (20 Oct, 03:00): not cleared yet; best 23,200 of 24,000. The campaign order is
+flying Mission 06 again with these changes, retrying from the checkpoint by itself; full numbers for every run are
 in `playtests\missions\m06\notes.md`. Your real saves were checked after every run (unchanged);
 the copy stays in Vanilla mode with its Default profile (the Mod Loader was not used).
 
