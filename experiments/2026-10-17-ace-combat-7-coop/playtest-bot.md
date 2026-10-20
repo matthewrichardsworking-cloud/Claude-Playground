@@ -3,6 +3,28 @@
 Written 18 Oct 2026 as a design; **built and working the same afternoon** (workbench.md
 section 10). It builds on what the workbench already proved (sections 5, 7 and 9).
 
+## Status (20 Oct 2026, 00:05): missiles that hit; Mission 06 at about 22,000
+
+- **Waste found and fixed** (general, not level-specific): fire key still down while the next
+  target was selected (a quarter of the missiles flew unguided; the selection now waits 0.25 s);
+  no line-of-sight check (one ray trace before every shot now, `Aware.losBlocked`); the missile
+  tracker missed reused missile objects (now ends and re-launches are seen); learned agility
+  counted presses, not missiles that flew. Standard missiles at ground targets: about 60% hits
+  before, 92 of 94 after.
+- **Weapons**: missile discipline (no more missiles in the air at a target than its health
+  needs), the LAAM first for anything in the air and an "air shot in passing" while the lanes are
+  flown, learned firing distances at both ends per weapon and kind, a missile economy for timed
+  phases, the gun measured (`guntest` order, `gunnery.lua`: strafing pass, bullet tracking,
+  learned zeroing, a short gun "snap" in the lanes).
+- **Decisions**: honest kill times per kind (failed engagements included), area moves judged at
+  the best minute's pace and kept once started, a committed "furball" target for an aircraft that
+  has just fired at the plane from close by (the owner's request).
+- **Report numbers added**: ammunition left at 5/10/15 minutes, missiles by outcome (targets that
+  died or survived), missiles followed and unguided, held shots (discipline, line of sight), air
+  shots, furballs, gun bursts and where the bullets went, learned kill times.
+- **Result**: Mission 06's score race from about 13,000 to 21,900-21,990 in full phases; not
+  cleared yet (24,000 needed).
+
 ## Status (19 Oct 2026, evening): kill chaining with the lane planner
 
 - **How it attacks ground targets now** (`lanes.lua`): the flight path is chosen for the targets

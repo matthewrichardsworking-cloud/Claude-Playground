@@ -289,3 +289,120 @@ the nose did the same (now bank-to-turn: the bank from the heading still to turn
 80-88 degrees, the pull once the bank is there); a big change of pitch high up went to the
 small-corrections mode and just pushed (now rolled and pulled above 1,500 m); full throttle
 toward a target far off the nose reached 1,980 km/h (now only with the target ahead).
+
+## The ammunition session (19-20 Oct 2026, 19:30 onward)
+
+Started from the gap analysis (`gap-analysis.md`): the bot ran out of its 112 standard missiles
+by minute 10-11.5 at 1.6-2.3 missiles a kill. Order of work given: the ammunition economy (the
+gun, missile discipline, an 8AGM loadout run), then the opening's F-16s, then a phase plan that
+reaches area C. Everything below is general (live game data, nothing about this level).
+
+### What the measurements showed
+
+- **The gun.** A `guntest` order (gun only, attack runs carried in close) and a `gun_burst`
+  event (the selected target's health before and after each burst). The missile attack runs
+  never put the nose within 4 degrees of a ground target (300 m floor, dive limits), so the gun
+  never fired. A low strafing pass (`gunnery.lua`) got about 15 damage per 0.8-1.9 s burst from
+  1.0-1.2 km and none from 0.9-0.47 km. The bot's own bullets are game objects
+  (`plwp_gun_x1_C`, reused by the game), so `gunnery.lua` now follows them and reports where they
+  pass the target (`gun_bullets`): about 15 m above and 10 m right at 700-900 m, bullet speed
+  about 1,300 m/s. A learned correction ("zeroing") from those passes brought the average to
+  -1 m above, +2 m right in the sixth full phase, and the gun killed 5 targets there (an F-16
+  among them: 60 health in half a second at 630 m). Not the main weapon, but no longer useless.
+- **Houses and other buildings without a target box** (5,430 points): no house, hangar or water
+  tower ever died in any run of 19 Oct (the OnDeath hook logs every death); the game marks them
+  "permission to engage false, attack-targets exception true". A gun pass at one did not get in
+  before the test ended. Not counted on.
+- **The missile tracker missed more than half the bot's own missiles.** The game reuses its
+  missile objects, so "a new object is a new launch" failed. Now an own missile that stops moving
+  has ended, one that moves again has been fired again, and a missile may take its target a look
+  later (`awareness.lua`). Every launch has been followed since.
+- **Unguided launches: 23% of the standard missiles.** In the lanes the next target was selected
+  in the same frame as the fire press, while the fire key was still down, so the game launched
+  at the newly selected, unlocked target. The selection now stays 0.25 s after each press. Since
+  then: none.
+- **Misses were mostly no line of sight.** With every missile followed, the standard missile hit
+  ground targets 24 of 29 times from under 1.6 km and 16 of 36 from 1.6-2.2 km, the misses ending
+  about 2 s out, short of the target. The far LAAMs at the Tu-160s (5 of 35 hits from 4.4-9.5 km
+  on 19 Oct, 12 of 12 from 1.4-4.4 km) ended halfway. A ray trace before each shot
+  (`Aware.losBlocked`, the C++ add-on's fast traces) showed the bomber hidden by a hill 2.7 km in
+  front of it. Now no missile is fired without a clear line (blocked more than 40 m short of a
+  ground target, 60 m of one in the air); in the lanes the target is set aside for a second.
+  Since then the standard missile hit ground targets 92 of 94 and 72 of 73 times.
+- **Missile discipline**: no more missiles in the air at one target than its health needs
+  (`hold_fire` events), so ten LAAMs no longer go at one bomber before the first has ended.
+- **Learned firing distances**, both ends, per weapon and kind of target, faster than before
+  (`rangeCap`: the split that best separates good shots from bad ones; `rangeFloor`: misses
+  from close in). For ground targets a 60% hit rate is asked for.
+- **Honest kill times**: the time spent per kind of target over the kills of that kind, the
+  engagements that never ended in a kill included (the drones were rated at 35 s a kill and
+  took the last five minutes of the third full phase for two kills).
+- **The LAAM first for anything in the air** in a score phase (1.2 km to the learned far edge),
+  the standard missiles kept for the ground; and **the air shot in passing**: an enemy plane
+  inside the LAAM's cone and range while the lanes are flown is selected for a moment and gets
+  one LAAM. All four of area A's F-16s fell this way by 4.6 minutes in the fourth full phase, and
+  the bot was hardly hit in the opening since. Drones within 6 km too since run 6.
+- **The missile economy**: when the standard missiles will not last the phase at the last two
+  minutes' rate, only the best share of the shots on offer is taken (each target's value per
+  missile: points, the share of its health one missile takes, the threat, the hit rate of its
+  class in this fight). With the waste gone it rarely binds.
+- **The area moves**: a move between areas is kept unless the place it passes is clearly better;
+  only groups of 6 or more targets and 1,000 points count as destinations (a few leftovers rated
+  high on points a second and twice called a 23 km move back after 4 s); the "stay" rate is
+  checked against the points really scored here once the lanes have run 45 s.
+- The 8AGM loadout run was not repeated: with the waste gone the standard missiles last the
+  phase, and the LAAM's air shots are worth more (15 planes in the fourth full phase).
+
+### Full phases (`m06-lanes-full.yaml`)
+
+| Run | Build | Score at 15:00 | Kills (engaged a minute) | Missiles a kill | What it showed |
+|---|---|---|---|---|---|
+| 20:15 | discipline, LAAM first for the air, economy | 12,770 | 54 (4.1) | 1.7 | Standard missiles left at 10 min: 45 (ammunition no longer the cap); flat after 10 min chasing drones; 14 unguided. |
+| 20:36 | + air shots, learned window, honest kill times | 12,130, shot down 13:13 | 47 (4.1) | 1.3 | 15 planes killed, area C early, 51 missiles left; worn down by gun chip damage at low health. |
+| 20:54 | + line of sight, no reselection for 0.25 s | **21,900** | 109 (10.0) | 1.0 | Ground hits 92 of 94, none unguided; lost 1.5 min dithering on the move to area C; 11 LAAMs and all drones left. |
+| 21:13 | + move commitment, LAAM at drones, gun snap | **21,990** | 101 (9.1) | 1.0 | 5 gun kills, bullets centred; minutes 6-10 in a picked-over area B at 500 a minute, then 1,400 a minute in C from 10.9 min. |
+
+The 8.5-minute gun tests (19:46, 19:58) are in `campaign-lanes-test.md`.
+
+### The campaign attempts (`campaign-ace.yaml`, from 21:30)
+
+- **A latent fault: F-16s learned as "agile".** The learned-agility rule counted fire presses as
+  missiles; a LAAM press with both rails reloading launches nothing, so after 12 presses for 2
+  kills the F-16 class counted as agile and was fought like a drone (opened out from, the LAAM
+  withheld): two missile hits and a stuck score in the first campaign attempt (stopped), and the
+  same thing at 6.7 minutes in the 20:15 full phase. Now a class counts as agile only from the
+  missiles that really flew at it (8 or more followed to their end, under 35% hitting).
+- **Moving between areas.** Map of one attempt: area B paid about 5,000 points between minutes
+  3 and 4.5 and about 2,000 in the 3.5 minutes after; area C came at minute 9 and paid 1,200-1,400
+  a minute. Three causes, all fixed: a fresh group was rated at the fight's average time per kill
+  (now the pace of its best minute); the "stay" rate was the plans' own, twice as optimistic as
+  what they deliver (now scaled by the plan audit's delivered/promised ratio); an air fight on
+  the way cancelled a move and its commitment (now a move taken up again within 30 s keeps it).
+  Removing the 20% margin for starting a move sent the first decision of one attempt to area B
+  instead of the bombers; the margin stays.
+- **"Indecisive" in a furball** (the owner, watching the last minute of a shoot-down): in the
+  last 75 s, 8 switches between the lanes and an air target, 3 LAAM air shots at drones that
+  never fired (each a weapon switch and back), priority flipping between drones and a SAM site,
+  and 10 full breaks (under 40 health every missile predicted within 350 m gets one; 15 missiles
+  came at it that minute). Air shots now pause for 45 s at a kind of target after two tries
+  without a missile away. The low-health break rule and the lanes/air switching remain open.
+
+- **Committing in dogfights** (the owner, watching a later attempt: "it should be selecting a
+  target like an enemy drone or F-16 or other fighter and aggressively committing ... prioritize
+  kills ... especially against aircraft already dogfighting it"). A committed "furball" target:
+  first any plane or drone tracking the bot within 3 km (kept at least 10 s). In area A it killed
+  the four F-16s by 1.9 minutes; in area C the commitments to fighters and drones replaced the
+  ground passes (3,900 points there against 6,850 in the 21,900 run; 45 standard missiles came
+  home). Narrowed to an aircraft that fired at the bot from within 2.5 km in the last 15 s, then
+  without the drones (20 commitments to a swarm of them held the plane four minutes short of
+  area C), and dropped after 15 s without a missile fired or a gun hit. Evasion keeps the earlier
+  rules outside such a fight; inside it only the last 1.5 s of a missile still on course get the
+  full break.
+- **A ping-pong between groups**: scaling the "stay" rate by the plans' optimism made every small
+  group 6 km away worth a move; the move ended at 6 km, the plane drifted out to 6.1 km, and the
+  move began again, seven times in 2.3 minutes. Now a place just arrived at is not a destination
+  for a minute.
+- **Drones**: they had the threat bonus (they fire), so they out-rated the ground passes, but a
+  locked drone 7-17 degrees off at 500-1,000 m got neither a missile (inside the 1.3 km minimum
+  for drones) nor the gun (5 degree window). Drones now count their plain points against the
+  lanes, and the gun may fire at one inside 900 m within 7 degrees.

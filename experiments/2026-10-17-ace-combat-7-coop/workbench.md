@@ -1578,6 +1578,73 @@ Your real saves were checked after every run (unchanged); the copy is closed, st
 mode with its Default profile (the Mod Loader was not used).
 
 
+
+## 17. The missiles were wasted, not too few (19-20 Oct, 19:30 onwards)
+
+The gap analysis of section 16 said the bot ran out of its 112 standard missiles by minute 10-11.5
+of Mission 06's score race. This session followed its order (ammunition first, then the opening
+F-16s, then reaching the third area in time) and found that most of the "shortage" was waste the
+bot could not see, because its missile tracker missed more than half its own missiles.
+
+**What was wrong, in plain words**
+
+- **A quarter of the standard missiles flew unguided.** In the lanes the bot chose its next
+  target in the same instant it pressed fire, while the fire key was still down, so the game
+  launched at the new target, which was not locked yet. Now the selection stays a quarter of a
+  second after each press. Since then: none unguided.
+- **Many of the rest hit the scenery.** With every missile followed, the misses turned out to end
+  about 2 seconds out, short of the target, mostly from 1.6-2.2 km at a shallow angle. The bot now
+  checks the line to the target with one ray trace before every shot (the fast traces of the C++
+  add-on) and holds fire while terrain or a building is in the way. LAAMs fired at the bombers
+  from 5-9 km had been flying into a hill 2.7 km in front of them. Standard missiles at ground
+  targets went from about 60% hits to 92 of 94 and 72 of 73.
+- **The missile tracker** missed more than half the bot's own missiles because the game reuses
+  missile objects; it now notices a missile stopping (ended) and moving again (fired again).
+- **One missile in the air per target is enough** when one kills it (missile discipline), and the
+  LAAM goes first at anything in the air, the standard missiles kept for the ground.
+- **A latent fault**: the "learned agility" rule counted fire presses, not missiles that flew, and
+  twice made the F-16 count as a drone (fought by opening out, the LAAM withheld). It now uses the
+  tracker's real outcomes.
+
+**The gun** (your plan's first item): measured with a new `guntest` order and by following the
+bot's own bullets, which are game objects. The bullets passed about 15 m above and 10 m right of
+the target at 700-900 m; a correction learned from those passes centred them, and the gun then
+made 5 kills in one phase (an F-16 among them). Useful in passing, not a main weapon. Houses and
+other buildings without a target box never died in any run; not counted on.
+
+**The opening F-16s**: an "air shot in passing" (an enemy plane in the LAAM's cone and range gets
+one LAAM while the lanes fly on) killed all four by 4.6 minutes in the first run that had it, and
+the opening has cost little health since.
+
+**Result: from about 13,000 to about 22,000 points.** Two full phases with the fixed build made
+21,900 and 21,990 (109 and 101 kills, 10 and 9 kills a minute while engaged, one missile per
+kill; the earlier best was 13,360). You watched the end of the first and said it was the biggest
+leap of the day.
+
+**The last 2,000 points** went into finding where the remaining time is lost:
+
+- Area B pays most between minutes 3 and 5; the bot stayed until minute 8-9, while area C, once
+  reached, paid 1,000-1,400 points a minute. The way the bot judges "move on" was improved three
+  times (a fresh area judged at the pace of its best minute, the "stay" rate corrected by how
+  optimistic its own plans have been, a move kept through a short air fight), with mixed results.
+- Watching, you saw it "indecisive" in the dogfights over area C and asked it to commit to the
+  aircraft attacking it. The logs agreed (in its last minute 8 switches between ground and air
+  targets, air shots that never fired, 10 full break turns). A committed "furball" target was
+  added; first for any plane tracking it, which in three attempts cost area C's ground passes
+  (3,900 points there against 6,850) without saving health; then narrowed to an aircraft that has
+  fired at it from within 2.5 km in the last 15 seconds, the dogfight you described.
+- Two more faults found on the way: a "ping-pong" between nearby groups (a move ended 6 km out, the
+  plane drifted to 6.1 km and the move began again, seven times in 2.3 minutes; a place just
+  arrived at is now not a destination for a minute), and drones out-rating the ground passes
+  because they carried the bonus for having fired at the plane, while the bot could not kill them
+  well (inside the missiles' minimum for drones and outside the gun's narrow window). Drones now
+  count their plain points, and the gun has a wider window for them close in.
+
+**Where it stands** (20 Oct, 00:05): not cleared yet. The campaign order is flying Mission 06
+again with these changes, retrying from the checkpoint by itself; full numbers for every run are
+in `playtests\missions\m06\notes.md`. Your real saves were checked after every run (unchanged);
+the copy stays in Vanilla mode with its Default profile (the Mod Loader was not used).
+
 ## Your saves: what happened
 
 - Before every launch your save folder was backed up and checked (`backups\`, eight

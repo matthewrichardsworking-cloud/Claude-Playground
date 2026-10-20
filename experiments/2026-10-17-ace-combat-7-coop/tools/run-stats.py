@@ -186,8 +186,67 @@ def stats_for(events, log_lines, t_from=None, t_to=None):
                 hit = next((e for e in ls if int(e["left"]) <= th), None)
                 if hit:
                     a[f"le{th}_min"] = round((hit["t"] - t0) / 60, 1)
+            # what was left at minutes 5, 10 and 15 (20 Oct 2026: the measure of a weapon economy)
+            for m in (5, 10, 15):
+                before = [e for e in ls if e["t"] - t0 <= m * 60]
+                a[f"left_{m}"] = int(before[-1]["left"]) if before else a["start"]
             ammo[w] = a
     out["ammo"] = ammo
+    # where the standard missiles went: each launch belongs to the press just before it (the
+    # launch event itself carries the next target, picked the same frame); launches at targets
+    # that never died are the waste a weapon economy can win back
+    presses = [e for e in ev if e.get("kind") == "missile" and not e.get("special")]
+    killed = {e.get("target") for e in kills}
+    deaths = {e.get("who") for e in ev if e.get("kind") == "death"}
+    used, at_dead, at_alive, per_target = set(), 0, 0, Counter()
+    for L in launches:
+        cand = [i for i, p in enumerate(presses) if 0 <= L["t"] - p["t"] <= 0.6 and i not in used]
+        if not cand:
+            continue
+        used.add(cand[0])
+        name = presses[cand[0]].get("target")
+        n = int(L.get("n", 1))
+        per_target[name] += n
+        if name in killed or name in deaths:
+            at_dead += n
+        else:
+            at_alive += n
+    if per_target:
+        out["missile_use"] = {"at_dead": at_dead, "at_alive": at_alive, "dead_targets": sum(1 for k in per_target if k in killed or k in deaths),
+                              "multi": sum(1 for k, v in per_target.items() if v >= 2)}
+    # missile discipline and the missile economy (20 Oct 2026): shots held because enough
+    # missiles were already in the air at that target; the economy's bar over time
+    out["held"] = sum(1 for e in ev if e.get("kind") == "hold_fire")
+    out["los_held"] = sum(1 for e in ev if e.get("kind") == "los_blocked")
+    out["air_shots"] = (sum(1 for e in ev if e.get("kind") == "air_shot"),
+                        sum(1 for e in ev if e.get("kind") == "air_shot_end" and e.get("fired")))
+    out["snaps"] = sum(1 for e in ev if e.get("kind") == "gun_snap")
+    out["furballs"] = sum(1 for e in ev if e.get("kind") == "furball")
+    econ = [e for e in ev if e.get("kind") == "missile_economy"]
+    if econ:
+        out["econ"] = [(round((e["t"] - t0) / 60, 1), round(float(e.get("bar") or 0)), round(float(e.get("keep") or 1), 2)) for e in econ]
+    unguided = sum(1 for e in ev if e.get("kind") == "my_missile" and e.get("unguided"))
+    tracked = sum(1 for e in ev if e.get("kind") == "my_missile")
+    out["tracked"] = (tracked, unguided)
+    # the gun: each burst at the selected target, its health before and after (gun_burst)
+    bursts = [e for e in ev if e.get("kind") == "gun_burst"]
+    if bursts:
+        dmg = sum(max(0.0, float(e.get("hp0") or 0) - float(e.get("hp1") or 0)) for e in bursts if float(e.get("hp0") or -1) >= 0)
+        secs = sum(float(e.get("dur_s") or 0) for e in bursts)
+        hits = [e for e in bursts if float(e.get("first_hit_m") or -1) > 0]
+        out["gun"] = {"bursts": len(bursts), "kills": sum(1 for e in bursts if e.get("killed")), "dmg": dmg, "secs": secs,
+                      "hit_bursts": len(hits), "hit_m_max": max((float(e["first_hit_m"]) for e in hits), default=None)}
+        # where the bullets went (gunnery.lua's gun_bullets: closest passes in the frame of the
+        # line from the plane to the target)
+        gb = [e for e in ev if e.get("kind") == "gun_bullets" and int(e.get("bullets") or 0) > 0]
+        if gb:
+            nb = sum(int(e["bullets"]) for e in gb)
+            out["gun"]["bullets"] = {"bursts": len(gb), "n": nb, "within5": sum(int(e.get("within_5m") or 0) for e in gb),
+                                     "up": sum(float(e["up_m"]) * int(e["bullets"]) for e in gb) / nb,
+                                     "right": sum(float(e["right_m"]) * int(e["bullets"]) for e in gb) / nb,
+                                     "along": sum(float(e["along_m"]) * int(e["bullets"]) for e in gb) / nb,
+                                     "miss": sorted(float(e["miss_median_m"]) for e in gb)[len(gb) // 2],
+                                     "speed": sorted(float(e.get("speed_ms") or -1) for e in gb)[len(gb) // 2]}
     if not launches:
         out["missiles"] = sum(1 for e in ev if e.get("kind") == "missile")
     out["breaks"] = sum(1 for e in ev if e.get("kind") == "evade")
@@ -218,6 +277,9 @@ def stats_for(events, log_lines, t_from=None, t_to=None):
         f = fin[-1]
         out["audit"] = (int(f["audit_plans"]), float(f.get("audit_expected") or 0), float(f.get("audit_launched") or 0))
         out["learned"] = {k: f.get(k) for k in ("lock_base_s", "lock_rate_dps", "load_s", "turn_dps") if f.get(k) is not None}
+        if isinstance(f.get("kill_times"), dict):
+            kk = f.get("kind_kills") or {}
+            out["learned"]["kill_s"] = ", ".join(f"{k} {float(v):.0f} s ({kk.get(k, 0)} kills)" for k, v in sorted(f["kill_times"].items()))
     scores = [e for e in ev if e.get("kind") == "score_tick"]
     out["score_ticks"] = [(round(e["t"] - t0), e.get("hud_score"), e.get("goal")) for e in scores]
     # time spanned by the attempt's events (for rates when there is no split)
@@ -260,8 +322,44 @@ def describe(st):
             if "le20_min" in a:
                 txt += f" (under 20 at {a['le20_min']} min"
                 txt += f", none left at {a['le0_min']} min)" if "le0_min" in a else ")"
+            if "left_10" in a:
+                txt += f", left at 5/10/15 min: {a['left_5']}/{a['left_10']}/{a['left_15']}"
             parts.append(txt)
         lines.append("Ammunition: " + "; ".join(parts) + ".")
+    if st.get("missile_use"):
+        u = st["missile_use"]
+        tot = u["at_dead"] + u["at_alive"]
+        lines.append(f"Standard missiles by outcome: {u['at_dead']} of {tot} at targets that died ({u['dead_targets']} targets, "
+                     f"{u['at_dead'] / max(u['dead_targets'], 1):.2f} a target), {u['at_alive']} at targets that survived the attempt; "
+                     f"{u['multi']} targets got two or more.")
+    if st.get("tracked") and st["tracked"][0]:
+        tr, ug = st["tracked"]
+        lines.append(f"Own missiles followed to their end: {tr} (of {st['missiles'] + st.get('special', 0)} launched), "
+                     f"{ug} of them flew without a target to home on.")
+    if st.get("held"):
+        lines.append(f"Missile discipline: {st['held']} times a shot was held because enough missiles were already in the air at that target.")
+    if st.get("los_held"):
+        lines.append(f"Line of sight: {st['los_held']} times a shot was held because terrain or a structure blocked the line to the target.")
+    if st.get("air_shots") and st["air_shots"][0]:
+        lines.append(f"Air shots in passing (a plane in the special weapon's cone while the lanes are flown): {st['air_shots'][0]} tried, "
+                     f"{st['air_shots'][1]} fired.")
+    if st.get("furballs"):
+        lines.append(f"Furball commitments (a plane or drone after this one taken as the target and kept): {st['furballs']}.")
+    if st.get("snaps"):
+        lines.append(f"Gun snaps (a soft target nearly on the nose, inside the gun's reach): {st['snaps']}.")
+    if st.get("econ"):
+        pts = [f"{m} min: bar {b} (keep {k:.0%})" for m, b, k in st["econ"][:12]]
+        lines.append("Missile economy (the bar a target's value per missile had to clear): " + ", ".join(pts) + ".")
+    if st.get("gun"):
+        g = st["gun"]
+        lines.append(f"Gun: {g['bursts']} bursts at the selected target, {g['secs']:.1f} s of firing, {g['dmg']:.0f} damage done "
+                     f"({g['dmg'] / max(g['secs'], 0.01):.1f} a second of firing), {g['kills']} kills"
+                     + (f"; first hit seen from up to {g['hit_m_max']:.0f} m" if g.get("hit_m_max") else "") + ".")
+        if g.get("bullets"):
+            b = g["bullets"]
+            lines.append(f"Bullets followed in {b['bursts']} bursts: {b['n']} passed within 60 m of the target, {b['within5']} within 5 m; "
+                         f"on average {b['up']:+.1f} m above, {b['right']:+.1f} m right, {b['along']:+.1f} m beyond it "
+                         f"(median closest pass {b['miss']:.1f} m; bullet speed about {b['speed']:.0f} m/s).")
     if st.get("kills_by_kind") and any(k != "?" for k in st["kills_by_kind"]):
         lines.append("Kills by kind (game data): " + ", ".join(f"{k} {v}" for k, v in sorted(st["kills_by_kind"].items())) + ".")
     if st.get("points"):

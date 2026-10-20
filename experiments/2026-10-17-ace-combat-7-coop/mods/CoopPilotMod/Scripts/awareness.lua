@@ -371,22 +371,145 @@ return function(env)
     -- From which distance a weapon still hits a kind of target, learned from its own shots: the
     -- nearest 2-km band beyond 2 km with 5 or more shots and fewer than a quarter hitting caps
     -- the firing range at that band's near edge (m). nil: no cap (not enough misses seen).
-    function A.rangeCap(weapon, kind)
-        local bands = {}
+    -- (20 Oct 2026: from the far end, the nearest launch distance such that 3 or more shots from
+    -- there and beyond hit less than a quarter of the time; with 2 km bands and 5 shots a band
+    -- the LAAM fired ten missiles at Mission 06's bombers from 4.7-9.5 km before it learned)
+    -- (thr and minN: a weaker rule can ask for more: 20 Oct 2026, the standard missile at ground
+    -- targets hit 24 of 29 from under 1.6 km and 16 of 36 from 1.6-2.2 km, so for ground targets
+    -- main.lua asks for a 60% hit rate over 6 shots; cached until a new shot ends)
+    local capCache = {}
+    function A.rangeCap(weapon, kind, thr, minN)
+        thr, minN = thr or 0.25, minN or 3
+        local key = tostring(weapon) .. "|" .. tostring(kind) .. "|" .. thr .. "|" .. minN
+        local cc = capCache[key]
+        if cc and cc.n == #A.myShots then return cc.cap end
+        local L = {}
         for _, sh in ipairs(A.myShots) do
-            if sh.weapon == weapon and sh.kind == kind and sh.dist and sh.dist > 0 then
-                local b = math.floor(sh.dist / 2000)
-                bands[b] = bands[b] or { n = 0, hit = 0 }
-                bands[b].n = bands[b].n + 1
-                if sh.hit then bands[b].hit = bands[b].hit + 1 end
+            if sh.weapon == weapon and sh.kind == kind and sh.dist and sh.dist > 0 then L[#L + 1] = sh end
+        end
+        table.sort(L, function(a, b) return a.dist > b.dist end)
+        -- the split that best separates the shots: those from the edge and beyond hit less than
+        -- thr of the time, those from inside it clearly more (largest difference of the two
+        -- rates; each side with minN shots or more)
+        local tot, totH = #L, 0
+        for _, sh in ipairs(L) do if sh.hit then totH = totH + 1 end end
+        local n, h, cap, bestGap = 0, 0, nil, 0.1
+        for i, sh in ipairs(L) do
+            n = n + 1
+            if sh.hit then h = h + 1 end
+            local nIn, hIn = tot - n, totH - h
+            local nextD = L[i + 1] and L[i + 1].dist
+            if n >= minN and nIn >= minN and h / n < thr and not sh.hit and nextD and nextD < sh.dist then
+                local gap = hIn / nIn - h / n
+                if gap > bestGap then cap, bestGap = sh.dist, gap end
             end
         end
-        local cap = nil
-        for b = 1, 10 do
-            local bd = bands[b]
-            if bd and bd.n >= 5 and bd.hit / bd.n < 0.25 then cap = b * 2000; break end
-        end
+        -- (no shots inside yet: the far misses alone say where the edge is)
+        if not cap and tot >= minN and totH == 0 then cap = L[#L].dist end
+        if cap and cap < 1000 then cap = 1000 end
+        capCache[key] = { n = #A.myShots, cap = cap }
         return cap
+    end
+    -- ...and the near end: the farthest launch distance such that 2 or more shots from there and
+    -- closer all missed (a fast missile fired close at a plane cannot turn onto it: LAAMs at
+    -- F-16s from 460-770 m, 19-20 Oct 2026). nil: no floor learned.
+    function A.rangeFloor(weapon, kind)
+        local L = {}
+        for _, sh in ipairs(A.myShots) do
+            if sh.weapon == weapon and sh.kind == kind and sh.dist and sh.dist > 0 then L[#L + 1] = sh end
+        end
+        table.sort(L, function(a, b) return a.dist < b.dist end)
+        local n, floor = 0, nil
+        for _, sh in ipairs(L) do
+            if sh.hit then break end
+            n = n + 1
+            if n >= 2 then floor = sh.dist end
+        end
+        return floor
+    end
+
+    -- How often the pilot's missiles hit each class of target (the game's class of the target;
+    -- 20 Oct 2026: on 19 Oct the anti-aircraft guns of one class took 54% of the missiles fired
+    -- at them, trucks and radar towers all), learned in the fight from its own missiles
+    A.hitStats = {}
+    function A.pHit(cls, prior)
+        local s = cls and A.hitStats[cls]
+        local p0, w = prior or 0.8, 3
+        if not s then return p0 end
+        return (s.hit + p0 * w) / (s.n + w)
+    end
+    -- ...and by weapon and class: a weapon that keeps missing one class of target is not used
+    -- on it (20 Oct 2026: LAAMs at Mission 06's Tu-160 bombers missed from 0.6 to 9 km, the
+    -- standard missiles hit them 89% of the time). Returns the hit rate and the shots seen.
+    A.hitStatsW = {}
+    function A.pHitW(weapon, cls)
+        local s = weapon and cls and A.hitStatsW[weapon .. "|" .. cls]
+        if not s then return nil, 0 end
+        return (s.hit + 0.7 * 2) / (s.n + 2), s.n
+    end
+    -- Line of sight from the plane to a target (20 Oct 2026: missiles at ground targets fired
+    -- shallow and from 1.6-2.2 km hit 16 of 36, most ending about 2 s out, short of the target;
+    -- LAAMs at bombers flying low among hills ended halfway): one straight trace from 30 m out
+    -- along the line to 15 m short of the target's middle ('upM' metres above its origin).
+    -- Returns how many metres short of the target the line is blocked (0: clear), or nil when
+    -- the fast traces are not there.
+    function A.losBlocked(from, to, upM)
+        if type(CoopTrace_Line) ~= "function" or not A.fastReady then return nil end
+        local tz = to[3] + (upM or 3) * 10
+        local d = { to[1] - from[1], to[2] - from[2], tz - from[3] }
+        local L = len(d)
+        if L < 600 then return 0 end
+        local u = mul(d, 1 / L)
+        local a = add(from, mul(u, 300))
+        local ok, hit, hx, hy, hz = pcall(CoopTrace_Line, a[1], a[2], a[3], to[1] - u[1] * 150, to[2] - u[2] * 150, tz - u[3] * 150)
+        if not ok or not hit or not hx then return 0 end
+        return len({ to[1] - hx, to[2] - hy, tz - hz }) / 10
+    end
+
+    -- The pilot's missiles in the air now at the target of that (short) name
+    function A.inFlight(name)
+        local n = 0
+        for _, tr in pairs(tracks) do
+            if tr.kind == "missile" and tr.mine and not tr.ended and tr.tgtShort == name then n = n + 1 end
+        end
+        return n
+    end
+
+    -- The end of one of the pilot's own missiles: did its target lose health or die?
+    local function reportOwn(tr, t)
+        if tr.mine and tr.tgtCls then
+            local s = A.hitStats[tr.tgtCls] or { n = 0, hit = 0 }
+            A.hitStats[tr.tgtCls] = s
+            s.n = s.n + 1
+            local kw = (tr.weapon or "?") .. "|" .. tr.tgtCls
+            local sw = A.hitStatsW[kw] or { n = 0, hit = 0 }
+            A.hitStatsW[kw] = sw
+            sw.n = sw.n + 1
+        end
+        if tr.mine then
+            local hit
+            local tg = tr.tgtObj
+            if tg and valid(tg) then
+                local alive = call(tg, "IsAlive")
+                local hp = call(tg, "GetHealth")
+                hit = (alive == false) or (hp ~= nil and tr.tgtHp0 ~= nil and hp < tr.tgtHp0)
+            else
+                hit = true          -- the target object is gone: destroyed
+            end
+            tr.tgtObj = nil
+            if hit and tr.tgtCls and A.hitStats[tr.tgtCls] then
+                A.hitStats[tr.tgtCls].hit = A.hitStats[tr.tgtCls].hit + 1
+                local sw = A.hitStatsW[(tr.weapon or "?") .. "|" .. tr.tgtCls]
+                if sw then sw.hit = sw.hit + 1 end
+            end
+            A.myShots[#A.myShots + 1] = { weapon = tr.weapon, dist = tr.launchDist or -1, hit = hit, kind = tr.tgtKind, t = t }
+            event("my_missile", { weapon = tr.weapon, target = tr.tgtShort, target_kind = tr.tgtKind, dist_m = tr.launchDist or -1,
+                                  flew_s = t - tr.born, hit = hit, target_after_s = tr.tgtAt or 0, obj = tr.name })
+        elseif tr.own then
+            -- the pilot's missile never had a target to home on: it flew unguided
+            event("my_missile", { weapon = tr.weapon, target = "-", target_kind = "-", dist_m = -1, flew_s = t - tr.born,
+                                  hit = false, unguided = true, obj = tr.name })
+        end
     end
 
     function A.updateMissiles(player, playerName, myP, myV)
@@ -415,38 +538,62 @@ return function(env)
                         -- The pilot's own missiles (19 Oct 2026): followed to their end, so hit
                         -- rates by weapon, launch distance and kind of target are general data,
                         -- and the pilot can learn from which distance a weapon still hits
-                        if playerName and owner and valid(owner) and fullName(owner) == playerName and tgt and valid(tgt) then
+                        -- (20 Oct 2026: a missile can be first seen before the game has given it
+                        -- its target; more than half the launches of 19 Oct were never followed.
+                        -- Now every missile of the pilot's is kept, and takes its target on a
+                        -- later look if it had none; one that never gets one is reported as
+                        -- flying unguided.)
+                        if playerName and owner and valid(owner) and fullName(owner) == playerName then
+                            tr.own = true
+                            local okC, cn = pcall(function() return m:GetClass():GetFName():ToString() end)
+                            tr.weapon = okC and cn or "?"
+                            tr.myP0 = myP
+                        end
+                        tracks[n] = tr
+                    end
+                    local tr = tracks[n]
+                    -- The game keeps its missile objects and fires them again (19 Oct 2026: the
+                    -- same names come back many times), so an object being there says nothing:
+                    -- one of the pilot's that has stopped moving has ended, and one that moves
+                    -- again has been fired again (a missile in flight covers 40 m and more
+                    -- between two looks 0.2 s apart)
+                    if tr.own then
+                        local okP, lp = pcall(function() return m:K2_GetActorLocation() end)
+                        if okP and lp then
+                            local pNow = v3(lp)
+                            if tr.lastP then
+                                local moved = len(sub(pNow, tr.lastP))
+                                if not tr.ended and moved < 50 and t - tr.born > 0.4 then
+                                    reportOwn(tr, t)
+                                    tr.ended = true
+                                elseif tr.ended and moved >= 50 then
+                                    tr.ended, tr.mine, tr.tgtObj, tr.tgtShort, tr.tgtHp0, tr.tgtKind, tr.tgtAt, tr.launchDist = false, nil, nil, nil, nil, nil, nil, nil
+                                    tr.born, tr.myP0 = t, myP
+                                end
+                            end
+                            tr.lastP = pNow
+                        end
+                    end
+                    if tr.own and not tr.mine and not tr.ended then
+                        local tgt = prop(m, "TargetToHome")
+                        if tgt and valid(tgt) then
                             tr.mine = true
                             tr.tgtObj = tgt
                             tr.tgtShort = objName(tgt)
-                            local okC, cn = pcall(function() return m:GetClass():GetFName():ToString() end)
-                            tr.weapon = okC and cn or "?"
                             tr.tgtHp0 = call(tgt, "GetHealth")
                             tr.tgtKind = A.kindOf and A.kindOf(tgt) or "?"
+                            local okK, kc = pcall(function() return tgt:GetClass():GetFName():ToString() end)
+                            tr.tgtCls = okK and kc or nil
+                            tr.tgtAt = t - tr.born
                             local okL, tl = pcall(function() return tgt:K2_GetActorLocation() end)
-                            if okL and tl then tr.launchDist = len(sub(v3(tl), myP)) / 10 end
+                            if okL and tl then tr.launchDist = len(sub(v3(tl), tr.myP0 or myP)) / 10 end
                         end
-                        tracks[n] = tr
                     end
                 end
             end
             for n, tr in pairs(tracks) do
                 if tr.kind == "missile" and not seen[n] then
-                    if tr.mine then
-                        local hit
-                        local tg = tr.tgtObj
-                        if tg and valid(tg) then
-                            local alive = call(tg, "IsAlive")
-                            local hp = call(tg, "GetHealth")
-                            hit = (alive == false) or (hp ~= nil and tr.tgtHp0 ~= nil and hp < tr.tgtHp0)
-                        else
-                            hit = true          -- the target object is gone: destroyed
-                        end
-                        tr.tgtObj = nil
-                        A.myShots[#A.myShots + 1] = { weapon = tr.weapon, dist = tr.launchDist or -1, hit = hit, kind = tr.tgtKind, t = t }
-                        event("my_missile", { weapon = tr.weapon, target = tr.tgtShort, target_kind = tr.tgtKind, dist_m = tr.launchDist or -1,
-                                              flew_s = t - tr.born, hit = hit })
-                    end
+                    if tr.own and not tr.ended then reportOwn(tr, t) end
                     if tr.atMe then
                         tr.gone = t
                         event("missile_gone", { missile = tr.name, from = tr.ownerName, closest_m = tr.minDist / 10,

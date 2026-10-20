@@ -3,6 +3,20 @@
 Goal: you and a friend fly Ace Combat 7 together against computer-controlled enemies,
 ideally through the story campaign.
 
+**Status (20 Oct 2026, 00:05): the bot's missiles hit now; Mission 06 at about 21,000-22,000 of
+24,000.** Following the gap analysis (it ran out of missiles), this session found the missiles were
+mostly wasted, not too few: a quarter flew unguided (the bot picked its next target while the fire
+key was still down) and many of the rest hit hills or buildings on the way (no line-of-sight
+check). With both fixed, a missile tracker that follows every missile, one missile in the air per
+target, the LAAM used on planes first (including the opening's four F-16s, "in passing") and a
+learned gun correction from watching its own bullets, the standard missiles hit ground targets 92
+of 94 times and full phases went from about 13,000 to 21,900 and 21,990 points (109 and 101
+kills; the old best was 13,360). You watched the end of one and called it the biggest leap of the
+day; watching later attempts you asked it to commit to the aircraft dogfighting it instead of
+dodging, which is in (narrowed by the data to aircraft that have fired at it close by). Mission
+06 is not cleared yet; the campaign order keeps flying it. Details: workbench section 17 and
+`playtests\missions\m06\notes.md`. Your real saves are unchanged.
+
 **Status (19 Oct 2026, 19:20): faster kill chaining; Mission 06 still not cleared.** Following
 the plan you agreed that morning, with your rule first (the bot is a test tool, so everything is
 read live from the game, nothing written for one level), the bot now attacks ground targets the
