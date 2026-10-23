@@ -2,6 +2,15 @@
 
 Newest first. One short entry per session.
 
+## 2026-10-23: MinHook and Dear ImGui cloned into Claude Tools
+
+- At the owner's request, git clones of MinHook (BSD-2, master `8af6b4a`, latest release v1.3.4)
+  and Dear ImGui (MIT, master `4e99c0a`, latest release v1.93.0, `docking` branch included) in
+  `Desktop\Claude Tools\minhook` and `\imgui`. Double Trigger's pinned versions (v1.3.3, v1.91.9b)
+  are tags in the clones. Source only; nothing built or run. Notes in
+  `experiments/2026-10-23-minhook-imgui/`; the folder's README.txt and START-HERE.md list both.
+- Local session on the PC; `gh` isn't installed there, so this went straight to `main`.
+
 ## 2026-10-19 (evening): Ace Combat 7 co-op, kill chaining with a lane planner; Mission 06 still open
 
 - Followed the agreed score-race plan, generality first (the bot is a test tool for modded AC7):
