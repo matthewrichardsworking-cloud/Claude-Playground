@@ -2,6 +2,16 @@
 
 Newest first. One short entry per session.
 
+## 2026-11-25: Talk about reviewing the owner's Android app; no code work
+
+- The owner asked for a security review of an Android app (APK) they built with Google's
+  Antigravity. My first step was stopped by an automated safety check, so no review happened.
+  The app is personal: only the owner has or uses it. Gave general advice instead.
+- Next time an app review comes up, ask for the zipped project folder (the source Antigravity
+  wrote) plus a note on what the app does and connects to, not the APK.
+- The owner asked about Antigravity and Claude reviewing each other's work automatically. Options
+  discussed: Claude Code in Antigravity's terminal, or a GitHub Action that reviews each PR.
+
 ## 2026-10-23: MinHook and Dear ImGui cloned into Claude Tools
 
 - At the owner's request, git clones of MinHook (BSD-2, master `8af6b4a`, latest release v1.3.4)
