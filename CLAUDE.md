@@ -27,6 +27,8 @@ most basic ideas unless the list below says otherwise.
   screens when told the exact on-screen labels (2026-10-17). Hardware words like
   "chassis" or "header" still need a few words of explanation. Photos of the
   screen are an easy way for them to show what they're seeing.
+- Builds Android apps with Google's Antigravity (an AI coding editor) and knows
+  what an APK (Android app file) is (2026-11-25).
 
 ## Start of a session
 
